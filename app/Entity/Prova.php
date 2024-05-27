@@ -1,13 +1,13 @@
 <?php
 
-class ESkiFacility {
+class Prova {
     
     //attributes
     private string $name, $status;
     private float $price;
     
     //constructor
-    public function __construct(string $name, string $status, float $price) {
+    public function __construct( $name,  $status,  $price) {
         $this->name = $name;
         $this->status = $status;
         $this->price = $price;

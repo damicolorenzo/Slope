@@ -3,23 +3,24 @@
 Class EPerson {
 
     // attributes
-    protected string $name
-    protected string $surname
-    protected string $email
-    protected int $phoneNumber
-    protected DateTime $birthDate
-    protected string $username
-    protected string $password
+    protected string $name;
+    protected string $surname;
+    protected string $email;
+    protected int $phoneNumber;
+    protected DateTime $birthDate;
+    protected string $username;
+    protected string $password;
 
     //constructor
-    public function __construct(string $name, $string $surname, string $email, int $phoneNumber, DateTime $birthDate, string $username, string $password) {
+    public function __construct(string $name, string $surname, string $email, int $phoneNumber, string $stringBirthDate, string $username, string $password) {
         $this->name = $name;
         $this->surname = $surname;
         $this->email = $email;
         $this->phoneNumber = $phoneNumber;
-        $objDateTime = new DateTime($birthDate);
+        $objDateTime = new DateTime($stringBirthDate);
         $newObj = clone $objDateTime;
         $newObj->format('Y-m-d'); 
+        $this->birthDate = $newObj;
         $this->username = $username;
         $this->password = $password;
 
@@ -36,18 +37,18 @@ Class EPerson {
 
 
     //Set methods
-    public function setName(string $name) :void {return $this->name = $name;}
-    public function setSurname() :void {return $this->surname = $surname;}
-    public function setEmail() :void {return $this->email = $email;}
-    public function setPhoneNumber() :void {return $this->phoneNumber = $phoneNumber;}
+    public function setName(string $name) :void { $this->name = $name;}
+    public function setSurname(string $surname) :void {$this->surname = $surname;}
+    public function setEmail(string $email) :void { $this->email = $email;}
+    public function setPhoneNumber(int $phoneNumber) :void { $this->phoneNumber = $phoneNumber;}
     public function setBirthDate(string $birthDate) :void {
         $objDateTime = new DateTime($birthDate);
         $newObj = clone $objDateTime;
         $newObj->format('Y-m-d'); 
         $this->startDate = $newObj;
     }
-    public function setUsername() :void {return $this->username = $username;}
-    public function setPassword() :void {return $this->password = $password;}
+    public function setUsername(string $username) :void { $this->username = $username;}
+    public function setPassword(string $password) :void {$this->password = $password;}
 
 
 }
