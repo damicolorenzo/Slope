@@ -7,11 +7,12 @@ class EPayment{
     protected DateTime $date;
 
     //constructor
-    public function ___construct(float $totalAmount){
+    public function ___construct(float $totalAmount, string $stringDate){
         $this->totalAmount = $totalAmount;
-        $objDateTime = new DateTime($date);
+        $objDateTime = new DateTime($stringDate);
         $newObj = clone $objDateTime;
         $newObj->format('Y-m-d'); 
+        $this->date = $newObj;
     }
 
     //get methods

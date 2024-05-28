@@ -13,18 +13,18 @@ class ESubscriptedUser extends EUser{
         $objDateTime = new DateTime($stringyear);
         $newObj = clone $objDateTime;
         $newObj->format('Y-m-d'); 
-        $this->year = $newObj;
+        $this->yearstart = $newObj;
     }
 
     //get methods
-    public function getYear() :DateTime {return $this->year;}
+    public function getYear() :DateTime {return $this->yearstart;}
 
     //set methods
     public function setYear(string $year) :void {
         $objDateTime = new DateTime($year);
         $newObj = clone $objDateTime;
         $newObj->format('Y-m-d'); 
-        $this->year = $newObj;
+        $this->yearstart = $newObj;
     }
 
 

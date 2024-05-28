@@ -2,7 +2,7 @@
 
 require_once("ESkipassBooking.php");
 
-class EDailySkipass extends ESkipassBooking {
+class EWeekLySkipass extends ESkipassBooking {
 
     //attributes
     protected static float $priceMultiplier = 0.4;

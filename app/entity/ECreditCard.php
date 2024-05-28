@@ -10,12 +10,13 @@ class ECreditCard{
     protected int $cvv;
 
     //constructor
-    public function ___construct(string $cardHolderName, string $cardHolderSurname, int $cardNumber, int $cvv){
+    public function ___construct(string $cardHolderName, string $cardHolderSurname, int $cardNumber, string $stringEndDate, int $cvv){
         $this->cardHolderName = $cardHolderName;
         $this->cardHolderSurname = $cardHolderSurname;
-        $objDateTime = new DateTime($endDate);
+        $objDateTime = new DateTime($stringEndDate);
         $newObj = clone $objDateTime;
         $newObj->format('Y-m-d'); 
+        $this->endDate = $newObj;
         $this->cardNumber = $cardNumber;
         $this->cvv = $cvv;
     }
