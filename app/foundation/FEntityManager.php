@@ -26,6 +26,14 @@ class FEntityManager {
     public static function getDb() :PDO {return self::$db;}
     public static function closeConnection() :void {static::$instance = null;}
 
+
+    /**
+     * Method to return rows from a query SELECT FROM @table WHERE @field = @id
+     * @param Sring $table Refers to the table of the Database
+     * @param String $field  Refers to a field of the table
+     * @param mixed $id Refers to the value in the where clause
+     * @return array
+     */
     public static function retriveObj($table, $field, $id) :array {
         try {
             $query = "SELECT * FROM ".$table. " WHERE ".$field." = '".$id."';";
@@ -47,6 +55,31 @@ class FEntityManager {
             return array();
         } 
     }
+
+    /**
+     * Method to save an object in the Database using the INSERT TO query
+     * @param String $foundClass Refers to the name of the foundation class, so you can get the table and the value
+     * @param Object $obj Refers to an Entity Object to save in the Database
+     * @return int | null
+     */
+    public static function saveObject($foundClass, $obj)
+    {
+        try{
+            $query = "INSERT INTO " . $foundClass::getTable() . " VALUES" . $foundClass::getValue();
+            #print($query); #TEST
+            $stmt = self::$db->prepare($query);
+            $foundClass::bind($stmt, $obj);
+            $stmt->execute();
+            #print_r($stmt); #TEST 
+            $id = self::$db->lastInsertId();
+            return $id;
+        }catch(Exception $e){
+            echo "ERROR: " . $e->getMessage();
+            return null;
+        }
+    }
+
+
 }
 
 ?>

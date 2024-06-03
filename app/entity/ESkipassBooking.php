@@ -3,7 +3,7 @@
 class ESkipassBooking {
     
     //attributes
-    protected DateTime $startDate;
+    protected string $startDate;
     protected string $name, $surname, $type, $email;
     protected float $totalSkiFacilitiesPrice;
 
@@ -11,10 +11,12 @@ class ESkipassBooking {
     public function __construct(string $name, string $surname, string $stringStartDate, string $type, string $email, float $totalSkiFacilitiesPrice) {
         $this->name = $name;
         $this->surname = $surname;
-        $objDateTime = new DateTime($stringStartDate);
-        $newObj = clone $objDateTime;
-        $newObj->format('Y-m-d'); 
-        $this->startDate = $newObj;
+        $date = DateTime::createFromFormat('Y-m-d', $stringStartDate);
+        if ($date && $date->format('Y-m-d') === $stringStartDate) {
+            $this->startDate = $stringStartDate;
+        } else {
+            throw new Exception("Formato data non valido");
+        }
         $this->type = $type;
         $this->email = $email;
         $this->totalSkiFacilitiesPrice = $totalSkiFacilitiesPrice;
@@ -23,7 +25,7 @@ class ESkipassBooking {
     //Get methods
     public function getName() :string {return $this->name;}
     public function getSurname() :string {return $this->surname;}
-    public function getStartDate() :DateTime {return $this->startDate;}
+    public function getStartDate() :string {return $this->startDate;}
     public function getType() :string {return $this->type;}
     public function getEmail() :string {return $this->email;}
     public function getTotal() :float {return $this->totalSkiFacilitiesPrice;}
@@ -32,10 +34,12 @@ class ESkipassBooking {
     public function setName(string $name) :void {$this->name = $name;}
     public function setSurname(string $surname) :void {$this->surname = $surname;}
     public function setStartDate(string $stringStartDate) :void {
-        $objDateTime = new DateTime($stringStartDate);
-        $newObj = clone $objDateTime;
-        $newObj->format('Y-m-d'); 
-        $this->startDate = $newObj;
+        $date = DateTime::createFromFormat('Y-m-d', $stringStartDate);
+        if ($date && $date->format('Y-m-d') === $stringStartDate) {
+            $this->startDate = $stringStartDate;
+        } else {
+            throw new Exception("Formato data non valido");
+        }
     }
     public function setType(string $type) :void {$this->type = $type;}
     public function setEmail(string $email) :void {$this->email = $email;}
