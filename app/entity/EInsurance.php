@@ -5,12 +5,14 @@ class EInsurance{
     protected string $type;
     protected int $period;
     protected float $price;
+    protected string $idPayment;
 
     //constructor
-    public function ___construct(string $type, int $period, float $price){
+    public function ___construct(string $type, int $period, float $price, string $idPayment){
         $this->type = $type;
         $this->period = $period;
         $this->price = $price;
+        $this->idPayment = $idPayment;
     }
 
     //get methods
@@ -22,6 +24,9 @@ class EInsurance{
     }
     public function getPrice(){
         return $this->price;
+    }
+    public function getIdPayment(){
+        return $this->idPayment;
     }
 
 

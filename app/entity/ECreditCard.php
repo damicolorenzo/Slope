@@ -8,15 +8,18 @@ class ECreditCard{
     protected DateTime $endDate;
     protected int $cardNumber;
     protected int $cvv;
+    protected string $idUser;
 
     //constructor
-    public function ___construct(string $cardHolderName, string $cardHolderSurname, int $cardNumber, string $stringEndDate, int $cvv){
+    public function ___construct(string $idUser, string $cardHolderName, string $cardHolderSurname, string $endDate, int $cardNumber, int $cvv){
+        $this->idUser = $idUser;
         $this->cardHolderName = $cardHolderName;
         $this->cardHolderSurname = $cardHolderSurname;
         $objDateTime = new DateTime($stringEndDate);
         $newObj = clone $objDateTime;
         $newObj->format('Y-m-d'); 
         $this->endDate = $newObj;
+        $this->setTime();
         $this->cardNumber = $cardNumber;
         $this->cvv = $cvv;
     }
@@ -37,6 +40,14 @@ class ECreditCard{
     public function getEndDate(){
         return $this->endDate;
     }
+    public function getEndDateStr(){
+        return $this->endDate->format('Y-m-d');
+    }
+    public function getIdUser(){
+        return $this->idUser;
+    }
+
+
     //set methods
     public function setCardHolderName($cardHolderName1){
         $this->cardHolderName = $cardHolderName1;
@@ -55,6 +66,7 @@ class ECreditCard{
         $newObj = clone $objDateTime;
         $newObj->format('Y-m-d'); 
         $this->endDate = $newObj;
-    }
+}
+
 }
 ?>
