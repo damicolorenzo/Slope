@@ -8,7 +8,6 @@ class FSkiFacility {
     private static $value = "(NULL, :name, :status, :price)";
     private static $key = "idSkiFacility";
 
-    
     public static function getTable() {return self::$table;}
     public static function getValue() {return self::$value;}
     public static function getClass() {return self::class;}
