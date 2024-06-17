@@ -31,7 +31,8 @@ class FLiftStructure {
         $saveLiftStructure = FEntityManager::getInstance()->saveObject(self::getClass(), $obj);
         if($saveLiftStructure !== null){
             return $saveLiftStructure;
-        }else{
+        }
+        else{
             return false;
         }
     }
