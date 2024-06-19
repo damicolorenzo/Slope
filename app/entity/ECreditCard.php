@@ -8,11 +8,9 @@ class ECreditCard{
     protected DateTime $endDate;
     protected int $cardNumber;
     protected int $cvv;
-    protected string $idUser;
 
     //constructor
-    public function ___construct(string $idUser, string $cardHolderName, string $cardHolderSurname, string $endDate, int $cardNumber, int $cvv){
-        $this->idUser = $idUser;
+    public function ___construct(string $cardHolderName, string $cardHolderSurname, string $endDate, int $cardNumber, int $cvv){
         $this->cardHolderName = $cardHolderName;
         $this->cardHolderSurname = $cardHolderSurname;
         $objDateTime = new DateTime($stringEndDate);
@@ -42,9 +40,6 @@ class ECreditCard{
     }
     public function getEndDateStr(){
         return $this->endDate->format('Y-m-d');
-    }
-    public function getIdUser(){
-        return $this->idUser;
     }
 
 
