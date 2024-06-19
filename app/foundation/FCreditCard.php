@@ -4,9 +4,10 @@ class FCreditCard{
 
     private static $table = "credtiCard";
 
-    private static $value = "(NULL, :cardHolderName, :cardHolderSurname, :endDate, :cardNumber, :cvv)";
+    //da vedere se :cardNumber
+    private static $value = "(NULL, :cardHolderName, :cardHolderSurname, :endDate, :cvv)";
 
-    private static $key = "idCreditCard";
+    private static $key = "cardNumber";
 
 
     public static function getTable(){
@@ -29,7 +30,7 @@ class FCreditCard{
         $stmt->bindValue(":cardHolderName", $creditCard->getCardHolderName(), PDO::PARAM_STR);
         $stmt->bindValue(":cardHolderSurname", $creditCard->getCardHolderSurname(), PDO::PARAM_STR);
         $stmt->bindValue(":endDate", $creditCard->getEndDateStr(), PDO::PARAM_STR);
-        $stmt->bindValue(":cardNumber", $creditCard->getCardNumber(), PDO::PARAM_INT);
+        //$stmt->bindValue(":cardNumber", $creditCard->getCardNumber(), PDO::PARAM_INT);
         $stmt->bindValue(":cvv", $creditCard->getCvv(), PDO::PARAM_INT);
     }
 
