@@ -25,7 +25,6 @@ Class FPerson{
 
 
 
-
     public static function bind($stmt, $person){
         $stmt->bindValue(":name", $person->getName(), PDO::PARAM_STR);
         $stmt->bindValue(":surname", $person->getSurame(), PDO::PARAM_STR);
