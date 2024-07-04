@@ -2,25 +2,20 @@
 class EInsurance{
 
     //attributes
-    protected string $idInsurance;
     protected string $type;
     protected int $period;
     protected float $price;
     protected string $idPayment;
 
     //constructor
-    //rivedere se inserire o meno idInsurance e idPayment nel costruttore
-
     public function ___construct(string $type, int $period, float $price, string $idPayment){
         $this->type = $type;
         $this->period = $period;
         $this->price = $price;
+        $this->idPayment = $idPayment;
     }
 
     //get methods
-    public function getId(){
-        return $this->idInsurance;
-    }
     public function getType(){
         return $this->type;
     }
@@ -36,9 +31,6 @@ class EInsurance{
 
 
     //set methods
-    public function setId($id){
-        $this->idInsurance = $id;
-    }
     public function setType($type1){
         $this->type = $type1;
     }
