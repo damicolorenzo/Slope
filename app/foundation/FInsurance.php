@@ -1,5 +1,7 @@
 <?php
 
+require_once("FEntityManager.php");
+
 class FInsurance {
 
     private static $table = "insurance";
@@ -34,25 +36,35 @@ class FInsurance {
     }
 
 
-    public static function createInsuranceObj($queryResult){
-        if (count($queryResult) > 0 ){
-            $insurances = array();
-            foreach($queryResult as $ins){
-                $insurance = new EInsurance($ins['type'], $ins['period'], $ins['price'], $ins['idPayment']);
-                $insurance->setId($ins['idInsurance']);
+    //public static function createInsuranceObj($queryResult){
+    //    $insurances = array();
+    //    foreach($queryResult as $ins){
+    //        $insurance = new EInsurance($ins['type'], $ins['period'], $ins['price'], $ins['idPayment']);
+    //        $insurance->setId($ins['idInsurance']);
+    //
+    //        if ($ins['idPayment'] !== null){
+    //            $p = FEntityManager::getInstance()->retriveObj(FPayment::getTable(), FPayment::getKey(), $ins['idPayment']);
+    //            $payment = FPayment::getPayment($p);
+    //            $insurance->setPayment($payment[0]);
+    //            }
+    //        $insurances[] = $insurance;
+    //    }
+    //        return $insurances;
+    //}
 
-                if ($ins['idPayment'] !== null){
-                    $p = FEntityManager::getInstance()->retriveObj(FPayment::getTable(), FPayment::getKey(), $ins['idPayment']);
-                    $payment = FPayment::getPayment($p);
-                    $insurance->setPayment($payment[0]);
-                }
-                $insurances[] = $insurance;
-            }
-            return $insurances;
+    public static function createInsuranceObj($queryResult){
+        $insurance = array();
+
+        foreach($queryResult as $ins){
+            $payment = FPayment::getObj($ins['idPayment']);
+            $insurance = new EInsurance($ins['type'], $ins['period'], $ins['price'], $payment);
+            $insurance->setId($ins['idInsurance']);
+            $insurance[] = $insurance;
         }
-        else{
-            return array();
+        if(count($insurance) == 1){
+            return $insurance[0];
         }
+        return $insurance;
     }
 
 
@@ -67,7 +79,6 @@ class FInsurance {
         else{
             return null;
         }
-
     }
 
 
@@ -79,7 +90,6 @@ class FInsurance {
         else{
             return false;
         }
-
     }
 
 

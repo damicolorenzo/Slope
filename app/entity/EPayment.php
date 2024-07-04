@@ -43,7 +43,7 @@ class EPayment{
     public function setId($idPayment1){
         $this->idPayment = $idPayment;
     }
-    public function setTotalAmount($totalAmount1){
+    public function setTotalAmount(float $totalAmount1){
         $this->totalAmount = $totalAmount1;
     }
     //public function setDate($date1){
@@ -58,7 +58,7 @@ class EPayment{
         $this->date = new DateTime("now");
     }
 
-    public function setDate($date1){
+    public function setDate(DateTime $date1){
         $this->date = $date1;
     }
 }

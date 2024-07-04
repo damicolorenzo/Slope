@@ -1,5 +1,7 @@
 <?php
 
+require_once("FEntityManager.php");
+
 class FCreditCard{
 
     private static $table = "credtiCard";
@@ -35,8 +37,43 @@ class FCreditCard{
     }
 
 
+    public static function createCreditCardObj($queryResult){
+        $creditCard = array();
+
+        foreach($queryResult as $cc){
+            $creditCard = new ECreditCard($cc['cardHolderName'], $cc['cardHolderSurname'], $cc['cardNumber'], $cc['cvv']);
+            $endDate = DateTime::createFromFormat('Y-m-d', $cc['endDate']);
+            $creditCard->setEndDate($endDate);
+            $creditCard[] = $creditCard;
+        }
+        if(count($creditCard) == 1){
+            return $creditCard[0];
+        }
+        return $creditCard;
+
+    }
+
+    public static function getObj($cardNumber){
+        $result = FEntityManager :: getInstance()->retriveObj(self::getTable(), self::getKey(), $id);
+        if (count($result) > 0){
+            $creditCard = self:: createCreditCardObj($result);
+            return $creditCard;
+        }
+        else{
+            return null;
+        }
+    }
 
 
+    public static function saveObj($obj){
+        $saveCreditCard = FEntityManager::getInstance()->saveObject(self::getClass(), $obj);
+        if ($saveCreditCard !== null){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
 
 }

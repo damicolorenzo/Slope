@@ -44,19 +44,19 @@ class ECreditCard{
 
 
     //set methods
-    public function setCardHolderName($cardHolderName1){
+    public function setCardHolderName(string $cardHolderName1){
         $this->cardHolderName = $cardHolderName1;
     }
-    public function setCardHolderSurname($cardHolderSurname1){
+    public function setCardHolderSurname(string $cardHolderSurname1){
         $this->cardHolderSurname = $cardHolderSurname1;
     }
-    public function setCardNumber($cardNumber1){
+    public function setCardNumber(int $cardNumber1){
         $this->cardNumber = $cardNumber1;
     }
-    public function setCvv($cvv1){
+    public function setCvv(int $cvv1){
         $this->cvv = $cvv1;
     }
-    public function setEndDate($endDate1){
+    public function setEndDate(DateTime $endDate1){
         $objDateTime = new DateTime($endDate1);
         $newObj = clone $objDateTime;
         $newObj->format('Y-m-d'); 
