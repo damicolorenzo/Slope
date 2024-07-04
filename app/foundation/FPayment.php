@@ -4,7 +4,7 @@ class FPayment {
 
     private static $table = "payment";
 
-    private static $value = "(NULL, :totalAmount, :date)";
+    private static $value = "(NULL, :totalAmount, :date, :cardNumber)";
 
     private static $key = "idPayment";
 
@@ -28,9 +28,14 @@ class FPayment {
     public static function bind($stmt, $payment){
         $stmt->bindValue(":totalAmount", $payment->getTotalAmount(), PDO::PARAM_FLOAT);
         $stmt->bindValue(":date", $payment->getDateStr(), PDO::PARAM_STR);
+        $stmt->bindValue(":cardNumber", $payment->getCardNumber(), PDO::PARAM_INT);
     }
 
 
+
+    public static function getPayment(){
+
+    }
 
 
 }

@@ -4,10 +4,11 @@ class ESkipassBooking {
     
     //attributes
     protected string $startDate;
-    protected string $name, $surname, $type, $email;
+    protected string $name, $surname, $type, $email, $idPayment;
     protected float $totalSkiFacilitiesPrice;
 
     //constructor
+    //rivedere se inserire o meno idPayment nel costruttore
     public function __construct(string $name, string $surname, string $stringStartDate, string $type, string $email, float $totalSkiFacilitiesPrice) {
         $this->name = $name;
         $this->surname = $surname;
@@ -29,6 +30,7 @@ class ESkipassBooking {
     public function getType() :string {return $this->type;}
     public function getEmail() :string {return $this->email;}
     public function getTotal() :float {return $this->totalSkiFacilitiesPrice;}
+    public function getIdPayment() :string {return $this->idPayment;}
 
     //Set methods
     public function setName(string $name) :void {$this->name = $name;}

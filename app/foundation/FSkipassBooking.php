@@ -5,13 +5,14 @@ require_once("FEntityManager.php");
 class FSkipassBooking {
 
     private static $table = "SkipassBooking";
-    private static $value = "(NULL, :name, :surname, :tpye, :email, :total, :startDate)";
+    private static $value = "(NULL, :name, :surname, :tpye, :email, :total, :startDate, :idPayment)";
     private static $key = "idSkipassBooking";
     
     public static function getTable() {return self::$table;}
     public static function getValue() {return self::$value;}
     public static function getClass() {return self::class;}
     public static function getKey() {return self::$key;}
+
 
     public static function getObj($id) :array {
         $result = FEntityManager::getInstance()->retriveObj(self::getTable(), self::getKey(), $id);
@@ -25,6 +26,7 @@ class FSkipassBooking {
         $stmt->bindValue(":email",$skipass->getEmail(), PDO::PARAM_STR);
         $stmt->bindValue(":startDate",$skipass->getStartDate(), PDO::PARAM_STR);
         $stmt->bindValue(":total",$skipass->getTotal(), PDO::PARAM_INT);
+        $stmt->bindValue(":idPayment", $skipass->getidP(), PDO::PARAM_STR);
     }
 
     public static function saveObj($obj){

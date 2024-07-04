@@ -9,16 +9,15 @@ class EPayment{
     protected int $cardNumber;
 
     //constructor
-    //rimettere string date
-    public function ___construct(string $idPayment, float $totalAmount, int $cardNumber){
-        $this->idPayment = $idPayment;
+    //rivedere se inserire o meno cardNumber e idPayment nel costruttore
+    public function ___construct(float $totalAmount){
         $this->totalAmount = $totalAmount;
+        // da rivedere (non va bene)
         //$objDateTime = new DateTime($stringDate);
         //$newObj = clone $objDateTime;
         //$newObj->format('Y-m-d'); 
         //$this->date = $newObj;
         $this->setTime();
-        $this->cardNumber = $cardNumber;
     }
 
     //get methods
