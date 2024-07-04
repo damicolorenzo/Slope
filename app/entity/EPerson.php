@@ -3,7 +3,6 @@
 Class EPerson {
 
     // attributes
-    protected int $cardNumber;
     protected string $name;
     protected string $surname;
     protected string $email;
@@ -11,10 +10,11 @@ Class EPerson {
     protected DateTime $birthDate;
     protected string $username;
     protected string $password;
+    protected int $cardNumber;
 
     //constructor
     //rivedere se inserire o meno cardNumber nel costruttore
-    public function __construct(string $name, string $surname, string $email, int $phoneNumber, string $stringBirthDate, string $username, string $password) {
+    public function __construct(string $name, string $surname, string $email, int $phoneNumber, string $stringBirthDate, string $username, string $password, int $cardNumber) {
         $this->name = $name;
         $this->surname = $surname;
         $this->email = $email;
@@ -25,6 +25,7 @@ Class EPerson {
         $this->birthDate = $newObj;
         $this->username = $username;
         $this->password = $password;
+        $this->cardNumber = $cardNumber;
 
     }
 
