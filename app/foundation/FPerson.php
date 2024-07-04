@@ -6,7 +6,7 @@ require_once("FEntityManager.php");
 Class FPerson{
 
     private static $table = "Person";
-    private static $columns = " ('idPerson', 'surname', 'email', 'phoneNumber', 'birthDate', 'username', 'password')";
+    private static $columns = " ('idPerson', 'name', 'surname', 'email', 'phoneNumber', 'birthDate', 'username', 'password')";
     private static $value = "(NULL, :name, :surname, :email, :phoneNumber, :birthDate, :username, :password)";
     private static $key = "idPerson";
 
