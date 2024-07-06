@@ -10,10 +10,14 @@ class VUser {
     }
 
     public function showLoginForm() {
-        $this->smarty->display('login.tpl');
+        $this->smarty->display('registration.tpl');
     }
 
     public function showRegistrationForm() {
+        $this->smarty->display('registration.tpl');
+    }
+
+    public function registrationError() {
         $this->smarty->display('registration.tpl');
     }
 

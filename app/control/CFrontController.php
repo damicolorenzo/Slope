@@ -1,16 +1,16 @@
 <?php
 
-class CFrontController{
+class CFrontController {
     
     public function run($requestUri){
         // Parse the request URI
-        echo $requestUri;
+        //echo $requestUri;
 
         $requestUri = trim($requestUri, '/');
         $uriParts = explode('/', $requestUri);
 
         array_shift($uriParts);
-        var_dump($uriParts);
+        //var_dump($uriParts);
 
         // Extract controller and method names
         $condition = empty($uriParts[0]);
@@ -36,6 +36,7 @@ class CFrontController{
         $controllerFile = __DIR__ . "/{$controllerClass}.php";
         // var_dump($controllerFile);
 
+        //return $controllerClass. "  ". $methodName;
         if (file_exists($controllerFile)) {
             require_once $controllerFile;
 

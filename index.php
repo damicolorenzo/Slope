@@ -1,11 +1,10 @@
 <?php
 
-require_once ("/opt/lampp/htdocs/Slope/app/view/VUser.php");
+require_once ("/opt/lampp/htdocs/Slope/app/config/autoloader.php");
 
-$view = new VUser();
-$view->showRegistrationForm(); 
-/* $fc = new CFrontController();
-$fc->run($_SERVER['REQUEST_URI']); */
+$fc = new CFrontController();
+
+$var = $fc->run($_SERVER['REQUEST_URI']);
 
 
 ?>

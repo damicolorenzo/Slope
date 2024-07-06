@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Starter Page - Day Bootstrap Template</title>
+  <title>Registration</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -42,25 +42,26 @@
     <div class="branding d-flex align-items-center">
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
-        <a href="index.html" class="logo d-flex align-items-center">
+        <a href="/Slope" class="logo d-flex align-items-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
-          <!-- <img src="libs/Smarty/day/assets/img/logo.png" alt=""> -->
-          <h1 class="sitename">Day</h1>
+          <!-- <img src="assets/img/logo.png" alt=""> -->
+          <h1 class="sitename">Slope</h1>
         </a>
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="#hero">Home</a></li>
+            <!-- <li><a href="#hero">Home</a></li>
             <li><a href="#about">Prenota</a></li>
             <li><a href="#services">Visualizza prenotazioni</a></li>
-            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a> -->
               <ul>
-                <li><a href="#">Piste</a></li>
+                <!-- <li><a href="#">Piste</a></li>
                 <li><a href="#">Impianti</a></li>
-                <li><a href="#">Web</a></li>
+                <li><a href="#">Web</a></li> -->
               </ul>
             </li>
-            <li><a href="#contact">Profilo</a></li>
+            <li><a href="/Slope">Home</a></li>
+            <li><a href="/Slope/User/login">Login</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -73,7 +74,7 @@
   <main class="main">
 
     <!-- Page Title -->
-    <div class="page-title" data-aos="fade">
+    <!-- <div class="page-title" data-aos="fade">
       <div class="container">
         <nav class="breadcrumbs">
           <ol>
@@ -83,7 +84,7 @@
         </nav>
         <h1>Starter Page</h1>
       </div>
-    </div><!-- End Page Title -->
+    </div> --><!-- End Page Title -->
 
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
@@ -92,19 +93,32 @@
         <div class="form_login-container">
             <form class="register-form" action="/Slope/User/registration" method="POST">
                 <h2>Registrazione</h2>
-                <label for="nome">Nome</label>
-                <input type="text" id="nome" name="nome" required>
-                <label for="cognome">Cognome</label>
-                <input type="text" id="cognome" name="cognome" required>
+                
+                <label for="name">Nome</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="surname">Cognome</label>
+                <input type="text" id="surname" name="surname" required>
+                
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
-                <label for="nome">Username</label>
+                
+                <label for="username">Username</label>
                 <input type="text" id="username" name="username" required>
+                
+                <label for="phoneNumber">Numero di telefono</label>
+                <input type="tel" id="phoneNumber" name="phoneNumber" required>
+                
+                <label for="birthDate">Data di nascita</label>
+                <input type="date" id="birthDate" name="birthDate" required>
+                
                 <label for="password-register">Password</label>
-                <input type="password" id="password-register" name="password" required>
+                <input type="password" id="password" name="password" required>
+                
                 <button type="submit">Registrati</button>
             </form>
         </div>
+
       </div>
 
     </section><!-- /Starter Section Section -->
@@ -117,11 +131,11 @@
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6">
           <div class="footer-about">
-            <a href="index.html" class="logo sitename">Day</a>
+            <a href="/Slope" class="logo sitename">Slope</a>
             <div class="footer-contact pt-3">
-              <p>A108 Adam Street</p>
-              <p>New York, NY 535022</p>
-              <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
+              <p>Via Vetoio</p>
+              <p>L'Aquila, AQ 67100</p>
+              <p class="mt-3"><strong>Numero:</strong> <span>+39 123 456 7890</span></p>
               <p><strong>Email:</strong> <span>info@example.com</span></p>
             </div>
             <div class="social-links d-flex mt-4">
@@ -170,7 +184,7 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Day</strong> <span>All Rights Reserved</span></p>
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">Slope</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you've purchased the pro version. -->

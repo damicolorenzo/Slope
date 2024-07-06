@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-07-03 15:55:40
+/* Smarty version 3.1.33, created on 2024-07-04 20:26:46
   from '/opt/lampp/htdocs/Slope/libs/Smarty/templates/login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_6685747cb50bf5_59754734',
+  'unifunc' => 'content_668705867b8fa9_12949171',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f7ddb35b40ddfca56229b1713ed00338c4a1cfc1' => 
     array (
       0 => '/opt/lampp/htdocs/Slope/libs/Smarty/templates/login.tpl',
-      1 => 1720022113,
+      1 => 1720120244,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6685747cb50bf5_59754734 (Smarty_Internal_Template $_smarty_tpl) {
+function content_668705867b8fa9_12949171 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -68,7 +68,7 @@ function content_6685747cb50bf5_59754734 (Smarty_Internal_Template $_smarty_tpl)
         <a href="index.html" class="logo d-flex align-items-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <!-- <img src="libs/Smarty/day/assets/img/logo.png" alt=""> -->
-          <h1 class="sitename">Day</h1>
+          <h1 class="sitename">Slope</h1>
         </a>
 
         <nav id="navmenu" class="navmenu">

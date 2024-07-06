@@ -1,6 +1,10 @@
 <?php
 
-require_once("/opt/lampp/htdocs/Slope/app/entity/EImage.php");
+/* require_once("FUser.php");
+require_once("FPerson.php");
+ */
+
+ require_once ("/opt/lampp/htdocs/Slope/app/config/autoloader.php");
 
 class FPersistentManager {
     #Singleton 
@@ -19,7 +23,7 @@ class FPersistentManager {
     /**
      * return an object from database specifying the class and the id 
     */
-    public static function retriveObj($class, $id) :array {
+    public static function retriveObj($class, $id) {
         $foundClass = "F".substr($class, 1);
         $staticMethod = "getObj";
         $result = call_user_func([$foundClass, $staticMethod], $id);
@@ -36,12 +40,26 @@ class FPersistentManager {
         return $result;
     }
 
-
+    /**
+     * verify if exist a user with this email (also mod)
+     * @param String $email
+     */
     public static function verifyUserEmail($email){
         $result = FPerson::verify('email', $email);
+        return $result;
+    }
+
+    /**
+     * verify if exist a user with this username (also mod)
+     * @param String $username
+     */
+    public static function verifyUserUsername($username){
+        $result = FPerson::verify('username', $username);
 
         return $result;
     }
+
+    
 
 
 

@@ -79,6 +79,40 @@ class FEntityManager {
         }
     }
 
+    /**
+     * Method to store an object in the Database if we only have the id and we need to store only the id
+     * @param String $foundClass Refers to the name of the foundation class, so you can get the table and the value
+     * @param int $id Refers to an Entity Object id to save in the Database
+     * @return bool
+     */
+    public static function saveObjectFromId($foundClass, $obj, $id)
+    {
+        try{
+            $query = "INSERT INTO " . $foundClass::getTable() . " VALUES " . $foundClass::getValue();
+            $stmt = self::$db->prepare($query);
+            $foundClass::bind($stmt, $obj, $id);
+            //var_dump($stmt);
+            $stmt->execute();
+            return true;
+        }catch(Exception $e){
+            echo "ERROR: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    /**
+     * Method to check if the query return or not a row
+     * @param array $queryResult Is the output of a query
+     * @return bool   
+     */
+    public static function existInDb($queryResult) :bool {
+        if(count($queryResult) > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 
 }
 

@@ -1,12 +1,25 @@
 <?php
+
 require_once('EPerson.php');
-class EUser extends EPerson{
 
+class EUser extends EPerson {
 
-    public function __construct(string $name, string $surname, string $email, int $phoneNumber, string $birthDate, string $username, string $password){
-        
+    protected $idImage;
+    protected $id;
+
+    private static $entity = EUser::class;
+
+    //constructor
+    public function __construct(string $name, string $surname, string $email, string $phoneNumber, string $birthDate, string $username, string $password) {
         parent::__construct($name, $surname,  $email,  $phoneNumber,  $birthDate,  $username,  $password);
+        $this->idImage = 0;
     }
+
+    public function getId() {return $this->id;}
+    public function setId($id) {$this->id = $id;}
+
+    public function getIdImage() {return $this->idImage;}
+    public function setIdImage($idImage) {$this->idImage = $idImage;}
 }
 
 ?>

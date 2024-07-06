@@ -1,14 +1,13 @@
 <?php
 
-require_once("FEntityManager.php");
-
+require_once ("/opt/lampp/htdocs/Slope/app/config/autoloader.php");
 
 Class FPerson{
 
     private static $table = "Person";
-    private static $columns = " ('idPerson', 'name', 'surname', 'email', 'phoneNumber', 'birthDate', 'username', 'password')";
+    private static $columns = " ('idUser', 'name', 'surname', 'email', 'phoneNumber', 'birthDate', 'username', 'password')";
     private static $value = "(NULL, :name, :surname, :email, :phoneNumber, :birthDate, :username, :password)";
-    private static $key = "idPerson";
+    private static $key = "idUser";
 
 
     public static function getTable() {return self::$table;}
@@ -18,16 +17,16 @@ Class FPerson{
     public static function getKey() {return self::$key;}
 
 
-    public static function getObj($id) :array {
+    /* public static function getObj($id) :array {
         $result = FEntityManager::getInstance()->retriveObj(self::getTable(), self::getKey(), $id);
         return $result;
-    }
+    } */
 
 
 
     public static function bind($stmt, $person){
         $stmt->bindValue(":name", $person->getName(), PDO::PARAM_STR);
-        $stmt->bindValue(":surname", $person->getSurame(), PDO::PARAM_STR);
+        $stmt->bindValue(":surname", $person->getSurname(), PDO::PARAM_STR);
         $stmt->bindValue(":email", $person->getEmail(), PDO::PARAM_STR);
         $stmt->bindValue(":phoneNumber", $person->getPhoneNumber(), PDO::PARAM_STR);
         $stmt->bindValue(":birthDate", $person->getBirthDate(), PDO::PARAM_STR);
@@ -37,7 +36,7 @@ Class FPerson{
 
 
 
-    public static function saveObj($obj){
+    /* public static function saveObj($obj){
         $savePerson = FEntityManager::getInstance()->saveObject(self::getClass(), $obj);
         if($savePerson !== null){
             return $savePerson;
@@ -45,6 +44,11 @@ Class FPerson{
         else{
             return false;
         }
+    } */
+
+    public static function verify($field, $id){
+        $queryResult = FEntityManager::getInstance()->retriveObj(self::getTable(), $field, $id);
+        return FEntityManager::getInstance()->existInDb($queryResult);
     }
 
 

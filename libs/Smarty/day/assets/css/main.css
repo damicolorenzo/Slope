@@ -1764,12 +1764,43 @@ section,
 
 .form_login-container input[type="text"],
 input[type="password"],
-input[type="email"] {
+input[type="email"],
+input[type="username"], 
+input[type="tel"] {
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+}
+
+input[type="date"]:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background: url('data:image/svg+xml;base64,<svg>...</svg>') no-repeat center;
+  cursor: pointer;
+  color: transparent; 
+  opacity: 0.5; 
+}
+
+input[type="date"]::placeholder {
+  color: #999;
+  font-style: italic;
 }
 
 .form_login-container button {
