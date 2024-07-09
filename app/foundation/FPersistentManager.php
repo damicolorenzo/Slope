@@ -4,7 +4,7 @@
 require_once("FPerson.php");
  */
 
- require_once ("/opt/lampp/htdocs/Slope/app/config/autoloader.php");
+ require_once (__DIR__."\\..\\config\\autoloader.php");
 
 class FPersistentManager {
     #Singleton 
@@ -57,6 +57,19 @@ class FPersistentManager {
         $result = FPerson::verify('username', $username);
 
         return $result;
+    }
+
+    /**
+     * return a User findig it not on the id but on it's username
+     */
+    public static function retriveUserOnUsername($username)
+    {
+        $result = FUser::getUserByUsername($username);
+
+        if(count($result) > 0) {
+            $obj = FUser::crateUserObj($result);
+        }
+        return $obj;
     }
 
     

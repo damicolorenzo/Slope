@@ -9,8 +9,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="/libs/Smarty/day/assets/img/favicon.png" rel="icon">
-  <link href="/libs/Smarty/day/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="libs/Smarty/day/assets/img/favicon.png" rel="icon">
+  <link href="libs/Smarty/day/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -64,6 +64,8 @@
             <li><a href="#pricing">Prezzi</a></li>
             <li><a href="#team">Team</a></li>
             <li><a href="#contact">Contatti</a></li>
+            <li><a href="/Slope/User/login">LogIn</a></li>
+            <li><a href="/Slope/User/registration">Registrati</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>

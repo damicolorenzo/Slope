@@ -90,7 +90,7 @@
 
       <div class="container" data-aos="fade-up">
         <div class="form_login-container">
-            <form class="login-form" action="/login" method="POST">
+            <form class="login-form" action="/Slope/User/checkLogin" method="POST">
                 <h2>Login</h2>
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" required>

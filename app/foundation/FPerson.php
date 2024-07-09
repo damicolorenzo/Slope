@@ -1,7 +1,5 @@
 <?php
 
-require_once ("/opt/lampp/htdocs/Slope/app/config/autoloader.php");
-
 Class FPerson{
 
     private static $table = "Person";

@@ -104,6 +104,12 @@ Class FUser{
         
     }
 
+    public static function getUserByUsername($username){
+        $result = FEntityManager::getInstance()->retriveObj(FPerson::getTable(), 'username', $username);
+
+        return $result;
+    }
+
 
 }
 
