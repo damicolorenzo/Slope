@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.33, created on 2024-07-08 21:32:14
+  from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\login.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.33',
+  'unifunc' => 'content_668c3ebed6ac71_11126918',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'a260da7a235f3f42bb2280f8d8e05ae21642471a' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\login.tpl',
+      1 => 1720467131,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_668c3ebed6ac71_11126918 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -183,17 +206,34 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <script src="libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="libs/Smarty/day/assets/vendor/php-email-form/validate.js"></script>
-  <script src="libs/Smarty/day/assets/vendor/aos/aos.js"></script>
-  <script src="libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <?php echo '<script'; ?>
+ src="libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="libs/Smarty/day/assets/vendor/php-email-form/validate.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="libs/Smarty/day/assets/vendor/aos/aos.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"><?php echo '</script'; ?>
+>
 
   <!-- Main JS File -->
-  <script src="libs/Smarty/day/assets/js/main.js"></script>
+  <?php echo '<script'; ?>
+ src="libs/Smarty/day/assets/js/main.js"><?php echo '</script'; ?>
+>
 
 </body>
 
-</html>
+</html><?php }
+}

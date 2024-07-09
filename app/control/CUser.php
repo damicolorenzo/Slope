@@ -1,6 +1,6 @@
 <?php
 
-require_once ("/opt/lampp/htdocs/Slope/app/config/autoloader.php");
+require_once (__DIR__."\\..\\config\\autoloader.php");
 
 class CUser {
 
@@ -9,9 +9,9 @@ class CUser {
      * about profile Images of all the involved User
      */
     public static function home() {
+        $view = new VUser();
+        $view->home();
         /* if(CUser::isLogged()){
-            $view = new VUser();
-
             $userId = USession::getInstance()->getSessionElement('user');
             $userAndPropic = FPersistentManager::getInstance()->loadUsersAndImage($userId);
 
@@ -21,25 +21,19 @@ class CUser {
             //load the VIP Users, their profile Images and the foillower number
             $arrayVipUserPropicFollowNumb = FPersistentManager::getInstance()->loadVip();
         
-            $view->home($userAndPropic, $postInHome,$arrayVipUserPropicFollowNumb);
-        }  */
-        $view = new VUser();
-        $view->showRegistrationForm(); 
+            $view->home($userAndPropic, $postInHome,$arrayVipUserPropicFollowNumb); 
+        } */
     }
 
-    public static function registration() { #$mail, $username
-        /* $_POST['email'] = $mail;
-        $_POST['username'] = $username;
-        $_POST['name'] = 'L';
-        $_POST['surname'] = 'D';
-        $_POST['phoneNumber'] = '333';
-        $_POST['birthDate'] = '2002-10-30';
-        $_POST['password'] = 'Lorenzo'; */
+    public static function registration() {
         $view = new VUser();
-        #print_r($_POST);
-        #print(FPersistentManager::getInstance()->verifyUserEmail(UHTTPMethods::post('email')));
+        $view->showRegistrationForm();
+    }
+
+    public static function checkRegistration() {
+        $view = new VUser();
         if(FPersistentManager::getInstance()->verifyUserEmail(UHTTPMethods::post('email')) == false && FPersistentManager::getInstance()->verifyUserUsername(UHTTPMethods::post('username')) == false) {
-            $user = new EUser(UHTTPMethods::post('name'), UHTTPMethods::post('surname'), UHTTPMethods::post('email'), UHTTPMethods::post('phoneNumber'), UHTTPMethods::post('birthDate'), UHTTPMethods::post('username'), UHTTPMethods::post('password'));
+            $user = new EUser(UHTTPMethods::post('name'), UHTTPMethods::post('surname'), UHTTPMethods::post('email'), UHTTPMethods::post('phoneNumber'), UHTTPMethods::post('birthDate'), UHTTPMethods::post('username'), password_hash(UHTTPMethods::post('password'), PASSWORD_DEFAULT));
             $user->setIdImage(1);
             FPersistentManager::getInstance()->uploadObj($user);
             $view->showLoginForm();
@@ -64,8 +58,7 @@ class CUser {
 
     
 
-    public static function isLogged()
-    {
+    public static function isLogged() {
         $logged = false;
 
         if(UCookie::isSet('PHPSESSID')){
@@ -81,6 +74,29 @@ class CUser {
             exit;
         }
         return true;
+    }
+
+    /**
+     * check if exist the Username inserted, and for this username check the password. If is everything correct the session is created and
+     * the User is redirected in the homepage
+     */
+    public static function checkLogin(){
+        $view = new VUser();
+        $username = FPersistentManager::getInstance()->verifyUserUsername(UHTTPMethods::post('username'));                                            
+        if($username){
+            $user = FPersistentManager::getInstance()->retriveUserOnUsername(UHTTPMethods::post('username'));
+            if(password_verify(UHTTPMethods::post('password'), $user->getPassword())){
+                if(USession::getSessionStatus() == PHP_SESSION_NONE){
+                    USession::getInstance();
+                    USession::setSessionElement('user', $user->getId());
+                    header('Location: /Slope/User/home');
+                }
+            }else{
+                $view->loginError();
+            }
+        }else{
+            $view->loginError();
+        }
     }
 
     

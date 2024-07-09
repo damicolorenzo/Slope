@@ -15,6 +15,8 @@ class EUser extends EPerson {
         $this->idImage = 0;
     }
 
+    public static function getEntity(): string {return self::$entity;}
+
     public function getId() {return $this->id;}
     public function setId($id) {$this->id = $id;}
 

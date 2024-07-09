@@ -4,9 +4,10 @@ class CFrontController {
     
     public function run($requestUri){
         // Parse the request URI
-        //echo $requestUri;
+        echo $requestUri;
 
         $requestUri = trim($requestUri, '/');
+        //echo $requestUri;
         $uriParts = explode('/', $requestUri);
 
         array_shift($uriParts);
@@ -14,8 +15,10 @@ class CFrontController {
 
         // Extract controller and method names
         $condition = empty($uriParts[0]);
+        //echo $condition == False;
         if ($condition == False) {
             $controllerName = ucfirst($uriParts[0]);
+            //echo $controllerName;
         } else {
             $controllerName = 'User';
         }
@@ -44,6 +47,7 @@ class CFrontController {
             if (method_exists($controllerClass, $methodName)) {
                 // Call the method
                 $params = array_slice($uriParts, 2); // Get optional parameters
+                /* $_SERVER['REQUEST_URI'] = "/Slope"; */
                 call_user_func_array([$controllerClass, $methodName], $params);
             } else {
                 // Method not found, handle appropriately (e.g., show 404 page)
