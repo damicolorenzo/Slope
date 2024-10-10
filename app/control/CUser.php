@@ -1,15 +1,23 @@
 <?php
 
+/*
+richiede il file nella posizione __DIR__ [ovvero posizione di questo specifico file (CUser.php)] concatenata con 
+"\\..\\config\\autoloader.php" per arrivare alla posizione finale partendo da __DIR__.
+I doppi punti sono utilizzati per andare indietro di una cartella quindi da control uscire ed andare a app
+*/ 
 require_once (__DIR__."\\..\\config\\autoloader.php");
 
 class CUser {
 
-    /**
-     * load all the Posts in homepage (Posts of the Users that the logged User are following). Also are loaded Information about vip User and
-     * about profile Images of all the involved User
-     */
+    /*
+    Questa funzione viene chiamata di default dal CFrontController se nella barra di ricerca immettiamo 
+    semplicemente Slope.
+    La porzione commentata all'intero è un copia e incolla del metodo di Agora-main
+    */
     public static function home() {
+        //creazione di un oggetto VUser
         $view = new VUser();
+        //chiamata alla funzione home di VUser (prima di andare avanti con questo file saltare al file VUser \view\VUser.php)
         $view->home();
         /* if(CUser::isLogged()){
             $userId = USession::getInstance()->getSessionElement('user');
@@ -24,6 +32,11 @@ class CUser {
             $view->home($userAndPropic, $postInHome,$arrayVipUserPropicFollowNumb); 
         } */
     }
+
+    /*
+    Tutte le funzioni presenti qui sotto sono copiate dal progetto Agora-main poiché effettuano dei compiti 
+    identici in qualisiasi progetto quindi non hanno bisogno di molta personalizzazione (C'è poca voglia di riscriverle da zero) 
+    */
 
     public static function registration() {
         $view = new VUser();

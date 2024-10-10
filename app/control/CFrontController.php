@@ -3,59 +3,89 @@
 class CFrontController {
     
     public function run($requestUri){
-        // Parse the request URI
-        echo $requestUri;
+        /* 
+        Traduzione della richiesta URI ovvero stringa che viene passata nel browser
+        Esempio inseriamo nella barra di ricerca localhost/Slope
+        $requestUri = /Slope/
+        */
 
+        /*
+        Rimuove gli spazi vuoti o i caratteri passati in input all'inizio o alla fine 
+        della stringa
+        */
         $requestUri = trim($requestUri, '/');
-        //echo $requestUri;
+
+        /*
+        Suddivide la stringa dividendole quando incontra il carattere specificato generando così un array di stringhe 
+        Esempio 
+        $requestUri = Slope/entity/EAdmin --> $uriParts = ["Slope", "entity", 'EAdmin]
+        */
         $uriParts = explode('/', $requestUri);
 
+        //Rimuove il primo elemento dalla lista scalando gli elementi rimanenti di un posto verso sinistra
         array_shift($uriParts);
-        //var_dump($uriParts);
 
-        // Extract controller and method names
+        /*
+        $condition è vero se non c'è un secondo blocco dopo lo / 
+        Esempio 
+        $uriParts = ['Slope']
+        array_shift($uriParts) --> $uriParts[0] è vuoto
+        $condition = True
+        */
         $condition = empty($uriParts[0]);
-        //echo $condition == False;
+
         if ($condition == False) {
+            //Rende maiuscolo il primo carattere della stringa 
             $controllerName = ucfirst($uriParts[0]);
-            //echo $controllerName;
         } else {
             $controllerName = 'User';
         }
-        /* $controllerName = !empty($uriParts[0]) ? ucfirst($uriParts[0]) : 'User'; */
-        // var_dump($controllerName);
 
         $condition = empty($uriParts[1]);
+
         if ($condition == False) {
             $methodName = $uriParts[1];
         } else {
             $methodName = 'home';
         }
-        /* $methodName = !empty($uriParts[1]) ? $uriParts[1] : 'login'; */
-
-        // Load the controller class
+        
+        //Il punto indica il concatenamento delle stringhe
         $controllerClass = 'C' . $controllerName;
-        // var_dump($controllerClass);
-        $controllerFile = __DIR__ . "/{$controllerClass}.php";
-        // var_dump($controllerFile);
 
-        //return $controllerClass. "  ". $methodName;
+        //La riga seguente coincide con $controllerFile = __DIR__ . '/' . $controllerClass . ".php";
+        $controllerFile = __DIR__ . "/{$controllerClass}.php";
+
+        //Controlla se il file esiste 
         if (file_exists($controllerFile)) {
+            //Nel caso esiste lo richiede
             require_once $controllerFile;
 
-            // Check if the method exists in the controller
+            //Controlla se nel file è presente il metodo specificato
             if (method_exists($controllerClass, $methodName)) {
-                // Call the method
-                $params = array_slice($uriParts, 2); // Get optional parameters
-                /* $_SERVER['REQUEST_URI'] = "/Slope"; */
+                /*
+                Rimuove i primi due elementi dalla lista (avendo passato 2, altrimenti rimuove n elementi dalla lista)
+                In params vogliamo mettere eventuali parametri passati nell'URI
+                */
+                $params = array_slice($uriParts, 2); 
+                //Chiama la funzione $methodName all'interno del file $controllerClass passando come parametri $params
                 call_user_func_array([$controllerClass, $methodName], $params);
             } else {
-                // Method not found, handle appropriately (e.g., show 404 page)
+                //Il metodo non è stato trovato quindi rimanda ad una pagina di errore
                 header('Location: /Slope/User/home');
             }
         } else {
-            // Controller not found, handle appropriately (e.g., show 404 page)
+            //Il controllore non è stato trovato quindi rimanda ad una pagina di errore
             header('Location: /Slope/User/home');
         }
     }
 }
+
+/*
+Analisi del flusso 
+
+La priva volta che accediamo al sito web inseriamo semplicemente il nome che in questo caso è
+localhost/Slope.
+Per come è strutturato il codice descritto sopra di default utilizzeremo il controllore CUser e chiameremo il metodo home 
+per richiedere la pagina web designata come home del sito.
+Dunque per continuare l'analisi del codice bisogna passare alla lettura del file CUser (\control\CUser.php)
+*/
