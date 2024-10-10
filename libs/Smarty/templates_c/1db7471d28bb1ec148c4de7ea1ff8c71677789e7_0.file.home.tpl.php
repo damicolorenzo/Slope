@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-07-08 23:19:35
+/* Smarty version 3.1.33, created on 2024-07-09 12:10:37
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\home.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_668c57e7784a91_21712850',
+  'unifunc' => 'content_668d0c9d80c2c1_29022134',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1db7471d28bb1ec148c4de7ea1ff8c71677789e7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\home.tpl',
-      1 => 1720472872,
+      1 => 1720519834,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_668c57e7784a91_21712850 (Smarty_Internal_Template $_smarty_tpl) {
+function content_668d0c9d80c2c1_29022134 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -104,7 +104,8 @@ function content_668c57e7784a91_21712850 (Smarty_Internal_Template $_smarty_tpl)
     <section id="hero" class="hero section">
 
       <!-- <img src="libs/Smarty/images/dog1.jpg" alt="" data-aos="fade-in"> -->
-      <video src="libs/Smarty/images/4185213-uhd_4096_2160_24fps.mp4" loop></video>
+      <!-- <video src="libs/Smarty/images/4185213-uhd_4096_2160_24fps.mp4" loop></video> -->
+      <img src = "libs/Smarty/images/Foto3.jpg" alt="" data-aos="fade-in">
 
       
 
@@ -150,6 +151,14 @@ function content_668c57e7784a91_21712850 (Smarty_Internal_Template $_smarty_tpl)
 
     <!-- Cards Section -->
     <section id="cards" class="cards section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <span>Dove Sciare</span>
+        <h2>Dove Sciare</h2>
+        <p>Scegli dove sciare tra i siti sciistici d'Abruzzo</p>
+      </div><!-- End Section Title -->
+
 
       <div class="container">
 
@@ -219,7 +228,7 @@ function content_668c57e7784a91_21712850 (Smarty_Internal_Template $_smarty_tpl)
               <a href="#" class="stretched-link">
                 <h3>Monitoraggio impianti</h3>
               </a>
-              <p>Tramite diversi sensori sparsi per i diversi impianti possiamo fornire alcune informazioni riguardo l'impianto come condizioni degli impianti di risalita e delle piste</p>
+              <p>Consulta le condizioni odierne dei nostri comprensori sciistici</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -229,9 +238,9 @@ function content_668c57e7784a91_21712850 (Smarty_Internal_Template $_smarty_tpl)
                 <i class="bi bi-broadcast"></i>
               </div>
               <a href="#" class="stretched-link">
-                <h3>Eosle Commodi</h3>
+                <h3>Listino prezzi</h3>
               </a>
-              <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
+              <p>Consulta i prezzi e le opportunità</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -247,45 +256,7 @@ function content_668c57e7784a91_21712850 (Smarty_Internal_Template $_smarty_tpl)
             </div>
           </div><!-- End Service Item -->
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-bounding-box-circles"></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h3>Asperiores Commodit</h3>
-              </a>
-              <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.</p>
-              <a href="#" class="stretched-link"></a>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-calendar4-week"></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h3>Velit Doloremque</h3>
-              </a>
-              <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at autem alias eius labore.</p>
-              <a href="#" class="stretched-link"></a>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-chat-square-text"></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h3>Dolori Architecto</h3>
-              </a>
-              <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure. Corrupti recusandae ducimus enim.</p>
-              <a href="#" class="stretched-link"></a>
-            </div>
-          </div><!-- End Service Item -->
-
+          
         </div>
 
       </div>

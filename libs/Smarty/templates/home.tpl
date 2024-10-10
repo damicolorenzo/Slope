@@ -81,7 +81,8 @@
     <section id="hero" class="hero section">
 
       <!-- <img src="libs/Smarty/images/dog1.jpg" alt="" data-aos="fade-in"> -->
-      <video src="libs/Smarty/images/4185213-uhd_4096_2160_24fps.mp4" loop></video>
+      <!-- <video src="libs/Smarty/images/4185213-uhd_4096_2160_24fps.mp4" loop></video> -->
+      <img src = "libs/Smarty/images/Foto3.jpg" alt="" data-aos="fade-in">
 
       
 
@@ -127,6 +128,14 @@
 
     <!-- Cards Section -->
     <section id="cards" class="cards section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <span>Dove Sciare</span>
+        <h2>Dove Sciare</h2>
+        <p>Scegli dove sciare tra i siti sciistici d'Abruzzo</p>
+      </div><!-- End Section Title -->
+
 
       <div class="container">
 
@@ -196,7 +205,7 @@
               <a href="#" class="stretched-link">
                 <h3>Monitoraggio impianti</h3>
               </a>
-              <p>Tramite diversi sensori sparsi per i diversi impianti possiamo fornire alcune informazioni riguardo l'impianto come condizioni degli impianti di risalita e delle piste</p>
+              <p>Consulta le condizioni odierne dei nostri comprensori sciistici</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -206,9 +215,9 @@
                 <i class="bi bi-broadcast"></i>
               </div>
               <a href="#" class="stretched-link">
-                <h3>Eosle Commodi</h3>
+                <h3>Listino prezzi</h3>
               </a>
-              <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
+              <p>Consulta i prezzi e le opportunità</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -224,45 +233,7 @@
             </div>
           </div><!-- End Service Item -->
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-bounding-box-circles"></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h3>Asperiores Commodit</h3>
-              </a>
-              <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.</p>
-              <a href="#" class="stretched-link"></a>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-calendar4-week"></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h3>Velit Doloremque</h3>
-              </a>
-              <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at autem alias eius labore.</p>
-              <a href="#" class="stretched-link"></a>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-chat-square-text"></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h3>Dolori Architecto</h3>
-              </a>
-              <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure. Corrupti recusandae ducimus enim.</p>
-              <a href="#" class="stretched-link"></a>
-            </div>
-          </div><!-- End Service Item -->
-
+          
         </div>
 
       </div>
