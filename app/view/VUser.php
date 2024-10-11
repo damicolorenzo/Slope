@@ -42,13 +42,40 @@ class VUser {
     }
 
     public function showRegistrationForm() {
-        $this->smarty->assign('projectPath');
+        $this->smarty->assign('exist', false);
+        $this->smarty->assign('phoneError', false);
+        $this->smarty->assign('dateError', false);
+        $this->smarty->assign('passwordError', false);
+        $this->smarty->assign('name', "");
+        $this->smarty->assign('surname', "");
+        $this->smarty->assign('email', "");
+        $this->smarty->assign('username', "");
+        $this->smarty->assign('phoneNumber', "");
+        $this->smarty->assign('birthDate', "");
         $this->smarty->display('registration.tpl');
     }
 
-    public function registrationError() {
-        $this->smarty->assign('projectPath');
+    public function userAlreadyExist() {
+        $this->smarty->assign('exist', true);
         $this->smarty->display('registration.tpl');
+    }
+
+    public function someError($phone, $date, $pass, $post) {
+        $this->smarty->assign('exist', false);
+        $this->smarty->assign('phoneError', $phone);
+        $this->smarty->assign('dateError', $date);
+        $this->smarty->assign('passwordError', $pass);
+        $this->smarty->assign('name', $post['name']);
+        $this->smarty->assign('surname', $post['surname']);
+        $this->smarty->assign('email', $post['email']);
+        $this->smarty->assign('username', $post['username']);
+        $this->smarty->assign('phoneNumber', $post['phoneNumber']);
+        $this->smarty->assign('birthDate', $post['birthDate']);
+        $this->smarty->display('registration.tpl');
+    }
+
+    public function dashboard() {
+        $this->smarty->display('dashboard.tpl');
     }
 
     

@@ -9,8 +9,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="libs/Smarty/day/assets/img/favicon.png" rel="icon">
-  <link href="libs/Smarty/day/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/favicon.png" rel="icon">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -18,14 +18,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="libs/Smarty/day/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="libs/Smarty/day/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="libs/Smarty/day/assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="libs/Smarty/day/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
   <!-- Main CSS File -->
-  <link href="libs/Smarty/day/assets/css/main.css" rel="stylesheet">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/css/main.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: Day
@@ -60,7 +60,7 @@
                 <li><a href="#">Web</a></li> -->
               </ul>
             </li>
-            <li><a href="/Slope">Home</a></li>
+            <li><a href="/Slope/">Home</a></li>
             <li><a href="/Slope/User/login">Login</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -88,38 +88,53 @@
 
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
-
+      {if $exist == false}
       <div class="container" data-aos="fade-up">
         <div class="form_login-container">
-            <form class="register-form" action="/Slope/User/registration" method="POST">
+            <form class="register-form" action="/Slope/User/checkRegistration" method="POST">
                 <h2>Registrazione</h2>
                 
                 <label for="name">Nome</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" value="{$name}" required>
                 
                 <label for="surname">Cognome</label>
-                <input type="text" id="surname" name="surname" required>
+                <input type="text" id="surname" name="surname" value="{$surname}" required>
                 
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" value="{$email}" required>
                 
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" id="username" name="username" value="{$username}" required>
                 
                 <label for="phoneNumber">Numero di telefono</label>
-                <input type="tel" id="phoneNumber" name="phoneNumber" required>
+                <input type="tel" id="phoneNumber" name="phoneNumber" value="{$phoneNumber}" required>
+                {if $phoneError == true}
+                <label>Inserire numero del tipo +39NUMERO_DI_TELEFONO</label>
+                {/if}
                 
                 <label for="birthDate">Data di nascita</label>
-                <input type="date" id="birthDate" name="birthDate" required>
-                
+                <input type="date" id="birthDate" name="birthDate" min="1900-01-01" value="{$birthDate}" required>
+                {if $dateError == true}
+                <label>Inserire una data compresa tra 01-01-1900 e oggi</label>
+                {/if}
+
                 <label for="password-register">Password</label>
                 <input type="password" id="password" name="password" required>
+                {if $passwordError == true}
+                <label>Lunghezza minima 8 CARATTERI, lettere maiuscole/minuscole, numeri, almeno un carattere speciale</label>
+                {/if}
                 
                 <button type="submit">Registrati</button>
             </form>
         </div>
-
       </div>
+      {/if}
+      {if $exist == true}
+      <div class="container" data-aos="fade-up">
+        <h1>L'utente è già presente nel database</h1>
+        <h2>Effettua l'accesso <a href="/Slope/User/login">qui</a></h2>
+      </div>
+      {/if}
 
     </section><!-- /Starter Section Section -->
 
@@ -203,16 +218,16 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <script src="libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="libs/Smarty/day/assets/vendor/php-email-form/validate.js"></script>
-  <script src="libs/Smarty/day/assets/vendor/aos/aos.js"></script>
-  <script src="libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/php-email-form/validate.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/aos/aos.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 
   <!-- Main JS File -->
-  <script src="libs/Smarty/day/assets/js/main.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/js/main.js"></script>
 
 </body>
 

@@ -6,6 +6,7 @@ class UHTTPMethods {
     Funzione per accedere all'array $_POST 
     */
     public static function post($param) {return $_POST[$param];}
+    public static function allPost() {return $_POST;}
 
     /*
     Funzione per accedere all'array $_FILES

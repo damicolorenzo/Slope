@@ -46,12 +46,36 @@ class CUser {
     public static function checkRegistration() {
         $view = new VUser();
         if(FPersistentManager::getInstance()->verifyUserEmail(UHTTPMethods::post('email')) == false && FPersistentManager::getInstance()->verifyUserUsername(UHTTPMethods::post('username')) == false) {
-            $user = new EUser(UHTTPMethods::post('name'), UHTTPMethods::post('surname'), UHTTPMethods::post('email'), UHTTPMethods::post('phoneNumber'), UHTTPMethods::post('birthDate'), UHTTPMethods::post('username'), password_hash(UHTTPMethods::post('password'), PASSWORD_DEFAULT));
-            $user->setIdImage(1);
-            FPersistentManager::getInstance()->uploadObj($user);
-            $view->showLoginForm();
+            $phone_number_validation_regex = "/^\\+?[1-9][0-9]{7,14}$/"; 
+            $password_validaiton = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/"; 
+            if(!preg_match($phone_number_validation_regex, UHTTPMethods::post('phoneNumber'))) {
+                $phoneError = true;
+            } else {
+                $phoneError = false;
+                $extract_phone_number_pattern = "/\\+?[1-9][0-9]{7,14}/";
+                preg_match_all($extract_phone_number_pattern, UHTTPMethods::post('phoneNumber'), $matches);
+                $phoneNumber = implode($matches[0]);
+            }
+            if(!(date("Y-m-d") > UHTTPMethods::post('birthDate'))){
+                $dateError = true;
+            } else {
+                $dateError = false;
+            } 
+            if(!preg_match($password_validaiton, UHTTPMethods::post('password'))) {
+                $passwordError = true;
+            } else {
+                $passwordError = false;
+            }
+            if (!$phoneError && !$dateError && !$passwordError) {
+                $user = new EUser(UHTTPMethods::post('name'), UHTTPMethods::post('surname'), UHTTPMethods::post('email'), $phoneNumber, UHTTPMethods::post('birthDate'), UHTTPMethods::post('username'), password_hash(UHTTPMethods::post('password'), PASSWORD_DEFAULT));
+                $user->setIdImage(1);
+                FPersistentManager::getInstance()->uploadObj($user);
+                $view->dashboard();
+            } else {
+                $view->someError($phoneError, $dateError, $passwordError, UHTTPMethods::allPost());
+            }
         } else {
-            $view->registrationError();
+            $view->userAlreadyExist();
         }
     }
     
