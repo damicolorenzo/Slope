@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-10-12 15:35:27
-  from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\registration.tpl' */
+/* Smarty version 3.1.33, created on 2024-10-14 13:00:49
+  from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\modifyProfile.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_670a7b1fb39699_11914784',
+  'unifunc' => 'content_670cf9e180d091_86948643',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '028bf6a8f3606be519b25ff0001000f2eeb73dad' => 
+    '5a200e83bf9ed6a162d28fb1c6f22b4b5c5cb846' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\registration.tpl',
-      1 => 1728740126,
+      0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\modifyProfile.tpl',
+      1 => 1728903641,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_670a7b1fb39699_11914784 (Smarty_Internal_Template $_smarty_tpl) {
+function content_670cf9e180d091_86948643 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -73,18 +73,17 @@ function content_670a7b1fb39699_11914784 (Smarty_Internal_Template $_smarty_tpl)
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <!-- <li><a href="#hero">Home</a></li>
+            <li><a href="#hero">Home</a></li>
             <li><a href="#about">Prenota</a></li>
             <li><a href="#services">Visualizza prenotazioni</a></li>
-            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a> -->
+            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
-                <!-- <li><a href="#">Piste</a></li>
+                <li><a href="#">Piste</a></li>
                 <li><a href="#">Impianti</a></li>
-                <li><a href="#">Web</a></li> -->
+                <li><a href="#">Web</a></li>
               </ul>
             </li>
-            <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/User/login">Login</a></li>
+            <li><a href="#contact">Profilo</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -101,7 +100,7 @@ function content_670a7b1fb39699_11914784 (Smarty_Internal_Template $_smarty_tpl)
       <div class="container">
         <nav class="breadcrumbs">
           <ol>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="/Slope">Home</a></li>
             <li class="current">Starter Page</li>
           </ol>
         </nav>
@@ -111,59 +110,50 @@ function content_670a7b1fb39699_11914784 (Smarty_Internal_Template $_smarty_tpl)
 
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
-      <?php if ($_smarty_tpl->tpl_vars['exist']->value == false) {?>
-      <div class="container" data-aos="fade-up">
-        <div class="form_login-container">
-            <form class="register-form" action="/Slope/User/checkRegistration" method="POST">
-                <h2>Registrazione</h2>
-                
-                <label for="name">Nome</label>
-                <input type="text" id="name" name="name" value="<?php echo $_smarty_tpl->tpl_vars['name']->value;?>
-" required>
-                
-                <label for="surname">Cognome</label>
-                <input type="text" id="surname" name="surname" value="<?php echo $_smarty_tpl->tpl_vars['surname']->value;?>
-" required>
-                
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" value="<?php echo $_smarty_tpl->tpl_vars['email']->value;?>
-" required>
-                
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" value="<?php echo $_smarty_tpl->tpl_vars['username']->value;?>
-" required>
-                
-                <label for="phoneNumber">Numero di telefono</label>
-                <input type="tel" id="phoneNumber" name="phoneNumber" value="<?php echo $_smarty_tpl->tpl_vars['phoneNumber']->value;?>
-" required>
-                <?php if ($_smarty_tpl->tpl_vars['phoneError']->value == true) {?>
-                <label>Inserire numero del tipo +39NUMERO_DI_TELEFONO</label>
-                <?php }?>
-                
-                <label for="birthDate">Data di nascita</label>
-                <input type="date" id="birthDate" name="birthDate" min="1900-01-01" value="<?php echo $_smarty_tpl->tpl_vars['birthDate']->value;?>
-" required>
-                <?php if ($_smarty_tpl->tpl_vars['dateError']->value == true) {?>
-                <label>Inserire una data compresa tra 01-01-1900 e oggi</label>
-                <?php }?>
 
-                <label for="password-register">Password</label>
-                <input type="password" id="password" name="password" required>
-                <?php if ($_smarty_tpl->tpl_vars['passwordError']->value == true) {?>
-                <label>Lunghezza minima 8 CARATTERI, lettere maiuscole/minuscole, numeri, almeno un carattere speciale</label>
-                <?php }?>
-                
-                <button type="submit">Registrati</button>
-            </form>
-        </div>
-      </div>
-      <?php }?>
-      <?php if ($_smarty_tpl->tpl_vars['exist']->value == true) {?>
       <div class="container" data-aos="fade-up">
-        <h1>L'utente è già presente nel database</h1>
-        <h2>Effettua l'accesso <a href="/Slope/User/login">qui</a></h2>
+        
+        <div class="profile-container">
+            <div class="profile-info">
+                <form action="/Slope/User/confirmModify" enctype="multipart/form-data" method="POST">
+                    <h2>MODIFICA PROFILO</h2>
+                    <p><strong>Nome utente:</strong> <?php echo $_smarty_tpl->tpl_vars['username']->value;?>
+</p>
+                    <p><strong>Nome:</strong> <?php echo $_smarty_tpl->tpl_vars['name']->value;?>
+</p>
+                    <p><strong>Cognome:</strong> <?php echo $_smarty_tpl->tpl_vars['surname']->value;?>
+</p>
+                    <p><strong>Email di conferma:</strong></p>
+                    <input type="email" id="email" name="email" value="<?php echo $_smarty_tpl->tpl_vars['email']->value;?>
+" required>
+                    <p><strong>Numero di telefono:</strong></p>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" value="<?php echo $_smarty_tpl->tpl_vars['phoneNumber']->value;?>
+" required>
+                    <?php if ($_smarty_tpl->tpl_vars['phoneError']->value == true) {?>
+                    <label>Inserire numero del tipo +39NUMERO_DI_TELEFONO</label>
+                    <?php }?>
+                    <p><strong>Data nascita:</strong> <?php echo $_smarty_tpl->tpl_vars['birthDate']->value;?>
+</p>
+                    <p><strong>Modifica immagine:</strong></p>
+                    <input type="file" name="imageFile" id ="imageFile" multiple>
+                    <?php if ($_smarty_tpl->tpl_vars['imageError']->value == true) {?>
+                    <label>Errore nel caricamento dell'immagine. Riprovare!</label>
+                    <?php }?>
+                    <button class="edit-button" type="submit">Conferma modifiche</button>
+                </form>
+            </div>
+            
+            <p><strong>Modifica password:</strong></p>
+            <div class="button-container">
+              <a href="/Slope/User/modifyPassword"><button class="edit-button">Modifica password</button></a>
+            </div>
+            
+            
+        </div>
+
+      <!-- Da riempire in base alla pagina  -->
+
       </div>
-      <?php }?>
 
     </section><!-- /Starter Section Section -->
 
@@ -175,11 +165,11 @@ function content_670a7b1fb39699_11914784 (Smarty_Internal_Template $_smarty_tpl)
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6">
           <div class="footer-about">
-            <a href="/Slope" class="logo sitename">Slope</a>
+            <a href="/Slope" class="logo sitename">Day</a>
             <div class="footer-contact pt-3">
               <p>Via Vetoio</p>
               <p>L'Aquila, AQ 67100</p>
-              <p class="mt-3"><strong>Numero:</strong> <span>+39 123 456 7890</span></p>
+              <p class="mt-3"><strong>Phone:</strong> <span>+39 123 456 7890</span></p>
               <p><strong>Email:</strong> <span>info@example.com</span></p>
             </div>
             <div class="social-links d-flex mt-4">

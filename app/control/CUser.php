@@ -17,20 +17,21 @@ class CUser {
     public static function home() {
         //creazione di un oggetto VUser
         $view = new VUser();
-        //chiamata alla funzione home di VUser (prima di andare avanti con questo file saltare al file VUser \view\VUser.php)
-        $view->home();
-        /* if(CUser::isLogged()){
-            $userId = USession::getInstance()->getSessionElement('user');
+        if(CUser::isLogged()){
+            /* $userId = USession::getInstance()->getSessionElement('user');
             $userAndPropic = FPersistentManager::getInstance()->loadUsersAndImage($userId);
 
             //load all the posts of the users who you follow(post have user attribute) and the profile pic of the author of teh post
             $postInHome = FPersistentManager::getInstance()->loadHomePage($userId);
             
             //load the VIP Users, their profile Images and the foillower number
-            $arrayVipUserPropicFollowNumb = FPersistentManager::getInstance()->loadVip();
+            $arrayVipUserPropicFollowNumb = FPersistentManager::getInstance()->loadVip(); */
         
-            $view->home($userAndPropic, $postInHome,$arrayVipUserPropicFollowNumb); 
-        } */
+            $view->loggedHome(); 
+        } else {
+            //chiamata alla funzione home di VUser (prima di andare avanti con questo file saltare al file VUser \view\VUser.php)
+            $view->home();
+        }
     }
 
     /*
@@ -70,7 +71,7 @@ class CUser {
                 $user = new EUser(UHTTPMethods::post('name'), UHTTPMethods::post('surname'), UHTTPMethods::post('email'), $phoneNumber, UHTTPMethods::post('birthDate'), UHTTPMethods::post('username'), password_hash(UHTTPMethods::post('password'), PASSWORD_DEFAULT));
                 $user->setIdImage(1);
                 FPersistentManager::getInstance()->uploadObj($user);
-                $view->dashboard();
+                $view->loggedHome();
             } else {
                 $view->someError($phoneError, $dateError, $passwordError, UHTTPMethods::allPost());
             }
@@ -93,6 +94,13 @@ class CUser {
         $view->showLoginForm();
     }
 
+    public static function logout(){
+        USession::getInstance();
+        USession::unsetSession();
+        USession::destroySession();
+        header('Location: /Slope/');
+    }
+
     
 
     public static function isLogged() {
@@ -106,11 +114,7 @@ class CUser {
         if(USession::isSetSessionElement('user')){
             $logged = true;
         }
-        if(!$logged){
-            header('Location: /Slope/User/login');
-            exit;
-        }
-        return true;
+        return $logged;
     }
 
     /**
@@ -126,13 +130,132 @@ class CUser {
                 if(USession::getSessionStatus() == PHP_SESSION_NONE){
                     USession::getInstance();
                     USession::setSessionElement('user', $user->getId());
-                    header('Location: /Slope/User/home');
+                    header('Location: /Slope/User/loggedHome');
                 }
             }else{
                 $view->loginError();
             }
         }else{
             $view->loginError();
+        }
+    }
+
+    public static function profile() {
+        if(CUser::isLogged()){
+            $view = new VUser();
+            $userId = USession::getInstance()->getSessionElement('user');
+            $user = FPersistentManager::getInstance()->retriveUserOnId($userId);
+            $username = $user->getUsername(); 
+            $name = $user->getName();
+            $surname = $user->getSurname();
+            $email = $user->getEmail();
+            $phoneNumber = $user->getPhoneNumber();
+            $birthDate = $user->getBirthDate();
+            $idImage = $user->getIdImage();
+            $image = FPersistentManager::getInstance()->retriveImageOnId($idImage);
+            $view->profileInfo($username, $name, $surname, $email, $phoneNumber, $birthDate, $image);
+        }
+    }
+
+    public static function modifyProfile() {
+        if(CUser::isLogged()){
+            $view = new VUser();
+            $userId = USession::getInstance()->getSessionElement('user');
+            $user = FPersistentManager::getInstance()->retriveUserOnId($userId);
+            $username = $user->getUsername(); 
+            $name = $user->getName();
+            $surname = $user->getSurname();
+            $email = $user->getEmail();
+            $phoneNumber = $user->getPhoneNumber();
+            $birthDate = $user->getBirthDate();
+            $idImage = $user->getIdImage();
+            $view->modifyProfile($username, $name, $surname, $email, $phoneNumber, $birthDate, false, false);
+        }
+    }
+
+    public static function confirmModify() {
+        if(CUser::isLogged()){
+            $view = new VUser();
+            $userId = USession::getInstance()->getSessionElement('user');
+            $user = FPersistentManager::getInstance()->retriveUserOnId($userId);
+            $username = $user->getUsername(); 
+            $name = $user->getName();
+            $surname = $user->getSurname();
+            $email = $user->getEmail();
+            $phoneNumber = $user->getPhoneNumber();
+            $birthDate = $user->getBirthDate();
+            $idImage = $user->getIdImage();
+            $modifiedEmail = UHTTPMethods::post('email');
+            $modifiedPhoneNumber = UHTTPMethods::post('phoneNumber');
+            $phone_number_validation_regex = "/^\\+?[1-9][0-9]{7,14}$/"; 
+            if(!preg_match($phone_number_validation_regex, UHTTPMethods::post('phoneNumber'))) {
+                $phoneError = true;
+            } else {
+                $phoneError = false;
+                $extract_phone_number_pattern = "/\\+?[1-9][0-9]{7,14}/";
+                preg_match_all($extract_phone_number_pattern, UHTTPMethods::post('phoneNumber'), $matches);
+                $modifiedPhoneNumber = implode($matches[0]);
+            }
+            if(UHTTPMethods::files('imageFile','size') > 0){
+                $uploadedImage = UHTTPMethods::files('imageFile');
+                $check = FPersistentManager::getInstance()->uploadImage($uploadedImage);
+                if($check == 'UPLOAD_ERROR_OK' || $check == 'TYPE_ERROR' || $check == 'SIZE_ERROR') {
+                    $checkImageError = true;
+                } else {
+                    $checkImageError = false;
+                    $idImage = FPersistentManager::getInstance()->uploadObj($check);
+                    if($user->getIdImage() != 1){
+                        if(FPersistentManager::getInstance()->deleteImage($user->getIdImage())){
+                            $user->setIdImage($idImage);
+                            FPersistentManager::getInstance()->updateUserIdImage($user);
+                        }
+                        header('Location: /Slope/User/profile');
+                    }else{
+                        $user->setIdImage($idImage);
+                        FPersistentManager::getInstance()->updateUserIdImage($user);
+                    }
+                    header('Location: /Slope/User/profile');
+                }
+            }
+            if(!$phoneError || !$checkImageError)
+                $view->modifyProfile($username, $name, $surname, $email, $phoneNumber, $birthDate, $phoneError, $checkImageError);
+            else {
+                header('Location: /Slope/User/profile');
+            }
+        }
+    }
+
+    public static function modifyPassword() {
+        if(CUser::isLogged()){
+            $view = new VUser();
+            $view->modifyPassword(false);
+        }
+    }
+
+    public static function setPassword(){
+        if(CUser::isLogged()){
+            $view = new VUser();
+            $password_validaiton = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/"; 
+            if(!preg_match($password_validaiton, UHTTPMethods::post('password'))) {
+                $passwordError = true;
+            } else {
+                $passwordError = false;
+            }
+            if($passwordError) {
+                $view->modifyPassword($passwordError);
+            } else {
+                $userId = USession::getInstance()->getSessionElement('user');
+                $user = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $userId);
+                $newPass = password_hash(UHTTPMethods::post('password'), PASSWORD_DEFAULT);
+                $user->setPassword($newPass);
+                $result = FPersistentManager::getInstance()->updateUserPassword($user);
+                if($result) {
+                    header('Location: /Slope/User/profile');
+                } else {
+                    $view->modifyPassword($passwordError);
+                }
+                
+            }   
         }
     }
 

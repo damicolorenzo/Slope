@@ -7,7 +7,8 @@ class UHTTPMethods {
     */
     public static function post($param) {return $_POST[$param];}
     public static function allPost() {return $_POST;}
-
+    public static function allFiles() {return $_FILES;}
+ 
     /*
     Funzione per accedere all'array $_FILES
     */

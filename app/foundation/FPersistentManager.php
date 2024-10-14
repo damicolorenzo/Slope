@@ -72,6 +72,36 @@ class FPersistentManager {
         return $obj;
     }
 
+    public static function retriveUserOnId($id)
+    {
+        $result = FUser::getUserById($id);
+
+        if(count($result) > 0) {
+            $obj = FUser::crateUserObj($result);
+        }
+        return $obj;
+    }
+
+    public static function retriveImageOnId($id)
+    {
+        $result = FImage::getImageById($id);
+        return $result;
+    }
+     
+    public static function updateUserIdImage($user){
+        $field = [['idImage', $user->getIdImage()]];
+        $result = FUser::saveObj($user, $field);
+
+        return $result;
+    }
+
+    public static function updateUserPassword($user){
+        $field = [['password', $user->getPassword()]];
+        $result = FUser::saveObj($user, $field);
+
+        return $result;
+    }
+
     
 
 
@@ -84,15 +114,9 @@ class FPersistentManager {
 
 
     /*
-    Tentativo di gestione immagini 
+    Caricamento immagine
     */
-
-
-
     public static function manageImages($uploadedImages){ #_FILES['imageFile']
-        print("manageImages");
-        print_r($uploadedImages);
-        print("<br><br>");
         foreach($uploadedImages['tmp_name'] as $index => $tmpName){
             $file = [
             'name' => $uploadedImages['name'][$index],
@@ -102,23 +126,20 @@ class FPersistentManager {
             'error' => $uploadedImages['error'][$index],
             'full_path' => $uploadedImages['full_path'][$index]
             ];
-            print("inside foreach");
-            print_r($file);
-    
             //check if the uploaded image is ok 
             $checkUploadImage = self::uploadImage($file);
             #print($checkUploadImage);
             if($checkUploadImage == 'UPLOAD_ERROR_OK' || $checkUploadImage == 'TYPE_ERROR' || $checkUploadImage == 'SIZE_ERROR'){
                 break;
             } else {
-                $checkUploadImage = self::uploadImagePost($checkUploadImage);
+                $checkUploadImage = self::uploadAnImage($checkUploadImage);
             }
         }
         return $uploadedImages;
     }
 
     /* UPLOAD FUNCTION */
-    public static function uploadImagePost(EImage $image){
+    public static function uploadAnImage(EImage $image){
         $uploadImage = FImage::saveObj($image);
 
         if($uploadImage){
@@ -130,17 +151,11 @@ class FPersistentManager {
 
     /* CHECK FUNCTION */
     public static function uploadImage($file){
-        print("<br>uploadImage");
-        print_r($file);
         $check = self::validateImage($file);
         #print($check);
         if($check[0]){
             //create new Image Obj ad perist it
-            //$image = new EImage($file['name'], $file['size'], $file['type'], file_get_contents($file['tmp_name']));
-            //per il test 
-            print($file["full_path"]);
-            $image = new EImage($file['name'], $file['size'], $file['type'], file_get_contents($file['full_path']));
-            #print_r($image);
+            $image = new EImage($file['name'], $file['size'], $file['type'], file_get_contents($file['tmp_name']));
             return $image;
         }else{
             return $check[1];
@@ -167,6 +182,17 @@ class FPersistentManager {
         }
     
         return [true, null];
+    }
+
+    /**
+     * Method to delete an Image in the Database
+     * @param int $idImage Refers to teh id of the image to delete
+     */
+    public static function deleteImage($idImage){
+
+        $result = FEntityManager::getInstance()->deleteObjInDb(FImage::getTable(), FImage::getKey(), $idImage);
+
+        return $result;
     }
       
 }

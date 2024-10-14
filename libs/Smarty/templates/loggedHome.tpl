@@ -1,27 +1,4 @@
-<?php
-/* Smarty version 3.1.33, created on 2024-10-12 15:35:27
-  from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\registration.tpl' */
-
-/* @var Smarty_Internal_Template $_smarty_tpl */
-if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
-  'version' => '3.1.33',
-  'unifunc' => 'content_670a7b1fb39699_11914784',
-  'has_nocache_code' => false,
-  'file_dependency' => 
-  array (
-    '028bf6a8f3606be519b25ff0001000f2eeb73dad' => 
-    array (
-      0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\registration.tpl',
-      1 => 1728740126,
-      2 => 'file',
-    ),
-  ),
-  'includes' => 
-  array (
-  ),
-),false)) {
-function content_670a7b1fb39699_11914784 (Smarty_Internal_Template $_smarty_tpl) {
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -73,18 +50,18 @@ function content_670a7b1fb39699_11914784 (Smarty_Internal_Template $_smarty_tpl)
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <!-- <li><a href="#hero">Home</a></li>
+            <li><a href="#hero">Home</a></li>
             <li><a href="#about">Prenota</a></li>
             <li><a href="#services">Visualizza prenotazioni</a></li>
-            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a> -->
+            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
-                <!-- <li><a href="#">Piste</a></li>
+                <li><a href="#">Piste</a></li>
                 <li><a href="#">Impianti</a></li>
-                <li><a href="#">Web</a></li> -->
+                <li><a href="#">Web</a></li>
               </ul>
             </li>
-            <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/User/login">Login</a></li>
+            <li><a href="/Slope/User/profile">Profilo</a></li>
+            <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -96,74 +73,14 @@ function content_670a7b1fb39699_11914784 (Smarty_Internal_Template $_smarty_tpl)
 
   <main class="main">
 
-    <!-- Page Title -->
-    <!-- <div class="page-title" data-aos="fade">
-      <div class="container">
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Starter Page</li>
-          </ol>
-        </nav>
-        <h1>Starter Page</h1>
-      </div>
-    </div> --><!-- End Page Title -->
-
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
-      <?php if ($_smarty_tpl->tpl_vars['exist']->value == false) {?>
-      <div class="container" data-aos="fade-up">
-        <div class="form_login-container">
-            <form class="register-form" action="/Slope/User/checkRegistration" method="POST">
-                <h2>Registrazione</h2>
-                
-                <label for="name">Nome</label>
-                <input type="text" id="name" name="name" value="<?php echo $_smarty_tpl->tpl_vars['name']->value;?>
-" required>
-                
-                <label for="surname">Cognome</label>
-                <input type="text" id="surname" name="surname" value="<?php echo $_smarty_tpl->tpl_vars['surname']->value;?>
-" required>
-                
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" value="<?php echo $_smarty_tpl->tpl_vars['email']->value;?>
-" required>
-                
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" value="<?php echo $_smarty_tpl->tpl_vars['username']->value;?>
-" required>
-                
-                <label for="phoneNumber">Numero di telefono</label>
-                <input type="tel" id="phoneNumber" name="phoneNumber" value="<?php echo $_smarty_tpl->tpl_vars['phoneNumber']->value;?>
-" required>
-                <?php if ($_smarty_tpl->tpl_vars['phoneError']->value == true) {?>
-                <label>Inserire numero del tipo +39NUMERO_DI_TELEFONO</label>
-                <?php }?>
-                
-                <label for="birthDate">Data di nascita</label>
-                <input type="date" id="birthDate" name="birthDate" min="1900-01-01" value="<?php echo $_smarty_tpl->tpl_vars['birthDate']->value;?>
-" required>
-                <?php if ($_smarty_tpl->tpl_vars['dateError']->value == true) {?>
-                <label>Inserire una data compresa tra 01-01-1900 e oggi</label>
-                <?php }?>
 
-                <label for="password-register">Password</label>
-                <input type="password" id="password" name="password" required>
-                <?php if ($_smarty_tpl->tpl_vars['passwordError']->value == true) {?>
-                <label>Lunghezza minima 8 CARATTERI, lettere maiuscole/minuscole, numeri, almeno un carattere speciale</label>
-                <?php }?>
-                
-                <button type="submit">Registrati</button>
-            </form>
-        </div>
-      </div>
-      <?php }?>
-      <?php if ($_smarty_tpl->tpl_vars['exist']->value == true) {?>
       <div class="container" data-aos="fade-up">
-        <h1>L'utente è già presente nel database</h1>
-        <h2>Effettua l'accesso <a href="/Slope/User/login">qui</a></h2>
+
+      <!-- Da riempire in base alla pagina  -->
+
       </div>
-      <?php }?>
 
     </section><!-- /Starter Section Section -->
 
@@ -175,11 +92,11 @@ function content_670a7b1fb39699_11914784 (Smarty_Internal_Template $_smarty_tpl)
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6">
           <div class="footer-about">
-            <a href="/Slope" class="logo sitename">Slope</a>
+            <a href="/Slope" class="logo sitename">Day</a>
             <div class="footer-contact pt-3">
               <p>Via Vetoio</p>
               <p>L'Aquila, AQ 67100</p>
-              <p class="mt-3"><strong>Numero:</strong> <span>+39 123 456 7890</span></p>
+              <p class="mt-3"><strong>Phone:</strong> <span>+39 123 456 7890</span></p>
               <p><strong>Email:</strong> <span>info@example.com</span></p>
             </div>
             <div class="social-links d-flex mt-4">
@@ -247,34 +164,17 @@ function content_670a7b1fb39699_11914784 (Smarty_Internal_Template $_smarty_tpl)
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <?php echo '<script'; ?>
- src="https://localhost/Slope/libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
->
-  <?php echo '<script'; ?>
- src="https://localhost/Slope/libs/Smarty/day/assets/vendor/php-email-form/validate.js"><?php echo '</script'; ?>
->
-  <?php echo '<script'; ?>
- src="https://localhost/Slope/libs/Smarty/day/assets/vendor/aos/aos.js"><?php echo '</script'; ?>
->
-  <?php echo '<script'; ?>
- src="https://localhost/Slope/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"><?php echo '</script'; ?>
->
-  <?php echo '<script'; ?>
- src="https://localhost/Slope/libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"><?php echo '</script'; ?>
->
-  <?php echo '<script'; ?>
- src="https://localhost/Slope/libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"><?php echo '</script'; ?>
->
-  <?php echo '<script'; ?>
- src="https://localhost/Slope/libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"><?php echo '</script'; ?>
->
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/php-email-form/validate.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/aos/aos.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 
   <!-- Main JS File -->
-  <?php echo '<script'; ?>
- src="https://localhost/Slope/libs/Smarty/day/assets/js/main.js"><?php echo '</script'; ?>
->
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/js/main.js"></script>
 
 </body>
 
-</html><?php }
-}
+</html>

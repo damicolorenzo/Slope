@@ -100,15 +100,39 @@ Class FUser{
             }finally{
                 FEntityManager::getInstance()->closeConnection();
             } 
+        } else {
+            try {
+                FEntityManager::getInstance()->getDb()->beginTransaction();
+                foreach($fieldArray as $fv) {
+                    if($fv[0] != "username" && $fv[0] != "password") {
+                        FEntityManager::getInstance()->updateObj(FUser::getTable(), $fv[0], $fv[1], self::getKey(), $obj->getId());
+                    } else {
+                        FEntityManager::getInstance()->updateObj(FPerson::getTable(), $fv[0], $fv[1], self::getKey(), $obj->getId());
+                    }
+                    FEntityManager::getInstance()->getDb()->commit();
+                    return true;
+                } 
+            } catch (PDOException $e) {
+                echo "ERROR " . $e->getMessage();
+                FEntityManager::getInstance()->getDb()->rollBack();
+                return false;
+            } finally{
+                FEntityManager::getInstance()->closeConnection();
+            } 
         }
-        
     }
 
     public static function getUserByUsername($username){
         $result = FEntityManager::getInstance()->retriveObj(FPerson::getTable(), 'username', $username);
-
         return $result;
     }
+
+    public static function getUserById($id){
+        $result = FEntityManager::getInstance()->retriveObj(FPerson::getTable(), 'idUser', $id);
+        return $result;
+    }
+
+
 
 
 }

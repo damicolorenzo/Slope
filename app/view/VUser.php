@@ -74,8 +74,36 @@ class VUser {
         $this->smarty->display('registration.tpl');
     }
 
-    public function dashboard() {
-        $this->smarty->display('dashboard.tpl');
+    public function profileInfo($username, $name, $surname, $email, $phoneNumber, $birthDate, $image) {
+        $this->smarty->assign('username', $username);
+        $this->smarty->assign('name', $name);
+        $this->smarty->assign('surname', $surname);
+        $this->smarty->assign('email', $email);
+        $this->smarty->assign('phoneNumber', $phoneNumber);
+        $this->smarty->assign('birthDate', $birthDate);
+        $this->smarty->assign('image', $image);
+        $this->smarty->display('profileInfo.tpl');
+    }
+
+    public function loggedHome() {
+        $this->smarty->display('loggedHome.tpl');
+    }
+
+    public function modifyProfile($username, $name, $surname, $email, $phoneNumber, $birthDate, $phoneError, $imageError) {
+        $this->smarty->assign('username', $username);
+        $this->smarty->assign('name', $name);
+        $this->smarty->assign('surname', $surname);
+        $this->smarty->assign('email', $email);
+        $this->smarty->assign('phoneNumber', $phoneNumber);
+        $this->smarty->assign('birthDate', $birthDate);
+        $this->smarty->assign('phoneError', $phoneError);
+        $this->smarty->assign('imageError', $imageError);
+        $this->smarty->display('modifyProfile.tpl');
+    }
+
+    public function modifyPassword($passError) {
+        $this->smarty->assign('passwordError', $passError);
+        $this->smarty->display('modifyPassword.tpl');
     }
 
     

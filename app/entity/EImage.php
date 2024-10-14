@@ -6,7 +6,7 @@ class EImage{
     private $idImage;
     private $name;
     private $size;
-    private $types;
+    private $type;
     private $imageData;
     private static $entity = EImage::class;
 
@@ -14,7 +14,7 @@ class EImage{
     public function __construct($name, $size, $type, $imageData){
         $this->name = $name;
         $this->size = $size;
-        $this->types = $type;
+        $this->type = $type;
         $this->imageData = $imageData;
     }
 
@@ -23,7 +23,7 @@ class EImage{
     public function getId() {return $this->idImage;}
     public function getName() {return $this->name;}
     public function getSize() {return $this->size;}
-    public function getType() {return $this->types;}
+    public function getType() {return $this->type;}
     public function getImageData() {return $this->imageData;}
     public function getEncodedData() {return base64_encode($this->imageData);}
     public function setId($id) {$this->idImage = $id;}

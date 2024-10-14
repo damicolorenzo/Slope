@@ -66,11 +66,9 @@ class FEntityManager {
     {
         try{
             $query = "INSERT INTO " . $foundClass::getTable() . " VALUES" . $foundClass::getValue();
-            #print($query); #TEST
             $stmt = self::$db->prepare($query);
             $foundClass::bind($stmt, $obj);
             $stmt->execute();
-            #print_r($stmt); #TEST 
             $id = self::$db->lastInsertId();
             return $id;
         }catch(Exception $e){
@@ -91,7 +89,6 @@ class FEntityManager {
             $query = "INSERT INTO " . $foundClass::getTable() . " VALUES " . $foundClass::getValue();
             $stmt = self::$db->prepare($query);
             $foundClass::bind($stmt, $obj, $id);
-            //var_dump($stmt);
             $stmt->execute();
             return true;
         }catch(Exception $e){
@@ -109,6 +106,47 @@ class FEntityManager {
         if(count($queryResult) > 0){
             return true;
         }else{
+            return false;
+        }
+    }
+
+    /**
+     * Method to update rows with UPDATE @table SET @field = @fieldValue WHERE @cond = @condvalue
+     * @param Sring $table Refers to the table of the Database
+     * @param String $field  Refers to the field to update
+     * @param mixed $fieldvalue Refers to the value to update
+     * @param String  $cond Refers to the Where condition
+     * @param mixed $condvalue Refers to the value of the condition
+     * @return bool
+     */
+    public static function updateObj($table, $field, $fieldValue, $cond, $condValue){
+        
+        try{
+            $query = "UPDATE " . $table . " SET ". $field. " = '" . $fieldValue . "' WHERE " . $cond . " = '" . $condValue . "';";
+            $stmt = self::$db->prepare($query);
+            $stmt->execute();
+            return true;
+        }catch(Exception $e){
+            echo "ERROR: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    /**
+     * Method to delete a row from the Database with query DELETE FROM WHERE
+     * @param Sring $table Refers to the table of the Database
+     * @param String $field  Refers to a field of the table
+     * @param mixed $id Refers to the value in the where clause
+     * @return boolean
+     */
+    public static function deleteObjInDb($table, $field, $id){
+        try{
+            $query = "DELETE FROM " . $table . " WHERE " . $field . " = '".$id."';";
+            $stmt = self::$db->prepare($query);
+            $stmt->execute();
+            return true;
+        }catch(Exception $e){
+            echo "ERROR: " . $e->getMessage();
             return false;
         }
     }
