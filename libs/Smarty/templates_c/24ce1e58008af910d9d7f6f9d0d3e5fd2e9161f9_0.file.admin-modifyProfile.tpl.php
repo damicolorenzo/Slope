@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-10-30 16:01:26
-  from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\loggedHome.tpl' */
+/* Smarty version 3.1.33, created on 2024-10-24 18:18:35
+  from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-modifyProfile.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_67224a46b1f5a0_82349755',
+  'unifunc' => 'content_671a735bf3a638_35816810',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'ef33429ba4bc621d630ff6065457a2991b022023' => 
+    '24ce1e58008af910d9d7f6f9d0d3e5fd2e9161f9' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\loggedHome.tpl',
-      1 => 1730300485,
+      0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-modifyProfile.tpl',
+      1 => 1729786714,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67224a46b1f5a0_82349755 (Smarty_Internal_Template $_smarty_tpl) {
+function content_671a735bf3a638_35816810 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -73,19 +73,10 @@ function content_67224a46b1f5a0_82349755 (Smarty_Internal_Template $_smarty_tpl)
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <!-- <li><a href="#hero">Home</a></li>
-            <li><a href="#about">Prenota</a></li>
-            <li><a href="#services">Visualizza prenotazioni</a></li>
-            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a> -->
-              <ul>
-                <!-- <li><a href="#">Piste</a></li>
-                <li><a href="#">Impianti</a></li>
-                <li><a href="#">Web</a></li> -->
-              </ul>
-            </li>
-            <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/User/logout">LogOut</a></li>
-            <li><a href="/Slope/User/profile">Profile</a></li>
+            <li><a href="#hero">Piste</a></li>
+            <li><a href="#about">Impianti</a></li>
+            <li><a href="#services">Utenti</a></li>
+            <li><a href="/Slope/Admin/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -102,7 +93,7 @@ function content_67224a46b1f5a0_82349755 (Smarty_Internal_Template $_smarty_tpl)
       <div class="container">
         <nav class="breadcrumbs">
           <ol>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="/Slope">Home</a></li>
             <li class="current">Starter Page</li>
           </ol>
         </nav>
@@ -112,58 +103,51 @@ function content_67224a46b1f5a0_82349755 (Smarty_Internal_Template $_smarty_tpl)
 
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
-      <div class="container" data-aos="fade-up">
 
-        <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['map']->value, 'i');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
-?>  
-          <div class="card-impianto">
-            <div class="impianto">
-              <h3><?php echo $_smarty_tpl->tpl_vars['i']->value[0]['name'];?>
-</h3>
-              <img src="link-alla-tua-immagine.jpg" alt="Immagine dell'impianto" class="impianto-img">
+      <div class="container" data-aos="fade-up">
+        
+        <div class="profile-container">
+            <div class="profile-info">
+                <form action="/Slope/Admin/confirmModify" enctype="multipart/form-data" method="POST">
+                    <h2>MODIFICA PROFILO</h2>
+                    <p><strong>Nome utente:</strong><input type="text" id="username" name="username" value="<?php echo $_smarty_tpl->tpl_vars['username']->value;?>
+" readonly></p>
+
+                    <p><strong>Nome:</strong></p>
+                    <input type="text" id="name" name="name" value="<?php echo $_smarty_tpl->tpl_vars['name']->value;?>
+" required>
+
+                    <p><strong>Cognome:</strong></p>
+                    <input type="text" id="surname" name="surname" value="<?php echo $_smarty_tpl->tpl_vars['surname']->value;?>
+" required>
+
+                    <p><strong>Email di conferma:</strong></p>
+                    <input type="email" id="email" name="email" value="<?php echo $_smarty_tpl->tpl_vars['email']->value;?>
+" required>
+
+                    <p><strong>Numero di telefono:</strong></p>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" value="<?php echo $_smarty_tpl->tpl_vars['phoneNumber']->value;?>
+" required>
+                    <?php if ($_smarty_tpl->tpl_vars['phoneError']->value == true) {?>
+                    <label>Inserire numero del tipo +39NUMERO_DI_TELEFONO</label>
+                    <?php }?>
+
+                    <p><strong>Data nascita:</strong></p>
+                    <input type="date" id="birthDate" name="birthDate" min="1900-01-01" value="<?php echo $_smarty_tpl->tpl_vars['birthDate']->value;?>
+" required>
+                    <?php if ($_smarty_tpl->tpl_vars['dateError']->value == true) {?>
+                    <label>Inserire una data compresa tra 01-01-1900 e oggi</label>
+                    <?php }?>
+
+                    <p><strong>Modifica immagine:</strong></p>            
+                    <a href="/Slope/User/modifyImage"><button class="edit-button">Modifica immagine</button></a>
+                    
+                    <button class="edit-button" type="submit">Conferma modifiche</button>
+                </form>
             </div>
-            <div class="dettagli-impianto">
-              <h4>Dettagli <?php echo $_smarty_tpl->tpl_vars['i']->value[0]['name'];?>
-</h4> 
-                <div class="piste">
-                  <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['i']->value[1], 'e');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['e']->value) {
-?>  
-                    <?php if ($_smarty_tpl->tpl_vars['e']->value['type'] == 'blu') {?>
-                    <div class="pista blu">Blu: <span><?php echo $_smarty_tpl->tpl_vars['e']->value['CNT'];?>
-</span></div>
-                    <?php }?>
-                    <?php if ($_smarty_tpl->tpl_vars['e']->value['type'] == 'rossa') {?>
-                    <div class="pista rossa">Rosse: <span><?php echo $_smarty_tpl->tpl_vars['e']->value['CNT'];?>
-</span></div>
-                    <?php }?>
-                    <?php if ($_smarty_tpl->tpl_vars['e']->value['type'] == 'nera') {?>
-                    <div class="pista nera">Nere: <span><?php echo $_smarty_tpl->tpl_vars['e']->value['CNT'];?>
-</span></div>
-                    <?php }?>
-                    <?php if ($_smarty_tpl->tpl_vars['e']->value['type'] == 'verde') {?>
-                    <div class="pista verde">Verdi: <span><?php echo $_smarty_tpl->tpl_vars['e']->value['CNT'];?>
-</span></div>
-                    <?php }?>
-                  <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-                </div>
-                <p>Impianti: <span><?php echo $_smarty_tpl->tpl_vars['i']->value[2]['CNT'];?>
-</span></p>
-                <p>Status: <span class="status aperto">'aperto'</span></p>
-            </div>
-          </div>
-        <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+        </div>
+
+      <!-- Da riempire in base alla pagina  -->
 
       </div>
 
@@ -177,11 +161,11 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6">
           <div class="footer-about">
-            <a href="/Slope" class="logo sitename">Slope</a>
+            <a href="/Slope" class="logo sitename">Day</a>
             <div class="footer-contact pt-3">
               <p>Via Vetoio</p>
               <p>L'Aquila, AQ 67100</p>
-              <p class="mt-3"><strong>Numero:</strong> <span>+39 123 456 7890</span></p>
+              <p class="mt-3"><strong>Phone:</strong> <span>+39 123 456 7890</span></p>
               <p><strong>Email:</strong> <span>info@example.com</span></p>
             </div>
             <div class="social-links d-flex mt-4">

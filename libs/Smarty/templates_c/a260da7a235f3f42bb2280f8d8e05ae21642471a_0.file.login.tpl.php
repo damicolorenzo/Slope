@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-10-11 14:34:58
+/* Smarty version 3.1.33, created on 2024-10-21 21:29:37
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_67091b72b56ef0_94917639',
+  'unifunc' => 'content_6716aba13cc731_17551686',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a260da7a235f3f42bb2280f8d8e05ae21642471a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\login.tpl',
-      1 => 1728650065,
+      1 => 1729497564,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67091b72b56ef0_94917639 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6716aba13cc731_17551686 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 

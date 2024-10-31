@@ -56,6 +56,173 @@ class FEntityManager {
         } 
     }
 
+    public static function retriveObj2($table, $field1, $id1, $field2, $id2) :array {
+        try {
+            $query = "SELECT * FROM ".$table. " WHERE ".$field1." = '".$id1."' AND ".$field2." = ".$id2.";";
+            echo $query;
+            $statement = self::$db->prepare($query);
+            $statement->execute();
+            $numberOfRows = $statement->rowCount();
+            if($numberOfRows > 0) {
+                $result = array();
+                $statement->setFetchMode(PDO::FETCH_ASSOC);
+                while($row = $statement->fetch()) {
+                    $result[] = $row;
+                }
+                return $result;
+            } else {
+                return array();
+            }
+        } catch(PDOException $e) {
+            echo "ERROR" .$e->getMessage();
+            return array();
+        } 
+    }
+
+    public static function selectObj($field, $table) {
+        try {
+            $query = "SELECT " . $field. " FROM ".$table.";";
+            $statement = self::$db->prepare($query);
+            $statement->execute();
+            $numberOfRows = $statement->rowCount();
+            if($numberOfRows > 0) {
+                $result = array();
+                $statement->setFetchMode(PDO::FETCH_ASSOC);
+                while($row = $statement->fetch()) {
+                    $result[] = $row;
+                }
+                return $result;
+            } else {
+                return array();
+            }
+        } catch(PDOException $e) {
+            echo "ERROR" .$e->getMessage();
+            return array();
+        } 
+    }
+
+    public static function selectObjKey($field, $table, $field2, $extKey) {
+        try {
+            $query = "SELECT " . $field. " FROM ".$table." WHERE ".$field2." = '".$extKey. "';";
+            echo $query;
+            $statement = self::$db->prepare($query);
+            $statement->execute();
+            $result = $statement->fetch();
+            return $result[0];
+        } catch(PDOException $e) {
+            echo "ERROR" .$e->getMessage();
+            return array();
+        } 
+    }
+
+    public static function selectAllObjKey($field, $table) {
+        try {
+            $query = "SELECT " . $field. " FROM ".$table.";";
+            $statement = self::$db->prepare($query);
+            $statement->execute();
+            $numberOfRows = $statement->rowCount();
+            if($numberOfRows > 0) {
+                $result = array();
+                $statement->setFetchMode(PDO::FETCH_ASSOC);
+                while($row = $statement->fetch()) {
+                    $result[] = $row;
+                }
+                return $result;
+            } else {
+                return array();
+            }
+        } catch(PDOException $e) {
+            echo "ERROR" .$e->getMessage();
+            return array();
+        } 
+    }
+
+    public static function countObjId($table, $field, $extId) {
+        try {
+            $query = "SELECT COUNT(*) as CNT FROM ".$table." WHERE ". $field. " = ". $extId. ";";
+            $statement = self::$db->prepare($query);
+            $statement->execute();
+            $count = $statement->fetch();
+            return $count;
+        } catch(PDOException $e) {
+            echo "ERROR" .$e->getMessage();
+            return array();
+        } 
+    }
+
+    public static function retriveAllObj($table) :array {
+        try {
+            $query = "SELECT * FROM ".$table.";";
+            $statement = self::$db->prepare($query);
+            $statement->execute();
+            $numberOfRows = $statement->rowCount();
+            if($numberOfRows > 0) {
+                $result = array();
+                $statement->setFetchMode(PDO::FETCH_ASSOC);
+                while($row = $statement->fetch()) {
+                    $result[] = $row;
+                }
+                return $result;
+            } else {
+                return array();
+            }
+        } catch(PDOException $e) {
+            echo "ERROR" .$e->getMessage();
+            return array();
+        } 
+    }
+
+    public static function typeAndNumberSkiRun($table, $key, $id) {
+        try {
+            $query = "SELECT COUNT(*) as CNT, type FROM ".$table." WHERE ".$key." = ".$id." GROUP BY type";
+            $statement = self::$db->prepare($query);
+            $statement->execute();
+            $numberOfRows = $statement->rowCount();
+            if($numberOfRows > 0) {
+                $result = array();
+                $statement->setFetchMode(PDO::FETCH_ASSOC);
+                while($row = $statement->fetch()) {
+                    $result[] = $row;
+                }
+                return $result;
+            } else {
+                return array();
+            }
+        } catch(PDOException $e) {
+            echo "ERROR" .$e->getMessage();
+            return array();
+        }
+    }
+
+    public static function retriveObjForSearch($table, $username, $name, $surname) {
+        try {
+            if($username === '') {
+                $name = str_replace("'", "\\'", $name);
+                $surname = str_replace("'", "\\'", $surname);
+                $query = "SELECT * FROM ".$table." WHERE (name LIKE '%".$name."%' AND surname LIKE '%".$surname."%');";
+            }
+            if($name === '' || $surname === '') {
+                $username = str_replace("'", "\\'", $username);
+                $query = "SELECT * FROM ".$table." WHERE (username LIKE '%".$username."%');";
+            }
+            $statement = self::$db->prepare($query);
+            $statement->execute();
+            $numberOfRows = $statement->rowCount();
+            if($numberOfRows > 0) {
+                $result = array();
+                $statement->setFetchMode(PDO::FETCH_ASSOC);
+                while($row = $statement->fetch()) {
+                    $result[] = $row;
+                }
+                return $result;
+            } else {
+                return array();
+            }
+        } catch (PDOException $e) {
+            echo "ERROR" . $e->getMessage();
+            return array();
+        }
+    }
     /**
      * Method to save an object in the Database using the INSERT TO query
      * @param String $foundClass Refers to the name of the foundation class, so you can get the table and the value
@@ -66,6 +233,7 @@ class FEntityManager {
     {
         try{
             $query = "INSERT INTO " . $foundClass::getTable() . " VALUES" . $foundClass::getValue();
+            echo $query;
             $stmt = self::$db->prepare($query);
             $foundClass::bind($stmt, $obj);
             $stmt->execute();
@@ -120,9 +288,9 @@ class FEntityManager {
      * @return bool
      */
     public static function updateObj($table, $field, $fieldValue, $cond, $condValue){
-        
         try{
             $query = "UPDATE " . $table . " SET ". $field. " = '" . $fieldValue . "' WHERE " . $cond . " = '" . $condValue . "';";
+            echo $query;
             $stmt = self::$db->prepare($query);
             $stmt->execute();
             return true;

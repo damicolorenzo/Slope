@@ -1,27 +1,4 @@
-<?php
-/* Smarty version 3.1.33, created on 2024-10-30 16:01:26
-  from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\loggedHome.tpl' */
-
-/* @var Smarty_Internal_Template $_smarty_tpl */
-if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
-  'version' => '3.1.33',
-  'unifunc' => 'content_67224a46b1f5a0_82349755',
-  'has_nocache_code' => false,
-  'file_dependency' => 
-  array (
-    'ef33429ba4bc621d630ff6065457a2991b022023' => 
-    array (
-      0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\loggedHome.tpl',
-      1 => 1730300485,
-      2 => 'file',
-    ),
-  ),
-  'includes' => 
-  array (
-  ),
-),false)) {
-function content_67224a46b1f5a0_82349755 (Smarty_Internal_Template $_smarty_tpl) {
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -84,8 +61,7 @@ function content_67224a46b1f5a0_82349755 (Smarty_Internal_Template $_smarty_tpl)
               </ul>
             </li>
             <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/User/logout">LogOut</a></li>
-            <li><a href="/Slope/User/profile">Profile</a></li>
+            <li><a href="/Slope/User/login">Login</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -112,61 +88,60 @@ function content_67224a46b1f5a0_82349755 (Smarty_Internal_Template $_smarty_tpl)
 
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
+      {if $exist == false}
       <div class="container" data-aos="fade-up">
+        <div class="form_login-container">
+            <form class="register-form" action="/Slope/Admin/confirmLiftStructure" method="POST">
+              <h2>Nuovo risalita</h2>
+        
+        <label for="name">Nome risalita</label>
+        <input type="text" id="name" name="name" placeholder="Inserisci nome della risalita">
 
-        <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['map']->value, 'i');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
-?>  
-          <div class="card-impianto">
-            <div class="impianto">
-              <h3><?php echo $_smarty_tpl->tpl_vars['i']->value[0]['name'];?>
-</h3>
-              <img src="link-alla-tua-immagine.jpg" alt="Immagine dell'impianto" class="impianto-img">
+        <div class="section">
+            <label>Tipologia di impianto</label>
+            <div class="radio-group">
+                <label><input type="radio" name="type" value="seggiovia"> Seggiovia</label>
+                <label><input type="radio" name="type" value="ovovia"> Ovovia</label>
+                <label><input type="radio" name="type" value="skilift"> Skilift</label>
+                <label><input type="radio" name="type" value="cabinovia"> Cabinovia</label>
             </div>
-            <div class="dettagli-impianto">
-              <h4>Dettagli <?php echo $_smarty_tpl->tpl_vars['i']->value[0]['name'];?>
-</h4> 
-                <div class="piste">
-                  <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['i']->value[1], 'e');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['e']->value) {
-?>  
-                    <?php if ($_smarty_tpl->tpl_vars['e']->value['type'] == 'blu') {?>
-                    <div class="pista blu">Blu: <span><?php echo $_smarty_tpl->tpl_vars['e']->value['CNT'];?>
-</span></div>
-                    <?php }?>
-                    <?php if ($_smarty_tpl->tpl_vars['e']->value['type'] == 'rossa') {?>
-                    <div class="pista rossa">Rosse: <span><?php echo $_smarty_tpl->tpl_vars['e']->value['CNT'];?>
-</span></div>
-                    <?php }?>
-                    <?php if ($_smarty_tpl->tpl_vars['e']->value['type'] == 'nera') {?>
-                    <div class="pista nera">Nere: <span><?php echo $_smarty_tpl->tpl_vars['e']->value['CNT'];?>
-</span></div>
-                    <?php }?>
-                    <?php if ($_smarty_tpl->tpl_vars['e']->value['type'] == 'verde') {?>
-                    <div class="pista verde">Verdi: <span><?php echo $_smarty_tpl->tpl_vars['e']->value['CNT'];?>
-</span></div>
-                    <?php }?>
-                  <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-                </div>
-                <p>Impianti: <span><?php echo $_smarty_tpl->tpl_vars['i']->value[2]['CNT'];?>
-</span></p>
-                <p>Status: <span class="status aperto">'aperto'</span></p>
-            </div>
-          </div>
-        <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+        </div>
 
+        <div class="section">
+            <label>Praticabilità</label>
+            <div class="radio-group">
+                <label><input type="radio" name="status" value="aperto"> Aperto</label>
+                <label><input type="radio" name="status" value="chiuso"> Chiuso</label>
+            </div>
+        </div>
+
+        <div class="section">
+            <label>Impianto</label>
+            <div class="radio-group">
+                {foreach from=$skiFacilities item=i}
+                  <label><input type="radio" name="skiFacility" value={$i['name']}>{$i['name']}</label>
+                {/foreach}
+            </div>
+        </div>
+
+        <div class="section">
+            <label>Sedute</label>
+            <div class="radio-group">
+                  <label><input type="number" name="seats" ></label>
+            </div>
+        </div>
+                
+                <button type="submit">Conferma</button>
+            </form>
+        </div>
       </div>
-
+      {/if}
+      {if $exist == true}
+      <div class="container" data-aos="fade-up">
+        <h1>L'impianto di risalita è già presente nel database</h1>
+        <h2>Tornare alla dashboard <a href="/Slope/Admin/dashboard">qui</a></h2>
+      </div>
+      {/if}
     </section><!-- /Starter Section Section -->
 
   </main>
@@ -249,34 +224,17 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <?php echo '<script'; ?>
- src="https://localhost/Slope/libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
->
-  <?php echo '<script'; ?>
- src="https://localhost/Slope/libs/Smarty/day/assets/vendor/php-email-form/validate.js"><?php echo '</script'; ?>
->
-  <?php echo '<script'; ?>
- src="https://localhost/Slope/libs/Smarty/day/assets/vendor/aos/aos.js"><?php echo '</script'; ?>
->
-  <?php echo '<script'; ?>
- src="https://localhost/Slope/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"><?php echo '</script'; ?>
->
-  <?php echo '<script'; ?>
- src="https://localhost/Slope/libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"><?php echo '</script'; ?>
->
-  <?php echo '<script'; ?>
- src="https://localhost/Slope/libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"><?php echo '</script'; ?>
->
-  <?php echo '<script'; ?>
- src="https://localhost/Slope/libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"><?php echo '</script'; ?>
->
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/php-email-form/validate.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/aos/aos.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 
   <!-- Main JS File -->
-  <?php echo '<script'; ?>
- src="https://localhost/Slope/libs/Smarty/day/assets/js/main.js"><?php echo '</script'; ?>
->
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/js/main.js"></script>
 
 </body>
 
-</html><?php }
-}
+</html>

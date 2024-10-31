@@ -5,7 +5,6 @@ require_once('EPerson.php');
 class EUser extends EPerson {
 
     protected $idImage;
-    protected $id;
 
     private static $entity = EUser::class;
 
@@ -16,9 +15,6 @@ class EUser extends EPerson {
     }
 
     public static function getEntity(): string {return self::$entity;}
-
-    public function getId() {return $this->id;}
-    public function setId($id) {$this->id = $id;}
 
     public function getIdImage() {return $this->idImage;}
     public function setIdImage($idImage) {$this->idImage = $idImage;}

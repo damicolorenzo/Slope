@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-10-30 16:01:26
-  from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\loggedHome.tpl' */
+/* Smarty version 3.1.33, created on 2024-10-21 21:18:35
+  from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_67224a46b1f5a0_82349755',
+  'unifunc' => 'content_6716a90b43a852_89547199',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'ef33429ba4bc621d630ff6065457a2991b022023' => 
+    '821525f5f01cc67253858e33f23e212cd14cfaf0' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\loggedHome.tpl',
-      1 => 1730300485,
+      0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-login.tpl',
+      1 => 1729538313,
       2 => 'file',
     ),
   ),
@@ -20,14 +20,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67224a46b1f5a0_82349755 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6716a90b43a852_89547199 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Registration</title>
+  <title>Starter Page - Day Bootstrap Template</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -65,28 +65,15 @@ function content_67224a46b1f5a0_82349755 (Smarty_Internal_Template $_smarty_tpl)
     <div class="branding d-flex align-items-center">
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
-        <a href="/Slope" class="logo d-flex align-items-center">
+        <a href="index.html" class="logo d-flex align-items-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
-          <!-- <img src="assets/img/logo.png" alt=""> -->
+          <!-- <img src="libs/Smarty/day/assets/img/logo.png" alt=""> -->
           <h1 class="sitename">Slope</h1>
         </a>
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <!-- <li><a href="#hero">Home</a></li>
-            <li><a href="#about">Prenota</a></li>
-            <li><a href="#services">Visualizza prenotazioni</a></li>
-            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a> -->
-              <ul>
-                <!-- <li><a href="#">Piste</a></li>
-                <li><a href="#">Impianti</a></li>
-                <li><a href="#">Web</a></li> -->
-              </ul>
-            </li>
-            <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/User/logout">LogOut</a></li>
-            <li><a href="/Slope/User/profile">Profile</a></li>
-          </ul>
+            <li><a href="/Slope">Home</a></li>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
       </div>
@@ -112,59 +99,24 @@ function content_67224a46b1f5a0_82349755 (Smarty_Internal_Template $_smarty_tpl)
 
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
+
       <div class="container" data-aos="fade-up">
-
-        <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['map']->value, 'i');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
-?>  
-          <div class="card-impianto">
-            <div class="impianto">
-              <h3><?php echo $_smarty_tpl->tpl_vars['i']->value[0]['name'];?>
-</h3>
-              <img src="link-alla-tua-immagine.jpg" alt="Immagine dell'impianto" class="impianto-img">
-            </div>
-            <div class="dettagli-impianto">
-              <h4>Dettagli <?php echo $_smarty_tpl->tpl_vars['i']->value[0]['name'];?>
-</h4> 
-                <div class="piste">
-                  <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['i']->value[1], 'e');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['e']->value) {
-?>  
-                    <?php if ($_smarty_tpl->tpl_vars['e']->value['type'] == 'blu') {?>
-                    <div class="pista blu">Blu: <span><?php echo $_smarty_tpl->tpl_vars['e']->value['CNT'];?>
-</span></div>
-                    <?php }?>
-                    <?php if ($_smarty_tpl->tpl_vars['e']->value['type'] == 'rossa') {?>
-                    <div class="pista rossa">Rosse: <span><?php echo $_smarty_tpl->tpl_vars['e']->value['CNT'];?>
-</span></div>
-                    <?php }?>
-                    <?php if ($_smarty_tpl->tpl_vars['e']->value['type'] == 'nera') {?>
-                    <div class="pista nera">Nere: <span><?php echo $_smarty_tpl->tpl_vars['e']->value['CNT'];?>
-</span></div>
-                    <?php }?>
-                    <?php if ($_smarty_tpl->tpl_vars['e']->value['type'] == 'verde') {?>
-                    <div class="pista verde">Verdi: <span><?php echo $_smarty_tpl->tpl_vars['e']->value['CNT'];?>
-</span></div>
-                    <?php }?>
-                  <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-                </div>
-                <p>Impianti: <span><?php echo $_smarty_tpl->tpl_vars['i']->value[2]['CNT'];?>
-</span></p>
-                <p>Status: <span class="status aperto">'aperto'</span></p>
-            </div>
-          </div>
-        <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-
+        <div class="form_login-container">
+            <form class="login-form" action="/Slope/Admin/checkLogin" method="POST">
+                <h2>Login <i>ADMIN</i></h2>
+                <?php if ($_smarty_tpl->tpl_vars['session']->value == true) {?>
+                <label>Errore di sessione </label>
+                <?php }?>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <?php if ($_smarty_tpl->tpl_vars['password']->value == true) {?>
+                <label>Errore, username o password non riconosciuti!</label>
+                <?php }?>
+                <button type="submit">Accedi</button>
+            </form>
+        </div>
       </div>
 
     </section><!-- /Starter Section Section -->
@@ -177,11 +129,11 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6">
           <div class="footer-about">
-            <a href="/Slope" class="logo sitename">Slope</a>
+            <a href="index.html" class="logo sitename">Day</a>
             <div class="footer-contact pt-3">
-              <p>Via Vetoio</p>
-              <p>L'Aquila, AQ 67100</p>
-              <p class="mt-3"><strong>Numero:</strong> <span>+39 123 456 7890</span></p>
+              <p>A108 Adam Street</p>
+              <p>New York, NY 535022</p>
+              <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
               <p><strong>Email:</strong> <span>info@example.com</span></p>
             </div>
             <div class="social-links d-flex mt-4">
@@ -230,7 +182,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Slope</strong> <span>All Rights Reserved</span></p>
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">Day</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you've purchased the pro version. -->

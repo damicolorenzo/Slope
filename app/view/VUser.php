@@ -85,7 +85,8 @@ class VUser {
         $this->smarty->display('profileInfo.tpl');
     }
 
-    public function loggedHome() {
+    public function loggedHome($map) {
+        $this->smarty->assign('map', $map);
         $this->smarty->display('loggedHome.tpl');
     }
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-10-30 16:01:26
-  from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\loggedHome.tpl' */
+/* Smarty version 3.1.33, created on 2024-10-31 11:10:42
+  from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-addSkiRun.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_67224a46b1f5a0_82349755',
+  'unifunc' => 'content_672357a2829272_92256797',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'ef33429ba4bc621d630ff6065457a2991b022023' => 
+    'e6907fa6139050c50940d2f72a0ea35b75bb2215' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\loggedHome.tpl',
-      1 => 1730300485,
+      0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-addSkiRun.tpl',
+      1 => 1730369441,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67224a46b1f5a0_82349755 (Smarty_Internal_Template $_smarty_tpl) {
+function content_672357a2829272_92256797 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -84,8 +84,7 @@ function content_67224a46b1f5a0_82349755 (Smarty_Internal_Template $_smarty_tpl)
               </ul>
             </li>
             <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/User/logout">LogOut</a></li>
-            <li><a href="/Slope/User/profile">Profile</a></li>
+            <li><a href="/Slope/User/login">Login</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -112,61 +111,61 @@ function content_67224a46b1f5a0_82349755 (Smarty_Internal_Template $_smarty_tpl)
 
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
+      <?php if ($_smarty_tpl->tpl_vars['exist']->value == false) {?>
       <div class="container" data-aos="fade-up">
-
-        <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['map']->value, 'i');
+        <div class="form_login-container">
+            <form class="register-form" action="/Slope/Admin/confirmSkiRun" method="POST">
+                <h2>Nuova pista</h2>
+          
+                <label for="name">Nome pista</label>
+                <input type="text" id="name" name="name" placeholder="Inserisci nome della pista">
+        
+                <div class="section">
+                    <label>Tipologia di pista</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="type" value="nera"> Nera</label>
+                        <label><input type="radio" name="type" value="rossa"> Rossa</label>
+                        <label><input type="radio" name="type" value="blu"> Blu</label>
+                    </div>
+                </div>
+        
+                <div class="section">
+                    <label>Praticabilità</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="status" value="aperto"> Aperto</label>
+                        <label><input type="radio" name="status" value="chiuso"> Chiuso</label>
+                    </div>
+                </div>
+        
+                <div class="section">
+                    <label>Impianto</label>
+                    <div class="radio-group">
+                    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['skiFacilities']->value, 'i');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
-?>  
-          <div class="card-impianto">
-            <div class="impianto">
-              <h3><?php echo $_smarty_tpl->tpl_vars['i']->value[0]['name'];?>
-</h3>
-              <img src="link-alla-tua-immagine.jpg" alt="Immagine dell'impianto" class="impianto-img">
-            </div>
-            <div class="dettagli-impianto">
-              <h4>Dettagli <?php echo $_smarty_tpl->tpl_vars['i']->value[0]['name'];?>
-</h4> 
-                <div class="piste">
-                  <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['i']->value[1], 'e');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['e']->value) {
-?>  
-                    <?php if ($_smarty_tpl->tpl_vars['e']->value['type'] == 'blu') {?>
-                    <div class="pista blu">Blu: <span><?php echo $_smarty_tpl->tpl_vars['e']->value['CNT'];?>
-</span></div>
-                    <?php }?>
-                    <?php if ($_smarty_tpl->tpl_vars['e']->value['type'] == 'rossa') {?>
-                    <div class="pista rossa">Rosse: <span><?php echo $_smarty_tpl->tpl_vars['e']->value['CNT'];?>
-</span></div>
-                    <?php }?>
-                    <?php if ($_smarty_tpl->tpl_vars['e']->value['type'] == 'nera') {?>
-                    <div class="pista nera">Nere: <span><?php echo $_smarty_tpl->tpl_vars['e']->value['CNT'];?>
-</span></div>
-                    <?php }?>
-                    <?php if ($_smarty_tpl->tpl_vars['e']->value['type'] == 'verde') {?>
-                    <div class="pista verde">Verdi: <span><?php echo $_smarty_tpl->tpl_vars['e']->value['CNT'];?>
-</span></div>
-                    <?php }?>
-                  <?php
+?>
+                        <label><input type="radio" name="skiFacility" value=<?php echo $_smarty_tpl->tpl_vars['i']->value['name'];?>
+><?php echo $_smarty_tpl->tpl_vars['i']->value['name'];?>
+</label>
+                    <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-                </div>
-                <p>Impianti: <span><?php echo $_smarty_tpl->tpl_vars['i']->value[2]['CNT'];?>
-</span></p>
-                <p>Status: <span class="status aperto">'aperto'</span></p>
-            </div>
-          </div>
-        <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-
+                    </div>
+                </div>  
+                
+                <button type="submit">Conferma</button>
+            </form>
+        </div>
       </div>
-
+      <?php }?>
+      <?php if ($_smarty_tpl->tpl_vars['exist']->value == true) {?>
+      <div class="container" data-aos="fade-up">
+        <h1>La pista è già presente nel database</h1>
+        <h2>Tornare alla dashboard <a href="/Slope/Admin/dashboard">qui</a></h2>
+      </div>
+      <?php }?>
     </section><!-- /Starter Section Section -->
 
   </main>

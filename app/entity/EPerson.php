@@ -3,6 +3,8 @@
 Class EPerson {
 
     // attributes
+    protected $idUser;
+
     protected string $name;
     protected string $surname;
     protected string $email;
@@ -25,6 +27,8 @@ Class EPerson {
     }
 
     //Get methods
+    public function getId() :int {return $this->idUser;}
+
     public function getName() :string {return $this->name;}
     public function getSurname() :string {return $this->surname;}
     public function getEmail() :string {return $this->email;}
@@ -36,6 +40,8 @@ Class EPerson {
 
 
     //Set methods
+    public function setId(int $id) :void { $this->idUser = $id;}
+    
     public function setName(string $name) :void { $this->name = $name;}
     public function setSurname(string $surname) :void {$this->surname = $surname;}
     public function setEmail(string $email) :void { $this->email = $email;}

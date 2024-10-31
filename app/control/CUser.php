@@ -27,7 +27,12 @@ class CUser {
             //load the VIP Users, their profile Images and the foillower number
             $arrayVipUserPropicFollowNumb = FPersistentManager::getInstance()->loadVip(); */
         
-            $view->loggedHome(); 
+            /* 
+                chiamata loggedH(); che carica i dati sugli impianti da mostrare  
+                */
+            $map = CUser::loggedH();
+            //print_r($map);
+            $view->loggedHome($map); 
         } else {
             //chiamata alla funzione home di VUser (prima di andare avanti con questo file saltare al file VUser \view\VUser.php)
             $view->home();
@@ -78,6 +83,22 @@ class CUser {
         } else {
             $view->userAlreadyExist();
         }
+    }
+
+    public static function loggedH() {
+        /* Va popolato l'array con gli oggetti non con altri array */
+        $map = array();
+        $idskiFacilities = FPersistentManager::getInstance()->retriveIdSkiFacilities(); /* Array con id impianti */
+        foreach($idskiFacilities as $element) {
+            $nameSkiFacility = FPersistentManager::getInstance()->nameSkiFacility($element['idSkiFacility']); /* Nome dell'impianto */
+            $countskiRuns = FPersistentManager::getInstance()->typeAndNumberSkiRun($element['idSkiFacility']); /* Tabella con tipologia_pista e numero per ogni impianto */
+            //print_r($countskiRuns);
+            $countliftStructures = FPersistentManager::getInstance()->retriveNLiftStructures($element['idSkiFacility']);
+            //print_r($countliftStructures);
+            $map[] = [$nameSkiFacility, $countskiRuns, $countliftStructures];
+        }
+        //print_r($map);
+        return $map;
     }
     
 
@@ -168,7 +189,7 @@ class CUser {
             $email = $user->getEmail();
             $phoneNumber = $user->getPhoneNumber();
             $birthDate = $user->getBirthDate();
-            $idImage = $user->getIdImage();
+            //$idImage = $user->getIdImage();
             $view->modifyProfile($username, $name, $surname, $email, $phoneNumber, $birthDate, false, false);
         }
     }

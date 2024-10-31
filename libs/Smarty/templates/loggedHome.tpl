@@ -50,18 +50,19 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="#hero">Home</a></li>
+            <!-- <li><a href="#hero">Home</a></li>
             <li><a href="#about">Prenota</a></li>
             <li><a href="#services">Visualizza prenotazioni</a></li>
-            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a> -->
               <ul>
-                <li><a href="#">Piste</a></li>
+                <!-- <li><a href="#">Piste</a></li>
                 <li><a href="#">Impianti</a></li>
-                <li><a href="#">Web</a></li>
+                <li><a href="#">Web</a></li> -->
               </ul>
             </li>
-            <li><a href="/Slope/User/profile">Profilo</a></li>
+            <li><a href="/Slope/">Home</a></li>
             <li><a href="/Slope/User/logout">LogOut</a></li>
+            <li><a href="/Slope/User/profile">Profile</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -73,12 +74,52 @@
 
   <main class="main">
 
+    <!-- Page Title -->
+    <!-- <div class="page-title" data-aos="fade">
+      <div class="container">
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">Starter Page</li>
+          </ol>
+        </nav>
+        <h1>Starter Page</h1>
+      </div>
+    </div> --><!-- End Page Title -->
+
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
-
       <div class="container" data-aos="fade-up">
 
-      <!-- Da riempire in base alla pagina  -->
+        {foreach from=$map item=i}  
+          <div class="card-impianto">
+            <div class="impianto">
+              <h3>{$i[0]['name']}</h3>
+              <img src="link-alla-tua-immagine.jpg" alt="Immagine dell'impianto" class="impianto-img">
+            </div>
+            <div class="dettagli-impianto">
+              <h4>Dettagli {$i[0]['name']}</h4> 
+                <div class="piste">
+                  {foreach from=$i[1] item=e}  
+                    {if $e['type'] == 'blu'}
+                    <div class="pista blu">Blu: <span>{$e['CNT']}</span></div>
+                    {/if}
+                    {if $e['type'] == 'rossa'}
+                    <div class="pista rossa">Rosse: <span>{$e['CNT']}</span></div>
+                    {/if}
+                    {if $e['type'] == 'nera'}
+                    <div class="pista nera">Nere: <span>{$e['CNT']}</span></div>
+                    {/if}
+                    {if $e['type'] == 'verde'}
+                    <div class="pista verde">Verdi: <span>{$e['CNT']}</span></div>
+                    {/if}
+                  {/foreach}
+                </div>
+                <p>Impianti: <span>{$i[2]['CNT']}</span></p>
+                <p>Status: <span class="status aperto">'aperto'</span></p>
+            </div>
+          </div>
+        {/foreach}
 
       </div>
 
@@ -92,11 +133,11 @@
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6">
           <div class="footer-about">
-            <a href="/Slope" class="logo sitename">Day</a>
+            <a href="/Slope" class="logo sitename">Slope</a>
             <div class="footer-contact pt-3">
               <p>Via Vetoio</p>
               <p>L'Aquila, AQ 67100</p>
-              <p class="mt-3"><strong>Phone:</strong> <span>+39 123 456 7890</span></p>
+              <p class="mt-3"><strong>Numero:</strong> <span>+39 123 456 7890</span></p>
               <p><strong>Email:</strong> <span>info@example.com</span></p>
             </div>
             <div class="social-links d-flex mt-4">

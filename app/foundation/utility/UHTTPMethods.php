@@ -5,7 +5,12 @@ class UHTTPMethods {
     /*
     Funzione per accedere all'array $_POST 
     */
-    public static function post($param) {return $_POST[$param];}
+    public static function post($param) {
+        if (array_key_exists($param, $_POST))
+            return $_POST[$param];
+        else 
+            return null;
+    }
     public static function allPost() {return $_POST;}
     public static function allFiles() {return $_FILES;}
  

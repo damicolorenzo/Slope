@@ -102,6 +102,102 @@ class FPersistentManager {
         return $result;
     }
 
+    public static function retriveAdminOnUsername($username) {
+        $result = FAdmin::getAdminByUsername($username);
+        return $result;
+    }
+
+    public static function retriveAllUsers() {
+        $result = FUser::getUsers();
+        return $result;
+    }
+
+    public static function retriveUsersForSearch($username, $name, $surname) {
+        $result = FUser::getUsersFromUsernameOrNameOrSurname($username, $name, $surname);
+        return $result;
+    }
+
+    public static function updateUserInfo($user){
+        $field = [['name', $user->getName()],['surname', $user->getSurname()],['email', $user->getEmail()],['phoneNumber', $user->getPhoneNumber()], ['birthDate', $user->getBirthDate()]];
+        $result = FUser::saveObj($user, $field);
+
+        return $result;
+    }
+
+    public static function retriveIdSkiFacilities() {
+        $result = FSkiFacility::getSkiFacilities();
+
+        return $result;
+    }
+
+    public static function retriveAllSkiFacilities() {
+        $result = FSkiFacility::getSkiFacilities();
+
+        if(count($result) > 0) {
+            $obj = FSkiFacility::crateSkiFacilityObj($result);
+        }
+        return $obj;
+    }
+
+    public static function typeAndNumberSkiRun($idSkiFacility) {
+        $result = FSkiRun::typeAndNumberSkiRun($idSkiFacility);
+
+        return $result;
+    }
+
+    public static function retriveAllSkiRun($idSkiFacility) {
+        $result = FSkiRun::getSkiRuns($idSkiFacility);
+
+        if(count($result) > 0) {
+            $obj = FSkiRun::crateSkiRunObj($result);
+        }
+        return $obj;
+    }
+
+    public static function retriveAllLiftStructures($idSkiFacility) {
+        $result = FLiftStructure::getLiftStructures($idSkiFacility);
+        
+        if(count($result) > 0) {
+            $obj = FLiftStructure::crateLiftStructureObj($result);
+        }
+        return $obj;
+    }
+
+    public static function retriveNLiftStructures($idSkiFacility) {
+        $result = FLiftStructure::getNLiftStructures($idSkiFacility);
+        
+        return $result;
+    }
+
+    public static function nameSkiFacility($idSkiFacility) {
+        $result = FSkiFacility::getNameSkiFacility($idSkiFacility);
+        
+        return $result;
+    }
+
+    public static function nameAllSkiFacility() {
+        $result = FSkiFacility::getAllNameSkiFacility();
+        
+        return $result;
+    }
+
+    public static function verifySkiRunName($name, $idSkiFacility) {
+        $result = FSkiRun::getSkiRunByNameAndSkiFacility($name, $idSkiFacility);
+        
+        return $result;
+    }
+
+    public static function retriveIdSkiFacilityFromName($name) {
+        $result = FSkiFacility::getIdFromName($name);
+        
+        return $result;
+    }
+
+    public static function verifyLiftStructureName($name, $idSkiFacility) {
+        $result = FLiftStructure::getLiftStructureByNameAndSkiFacility($name, $idSkiFacility);
+        
+        return $result;
+    }
     
 
 

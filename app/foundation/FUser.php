@@ -42,7 +42,6 @@ Class FUser{
     public static function crateUserObj($queryResult){
         if(count($queryResult) == 1){
             $attributes = FEntityManager::getInstance()->retriveObj(self::getTable(), "idUser", $queryResult[0]['idUser']);
-
             $user = new EUser($queryResult[0]['name'], $queryResult[0]['surname'], $queryResult[0]['email'], $queryResult[0]['phoneNumber'], $queryResult[0]['birthDate'], $queryResult[0]['username'], $queryResult[0]['password']);
             $user->setId($queryResult[0]['idUser']);
             $user->setIdImage($attributes[0]['idImage']);
@@ -104,14 +103,14 @@ Class FUser{
             try {
                 FEntityManager::getInstance()->getDb()->beginTransaction();
                 foreach($fieldArray as $fv) {
-                    if($fv[0] != "username" && $fv[0] != "password") {
+                    if($fv[0] == "idUser" || $fv[0] == "idImage") {
                         FEntityManager::getInstance()->updateObj(FUser::getTable(), $fv[0], $fv[1], self::getKey(), $obj->getId());
                     } else {
                         FEntityManager::getInstance()->updateObj(FPerson::getTable(), $fv[0], $fv[1], self::getKey(), $obj->getId());
-                    }
-                    FEntityManager::getInstance()->getDb()->commit();
-                    return true;
+                    }    
                 } 
+                FEntityManager::getInstance()->getDb()->commit();
+                return true;
             } catch (PDOException $e) {
                 echo "ERROR " . $e->getMessage();
                 FEntityManager::getInstance()->getDb()->rollBack();
@@ -129,6 +128,16 @@ Class FUser{
 
     public static function getUserById($id){
         $result = FEntityManager::getInstance()->retriveObj(FPerson::getTable(), 'idUser', $id);
+        return $result;
+    }
+
+    public static function getUsersFromUsernameOrNameOrSurname($username, $name, $surname) {
+        $result = FEntityManager::getInstance()->retriveObjForSearch(FPerson::getTable(), $username, $name, $surname);
+        return $result;
+    }
+
+    public static function getUsers() {
+        $result = FEntityManager::getInstance()->retriveAllObj(FPerson::getTable());
         return $result;
     }
 
