@@ -199,12 +199,160 @@ class FPersistentManager {
         return $result;
     }
     
+    public static function retriveAllSkiStructures() {
+        $result = array();
+        $allSkiFacility = FSkiFacility::getAllSkiFacilityObj();
+        if(count($allSkiFacility) > 0) {
+            $result[] = FSkiFacility::crateSkiFacilityObj($allSkiFacility);
+        }
+        $allSkiRun = FSkiRun::getAllSkiRunObj();
+        if(count($allSkiRun) > 0) {
+            $resultArray = FSkiRun::crateSkiRunObj($allSkiRun);
+            $final = array();
+            foreach ($resultArray as $element) {
+                $app = array();
+                $app[] = $element;
+                $idSkiFacility = $element->getIdSkiFacility();
+                $name = FSkiFacility::getNameSkiFacility($idSkiFacility);
+                $app[] = $name;
+                $final[] = $app;
+            }
+            $result[] = $final;
+        }
+        $allLiftStructure = FLiftStructure::getAllLiftStructureObj();
+        if(count($allLiftStructure) > 0) {
+            $resultArray = FLiftStructure::crateLiftStructureObj($allLiftStructure);
+            $final = array();
+            foreach ($resultArray as $element) {
+                $app = array();
+                $app[] = $element;
+                $idSkiFacility = $element->getIdSkiFacility();
+                $name = FSkiFacility::getNameSkiFacility($idSkiFacility);
+                $app[] = $name;
+                $final[] = $app;
+            }
+            $result[] = $final;
+        }
+        return $result;
+    }
+
+    public static function retriveSkiFacilityOnId($id) {
+        $result = FSkiFacility::getSkiFacilityById($id);
+
+        if(count($result) > 0) {
+            $obj = FSkiFacility::crateSkiFacilityObj($result);
+        }
+        return $obj;
+    }
+
+    public static function retriveSkiRunOnId($id) {
+        $result = FSkiRun::getSkiRunById($id);
+
+        if(count($result) > 0) {
+            $obj = FSkiRun::crateSkiRunObj($result);
+        }
+        return $obj;
+    }
+
+    public static function retriveLiftStructureOnId($id) {
+        $result = FLiftStructure::getLiftStructureById($id);
+
+        if(count($result) > 0) {
+            $obj = FLiftStructure::crateLiftStructureObj($result);
+        }
+        return $obj;
+    }
+
+    public static function verifySkiFacilityName($field, $id) {
+        $result = FSkiFacility::getSkiFacilityByName($field, $id);
+        
+        return $result;
+    }
+
+    public static function updateSkiFacilityInfo($skiFacility){
+        $field = [['name', $skiFacility->getName()],['status', $skiFacility->getStatus()],['price', $skiFacility->getPrice()]];
+        $result = FSkiFacility::saveObj($skiFacility, $field);
+
+        return $result;
+    }
+
+    public static function updateSkiRunInfo($skiRun){
+        $field = [['name', $skiRun->getName()], ['type', $skiRun->getType()], ['status', $skiRun->getStatus()], ['idSkiFacility', $skiRun->getIdSkiFacility()]];
+        $result = FSkiRun::saveObj($skiRun, $field);
+
+        return $result;
+    }
+
+    public static function updateLiftStructureInfo($liftStructure){
+        $field = [['name', $liftStructure->getName()], ['type', $liftStructure->getType()], ['status', $liftStructure->getStatus()], ['seats', $liftStructure->getSeats()], ['idSkiFacility', $liftStructure->getIdSkiFacility()]];
+        $result = FLiftStructure::saveObj($liftStructure, $field);
+
+        return $result;
+    }
 
 
-
-
-
-
+    public static function retriveForStructureSearch($queryString) {
+        $result = array();
+        $skiFacilities = FSkiFacility::getSkiFacilityByNameForSearch($queryString);
+        if(count($skiFacilities) > 0) {
+            $sub = array();
+            $sub[] = FSkiFacility::crateSkiFacilityObj($skiFacilities);
+            $result[] = $sub;
+        } else {
+            $result[] = array();
+        }
+        $skiRuns = FSkiRun::getSkiRunByNameForSearch($queryString);
+        if(count($skiRuns) > 0) {
+            $resultArray = FSkiRun::crateSkiRunObj($skiRuns);
+            $final = array();
+            if($resultArray instanceof ESkiRun) {
+                $app = array();
+                $idSkiFacility = $resultArray->getIdSkiFacility();
+                $name = FSkiFacility::getNameSkiFacility($idSkiFacility); 
+                $app[] = $resultArray;
+                $app[] = $name;
+                $final[] = $app;
+            } elseif(count($resultArray) > 1) {
+                foreach ($resultArray as $element) {
+                    $app = array();
+                    $app[] = $element;
+                    $idSkiFacility = $element->getIdSkiFacility();
+                    $name = FSkiFacility::getNameSkiFacility($idSkiFacility);
+                    $app[] = $name;
+                    $final[] = $app;
+                }
+            }
+            $result[] = $final;
+        } else {
+            $result[] = array();
+        }
+        $liftStructures = FLiftStructure::getLiftStructureByNameForSearch($queryString);
+        if(count($liftStructures) > 0) {
+            $resultArray = FLiftStructure::crateLiftStructureObj($liftStructures);
+            $final = array();
+            if($resultArray instanceof ELiftStructure) {
+                $app = array();
+                $idSkiFacility = $resultArray->getIdSkiFacility();
+                $name = FSkiFacility::getNameSkiFacility($idSkiFacility); 
+                $app[] = $resultArray;
+                $app[] = $name;
+                $final[] = $app;
+            } elseif(count($resultArray) > 1) {
+                foreach ($resultArray as $element) {
+                    $app = array();
+                    $app[] = $element;
+                    $idSkiFacility = $element->getIdSkiFacility();
+                    $name = FSkiFacility::getNameSkiFacility($idSkiFacility);
+                    $app[] = $name;
+                    $final[] = $app;
+                }
+            }
+            $result[] = $final;
+        } else {
+            $result[] = array();
+        }
+        return $result;
+    }
 
 
 

@@ -75,7 +75,7 @@
         <li><a href="/Slope/Admin/addSkiFacility">Aggiungi dati impianto</a></li>
         <li><a href="/Slope/Admin/addLiftStructure">Aggiungi dati risalita</a></li>
         <li><a href="/Slope/Admin/searchUsers">Modifica dati utente</a></li>
-        <li><a href="/Slope/Admin/modify">Modifica dati pista/impianto/risalita</a></li>
+        <li><a href="/Slope/Admin/searchStructures">Modifica dati pista/impianto/risalita</a></li>
         <li><a href="#">Modifica interfaccia</a></li>
       </ul>
       <!-- Da riempire in base alla pagina  -->

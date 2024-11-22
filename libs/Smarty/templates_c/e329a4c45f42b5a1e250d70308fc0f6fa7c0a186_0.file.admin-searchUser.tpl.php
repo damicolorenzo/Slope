@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-11-04 14:49:05
-  from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-dashboard.tpl' */
+/* Smarty version 3.1.33, created on 2024-11-04 15:06:23
+  from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-searchUser.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_6728d0d11b6ed7_77136484',
+  'unifunc' => 'content_6728d4dfbec357_10287523',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'd20a4f7f56240b90a0610a29ed4c46e4441abe6b' => 
+    'e329a4c45f42b5a1e250d70308fc0f6fa7c0a186' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-dashboard.tpl',
-      1 => 1730728143,
+      0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-searchUser.tpl',
+      1 => 1729696639,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6728d0d11b6ed7_77136484 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6728d4dfbec357_10287523 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -92,19 +92,52 @@ function content_6728d0d11b6ed7_77136484 (Smarty_Internal_Template $_smarty_tpl)
     <section id="starter-section" class="starter-section section"> 
 
       <div class="container" data-aos="fade-up">
-      <h1>DASHBOARD ADMIN</h1>
-      <ul>
-        <li><a href="/Slope/Admin/addSkiRun">Aggiungi dati pista</a></li>
-        <li><a href="/Slope/Admin/addSkiFacility">Aggiungi dati impianto</a></li>
-        <li><a href="/Slope/Admin/addLiftStructure">Aggiungi dati risalita</a></li>
-        <li><a href="/Slope/Admin/searchUsers">Modifica dati utente</a></li>
-        <li><a href="/Slope/Admin/searchStructures">Modifica dati pista/impianto/risalita</a></li>
-        <li><a href="#">Modifica interfaccia</a></li>
-      </ul>
-      <!-- Da riempire in base alla pagina  -->
+      
+        <!-- Da riempire in base alla pagina  -->
+        <div class="search-container">
+          <form class="search-form" action="/Slope/Admin/searchUsers" method="POST">
+              <input type="text" name="search-input" class="search-input" placeholder="Cerca un utente">
+              <button type="submit" class="search-button">
+              </button>
+          </form>
+        </div>
 
+        <?php if (count($_smarty_tpl->tpl_vars['users']->value) > 0) {?>
+          <div class="users">
+            <div class="cards-container">
+            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['users']->value, 'i');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
+?>
+              <div class="card">
+                <div class="user-info">
+                    <p class="username"><?php echo $_smarty_tpl->tpl_vars['i']->value['username'];?>
+</p>
+                    <p class="name"><?php echo $_smarty_tpl->tpl_vars['i']->value['name'];?>
+</p>
+                    <p class="surname"><?php echo $_smarty_tpl->tpl_vars['i']->value['surname'];?>
+</p>
+                </div>
+                <div class="action-buttons">
+                  <form class="search-form" action="/Slope/Admin/modifyProfile" method="POST">
+                    <button type="submit" name="userId" value=<?php echo $_smarty_tpl->tpl_vars['i']->value['idUser'];?>
+ class="edit">Modifica</button>
+                  </form>
+                  <form class="search-form" action="/Slope/Admin/deleteProfile" method="POST">
+                    <button type="submit" name="userId" value=<?php echo $_smarty_tpl->tpl_vars['i']->value['idUser'];?>
+ class="delete">Elimina</button>
+                  </form>
+                </div>
+              </div>
+            <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+            </div>
+          </div>
+        <?php }?>
       </div>
-
     </section><!-- /Starter Section Section -->
 
   </main>

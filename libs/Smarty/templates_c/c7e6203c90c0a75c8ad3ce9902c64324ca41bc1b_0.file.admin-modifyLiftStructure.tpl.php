@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-11-04 14:49:05
-  from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-dashboard.tpl' */
+/* Smarty version 3.1.33, created on 2024-11-21 11:10:18
+  from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-modifyLiftStructure.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_6728d0d11b6ed7_77136484',
+  'unifunc' => 'content_673f070a6d1013_03453042',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'd20a4f7f56240b90a0610a29ed4c46e4441abe6b' => 
+    'c7e6203c90c0a75c8ad3ce9902c64324ca41bc1b' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-dashboard.tpl',
-      1 => 1730728143,
+      0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-modifyLiftStructure.tpl',
+      1 => 1732183745,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6728d0d11b6ed7_77136484 (Smarty_Internal_Template $_smarty_tpl) {
+function content_673f070a6d1013_03453042 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -88,19 +88,57 @@ function content_6728d0d11b6ed7_77136484 (Smarty_Internal_Template $_smarty_tpl)
 
   <main class="main">
 
+    <!-- Page Title -->
+    <!-- <div class="page-title" data-aos="fade">
+      <div class="container">
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="/Slope">Home</a></li>
+            <li class="current">Starter Page</li>
+          </ol>
+        </nav>
+        <h1>Starter Page</h1>
+      </div>
+    </div> --><!-- End Page Title -->
+
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
 
       <div class="container" data-aos="fade-up">
-      <h1>DASHBOARD ADMIN</h1>
-      <ul>
-        <li><a href="/Slope/Admin/addSkiRun">Aggiungi dati pista</a></li>
-        <li><a href="/Slope/Admin/addSkiFacility">Aggiungi dati impianto</a></li>
-        <li><a href="/Slope/Admin/addLiftStructure">Aggiungi dati risalita</a></li>
-        <li><a href="/Slope/Admin/searchUsers">Modifica dati utente</a></li>
-        <li><a href="/Slope/Admin/searchStructures">Modifica dati pista/impianto/risalita</a></li>
-        <li><a href="#">Modifica interfaccia</a></li>
-      </ul>
+        
+        <div class="profile-container">
+            <div class="profile-info">
+                <form action="/Slope/Admin/confirmModifyLiftStructure" enctype="multipart/form-data" method="POST">
+                    <h2>MODIFICA IMPIANTO RISALITA</h2>
+                    <input type="hidden" id="idLiftStructure" name="idLiftStructure" value=<?php echo $_smarty_tpl->tpl_vars['idLiftStructure']->value;?>
+>
+                    <input type="hidden" id="idSkiFacility" name="idSkiFacility" value=<?php echo $_smarty_tpl->tpl_vars['idSkiFacility']->value;?>
+>
+                    <p><strong>Nome:</strong></p>
+                    <input type="text" id="name" name="name" value="<?php echo $_smarty_tpl->tpl_vars['name']->value;?>
+" required>
+
+                    <p><strong>Type:</strong></p>
+                    <input type="text" id="type" name="type" value="<?php echo $_smarty_tpl->tpl_vars['type']->value;?>
+" required>
+
+                    <p><strong>Status:</strong></p>
+                    <input type="text" id="status" name="status" value="<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
+" required>
+
+                    <p><strong>Seats:</strong></p>
+                    <input type="number" id="seats" name="seats" value="<?php echo $_smarty_tpl->tpl_vars['seats']->value;?>
+" required>
+
+                    <p><strong>Impianto di riferimento:</strong></p>
+                    <label><?php echo $_smarty_tpl->tpl_vars['nameSkiFacility']->value;?>
+</label>
+                    
+                    <button class="edit-button" type="submit">Conferma modifiche</button>
+                </form>
+            </div>
+        </div>
+
       <!-- Da riempire in base alla pagina  -->
 
       </div>

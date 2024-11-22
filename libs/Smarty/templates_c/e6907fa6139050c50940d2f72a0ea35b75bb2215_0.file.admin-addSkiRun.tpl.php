@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-10-31 11:10:42
+/* Smarty version 3.1.33, created on 2024-11-20 17:24:39
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-addSkiRun.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_672357a2829272_92256797',
+  'unifunc' => 'content_673e0d47960c79_25086044',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e6907fa6139050c50940d2f72a0ea35b75bb2215' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-addSkiRun.tpl',
-      1 => 1730369441,
+      1 => 1732118880,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_672357a2829272_92256797 (Smarty_Internal_Template $_smarty_tpl) {
+function content_673e0d47960c79_25086044 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 

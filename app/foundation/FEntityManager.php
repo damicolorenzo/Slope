@@ -103,8 +103,7 @@ class FEntityManager {
 
     public static function selectObjKey($field, $table, $field2, $extKey) {
         try {
-            $query = "SELECT " . $field. " FROM ".$table." WHERE ".$field2." = '".$extKey. "';";
-            echo $query;
+            $query = "SELECT " . $field. " FROM ".$table." WHERE ".$field2." = ".$extKey. ";";
             $statement = self::$db->prepare($query);
             $statement->execute();
             $result = $statement->fetch();
@@ -205,6 +204,29 @@ class FEntityManager {
                 $username = str_replace("'", "\\'", $username);
                 $query = "SELECT * FROM ".$table." WHERE (username LIKE '%".$username."%');";
             }
+            $statement = self::$db->prepare($query);
+            $statement->execute();
+            $numberOfRows = $statement->rowCount();
+            if($numberOfRows > 0) {
+                $result = array();
+                $statement->setFetchMode(PDO::FETCH_ASSOC);
+                while($row = $statement->fetch()) {
+                    $result[] = $row;
+                }
+                return $result;
+            } else {
+                return array();
+            }
+        } catch (PDOException $e) {
+            echo "ERROR" . $e->getMessage();
+            return array();
+        }
+    }
+
+    public static function retriveObjForSearch2($table, $field, $value) {
+        try {
+            $value = str_replace("'", "\\'", $value);
+            $query = "SELECT * FROM ".$table." WHERE (".$field." LIKE '%".$value."%');";
             $statement = self::$db->prepare($query);
             $statement->execute();
             $numberOfRows = $statement->rowCount();

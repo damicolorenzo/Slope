@@ -92,11 +92,11 @@ class CAdmin {
                     $user = FPersistentManager::getInstance()->retriveUsersForSearch('', $name, $surname);
                 }
                 if(count($user) > 0) {
-                    $view->search($user);
+                    $view->searchUsers($user);
                 }
             } else {
                 $users = FPersistentManager::getInstance()->retriveAllUsers();
-                $view->search($users);
+                $view->searchUsers($users);
             }
         }
     }
@@ -215,6 +215,140 @@ class CAdmin {
                 $view->liftStructureAlreadyExist();
             }
         }
+    }
+
+
+    //SI POSSONO AGGIUNGERE FILTRI O ALTRI PARAMETRI PER LA RICERCA
+    public static function searchStructures() {
+        if(CAdmin::isLogged()) {
+            $view = new VAdmin();
+            if(UHTTPMethods::post("search-input") !== null) {
+                $searchInput = UHTTPMethods::post("search-input");
+                $result = FPersistentManager::getInstance()->retriveForStructureSearch($searchInput); 
+                $view->searchStructure($result);
+            } else {
+                $result = FPersistentManager::getInstance()->retriveAllSkiStructures();
+                $view->searchStructure($result);
+            }
+        }
+    }
+
+    public static function modifySkiFacility() {
+        if(CAdmin::isLogged()) {
+            $view = new VAdmin();
+            $idSkiFacility = UHTTPMethods::post('idSkiFacility');
+            $skiFacility = FPersistentManager::getInstance()->retriveSkiFacilityOnId($idSkiFacility);
+            $name = $skiFacility->getName();
+            $status = $skiFacility->getStatus();
+            $price = $skiFacility->getPrice();
+            //$idImage = $user->getIdImage();
+            //$image = FPersistentManager::getInstance()->retriveImageOnId($idImage);
+            $view->modifySkiFacility($idSkiFacility, $name, $status, $price);
+        }
+    }
+
+    public static function confirmModifySkiFacility() {
+        if(CAdmin::isLogged()) {
+            //print_r(UHTTPMethods::allPost());
+            $view = new VAdmin();
+            $idSkiFacility = UHTTPMethods::post('idSkiFacility');
+            $skiFacilityName = FPersistentManager::getInstance()->verifySkiFacilityName('name', UHTTPMethods::post('name')); 
+            if(!$skiFacilityName) {
+                $skiFacility = new ESkiFacility(UHTTPMethods::post('name'), UHTTPMethods::post('status'), UHTTPMethods::post('price'));
+                $skiFacility->setIdSkiArea(1);
+                $skiFacility->setIdSkiFacility($idSkiFacility);
+                FPersistentManager::getInstance()->updateSkiFacilityInfo($skiFacility);
+                header('Location: /Slope/Admin/dashboard'); 
+            } else {
+                $view->skiFacilityAlreadyExist();
+            }
+        }
+    }
+
+    public static function deleteSkiFacility() {
+        
+    }
+
+    public static function modifySkiRun() {
+        if(CAdmin::isLogged()) {
+            $view = new VAdmin();
+            $idSkiRun = UHTTPMethods::post('idSkiRun');
+            $skiRun = FPersistentManager::getInstance()->retriveSkiRunOnId($idSkiRun);
+            $name = $skiRun->getName();
+            $type = $skiRun->getType();
+            $status = $skiRun->getStatus();
+            $idSkiFacility = $skiRun->getIdSkiFacility();
+            $nameSkiFacility = FPersistentManager::getInstance()->nameSkiFacility($idSkiFacility);
+            //$idImage = $user->getIdImage();
+            //$image = FPersistentManager::getInstance()->retriveImageOnId($idImage);
+            $view->modifySkiRun($idSkiRun, $name, $type, $status, $nameSkiFacility, $idSkiFacility);
+        }
+    }
+
+
+    public static function confirmModifySkiRun() {
+        if(CAdmin::isLogged()) {
+            //print_r(UHTTPMethods::allPost());
+            $view = new VAdmin();
+            $idSkiRun = UHTTPMethods::post('idSkiRun');
+            $newName = UHTTPMethods::post('name');
+            $idSkiFacility = UHTTPMethods::post('idSkiFacility');
+            $skiRunName = FPersistentManager::getInstance()->verifySkiRunName($newName, $idSkiFacility);
+            if($skiRunName) {
+                $skiRun = new ESkiRun(UHTTPMethods::post('name'), UHTTPMethods::post('type'), UHTTPMethods::post('status'));
+                $skiRun->setIdSkiRun($idSkiRun);
+                $skiRun->setIdSkiFacility($idSkiFacility);
+                FPersistentManager::getInstance()->updateSkiRunInfo($skiRun);
+                header('Location: /Slope/Admin/dashboard'); 
+            } else {
+                $view->skiRunAlreadyExist();
+            }
+        }
+    }
+
+    public static function deleteSkiRun() {
+        
+    }
+
+    public static function modifyLiftStructure() {
+        if(CAdmin::isLogged()) {
+            $view = new VAdmin();
+            $idLiftStructure = UHTTPMethods::post('idLift');
+            $liftStructure = FPersistentManager::getInstance()->retriveLiftStructureOnId($idLiftStructure);
+            $name = $liftStructure->getName();
+            $type = $liftStructure->getType();
+            $status = $liftStructure->getStatus();
+            $seats = $liftStructure->getSeats();
+            $idSkiFacility = $liftStructure->getIdSkiFacility();
+            $nameSkiFacility = FPersistentManager::getInstance()->nameSkiFacility($idLiftStructure);
+            //$idImage = $user->getIdImage();
+            //$image = FPersistentManager::getInstance()->retriveImageOnId($idImage);
+            $view->modifyLiftStructure($idLiftStructure, $name, $type, $status, $seats, $nameSkiFacility, $idSkiFacility);
+        }
+    }
+
+    public static function confirmModifyLiftStructure() {
+        if(CAdmin::isLogged()) {
+            //print_r(UHTTPMethods::allPost());
+            $view = new VAdmin();
+            $idLiftStructure = UHTTPMethods::post('idLiftStructure');
+            $newName = UHTTPMethods::post('name');
+            $idSkiFacility = UHTTPMethods::post('idSkiFacility');
+            $liftStructure = FPersistentManager::getInstance()->verifyLiftStructureName($newName, $idSkiFacility);
+            if(!$liftStructure) {
+                $liftStructure = new ELiftStructure(UHTTPMethods::post('name'), UHTTPMethods::post('type'), UHTTPMethods::post('status'), UHTTPMethods::post('seats'));
+                $liftStructure->setIdLift($idLiftStructure);
+                $liftStructure->setIdSkiFacility($idSkiFacility);
+                FPersistentManager::getInstance()->updateLiftStructureInfo($liftStructure);
+                header('Location: /Slope/Admin/dashboard'); 
+            } else {
+                $view->skiRunAlreadyExist();
+            }
+        }
+    }
+
+    public static function deleteLiftStructure() {
+        
     }
 
 }

@@ -31,7 +31,7 @@ class CUser {
                 chiamata loggedH(); che carica i dati sugli impianti da mostrare  
                 */
             $map = CUser::loggedH();
-            //print_r($map);
+            print_r($map);
             $view->loggedHome($map); 
         } else {
             //chiamata alla funzione home di VUser (prima di andare avanti con questo file saltare al file VUser \view\VUser.php)

@@ -1,27 +1,4 @@
-<?php
-/* Smarty version 3.1.33, created on 2024-11-04 14:49:05
-  from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-dashboard.tpl' */
-
-/* @var Smarty_Internal_Template $_smarty_tpl */
-if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
-  'version' => '3.1.33',
-  'unifunc' => 'content_6728d0d11b6ed7_77136484',
-  'has_nocache_code' => false,
-  'file_dependency' => 
-  array (
-    'd20a4f7f56240b90a0610a29ed4c46e4441abe6b' => 
-    array (
-      0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-dashboard.tpl',
-      1 => 1730728143,
-      2 => 'file',
-    ),
-  ),
-  'includes' => 
-  array (
-  ),
-),false)) {
-function content_6728d0d11b6ed7_77136484 (Smarty_Internal_Template $_smarty_tpl) {
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -90,21 +67,84 @@ function content_6728d0d11b6ed7_77136484 (Smarty_Internal_Template $_smarty_tpl)
 
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
-
       <div class="container" data-aos="fade-up">
-      <h1>DASHBOARD ADMIN</h1>
-      <ul>
-        <li><a href="/Slope/Admin/addSkiRun">Aggiungi dati pista</a></li>
-        <li><a href="/Slope/Admin/addSkiFacility">Aggiungi dati impianto</a></li>
-        <li><a href="/Slope/Admin/addLiftStructure">Aggiungi dati risalita</a></li>
-        <li><a href="/Slope/Admin/searchUsers">Modifica dati utente</a></li>
-        <li><a href="/Slope/Admin/searchStructures">Modifica dati pista/impianto/risalita</a></li>
-        <li><a href="#">Modifica interfaccia</a></li>
-      </ul>
-      <!-- Da riempire in base alla pagina  -->
+
+        <div>
+          <form class="search-form" action="/Slope/Admin/searchStructures" method="POST">
+            <input type="text" name="search-input" class="search-input" placeholder="Cerca una struttura">
+            <button type="submit" class="search-button">
+            </button>
+          </form>
+        </div>
+
+        {if count($objects) > 0}
+        <div class="structures">
+          {foreach from=$objects item=i}
+            <div class="structure-cards-container">
+              {foreach from=$i item=element}
+                {if $element instanceof ESkiFacility}
+                  <div class="card">
+                    <div class="user-info">
+                      <p >{$element->getName()}</p>
+                      <p >{$element->getStatus()}</p>
+                      <p >{$element->getPrice()}</p>
+                    </div>
+                    <div class="action-buttons">
+                      <form class="search-form" action="/Slope/Admin/modifySkiFacility" method="POST">
+                        <button type="submit" name="idSkiFacility" value={$element->getIdSkiFacility()} class="edit">Modifica</button>
+                      </form>
+                      <form class="search-form" action="/Slope/Admin/deleteSkiFacility" mathod="POST">
+                        <button type="submit" name="idSkiFacility" value={$element->getIdSkiFacility()} class="delete">Elimina</button>
+                      </form>
+                    </div>
+                  </div>
+                {/if}
+                {if is_array($element)}
+                  {if $element[0] instanceof ESkiRun}
+                    <div class="card">
+                      <div class="user-info">
+                        <p>{$element[0]->getName()}</p>
+                        <p>{$element[0]->getType()}</p>
+                        <p>{$element[0]->getStatus()}</p>
+                        <p>Impianto di riferimento: {$element[1]}</p>
+                      </div>
+                      <div class="action-buttons">
+                        <form class="search-form" action="/Slope/Admin/modifySkiRun" method="POST">
+                          <button type="submit" name="idSkiRun" value={$element[0]->getIdSkiRun()} class="edit">Modifica</button>
+                        </form>
+                        <form class="search-form" action="/Slope/Admin/deleteSkiRun" mathod="POST">
+                          <button type="submit" name="idSkiRun" value={$element[0]->getIdSkiRun()} class="delete">Elimina</button>
+                        </form>
+                      </div>
+                    </div> 
+                  {/if}
+                  {if $element[0] instanceof ELiftStructure}
+                    <div class="card">
+                      <div class="user-info">
+                        <p>{$element[0]->getName()}</p>
+                        <p>{$element[0]->getType()}</p>
+                        <p>{$element[0]->getStatus()}</p>
+                        <p>{$element[0]->getSeats()}</p>
+                        <p>Impianto di riferimento: {$element[1]}</p>
+                      </div>
+                      <div class="action-buttons">
+                        <form class="search-form" action="/Slope/Admin/modifyLiftStructure" method="POST">
+                          <button type="submit" name="idLift" value={$element[0]->getIdLift()} class="edit">Modifica</button>
+                        </form>
+                        <form class="search-form" action="/Slope/Admin/deleteLiftStructure" mathod="POST">
+                          <button type="submit" name="idLift" value={$element[0]->getIdLift()} class="delete">Elimina</button>
+                        </form>
+                      </div>
+                    </div>
+                  {/if}
+                {/if}
+              {/foreach}
+            </div>
+          {/foreach}
+        </div>
+        {/if}
 
       </div>
-
     </section><!-- /Starter Section Section -->
 
   </main>
@@ -187,34 +227,17 @@ function content_6728d0d11b6ed7_77136484 (Smarty_Internal_Template $_smarty_tpl)
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <?php echo '<script'; ?>
- src="https://localhost/Slope/libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
->
-  <?php echo '<script'; ?>
- src="https://localhost/Slope/libs/Smarty/day/assets/vendor/php-email-form/validate.js"><?php echo '</script'; ?>
->
-  <?php echo '<script'; ?>
- src="https://localhost/Slope/libs/Smarty/day/assets/vendor/aos/aos.js"><?php echo '</script'; ?>
->
-  <?php echo '<script'; ?>
- src="https://localhost/Slope/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"><?php echo '</script'; ?>
->
-  <?php echo '<script'; ?>
- src="https://localhost/Slope/libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"><?php echo '</script'; ?>
->
-  <?php echo '<script'; ?>
- src="https://localhost/Slope/libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"><?php echo '</script'; ?>
->
-  <?php echo '<script'; ?>
- src="https://localhost/Slope/libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"><?php echo '</script'; ?>
->
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/php-email-form/validate.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/aos/aos.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 
   <!-- Main JS File -->
-  <?php echo '<script'; ?>
- src="https://localhost/Slope/libs/Smarty/day/assets/js/main.js"><?php echo '</script'; ?>
->
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/js/main.js"></script>
 
 </body>
 
-</html><?php }
-}
+</html>

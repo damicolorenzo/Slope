@@ -24,12 +24,39 @@ class FSkiFacility {
         $stmt->bindValue(":price",$skiFacility->getPrice(), PDO::PARAM_INT);
     }
 
-    public static function saveObj($obj){
-        $saveSkiFacility = FEntityManager::getInstance()->saveObject(self::getClass(), $obj);
-        if($saveSkiFacility !== null){
-            return $saveSkiFacility;
-        }else{
-            return false;
+    public static function saveObj($obj, $fieldArray = null){
+        if($fieldArray === null) {
+            try{
+                FEntityManager::getInstance()->getDb()->beginTransaction();
+                $saveSkiFacility = FEntityManager::getInstance()->saveObject(self::getClass(), $obj);
+                if($saveSkiFacility !== null){
+                    FEntityManager::getInstance()->getDb()->commit();
+                    return $saveSkiFacility;
+                }else{
+                    return false;
+                }
+            }catch(PDOException $e){
+                echo "ERROR " . $e->getMessage();
+                FEntityManager::getInstance()->getDb()->rollBack();
+                return false;
+            }finally{
+                FEntityManager::getInstance()->closeConnection();
+            }
+        } else {
+            try {
+                FEntityManager::getInstance()->getDb()->beginTransaction();
+                foreach($fieldArray as $fv) {
+                    FEntityManager::getInstance()->updateObj(FSkiFacility::getTable(), $fv[0], $fv[1], self::getKey(), $obj->getIdSkiFacility());
+                } 
+                FEntityManager::getInstance()->getDb()->commit();
+                return true;
+            } catch (PDOException $e) {
+                echo "ERROR " . $e->getMessage();
+                FEntityManager::getInstance()->getDb()->rollBack();
+                return false;
+            } finally{
+                FEntityManager::getInstance()->closeConnection();
+            } 
         }
     }
 
@@ -45,9 +72,9 @@ class FSkiFacility {
             $skiFacilities = array();
             for($i = 0; $i < count($queryResult); $i++){
                 //$attributes = FEntityManager::getInstance()->retriveObj(self::getTable(), self::getKey(), $queryResult[0][self::getKey()]);
-                $skiFacility = new ESkiFacility($queryResult[0]['name'], $queryResult[0]['status'], $queryResult[0]['price']);
-                $skiFacility->setIdSkiFacility($queryResult[0]['idSkiFacility']);
-                $skiFacility->setIdSkiArea($queryResult[0]['idSkiArea']);
+                $skiFacility = new ESkiFacility($queryResult[$i]['name'], $queryResult[$i]['status'], $queryResult[$i]['price']);
+                $skiFacility->setIdSkiFacility($queryResult[$i]['idSkiFacility']);
+                $skiFacility->setIdSkiArea($queryResult[$i]['idSkiArea']);
                 $skiFacilities[] = $skiFacility;
             }
             return $skiFacilities;
@@ -57,7 +84,7 @@ class FSkiFacility {
     }
 
     public static function getSkiFacilities() {
-        $result = FEntityManager::getInstance()->selectObj(FSkiFacility::getKey(), FSkiFacility::getTable());
+        $result = FEntityManager::getInstance()->retriveAllObj(FSkiFacility::getTable());
         return $result;
     }
 
@@ -79,6 +106,26 @@ class FSkiFacility {
     public static function getIdFromName($name) {
         $result = FEntityManager::getInstance()->selectObjKey(FSkiFacility::getKey(), FSkiFacility::getTable(), 'name', $name);
         return $result;
+    }
+
+    public static function getAllSkiFacilityObj() {
+        $result = FEntityManager::getInstance()->retriveAllObj(FSkiFacility::getTable());
+        return $result;
+    }
+
+    public static function getSkiFacilityById($id){
+        $result = FEntityManager::getInstance()->retriveObj(FSkiFacility::getTable(), 'idSkiFacility', $id);
+        return $result;
+    }
+
+    public static function getSkiFacilityByName($field, $id){
+        $queryResult = FEntityManager::getInstance()->retriveObj(self::getTable(), $field, $id);
+        return FEntityManager::getInstance()->existInDb($queryResult);
+    }
+
+    public static function getSkiFacilityByNameForSearch($queryString) {
+        $queryResult = FEntityManager::getInstance()->retriveObjForSearch2(self::getTable(), 'name', $queryString);
+        return $queryResult;
     }
     
 }

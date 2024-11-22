@@ -30,13 +30,39 @@ class FLiftStructure {
         $stmt->bindValue(":idSkiFacility",$liftStructure->getIdSkiFacility(), PDO::PARAM_INT);
     }
 
-    public static function saveObj($obj){
-        $saveLiftStructure = FEntityManager::getInstance()->saveObject(self::getClass(), $obj);
-        if($saveLiftStructure !== null){
-            return $saveLiftStructure;
-        }
-        else{
-            return false;
+    public static function saveObj($obj, $fieldArray = null){
+        if($fieldArray === null) {
+            try {
+                FEntityManager::getInstance()->getDb()->beginTransaction();
+                $saveLiftStructure = FEntityManager::getInstance()->saveObject(self::getClass(), $obj);
+                if($saveLiftStructure !== null) {
+                    FEntityManager::getInstance()->getDb()->commit();
+                    return $saveLiftStructure;
+                } else {
+                    return false;
+                }
+            } catch(PDOException $e) {
+                echo "ERROR ".$e->getMessage();
+                FEntityManager::getInstance()->getDb()->rollBack();
+                return false;
+            } finally {
+                FEntityManager::getInstance()->closeConnection();
+            }
+        } else {
+            try {
+                FEntityManager::getInstance()->getDb()->beginTransaction();
+                foreach($fieldArray as $fv) {
+                    FEntityManager::getInstance()->updateObj(FLiftStructure::getTable(), $fv[0], $fv[1], self::getKey(), $obj->getIdLift());
+                }
+                FEntityManager::getInstance()->getDb()->commit();
+                return true;
+            } catch(PDOException $e) {
+                echo "ERROR ".$e->getMessage();
+                FEntityManager::getInstance()->getDb()->rollBack();
+                return false;
+            } finally {
+                FEntityManager::getInstance()->closeConnection();
+            }
         }
     }
 
@@ -51,9 +77,9 @@ class FLiftStructure {
             $lifts = array();
             for($i = 0; $i < count($queryResult); $i++){
                 //$attributes = FEntityManager::getInstance()->retriveObj(self::getTable(), self::getKey(), $queryResult[0][self::getKey()]);
-                $lift = new ELiftStructure($queryResult[0]['name'], $queryResult[0]['type'], $queryResult[0]['status'], $queryResult[0]['seats']);
-                $lift->setIdLift($queryResult[0]['idLiftStructure']);
-                $lift->setIdSkiFacility($queryResult[0]['idSkiFacility']);
+                $lift = new ELiftStructure($queryResult[$i]['name'], $queryResult[$i]['type'], $queryResult[$i]['status'], $queryResult[$i]['seats']);
+                $lift->setIdLift($queryResult[$i]['idLiftStructure']);
+                $lift->setIdSkiFacility($queryResult[$i]['idSkiFacility']);
                 $lifts[] = $lift;
             }
             return $lifts;
@@ -75,6 +101,21 @@ class FLiftStructure {
     public static function getLiftStructureByNameAndSkiFacility($name, $idSkiFacility) {
         $queryResult = FEntityManager::getInstance()->retriveObj2(self::getTable(), 'name', $name, self::getExtKey(), $idSkiFacility);
         return FEntityManager::getInstance()->existInDb($queryResult);
+    }
+
+    public static function getAllLiftStructureObj() {
+        $result = FEntityManager::getInstance()->retriveAllObj(FLiftStructure::getTable());
+        return $result;
+    }
+
+    public static function getLiftStructureById($id){
+        $result = FEntityManager::getInstance()->retriveObj(FLiftStructure::getTable(), 'idLiftStructure', $id);
+        return $result;
+    }
+
+    public static function getLiftStructureByNameForSearch($queryString) {
+        $queryResult = FEntityManager::getInstance()->retriveObjForSearch2(self::getTable(), 'name', $queryString);
+        return $queryResult;
     }
 }
 

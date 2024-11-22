@@ -32,9 +32,14 @@ class VAdmin {
         $this->smarty->display('admin-dashboard.tpl');
     }
 
-    public function search($users) {
+    public function searchUsers($users) {
         $this->smarty->assign('users', $users);
-        $this->smarty->display('admin-search.tpl');
+        $this->smarty->display('admin-searchUser.tpl');
+    }
+
+    public function searchStructure($result) {
+        $this->smarty->assign('objects', $result);
+        $this->smarty->display('admin-searchStructure.tpl');
     }
 
     public function modifyProfile($username, $name, $surname, $email, $phoneNumber, $birthDate, $phoneError, $dateError) {
@@ -81,6 +86,41 @@ class VAdmin {
     public function liftStructureAlreadyExist() {
         $this->smarty->assign('exist', true);
         $this->smarty->display('admin-addLiftStructure.tpl');
+    }
+
+    public function modifySkiFacility($id, $name, $status, $price) {
+        $this->smarty->assign('name', $name);
+        $this->smarty->assign('status', $status);
+        $this->smarty->assign('price', $price);
+        $this->smarty->assign('id', $id);
+        $this->smarty->assign('exist', false);
+        $this->smarty->display('admin-modifySkiFacility.tpl');
+    }
+
+    public function skiFacilityAlreadyExist() {
+        $this->smarty->assign('exist', true);
+        $this->smarty->display('admin-modifySkiFacility.tpl');
+    }
+
+    public function modifySkiRun($idSkiRun, $name, $type, $status, $nameSkiFacility, $idSkiFacility) {
+        $this->smarty->assign('idSkiRun', $idSkiRun);
+        $this->smarty->assign('name', $name);
+        $this->smarty->assign('type', $type);
+        $this->smarty->assign('status', $status);
+        $this->smarty->assign('nameSkiFacility', $nameSkiFacility);       
+        $this->smarty->assign('idSkiFacility', $idSkiFacility);       
+        $this->smarty->display('admin-modifySkiRun.tpl');
+    }
+
+    public function modifyLiftStructure($idLiftStructure, $name, $type, $status, $seats, $nameSkiFacility, $idSkiFacility) {
+        $this->smarty->assign('idLiftStructure', $idLiftStructure);
+        $this->smarty->assign('name', $name);
+        $this->smarty->assign('type', $type);
+        $this->smarty->assign('status', $status);
+        $this->smarty->assign('seats', $seats);
+        $this->smarty->assign('nameSkiFacility', $nameSkiFacility);
+        $this->smarty->assign('idSkiFacility', $idSkiFacility);  
+        $this->smarty->display('admin-modifyLiftStructure.tpl');
     }
 
     
