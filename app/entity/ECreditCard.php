@@ -3,26 +3,27 @@
 class ECreditCard{
 
     //attributes
-    protected string $cardHolderName;
-    protected string $cardHolderSurname;
-    protected DateTime $endDate;
-    protected int $cardNumber;
-    protected int $cvv;
+    private int $idCreditCard; 
+    private string $cardHolderName;
+    private string $cardHolderSurname;
+    private string $expiryDate;
+    private int $cardNumber;
+    private int $cvv;
+    private int $idUser;
 
     //constructor
-    public function ___construct(string $cardHolderName, string $cardHolderSurname, string $endDate, int $cardNumber, int $cvv){
+    public function __construct(string $cardHolderName, string $cardHolderSurname, string $expiryDate, int $cardNumber, int $cvv){
         $this->cardHolderName = $cardHolderName;
         $this->cardHolderSurname = $cardHolderSurname;
-        $objDateTime = new DateTime($stringEndDate);
-        $newObj = clone $objDateTime;
-        $newObj->format('Y-m-d'); 
-        $this->endDate = $newObj;
-        $this->setTime();
+        $this->expiryDate = $expiryDate;
         $this->cardNumber = $cardNumber;
         $this->cvv = $cvv;
     }
 
     //get methods
+    public function getIdCreditCard(){
+        return $this->idCreditCard;
+    }
     public function getCardHolderName(){
         return $this->cardHolderName;
     }
@@ -35,33 +36,36 @@ class ECreditCard{
     public function getCvv(){
         return $this->cvv;
     }
-    public function getEndDate(){
-        return $this->endDate;
+    public function getExpiryDate(){
+        $date = new DateTime($this->expiryDate);
+        return $date->format('Y-m');
     }
-    public function getEndDateStr(){
-        return $this->endDate->format('Y-m-d');
+    public function getIdUser() {
+        return $this->idUser;
     }
-
 
     //set methods
-    public function setCardHolderName(string $cardHolderName1){
-        $this->cardHolderName = $cardHolderName1;
+    public function setIdCreditCard(int $idCreditCard) {
+        $this->idCreditCard = $idCreditCard;
     }
-    public function setCardHolderSurname(string $cardHolderSurname1){
-        $this->cardHolderSurname = $cardHolderSurname1;
+    public function setCardHolderName(string $cardHolderName){
+        $this->cardHolderName = $cardHolderName;
     }
-    public function setCardNumber(int $cardNumber1){
-        $this->cardNumber = $cardNumber1;
+    public function setCardHolderSurname(string $cardHolderSurname){
+        $this->cardHolderSurname = $cardHolderSurname;
     }
-    public function setCvv(int $cvv1){
-        $this->cvv = $cvv1;
+    public function setCardNumber(int $cardNumber){
+        $this->cardNumber = $cardNumber;
     }
-    public function setEndDate(DateTime $endDate1){
-        $objDateTime = new DateTime($endDate1);
-        $newObj = clone $objDateTime;
-        $newObj->format('Y-m-d'); 
-        $this->endDate = $newObj;
-}
+    public function setCvv(int $cvv){
+        $this->cvv = $cvv;
+    }
+    public function setEndDate(string $expiryDate){
+        $this->expiryDate = $expiryDate;
+    }
+    public function setIdUser(int $idUser) {
+        $this->idUser = $idUser;
+    }
 
 }
 ?>

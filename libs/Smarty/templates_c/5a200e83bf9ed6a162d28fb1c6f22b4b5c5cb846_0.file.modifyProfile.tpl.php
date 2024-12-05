@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-10-14 13:00:49
+/* Smarty version 3.1.33, created on 2024-11-29 14:35:14
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\modifyProfile.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_670cf9e180d091_86948643',
+  'unifunc' => 'content_6749c312c7e3a2_69161111',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5a200e83bf9ed6a162d28fb1c6f22b4b5c5cb846' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\modifyProfile.tpl',
-      1 => 1728903641,
+      1 => 1732887309,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_670cf9e180d091_86948643 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6749c312c7e3a2_69161111 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -73,17 +73,10 @@ function content_670cf9e180d091_86948643 (Smarty_Internal_Template $_smarty_tpl)
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">Prenota</a></li>
-            <li><a href="#services">Visualizza prenotazioni</a></li>
-            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-              <ul>
-                <li><a href="#">Piste</a></li>
-                <li><a href="#">Impianti</a></li>
-                <li><a href="#">Web</a></li>
-              </ul>
-            </li>
-            <li><a href="#contact">Profilo</a></li>
+            <li><a href="/Slope/">Home</a></li>
+            <li><a href="/Slope/User/showBookings">Visualizza Prenotazioni</a></li>
+            <li><a href="/Slope/User/profile">Profile</a></li>
+            <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>

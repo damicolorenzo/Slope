@@ -39,12 +39,16 @@ Class FUser{
         }
     } */
 
-    public static function crateUserObj($queryResult){
+    public static function createUserObj($queryResult){
         if(count($queryResult) == 1){
             $attributes = FEntityManager::getInstance()->retriveObj(self::getTable(), "idUser", $queryResult[0]['idUser']);
             $user = new EUser($queryResult[0]['name'], $queryResult[0]['surname'], $queryResult[0]['email'], $queryResult[0]['phoneNumber'], $queryResult[0]['birthDate'], $queryResult[0]['username'], $queryResult[0]['password']);
             $user->setId($queryResult[0]['idUser']);
-            $user->setIdImage($attributes[0]['idImage']);
+            if(isset($attributes[0]['idImage'])) {
+                $user->setIdImage($attributes[0]['idImage']);
+            } else {
+                $user->setIdImage(0);
+            }
             return $user;
         }elseif(count($queryResult) > 1){
             $users = array();
@@ -65,7 +69,7 @@ Class FUser{
         $result = FEntityManager::getInstance()->retriveObj(FPerson::getTable(), self::getKey(), $id);
         //var_dump($result);
         if(count($result) > 0){
-            $user = self::crateUserObj($result);
+            $user = self::createUserObj($result);
             return $user;
         }else{
             return null;

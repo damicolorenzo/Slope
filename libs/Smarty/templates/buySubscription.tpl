@@ -50,9 +50,17 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/User/showBookings">Visualizza Prenotazioni</a></li>
-            <li><a href="/Slope/User/profile">Profile</a></li>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">Prenota</a></li>
+            <li><a href="#services">Visualizza prenotazioni</a></li>
+            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <ul>
+                <li><a href="#">Piste</a></li>
+                <li><a href="#">Impianti</a></li>
+                <li><a href="#">Web</a></li>
+              </ul>
+            </li>
+            <li><a href="/Slope/User/profile">Profilo</a></li>
             <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -65,57 +73,45 @@
 
   <main class="main">
 
-    <!-- Page Title -->
-    <!-- <div class="page-title" data-aos="fade">
-      <div class="container">
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="/Slope">Home</a></li>
-            <li class="current">Starter Page</li>
-          </ol>
-        </nav>
-        <h1>Starter Page</h1>
-      </div>
-    </div> --><!-- End Page Title -->
-
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
 
       <div class="container" data-aos="fade-up">
-        
-        <div class="profile-container">
-            <div class="profile-info">
-                <form action="/Slope/User/confirmModify" enctype="multipart/form-data" method="POST">
-                    <h2>MODIFICA PROFILO</h2>
-                    <p><strong>Nome utente:</strong> {$username}</p>
-                    <p><strong>Nome:</strong> {$name}</p>
-                    <p><strong>Cognome:</strong> {$surname}</p>
-                    <p><strong>Email di conferma:</strong></p>
-                    <input type="email" id="email" name="email" value="{$email}" required>
-                    <p><strong>Numero di telefono:</strong></p>
-                    <input type="tel" id="phoneNumber" name="phoneNumber" value="{$phoneNumber}" required>
-                    {if $phoneError == true}
-                    <label>Inserire numero del tipo +39NUMERO_DI_TELEFONO</label>
-                    {/if}
-                    <p><strong>Data nascita:</strong> {$birthDate}</p>
-                    <p><strong>Modifica immagine:</strong></p>
-                    <input type="file" name="imageFile" id ="imageFile" multiple>
-                    {if $imageError == true}
-                    <label>Errore nel caricamento dell'immagine. Riprovare!</label>
-                    {/if}
-                    <button class="edit-button" type="submit">Conferma modifiche</button>
-                </form>
-            </div>
-            
-            <p><strong>Modifica password:</strong></p>
-            <div class="button-container">
-              <a href="/Slope/User/modifyPassword"><button class="edit-button">Modifica password</button></a>
-            </div>
-            
-            
-        </div>
 
-      <!-- Da riempire in base alla pagina  -->
+      {foreach from=$map item=i} 
+          <form class="search-form" action="/Slope/User/skiFacilitydetails" method="POST">
+          <div class="card-impianto">
+            <div class="impianto">
+              <h3>{$i[0]}</h3>
+              <img src="link-alla-tua-immagine.jpg" alt="Immagine dell'impianto" class="impianto-img">
+            </div>
+            <div class="dettagli-impianto">
+              <h4>Dettagli {$i[0]}</h4> 
+              <button type="submit" name="nameSkiFacility" value={$i[0]} >Esplora</button>
+                <div class="piste">
+                  {foreach from=$i[1] item=e}  
+                    {if $e['type'] == 'blu'}
+                    <div class="pista blu">Blu: <span>{$e['CNT']}</span></div>
+                    {/if}
+                    {if $e['type'] == 'rossa'}
+                    <div class="pista rossa">Rosse: <span>{$e['CNT']}</span></div>
+                    {/if}
+                    {if $e['type'] == 'nera'}
+                    <div class="pista nera">Nere: <span>{$e['CNT']}</span></div>
+                    {/if}
+                    {if $e['type'] == 'verde'}
+                    <div class="pista verde">Verdi: <span>{$e['CNT']}</span></div>
+                    {/if}
+                  {/foreach}
+                </div>
+                <p>Impianti: <span>{$i[2]['CNT']}</span></p>
+                <p>Status: <span class="status aperto">'aperto'</span></p>
+            </div>
+            
+          </div>
+          
+          <form>
+        {/foreach}
 
       </div>
 

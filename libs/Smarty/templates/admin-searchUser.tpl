@@ -34,6 +34,114 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+  .search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.search-input {
+  width: 450px;
+  height: 45px;
+  padding: 10px 20px;
+  border: 1px solid #dfe1e5;
+  border-radius: 24px;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+  transition: box-shadow 0.3s ease;
+}
+
+.search-input:focus {
+  box-shadow: 0 1px 6px rgba(32, 33, 36, 0.4);
+  border-color: #4285f4;
+}
+
+/* Pulsante della lente */
+.search-button {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #5f6368;
+  outline: none;
+}
+
+.search-button:hover {
+  color: #4285f4;
+}
+
+.users {
+  font-family: Arial, sans-serif;
+    margin: 0;
+    padding-top: 20px;
+    background-color: #f0f0f0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Distanza tra le card */
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Allinea il testo a sinistra */
+}
+
+.username, .name, .surname {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px; /* Spazio tra i pulsanti */
+}
+
+button {
+  padding: 10px 15px;
+  border: 1px solid #000;
+  border-radius: 3px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ddd;
+}
+
+.edit {
+  color: green;
+  border-color: green;
+}
+
+.delete {
+  color: red;
+  border-color: red;
+}
+  </style>
 </head>
 
 <body class="starter-page-page">

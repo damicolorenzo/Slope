@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-11-30 15:49:25
-  from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\registration.tpl' */
+/* Smarty version 3.1.33, created on 2024-11-28 17:50:26
+  from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\paymentSection.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_674b25f56b0f21_32402803',
+  'unifunc' => 'content_67489f52eaf626_16692837',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '028bf6a8f3606be519b25ff0001000f2eeb73dad' => 
+    'b05e431f7332b74dde2c36ea6d5a0da1c78fad5d' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\registration.tpl',
-      1 => 1732977992,
+      0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\paymentSection.tpl',
+      1 => 1732791160,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674b25f56b0f21_32402803 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67489f52eaf626_16692837 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -57,82 +57,6 @@ function content_674b25f56b0f21_32402803 (Smarty_Internal_Template $_smarty_tpl)
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  <style>
-  .form_login-container {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 45%;
-}
-
-.form_login-container form h2 {
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.form_login-container label {
-  display: block;
-  margin-bottom: 8px;
-  color: #666;
-}
-
-.form_login-container input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="username"], 
-input[type="tel"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-input[type="date"] {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-size: 16px;
-  font-family: Arial, sans-serif;
-}
-
-input[type="date"]:focus {
-  border-color: #4CAF50;
-  outline: none;
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-  background: url('data:image/svg+xml;base64,<svg>...</svg>') no-repeat center;
-  cursor: pointer;
-  color: transparent; 
-  opacity: 0.5; 
-}
-
-input[type="date"]::placeholder {
-  color: #999;
-  font-style: italic;
-}
-
-.form_login-container button {
-  width: 100%;
-  padding: 10px;
-  background-color: #007BFF;
-  border: none;
-  border-radius: 4px;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.form_login-container button:hover {
-  background-color: #0056b3;
-}
-  </style>
 </head>
 
 <body class="starter-page-page">
@@ -149,18 +73,18 @@ input[type="date"]::placeholder {
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <!-- <li><a href="#hero">Home</a></li>
+            <li><a href="#hero">Home</a></li>
             <li><a href="#about">Prenota</a></li>
             <li><a href="#services">Visualizza prenotazioni</a></li>
-            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a> -->
+            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
-                <!-- <li><a href="#">Piste</a></li>
+                <li><a href="#">Piste</a></li>
                 <li><a href="#">Impianti</a></li>
-                <li><a href="#">Web</a></li> -->
+                <li><a href="#">Web</a></li>
               </ul>
             </li>
-            <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/User/login">Login</a></li>
+            <li><a href="/Slope/User/profile">Profilo</a></li>
+            <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -172,74 +96,100 @@ input[type="date"]::placeholder {
 
   <main class="main">
 
-    <!-- Page Title -->
-    <!-- <div class="page-title" data-aos="fade">
-      <div class="container">
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Starter Page</li>
-          </ol>
-        </nav>
-        <h1>Starter Page</h1>
-      </div>
-    </div> --><!-- End Page Title -->
-
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
-      <?php if ($_smarty_tpl->tpl_vars['exist']->value == false) {?>
-      <div class="container" data-aos="fade-up">
-        <div class="form_login-container">
-            <form class="register-form" action="/Slope/User/checkRegistration" method="POST">
-                <h2>Registrazione</h2>
-                
-                <label for="name">Nome</label>
-                <input type="text" id="name" name="name" value="<?php echo $_smarty_tpl->tpl_vars['name']->value;?>
-" required>
-                
-                <label for="surname">Cognome</label>
-                <input type="text" id="surname" name="surname" value="<?php echo $_smarty_tpl->tpl_vars['surname']->value;?>
-" required>
-                
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" value="<?php echo $_smarty_tpl->tpl_vars['email']->value;?>
-" required>
-                
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" value="<?php echo $_smarty_tpl->tpl_vars['username']->value;?>
-" required>
-                
-                <label for="phoneNumber">Numero di telefono</label>
-                <input type="tel" id="phoneNumber" name="phoneNumber" value="<?php echo $_smarty_tpl->tpl_vars['phoneNumber']->value;?>
-" required>
-                <?php if ($_smarty_tpl->tpl_vars['phoneError']->value == true) {?>
-                <label>Inserire numero del tipo +39NUMERO_DI_TELEFONO</label>
-                <?php }?>
-                
-                <label for="birthDate">Data di nascita</label>
-                <input type="date" id="birthDate" name="birthDate" min="1900-01-01" value="<?php echo $_smarty_tpl->tpl_vars['birthDate']->value;?>
-" required>
-                <?php if ($_smarty_tpl->tpl_vars['dateError']->value == true) {?>
-                <label>Inserire una data compresa tra 01-01-1900 e oggi</label>
-                <?php }?>
 
-                <label for="password-register">Password</label>
-                <input type="password" id="password" name="password" required>
-                <?php if ($_smarty_tpl->tpl_vars['passwordError']->value == true) {?>
-                <label>Lunghezza minima 8 CARATTERI, lettere maiuscole/minuscole, numeri, almeno un carattere speciale</label>
-                <?php }?>
-                
-                <button type="submit">Registrati</button>
-            </form>
-        </div>
-      </div>
-      <?php }?>
-      <?php if ($_smarty_tpl->tpl_vars['exist']->value == true) {?>
       <div class="container" data-aos="fade-up">
-        <h1>L'utente è già presente nel database</h1>
-        <h2>Effettua l'accesso <a href="/Slope/User/login">qui</a></h2>
+
+      <div class="payment-container">
+        <h1>Riepilogo Pagamento</h1>
+        
+        <!-- Dettagli acquisto -->
+        <div class="order-summary">
+            <h2>Dettagli Acquisto</h2>
+            <ul class="order-list">
+                                <li>
+                    <span>Articolo 2</span>
+                    <span>€30.00</span>
+                </li>
+                <li>
+                    <span>Articolo 3</span>
+                    <span>€20.00</span>
+                </li>
+                <li class="total">
+                    <span><strong>Totale</strong></span>
+                    <span><strong>€100.00</strong></span>
+                </li>
+            </ul>
+        </div>
+        
+        <form action="/Slope/User/payment" class="payment-form"  enctype="multipart/form-data" method="POST">
+          <h2>Paga con Carta di Credito</h2>
+            <div class="form-group">
+                <label for="cardHolderName">Nome Intestatario Carta</label>
+                <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
+                <input type="text" id="card-name" name="cardHolderName" placeholder="Mario" required>
+                <?php } else { ?>
+                <input type="text" id="card-name" name="cardHolderName" value=<?php echo $_smarty_tpl->tpl_vars['creditCard']->value->getCardHolderName();?>
+ required>
+                <?php }?>
+            </div>
+            <div class="form-group">
+                <label for="cardHolderSurname">Cognome Intestatario Carta</label>
+                <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
+                <input type="text" id="card-surname" name="cardHolderSurname" placeholder="Rossi" required>
+                <?php } else { ?>
+                <input type="text" id="card-surname" name="cardHolderSurname" value=<?php echo $_smarty_tpl->tpl_vars['creditCard']->value->getCardHolderSurname();?>
+ required>
+                <?php }?>
+            </div>
+            <div class="form-group">
+                <label for="cardNumber">Numero Carta</label>
+                <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
+                <input type="text" id="card-number" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19"  required>
+                <?php } else { ?>
+                <input type="text" id="card-number" name="cardNumber" value=<?php echo $_smarty_tpl->tpl_vars['creditCard']->value->getCardNumber();?>
+ maxlength="19"  required>
+                <?php }?>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="expiryDate">Scadenza Carta</label>
+                    <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
+                    <input type="month" id="expiry-date" name="expiryDate" required>
+                    <?php } else { ?>
+                    <input type="month" id="expiry-date" name="expiryDate" value=<?php echo $_smarty_tpl->tpl_vars['creditCard']->value->getExpiryDate();?>
+ required>
+                    <?php }?>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
+                    <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3"  required>
+                    <?php } else { ?>
+                    <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3"  value=<?php echo $_smarty_tpl->tpl_vars['creditCard']->value->getCvv();?>
+ required>
+                    <?php }?>
+                </div>
+            </div>
+            <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
+            <div class="form-group">
+              <label for="preferred">Salvare come metodo preferito</label>
+              <input type="checkbox" id="preferred" name="preferred" >
+            </div>
+            <?php } else { ?> 
+            <div class="form-group">
+              <label for="preferred">Salvare come metodo preferito</label>
+              <input type="checkbox" id="preferred" name="preferred" checked>
+            </div>
+            <?php }?>
+            
+            <button type="submit" class="submit-btn">Procedi al Pagamento</button>
+        </form>
+
       </div>
-      <?php }?>
+
+      </div>
 
     </section><!-- /Starter Section Section -->
 
@@ -251,11 +201,11 @@ input[type="date"]::placeholder {
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6">
           <div class="footer-about">
-            <a href="/Slope" class="logo sitename">Slope</a>
+            <a href="/Slope" class="logo sitename">Day</a>
             <div class="footer-contact pt-3">
               <p>Via Vetoio</p>
               <p>L'Aquila, AQ 67100</p>
-              <p class="mt-3"><strong>Numero:</strong> <span>+39 123 456 7890</span></p>
+              <p class="mt-3"><strong>Phone:</strong> <span>+39 123 456 7890</span></p>
               <p><strong>Email:</strong> <span>info@example.com</span></p>
             </div>
             <div class="social-links d-flex mt-4">

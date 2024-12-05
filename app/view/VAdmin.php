@@ -123,6 +123,13 @@ class VAdmin {
         $this->smarty->display('admin-modifyLiftStructure.tpl');
     }
 
+    public function prices($prices) {
+        $this->smarty->assign('prices', $prices);
+        $this->smarty->display('admin-modifyPrices.tpl');
+    }
+
+
+
     
 }
 

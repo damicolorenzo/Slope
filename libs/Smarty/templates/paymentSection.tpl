@@ -34,6 +34,123 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+  .payment-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.payment-container h1 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #444;
+}
+
+.order-summary {
+  margin-bottom: 20px;
+}
+
+.order-summary h2 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #444;
+}
+
+.order-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.order-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+}
+
+.order-list li.total {
+  font-weight: bold;
+  border-top: 2px solid #444;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+.payment-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.payment-container h1 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #444;
+}
+
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-group input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+}
+
+.form-group input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.submit-btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+  </style>
 </head>
 
 <body class="starter-page-page">
@@ -65,57 +182,100 @@
 
   <main class="main">
 
-    <!-- Page Title -->
-    <!-- <div class="page-title" data-aos="fade">
-      <div class="container">
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="/Slope">Home</a></li>
-            <li class="current">Starter Page</li>
-          </ol>
-        </nav>
-        <h1>Starter Page</h1>
-      </div>
-    </div> --><!-- End Page Title -->
-
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
 
       <div class="container" data-aos="fade-up">
-        
-        <div class="profile-container">
-            <div class="profile-info">
-                <form action="/Slope/User/confirmModify" enctype="multipart/form-data" method="POST">
-                    <h2>MODIFICA PROFILO</h2>
-                    <p><strong>Nome utente:</strong> {$username}</p>
-                    <p><strong>Nome:</strong> {$name}</p>
-                    <p><strong>Cognome:</strong> {$surname}</p>
-                    <p><strong>Email di conferma:</strong></p>
-                    <input type="email" id="email" name="email" value="{$email}" required>
-                    <p><strong>Numero di telefono:</strong></p>
-                    <input type="tel" id="phoneNumber" name="phoneNumber" value="{$phoneNumber}" required>
-                    {if $phoneError == true}
-                    <label>Inserire numero del tipo +39NUMERO_DI_TELEFONO</label>
-                    {/if}
-                    <p><strong>Data nascita:</strong> {$birthDate}</p>
-                    <p><strong>Modifica immagine:</strong></p>
-                    <input type="file" name="imageFile" id ="imageFile" multiple>
-                    {if $imageError == true}
-                    <label>Errore nel caricamento dell'immagine. Riprovare!</label>
-                    {/if}
-                    <button class="edit-button" type="submit">Conferma modifiche</button>
-                </form>
-            </div>
-            
-            <p><strong>Modifica password:</strong></p>
-            <div class="button-container">
-              <a href="/Slope/User/modifyPassword"><button class="edit-button">Modifica password</button></a>
-            </div>
-            
-            
-        </div>
 
-      <!-- Da riempire in base alla pagina  -->
+      <div class="payment-container">
+        <h1>Riepilogo Pagamento</h1>
+        
+        <!-- Dettagli acquisto -->
+        <div class="order-summary">
+            <h2>Dettagli Acquisto</h2>
+            <ul class="order-list">
+                {* {foreach from=$cart item=i}
+                    <li>
+                        <span>{i->getName()}</span>
+                        <span>{i->getPrice()}</span>
+                    </li>
+                    {/foreach}
+                *}
+                <li>
+                    <span>Articolo 2</span>
+                    <span>€30.00</span>
+                </li>
+                <li>
+                    <span>Articolo 3</span>
+                    <span>€20.00</span>
+                </li>
+                <li class="total">
+                    <span><strong>Totale</strong></span>
+                    <span><strong>€100.00</strong></span>
+                </li>
+            </ul>
+        </div>
+        
+        <form action="/Slope/User/payment" class="payment-form"  enctype="multipart/form-data" method="POST">
+          <h2>Paga con Carta di Credito</h2>
+            <div class="form-group">
+                <label for="cardHolderName">Nome Intestatario Carta</label>
+                {if $creditCard === null}
+                <input type="text" id="card-name" name="cardHolderName" placeholder="Mario" required>
+                {else}
+                <input type="text" id="card-name" name="cardHolderName" value={$creditCard->getCardHolderName()} required>
+                {/if}
+            </div>
+            <div class="form-group">
+                <label for="cardHolderSurname">Cognome Intestatario Carta</label>
+                {if $creditCard === null}
+                <input type="text" id="card-surname" name="cardHolderSurname" placeholder="Rossi" required>
+                {else}
+                <input type="text" id="card-surname" name="cardHolderSurname" value={$creditCard->getCardHolderSurname()} required>
+                {/if}
+            </div>
+            <div class="form-group">
+                <label for="cardNumber">Numero Carta</label>
+                {if $creditCard === null}
+                <input type="text" id="card-number" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19"  required>
+                {else}
+                <input type="text" id="card-number" name="cardNumber" value={$creditCard->getCardNumber()} maxlength="19"  required>
+                {/if}
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="expiryDate">Scadenza Carta</label>
+                    {if $creditCard === null}
+                    <input type="month" id="expiry-date" name="expiryDate" required>
+                    {else}
+                    <input type="month" id="expiry-date" name="expiryDate" value={$creditCard->getExpiryDate()} required>
+                    {/if}
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    {if $creditCard === null}
+                    <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3"  required>
+                    {else}
+                    <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3"  value={$creditCard->getCvv()} required>
+                    {/if}
+                </div>
+            </div>
+            {if $creditCard === null}
+            <div class="form-group">
+              <label for="preferred">Salvare come metodo preferito</label>
+              <input type="checkbox" id="preferred" name="preferred" >
+            </div>
+            {else} 
+            <div class="form-group">
+              <label for="preferred">Salvare come metodo preferito</label>
+              <input type="checkbox" id="preferred" name="preferred" checked>
+            </div>
+            {/if}
+            
+            <button type="submit" class="submit-btn">Procedi al Pagamento</button>
+        </form>
+
+      </div>
 
       </div>
 

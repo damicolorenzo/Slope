@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.33, created on 2024-11-30 15:47:15
+  from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\skiRunsAndLiftsDetails.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.33',
+  'unifunc' => 'content_674b2573e3b896_21338680',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '0e419d4510153349caab5acdf4de8e6810219798' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\skiRunsAndLiftsDetails.tpl',
+      1 => 1732977818,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_674b2573e3b896_21338680 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -34,6 +57,26 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+  .card-impianto1 {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 450px; /* Dimensione fissa per la card */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombreggiatura per un effetto di rilievo */
+  overflow: hidden;
+  background-color: #fff; /* Sfondo bianco per le cards */
+  margin: 16px auto; /* Spazio tra le cards e centratura */
+}
+
+.impianto1 {
+  padding: 16px;
+  width: 50%; /* 50% per l'immagine */
+  display: flex;
+  align-items: center; /* Centrare verticalmente l'immagine */
+  justify-content: center; /* Centrare orizzontalmente l'immagine */
+  background-color: #f9f9f9; /* Sfondo leggermente grigio per differenziare */
+}
+  </style>
 </head>
 
 <body class="starter-page-page">
@@ -70,7 +113,7 @@
       <div class="container">
         <nav class="breadcrumbs">
           <ol>
-            <li><a href="/Slope">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li class="current">Starter Page</li>
           </ol>
         </nav>
@@ -80,43 +123,69 @@
 
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
-
-      <div class="container" data-aos="fade-up">
-        
-        <div class="profile-container">
-            <div class="profile-info">
-                <form action="/Slope/User/confirmModify" enctype="multipart/form-data" method="POST">
-                    <h2>MODIFICA PROFILO</h2>
-                    <p><strong>Nome utente:</strong> {$username}</p>
-                    <p><strong>Nome:</strong> {$name}</p>
-                    <p><strong>Cognome:</strong> {$surname}</p>
-                    <p><strong>Email di conferma:</strong></p>
-                    <input type="email" id="email" name="email" value="{$email}" required>
-                    <p><strong>Numero di telefono:</strong></p>
-                    <input type="tel" id="phoneNumber" name="phoneNumber" value="{$phoneNumber}" required>
-                    {if $phoneError == true}
-                    <label>Inserire numero del tipo +39NUMERO_DI_TELEFONO</label>
-                    {/if}
-                    <p><strong>Data nascita:</strong> {$birthDate}</p>
-                    <p><strong>Modifica immagine:</strong></p>
-                    <input type="file" name="imageFile" id ="imageFile" multiple>
-                    {if $imageError == true}
-                    <label>Errore nel caricamento dell'immagine. Riprovare!</label>
-                    {/if}
-                    <button class="edit-button" type="submit">Conferma modifiche</button>
-                </form>
-            </div>
-            
-            <p><strong>Modifica password:</strong></p>
-            <div class="button-container">
-              <a href="/Slope/User/modifyPassword"><button class="edit-button">Modifica password</button></a>
-            </div>
-            
-            
+    
+      <div  data-aos="fade-up">
+        <div class="cards-container">
+        <h3><?php echo $_smarty_tpl->tpl_vars['nameSkiFacility']->value;?>
+</h3>
+        <div class="action-buttons">
+          <form class="search-form" action="/Slope/User/makeABookingPage" method="POST">
+            <input type="hidden" id="idSkiFacility" name="idSkiFacility" value=<?php echo $_smarty_tpl->tpl_vars['idSkiFacility']->value;?>
+>
+            <button type="submit" >Prenota</button>
+          </form>
         </div>
-
-      <!-- Da riempire in base alla pagina  -->
-
+        <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['skiRuns']->value, 'i');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
+?> 
+          <div class="card">
+            <div >
+              <h3><?php echo $_smarty_tpl->tpl_vars['i']->value->getName();?>
+</h3>
+              <img src="link-alla-tua-immagine.jpg" alt="Immagine dell'impianto" >
+            </div>
+            <div >
+              <h4>Dettagli <?php echo $_smarty_tpl->tpl_vars['i']->value->getName();?>
+</h4>
+              <h4>Tipo: <?php echo $_smarty_tpl->tpl_vars['i']->value->getType();?>
+</h4>  
+              <h4>Stato: <?php echo $_smarty_tpl->tpl_vars['i']->value->getStatus();?>
+</h4>
+            </div>
+          </div> 
+        <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+        <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['liftStructures']->value, 'i');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
+?> 
+          <div class="card">
+            <div >
+              <h3><?php echo $_smarty_tpl->tpl_vars['i']->value->getName();?>
+</h3>
+              <img src="link-alla-tua-immagine.jpg" alt="Immagine dell'impianto" >
+            </div>
+            <div >
+              <h4>Dettagli <?php echo $_smarty_tpl->tpl_vars['i']->value->getName();?>
+</h4>
+              <h4>Tipo: <?php echo $_smarty_tpl->tpl_vars['i']->value->getType();?>
+</h4>  
+              <h4>Stato: <?php echo $_smarty_tpl->tpl_vars['i']->value->getStatus();?>
+</h4>
+              <h4>Posti: <?php echo $_smarty_tpl->tpl_vars['i']->value->getSeats();?>
+</h4>
+            </div>
+         </div> 
+        <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+        </div> 
       </div>
 
     </section><!-- /Starter Section Section -->
@@ -129,11 +198,11 @@
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6">
           <div class="footer-about">
-            <a href="/Slope" class="logo sitename">Day</a>
+            <a href="/Slope" class="logo sitename">Slope</a>
             <div class="footer-contact pt-3">
               <p>Via Vetoio</p>
               <p>L'Aquila, AQ 67100</p>
-              <p class="mt-3"><strong>Phone:</strong> <span>+39 123 456 7890</span></p>
+              <p class="mt-3"><strong>Numero:</strong> <span>+39 123 456 7890</span></p>
               <p><strong>Email:</strong> <span>info@example.com</span></p>
             </div>
             <div class="social-links d-flex mt-4">
@@ -201,17 +270,34 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/php-email-form/validate.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/aos/aos.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <?php echo '<script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/php-email-form/validate.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/aos/aos.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"><?php echo '</script'; ?>
+>
 
   <!-- Main JS File -->
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/js/main.js"></script>
+  <?php echo '<script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/js/main.js"><?php echo '</script'; ?>
+>
 
 </body>
 
-</html>
+</html><?php }
+}

@@ -34,6 +34,26 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+  .card-impianto1 {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 450px; /* Dimensione fissa per la card */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombreggiatura per un effetto di rilievo */
+  overflow: hidden;
+  background-color: #fff; /* Sfondo bianco per le cards */
+  margin: 16px auto; /* Spazio tra le cards e centratura */
+}
+
+.impianto1 {
+  padding: 16px;
+  width: 50%; /* 50% per l'immagine */
+  display: flex;
+  align-items: center; /* Centrare verticalmente l'immagine */
+  justify-content: center; /* Centrare orizzontalmente l'immagine */
+  background-color: #f9f9f9; /* Sfondo leggermente grigio per differenziare */
+}
+  </style>
 </head>
 
 <body class="starter-page-page">
@@ -70,7 +90,7 @@
       <div class="container">
         <nav class="breadcrumbs">
           <ol>
-            <li><a href="/Slope">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li class="current">Starter Page</li>
           </ol>
         </nav>
@@ -80,43 +100,44 @@
 
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
-
-      <div class="container" data-aos="fade-up">
-        
-        <div class="profile-container">
-            <div class="profile-info">
-                <form action="/Slope/User/confirmModify" enctype="multipart/form-data" method="POST">
-                    <h2>MODIFICA PROFILO</h2>
-                    <p><strong>Nome utente:</strong> {$username}</p>
-                    <p><strong>Nome:</strong> {$name}</p>
-                    <p><strong>Cognome:</strong> {$surname}</p>
-                    <p><strong>Email di conferma:</strong></p>
-                    <input type="email" id="email" name="email" value="{$email}" required>
-                    <p><strong>Numero di telefono:</strong></p>
-                    <input type="tel" id="phoneNumber" name="phoneNumber" value="{$phoneNumber}" required>
-                    {if $phoneError == true}
-                    <label>Inserire numero del tipo +39NUMERO_DI_TELEFONO</label>
-                    {/if}
-                    <p><strong>Data nascita:</strong> {$birthDate}</p>
-                    <p><strong>Modifica immagine:</strong></p>
-                    <input type="file" name="imageFile" id ="imageFile" multiple>
-                    {if $imageError == true}
-                    <label>Errore nel caricamento dell'immagine. Riprovare!</label>
-                    {/if}
-                    <button class="edit-button" type="submit">Conferma modifiche</button>
-                </form>
-            </div>
-            
-            <p><strong>Modifica password:</strong></p>
-            <div class="button-container">
-              <a href="/Slope/User/modifyPassword"><button class="edit-button">Modifica password</button></a>
-            </div>
-            
-            
+    
+      <div  data-aos="fade-up">
+        <div class="cards-container">
+        <h3>{$nameSkiFacility}</h3>
+        <div class="action-buttons">
+          <form class="search-form" action="/Slope/User/makeABookingPage" method="POST">
+            <input type="hidden" id="idSkiFacility" name="idSkiFacility" value={$idSkiFacility}>
+            <button type="submit" >Prenota</button>
+          </form>
         </div>
-
-      <!-- Da riempire in base alla pagina  -->
-
+        {foreach from=$skiRuns item=i} 
+          <div class="card">
+            <div >
+              <h3>{$i->getName()}</h3>
+              <img src="link-alla-tua-immagine.jpg" alt="Immagine dell'impianto" >
+            </div>
+            <div >
+              <h4>Dettagli {$i->getName()}</h4>
+              <h4>Tipo: {$i->getType()}</h4>  
+              <h4>Stato: {$i->getStatus()}</h4>
+            </div>
+          </div> 
+        {/foreach}
+        {foreach from=$liftStructures item=i} 
+          <div class="card">
+            <div >
+              <h3>{$i->getName()}</h3>
+              <img src="link-alla-tua-immagine.jpg" alt="Immagine dell'impianto" >
+            </div>
+            <div >
+              <h4>Dettagli {$i->getName()}</h4>
+              <h4>Tipo: {$i->getType()}</h4>  
+              <h4>Stato: {$i->getStatus()}</h4>
+              <h4>Posti: {$i->getSeats()}</h4>
+            </div>
+         </div> 
+        {/foreach}
+        </div> 
       </div>
 
     </section><!-- /Starter Section Section -->
@@ -129,11 +150,11 @@
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6">
           <div class="footer-about">
-            <a href="/Slope" class="logo sitename">Day</a>
+            <a href="/Slope" class="logo sitename">Slope</a>
             <div class="footer-contact pt-3">
               <p>Via Vetoio</p>
               <p>L'Aquila, AQ 67100</p>
-              <p class="mt-3"><strong>Phone:</strong> <span>+39 123 456 7890</span></p>
+              <p class="mt-3"><strong>Numero:</strong> <span>+39 123 456 7890</span></p>
               <p><strong>Email:</strong> <span>info@example.com</span></p>
             </div>
             <div class="social-links d-flex mt-4">

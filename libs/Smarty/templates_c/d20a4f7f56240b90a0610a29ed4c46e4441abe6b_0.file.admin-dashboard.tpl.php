@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-11-04 14:49:05
+/* Smarty version 3.1.33, created on 2024-11-25 15:33:15
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-dashboard.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_6728d0d11b6ed7_77136484',
+  'unifunc' => 'content_67448aab67e284_26594100',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd20a4f7f56240b90a0610a29ed4c46e4441abe6b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-dashboard.tpl',
-      1 => 1730728143,
+      1 => 1732545148,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6728d0d11b6ed7_77136484 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67448aab67e284_26594100 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -99,6 +99,7 @@ function content_6728d0d11b6ed7_77136484 (Smarty_Internal_Template $_smarty_tpl)
         <li><a href="/Slope/Admin/addLiftStructure">Aggiungi dati risalita</a></li>
         <li><a href="/Slope/Admin/searchUsers">Modifica dati utente</a></li>
         <li><a href="/Slope/Admin/searchStructures">Modifica dati pista/impianto/risalita</a></li>
+        <li><a href="/Slope/Admin/modifyPrices">Modifica prezzi</a></li>
         <li><a href="#">Modifica interfaccia</a></li>
       </ul>
       <!-- Da riempire in base alla pagina  -->

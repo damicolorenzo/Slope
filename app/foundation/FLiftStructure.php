@@ -117,6 +117,8 @@ class FLiftStructure {
         $queryResult = FEntityManager::getInstance()->retriveObjForSearch2(self::getTable(), 'name', $queryString);
         return $queryResult;
     }
+
+    
 }
 
 ?>

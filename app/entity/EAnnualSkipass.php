@@ -6,7 +6,7 @@ class EAnnualSkipass extends ESkipassBooking {
 
     //attributes
     protected static float $priceMultiplier = 0.6;
-    protected static int $period = 365;
+    protected static int $period = 30*6;
 
     //constructor
     public function __construct(string $name, string $surname, string $stringStartDate, string $type, string $email, float $totalSkiFacilitiesPrice) {

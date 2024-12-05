@@ -351,6 +351,14 @@ class CAdmin {
         
     }
 
+    public static function modifyPrices() {
+        if(CAdmin::isLogged()) {
+            $view = new VAdmin();
+            $prices = FPersistentManager::getInstance()->retriveAllPrices();
+            $view->prices($prices);
+        }
+    }
+
 }
 
 /* 

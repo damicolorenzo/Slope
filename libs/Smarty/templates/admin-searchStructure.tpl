@@ -34,6 +34,35 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+  .structures {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding-top: 20px;
+    background-color: #f0f0f0;
+    justify-content: center;
+}
+
+.structure-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Distanza tra le card */
+  background-color: #007BFF;
+  margin-top: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+  </style>
 </head>
 
 <body class="starter-page-page">

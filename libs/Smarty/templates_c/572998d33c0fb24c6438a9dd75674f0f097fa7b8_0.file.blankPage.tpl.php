@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.33, created on 2024-11-28 18:49:59
+  from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\blankPage.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.33',
+  'unifunc' => 'content_6748ad4760fd16_43657807',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '572998d33c0fb24c6438a9dd75674f0f097fa7b8' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\blankPage.tpl',
+      1 => 1732816181,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_6748ad4760fd16_43657807 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -50,9 +73,17 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/User/showBookings">Visualizza Prenotazioni</a></li>
-            <li><a href="/Slope/User/profile">Profile</a></li>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">Prenota</a></li>
+            <li><a href="#services">Visualizza prenotazioni</a></li>
+            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <ul>
+                <li><a href="#">Piste</a></li>
+                <li><a href="#">Impianti</a></li>
+                <li><a href="#">Web</a></li>
+              </ul>
+            </li>
+            <li><a href="/Slope/User/profile">Profilo</a></li>
             <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -65,55 +96,10 @@
 
   <main class="main">
 
-    <!-- Page Title -->
-    <!-- <div class="page-title" data-aos="fade">
-      <div class="container">
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="/Slope">Home</a></li>
-            <li class="current">Starter Page</li>
-          </ol>
-        </nav>
-        <h1>Starter Page</h1>
-      </div>
-    </div> --><!-- End Page Title -->
-
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
 
       <div class="container" data-aos="fade-up">
-        
-        <div class="profile-container">
-            <div class="profile-info">
-                <form action="/Slope/User/confirmModify" enctype="multipart/form-data" method="POST">
-                    <h2>MODIFICA PROFILO</h2>
-                    <p><strong>Nome utente:</strong> {$username}</p>
-                    <p><strong>Nome:</strong> {$name}</p>
-                    <p><strong>Cognome:</strong> {$surname}</p>
-                    <p><strong>Email di conferma:</strong></p>
-                    <input type="email" id="email" name="email" value="{$email}" required>
-                    <p><strong>Numero di telefono:</strong></p>
-                    <input type="tel" id="phoneNumber" name="phoneNumber" value="{$phoneNumber}" required>
-                    {if $phoneError == true}
-                    <label>Inserire numero del tipo +39NUMERO_DI_TELEFONO</label>
-                    {/if}
-                    <p><strong>Data nascita:</strong> {$birthDate}</p>
-                    <p><strong>Modifica immagine:</strong></p>
-                    <input type="file" name="imageFile" id ="imageFile" multiple>
-                    {if $imageError == true}
-                    <label>Errore nel caricamento dell'immagine. Riprovare!</label>
-                    {/if}
-                    <button class="edit-button" type="submit">Conferma modifiche</button>
-                </form>
-            </div>
-            
-            <p><strong>Modifica password:</strong></p>
-            <div class="button-container">
-              <a href="/Slope/User/modifyPassword"><button class="edit-button">Modifica password</button></a>
-            </div>
-            
-            
-        </div>
 
       <!-- Da riempire in base alla pagina  -->
 
@@ -201,17 +187,34 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/php-email-form/validate.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/aos/aos.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <?php echo '<script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/php-email-form/validate.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/aos/aos.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"><?php echo '</script'; ?>
+>
 
   <!-- Main JS File -->
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/js/main.js"></script>
+  <?php echo '<script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/js/main.js"><?php echo '</script'; ?>
+>
 
 </body>
 
-</html>
+</html><?php }
+}

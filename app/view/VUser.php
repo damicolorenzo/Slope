@@ -107,7 +107,48 @@ class VUser {
         $this->smarty->display('modifyPassword.tpl');
     }
 
-    
+    public function showDetails($idSkiFacility, $nameSkiFacility, $skiRuns, $liftStructures) {
+        $this->smarty->assign('nameSkiFacility', $nameSkiFacility);
+        $this->smarty->assign('skiRuns', $skiRuns);
+        $this->smarty->assign('liftStructures', $liftStructures);
+        $this->smarty->assign('idSkiFacility', $idSkiFacility);
+        $this->smarty->display('skiRunsAndLiftsDetails.tpl');
+    }
+
+    public function makeABookingForm($idSkiFacility, $user, $today, $dateWarning) {
+        $this->smarty->assign('user', $user);
+        $this->smarty->assign('today', $today);
+        $this->smarty->assign('dateWarning', $dateWarning);
+        $this->smarty->assign('idSkiFacility', $idSkiFacility);
+        $this->smarty->display('makeABookingForm.tpl');
+    }
+
+    public function paymentSection($totalPrice, $creditCard) {
+        $this->smarty->assign('totalPrice', $totalPrice);
+        $this->smarty->assign('creditCard', $creditCard);
+        $this->smarty->display('paymentSection.tpl');
+    }
+
+    public function showBookings($allBookings) {
+        $this->smarty->assign('bookings', $allBookings);
+        $this->smarty->display('showBookings.tpl');
+    }
+
+    public function blankPage() {
+        $this->smarty->display('blankPage.tpl');
+    }
+
+    public function modifySkipassBooking($skipassBooking, $today, $dateWarning) {
+        $this->smarty->assign('skipassBooking', $skipassBooking);
+        $this->smarty->assign('today', $today);
+        $this->smarty->assign('dateWarning', false);
+        $this->smarty->display('modifySkipassBooking.tpl');
+    }
+
+    public function buySubscription() {
+        $this->smarty->display('buySubscription.tpl');
+    }
+
 }
 
 ?>

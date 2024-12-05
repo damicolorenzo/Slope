@@ -76,6 +76,7 @@
         <li><a href="/Slope/Admin/addLiftStructure">Aggiungi dati risalita</a></li>
         <li><a href="/Slope/Admin/searchUsers">Modifica dati utente</a></li>
         <li><a href="/Slope/Admin/searchStructures">Modifica dati pista/impianto/risalita</a></li>
+        <li><a href="/Slope/Admin/modifyPrices">Modifica prezzi</a></li>
         <li><a href="#">Modifica interfaccia</a></li>
       </ul>
       <!-- Da riempire in base alla pagina  -->

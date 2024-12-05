@@ -34,6 +34,92 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+  .profile-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px; /* Aumentato lo spazio sotto */
+  }
+
+  .profile-info {
+    width: 60%;
+  }
+
+  .profile-info h2 {
+    margin-bottom: 20px; /* Più spazio sotto il titolo */
+    font-size: 26px; /* Aumentata la dimensione del titolo */
+  }
+
+  .profile-info p {
+    margin-bottom: 15px; /* Aumentato lo spazio tra le informazioni */
+    font-size: 18px; /* Aumentata la dimensione del testo delle informazioni */
+  }
+
+  .profile-image {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .profile-pic {
+    width: 140px; /* Aumentata la dimensione dell'immagine del profilo */
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #000;
+  }
+
+  .section-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px; /* Aumentato lo spazio sotto le sezioni */
+  }
+
+  .profile-section {
+    width: 48%;
+    padding: 20px; /* Aumentato lo spazio interno delle sezioni */
+    border: 2px solid #000;
+    border-radius: 10px;
+    background-color: #fff;
+  }
+
+  .profile-section h3 {
+    margin-bottom: 20px; /* Più spazio sotto il titolo della sezione */
+    font-size: 22px; /* Aumentata la dimensione del titolo della sezione */
+  }
+
+  .section-image {
+    width: 100%;
+    height: 150px; /* Aumentata l'altezza delle immagini nelle sezioni */
+    object-fit: cover;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px; /* Aggiunto più spazio sopra il pulsante */
+  }
+
+  .edit-button {
+    padding: 15px 30px; /* Aumentata la dimensione del pulsante */
+    font-size: 18px; /* Aumentata la dimensione del testo del pulsante */
+    border: 2px solid #000;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  .edit-button:hover {
+    background-color: #ddd;
+  }
+  </style>
 </head>
 
 <body class="starter-page-page">
@@ -50,17 +136,10 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">Prenota</a></li>
-            <li><a href="#services">Visualizza prenotazioni</a></li>
-            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-              <ul>
-                <li><a href="#">Piste</a></li>
-                <li><a href="#">Impianti</a></li>
-                <li><a href="#">Web</a></li>
-              </ul>
-            </li>
-            <li><a href="#contact">Profilo</a></li>
+            <li><a href="/Slope/">Home</a></li>
+            <li><a href="/Slope/User/showBookings">Visualizza Prenotazioni</a></li>
+            <li><a href="/Slope/User/profile">Profile</a></li>
+            <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -102,9 +181,13 @@
             </div>
             <div class="profile-image">
                 <!-- Immagine del profilo -->
+                {if $image == 0} 
+                  <img class="profile-pic" src="https://localhost/Slope/libs/Smarty/images/NotFound.jpg" loading="lazy" alt="Img">
+                {else}
                 {foreach from=$image item=i}
                   <img class="profile-pic" src="data:{$i->getType()};base64,{$i->getEncodedData()}" loading="lazy" alt="Img">
                 {/foreach}
+                {/if}
             </div>
         </div>
 

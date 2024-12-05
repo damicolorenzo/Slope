@@ -59,7 +59,6 @@ class FEntityManager {
     public static function retriveObj2($table, $field1, $id1, $field2, $id2) :array {
         try {
             $query = "SELECT * FROM ".$table. " WHERE ".$field1." = '".$id1."' AND ".$field2." = ".$id2.";";
-            echo $query;
             $statement = self::$db->prepare($query);
             $statement->execute();
             $numberOfRows = $statement->rowCount();
@@ -103,7 +102,7 @@ class FEntityManager {
 
     public static function selectObjKey($field, $table, $field2, $extKey) {
         try {
-            $query = "SELECT " . $field. " FROM ".$table." WHERE ".$field2." = ".$extKey. ";";
+            $query = "SELECT " . $field. " FROM ".$table." WHERE ".$field2." = '".$extKey. "';";
             $statement = self::$db->prepare($query);
             $statement->execute();
             $result = $statement->fetch();
@@ -245,6 +244,23 @@ class FEntityManager {
             return array();
         }
     }
+
+    public static function retriveIdFromObj($id, $table, $fields) {
+        $query = "SELECT ".$id." FROM ".$table." WHERE (";
+        for ($i = 0; $i < sizeof($fields); $i++) {
+            if($i < sizeof($fields) - 1)
+            $string = $fields[$i][0] ."=". $fields[$i][1]  ." AND";
+            else 
+            $string = $fields[$i][0] ."=". $fields[$i][1] .");";
+
+        }
+        $query = $query . $string;
+        echo $query;
+        $statement = self::$db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch();
+        return $result[0];
+    }
     /**
      * Method to save an object in the Database using the INSERT TO query
      * @param String $foundClass Refers to the name of the foundation class, so you can get the table and the value
@@ -340,6 +356,7 @@ class FEntityManager {
             return false;
         }
     }
+
 
 
 

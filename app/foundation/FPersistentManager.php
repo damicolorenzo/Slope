@@ -67,7 +67,7 @@ class FPersistentManager {
         $result = FUser::getUserByUsername($username);
 
         if(count($result) > 0) {
-            $obj = FUser::crateUserObj($result);
+            $obj = FUser::createUserObj($result);
         }
         return $obj;
     }
@@ -77,7 +77,7 @@ class FPersistentManager {
         $result = FUser::getUserById($id);
 
         if(count($result) > 0) {
-            $obj = FUser::crateUserObj($result);
+            $obj = FUser::createUserObj($result);
         }
         return $obj;
     }
@@ -149,7 +149,7 @@ class FPersistentManager {
         $result = FSkiRun::getSkiRuns($idSkiFacility);
 
         if(count($result) > 0) {
-            $obj = FSkiRun::crateSkiRunObj($result);
+            $obj = FSkiRun::createSkiRunObj($result);
         }
         return $obj;
     }
@@ -207,7 +207,7 @@ class FPersistentManager {
         }
         $allSkiRun = FSkiRun::getAllSkiRunObj();
         if(count($allSkiRun) > 0) {
-            $resultArray = FSkiRun::crateSkiRunObj($allSkiRun);
+            $resultArray = FSkiRun::createSkiRunObj($allSkiRun);
             $final = array();
             foreach ($resultArray as $element) {
                 $app = array();
@@ -249,7 +249,7 @@ class FPersistentManager {
         $result = FSkiRun::getSkiRunById($id);
 
         if(count($result) > 0) {
-            $obj = FSkiRun::crateSkiRunObj($result);
+            $obj = FSkiRun::createSkiRunObj($result);
         }
         return $obj;
     }
@@ -303,7 +303,7 @@ class FPersistentManager {
         }
         $skiRuns = FSkiRun::getSkiRunByNameForSearch($queryString);
         if(count($skiRuns) > 0) {
-            $resultArray = FSkiRun::crateSkiRunObj($skiRuns);
+            $resultArray = FSkiRun::createSkiRunObj($skiRuns);
             $final = array();
             if($resultArray instanceof ESkiRun) {
                 $app = array();
@@ -353,7 +353,62 @@ class FPersistentManager {
         }
         return $result;
     }
+    
+    public static function retriveAllPrices() {
+        $result = FPrice::getPrices();
+        
+        if(count($result) > 0) {
+            $obj = FPrice::createPriceObj($result);
+        }
+        return $obj;
+    }
 
+    public static function retriveIdSkipassBooking($skipassBooking) {
+        $fields = [['name', $skipassBooking->getName()], ['surname', $skipassBooking->getSurname()], ['startDate', $skipassBooking->getStartDate()], ['type', $skipassBooking->getType()], ['period', $skipassBooking->getPeriod()], ['email', $skipassBooking->getEmail()], ['total', $skipassBooking->getTotal()], ['idUser', $skipassBooking->getIdUser()]];
+        return FSkipassBooking::getSkipassBooking($fields);
+    }
+
+    public static function verifyPCreditCard($userId) {
+        $result = FCreditCard::verifyCreditCardByUserId($userId);
+        
+        return $result;
+    }
+
+    public static function retriveCreditCardFromUserId($id) {
+        $result = FCreditCard::getCreditCardByUserId($id);
+
+        if(count($result) > 0) {
+            $obj = FCreditCard::createCreditCardObj($result);
+        }
+        return $obj;
+    }
+
+    public static function updateCreditCard($creditCard){
+        $field = [['cardHolderName', $creditCard->getCardHolderName()], ['cardHolderSurname', $creditCard->getCardHolderSurname()], ['cardNumber', $creditCard->getCardNumber()], ['cvv', $creditCard->getCvv()], ['expityDate', $creditCard->getExpiryDate()]];
+        $result = FCreditCard::saveObj($creditCard, $field);
+
+        return $result;
+    }
+
+    public static function retriveAllSkipassBooking($idUser) {
+        $result = FSkipassBooking::getAllSkipassBooking($idUser);
+        
+        if(count($result) > 0) {
+            $obj = FSkipassBooking::createSkipassBookingObj($result);
+        } else {
+            $obj = array();
+        } 
+        return $obj;
+    }
+
+    public static function retriveSkipassBookingOnId($id) {
+        $result = FSkipassBooking::getSkipassBookingFromId($id);
+
+        if(count($result) > 0) {
+            $obj = FSkipassBooking::createSkipassbookingObj($result);
+        }
+        return $obj;
+    }
 
 
 
@@ -438,6 +493,8 @@ class FPersistentManager {
 
         return $result;
     }
+
+    
       
 }
 

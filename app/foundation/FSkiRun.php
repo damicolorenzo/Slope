@@ -63,7 +63,7 @@ class FSkiRun {
         }
     }
 
-    public static function crateSkiRunObj($queryResult){
+    public static function createSkiRunObj($queryResult){
         if(count($queryResult) == 1){
             //$attributes = FEntityManager::getInstance()->retriveObj(self::getTable(), self::getKey(), $queryResult[0][self::getKey()]);
             $skiRun = new ESkiRun($queryResult[0]['name'], $queryResult[0]['type'], $queryResult[0]['status']);

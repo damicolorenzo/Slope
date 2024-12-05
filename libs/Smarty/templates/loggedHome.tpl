@@ -50,19 +50,10 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <!-- <li><a href="#hero">Home</a></li>
-            <li><a href="#about">Prenota</a></li>
-            <li><a href="#services">Visualizza prenotazioni</a></li>
-            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a> -->
-              <ul>
-                <!-- <li><a href="#">Piste</a></li>
-                <li><a href="#">Impianti</a></li>
-                <li><a href="#">Web</a></li> -->
-              </ul>
-            </li>
             <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/User/logout">LogOut</a></li>
+            <li><a href="/Slope/User/showBookings">Visualizza Prenotazioni</a></li>
             <li><a href="/Slope/User/profile">Profile</a></li>
+            <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -91,14 +82,16 @@
     <section id="starter-section" class="starter-section section"> 
       <div class="container" data-aos="fade-up">
 
-        {foreach from=$map item=i}  
+        {foreach from=$map item=i} 
+          <form class="search-form" action="/Slope/User/skiFacilitydetails" method="POST">
           <div class="card-impianto">
             <div class="impianto">
-              <h3>{$i[0]['name']}</h3>
+              <h3>{$i[0]}</h3>
               <img src="link-alla-tua-immagine.jpg" alt="Immagine dell'impianto" class="impianto-img">
             </div>
             <div class="dettagli-impianto">
-              <h4>Dettagli {$i[0]['name']}</h4> 
+              <h4>Dettagli {$i[0]}</h4> 
+              <button type="submit" name="nameSkiFacility" value={$i[0]} >Esplora</button>
                 <div class="piste">
                   {foreach from=$i[1] item=e}  
                     {if $e['type'] == 'blu'}
@@ -118,7 +111,10 @@
                 <p>Impianti: <span>{$i[2]['CNT']}</span></p>
                 <p>Status: <span class="status aperto">'aperto'</span></p>
             </div>
+            
           </div>
+          
+          <form>
         {/foreach}
 
       </div>

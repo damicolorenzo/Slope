@@ -50,9 +50,17 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/User/showBookings">Visualizza Prenotazioni</a></li>
-            <li><a href="/Slope/User/profile">Profile</a></li>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">Prenota</a></li>
+            <li><a href="#services">Visualizza prenotazioni</a></li>
+            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <ul>
+                <li><a href="#">Piste</a></li>
+                <li><a href="#">Impianti</a></li>
+                <li><a href="#">Web</a></li>
+              </ul>
+            </li>
+            <li><a href="/Slope/User/profile">Profilo</a></li>
             <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -65,57 +73,61 @@
 
   <main class="main">
 
-    <!-- Page Title -->
-    <!-- <div class="page-title" data-aos="fade">
-      <div class="container">
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="/Slope">Home</a></li>
-            <li class="current">Starter Page</li>
-          </ol>
-        </nav>
-        <h1>Starter Page</h1>
-      </div>
-    </div> --><!-- End Page Title -->
-
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
 
       <div class="container" data-aos="fade-up">
-        
-        <div class="profile-container">
-            <div class="profile-info">
-                <form action="/Slope/User/confirmModify" enctype="multipart/form-data" method="POST">
-                    <h2>MODIFICA PROFILO</h2>
-                    <p><strong>Nome utente:</strong> {$username}</p>
-                    <p><strong>Nome:</strong> {$name}</p>
-                    <p><strong>Cognome:</strong> {$surname}</p>
-                    <p><strong>Email di conferma:</strong></p>
-                    <input type="email" id="email" name="email" value="{$email}" required>
-                    <p><strong>Numero di telefono:</strong></p>
-                    <input type="tel" id="phoneNumber" name="phoneNumber" value="{$phoneNumber}" required>
-                    {if $phoneError == true}
-                    <label>Inserire numero del tipo +39NUMERO_DI_TELEFONO</label>
-                    {/if}
-                    <p><strong>Data nascita:</strong> {$birthDate}</p>
-                    <p><strong>Modifica immagine:</strong></p>
-                    <input type="file" name="imageFile" id ="imageFile" multiple>
-                    {if $imageError == true}
-                    <label>Errore nel caricamento dell'immagine. Riprovare!</label>
-                    {/if}
-                    <button class="edit-button" type="submit">Conferma modifiche</button>
-                </form>
-            </div>
-            
-            <p><strong>Modifica password:</strong></p>
-            <div class="button-container">
-              <a href="/Slope/User/modifyPassword"><button class="edit-button">Modifica password</button></a>
-            </div>
-            
-            
-        </div>
 
-      <!-- Da riempire in base alla pagina  -->
+      <div class="form-container">
+        <h1>Modifica prenotazione</h1>
+        <form action="/Slope/User/confirmModifyBooking" method="post">
+            <label for="name">Nome</label>
+            <input type="text" id="name" name="name" value={$skipassBooking->getName()}>
+
+            <label for="surname">Cognome</label>
+            <input type="text" id="surname" name="surname" value={$skipassBooking->getSurname()}>
+
+            <label for="email">Email di conferma</label>
+            <label>{$skipassBooking->getEmail()}</label>
+
+            <div class="durata-skipass">
+                <p>Durata skipass</p>
+                {if $skipassBooking->getPeriod() == 1}
+                <label><input type="radio" name="period" value="giornaliero" checked readonly> Giornaliero</label>
+                {/if}
+                {if $skipassBooking->getPeriod() == 7}
+                <label><input type="radio" name="period" value="settimanale" checked readonly> Settimanale</label>
+                {/if}
+                {if $skipassBooking->getPeriod() == 30}
+                <label><input type="radio" name="period" value="mensile" checked readonly> Mensile</label>
+                {/if}
+                {if $skipassBooking->getPeriod() == 30*6}
+                <label><input type="radio" name="period" value="stagionale" checked readonly> Stagionale</label>
+                {/if}
+            </div>
+
+            <div class="tipologia-biglietto">
+                <p>Tipologia biglietto</p>
+                {if $skipassBooking->getType() == 'intero'}
+                <label><input type="radio" name="type" value="intero" checked readonly> Intero</label>
+                {else}
+                <label><input type="radio" name="type" value="ridotto" checked readonly> Ridotto</label>
+                {/if}
+            </div>
+
+            <div class="acquista-assicurazione">
+                <label><input type="checkbox" name="insurance"> Acquista assicurazione</label>
+            </div>
+
+            <label for="data">Seleziona una data</label>
+            <input type="date" id="date" name="date" min={$today} value={$skipassBooking->getStartDate()}>
+            {if $dateWarning } 
+            <label>Controllare se la data inserita è corretta. La data potrebbe essere troppo lontana da quella corrente.</label>
+            {/if}
+
+            <button type="submit">Conferma</button>
+        </form>
+    </div>
 
       </div>
 

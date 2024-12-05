@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-10-30 16:01:26
+/* Smarty version 3.1.33, created on 2024-11-29 14:32:37
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\loggedHome.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_67224a46b1f5a0_82349755',
+  'unifunc' => 'content_6749c2757051e9_90252391',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ef33429ba4bc621d630ff6065457a2991b022023' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\loggedHome.tpl',
-      1 => 1730300485,
+      1 => 1732887149,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67224a46b1f5a0_82349755 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6749c2757051e9_90252391 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -73,19 +73,10 @@ function content_67224a46b1f5a0_82349755 (Smarty_Internal_Template $_smarty_tpl)
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <!-- <li><a href="#hero">Home</a></li>
-            <li><a href="#about">Prenota</a></li>
-            <li><a href="#services">Visualizza prenotazioni</a></li>
-            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a> -->
-              <ul>
-                <!-- <li><a href="#">Piste</a></li>
-                <li><a href="#">Impianti</a></li>
-                <li><a href="#">Web</a></li> -->
-              </ul>
-            </li>
             <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/User/logout">LogOut</a></li>
+            <li><a href="/Slope/User/showBookings">Visualizza Prenotazioni</a></li>
             <li><a href="/Slope/User/profile">Profile</a></li>
+            <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -118,16 +109,19 @@ function content_67224a46b1f5a0_82349755 (Smarty_Internal_Template $_smarty_tpl)
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['map']->value, 'i');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
-?>  
+?> 
+          <form class="search-form" action="/Slope/User/skiFacilitydetails" method="POST">
           <div class="card-impianto">
             <div class="impianto">
-              <h3><?php echo $_smarty_tpl->tpl_vars['i']->value[0]['name'];?>
+              <h3><?php echo $_smarty_tpl->tpl_vars['i']->value[0];?>
 </h3>
               <img src="link-alla-tua-immagine.jpg" alt="Immagine dell'impianto" class="impianto-img">
             </div>
             <div class="dettagli-impianto">
-              <h4>Dettagli <?php echo $_smarty_tpl->tpl_vars['i']->value[0]['name'];?>
+              <h4>Dettagli <?php echo $_smarty_tpl->tpl_vars['i']->value[0];?>
 </h4> 
+              <button type="submit" name="nameSkiFacility" value=<?php echo $_smarty_tpl->tpl_vars['i']->value[0];?>
+ >Esplora</button>
                 <div class="piste">
                   <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['i']->value[1], 'e');
@@ -159,7 +153,10 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 </span></p>
                 <p>Status: <span class="status aperto">'aperto'</span></p>
             </div>
+            
           </div>
+          
+          <form>
         <?php
 }
 }
