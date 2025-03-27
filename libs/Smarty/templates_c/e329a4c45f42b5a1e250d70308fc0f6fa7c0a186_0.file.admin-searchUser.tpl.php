@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-11-04 15:06:23
+/* Smarty version 3.1.33, created on 2025-03-07 15:30:50
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-searchUser.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_6728d4dfbec357_10287523',
+  'unifunc' => 'content_67cb031ad5e046_15090378',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e329a4c45f42b5a1e250d70308fc0f6fa7c0a186' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-searchUser.tpl',
-      1 => 1729696639,
+      1 => 1741357778,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6728d4dfbec357_10287523 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67cb031ad5e046_15090378 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -57,6 +57,114 @@ function content_6728d4dfbec357_10287523 (Smarty_Internal_Template $_smarty_tpl)
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+  .search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.search-input {
+  width: 450px;
+  height: 45px;
+  padding: 10px 20px;
+  border: 1px solid #dfe1e5;
+  border-radius: 24px;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+  transition: box-shadow 0.3s ease;
+}
+
+.search-input:focus {
+  box-shadow: 0 1px 6px rgba(32, 33, 36, 0.4);
+  border-color: #4285f4;
+}
+
+/* Pulsante della lente */
+.search-button {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #5f6368;
+  outline: none;
+}
+
+.search-button:hover {
+  color: #4285f4;
+}
+
+.users {
+  font-family: Arial, sans-serif;
+    margin: 0;
+    padding-top: 20px;
+    background-color: #f0f0f0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Distanza tra le card */
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Allinea il testo a sinistra */
+}
+
+.username, .name, .surname {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px; /* Spazio tra i pulsanti */
+}
+
+button {
+  padding: 10px 15px;
+  border: 1px solid #000;
+  border-radius: 3px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ddd;
+}
+
+.edit {
+  color: green;
+  border-color: green;
+}
+
+.delete {
+  color: red;
+  border-color: red;
+}
+  </style>
 </head>
 
 <body class="starter-page-page">
@@ -100,6 +208,16 @@ function content_6728d4dfbec357_10287523 (Smarty_Internal_Template $_smarty_tpl)
               <button type="submit" class="search-button">
               </button>
           </form>
+          <form class="search-form" action="/Slope/Admin/searchUsers" method="POST">
+              <input type="text" name="search-input" class="search-input" placeholder="Cerca un utente">
+              <button type="submit" class="search-button">
+              </button>
+          </form>
+          <form class="search-form" action="/Slope/Admin/searchUsers" method="POST">
+              <input type="text" name="search-input" class="search-input" placeholder="Cerca un utente">
+              <button type="submit" class="search-button">
+              </button>
+          </form>
         </div>
 
         <?php if (count($_smarty_tpl->tpl_vars['users']->value) > 0) {?>
@@ -112,20 +230,20 @@ foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 ?>
               <div class="card">
                 <div class="user-info">
-                    <p class="username"><?php echo $_smarty_tpl->tpl_vars['i']->value['username'];?>
+                    <p class="username"><?php echo $_smarty_tpl->tpl_vars['i']->value->getUsername();?>
 </p>
-                    <p class="name"><?php echo $_smarty_tpl->tpl_vars['i']->value['name'];?>
+                    <p class="name"><?php echo $_smarty_tpl->tpl_vars['i']->value->getName();?>
 </p>
-                    <p class="surname"><?php echo $_smarty_tpl->tpl_vars['i']->value['surname'];?>
+                    <p class="surname"><?php echo $_smarty_tpl->tpl_vars['i']->value->getSurname();?>
 </p>
                 </div>
                 <div class="action-buttons">
                   <form class="search-form" action="/Slope/Admin/modifyProfile" method="POST">
-                    <button type="submit" name="userId" value=<?php echo $_smarty_tpl->tpl_vars['i']->value['idUser'];?>
+                    <button type="submit" name="userId" value=<?php echo $_smarty_tpl->tpl_vars['i']->value->getIdUser();?>
  class="edit">Modifica</button>
                   </form>
                   <form class="search-form" action="/Slope/Admin/deleteProfile" method="POST">
-                    <button type="submit" name="userId" value=<?php echo $_smarty_tpl->tpl_vars['i']->value['idUser'];?>
+                    <button type="submit" name="userId" value=<?php echo $_smarty_tpl->tpl_vars['i']->value->getIdUser();?>
  class="delete">Elimina</button>
                   </form>
                 </div>

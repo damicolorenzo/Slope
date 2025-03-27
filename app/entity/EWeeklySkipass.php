@@ -2,29 +2,19 @@
 
 require_once("ESkipassBooking.php");
 
-class EWeekLySkipass extends ESkipassBooking {
+/* CLASSE NON UTILIZZATA */
+
+class EWeeklySkipass extends ESkipassBooking {
 
     //attributes
-    protected static float $priceMultiplier = 0.4;
-    protected static int $period = 7;
-
-    private static ESkipassBooking $skipassBooking;
+    protected const PRICE_MULTIPLIER = 0.4;
+    protected const PERIOD = 7;
 
     //constructor
     public function __construct(string $name, string $surname, string $stringStartDate, string $type, string $email, float $totalSkiFacilitiesPrice) {
-        $totalSkiFacilitiesPrice = $totalSkiFacilitiesPrice * self::getPriceMultiplier();
-        self::$skipassBooking = self::createSkipassBooking($name, $surname, $stringStartDate, $type, self::$period, $email, $totalSkiFacilitiesPrice);
+        parent::__construct($name, $surname, $stringStartDate, $type, $email, self::PERIOD, $totalSkiFacilitiesPrice*self::PRICE_MULTIPLIER);
     }
 
-    //Get and set methods
-    public function getPriceMultiplier() :float {return $this->priceMultiplier;}
-    public function getPeriod() :int {return $this->period;}
-
-    public static function createSkipassBooking(string $name, string $surname, string $stringStartDate, string $type, int $period,  string $email, float $totalSkiFacilitiesPrice) {
-        return new ESkipassBooking($name, $surname, $stringStartDate, $type, $email, $period, $totalSkiFacilitiesPrice);
-    }
-
-    public function getSkipassBooking() {return $this->skipassBooking;}
 }
 
 ?>

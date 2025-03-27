@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-11-21 10:27:42
+/* Smarty version 3.1.33, created on 2025-03-03 18:35:51
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-modifySkiFacility.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_673efd0e245f30_69223353',
+  'unifunc' => 'content_67c5e8774f21d1_16972852',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1e4c25a43bd491f41ef7ff7ee444b4f2f042e837' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-modifySkiFacility.tpl',
-      1 => 1732181254,
+      1 => 1741023348,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_673efd0e245f30_69223353 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67c5e8774f21d1_16972852 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -118,16 +118,16 @@ function content_673efd0e245f30_69223353 (Smarty_Internal_Template $_smarty_tpl)
                     </div>
                     <?php }?>
                     <p><strong>Nome:</strong></p>
-                    <input type="text" id="name" name="name" value="<?php echo $_smarty_tpl->tpl_vars['name']->value;?>
-" required>
+                    <input type="text" id="name" name="name" value=<?php echo $_smarty_tpl->tpl_vars['name']->value;?>
+ required>
 
                     <p><strong>Status:</strong></p>
-                    <input type="text" id="status" name="status" value="<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
-" required>
+                    <input type="text" id="status" name="status" value=<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
+ required>
 
-                    <p><strong>Price:</strong></p>
-                    <input type="number" id="price" name="price" value="<?php echo $_smarty_tpl->tpl_vars['price']->value;?>
-" required>
+                    <p><strong>Descrizione:</strong></p>
+                    <textarea id="description" name="description" required><?php echo $_smarty_tpl->tpl_vars['description']->value;?>
+</textarea>
                     
                     <button class="edit-button" type="submit">Conferma modifiche</button>
                 </form>

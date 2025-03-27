@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-10-21 21:18:35
+/* Smarty version 3.1.33, created on 2025-03-03 19:00:58
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_6716a90b43a852_89547199',
+  'unifunc' => 'content_67c5ee5ac5a126_73682850',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '821525f5f01cc67253858e33f23e212cd14cfaf0' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-login.tpl',
-      1 => 1729538313,
+      1 => 1741022146,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6716a90b43a852_89547199 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67c5ee5ac5a126_73682850 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -57,6 +57,82 @@ function content_6716a90b43a852_89547199 (Smarty_Internal_Template $_smarty_tpl)
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+<style>
+  .form_login-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 45%;
+}
+
+.form_login-container form h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form_login-container label {
+  display: block;
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.form_login-container input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="username"], 
+input[type="tel"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+}
+
+input[type="date"]:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background: url('data:image/svg+xml;base64,<svg>...</svg>') no-repeat center;
+  cursor: pointer;
+  color: transparent; 
+  opacity: 0.5; 
+}
+
+input[type="date"]::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.form_login-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form_login-container button:hover {
+  background-color: #0056b3;
+}
+  </style>
 </head>
 
 <body class="starter-page-page">
@@ -104,15 +180,12 @@ function content_6716a90b43a852_89547199 (Smarty_Internal_Template $_smarty_tpl)
         <div class="form_login-container">
             <form class="login-form" action="/Slope/Admin/checkLogin" method="POST">
                 <h2>Login <i>ADMIN</i></h2>
-                <?php if ($_smarty_tpl->tpl_vars['session']->value == true) {?>
-                <label>Errore di sessione </label>
-                <?php }?>
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" required>
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
-                <?php if ($_smarty_tpl->tpl_vars['password']->value == true) {?>
-                <label>Errore, username o password non riconosciuti!</label>
+                <?php if ($_smarty_tpl->tpl_vars['error']->value === true) {?>
+                <label>Errore inserimento dati</label>
                 <?php }?>
                 <button type="submit">Accedi</button>
             </form>

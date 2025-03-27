@@ -10,21 +10,16 @@ class VAdmin {
         $this->smarty = StartSmarty::configuration();
     }
 
-    public function showLoginForm() {
-        $this->smarty->assign('session', false);
-        $this->smarty->assign('password', false);
+    public function showLoginForm($error) {
+        $this->smarty->assign('error', $error);
         $this->smarty->display('admin-login.tpl');
     }
 
     public function loginSessionError() {
-        $this->smarty->assign('session', true);
-        $this->smarty->assign('password', false);
         $this->smarty->display('admin-login.tpl');
     }
 
     public function loginPasswordError() {
-        $this->smarty->assign('session', false);
-        $this->smarty->assign('password', true);
         $this->smarty->display('admin-login.tpl');
     }
 
@@ -88,10 +83,10 @@ class VAdmin {
         $this->smarty->display('admin-addLiftStructure.tpl');
     }
 
-    public function modifySkiFacility($id, $name, $status, $price) {
+    public function modifySkiFacility($id, $name, $status, $description) {
         $this->smarty->assign('name', $name);
         $this->smarty->assign('status', $status);
-        $this->smarty->assign('price', $price);
+        $this->smarty->assign('description', $description);
         $this->smarty->assign('id', $id);
         $this->smarty->assign('exist', false);
         $this->smarty->display('admin-modifySkiFacility.tpl');
@@ -123,12 +118,65 @@ class VAdmin {
         $this->smarty->display('admin-modifyLiftStructure.tpl');
     }
 
-    public function prices($prices) {
+    public function addSkipassTemplate() {
+        $this->smarty->display('admin-addSkipassTemplate.tpl');
+    }
+
+    public function addInsuranceTemplate() {
+        $this->smarty->display('admin-addInsuranceTemplate.tpl');
+    }
+
+    public function addPrice($object) {
+        $this->smarty->assign('object', $object);
+        $this->smarty->display('admin-addPrice.tpl');
+    }
+
+    public function prices($nPrices, $prices, $allSFNames) {
+        $this->smarty->assign('nPrices', $nPrices);
         $this->smarty->assign('prices', $prices);
+        $this->smarty->assign('skiFacilityNames', $allSFNames);
         $this->smarty->display('admin-modifyPrices.tpl');
     }
 
+    public function searchPrices($prices) {
+        $this->smarty->assign('prices', $prices);
+        $this->smarty->display('admin-searchPrice.tpl');
+    }
 
+    public function modifyPrice($idPrice, $description, $full, $reduced, $nameSkiFacility, $idSkiFacility, $allSFNames) {
+        $this->smarty->assign('idPrice', $idPrice);
+        $this->smarty->assign('description', $description);
+        $this->smarty->assign('full', $full);
+        $this->smarty->assign('reduced', $reduced);
+        $this->smarty->assign('nameSkiFacility', $nameSkiFacility);
+        $this->smarty->assign('idSkiFacility', $idSkiFacility);  
+        $this->smarty->assign('skiFacilityNames', $allSFNames);
+        $this->smarty->assign('exist', false);
+        $this->smarty->display('admin-modifyPrice.tpl');
+    }
+
+    public function priceAlreadyExist() {
+        $this->smarty->assign('exist', true);
+        $this->smarty->display('admin-modifyPrice.tpl');
+    }
+
+    public function addSkipass() {
+        $this->smarty->display('admin-addSkipass.tpl');
+    }
+
+    public function searchSkipassObjs($skipassObjs) {
+        $this->smarty->assign('skipassObjs', $skipassObjs);
+        $this->smarty->display('admin-searchSkipass.tpl');
+    }
+
+    public function modifySkipassObj($idSkipassObj, $description, $period, $type) {
+        $this->smarty->assign('idSkipassObj', $idSkipassObj);
+        $this->smarty->assign('description', $description);
+        $this->smarty->assign('period', $period);
+        $this->smarty->assign('type', $type);
+        $this->smarty->assign('exist', false);
+        $this->smarty->display('admin-modifySkipass.tpl');
+    }       
 
     
 }

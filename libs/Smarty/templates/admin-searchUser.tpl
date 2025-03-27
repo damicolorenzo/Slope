@@ -185,6 +185,16 @@ button:hover {
               <button type="submit" class="search-button">
               </button>
           </form>
+          <form class="search-form" action="/Slope/Admin/searchUsers" method="POST">
+              <input type="text" name="search-input" class="search-input" placeholder="Cerca un utente">
+              <button type="submit" class="search-button">
+              </button>
+          </form>
+          <form class="search-form" action="/Slope/Admin/searchUsers" method="POST">
+              <input type="text" name="search-input" class="search-input" placeholder="Cerca un utente">
+              <button type="submit" class="search-button">
+              </button>
+          </form>
         </div>
 
         {if count($users) > 0}
@@ -193,16 +203,16 @@ button:hover {
             {foreach from=$users item=i}
               <div class="card">
                 <div class="user-info">
-                    <p class="username">{$i['username']}</p>
-                    <p class="name">{$i['name']}</p>
-                    <p class="surname">{$i['surname']}</p>
+                    <p class="username">{$i->getUsername()}</p>
+                    <p class="name">{$i->getName()}</p>
+                    <p class="surname">{$i->getSurname()}</p>
                 </div>
                 <div class="action-buttons">
                   <form class="search-form" action="/Slope/Admin/modifyProfile" method="POST">
-                    <button type="submit" name="userId" value={$i['idUser']} class="edit">Modifica</button>
+                    <button type="submit" name="userId" value={$i->getIdUser()} class="edit">Modifica</button>
                   </form>
                   <form class="search-form" action="/Slope/Admin/deleteProfile" method="POST">
-                    <button type="submit" name="userId" value={$i['idUser']} class="delete">Elimina</button>
+                    <button type="submit" name="userId" value={$i->getIdUser()} class="delete">Elimina</button>
                   </form>
                 </div>
               </div>

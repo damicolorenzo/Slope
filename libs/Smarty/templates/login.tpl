@@ -151,6 +151,9 @@ input[type="date"]::placeholder {
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
                 <button type="submit">Accedi</button>
+                {if $error === true}
+                <label>Errore inserimento dati</label>
+                {/if}
             </form>
         </div>
       </div>

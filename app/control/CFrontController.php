@@ -1,5 +1,7 @@
 <?php
 
+require_once (__DIR__."\\..\\config\\autoloader.php");
+
 class CFrontController {
     
     public function run($requestUri){
@@ -16,9 +18,9 @@ class CFrontController {
         $requestUri = trim($requestUri, '/');
 
         /*
-        Suddivide la stringa dividendole quando incontra il carattere specificato generando così un array di stringhe 
+        Suddivide la stringa dividendola quando incontra il carattere specificato generando così un array di stringhe 
         Esempio 
-        $requestUri = Slope/entity/EAdmin --> $uriParts = ["Slope", "entity", 'EAdmin]
+        $requestUri = Slope/entity/EAdmin --> $uriParts = ["Slope", "entity", "EAdmin"]
         */
         $uriParts = explode('/', $requestUri);
 
@@ -30,11 +32,11 @@ class CFrontController {
         Esempio 
         $uriParts = ['Slope']
         array_shift($uriParts) --> $uriParts[0] è vuoto
-        $condition = True
+        $condition = true
         */
         $condition = empty($uriParts[0]);
 
-        if ($condition == False) {
+        if (!$condition) {
             //Rende maiuscolo il primo carattere della stringa 
             $controllerName = ucfirst($uriParts[0]);
         } else {
@@ -43,7 +45,7 @@ class CFrontController {
 
         $condition = empty($uriParts[1]);
 
-        if ($condition == False) {
+        if (!$condition) {
             $methodName = $uriParts[1];
         } else {
             $methodName = 'home';
@@ -70,12 +72,27 @@ class CFrontController {
                 //Chiama la funzione $methodName all'interno del file $controllerClass passando come parametri $params
                 call_user_func_array([$controllerClass, $methodName], $params);
             } else {
+                /* print("file non esiste");
+                print($controllerFile);
+                print($controllerClass);
+                print(var_export($admin)); */
                 //Il metodo non è stato trovato quindi rimanda ad una pagina di errore
                 header('Location: /Slope/User/home');
+                /* if($admin)
+                    header('Location: /Slope/Admin/dashboard');
+                else 
+                    header('Location: /Slope/User/home'); */       
             }
         } else {
+            /* print("controllore non esiste");
+            print($controllerFile);
+            print($controllerClass); */
             //Il controllore non è stato trovato quindi rimanda ad una pagina di errore
             header('Location: /Slope/User/home');
+            /* if($admin)
+                header('Location: /Slope/Admin/dashboard');
+            else 
+                header('Location: /Slope/User/home'); */
         }
     }
 }

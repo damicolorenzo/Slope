@@ -5,7 +5,8 @@ class UHTTPMethods {
     /*
     Funzione per accedere all'array $_POST 
     */
-    public static function post($param) {
+    public static function post($param
+    ) {
         if (array_key_exists($param, $_POST))
             return $_POST[$param];
         else 
@@ -17,8 +18,17 @@ class UHTTPMethods {
     /*
     Funzione per accedere all'array $_FILES
     */
-    public static function files(...$param) {
-        switch (count($param)) {
+    public static function files(...$params) {
+        $files = $_FILES;
+        foreach ($params as $param) {
+            if (isset($files[$param])) {
+                $files = $files[$param];
+            } else {
+                return null; // Return null if any index is invalid
+            }
+        }
+        return $files;
+        /* switch (count($param)) {
             case 1:
                 return $_FILES[$param[0]];
                 break;
@@ -31,12 +41,9 @@ class UHTTPMethods {
                 return $_FILES[$param[0]][$param[1]][$param[2]];
                 break;     
 
-
-
-
             default:
                 return $_FILES[$param[0]];
                 break;
-        }
+        } */
     }
 }

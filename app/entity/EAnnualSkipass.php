@@ -2,6 +2,8 @@
 
 require_once("ESkipassBooking.php");
 
+/* CLASSE NON UTILIZZATA */
+
 class EAnnualSkipass extends ESkipassBooking {
 
     //attributes
@@ -13,7 +15,7 @@ class EAnnualSkipass extends ESkipassBooking {
         parent::__construct($name, $surname, $stringStartDate, $type, $email, $totalSkiFacilitiesPrice);
     }
 
-    //Get and set methods
+    //get and set methods
     public function getPriceMultiplier() :float {return $this->priceMultiplier;}
     public function getPeriod() :int {return $this->period;}
 }

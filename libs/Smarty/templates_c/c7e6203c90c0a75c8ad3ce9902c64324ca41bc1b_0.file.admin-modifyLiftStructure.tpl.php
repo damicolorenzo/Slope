@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-11-21 11:10:18
+/* Smarty version 3.1.33, created on 2025-03-03 18:42:39
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-modifyLiftStructure.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_673f070a6d1013_03453042',
+  'unifunc' => 'content_67c5ea0f1b6214_05556397',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c7e6203c90c0a75c8ad3ce9902c64324ca41bc1b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-modifyLiftStructure.tpl',
-      1 => 1732183745,
+      1 => 1741023741,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_673f070a6d1013_03453042 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67c5ea0f1b6214_05556397 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -118,15 +118,15 @@ function content_673f070a6d1013_03453042 (Smarty_Internal_Template $_smarty_tpl)
                     <input type="text" id="name" name="name" value="<?php echo $_smarty_tpl->tpl_vars['name']->value;?>
 " required>
 
-                    <p><strong>Type:</strong></p>
+                    <p><strong>Tipo:</strong></p>
                     <input type="text" id="type" name="type" value="<?php echo $_smarty_tpl->tpl_vars['type']->value;?>
 " required>
 
-                    <p><strong>Status:</strong></p>
+                    <p><strong>Stato:</strong></p>
                     <input type="text" id="status" name="status" value="<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
 " required>
 
-                    <p><strong>Seats:</strong></p>
+                    <p><strong>Posti:</strong></p>
                     <input type="number" id="seats" name="seats" value="<?php echo $_smarty_tpl->tpl_vars['seats']->value;?>
 " required>
 

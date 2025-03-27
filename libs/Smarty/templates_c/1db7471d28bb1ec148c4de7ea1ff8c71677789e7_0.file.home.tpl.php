@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-07-09 12:10:37
+/* Smarty version 3.1.33, created on 2025-02-25 10:25:05
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\home.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_668d0c9d80c2c1_29022134',
+  'unifunc' => 'content_67bd8c71968210_36886562',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1db7471d28bb1ec148c4de7ea1ff8c71677789e7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\home.tpl',
-      1 => 1720519834,
+      1 => 1740475377,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,20 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_668d0c9d80c2c1_29022134 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67bd8c71968210_36886562 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Slope</title>
+  <title>Starter Page - Day Bootstrap Template</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="libs/Smarty/day/assets/img/favicon.png" rel="icon">
-  <link href="libs/Smarty/day/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/favicon.png" rel="icon">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -41,14 +41,14 @@ function content_668d0c9d80c2c1_29022134 (Smarty_Internal_Template $_smarty_tpl)
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="libs/Smarty/day/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="libs/Smarty/day/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="libs/Smarty/day/assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="libs/Smarty/day/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
   <!-- Main CSS File -->
-  <link href="libs/Smarty/day/assets/css/main.css" rel="stylesheet">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/css/main.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: Day
@@ -57,6 +57,7 @@ function content_668d0c9d80c2c1_29022134 (Smarty_Internal_Template $_smarty_tpl)
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
 </head>
 
 <body class="index-page">
@@ -103,9 +104,9 @@ function content_668d0c9d80c2c1_29022134 (Smarty_Internal_Template $_smarty_tpl)
     <!-- Hero Section -->
     <section id="hero" class="hero section">
 
-      <!-- <img src="libs/Smarty/images/dog1.jpg" alt="" data-aos="fade-in"> -->
+      <!-- <img src="https://localhost/Slope/libs/Smarty/images/dog1.jpg" alt="" data-aos="fade-in"> -->
       <!-- <video src="libs/Smarty/images/4185213-uhd_4096_2160_24fps.mp4" loop></video> -->
-      <img src = "libs/Smarty/images/Foto3.jpg" alt="" data-aos="fade-in">
+      <img src = "https://localhost/Slope/libs/Smarty/images/Foto3.jpg" alt="" data-aos="fade-in">
 
       
 
@@ -126,7 +127,7 @@ function content_668d0c9d80c2c1_29022134 (Smarty_Internal_Template $_smarty_tpl)
         <div class="row gy-4">
 
           <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="100">
-            <img src="/opt/lampp/htdocs/Slope/libs/Smarty/images/Slope_img/service-4-740x520.jpg" class="img-fluid" alt="">
+            <img src="https://localhost/Slope/libs/Smarty/images/Slope_img/service-4-740x520.jpg" class="img-fluid" alt="">
           </div>
 
           <div class="col-lg-6 order-2 order-lg-1 content" data-aos="fade-up" data-aos-delay="200">
@@ -163,43 +164,24 @@ function content_668d0c9d80c2c1_29022134 (Smarty_Internal_Template $_smarty_tpl)
       <div class="container">
 
         <div class="row no-gutters">
+          <!--
+          <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['skiFacilities']->value, 'i');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
+?> 
 
           <div class="col-lg-4 col-md-6 card" data-aos="fade-up" data-aos-delay="100">
-            <span>01</span>
-            <h4>Alto Sangro - Roccaraso/Rivisondoli</h4>
-            <p>Uno dei comprensori sciistici più grandi e famosi in Abruzzo, con 91 km di piste e 38 impianti di risalita.</p>
-          </div><!-- End Card Item -->
-
-          <div class="col-lg-4 col-md-6 card" data-aos="fade-up" data-aos-delay="200">
-            <span>02</span>
-            <h4>Gran Sasso - Campo Imperatore</h4>
-            <p>Situato a 2200 metri d’altitudine, offre 15 km di piste e 4 impianti di risalita.</p>
-          </div><!-- End Card Item -->
-
-          <div class="col-lg-4 col-md-6 card" data-aos="fade-up" data-aos-delay="300">
-            <span>03</span>
-            <h4> Roccaraso</h4>
-            <p>Uno dei comprensori sciistici più vasti e ben attrezzati in Abruzzo, con 147 km di piste e 38 impianti di risalita.</p>
-          </div><!-- End Card Item -->
-
-          <div class="col-lg-4 col-md-6 card" data-aos="fade-up" data-aos-delay="400">
-            <span>04</span>
-            <h4>Ovindoli - Monte Magnola</h4>
-            <p>Offre 20 km di piste e un efficiente impianto di innevamento artificiale.</p>
-          </div><!-- End Card Item -->
-
-          <div class="col-lg-4 col-md-6 card" data-aos="fade-up" data-aos-delay="400">
-            <span>05</span>
-            <h4>Campo Felice - Rocca di Cambio</h4>
-            <p>Annovera ben 31 chilometri di piste servite da impianti di risalita moderni.</p>
-          </div><!-- End Card Item -->
-
-          <div class="col-lg-4 col-md-6 card" data-aos="fade-up" data-aos-delay="600">
-            <span>06</span>
-            <h4>Pescocostanzo</h4>
-            <p>Situato nella parte più alta di Pescocostanzo, offre possibilità di sciare, parco giochi per bambini e piccola pista per gli slittini.</p>
-          </div><!-- End Card Item -->
-
+            <h4><?php echo $_smarty_tpl->tpl_vars['i']->value->getName();?>
+</h4>
+            <p><?php echo $_smarty_tpl->tpl_vars['i']->value->getDescription();?>
+</p>
+          </div>
+          <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+          -->
         </div>
 
       </div>
@@ -249,8 +231,8 @@ function content_668d0c9d80c2c1_29022134 (Smarty_Internal_Template $_smarty_tpl)
               <div class="icon">
                 <i class="bi bi-easel"></i>
               </div>
-              <a href="#" class="stretched-link">
-                <h3>Ledo Markt</h3>
+              <a href="/Slope/Home/webcam" class="stretched-link">
+                <h3>Webcam</h3>
               </a>
               <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p>
             </div>
@@ -291,13 +273,13 @@ function content_668d0c9d80c2c1_29022134 (Smarty_Internal_Template $_smarty_tpl)
       <div class="container section-title" data-aos="fade-up">
         <span>Pricing</span>
         <h2>Pricing</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <p>Seleziona un impianto sciistico e analizza i prezzi degli skipass</p>
       </div><!-- End Section Title -->
 
       <div class="container">
 
         <div class="row g-4 g-lg-0">
-
+          
           <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
             <div class="pricing-item">
               <h3>Free Plan</h3>
@@ -586,30 +568,30 @@ function content_668d0c9d80c2c1_29022134 (Smarty_Internal_Template $_smarty_tpl)
 
   <!-- Vendor JS Files -->
   <?php echo '<script'; ?>
- src="libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
 >
   <?php echo '<script'; ?>
- src="libs/Smarty/day/assets/vendor/php-email-form/validate.js"><?php echo '</script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/php-email-form/validate.js"><?php echo '</script'; ?>
 >
   <?php echo '<script'; ?>
- src="libs/Smarty/day/assets/vendor/aos/aos.js"><?php echo '</script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/aos/aos.js"><?php echo '</script'; ?>
 >
   <?php echo '<script'; ?>
- src="libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"><?php echo '</script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"><?php echo '</script'; ?>
 >
   <?php echo '<script'; ?>
- src="libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"><?php echo '</script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"><?php echo '</script'; ?>
 >
   <?php echo '<script'; ?>
- src="libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"><?php echo '</script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"><?php echo '</script'; ?>
 >
   <?php echo '<script'; ?>
- src="libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"><?php echo '</script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"><?php echo '</script'; ?>
 >
 
   <!-- Main JS File -->
   <?php echo '<script'; ?>
- src="libs/Smarty/day/assets/js/main.js"><?php echo '</script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/js/main.js"><?php echo '</script'; ?>
 >
 
 </body>

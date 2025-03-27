@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-11-30 15:49:40
+/* Smarty version 3.1.33, created on 2024-12-23 14:56:38
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_674b2604df4340_85482645',
+  'unifunc' => 'content_67696c1656e437_00323174',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a260da7a235f3f42bb2280f8d8e05ae21642471a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\login.tpl',
-      1 => 1732978176,
+      1 => 1734962196,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674b2604df4340_85482645 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67696c1656e437_00323174 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -174,6 +174,9 @@ input[type="date"]::placeholder {
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
                 <button type="submit">Accedi</button>
+                <?php if ($_smarty_tpl->tpl_vars['error']->value === true) {?>
+                <label>Errore inserimento dati</label>
+                <?php }?>
             </form>
         </div>
       </div>

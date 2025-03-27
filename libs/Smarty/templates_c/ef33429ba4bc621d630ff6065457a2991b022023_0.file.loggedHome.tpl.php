@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-11-29 14:32:37
+/* Smarty version 3.1.33, created on 2025-02-26 10:39:44
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\loggedHome.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_6749c2757051e9_90252391',
+  'unifunc' => 'content_67bee160464da4_57813232',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ef33429ba4bc621d630ff6065457a2991b022023' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\loggedHome.tpl',
-      1 => 1732887149,
+      1 => 1740562445,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6749c2757051e9_90252391 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67bee160464da4_57813232 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -57,6 +57,110 @@ function content_6749c2757051e9_90252391 (Smarty_Internal_Template $_smarty_tpl)
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+<style>
+.card-impianto {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 450px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.impianto, .dettagli-impianto {
+  padding: 16px;
+  width: 50%;
+}
+
+.impianto {
+  background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.impianto h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.impianto-img {
+  width: 100%;
+  border-radius: 4px;
+  height: auto;
+  max-height: 120px;
+  object-fit: cover;
+}
+
+.dettagli-impianto h4 {
+  margin-top: 0;
+  font-size: 16px;
+  color: #666;
+}
+
+.dettagli-impianto .piste {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.pista {
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pista.rossa {
+  background-color: #e74c3c; /* Colore rosso per piste rosse */
+}
+
+.pista.nera {
+  background-color: #2c3e50; /* Colore nero per piste nere */
+}
+
+.pista.blu {
+  background-color: #3498db; /* Colore blu per piste blu */
+}
+
+.pista.verde {
+  background-color: #2ecc71; /* Colore verde per piste verdi */
+}
+
+.dettagli-impianto p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #444;
+}
+
+.dettagli-impianto span {
+  font-weight: bold;
+}
+
+.status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 12px;
+}
+
+.status.aperto {
+  background-color: #4caf50; /* Verde per aperto */
+}
+
+.status.chiuso {
+  background-color: #f44336; /* Rosso per chiuso */
+}
+.search-form {
+  display: flex;
+
+}</style>
 </head>
 
 <body class="starter-page-page">
@@ -110,7 +214,7 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 ?> 
-          <form class="search-form" action="/Slope/User/skiFacilitydetails" method="POST">
+          <form class="search-form" action="/Slope/User/skiFacilityDetails" method="POST">
           <div class="card-impianto">
             <div class="impianto">
               <h3><?php echo $_smarty_tpl->tpl_vars['i']->value[0];?>
@@ -149,7 +253,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['e']->value) {
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 </div>
-                <p>Impianti: <span><?php echo $_smarty_tpl->tpl_vars['i']->value[2]['CNT'];?>
+                <p>Impianti: <span><?php echo $_smarty_tpl->tpl_vars['i']->value[2];?>
 </span></p>
                 <p>Status: <span class="status aperto">'aperto'</span></p>
             </div>

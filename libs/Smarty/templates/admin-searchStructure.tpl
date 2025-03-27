@@ -108,71 +108,68 @@
 
         {if count($objects) > 0}
         <div class="structures">
-          {foreach from=$objects item=i}
             <div class="structure-cards-container">
-              {foreach from=$i item=element}
-                {if $element instanceof ESkiFacility}
-                  <div class="card">
-                    <div class="user-info">
-                      <p >{$element->getName()}</p>
-                      <p >{$element->getStatus()}</p>
-                      <p >{$element->getPrice()}</p>
-                    </div>
-                    <div class="action-buttons">
-                      <form class="search-form" action="/Slope/Admin/modifySkiFacility" method="POST">
-                        <button type="submit" name="idSkiFacility" value={$element->getIdSkiFacility()} class="edit">Modifica</button>
-                      </form>
-                      <form class="search-form" action="/Slope/Admin/deleteSkiFacility" mathod="POST">
-                        <button type="submit" name="idSkiFacility" value={$element->getIdSkiFacility()} class="delete">Elimina</button>
-                      </form>
-                    </div>
+              {foreach from=$objects['skiFacilities'] item=element}
+                <div class="card">
+                  <div class="user-info">
+                    <p>{$element->getName()}</p>
+                    <p>{$element->getStatus()}</p>
+                    <p>{$element->getDescription()}</p>
                   </div>
-                {/if}
-                {if is_array($element)}
-                  {if $element[0] instanceof ESkiRun}
-                    <div class="card">
-                      <div class="user-info">
-                        <p>{$element[0]->getName()}</p>
-                        <p>{$element[0]->getType()}</p>
-                        <p>{$element[0]->getStatus()}</p>
-                        <p>Impianto di riferimento: {$element[1]}</p>
-                      </div>
-                      <div class="action-buttons">
-                        <form class="search-form" action="/Slope/Admin/modifySkiRun" method="POST">
-                          <button type="submit" name="idSkiRun" value={$element[0]->getIdSkiRun()} class="edit">Modifica</button>
-                        </form>
-                        <form class="search-form" action="/Slope/Admin/deleteSkiRun" mathod="POST">
-                          <button type="submit" name="idSkiRun" value={$element[0]->getIdSkiRun()} class="delete">Elimina</button>
-                        </form>
-                      </div>
-                    </div> 
-                  {/if}
-                  {if $element[0] instanceof ELiftStructure}
-                    <div class="card">
-                      <div class="user-info">
-                        <p>{$element[0]->getName()}</p>
-                        <p>{$element[0]->getType()}</p>
-                        <p>{$element[0]->getStatus()}</p>
-                        <p>{$element[0]->getSeats()}</p>
-                        <p>Impianto di riferimento: {$element[1]}</p>
-                      </div>
-                      <div class="action-buttons">
-                        <form class="search-form" action="/Slope/Admin/modifyLiftStructure" method="POST">
-                          <button type="submit" name="idLift" value={$element[0]->getIdLift()} class="edit">Modifica</button>
-                        </form>
-                        <form class="search-form" action="/Slope/Admin/deleteLiftStructure" mathod="POST">
-                          <button type="submit" name="idLift" value={$element[0]->getIdLift()} class="delete">Elimina</button>
-                        </form>
-                      </div>
-                    </div>
-                  {/if}
-                {/if}
+                  <div class="action-buttons">
+                    <form class="search-form" action="/Slope/Admin/modifySkiFacility" method="POST">
+                      <button type="submit" name="idSkiFacility" value={$element->getIdSkiFacility()} class="edit">Modifica</button>
+                    </form>
+                    <form class="search-form" action="/Slope/Admin/deleteSkiFacility" mathod="POST">
+                      <button type="submit" name="idSkiFacility" value={$element->getIdSkiFacility()} class="delete">Elimina</button>
+                    </form>
+                  </div>
+                </div>
               {/foreach}
             </div>
-          {/foreach}
+            <div class="structure-cards-container">
+              {foreach from=$objects['skiRun'] item=element}
+                <div class="card">
+                  <div class="user-info">
+                    <p>{$element[0]->getName()}</p>
+                    <p>{$element[0]->getType()}</p>
+                    <p>{$element[0]->getStatus()}</p>
+                    <p>Impianto di riferimento: {$element[1]['name']}</p>
+                  </div>
+                  <div class="action-buttons">
+                    <form class="search-form" action="/Slope/Admin/modifySkiRun" method="POST">
+                      <button type="submit" name="idSkiRun" value={$element[0]->getIdSkiRun()} class="edit">Modifica</button>
+                    </form>
+                    <form class="search-form" action="/Slope/Admin/deleteSkiRun" mathod="POST">
+                      <button type="submit" name="idSkiRun" value={$element[0]->getIdSkiRun()} class="delete">Elimina</button>
+                    </form>
+                  </div>
+                </div> 
+              {/foreach}
+            </div>
+            <div class="structure-cards-container">
+              {foreach from=$objects['liftStructure'] item=element}  
+                <div class="card">
+                  <div class="user-info">
+                    <p>{$element[0]->getName()}</p>
+                    <p>{$element[0]->getType()}</p>
+                    <p>{$element[0]->getStatus()}</p>
+                    <p>{$element[0]->getSeats()}</p>
+                    <p>Impianto di riferimento: {$element[1]['name']}</p>
+                  </div>
+                  <div class="action-buttons">
+                    <form class="search-form" action="/Slope/Admin/modifyLiftStructure" method="POST">
+                      <button type="submit" name="idLift" value={$element[0]->getIdLift()} class="edit">Modifica</button>
+                    </form>
+                    <form class="search-form" action="/Slope/Admin/deleteLiftStructure" mathod="POST">
+                      <button type="submit" name="idLift" value={$element[0]->getIdLift()} class="delete">Elimina</button>
+                    </form>
+                  </div>
+                </div>
+              {/foreach}
+            </div>
         </div>
         {/if}
-
       </div>
     </section><!-- /Starter Section Section -->
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-11-07 22:42:59
+/* Smarty version 3.1.33, created on 2025-03-02 20:35:26
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-searchStructure.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_672d34631b24b1_71286577',
+  'unifunc' => 'content_67c4b2febd4e36_53002059',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '095ce95657e04319aef1dadc2f03b90f992f7389' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-searchStructure.tpl',
-      1 => 1731015775,
+      1 => 1740944091,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_672d34631b24b1_71286577 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67c4b2febd4e36_53002059 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -57,6 +57,35 @@ function content_672d34631b24b1_71286577 (Smarty_Internal_Template $_smarty_tpl)
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+  .structures {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding-top: 20px;
+    background-color: #f0f0f0;
+    justify-content: center;
+}
+
+.structure-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Distanza tra le card */
+  background-color: #007BFF;
+  margin-top: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+  </style>
 </head>
 
 <body class="starter-page-page">
@@ -102,103 +131,107 @@ function content_672d34631b24b1_71286577 (Smarty_Internal_Template $_smarty_tpl)
 
         <?php if (count($_smarty_tpl->tpl_vars['objects']->value) > 0) {?>
         <div class="structures">
-          <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['objects']->value, 'i');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
-?>
             <div class="structure-cards-container">
               <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['i']->value, 'element');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['objects']->value['skiFacilities'], 'element');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['element']->value) {
 ?>
-                <?php if ($_smarty_tpl->tpl_vars['element']->value instanceof ESkiFacility) {?>
-                  <div class="card">
-                    <div class="user-info">
-                      <p ><?php echo $_smarty_tpl->tpl_vars['element']->value->getName();?>
+                <div class="card">
+                  <div class="user-info">
+                    <p><?php echo $_smarty_tpl->tpl_vars['element']->value->getName();?>
 </p>
-                      <p ><?php echo $_smarty_tpl->tpl_vars['element']->value->getStatus();?>
+                    <p><?php echo $_smarty_tpl->tpl_vars['element']->value->getStatus();?>
 </p>
-                      <p ><?php echo $_smarty_tpl->tpl_vars['element']->value->getPrice();?>
+                    <p><?php echo $_smarty_tpl->tpl_vars['element']->value->getDescription();?>
 </p>
-                    </div>
-                    <div class="action-buttons">
-                      <form class="search-form" action="/Slope/Admin/modifySkiFacility" method="POST">
-                        <button type="submit" name="idSkiFacility" value=<?php echo $_smarty_tpl->tpl_vars['element']->value->getIdSkiFacility();?>
- class="edit">Modifica</button>
-                      </form>
-                      <form class="search-form" action="/Slope/Admin/deleteSkiFacility" mathod="POST">
-                        <button type="submit" name="idSkiFacility" value=<?php echo $_smarty_tpl->tpl_vars['element']->value->getIdSkiFacility();?>
- class="delete">Elimina</button>
-                      </form>
-                    </div>
                   </div>
-                <?php }?>
-                <?php if (is_array($_smarty_tpl->tpl_vars['element']->value)) {?>
-                  <?php if ($_smarty_tpl->tpl_vars['element']->value[0] instanceof ESkiRun) {?>
-                    <div class="card">
-                      <div class="user-info">
-                        <p><?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getName();?>
-</p>
-                        <p><?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getType();?>
-</p>
-                        <p><?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getStatus();?>
-</p>
-                        <p>Impianto di riferimento: <?php echo $_smarty_tpl->tpl_vars['element']->value[1];?>
-</p>
-                      </div>
-                      <div class="action-buttons">
-                        <form class="search-form" action="/Slope/Admin/modifySkiRun" method="POST">
-                          <button type="submit" name="idSkiRun" value=<?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getIdSkiRun();?>
+                  <div class="action-buttons">
+                    <form class="search-form" action="/Slope/Admin/modifySkiFacility" method="POST">
+                      <button type="submit" name="idSkiFacility" value=<?php echo $_smarty_tpl->tpl_vars['element']->value->getIdSkiFacility();?>
  class="edit">Modifica</button>
-                        </form>
-                        <form class="search-form" action="/Slope/Admin/deleteSkiRun" mathod="POST">
-                          <button type="submit" name="idSkiRun" value=<?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getIdSkiRun();?>
+                    </form>
+                    <form class="search-form" action="/Slope/Admin/deleteSkiFacility" mathod="POST">
+                      <button type="submit" name="idSkiFacility" value=<?php echo $_smarty_tpl->tpl_vars['element']->value->getIdSkiFacility();?>
  class="delete">Elimina</button>
-                        </form>
-                      </div>
-                    </div> 
-                  <?php }?>
-                  <?php if ($_smarty_tpl->tpl_vars['element']->value[0] instanceof ELiftStructure) {?>
-                    <div class="card">
-                      <div class="user-info">
-                        <p><?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getName();?>
-</p>
-                        <p><?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getType();?>
-</p>
-                        <p><?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getStatus();?>
-</p>
-                        <p><?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getSeats();?>
-</p>
-                        <p>Impianto di riferimento: <?php echo $_smarty_tpl->tpl_vars['element']->value[1];?>
-</p>
-                      </div>
-                      <div class="action-buttons">
-                        <form class="search-form" action="/Slope/Admin/modifyLiftStructure" method="POST">
-                          <button type="submit" name="idLift" value=<?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getIdLift();?>
- class="edit">Modifica</button>
-                        </form>
-                        <form class="search-form" action="/Slope/Admin/deleteLiftStructure" mathod="POST">
-                          <button type="submit" name="idLift" value=<?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getIdLift();?>
- class="delete">Elimina</button>
-                        </form>
-                      </div>
-                    </div>
-                  <?php }?>
-                <?php }?>
+                    </form>
+                  </div>
+                </div>
               <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </div>
-          <?php
+            <div class="structure-cards-container">
+              <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['objects']->value['skiRun'], 'element');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['element']->value) {
+?>
+                <div class="card">
+                  <div class="user-info">
+                    <p><?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getName();?>
+</p>
+                    <p><?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getType();?>
+</p>
+                    <p><?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getStatus();?>
+</p>
+                    <p>Impianto di riferimento: <?php echo $_smarty_tpl->tpl_vars['element']->value[1]['name'];?>
+</p>
+                  </div>
+                  <div class="action-buttons">
+                    <form class="search-form" action="/Slope/Admin/modifySkiRun" method="POST">
+                      <button type="submit" name="idSkiRun" value=<?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getIdSkiRun();?>
+ class="edit">Modifica</button>
+                    </form>
+                    <form class="search-form" action="/Slope/Admin/deleteSkiRun" mathod="POST">
+                      <button type="submit" name="idSkiRun" value=<?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getIdSkiRun();?>
+ class="delete">Elimina</button>
+                    </form>
+                  </div>
+                </div> 
+              <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+            </div>
+            <div class="structure-cards-container">
+              <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['objects']->value['liftStructure'], 'element');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['element']->value) {
+?>  
+                <div class="card">
+                  <div class="user-info">
+                    <p><?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getName();?>
+</p>
+                    <p><?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getType();?>
+</p>
+                    <p><?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getStatus();?>
+</p>
+                    <p><?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getSeats();?>
+</p>
+                    <p>Impianto di riferimento: <?php echo $_smarty_tpl->tpl_vars['element']->value[1]['name'];?>
+</p>
+                  </div>
+                  <div class="action-buttons">
+                    <form class="search-form" action="/Slope/Admin/modifyLiftStructure" method="POST">
+                      <button type="submit" name="idLift" value=<?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getIdLift();?>
+ class="edit">Modifica</button>
+                    </form>
+                    <form class="search-form" action="/Slope/Admin/deleteLiftStructure" mathod="POST">
+                      <button type="submit" name="idLift" value=<?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getIdLift();?>
+ class="delete">Elimina</button>
+                    </form>
+                  </div>
+                </div>
+              <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+            </div>
         </div>
         <?php }?>
-
       </div>
     </section><!-- /Starter Section Section -->
 

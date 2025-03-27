@@ -2,51 +2,122 @@
 class EInsurance{
 
     //attributes
+    /**
+     * Holds the id of the insurance in the database.
+     * @var int
+     */
     protected string $idInsurance;
+    /**
+     * Holds the name of the insurance holder.
+     * @var string
+     */
+    protected string $name;
+    /**
+     * Holds the surname of the insurance holder.
+     * @var string
+     */
+    protected string $surname;
+    /**
+     * Holds the email of the insurance holder.
+     * @var string
+     */
+    protected string $email;
+    /**
+     * Holds the type of the insurance.
+     * @var string
+     */
     protected string $type;
+    /**
+     * Holds the period of the insurance. (start date + period = end date)
+     * @var string
+     */
     protected int $period;
+    /**
+     * Holds the price of the insurance.
+     * @var float
+     */
     protected float $price;
-    protected string $idPayment;
+    /**
+     * Holds the start date of the insurance. (start date + period = end date)
+     * @var string
+     */
+    protected string $startDate;
+    /**
+     * Holds the id of the user(insurance holder).
+     * This means that if the insurance holder have an account this id is equal to the user id.
+     * Instead if the insurance holder have no account the user id is refered to the user who bought this insurance for him/her.
+     * @var int
+     */
+    protected int $idUser;
 
     //constructor
-    //rivedere se inserire o meno idInsurance e idPayment nel costruttore
-
-    public function ___construct(string $type, int $period, float $price, string $idPayment){
+    public function __construct(string $name, string $surname, string $email, string $type, string $period, float $price, string $startDate){
+        $this->name = $name;
+        $this->surname = $surname;
+        $this->email = $email;
         $this->type = $type;
         $this->period = $period;
         $this->price = $price;
+        $this->startDate = $startDate;
     }
 
     //get methods
-    public function getId(){
+    public function getIdInsurance() : int{
         return $this->idInsurance;
     }
-    public function getType(){
+    public function getName() : string{
+        return $this->name;
+    }
+    public function getSurname() : string{
+        return $this->surname;
+    }
+    public function getEmail() : string{
+        return $this->email;
+    }
+    public function getType() : string{
         return $this->type;
     }
-    public function getPeriod(){
+    public function getPeriod() : int{
         return $this->period;
     }
-    public function getPrice(){
+    public function getPrice() : float{
         return $this->price;
     }
-    public function getIdPayment(){
-        return $this->idPayment;
+    public function getStartDate() : string{
+        return $this->startDate;
+    }
+    public function getIdUser() : int{
+        return $this->idUser;
     }
 
 
     //set methods
-    public function setId(string $id){
+    public function setIdInsurance(int $id) : void{
         $this->idInsurance = $id;
     }
-    public function setType(string $type1){
-        $this->type = $type1;
+    public function setName(string $name) :void{
+        $this->name = $name;
     }
-    public function setPeriod(int $period1){
-        $this->period = $period1;
+    public function setSurname(string $surname) :void{
+        $this->surname = $surname;
     }
-    public function setPrice(float $price1){
-        $this->price = $price1;
+    public function setEmail(string $email) :void{
+        $this->email = $email;
+    }
+    public function setType(string $type) : void{
+        $this->type = $type;
+    }
+    public function setPeriod(int $period) : void{
+        $this->period = $period;
+    }
+    public function setPrice(float $price) : void{
+        $this->price = $price;
+    }
+    public function setStartDate(string $startDate) : void{
+        $this->startDate = $startDate;
+    }
+    public function setIdUser(int $id) : void{
+        $this->idUser = $id;
     }
 
 }

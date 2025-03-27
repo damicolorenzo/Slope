@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-11-30 15:47:26
+/* Smarty version 3.1.33, created on 2025-02-26 14:18:57
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\makeABookingForm.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_674b257e374d96_84138758',
+  'unifunc' => 'content_67bf14c109be05_10717396',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a90878731bad63b3cf217370aa6258c4393a4f95' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\makeABookingForm.tpl',
-      1 => 1732977753,
+      1 => 1740575901,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674b257e374d96_84138758 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67bf14c109be05_10717396 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -170,23 +170,47 @@ button:hover {
             <label for="email">Email di conferma</label>
             <input type="email" id="email" name="email" value=<?php echo $_smarty_tpl->tpl_vars['user']->value->getEmail();?>
 >
-
+            
             <div class="durata-skipass">
                 <p>Durata skipass</p>
-                <label><input type="radio" name="period" value="giornaliero"> Giornaliero</label>
-                <label><input type="radio" name="period" value="settimanale"> Settimanale</label>
-                <label><input type="radio" name="period" value="mensile"> Mensile</label>
-                <label><input type="radio" name="period" value="stagionale"> Stagionale</label>
+                <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['periods']->value, 'i');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
+?>
+                <?php if ($_smarty_tpl->tpl_vars['i']->value == 1) {?>
+                <label><input type="radio" name="period" value=<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+> <?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+ giorno</label>
+                <?php } elseif ($_smarty_tpl->tpl_vars['i']->value > 1) {?>
+                <label><input type="radio" name="period" value=<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+> <?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+ giorni</label>
+                <?php }?>
+                <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </div>
 
             <div class="tipologia-biglietto">
                 <p>Tipologia biglietto</p>
-                <label><input type="radio" name="type" value="intero"> Intero</label>
-                <label><input type="radio" name="type" value="ridotto"> Ridotto</label>
+                <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['types']->value, 'i');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
+?>
+                <label><input type="radio" name="type" value=<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+> <?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+</label>
+                <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </div>
 
             <div class="acquista-assicurazione">
-                <label><input type="checkbox" name="insurance"> Acquista assicurazione</label>
+                <label><input type="checkbox" name="insurance" checked> Acquista assicurazione</label>
             </div>
 
             <label for="data">Seleziona una data</label>

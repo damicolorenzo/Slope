@@ -34,6 +34,116 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+  .form-container {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 350px;
+}
+
+h1 {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.durata-skipass, .tipologia-biglietto {
+  margin-bottom: 15px;
+}
+
+.durata-skipass p, .tipologia-biglietto p {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  margin-right: 10px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-group input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+}
+
+.form-group input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.submit-btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+  </style>
 </head>
 
 <body class="starter-page-page">
@@ -50,17 +160,9 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">Prenota</a></li>
-            <li><a href="#services">Visualizza prenotazioni</a></li>
-            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-              <ul>
-                <li><a href="#">Piste</a></li>
-                <li><a href="#">Impianti</a></li>
-                <li><a href="#">Web</a></li>
-              </ul>
-            </li>
-            <li><a href="/Slope/User/profile">Profilo</a></li>
+            <li><a href="/Slope/">Home</a></li>
+            <li><a href="/Slope/User/showBookings">Visualizza Prenotazioni</a></li>
+            <li><a href="/Slope/User/profile">Profile</a></li>
             <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -78,40 +180,23 @@
 
       <div class="container" data-aos="fade-up">
 
-      {foreach from=$map item=i} 
-          <form class="search-form" action="/Slope/User/skiFacilitydetails" method="POST">
+        <form class="search-form" action="/Slope/User/confirmSubscription" method="POST">
           <div class="card-impianto">
-            <div class="impianto">
-              <h3>{$i[0]}</h3>
-              <img src="link-alla-tua-immagine.jpg" alt="Immagine dell'impianto" class="impianto-img">
-            </div>
-            <div class="dettagli-impianto">
-              <h4>Dettagli {$i[0]}</h4> 
-              <button type="submit" name="nameSkiFacility" value={$i[0]} >Esplora</button>
-                <div class="piste">
-                  {foreach from=$i[1] item=e}  
-                    {if $e['type'] == 'blu'}
-                    <div class="pista blu">Blu: <span>{$e['CNT']}</span></div>
-                    {/if}
-                    {if $e['type'] == 'rossa'}
-                    <div class="pista rossa">Rosse: <span>{$e['CNT']}</span></div>
-                    {/if}
-                    {if $e['type'] == 'nera'}
-                    <div class="pista nera">Nere: <span>{$e['CNT']}</span></div>
-                    {/if}
-                    {if $e['type'] == 'verde'}
-                    <div class="pista verde">Verdi: <span>{$e['CNT']}</span></div>
-                    {/if}
-                  {/foreach}
-                </div>
-                <p>Impianti: <span>{$i[2]['CNT']}</span></p>
-                <p>Status: <span class="status aperto">'aperto'</span></p>
-            </div>
+            <h1>Acqisto abbonamento</h1>
+
+            <label for="name">Nome</label>
+            <input type="text" id="name" name="name" value={$user->getName()}>
+
+            <label for="surname">Cognome</label>
+            <input type="text" id="surname" name="surname" value={$user->getSurname()}>
+
+            <label for="email">Email di conferma</label>
+            <input type="email" id="email" name="email" value={$user->getEmail()}>
             
+            
+            <button type="submit" class="submit-btn">Procedi al Pagamento</button>
           </div>
-          
-          <form>
-        {/foreach}
+        </form>
 
       </div>
 

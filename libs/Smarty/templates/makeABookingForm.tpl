@@ -143,23 +143,27 @@ button:hover {
 
             <label for="email">Email di conferma</label>
             <input type="email" id="email" name="email" value={$user->getEmail()}>
-
+            
             <div class="durata-skipass">
                 <p>Durata skipass</p>
-                <label><input type="radio" name="period" value="giornaliero"> Giornaliero</label>
-                <label><input type="radio" name="period" value="settimanale"> Settimanale</label>
-                <label><input type="radio" name="period" value="mensile"> Mensile</label>
-                <label><input type="radio" name="period" value="stagionale"> Stagionale</label>
+                {foreach from=$periods item=i}
+                {if $i == 1}
+                <label><input type="radio" name="period" value={$i}> {$i} giorno</label>
+                {else if $i > 1}
+                <label><input type="radio" name="period" value={$i}> {$i} giorni</label>
+                {/if}
+                {/foreach}
             </div>
 
             <div class="tipologia-biglietto">
                 <p>Tipologia biglietto</p>
-                <label><input type="radio" name="type" value="intero"> Intero</label>
-                <label><input type="radio" name="type" value="ridotto"> Ridotto</label>
+                {foreach from=$types item=i}
+                <label><input type="radio" name="type" value={$i}> {$i}</label>
+                {/foreach}
             </div>
 
             <div class="acquista-assicurazione">
-                <label><input type="checkbox" name="insurance"> Acquista assicurazione</label>
+                <label><input type="checkbox" name="insurance" checked> Acquista assicurazione</label>
             </div>
 
             <label for="data">Seleziona una data</label>

@@ -50,17 +50,9 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">Prenota</a></li>
-            <li><a href="#services">Visualizza prenotazioni</a></li>
-            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-              <ul>
-                <li><a href="#">Piste</a></li>
-                <li><a href="#">Impianti</a></li>
-                <li><a href="#">Web</a></li>
-              </ul>
-            </li>
-            <li><a href="/Slope/User/profile">Profilo</a></li>
+            <li><a href="/Slope/">Home</a></li>
+            <li><a href="/Slope/User/showBookings">Visualizza Prenotazioni</a></li>
+            <li><a href="/Slope/User/profile">Profile</a></li>
             <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -78,58 +70,61 @@
 
       <div class="container" data-aos="fade-up">
 
-      <div class="form-container">
-        <h1>Modifica prenotazione</h1>
-        <form action="/Slope/User/confirmModifyBooking" method="post">
-            <label for="name">Nome</label>
-            <input type="text" id="name" name="name" value={$skipassBooking->getName()}>
+        <div class="form-container">
+          <h1>Modifica prenotazione</h1>
+          <form action="/Slope/User/confirmModifyBooking" method="post">
+              <label for="name">Nome</label>
+              <input type="text" id="name" name="name" value={$skipassBooking->getName()}>
 
-            <label for="surname">Cognome</label>
-            <input type="text" id="surname" name="surname" value={$skipassBooking->getSurname()}>
+              <label for="surname">Cognome</label>
+              <input type="text" id="surname" name="surname" value={$skipassBooking->getSurname()}>
 
-            <label for="email">Email di conferma</label>
-            <label>{$skipassBooking->getEmail()}</label>
+              <label for="email">Email di conferma</label>
+              <label>{$skipassBooking->getEmail()}</label>
 
-            <div class="durata-skipass">
-                <p>Durata skipass</p>
-                {if $skipassBooking->getPeriod() == 1}
-                <label><input type="radio" name="period" value="giornaliero" checked readonly> Giornaliero</label>
-                {/if}
-                {if $skipassBooking->getPeriod() == 7}
-                <label><input type="radio" name="period" value="settimanale" checked readonly> Settimanale</label>
-                {/if}
-                {if $skipassBooking->getPeriod() == 30}
-                <label><input type="radio" name="period" value="mensile" checked readonly> Mensile</label>
-                {/if}
-                {if $skipassBooking->getPeriod() == 30*6}
-                <label><input type="radio" name="period" value="stagionale" checked readonly> Stagionale</label>
-                {/if}
-            </div>
+              <div class="durata-skipass">
+                  <p>Durata skipass</p>
+                  {if $skipassBooking->getPeriod() == 1}
+                  <label><input type="radio" name="period" value="giornaliero" checked readonly> Giornaliero</label>
+                  {/if}
+                  {if $skipassBooking->getPeriod() == 7}
+                  <label><input type="radio" name="period" value="settimanale" checked readonly> Settimanale</label>
+                  {/if}
+                  {if $skipassBooking->getPeriod() == 30}
+                  <label><input type="radio" name="period" value="mensile" checked readonly> Mensile</label>
+                  {/if}
+                  {if $skipassBooking->getPeriod() == 30*6}
+                  <label><input type="radio" name="period" value="stagionale" checked readonly> Stagionale</label>
+                  {/if}
+              </div>
 
-            <div class="tipologia-biglietto">
-                <p>Tipologia biglietto</p>
-                {if $skipassBooking->getType() == 'intero'}
-                <label><input type="radio" name="type" value="intero" checked readonly> Intero</label>
-                {else}
-                <label><input type="radio" name="type" value="ridotto" checked readonly> Ridotto</label>
-                {/if}
-            </div>
+              <div class="tipologia-biglietto">
+                  <p>Tipologia biglietto</p>
+                  {if $skipassBooking->getType() == 'intero'}
+                  <label><input type="radio" name="type" value="intero" checked readonly> Intero</label>
+                  {else}
+                  <label><input type="radio" name="type" value="ridotto" checked readonly> Ridotto</label>
+                  {/if}
+              </div>
 
-            <div class="acquista-assicurazione">
-                <label><input type="checkbox" name="insurance"> Acquista assicurazione</label>
-            </div>
+              <label for="data">Seleziona una data</label>
+              <input type="date" id="date" name="date" min={$today} value={$skipassBooking->getStartDate()}>
+              {if $dateWarning } 
+              <label>Controllare se la data inserita è corretta. La data potrebbe essere troppo lontana da quella corrente.</label>
+              {/if}
 
-            <label for="data">Seleziona una data</label>
-            <input type="date" id="date" name="date" min={$today} value={$skipassBooking->getStartDate()}>
-            {if $dateWarning } 
-            <label>Controllare se la data inserita è corretta. La data potrebbe essere troppo lontana da quella corrente.</label>
-            {/if}
-
-            <button type="submit">Conferma</button>
-        </form>
+              <button type="submit">Conferma</button>
+          </form>
+          
+        </div>
+        {if count($insurance) <= 0}
+        <div class="acquista-assicurazione">
+            <form action="/Slope/User/buyInsurance" method="post">
+            <button type="submit">Acquista assicurazione</button>
+            </form>
+        </div>
+        {/if}
     </div>
-
-      </div>
 
     </section><!-- /Starter Section Section -->
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-11-28 17:50:26
+/* Smarty version 3.1.33, created on 2025-02-26 17:04:45
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\paymentSection.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_67489f52eaf626_16692837',
+  'unifunc' => 'content_67bf3b9daeb790_63340813',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b05e431f7332b74dde2c36ea6d5a0da1c78fad5d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\paymentSection.tpl',
-      1 => 1732791160,
+      1 => 1740585885,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67489f52eaf626_16692837 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67bf3b9daeb790_63340813 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -57,6 +57,123 @@ function content_67489f52eaf626_16692837 (Smarty_Internal_Template $_smarty_tpl)
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+  .payment-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.payment-container h1 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #444;
+}
+
+.order-summary {
+  margin-bottom: 20px;
+}
+
+.order-summary h2 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #444;
+}
+
+.order-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.order-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+}
+
+.order-list li.total {
+  font-weight: bold;
+  border-top: 2px solid #444;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+.payment-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.payment-container h1 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #444;
+}
+
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-group input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+}
+
+.form-group input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.submit-btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+  </style>
 </head>
 
 <body class="starter-page-page">
@@ -73,17 +190,9 @@ function content_67489f52eaf626_16692837 (Smarty_Internal_Template $_smarty_tpl)
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">Prenota</a></li>
-            <li><a href="#services">Visualizza prenotazioni</a></li>
-            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-              <ul>
-                <li><a href="#">Piste</a></li>
-                <li><a href="#">Impianti</a></li>
-                <li><a href="#">Web</a></li>
-              </ul>
-            </li>
-            <li><a href="/Slope/User/profile">Profilo</a></li>
+            <li><a href="/Slope/">Home</a></li>
+            <li><a href="/Slope/User/showBookings">Visualizza Prenotazioni</a></li>
+            <li><a href="/Slope/User/profile">Profile</a></li>
             <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -101,93 +210,109 @@ function content_67489f52eaf626_16692837 (Smarty_Internal_Template $_smarty_tpl)
 
       <div class="container" data-aos="fade-up">
 
-      <div class="payment-container">
+        <div class="payment-container">
         <h1>Riepilogo Pagamento</h1>
         
-        <!-- Dettagli acquisto -->
-        <div class="order-summary">
-            <h2>Dettagli Acquisto</h2>
-            <ul class="order-list">
-                                <li>
-                    <span>Articolo 2</span>
-                    <span>€30.00</span>
-                </li>
-                <li>
-                    <span>Articolo 3</span>
-                    <span>€20.00</span>
-                </li>
-                <li class="total">
-                    <span><strong>Totale</strong></span>
-                    <span><strong>€100.00</strong></span>
-                </li>
-            </ul>
-        </div>
+          <!-- Dettagli acquisto -->
+          <div class="order-summary">
+              <h2>Dettagli Acquisto</h2>
+              <ul class="order-list">
+                  <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['cart']->value, 'i');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
+?>
+                    <?php if ($_smarty_tpl->tpl_vars['i']->value instanceof ESkipassBooking) {?>
+                    <li>
+                        <span>Skipass</span>
+                        <span>€<?php echo $_smarty_tpl->tpl_vars['i']->value->getValue();?>
+</span>
+                    </li>
+                    <?php }?>
+                    <?php if ($_smarty_tpl->tpl_vars['i']->value instanceof EInsurance) {?>
+                    <li>
+                        <span>Assicurazione</span>
+                        <span>€<?php echo $_smarty_tpl->tpl_vars['i']->value->getPrice();?>
+</span>
+                    </li>
+                    <?php }?>
+                  <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                  <li class="total">
+                      <span><strong>Totale</strong></span>
+                      <span><strong>€<?php echo $_smarty_tpl->tpl_vars['totalPrice']->value;?>
+</strong></span>
+                  </li>
+              </ul>
+          </div>
         
-        <form action="/Slope/User/payment" class="payment-form"  enctype="multipart/form-data" method="POST">
-          <h2>Paga con Carta di Credito</h2>
-            <div class="form-group">
-                <label for="cardHolderName">Nome Intestatario Carta</label>
-                <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
-                <input type="text" id="card-name" name="cardHolderName" placeholder="Mario" required>
-                <?php } else { ?>
-                <input type="text" id="card-name" name="cardHolderName" value=<?php echo $_smarty_tpl->tpl_vars['creditCard']->value->getCardHolderName();?>
+          <form action="/Slope/User/payment" class="payment-form"  enctype="multipart/form-data" method="POST">
+            <h2>Paga con Carta di Credito</h2>
+              <div class="form-group">
+                  <label for="cardHolderName">Nome Intestatario Carta</label>
+                  <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
+                  <input type="text" id="card-name" name="cardHolderName" placeholder="Mario" required>
+                  <?php } else { ?>
+                  <input type="text" id="card-name" name="cardHolderName" value=<?php echo $_smarty_tpl->tpl_vars['creditCard']->value->getCardHolderName();?>
  required>
-                <?php }?>
-            </div>
-            <div class="form-group">
-                <label for="cardHolderSurname">Cognome Intestatario Carta</label>
-                <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
-                <input type="text" id="card-surname" name="cardHolderSurname" placeholder="Rossi" required>
-                <?php } else { ?>
-                <input type="text" id="card-surname" name="cardHolderSurname" value=<?php echo $_smarty_tpl->tpl_vars['creditCard']->value->getCardHolderSurname();?>
+                  <?php }?>
+              </div>
+              <div class="form-group">
+                  <label for="cardHolderSurname">Cognome Intestatario Carta</label>
+                  <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
+                  <input type="text" id="card-surname" name="cardHolderSurname" placeholder="Rossi" required>
+                  <?php } else { ?>
+                  <input type="text" id="card-surname" name="cardHolderSurname" value=<?php echo $_smarty_tpl->tpl_vars['creditCard']->value->getCardHolderSurname();?>
  required>
-                <?php }?>
-            </div>
-            <div class="form-group">
-                <label for="cardNumber">Numero Carta</label>
-                <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
-                <input type="text" id="card-number" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19"  required>
-                <?php } else { ?>
-                <input type="text" id="card-number" name="cardNumber" value=<?php echo $_smarty_tpl->tpl_vars['creditCard']->value->getCardNumber();?>
+                  <?php }?>
+              </div>
+              <div class="form-group">
+                  <label for="cardNumber">Numero Carta</label>
+                  <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
+                  <input type="text" id="card-number" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19"  required>
+                  <?php } else { ?>
+                  <input type="text" id="card-number" name="cardNumber" value=<?php echo $_smarty_tpl->tpl_vars['creditCard']->value->getCardNumber();?>
  maxlength="19"  required>
-                <?php }?>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="expiryDate">Scadenza Carta</label>
-                    <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
-                    <input type="month" id="expiry-date" name="expiryDate" required>
-                    <?php } else { ?>
-                    <input type="month" id="expiry-date" name="expiryDate" value=<?php echo $_smarty_tpl->tpl_vars['creditCard']->value->getExpiryDate();?>
+                  <?php }?>
+              </div>
+              <div class="form-row">
+                  <div class="form-group">
+                      <label for="expiryDate">Scadenza Carta</label>
+                      <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
+                      <input type="month" id="expiry-date" name="expiryDate" required>
+                      <?php } else { ?>
+                      <input type="month" id="expiry-date" name="expiryDate" value=<?php echo $_smarty_tpl->tpl_vars['creditCard']->value->getExpiryDate();?>
  required>
-                    <?php }?>
-                </div>
-                <div class="form-group">
-                    <label for="cvv">CVV</label>
-                    <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
-                    <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3"  required>
-                    <?php } else { ?>
-                    <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3"  value=<?php echo $_smarty_tpl->tpl_vars['creditCard']->value->getCvv();?>
+                      <?php }?>
+                  </div>
+                  <div class="form-group">
+                      <label for="cvv">CVV</label>
+                      <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
+                      <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3"  required>
+                      <?php } else { ?>
+                      <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3"  value=<?php echo $_smarty_tpl->tpl_vars['creditCard']->value->getCvv();?>
  required>
-                    <?php }?>
-                </div>
-            </div>
-            <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
-            <div class="form-group">
-              <label for="preferred">Salvare come metodo preferito</label>
-              <input type="checkbox" id="preferred" name="preferred" >
-            </div>
-            <?php } else { ?> 
-            <div class="form-group">
-              <label for="preferred">Salvare come metodo preferito</label>
-              <input type="checkbox" id="preferred" name="preferred" checked>
-            </div>
-            <?php }?>
-            
-            <button type="submit" class="submit-btn">Procedi al Pagamento</button>
-        </form>
+                      <?php }?>
+                  </div>
+              </div>
+              <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
+              <div class="form-group">
+                <label for="preferred">Salvare come metodo preferito</label>
+                <input type="checkbox" id="preferred" name="preferred" >
+              </div>
+              <?php } else { ?> 
+              <div class="form-group">
+                <label for="preferred">Salvare come metodo preferito</label>
+                <input type="checkbox" id="preferred" name="preferred" checked>
+              </div>
+              <?php }?>
+              
+              <button type="submit" class="submit-btn">Procedi al Pagamento</button>
+          </form>
 
-      </div>
+        </div>
 
       </div>
 

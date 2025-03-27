@@ -3,36 +3,48 @@
 class ESkiFacility {
     
     //attributes
+    /**
+     * Holds the id of the ski facility in the database.
+     * @var int
+     */
     private int $idSkiFacility;
-
-    private string $name, $status;
-    private float $price;
-
-    private int $idSkiArea;
+    /**
+     * Holds the name of the ski facility.
+     * @var string
+     */
+    private string $name;
+    /**
+     * Holds the status of the ski facility.
+     * @var string
+     */
+    private string $status;
+    /**
+     * Holds the description of the ski facility.
+     * @var string
+     */
+    private string $description;
     
     //constructor
-    public function __construct($name, $status, $price) {
+    public function __construct(string $name, string $status, string $description) {
         $this->name = $name;
         $this->status = $status;
-        $this->price = $price;
+        $this->description = $description;
     }
 
     //Get methods
     public function getIdSkiFacility() :int {return $this->idSkiFacility;}
-    public function getIdSkiArea() :int {return $this->idSkiArea;}
 
     public function getName() :string {return $this->name;}
     public function getStatus() :string {return $this->status;}
-    public function getPrice() :float {return $this->price;}
-
+    public function getDescription() : string {return $this->description;}
+    
     //Set methods
-    public function setIdSkiFacility($idSkiFacility) :void  {$this->idSkiFacility = $idSkiFacility;}
-    public function setIdSkiArea($idSkiArea) :void  {$this->idSkiArea = $idSkiArea;}
-
+    public function setIdSkiFacility(int $idSkiFacility) :void  {$this->idSkiFacility = $idSkiFacility;}
+    
     public function setName(string $name) :void {$this->name = $name;}
     public function setStatus(string $status) :void {$this->status = $status;}
-    public function setPrice(float $price) :void {$this->price = $price;}
-    
+    public function setDescription(string $description) : void {$this->description = $description;}
+       
 }
 
 ?>

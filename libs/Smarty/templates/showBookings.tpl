@@ -34,6 +34,56 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+.table-container {
+width: 90%;
+margin: 20px auto;
+overflow-x: auto;
+background: #fff;
+padding: 20px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+thead {
+    background-color: #007BFF;
+    color: white;
+}
+
+th, td {
+    text-align: left;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+th {
+    text-transform: uppercase;
+}
+
+td {
+    font-size: 14px;
+}</style>
 </head>
 
 <body class="starter-page-page">
@@ -70,59 +120,9 @@
 
       <div class="container" data-aos="fade-up">
 
-      {if count($bookings) > 1}
-      {foreach $bookings item=i}
+      {if count($bookings) > 0}
+      {foreach $bookings item=e}
       <div class="table-container">
-            <style>
-            .table-container {
-            width: 90%;
-            margin: 20px auto;
-            overflow-x: auto;
-            background: #fff;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            }
-
-            h1 {
-                text-align: center;
-                color: #333;
-                margin-bottom: 20px;
-            }
-
-            table {
-                width: 100%;
-                border-collapse: collapse;
-                margin: 0 auto;
-            }
-
-            thead {
-                background-color: #007BFF;
-                color: white;
-            }
-
-            th, td {
-                text-align: left;
-                padding: 12px 15px;
-                border: 1px solid #ddd;
-            }
-
-            tbody tr:nth-child(even) {
-                background-color: #f9f9f9;
-            }
-
-            tbody tr:hover {
-                background-color: #f1f1f1;
-                cursor: pointer;
-            }
-
-            th {
-                text-transform: uppercase;
-            }
-
-            td {
-                font-size: 14px;
-            }</style>
         <h1>Dati prenotazione</h1>
         <table>
             <thead>
@@ -134,23 +134,27 @@
                     <th>Period</th>
                     <th>Type</th>
                     <th>Total Price</th>
-                    <th>ID User</th>
                     <th>Ski Facility</th>
+                    <th>Insurance<th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>{$i[0]->getName()}</td>
-                    <td>{$i[0]->getSurname()}</td>
-                    <td>{$i[0]->getEmail()}</td>
-                    <td>{$i[0]->getStartDate()}</td>
-                    <td>{$i[0]->getPeriod()}</td>
-                    <td>{$i[0]->getType()}</td>
-                    <td>{$i[0]->getTotal()}</td>
-                    <td>{$i[0]->getIdUser()}</td>
-                    <td>{$i[1]->getName()}</td>
-                    <form action="/Slope/User/modifySkipassBooking" method="POST"><td><input type="hidden" name="idSkipassBooking" value={$i[0]->getIdSkipassBooking()}><button type="submit">Modifica</button></td></form>
-                    <form action="/Slope/User/deleteSkipassBooking" method="POST"><td><button type="submit">Elimina</button></td></form>
+                    <td>{$e['bookings'][0]->getName()}</td>
+                    <td>{$e['bookings'][0]->getSurname()}</td>
+                    <td>{$e['bookings'][0]->getEmail()}</td>
+                    <td>{$e['bookings'][0]->getStartDate()}</td>
+                    <td>{$e['bookings'][0]->getPeriod()}</td>
+                    <td>{$e['bookings'][0]->getType()}</td>
+                    <td>{$e['bookings'][0]->getValue()}</td>
+                    <td>{$e['bookings'][1]->getName()}</td>
+                    {if $e['bookings'][2] != []}
+                    <td>True</td>
+                    {else}
+                    <td><form action="/Slope/User/buyInsurance" method="POST"><input type="hidden" name="idSkipassBooking" value={$e['bookings'][0]->getIdSkipassBooking()}><button type="submit">Acquista</button></form></td>
+                    {/if}
+                    <form action="/Slope/User/modifySkipassBooking" method="POST"><td><input type="hidden" name="idSkipassBooking" value={$e['bookings'][0]->getIdSkipassBooking()}><button type="submit">Modifica</button></td></form>
+                    <form action="/Slope/User/deleteSkipassBooking" method="POST"><td><input type="hidden" name="idSkipassBooking" value={$e['bookings'][0]->getIdSkipassBooking()}><button type="submit">Elimina</button></td></form>
                 </tr>
             </tbody>
         </table>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-11-25 16:12:18
+/* Smarty version 3.1.33, created on 2025-01-03 11:00:27
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-modifyPrices.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_674493d220e5e9_20716378',
+  'unifunc' => 'content_6777b53b0d5618_12273652',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f30f271ba467a8621cbe295811272a3588bcb803' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-modifyPrices.tpl',
-      1 => 1732547536,
+      1 => 1735897740,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674493d220e5e9_20716378 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6777b53b0d5618_12273652 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -100,27 +100,63 @@ function content_674493d220e5e9_20716378 (Smarty_Internal_Template $_smarty_tpl)
     <section id="starter-section" class="starter-section section"> 
 
       <div class="container" data-aos="fade-up">
-
+        <?php if ($_smarty_tpl->tpl_vars['nPrices']->value == 1) {?>
         <div>
-        <form action="/Slope/Admin/confirmModifySkiRun" enctype="multipart/form-data" method="POST">
+        <form action="/Slope/Admin/confirmModifyPrices" enctype="multipart/form-data" method="POST">
             <h2>MODIFICA Prezzi</h2>
-
-            <p><strong>Descrizione:</strong></p>
-            <input type="text" id="description" name="description" value="<?php echo $_smarty_tpl->tpl_vars['prices']->value->getDescription();?>
-" required>
-
-            <p><strong>Intero:</strong></p>
-            <input type="text" id="full" name="full" value="<?php echo $_smarty_tpl->tpl_vars['prices']->value->getFull();?>
-" required>
-
-            <p><strong>Reduced:</strong></p>
-            <input type="text" id="reduced" name="reduced" value="<?php echo $_smarty_tpl->tpl_vars['prices']->value->getReduced();?>
-" required>
-
+            <table>
+            <tr>
+              <td>Descrizione:</td>
+              <td>Intero:</td>
+              <td>Ridotto:</td>
+              <td>Impianto:</td>
+              <td>Modifica</td>
+            </tr>
+            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['prices']->value, 'i');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
+?>
+            <tr>
+              <td><input type="text" id="description" name="description" value="<?php echo $_smarty_tpl->tpl_vars['i']->value[0];?>
+" required></td>
+              <td><input type="text" id="full" name="full" value="<?php echo $_smarty_tpl->tpl_vars['i']->value[1];?>
+" required></td>
+              <td><input type="text" id="reduced" name="reduced" value="<?php echo $_smarty_tpl->tpl_vars['i']->value[2];?>
+" required></td>
+              <td><select name="skiFacilityName">
+                    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['skiFacilityNames']->value, 'j');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['j']->value) {
+?>
+                    <?php if ($_smarty_tpl->tpl_vars['j']->value === $_smarty_tpl->tpl_vars['i']->value[3]) {?>
+                    <option value="<?php echo $_smarty_tpl->tpl_vars['j']->value;?>
+" selected><?php echo $_smarty_tpl->tpl_vars['j']->value;?>
+</option>
+                    <?php } else { ?>
+                    <option value="<?php echo $_smarty_tpl->tpl_vars['j']->value;?>
+" ><?php echo $_smarty_tpl->tpl_vars['j']->value;?>
+</option>
+                    <?php }?>
+                    <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+              </select></td>
+            <td><input type="checkbox" id="modify" name="modify"></td>
+            </tr>
+            <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+            </table>
             <button class="edit-button" type="submit">Conferma modifiche</button>
         </form>
         </div>
-
+        <?php } else { ?>
+        <label>Non ci sono prezzi, aggiungili da <a href="https://localhost/Slope/Admin/addPrice">qui</a></label>
+        <?php }?>
       </div>
 
     </section><!-- /Starter Section Section -->

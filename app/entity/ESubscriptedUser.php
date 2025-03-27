@@ -1,6 +1,9 @@
 <?php
 
 require_once('EUser.php');
+
+/* CLASSE NON UTILIZZATA */
+
 class ESubscriptedUser extends EUser{
 
     protected static float $reduction=0.7;

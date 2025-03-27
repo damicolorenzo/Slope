@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.33, created on 2025-03-05 18:59:44
+  from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-registration.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.33',
+  'unifunc' => 'content_67c89110958569_69910465',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'f185f1ead4e9d1f18a2e4e6c756325abfbb01b3e' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-registration.tpl',
+      1 => 1741197582,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_67c89110958569_69910465 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -34,6 +57,82 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+  .form_login-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 45%;
+}
+
+.form_login-container form h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form_login-container label {
+  display: block;
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.form_login-container input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="username"], 
+input[type="tel"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+}
+
+input[type="date"]:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background: url('data:image/svg+xml;base64,<svg>...</svg>') no-repeat center;
+  cursor: pointer;
+  color: transparent; 
+  opacity: 0.5; 
+}
+
+input[type="date"]::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.form_login-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form_login-container button:hover {
+  background-color: #0056b3;
+}
+  </style>
 </head>
 
 <body class="starter-page-page">
@@ -50,18 +149,18 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="#hero">Home</a></li>
+            <!-- <li><a href="#hero">Home</a></li>
             <li><a href="#about">Prenota</a></li>
             <li><a href="#services">Visualizza prenotazioni</a></li>
-            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a> -->
               <ul>
-                <li><a href="#">Piste</a></li>
+                <!-- <li><a href="#">Piste</a></li>
                 <li><a href="#">Impianti</a></li>
-                <li><a href="#">Web</a></li>
+                <li><a href="#">Web</a></li> -->
               </ul>
             </li>
-            <li><a href="/Slope/User/profile">Profilo</a></li>
-            <li><a href="/Slope/User/logout">LogOut</a></li>
+            <li><a href="/Slope/">Home</a></li>
+            <li><a href="/Slope/User/login">Login</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -73,28 +172,35 @@
 
   <main class="main">
 
+    <!-- Page Title -->
+    <!-- <div class="page-title" data-aos="fade">
+      <div class="container">
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">Starter Page</li>
+          </ol>
+        </nav>
+        <h1>Starter Page</h1>
+      </div>
+    </div> --><!-- End Page Title -->
+
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
-
       <div class="container" data-aos="fade-up">
+        <div class="form_login-container">
+            <form class="register-form" action="/Slope/Admin/checkRegistration" method="POST">
+                <h2>Registrazione</h2>
+                
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
 
-        <div>
-        <form action="/Slope/Admin/confirmModifySkiRun" enctype="multipart/form-data" method="POST">
-            <h2>MODIFICA Prezzi</h2>
-
-            <p><strong>Descrizione:</strong></p>
-            <input type="text" id="description" name="description" value="{$prices->getDescription()}" required>
-
-            <p><strong>Intero:</strong></p>
-            <input type="text" id="full" name="full" value="{$prices->getFull()}" required>
-
-            <p><strong>Reduced:</strong></p>
-            <input type="text" id="reduced" name="reduced" value="{$prices->getReduced()}" required>
-
-            <button class="edit-button" type="submit">Conferma modifiche</button>
-        </form>
+                <label for="password-register">Password</label>
+                <input type="password" id="password" name="password" required>
+                
+                <button type="submit">Registrati</button>
+            </form>
         </div>
-
       </div>
 
     </section><!-- /Starter Section Section -->
@@ -107,11 +213,11 @@
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6">
           <div class="footer-about">
-            <a href="/Slope" class="logo sitename">Day</a>
+            <a href="/Slope" class="logo sitename">Slope</a>
             <div class="footer-contact pt-3">
               <p>Via Vetoio</p>
               <p>L'Aquila, AQ 67100</p>
-              <p class="mt-3"><strong>Phone:</strong> <span>+39 123 456 7890</span></p>
+              <p class="mt-3"><strong>Numero:</strong> <span>+39 123 456 7890</span></p>
               <p><strong>Email:</strong> <span>info@example.com</span></p>
             </div>
             <div class="social-links d-flex mt-4">
@@ -179,17 +285,34 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/php-email-form/validate.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/aos/aos.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <?php echo '<script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/php-email-form/validate.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/aos/aos.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"><?php echo '</script'; ?>
+>
 
   <!-- Main JS File -->
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/js/main.js"></script>
+  <?php echo '<script'; ?>
+ src="https://localhost/Slope/libs/Smarty/day/assets/js/main.js"><?php echo '</script'; ?>
+>
 
 </body>
 
-</html>
+</html><?php }
+}

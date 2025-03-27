@@ -18,6 +18,7 @@ class USession {
         return self::$instance;
     }
 
+    public static function getAllSessionElements() {return $_SESSION;}
     public static function getSessionStatus() {return session_status();}
     public static function getSessionElement($id) {return $_SESSION[$id];}
     public static function setSessionElement($id, $value) {$_SESSION[$id] = $value;}

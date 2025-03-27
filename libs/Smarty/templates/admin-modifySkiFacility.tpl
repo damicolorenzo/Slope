@@ -94,13 +94,13 @@
                     </div>
                     {/if}
                     <p><strong>Nome:</strong></p>
-                    <input type="text" id="name" name="name" value="{$name}" required>
+                    <input type="text" id="name" name="name" value={$name} required>
 
                     <p><strong>Status:</strong></p>
-                    <input type="text" id="status" name="status" value="{$status}" required>
+                    <input type="text" id="status" name="status" value={$status} required>
 
-                    <p><strong>Price:</strong></p>
-                    <input type="number" id="price" name="price" value="{$price}" required>
+                    <p><strong>Descrizione:</strong></p>
+                    <textarea id="description" name="description" required>{$description}</textarea>
                     
                     <button class="edit-button" type="submit">Conferma modifiche</button>
                 </form>

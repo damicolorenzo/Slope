@@ -4,7 +4,7 @@ require_once("FEntityManager.php");
 
 class FLiftStructure {
 
-    private static $table = "LiftStructure";
+    private static $table = "liftStructure";
     private static $columns = " ('idLiftStructure', 'name', 'type', 'status', 'seats', 'idSkiFacility')";
     private static $value = "(NULL, :name, :type, :status, :seats, :idSkiFacility)";
     private static $key = "idLiftStructure";
@@ -17,12 +17,23 @@ class FLiftStructure {
     public static function getKey() {return self::$key;}
     public static function getExtKey() {return self::$externalKey;}
 
-    public static function getObj($id) :array {
+    /**
+     * Method to get an object using the id, invoke the retriveObj function from FEntityManager
+     * @param string $id Refers to the id
+     * @return array 
+     */
+    public static function getObj(string $id) :array {
         $result = FEntityManager::getInstance()->retriveObj(self::getTable(), self::getKey(), $id);
         return $result;
     }
 
-    public static function bind($stmt, $liftStructure){
+    /**
+     * Binds the values of a person object to a prepared SQL statement.
+     * @param object $stmt The PDO statement object used for query execution.
+     * @param ELiftStructure $liftStructure An object representing a lift structure
+     * @return void
+     */
+    public static function bind(object $stmt, ELiftStructure $liftStructure) : void{
         $stmt->bindValue(":name", $liftStructure->getName(), PDO::PARAM_STR);
         $stmt->bindValue(":type", $liftStructure->getType(), PDO::PARAM_STR);
         $stmt->bindValue(":status",$liftStructure->getStatus(), PDO::PARAM_STR);
@@ -30,19 +41,25 @@ class FLiftStructure {
         $stmt->bindValue(":idSkiFacility",$liftStructure->getIdSkiFacility(), PDO::PARAM_INT);
     }
 
-    public static function saveObj($obj, $fieldArray = null){
+    /**
+     * Method to save an object in the database using the proper FEntityManager function
+     * @param ELiftStructure $obj Refers to a lift structure Entity object that needs to be stored in the database
+     * @param array $fieldArray Refers to an array of fields and values
+     * @return bool true if succeded and false if failed
+     */
+    public static function saveObj(ELiftStructure $obj, ?array $fieldArray = null) : bool{
         if($fieldArray === null) {
             try {
                 FEntityManager::getInstance()->getDb()->beginTransaction();
                 $saveLiftStructure = FEntityManager::getInstance()->saveObject(self::getClass(), $obj);
                 if($saveLiftStructure !== null) {
                     FEntityManager::getInstance()->getDb()->commit();
-                    return $saveLiftStructure;
+                    return true;
                 } else {
                     return false;
                 }
             } catch(PDOException $e) {
-                echo "ERROR ".$e->getMessage();
+                error_log("Database error in FCreditCard saveObj: " . $e->getMessage());
                 FEntityManager::getInstance()->getDb()->rollBack();
                 return false;
             } finally {
@@ -57,7 +74,7 @@ class FLiftStructure {
                 FEntityManager::getInstance()->getDb()->commit();
                 return true;
             } catch(PDOException $e) {
-                echo "ERROR ".$e->getMessage();
+                error_log("Database error in FCreditCard saveObj: " . $e->getMessage());
                 FEntityManager::getInstance()->getDb()->rollBack();
                 return false;
             } finally {
@@ -66,17 +83,22 @@ class FLiftStructure {
         }
     }
 
-    public static function crateLiftStructureObj($queryResult){
+    /**
+     * Method to create an object or a set of object from a query
+     * @param array $queryResult Refers to the result of a query
+     * @return array of objects 
+     */
+    public static function createLiftStructureObj(array $queryResult) : array{
         if(count($queryResult) == 1){
-            //$attributes = FEntityManager::getInstance()->retriveObj(self::getTable(), self::getKey(), $queryResult[0][self::getKey()]);
+            $liftA = [];
             $lift = new ELiftStructure($queryResult[0]['name'], $queryResult[0]['type'], $queryResult[0]['status'], $queryResult[0]['seats']);
             $lift->setIdLift($queryResult[0]['idLiftStructure']);
             $lift->setIdSkiFacility($queryResult[0]['idSkiFacility']);
-            return $lift;
+            $liftA[] = $lift;
+            return $liftA;
         }elseif(count($queryResult) > 1){
-            $lifts = array();
+            $lifts = [];
             for($i = 0; $i < count($queryResult); $i++){
-                //$attributes = FEntityManager::getInstance()->retriveObj(self::getTable(), self::getKey(), $queryResult[0][self::getKey()]);
                 $lift = new ELiftStructure($queryResult[$i]['name'], $queryResult[$i]['type'], $queryResult[$i]['status'], $queryResult[$i]['seats']);
                 $lift->setIdLift($queryResult[$i]['idLiftStructure']);
                 $lift->setIdSkiFacility($queryResult[$i]['idSkiFacility']);
@@ -84,37 +106,69 @@ class FLiftStructure {
             }
             return $lifts;
         }else{
-            return array();
+            return [];
         }
     }
 
-    public static function getLiftStructures($idSkiFacility) {
+    /**
+     * Method to get a lift structure object using the id of the ski facility that it refers to
+     * @param string $idSkiFacility id of the ski facility
+     * @return array $result
+     */
+    public static function getLiftStructures(string $idSkiFacility) : array{
         $result = FEntityManager::getInstance()->retriveObj(self::getTable(), self::getExtKey(), $idSkiFacility);
         return $result;
     }
 
-    public static function getNLiftStructures($idSkiFacility) {
+    /**
+     * Method to get the number of the lift structures of a ski facility using the id 
+     * @param string $idSkiFacility id of the ski facility
+     * @return int number of lift structures
+     */
+    public static function getNLiftStructures(string $idSkiFacility) : int{
         $result = FEntityManager::getInstance()->countObjId(self::getTable(), self::getExtKey(), $idSkiFacility);
         return $result;
     }
 
-    public static function getLiftStructureByNameAndSkiFacility($name, $idSkiFacility) {
-        $queryResult = FEntityManager::getInstance()->retriveObj2(self::getTable(), 'name', $name, self::getExtKey(), $idSkiFacility);
+    /**
+     * Method to verify if a lift structure exist using its name and the id of the ski facility that it refers to
+     * @param string $name name of the lift structure
+     * @param string $idSkiFacility id of the ski facility
+     * @return bool true if exist false if not exist
+     */
+    public static function getLiftStructureByNameAndSkiFacility(string $name, string $idSkiFacility) : bool{
+        $fields = [['name', $name], [self::getExtKey(), $idSkiFacility]];
+        $queryResult = FEntityManager::getInstance()->retriveObjNFields(self::getTable(), $fields);
         return FEntityManager::getInstance()->existInDb($queryResult);
     }
 
-    public static function getAllLiftStructureObj() {
+    /**
+     * Method to get all the lift structure
+     * @return array 
+     */
+    public static function getAllLiftStructureObj() : array{
         $result = FEntityManager::getInstance()->retriveAllObj(FLiftStructure::getTable());
         return $result;
     }
 
-    public static function getLiftStructureById($id){
+    /**
+     * Method to get a lift structure using the id
+     * @param string id of the lift structure
+     * @return array 
+     */
+    public static function getLiftStructureById(string $id) : array{
         $result = FEntityManager::getInstance()->retriveObj(FLiftStructure::getTable(), 'idLiftStructure', $id);
         return $result;
     }
 
+    /**
+     * Method to get a lift structure using a field and a value passed in the where condition
+     * @param string id of the lift structure
+     * @return array 
+     */
     public static function getLiftStructureByNameForSearch($queryString) {
-        $queryResult = FEntityManager::getInstance()->retriveObjForSearch2(self::getTable(), 'name', $queryString);
+        $value = str_replace("'", "\\'", $queryString);
+        $queryResult = FEntityManager::getInstance()->retriveObjLike(self::getTable(), 'name', $value);
         return $queryResult;
     }
 

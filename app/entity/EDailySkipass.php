@@ -2,6 +2,8 @@
 
 require_once("ESkipassBooking.php");
 
+/* CLASSE NON UTILIZZATA */
+
 class EDailySkipass extends ESkipassBooking {
 
     //attributes

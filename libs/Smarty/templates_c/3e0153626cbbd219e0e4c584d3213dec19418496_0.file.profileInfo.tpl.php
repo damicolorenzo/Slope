@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-11-30 15:47:36
+/* Smarty version 3.1.33, created on 2024-12-28 10:59:35
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\profileInfo.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_674b2588112eb1_55994792',
+  'unifunc' => 'content_676fcc0788f1a3_51340124',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3e0153626cbbd219e0e4c584d3213dec19418496' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\profileInfo.tpl',
-      1 => 1732977642,
+      1 => 1735378308,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674b2588112eb1_55994792 (Smarty_Internal_Template $_smarty_tpl) {
+function content_676fcc0788f1a3_51340124 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -95,6 +95,7 @@ function content_674b2588112eb1_55994792 (Smarty_Internal_Template $_smarty_tpl)
   }
 
   .section-container {
+    height:auto;
     display: flex;
     justify-content: space-between;
     margin-bottom: 40px; /* Aumentato lo spazio sotto le sezioni */
@@ -102,6 +103,7 @@ function content_674b2588112eb1_55994792 (Smarty_Internal_Template $_smarty_tpl)
 
   .profile-section {
     width: 48%;
+    height:auto;  
     padding: 20px; /* Aumentato lo spazio interno delle sezioni */
     border: 2px solid #000;
     border-radius: 10px;
@@ -115,6 +117,7 @@ function content_674b2588112eb1_55994792 (Smarty_Internal_Template $_smarty_tpl)
 
   .section-image {
     width: 100%;
+    height: auto;
     height: 150px; /* Aumentata l'altezza delle immagini nelle sezioni */
     object-fit: cover;
     background-color: #ddd;
@@ -231,14 +234,14 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
         <div class="section-container">
             <div class="profile-section">
-                <h3>ASSICURAZIONE</h3>
-                <!-- Immagine dell'assicurazione -->
-                <img src="/libs/Smarty/day/assets/img/hero-bg.jpg" alt="Immagine assicurazione" class="section-image">
-            </div>
-            <div class="profile-section">
                 <h3>ABBONAMENTO</h3>
                 <!-- Immagine dell'abbonamento -->
-                <img src="/libs/Smarty/day/assets/img/clients/client-2.png" alt="Immagine abbonamento" class="section-image">
+                <?php if ($_smarty_tpl->tpl_vars['subscriptionImage']->value === false) {?>
+                <img src="https://localhost/Slope/libs/Smarty/images/NotFound.jpg" alt="Immagine abbonamento" class="section-image">
+                <?php }?>
+                <div class="button-container">
+                    <a href="/Slope/User/buySubscription"><button class="edit-button">Acquista</button></a>
+                </div>
             </div>
         </div>
 

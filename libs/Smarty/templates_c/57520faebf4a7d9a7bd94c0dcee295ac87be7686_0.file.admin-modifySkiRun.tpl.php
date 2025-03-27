@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-11-21 10:39:18
+/* Smarty version 3.1.33, created on 2025-03-03 18:39:01
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-modifySkiRun.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_673effc6453b80_56387783',
+  'unifunc' => 'content_67c5e935cadea7_54437411',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '57520faebf4a7d9a7bd94c0dcee295ac87be7686' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-modifySkiRun.tpl',
-      1 => 1732181953,
+      1 => 1741023541,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_673effc6453b80_56387783 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67c5e935cadea7_54437411 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -118,11 +118,11 @@ function content_673effc6453b80_56387783 (Smarty_Internal_Template $_smarty_tpl)
                     <input type="text" id="name" name="name" value="<?php echo $_smarty_tpl->tpl_vars['name']->value;?>
 " required>
 
-                    <p><strong>Type:</strong></p>
+                    <p><strong>Tipo:</strong></p>
                     <input type="text" id="type" name="type" value="<?php echo $_smarty_tpl->tpl_vars['type']->value;?>
 " required>
 
-                    <p><strong>Status:</strong></p>
+                    <p><strong>Stato:</strong></p>
                     <input type="text" id="status" name="status" value="<?php echo $_smarty_tpl->tpl_vars['status']->value;?>
 " required>
 

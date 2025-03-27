@@ -187,95 +187,94 @@
 
       <div class="container" data-aos="fade-up">
 
-      <div class="payment-container">
+        <div class="payment-container">
         <h1>Riepilogo Pagamento</h1>
         
-        <!-- Dettagli acquisto -->
-        <div class="order-summary">
-            <h2>Dettagli Acquisto</h2>
-            <ul class="order-list">
-                {* {foreach from=$cart item=i}
+          <!-- Dettagli acquisto -->
+          <div class="order-summary">
+              <h2>Dettagli Acquisto</h2>
+              <ul class="order-list">
+                  {foreach from=$cart item=i}
+                    {if $i instanceof ESkipassBooking}
                     <li>
-                        <span>{i->getName()}</span>
-                        <span>{i->getPrice()}</span>
+                        <span>Skipass</span>
+                        <span>€{$i->getValue()}</span>
                     </li>
-                    {/foreach}
-                *}
-                <li>
-                    <span>Articolo 2</span>
-                    <span>€30.00</span>
-                </li>
-                <li>
-                    <span>Articolo 3</span>
-                    <span>€20.00</span>
-                </li>
-                <li class="total">
-                    <span><strong>Totale</strong></span>
-                    <span><strong>€100.00</strong></span>
-                </li>
-            </ul>
-        </div>
+                    {/if}
+                    {if $i instanceof EInsurance}
+                    <li>
+                        <span>Assicurazione</span>
+                        <span>€{$i->getPrice()}</span>
+                    </li>
+                    {/if}
+                  {/foreach}
+                  <li class="total">
+                      <span><strong>Totale</strong></span>
+                      <span><strong>€{$totalPrice}</strong></span>
+                  </li>
+              </ul>
+          </div>
         
-        <form action="/Slope/User/payment" class="payment-form"  enctype="multipart/form-data" method="POST">
-          <h2>Paga con Carta di Credito</h2>
-            <div class="form-group">
-                <label for="cardHolderName">Nome Intestatario Carta</label>
-                {if $creditCard === null}
-                <input type="text" id="card-name" name="cardHolderName" placeholder="Mario" required>
-                {else}
-                <input type="text" id="card-name" name="cardHolderName" value={$creditCard->getCardHolderName()} required>
-                {/if}
-            </div>
-            <div class="form-group">
-                <label for="cardHolderSurname">Cognome Intestatario Carta</label>
-                {if $creditCard === null}
-                <input type="text" id="card-surname" name="cardHolderSurname" placeholder="Rossi" required>
-                {else}
-                <input type="text" id="card-surname" name="cardHolderSurname" value={$creditCard->getCardHolderSurname()} required>
-                {/if}
-            </div>
-            <div class="form-group">
-                <label for="cardNumber">Numero Carta</label>
-                {if $creditCard === null}
-                <input type="text" id="card-number" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19"  required>
-                {else}
-                <input type="text" id="card-number" name="cardNumber" value={$creditCard->getCardNumber()} maxlength="19"  required>
-                {/if}
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="expiryDate">Scadenza Carta</label>
-                    {if $creditCard === null}
-                    <input type="month" id="expiry-date" name="expiryDate" required>
-                    {else}
-                    <input type="month" id="expiry-date" name="expiryDate" value={$creditCard->getExpiryDate()} required>
-                    {/if}
-                </div>
-                <div class="form-group">
-                    <label for="cvv">CVV</label>
-                    {if $creditCard === null}
-                    <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3"  required>
-                    {else}
-                    <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3"  value={$creditCard->getCvv()} required>
-                    {/if}
-                </div>
-            </div>
-            {if $creditCard === null}
-            <div class="form-group">
-              <label for="preferred">Salvare come metodo preferito</label>
-              <input type="checkbox" id="preferred" name="preferred" >
-            </div>
-            {else} 
-            <div class="form-group">
-              <label for="preferred">Salvare come metodo preferito</label>
-              <input type="checkbox" id="preferred" name="preferred" checked>
-            </div>
-            {/if}
-            
-            <button type="submit" class="submit-btn">Procedi al Pagamento</button>
-        </form>
+          <form action="/Slope/User/payment" class="payment-form"  enctype="multipart/form-data" method="POST">
+            <h2>Paga con Carta di Credito</h2>
+              <div class="form-group">
+                  <label for="cardHolderName">Nome Intestatario Carta</label>
+                  {if $creditCard === null}
+                  <input type="text" id="card-name" name="cardHolderName" placeholder="Mario" required>
+                  {else}
+                  <input type="text" id="card-name" name="cardHolderName" value={$creditCard->getCardHolderName()} required>
+                  {/if}
+              </div>
+              <div class="form-group">
+                  <label for="cardHolderSurname">Cognome Intestatario Carta</label>
+                  {if $creditCard === null}
+                  <input type="text" id="card-surname" name="cardHolderSurname" placeholder="Rossi" required>
+                  {else}
+                  <input type="text" id="card-surname" name="cardHolderSurname" value={$creditCard->getCardHolderSurname()} required>
+                  {/if}
+              </div>
+              <div class="form-group">
+                  <label for="cardNumber">Numero Carta</label>
+                  {if $creditCard === null}
+                  <input type="text" id="card-number" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19"  required>
+                  {else}
+                  <input type="text" id="card-number" name="cardNumber" value={$creditCard->getCardNumber()} maxlength="19"  required>
+                  {/if}
+              </div>
+              <div class="form-row">
+                  <div class="form-group">
+                      <label for="expiryDate">Scadenza Carta</label>
+                      {if $creditCard === null}
+                      <input type="month" id="expiry-date" name="expiryDate" required>
+                      {else}
+                      <input type="month" id="expiry-date" name="expiryDate" value={$creditCard->getExpiryDate()} required>
+                      {/if}
+                  </div>
+                  <div class="form-group">
+                      <label for="cvv">CVV</label>
+                      {if $creditCard === null}
+                      <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3"  required>
+                      {else}
+                      <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3"  value={$creditCard->getCvv()} required>
+                      {/if}
+                  </div>
+              </div>
+              {if $creditCard === null}
+              <div class="form-group">
+                <label for="preferred">Salvare come metodo preferito</label>
+                <input type="checkbox" id="preferred" name="preferred" >
+              </div>
+              {else} 
+              <div class="form-group">
+                <label for="preferred">Salvare come metodo preferito</label>
+                <input type="checkbox" id="preferred" name="preferred" checked>
+              </div>
+              {/if}
+              
+              <button type="submit" class="submit-btn">Procedi al Pagamento</button>
+          </form>
 
-      </div>
+        </div>
 
       </div>
 

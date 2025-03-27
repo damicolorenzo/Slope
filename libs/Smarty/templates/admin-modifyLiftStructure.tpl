@@ -92,13 +92,13 @@
                     <p><strong>Nome:</strong></p>
                     <input type="text" id="name" name="name" value="{$name}" required>
 
-                    <p><strong>Type:</strong></p>
+                    <p><strong>Tipo:</strong></p>
                     <input type="text" id="type" name="type" value="{$type}" required>
 
-                    <p><strong>Status:</strong></p>
+                    <p><strong>Stato:</strong></p>
                     <input type="text" id="status" name="status" value="{$status}" required>
 
-                    <p><strong>Seats:</strong></p>
+                    <p><strong>Posti:</strong></p>
                     <input type="number" id="seats" name="seats" value="{$seats}" required>
 
                     <p><strong>Impianto di riferimento:</strong></p>

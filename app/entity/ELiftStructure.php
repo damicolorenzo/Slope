@@ -3,11 +3,35 @@
 class ELiftStructure {
     
     //attributes
+    /**
+     * Holds the id of the lift structure in the database.
+     * @var int
+     */
     private int $idLiftStructure;
-
-    private string $name, $type, $status;
+    /**
+     * Holds the name of the lift structure.
+     * @var string
+     */
+    private string $name;
+    /**
+     * Holds the type of the lift structure.
+     * @var string
+     */
+    private string $type;
+    /**
+     * Holds the status of the lift structure.
+     * @var string
+     */
+    private string $status;
+    /**
+     * Holds the number of seats of the lift structure.
+     * @var int
+     */
     private int $seats;
-
+    /**
+     * Holds the id of the ski facility that is releted to this structure.
+     * @var int
+     */
     private int $idSkiFacility;
     
     //constructor
@@ -28,8 +52,8 @@ class ELiftStructure {
     public function getSeats() :int {return $this->seats;}
 
     //Set methods
-    public function setIdLift($idLiftStructure) :void  {$this->idLiftStructure = $idLiftStructure;}
-    public function setIdSkiFacility($idSkiFacility) :void  {$this->idSkiFacility = $idSkiFacility;}
+    public function setIdLift(int $idLiftStructure) :void  {$this->idLiftStructure = $idLiftStructure;}
+    public function setIdSkiFacility(int $idSkiFacility) :void  {$this->idSkiFacility = $idSkiFacility;}
 
     public function setName(string $name) :void {$this->name = $name;}
     public function setType(string $type) :void {$this->type = $type;}

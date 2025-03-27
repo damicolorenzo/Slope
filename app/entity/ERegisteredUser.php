@@ -1,5 +1,8 @@
 <?php
 require_once('EUser.php');
+
+/* CLASSE NON UTILIZZATA */
+
 class ERegisteredUser extends EUser{
 
 

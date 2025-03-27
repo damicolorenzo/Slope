@@ -72,6 +72,7 @@
   }
 
   .section-container {
+    height:auto;
     display: flex;
     justify-content: space-between;
     margin-bottom: 40px; /* Aumentato lo spazio sotto le sezioni */
@@ -79,6 +80,7 @@
 
   .profile-section {
     width: 48%;
+    height:auto;  
     padding: 20px; /* Aumentato lo spazio interno delle sezioni */
     border: 2px solid #000;
     border-radius: 10px;
@@ -92,6 +94,7 @@
 
   .section-image {
     width: 100%;
+    height: auto;
     height: 150px; /* Aumentata l'altezza delle immagini nelle sezioni */
     object-fit: cover;
     background-color: #ddd;
@@ -193,14 +196,14 @@
 
         <div class="section-container">
             <div class="profile-section">
-                <h3>ASSICURAZIONE</h3>
-                <!-- Immagine dell'assicurazione -->
-                <img src="/libs/Smarty/day/assets/img/hero-bg.jpg" alt="Immagine assicurazione" class="section-image">
-            </div>
-            <div class="profile-section">
                 <h3>ABBONAMENTO</h3>
                 <!-- Immagine dell'abbonamento -->
-                <img src="/libs/Smarty/day/assets/img/clients/client-2.png" alt="Immagine abbonamento" class="section-image">
+                {if $subscriptionImage === false}
+                <img src="https://localhost/Slope/libs/Smarty/images/NotFound.jpg" alt="Immagine abbonamento" class="section-image">
+                {/if}
+                <div class="button-container">
+                    <a href="/Slope/User/buySubscription"><button class="edit-button">Acquista</button></a>
+                </div>
             </div>
         </div>
 
