@@ -2,20 +2,19 @@
 
 require_once("ESkipassBooking.php");
 
-class EWeekLySkipass extends ESkipassBooking {
+/* CLASSE NON UTILIZZATA */
+
+class EWeeklySkipass extends ESkipassBooking {
 
     //attributes
-    protected static float $priceMultiplier = 0.4;
-    protected static int $period = 7;
+    protected const PRICE_MULTIPLIER = 0.4;
+    protected const PERIOD = 7;
 
     //constructor
     public function __construct(string $name, string $surname, string $stringStartDate, string $type, string $email, float $totalSkiFacilitiesPrice) {
-        parent::__construct($name, $surname, $stringStartDate, $type, $email, $totalSkiFacilitiesPrice);
+        parent::__construct($name, $surname, $stringStartDate, $type, $email, self::PERIOD, $totalSkiFacilitiesPrice*self::PRICE_MULTIPLIER);
     }
 
-    //Get and set methods
-    public function getPriceMultiplier() :float {return $this->priceMultiplier;}
-    public function getPeriod() :int {return $this->period;}
 }
 
 ?>

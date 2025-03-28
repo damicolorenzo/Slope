@@ -4,13 +4,13 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Slope</title>
+  <title>Starter Page - Day Bootstrap Template</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="libs/Smarty/day/assets/img/favicon.png" rel="icon">
-  <link href="libs/Smarty/day/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/favicon.png" rel="icon">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -18,14 +18,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="libs/Smarty/day/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="libs/Smarty/day/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="libs/Smarty/day/assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="libs/Smarty/day/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
   <!-- Main CSS File -->
-  <link href="libs/Smarty/day/assets/css/main.css" rel="stylesheet">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/css/main.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: Day
@@ -34,6 +34,7 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
 </head>
 
 <body class="index-page">
@@ -81,9 +82,9 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section">
 
-      <!-- <img src="libs/Smarty/images/dog1.jpg" alt="" data-aos="fade-in"> -->
+      <!-- <img src="https://localhost/Slope/libs/Smarty/images/dog1.jpg" alt="" data-aos="fade-in"> -->
       <!-- <video src="libs/Smarty/images/4185213-uhd_4096_2160_24fps.mp4" loop></video> -->
-      <img src = "libs/Smarty/images/Foto3.jpg" alt="" data-aos="fade-in">
+      <img src = "https://localhost/Slope/libs/Smarty/images/Foto3.jpg" alt="" data-aos="fade-in">
 
       
 
@@ -104,7 +105,7 @@
         <div class="row gy-4">
 
           <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="100">
-            <img src="/opt/lampp/htdocs/Slope/libs/Smarty/images/Slope_img/service-4-740x520.jpg" class="img-fluid" alt="">
+            <img src="https://localhost/Slope/libs/Smarty/images/Slope_img/service-4-740x520.jpg" class="img-fluid" alt="">
           </div>
 
           <div class="col-lg-6 order-2 order-lg-1 content" data-aos="fade-up" data-aos-delay="200">
@@ -144,6 +145,7 @@
       <div class="container">
         <div class="cards">
 
+<<<<<<< HEAD
           <div class="row no-gutters">
 
             <div class="col-lg-4 col-md-6 card custom-bg5 position-relative" data-aos="fade-up" data-aos-delay="100">
@@ -194,6 +196,18 @@
             </div>
           </div><!-- End Card Item -->
           </div>
+
+        <div class="row no-gutters">
+          <!--
+          {foreach from=$skiFacilities item=i} 
+
+          <div class="col-lg-4 col-md-6 card" data-aos="fade-up" data-aos-delay="100">
+            <h4>{$i->getName()}</h4>
+            <p>{$i->getDescription()}</p>
+          </div>
+          {/foreach}
+          -->
+>>>>>>> 0b0a992eb04acc4354ef78bd7d2375cd80612705
         </div>
       </div>
 
@@ -242,8 +256,13 @@
               <div class="icon">
                 <i class="bi bi-cart"></i>
               </div>
+<<<<<<< HEAD
               <a href="#" class="stretched-link">
                 <h3>Acquista</h3>
+
+              <a href="/Slope/Home/webcam" class="stretched-link">
+                <h3>Webcam</h3>
+>>>>>>> 0b0a992eb04acc4354ef78bd7d2375cd80612705
               </a>
               <p>Prenota uno skipass, acquista un'assicurazione e scopri le promozioni con l'abbonamento</p>
             </div>
@@ -266,13 +285,13 @@
       <div class="container section-title" data-aos="fade-up">
         <span>Pricing</span>
         <h2>Pricing</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <p>Seleziona un impianto sciistico e analizza i prezzi degli skipass</p>
       </div><!-- End Section Title -->
 
       <div class="container">
 
         <div class="row g-4 g-lg-0">
-
+          
           <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
             <div class="pricing-item">
               <h3>Free Plan</h3>
@@ -560,16 +579,16 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <script src="libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="libs/Smarty/day/assets/vendor/php-email-form/validate.js"></script>
-  <script src="libs/Smarty/day/assets/vendor/aos/aos.js"></script>
-  <script src="libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/php-email-form/validate.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/aos/aos.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 
   <!-- Main JS File -->
-  <script src="libs/Smarty/day/assets/js/main.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/js/main.js"></script>
 
 </body>
 

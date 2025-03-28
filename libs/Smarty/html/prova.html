@@ -139,5 +139,81 @@ body {
             <p>Status: <span class="status aperto">Aperto</span></p>
         </div>
     </div>
+
+    <div class="search-container">
+        <form class="search-form" action="/Slope/Admin/searchStructures" method="POST">
+            <input type="text" name="search-input" class="search-input" placeholder="Cerca un utente">
+            <button type="submit" class="search-button">
+            </button>
+        </form>
+    </div>
+
+    {if count($objects) > 0}
+        <div class="users">
+            {foreach from=$objects item=i}
+            <div class="cards-container">
+                {foreach from=$i item=element}
+                {if $element::class === 'ESkiFacility'}
+                <div class="card">
+                    <div class="structure-info">
+                        <p class="name">{$element->getName()}</p>
+                        <p class="status">{$element->getStatus()}</p>
+                        <p class="price">{$element->getPrice()}</p>
+                    </div>
+                    <div class="action-buttons">
+                        <form class="search-form" action="/Slope/Admin/modifySkiFacility" method="POST">
+                            <button type="submit" name="idSkiFacility" value={$element->getIdSkiFacility()} class="edit">Modifica</button>
+                        </form>
+                        <form class="search-form" action="/Slope/Admin/deleteSkiFacility" method="POST">
+                            <button type="submit" name="idSkiFacility" value={$element->getIdSkiFacility()} class="delete">Elimina</button>
+                        </form>
+                    </div>
+                </div>
+                {/if}
+                {if $element::class === 'ESkiRun'}
+                <div class="card">
+                    <div class="structure-info">
+                        <p class="name">{$element->getName()}</p>
+                        <p class="type">{$element->getType()}</p>
+                        <p class="status">{$element->getStatus()}</p>
+                    </div>
+                    <div class="action-buttons">
+                        <form class="search-form" action="/Slope/Admin/modifySkiRun" method="POST">
+                            <button type="submit" name="idSkiRun" value={$element->getIdSkiRun()} class="edit">Modifica</button>
+                        </form>
+                        <form class="search-form" action="/Slope/Admin/deleteSkiRun" method="POST">
+                            <button type="submit" name="idSkiRun" value={$element->getIdSkiRun()} class="delete">Elimina</button>
+                        </form>
+                    </div>
+                </div>
+                {/if}
+                {if $element::class === 'ELiftStructure'}
+                <div class="card">
+                    <div class="structure-info">
+                        <p class="name">{$element->getName()}</p>
+                        <p class="type">{$element->getType()}</p>
+                        <p class="status">{$element->getStatus()}</p>
+                        <p class="seats">{$element->getSeats()}</p>
+                    </div>
+                    <div class="action-buttons">
+                        <form class="search-form" action="/Slope/Admin/modifyLiftStructure" method="POST">
+                            <button type="submit" name="idLiftStructure" value={$element->getIdLiftStructure()} class="edit">Modifica</button>
+                        </form>
+                        <form class="search-form" action="/Slope/Admin/deleteLiftStructure" method="POST">
+                            <button type="submit" name="idLiftStructure" value={$element->getIdLiftStructure()} class="delete">Elimina</button>
+                        </form>
+                    </div>
+                </div>
+                {/if}
+                {/foreach}
+            </div>
+            {/foreach}
+        </div>
+    {/if}
+
+
+
+
+
 </body>
 </html>

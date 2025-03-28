@@ -3,65 +3,96 @@
 class ECreditCard{
 
     //attributes
-    protected string $cardHolderName;
-    protected string $cardHolderSurname;
-    protected DateTime $endDate;
-    protected int $cardNumber;
-    protected int $cvv;
+    /**
+     * Holds the id of the credit card in the database.
+     * @var int
+     */
+    private int $idCreditCard; 
+    /**
+     * Holds the name of the holder of the credit card.
+     * @var string
+     */
+    private string $cardHolderName;
+    /**
+     * Holds the surname of the holder of the credit card.
+     * @var string
+     */
+    private string $cardHolderSurname;
+    /**
+     * Holds the expiry date of the credit card.
+     * @var string
+     */
+    private string $expiryDate;
+    /**
+     * Holds the number of the credit card.
+     * @var int
+     */
+    private string $cardNumber;
+    /**
+     * Holds the cvv of the credit card (code on the back of the card).
+     * @var int
+     */
+    private int $cvv;
+    /**
+     * Holds the id of the user(holder) of the credit card.
+     * @var int
+     */
+    private int $idUser;
 
     //constructor
-    public function ___construct(string $cardHolderName, string $cardHolderSurname, string $endDate, int $cardNumber, int $cvv){
+    public function __construct(string $cardHolderName, string $cardHolderSurname, string $expiryDate, int $cardNumber, int $cvv){
         $this->cardHolderName = $cardHolderName;
         $this->cardHolderSurname = $cardHolderSurname;
-        $objDateTime = new DateTime($stringEndDate);
-        $newObj = clone $objDateTime;
-        $newObj->format('Y-m-d'); 
-        $this->endDate = $newObj;
-        $this->setTime();
+        $this->expiryDate = $expiryDate;
         $this->cardNumber = $cardNumber;
         $this->cvv = $cvv;
     }
 
     //get methods
-    public function getCardHolderName(){
+    public function getIdCreditCard() : int{
+        return $this->idCreditCard;
+    }
+    public function getCardHolderName() : string{
         return $this->cardHolderName;
     }
-    public function getCardHolderSurname(){
+    public function getCardHolderSurname() : string{
         return $this->cardHolderSurname;
     }
-    public function getCardNumber(){
+    public function getCardNumber() : string{
         return $this->cardNumber;
     }
-    public function getCvv(){
+    public function getCvv() : int{
         return $this->cvv;
     }
-    public function getEndDate(){
-        return $this->endDate;
+    public function getExpiryDate() : string{
+        return $this->expiryDate;
     }
-    public function getEndDateStr(){
-        return $this->endDate->format('Y-m-d');
+    public function getIdUser() : int{
+        return $this->idUser;
     }
-
 
     //set methods
-    public function setCardHolderName(string $cardHolderName1){
-        $this->cardHolderName = $cardHolderName1;
+    public function setIdCreditCard(int $idCreditCard) :void{
+        $this->idCreditCard = $idCreditCard;
     }
-    public function setCardHolderSurname(string $cardHolderSurname1){
-        $this->cardHolderSurname = $cardHolderSurname1;
+    public function setCardHolderName(string $cardHolderName) : void{
+        $this->cardHolderName = $cardHolderName;
     }
-    public function setCardNumber(int $cardNumber1){
-        $this->cardNumber = $cardNumber1;
+    public function setCardHolderSurname(string $cardHolderSurname) : void{
+        $this->cardHolderSurname = $cardHolderSurname;
     }
-    public function setCvv(int $cvv1){
-        $this->cvv = $cvv1;
+    public function setCardNumber(string $cardNumber) : void{
+        $this->cardNumber = $cardNumber;
     }
-    public function setEndDate(DateTime $endDate1){
-        $objDateTime = new DateTime($endDate1);
-        $newObj = clone $objDateTime;
-        $newObj->format('Y-m-d'); 
-        $this->endDate = $newObj;
-}
+    public function setCvv(int $cvv) : void{
+        $this->cvv = $cvv;
+    }
+    public function setExpiryDate(string $expiryDate) : void{
+        $this->expiryDate = $expiryDate;
+    }
+    public function setIdUser(int $idUser) : void{
+        $this->idUser = $idUser;
+    }
 
 }
 ?>

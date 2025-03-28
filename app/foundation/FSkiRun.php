@@ -20,6 +20,12 @@ class FSkiRun {
         return $result;
     }
 
+    /**
+     * Binds the values of a person object to a prepared SQL statement.
+     * @param object $stmt The PDO statement object used for query execution.
+     * @param ESkiRun $skiRun An object representing a ski run
+     * @return void
+     */
     public static function bind($stmt, $skiRun){
         $stmt->bindValue(":name", $skiRun->getName(), PDO::PARAM_STR);
         $stmt->bindValue(":type", $skiRun->getType(), PDO::PARAM_STR);
@@ -27,34 +33,72 @@ class FSkiRun {
         $stmt->bindValue(":idSkiFacility",$skiRun->getIdSkiFacility(), PDO::PARAM_INT);
     }
 
-    public static function saveObj($obj){
-        $saveSkiRun = FEntityManager::getInstance()->saveObject(self::getClass(), $obj);
-        if($saveSkiRun !== null){
-            return $saveSkiRun;
-        }else{
-            return false;
+    /**
+     * Method to save an object in the database using the proper FEntityManager function
+     * @param ESkiRun $obj Refers to a lift structure Entity object that needs to be stored in the database
+     * @param array $fieldArray Refers to an array of fields and values
+     * @return bool true if succeded and false if failed
+     */
+    public static function saveObj(ESkiRun $obj, ?array $fieldArray = null) : bool{
+        if($fieldArray === null) {
+            try {
+                FEntityManager::getInstance()->getDb()->beginTransaction();
+                $saveSkiRun = FEntityManager::getInstance()->saveObject(self::getClass(), $obj);
+                if($saveSkiRun !== null) {
+                    FEntityManager::getInstance()->getDb()->commit();
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch(PDOException $e) {
+                error_log("Database error in FSkiRun saveObj: " . $e->getMessage());
+                FEntityManager::getInstance()->getDb()->rollBack();
+                return false;
+            } finally {
+                FEntityManager::getInstance()->closeConnection();
+            }
+        } else {
+            try {
+                FEntityManager::getInstance()->getDb()->beginTransaction();
+                foreach($fieldArray as $fv) {
+                    FEntityManager::getInstance()->updateObj(FSkiRun::getTable(), $fv[0], $fv[1], self::getKey(), $obj->getIdSkiRun());
+                }
+                FEntityManager::getInstance()->getDb()->commit();
+                return true;
+            } catch(PDOException $e) {
+                error_log("Database error in FSkiRun saveObj: " . $e->getMessage());
+                FEntityManager::getInstance()->getDb()->rollBack();
+                return false;
+            } finally {
+                FEntityManager::getInstance()->closeConnection();
+            }
         }
     }
 
-    public static function crateSkiRunObj($queryResult){
+    /**
+     * Method to create an object or a set of object from a query
+     * @param array $queryResult Refers to the result of a query
+     * @return array of objects 
+     */
+    public static function createSkiRunObj(array $queryResult) : array{
         if(count($queryResult) == 1){
-            //$attributes = FEntityManager::getInstance()->retriveObj(self::getTable(), self::getKey(), $queryResult[0][self::getKey()]);
+            $skiRunA = [];
             $skiRun = new ESkiRun($queryResult[0]['name'], $queryResult[0]['type'], $queryResult[0]['status']);
             $skiRun->setIdSkiRun($queryResult[0]['idSkiRun']);
             $skiRun->setIdSkiFacility($queryResult[0]['idSkiFacility']);
-            return $skiRun;
+            $skiRunA[] = $skiRun;
+            return $skiRunA;
         }elseif(count($queryResult) > 1){
-            $skiRuns = array();
+            $skiRuns = [];
             for($i = 0; $i < count($queryResult); $i++){
-                //$attributes = FEntityManager::getInstance()->retriveObj(self::getTable(), self::getKey(), $queryResult[0][self::getKey()]);
-                $skiRun = new ESkiRun($queryResult[0]['name'], $queryResult[0]['type'], $queryResult[0]['status']);
-                $skiRun->setIdSkiRun($queryResult[0]['idSkiRun']);
-                $skiRun->setIdSkiFacility($queryResult[0]['idSkiFacility']);
+                $skiRun = new ESkiRun($queryResult[$i]['name'], $queryResult[$i]['type'], $queryResult[$i]['status']);
+                $skiRun->setIdSkiRun($queryResult[$i]['idSkiRun']);
+                $skiRun->setIdSkiFacility($queryResult[$i]['idSkiFacility']);
                 $skiRuns[] = $skiRun;
             }
             return $skiRuns;
         }else{
-            return array();
+            return [];
         }
     }
 
@@ -82,19 +126,65 @@ class FSkiRun {
         } */   
     }
 
-    public static function getSkiRuns($idSkiFacility) {
+    /**
+     * Method to get a ski run object using the id of the ski facility that it refers to
+     * @param string $idSkiFacility id of the ski facility
+     * @return array $result
+     */
+    public static function getSkiRuns(string $idSkiFacility) : array{
         $result = FEntityManager::getInstance()->retriveObj(self::getTable(), self::getExtKey(), $idSkiFacility);
         return $result;
     }
 
-    public static function typeAndNumberSkiRun($idSkiFacility) {
+    /**
+     * Method to get a ski run type and number of seats using the id of the ski facility that it refers to
+     * @param string $idSkiFacility id of the ski facility
+     * @return array $result
+     */
+    public static function typeAndNumberSkiRun(string $idSkiFacility) : array{
         $result = FEntityManager::getInstance()->typeAndNumberSkiRun(self::getTable(), self::getExtKey(), $idSkiFacility);
         return $result;
     }
 
-    public static function getSkiRunByNameAndSkiFacility($name, $idSkiFacility) {
-        $queryResult = FEntityManager::getInstance()->retriveObj2(self::getTable(), 'name', $name, self::getExtKey(), $idSkiFacility);
+    /**
+     * Method to get a ski run object using the name and the id of the ski facility that it refers to
+     * @param string $name name of the ski facility
+     * @param string $idSkiFacility id of the ski facility
+     * @return bool
+     */
+    public static function getSkiRunByNameAndSkiFacility(string $name, string $idSkiFacility) : bool{
+        $fields = [['name', $name], [self::getExtKey(), $idSkiFacility]]; 
+        $queryResult = FEntityManager::getInstance()->retriveObjNFields(self::getTable(), $fields);
         return FEntityManager::getInstance()->existInDb($queryResult);
+    }
+
+    /**
+     * Method to get all ski run object
+     * @return array $result
+     */
+    public static function getAllSkiRunObj() : array{
+        $result = FEntityManager::getInstance()->retriveAllObj(FSkiRun::getTable());
+        return $result;
+    }
+
+    /**
+     * Method to get a ski run object using the id 
+     * @param string $id id of the ski run
+     * @return array $result
+     */
+    public static function getSkiRunById(string $id) : array{
+        $result = FEntityManager::getInstance()->retriveObj(FSkiRun::getTable(), 'idSkiRun', $id);
+        return $result;
+    }
+
+    /**
+     * Method to get a ski run object 
+     * @param string $queryString 
+     * @return array $result
+     */
+    public static function getSkiRunByNameForSearch(string $queryString) : array{
+        $queryResult = FEntityManager::getInstance()->retriveObjForSearch2(self::getTable(), 'name', $queryString);
+        return $queryResult;
     }
 }
 

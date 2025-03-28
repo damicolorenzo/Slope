@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-10-13 13:12:13
+/* Smarty version 3.1.33, created on 2024-12-28 10:59:35
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\profileInfo.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_670bab0d84c056_46374085',
+  'unifunc' => 'content_676fcc0788f1a3_51340124',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3e0153626cbbd219e0e4c584d3213dec19418496' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\profileInfo.tpl',
-      1 => 1728817931,
+      1 => 1735378308,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_670bab0d84c056_46374085 (Smarty_Internal_Template $_smarty_tpl) {
+function content_676fcc0788f1a3_51340124 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -57,6 +57,95 @@ function content_670bab0d84c056_46374085 (Smarty_Internal_Template $_smarty_tpl)
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+  .profile-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px; /* Aumentato lo spazio sotto */
+  }
+
+  .profile-info {
+    width: 60%;
+  }
+
+  .profile-info h2 {
+    margin-bottom: 20px; /* Più spazio sotto il titolo */
+    font-size: 26px; /* Aumentata la dimensione del titolo */
+  }
+
+  .profile-info p {
+    margin-bottom: 15px; /* Aumentato lo spazio tra le informazioni */
+    font-size: 18px; /* Aumentata la dimensione del testo delle informazioni */
+  }
+
+  .profile-image {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .profile-pic {
+    width: 140px; /* Aumentata la dimensione dell'immagine del profilo */
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #000;
+  }
+
+  .section-container {
+    height:auto;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px; /* Aumentato lo spazio sotto le sezioni */
+  }
+
+  .profile-section {
+    width: 48%;
+    height:auto;  
+    padding: 20px; /* Aumentato lo spazio interno delle sezioni */
+    border: 2px solid #000;
+    border-radius: 10px;
+    background-color: #fff;
+  }
+
+  .profile-section h3 {
+    margin-bottom: 20px; /* Più spazio sotto il titolo della sezione */
+    font-size: 22px; /* Aumentata la dimensione del titolo della sezione */
+  }
+
+  .section-image {
+    width: 100%;
+    height: auto;
+    height: 150px; /* Aumentata l'altezza delle immagini nelle sezioni */
+    object-fit: cover;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px; /* Aggiunto più spazio sopra il pulsante */
+  }
+
+  .edit-button {
+    padding: 15px 30px; /* Aumentata la dimensione del pulsante */
+    font-size: 18px; /* Aumentata la dimensione del testo del pulsante */
+    border: 2px solid #000;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  .edit-button:hover {
+    background-color: #ddd;
+  }
+  </style>
 </head>
 
 <body class="starter-page-page">
@@ -73,17 +162,10 @@ function content_670bab0d84c056_46374085 (Smarty_Internal_Template $_smarty_tpl)
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">Prenota</a></li>
-            <li><a href="#services">Visualizza prenotazioni</a></li>
-            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-              <ul>
-                <li><a href="#">Piste</a></li>
-                <li><a href="#">Impianti</a></li>
-                <li><a href="#">Web</a></li>
-              </ul>
-            </li>
-            <li><a href="#contact">Profilo</a></li>
+            <li><a href="/Slope/">Home</a></li>
+            <li><a href="/Slope/User/showBookings">Visualizza Prenotazioni</a></li>
+            <li><a href="/Slope/User/profile">Profile</a></li>
+            <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -131,6 +213,9 @@ function content_670bab0d84c056_46374085 (Smarty_Internal_Template $_smarty_tpl)
             </div>
             <div class="profile-image">
                 <!-- Immagine del profilo -->
+                <?php if ($_smarty_tpl->tpl_vars['image']->value == 0) {?> 
+                  <img class="profile-pic" src="https://localhost/Slope/libs/Smarty/images/NotFound.jpg" loading="lazy" alt="Img">
+                <?php } else { ?>
                 <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['image']->value, 'i');
 if ($_from !== null) {
@@ -143,19 +228,20 @@ foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                <?php }?>
             </div>
         </div>
 
         <div class="section-container">
             <div class="profile-section">
-                <h3>ASSICURAZIONE</h3>
-                <!-- Immagine dell'assicurazione -->
-                <img src="/libs/Smarty/day/assets/img/hero-bg.jpg" alt="Immagine assicurazione" class="section-image">
-            </div>
-            <div class="profile-section">
                 <h3>ABBONAMENTO</h3>
                 <!-- Immagine dell'abbonamento -->
-                <img src="/libs/Smarty/day/assets/img/clients/client-2.png" alt="Immagine abbonamento" class="section-image">
+                <?php if ($_smarty_tpl->tpl_vars['subscriptionImage']->value === false) {?>
+                <img src="https://localhost/Slope/libs/Smarty/images/NotFound.jpg" alt="Immagine abbonamento" class="section-image">
+                <?php }?>
+                <div class="button-container">
+                    <a href="/Slope/User/buySubscription"><button class="edit-button">Acquista</button></a>
+                </div>
             </div>
         </div>
 

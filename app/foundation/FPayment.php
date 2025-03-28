@@ -5,9 +5,7 @@ require_once("FEntityManager.php");
 class FPayment {
 
     private static $table = "payment";
-
-    private static $value = "(NULL, :totalAmount, :date, :cardNumber)";
-
+    private static $value = "(NULL, :totalAmount, :date, :extObjClass, :idExternalObj, :idCreditCard)";
     private static $key = "idPayment";
 
     public static function getTable(){
@@ -26,63 +24,62 @@ class FPayment {
         return self::class;
     }
 
-
-    public static function bind($stmt, $payment){
-        $stmt->bindValue(":totalAmount", $payment->getTotalAmount(), PDO::PARAM_FLOAT);
-        $stmt->bindValue(":date", $payment->getDateStr(), PDO::PARAM_STR);
-        $stmt->bindValue(":cardNumber", $payment->getCardNumber(), PDO::PARAM_INT);
+    /**
+     * Binds the values of a paymeny object to a prepared SQL statement.
+     * @param object $stmt The PDO statement object used for query execution.
+     * @param EPaymeny $payment An object representing a lift structure
+     * @return void
+     */
+    public static function bind(object $stmt, EPayment $payment) : void{
+        $stmt->bindValue(":totalAmount", $payment->getTotalAmount(), PDO::PARAM_INT);
+        $stmt->bindValue(":date", $payment->getDate(), PDO::PARAM_STR);
+        $stmt->bindValue(":extObjClass", $payment->getExtObjClass(), PDO::PARAM_STR);
+        $stmt->bindValue(":idExternalObj", $payment->getIdExternalObj(), PDO::PARAM_INT);
+        $stmt->bindValue(":idCreditCard", $payment->getIdCreditCard(), PDO::PARAM_INT);
     }
 
-
-
-    public static function createPaymentObj($queryResult){
-        $payment = array();
-
-        foreach($queryResult as $p){
-            $cardNumber = FCreditCard::getObj($p['cardNumber']);
-            $payment = new EPayment($p['totalAmount'], $cardNumber);
-            $payment->setId($p['idPayment']);
-            $date = DateTime::createFromFormat('Y-m-d H:i:s', $p['date']);
-            $payment->setTime($date);
-            $payment[] = $payment;
-        }
-        if(count($payment) == 1){
-            return $payment[0];
-        }
-        return $payment;
+    /**
+     * Method to create an object or a set of object from a query
+     * @param array $queryResult Refers to the result of a query
+     * @return array of objects 
+     */
+    public static function createPaymentObj(array $queryResult) : array{
+        $paymentA = [];
+        $payment = new EPayment($queryResult[0]['extObjClass'], $queryResult[0]['totalAmount'], $queryResult[0]['date']);
+        $payment->setIdCreditCard($queryResult[0]['idCreditCard']);
+        $payment->setIdExternalObj($queryResult[0]['idExternalObj']);
+        $paymentA[] = $payment;
+        return $paymentA;
     }
 
-
-
-    public static function getObj($id){
+    /**
+     * Method to get an object using the id, invoke the retriveObj function from FEntityManager
+     * @param string $id Refers to the id
+     * @return array 
+     */ 
+    public static function getObj(string $id) : array{
         $result = FEntityManager :: getInstance()->retriveObj(self::getTable(), self::getKey(), $id);
         if (count($result) > 0){
-            $payment = self:: createPaymentObj($result);
+            $payment = self::createPaymentObj($result);
             return $payment;
         }
         else{
-            return null;
+            return [];
         }
     }
 
-
-    public static function saveObj($obj){
+    /**
+     * Method to save an object in the database using the proper FEntityManager function
+     * @param EPaymeny $obj Refers to a payment Entity object that needs to be stored in the database
+     * @return bool true if succeded and false if failed
+     */
+    public static function saveObj(EPayment $obj) : bool{
         $savePayment = FEntityManager::getInstance()->saveObject(self::getClass(), $obj);
-        if ($savePayment !== null){
+        if ($savePayment !== null)
             return true;
-        }
-        else{
+        else
             return false;
-        }
     }
-
-
-
 }
-
-
-
-
-
 
 ?>

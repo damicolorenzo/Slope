@@ -50,17 +50,10 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">Prenota</a></li>
-            <li><a href="#services">Visualizza prenotazioni</a></li>
-            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-              <ul>
-                <li><a href="#">Piste</a></li>
-                <li><a href="#">Impianti</a></li>
-                <li><a href="#">Web</a></li>
-              </ul>
-            </li>
-            <li><a href="#contact">Profilo</a></li>
+            <li><a href="/Slope/">Home</a></li>
+            <li><a href="/Slope/User/showBookings">Visualizza Prenotazioni</a></li>
+            <li><a href="/Slope/User/profile">Profile</a></li>
+            <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -105,13 +98,29 @@
                     <label>Inserire numero del tipo +39NUMERO_DI_TELEFONO</label>
                     {/if}
                     <p><strong>Data nascita:</strong> {$birthDate}</p>
-                    <p><strong>Modifica immagine:</strong></p>
-                    <input type="file" name="imageFile" id ="imageFile" multiple>
                     {if $imageError == true}
                     <label>Errore nel caricamento dell'immagine. Riprovare!</label>
                     {/if}
                     <button class="edit-button" type="submit">Conferma modifiche</button>
                 </form>
+                
+                {if $image == true}
+                  <form action="/Slope/User/modifyImage" enctype="multipart/form-data" method="POST">
+                    <p><strong>Modifica immagine:</strong></p>
+                    <input type="file" name="imageFile" id="imageFile" multiple>
+                    <button class="edit-button" type="submit">Modifica immagine</button>
+                  </form>
+                  <a href="/Slope/User/deleteImage">
+                    <button class="edit-button" type="submit">Rimuovi immagine</button>
+                  </a>
+                {else}
+                  <form action="/Slope/User/modifyImage" enctype="multipart/form-data" method="POST">
+                    <p><strong>Modifica immagine:</strong></p>
+                    <input type="file" name="imageFile" id="imageFile" multiple>
+                    <button class="edit-button" type="submit">Modifica immagine</button>
+                  </form>
+                {/if}
+                
             </div>
             
             <p><strong>Modifica password:</strong></p>

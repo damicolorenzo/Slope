@@ -34,6 +34,82 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+<style>
+  .form_login-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 45%;
+}
+
+.form_login-container form h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form_login-container label {
+  display: block;
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.form_login-container input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="username"], 
+input[type="tel"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+}
+
+input[type="date"]:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background: url('data:image/svg+xml;base64,<svg>...</svg>') no-repeat center;
+  cursor: pointer;
+  color: transparent; 
+  opacity: 0.5; 
+}
+
+input[type="date"]::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.form_login-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form_login-container button:hover {
+  background-color: #0056b3;
+}
+  </style>
 </head>
 
 <body class="starter-page-page">
@@ -81,15 +157,12 @@
         <div class="form_login-container">
             <form class="login-form" action="/Slope/Admin/checkLogin" method="POST">
                 <h2>Login <i>ADMIN</i></h2>
-                {if $session == true}
-                <label>Errore di sessione </label>
-                {/if}
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" required>
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
-                {if $password == true}
-                <label>Errore, username o password non riconosciuti!</label>
+                {if $error === true}
+                <label>Errore inserimento dati</label>
                 {/if}
                 <button type="submit">Accedi</button>
             </form>

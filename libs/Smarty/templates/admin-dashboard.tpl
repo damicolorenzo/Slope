@@ -34,6 +34,53 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+<style>
+
+.dashboard {
+    text-align: center;
+    max-width: 800px;
+    width: 90%;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #FFFFFF; /* Bianco puro */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Dashboard title */
+.dashboard h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #0F4C81; /* Blu notte */
+}
+
+/* Links container */
+.links-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+/* Individual links */
+.dashboard-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-decoration: none;
+    color: #FFFFFF; /* Testo bianco */
+    background-color: #3A86FF; /* Blu cielo */
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Hover effect */
+.dashboard-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    background-color: #0F4C81; /* Blu notte */
+}</style>
 </head>
 
 <body class="starter-page-page">
@@ -69,15 +116,23 @@
     <section id="starter-section" class="starter-section section"> 
 
       <div class="container" data-aos="fade-up">
-      <h1>DASHBOARD ADMIN</h1>
-      <ul>
-        <li><a href="/Slope/Admin/addSkiRun">Aggiungi dati pista</a></li>
-        <li><a href="/Slope/Admin/addSkiFacility">Aggiungi dati impianto</a></li>
-        <li><a href="/Slope/Admin/addLiftStructure">Aggiungi dati risalita</a></li>
-        <li><a href="/Slope/Admin/searchUsers">Modifica dati utente</a></li>
-        <li><a href="/Slope/Admin/modify">Modifica dati pista/impianto/risalita</a></li>
-        <li><a href="#">Modifica interfaccia</a></li>
-      </ul>
+      <div class="dashboard">
+        <h1>Admin Dashboard</h1>
+        <div class="links-container">
+            <a href="/Slope/Admin/addSkiRun">Aggiungi dati pista</a>
+            <a href="/Slope/Admin/addSkiFacility">Aggiungi dati impianto</a>
+            <a href="/Slope/Admin/addLiftStructure">Aggiungi dati risalita</a>
+            <a href="/Slope/Admin/searchUsers">Modifica dati utente</a>
+            <a href="/Slope/Admin/searchStructures">Modifica dati pista/impianto/risalita</a>
+            <a href="/Slope/Admin/addSkipassTemplate">Aggiungi template skipass</a>
+            <a href="/Slope/Admin/addInsuranceemplate">Aggiungi template assicurazione</a>
+            <a href="/Slope/Admin/searchPrices">Modifica prezzi</a>
+            <a href="/Slope/Admin/addPrice">Aggiungi prezzo</a>
+            <a href="/Slope/Admin/searchSkipassObjs">Modifica skipass</a>
+            <a href="/Slope/Admin/addSkipass">Aggiungi skipass</a>
+            <a href="#">Modifica interfaccia</a>
+        </div>
+      </div>
       <!-- Da riempire in base alla pagina  -->
 
       </div>

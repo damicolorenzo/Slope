@@ -29,17 +29,22 @@ class FImage{
         return self::$key;
     }
 
-    public static function createImageObj($queryResult){
-        if(count($queryResult) > 0){
-            $images = array();
+    public static function createImageObj($queryResult) : array{
+        if(count($queryResult) == 1){
+            $images = [];
+            $im = new EImage($queryResult[0]['name'], $queryResult[0]['size'],$queryResult[0]['type'],$queryResult[0]['imageData']);
+            $im->setId($queryResult[0]['idImage']);
+            return $images;
+        }elseif(count($queryResult) > 1){
+            $images = [];
             for($i = 0; $i < count($queryResult); $i++){
                 $im = new EImage($queryResult[$i]['name'], $queryResult[$i]['size'],$queryResult[$i]['type'],$queryResult[$i]['imageData']);
                 $im->setId($queryResult[$i]['idImage']);
                 $images[] = $im;
             }
             return $images;
-        }else{
-            return array();
+        } else {
+            return [];
         }
     }
 
@@ -64,23 +69,28 @@ class FImage{
         }
     } */
 
-    public static function saveObj($obj){
-        $saveImage = FEntityManager::getInstance()->saveObject(self::getClass(), $obj);
-        if($saveImage !== null){
-            return $saveImage;
-        }else{
+    public static function saveObj(EImage $obj) : bool{
+        try{
+            FEntityManager::getInstance()->getDb()->beginTransaction();
+            $saveImageLastInsertedID = FEntityManager::getInstance()->saveObject(self::getClass(), $obj);
+            $obj->setId($saveImageLastInsertedID);
+            if($saveImageLastInsertedID !== null){
+                FEntityManager::getInstance()->getDb()->commit();
+               return true;
+            }else{
+                return false;
+            }
+        }catch(PDOException $e){
+            error_log("Database error in FImage saveObj: " . $e->getMessage());
+            FEntityManager::getInstance()->getDb()->rollBack();
             return false;
+        }finally{
+            FEntityManager::getInstance()->closeConnection();
         }
     }
 
     public static function getImageById($id){
         $result = FEntityManager::getInstance()->retriveObj(self::getTable(), 'idImage', $id);
-
-        if(count($result) > 0){
-            $image = self::createImageObj($result);
-            return $image;
-        }else{
-            return null;
-        }
+        return $result;
     }
 }

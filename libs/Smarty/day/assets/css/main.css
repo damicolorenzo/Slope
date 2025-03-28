@@ -1956,13 +1956,6 @@ section,
 
 /* CUSTOM CSS per registrazione e login*/
 
-.form_login-container {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 45%;
-}
 
 .form_login-container form h2 {
   margin-bottom: 20px;
@@ -2033,12 +2026,6 @@ input[type="date"]::placeholder {
 
 /* CUSTOM CSS per modifica dati lato utente */
 
-.profile-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 40px; /* Aumentato lo spazio sotto */
-}
 
 .profile-info {
   width: 60%;
@@ -2123,269 +2110,29 @@ input[type="date"]::placeholder {
 
 /* ADMIN-SEARCH */
 
-.search-form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
 
-.search-input {
-  width: 450px;
-  height: 45px;
-  padding: 10px 20px;
-  border: 1px solid #dfe1e5;
-  border-radius: 24px;
-  font-size: 16px;
-  outline: none;
-  box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
-  transition: box-shadow 0.3s ease;
-}
-
-.search-input:focus {
-  box-shadow: 0 1px 6px rgba(32, 33, 36, 0.4);
-  border-color: #4285f4;
-}
-
-/* Pulsante della lente */
-.search-button {
-  position: absolute;
-  right: 10px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  color: #5f6368;
-  outline: none;
-}
-
-.search-button:hover {
-  color: #4285f4;
-}
-
-.users {
-  font-family: Arial, sans-serif;
-    margin: 0;
-    padding-top: 20px;
-    background-color: #f0f0f0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-}
-
-.cards-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px; /* Distanza tra le card */
-}
-
-.card {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 400px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.user-info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Allinea il testo a sinistra */
-}
-
-.username, .name, .surname {
-  margin: 5px 0;
-  font-size: 16px;
-}
-
-.action-buttons {
-  display: flex;
-  gap: 10px; /* Spazio tra i pulsanti */
-}
-
-button {
-  padding: 10px 15px;
-  border: 1px solid #000;
-  border-radius: 3px;
-  background-color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #ddd;
-}
-
-.edit {
-  color: green;
-  border-color: green;
-}
-
-.delete {
-  color: red;
-  border-color: red;
-}
 
 /* ADD LIFT STRUCTURE */
 
-.form-container {
-  background-color: white;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 300px;
-}
 
-h2 {
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-input[type="text"] {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-}
-
-.section {
-  margin-bottom: 20px;
-}
-
-.checkbox-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.checkbox-group label {
-  margin-bottom: 5px;
-  font-weight: normal;
-}
-
-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
 
 /* CARDS IMPIANTI */
 
-.card-impianto {
-  display: flex;
-  flex-direction: row;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  width: 450px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-}
 
-.impianto, .dettagli-impianto {
-  padding: 16px;
-  width: 50%;
-}
 
-.impianto {
-  background-color: #f8f8f8;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
+/* SEARCH STRUCTURES */
 
-.impianto h3 {
-  font-size: 18px;
-  color: #333;
-  margin-bottom: 8px;
-}
 
-.impianto-img {
-  width: 100%;
-  border-radius: 4px;
-  height: auto;
-  max-height: 120px;
-  object-fit: cover;
-}
 
-.dettagli-impianto h4 {
-  margin-top: 0;
-  font-size: 16px;
-  color: #666;
-}
+/* SKIRUNSANDLIFTSDETAILS */
 
-.dettagli-impianto .piste {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-bottom: 10px;
-}
 
-.pista {
-  padding: 4px 8px;
-  border-radius: 4px;
-  color: #fff;
-  font-size: 14px;
-  display: flex;
-  justify-content: space-between;
-}
 
-.pista.rossa {
-  background-color: #e74c3c; /* Colore rosso per piste rosse */
-}
+/* MAKE A BOOKING FORM */
 
-.pista.nera {
-  background-color: #2c3e50; /* Colore nero per piste nere */
-}
 
-.pista.blu {
-  background-color: #3498db; /* Colore blu per piste blu */
-}
 
-.pista.verde {
-  background-color: #2ecc71; /* Colore verde per piste verdi */
-}
+/* PaymentSection */
 
-.dettagli-impianto p {
-  margin: 4px 0;
-  font-size: 14px;
-  color: #444;
-}
 
-.dettagli-impianto span {
-  font-weight: bold;
-}
 
-.status {
-  padding: 4px 8px;
-  border-radius: 4px;
-  color: #fff;
-  font-size: 12px;
-}
-
-.status.aperto {
-  background-color: #4caf50; /* Verde per aperto */
-}
-
-.status.chiuso {
-  background-color: #f44336; /* Rosso per chiuso */
-}

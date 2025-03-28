@@ -34,6 +34,110 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+<style>
+.card-impianto {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 450px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.impianto, .dettagli-impianto {
+  padding: 16px;
+  width: 50%;
+}
+
+.impianto {
+  background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.impianto h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.impianto-img {
+  width: 100%;
+  border-radius: 4px;
+  height: auto;
+  max-height: 120px;
+  object-fit: cover;
+}
+
+.dettagli-impianto h4 {
+  margin-top: 0;
+  font-size: 16px;
+  color: #666;
+}
+
+.dettagli-impianto .piste {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.pista {
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pista.rossa {
+  background-color: #e74c3c; /* Colore rosso per piste rosse */
+}
+
+.pista.nera {
+  background-color: #2c3e50; /* Colore nero per piste nere */
+}
+
+.pista.blu {
+  background-color: #3498db; /* Colore blu per piste blu */
+}
+
+.pista.verde {
+  background-color: #2ecc71; /* Colore verde per piste verdi */
+}
+
+.dettagli-impianto p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #444;
+}
+
+.dettagli-impianto span {
+  font-weight: bold;
+}
+
+.status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 12px;
+}
+
+.status.aperto {
+  background-color: #4caf50; /* Verde per aperto */
+}
+
+.status.chiuso {
+  background-color: #f44336; /* Rosso per chiuso */
+}
+.search-form {
+  display: flex;
+
+}</style>
 </head>
 
 <body class="starter-page-page">
@@ -50,19 +154,10 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <!-- <li><a href="#hero">Home</a></li>
-            <li><a href="#about">Prenota</a></li>
-            <li><a href="#services">Visualizza prenotazioni</a></li>
-            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a> -->
-              <ul>
-                <!-- <li><a href="#">Piste</a></li>
-                <li><a href="#">Impianti</a></li>
-                <li><a href="#">Web</a></li> -->
-              </ul>
-            </li>
             <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/User/logout">LogOut</a></li>
+            <li><a href="/Slope/User/showBookings">Visualizza Prenotazioni</a></li>
             <li><a href="/Slope/User/profile">Profile</a></li>
+            <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -91,34 +186,39 @@
     <section id="starter-section" class="starter-section section"> 
       <div class="container" data-aos="fade-up">
 
-        {foreach from=$map item=i}  
+        {foreach from=$map item=i} 
+          <form class="search-form" action="/Slope/User/skiFacilityDetails" method="POST">
           <div class="card-impianto">
             <div class="impianto">
-              <h3>{$i[0]['name']}</h3>
+              <h3>{$i[0]}</h3>
               <img src="link-alla-tua-immagine.jpg" alt="Immagine dell'impianto" class="impianto-img">
             </div>
             <div class="dettagli-impianto">
-              <h4>Dettagli {$i[0]['name']}</h4> 
+              <h4>Dettagli {$i[0]}</h4> 
+              <button type="submit" name="nameSkiFacility" value={$i[0]} >Esplora</button>
                 <div class="piste">
                   {foreach from=$i[1] item=e}  
-                    {if $e['type'] == 'blu'}
+                    {if $e['type'] == blu}
                     <div class="pista blu">Blu: <span>{$e['CNT']}</span></div>
                     {/if}
-                    {if $e['type'] == 'rossa'}
+                    {if $e['type'] == rossa}
                     <div class="pista rossa">Rosse: <span>{$e['CNT']}</span></div>
                     {/if}
-                    {if $e['type'] == 'nera'}
+                    {if $e['type'] == nera}
                     <div class="pista nera">Nere: <span>{$e['CNT']}</span></div>
                     {/if}
-                    {if $e['type'] == 'verde'}
+                    {if $e['type'] == verde}
                     <div class="pista verde">Verdi: <span>{$e['CNT']}</span></div>
                     {/if}
                   {/foreach}
                 </div>
-                <p>Impianti: <span>{$i[2]['CNT']}</span></p>
+                <p>Impianti: <span>{$i[2]}</span></p>
                 <p>Status: <span class="status aperto">'aperto'</span></p>
             </div>
+            
           </div>
+          
+          <form>
         {/foreach}
 
       </div>

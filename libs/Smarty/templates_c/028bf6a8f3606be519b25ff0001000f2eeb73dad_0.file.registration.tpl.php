@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-10-12 15:35:27
+/* Smarty version 3.1.33, created on 2024-11-30 15:49:25
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\registration.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_670a7b1fb39699_11914784',
+  'unifunc' => 'content_674b25f56b0f21_32402803',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '028bf6a8f3606be519b25ff0001000f2eeb73dad' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\registration.tpl',
-      1 => 1728740126,
+      1 => 1732977992,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_670a7b1fb39699_11914784 (Smarty_Internal_Template $_smarty_tpl) {
+function content_674b25f56b0f21_32402803 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -57,6 +57,82 @@ function content_670a7b1fb39699_11914784 (Smarty_Internal_Template $_smarty_tpl)
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+  .form_login-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 45%;
+}
+
+.form_login-container form h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form_login-container label {
+  display: block;
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.form_login-container input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="username"], 
+input[type="tel"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+}
+
+input[type="date"]:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background: url('data:image/svg+xml;base64,<svg>...</svg>') no-repeat center;
+  cursor: pointer;
+  color: transparent; 
+  opacity: 0.5; 
+}
+
+input[type="date"]::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.form_login-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form_login-container button:hover {
+  background-color: #0056b3;
+}
+  </style>
 </head>
 
 <body class="starter-page-page">
