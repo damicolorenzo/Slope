@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-07-09 12:10:37
+/* Smarty version 3.1.33, created on 2024-11-27 16:33:12
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\home.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_668d0c9d80c2c1_29022134',
+  'unifunc' => 'content_67473bb8b793b3_11081734',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1db7471d28bb1ec148c4de7ea1ff8c71677789e7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\home.tpl',
-      1 => 1720519834,
+      1 => 1732721528,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_668d0c9d80c2c1_29022134 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67473bb8b793b3_11081734 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -82,8 +82,9 @@ function content_668d0c9d80c2c1_29022134 (Smarty_Internal_Template $_smarty_tpl)
         <nav id="navmenu" class="navmenu">
           <ul>
             <li><a href="#hero" class="active">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Servizi</a></li>
+            <li><a href="#Conoscici">Conoscici</a></li>
+            <li><a href="#Dovesciare">Dove?</a></li>
+            <li><a href="#servizi">Servizi</a></li>
             <li><a href="#pricing">Prezzi</a></li>
             <li><a href="#team">Team</a></li>
             <li><a href="#contact">Contatti</a></li>
@@ -112,13 +113,13 @@ function content_668d0c9d80c2c1_29022134 (Smarty_Internal_Template $_smarty_tpl)
     </section><!-- /Hero Section -->
 
     <!-- About Section -->
-    <section id="about" class="about section">
+    <section id="Conoscici" class="about section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <span>About Us<br></span>
-        <h2>About Us<br></h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <span>Conoscici<br></span>
+        <h2>Conoscici<br></h2>
+        <p>Scopri tutte le informazioni utili per la tua giornata sulla neve</p>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -130,16 +131,19 @@ function content_668d0c9d80c2c1_29022134 (Smarty_Internal_Template $_smarty_tpl)
           </div>
 
           <div class="col-lg-6 order-2 order-lg-1 content" data-aos="fade-up" data-aos-delay="200">
-            <h3>Voluptatem dignissimos provident quasi corporis</h3>
+            <h3>Cosa offriamo</h3>
             <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+              Verifica le condizioni delle piste e monitora le aperture in tempo reale.
+            </p>
             </p>
             <ul>
-              <li><i class="bi bi-check-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-              <li><i class="bi bi-check-circle"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-              <li><i class="bi bi-check-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
+              <li><i class="bi bi-snow"></i> <span>Hai bisogno dello skipass o dell'attrezzatura?</span></li>
+              <li><i class="bi bi-snow"></i> <span>Vuoi tutelarti ed acquistare un'assicurazione?</span></li>
+              <li><i class="bi bi-snow"></i> <span>Vuoi rimanere al passo con opportunità e promozioni?</span></li>
             </ul>
+            <p class="fst-italic">
+              Qui trovi tutto ciò di cui hai bisogno
+            </p>
             <a href="#" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
           </div>
 
@@ -150,7 +154,7 @@ function content_668d0c9d80c2c1_29022134 (Smarty_Internal_Template $_smarty_tpl)
     </section><!-- /About Section -->
 
     <!-- Cards Section -->
-    <section id="cards" class="cards section">
+    <section id="Dovesciare" class="cards section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -161,53 +165,65 @@ function content_668d0c9d80c2c1_29022134 (Smarty_Internal_Template $_smarty_tpl)
 
 
       <div class="container">
+        <div class="cards">
 
-        <div class="row no-gutters">
+          <div class="row no-gutters">
 
-          <div class="col-lg-4 col-md-6 card" data-aos="fade-up" data-aos-delay="100">
-            <span>01</span>
-            <h4>Alto Sangro - Roccaraso/Rivisondoli</h4>
-            <p>Uno dei comprensori sciistici più grandi e famosi in Abruzzo, con 91 km di piste e 38 impianti di risalita.</p>
+            <div class="col-lg-4 col-md-6 card custom-bg5 position-relative" data-aos="fade-up" data-aos-delay="100">
+              <div class="content">
+                <span>01</span>
+                <h4>Alto Sangro - Roccaraso</h4>
+                <a href="URL_DESTINAZIONE_1" class="stretched-link"></a>
+            </div>
           </div><!-- End Card Item -->
 
-          <div class="col-lg-4 col-md-6 card" data-aos="fade-up" data-aos-delay="200">
-            <span>02</span>
-            <h4>Gran Sasso - Campo Imperatore</h4>
-            <p>Situato a 2200 metri d’altitudine, offre 15 km di piste e 4 impianti di risalita.</p>
+            <div class="col-lg-4 col-md-6 card custom-bg4 position-relative" data-aos="fade-up" data-aos-delay="100">
+              <div class="content">
+                <span>02</span>
+                <h4>Gran Sasso - Campo Imperatore</h4>
+                <a href="URL_DESTINAZIONE_1" class="stretched-link"></a>
+            </div>
           </div><!-- End Card Item -->
 
-          <div class="col-lg-4 col-md-6 card" data-aos="fade-up" data-aos-delay="300">
-            <span>03</span>
-            <h4> Roccaraso</h4>
-            <p>Uno dei comprensori sciistici più vasti e ben attrezzati in Abruzzo, con 147 km di piste e 38 impianti di risalita.</p>
+            <div class="col-lg-4 col-md-6 card custom-bg3 position-relative" data-aos="fade-up" data-aos-delay="100">
+              <div class="content">
+                <span>03</span>
+                <h4>Passo Lanciano - Majelletta</h4>
+                <a href="URL_DESTINAZIONE_1" class="stretched-link"></a>
+            </div>
           </div><!-- End Card Item -->
 
-          <div class="col-lg-4 col-md-6 card" data-aos="fade-up" data-aos-delay="400">
-            <span>04</span>
-            <h4>Ovindoli - Monte Magnola</h4>
-            <p>Offre 20 km di piste e un efficiente impianto di innevamento artificiale.</p>
+            <div class="col-lg-4 col-md-6 card custom-bg2 position-relative" data-aos="fade-up" data-aos-delay="100">
+              <div class="content">
+                <span>04</span>
+                <h4>Ovindoli - Monte Magnola</h4>
+                <a href="URL_DESTINAZIONE_1" class="stretched-link"></a>
+            </div>
           </div><!-- End Card Item -->
 
-          <div class="col-lg-4 col-md-6 card" data-aos="fade-up" data-aos-delay="400">
-            <span>05</span>
-            <h4>Campo Felice - Rocca di Cambio</h4>
-            <p>Annovera ben 31 chilometri di piste servite da impianti di risalita moderni.</p>
+            <div class="col-lg-4 col-md-6 card custom-bg1 position-relative" data-aos="fade-up" data-aos-delay="100">
+              <div class="content">
+                <span>05</span>
+                <h4>Campo Felice</h4>
+                <a href="URL_DESTINAZIONE_1" class="stretched-link"></a>
+            </div>
           </div><!-- End Card Item -->
 
-          <div class="col-lg-4 col-md-6 card" data-aos="fade-up" data-aos-delay="600">
-            <span>06</span>
-            <h4>Pescocostanzo</h4>
-            <p>Situato nella parte più alta di Pescocostanzo, offre possibilità di sciare, parco giochi per bambini e piccola pista per gli slittini.</p>
+            <div class="col-lg-4 col-md-6 card custom-bg position-relative" data-aos="fade-up" data-aos-delay="100">
+              <div class="content">
+                <span>06</span>
+                <h4>Prati di Tivo - Monte Piselli</h4>
+                <a href="URL_DESTINAZIONE_1" class="stretched-link"></a>
+            </div>
           </div><!-- End Card Item -->
-
+          </div>
         </div>
-
       </div>
 
     </section><!-- /Cards Section -->
 
     <!-- Services Section -->
-    <section id="services" class="services section">
+    <section id="servizi" class="services section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -223,7 +239,7 @@ function content_668d0c9d80c2c1_29022134 (Smarty_Internal_Template $_smarty_tpl)
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="service-item  position-relative">
               <div class="icon">
-                <i class="bi bi-activity"></i>
+                <i class="bi bi-snow"></i>
               </div>
               <a href="#" class="stretched-link">
                 <h3>Monitoraggio impianti</h3>
@@ -235,7 +251,7 @@ function content_668d0c9d80c2c1_29022134 (Smarty_Internal_Template $_smarty_tpl)
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="service-item position-relative">
               <div class="icon">
-                <i class="bi bi-broadcast"></i>
+                <i class="bi bi-cash-stack"></i></i>
               </div>
               <a href="#" class="stretched-link">
                 <h3>Listino prezzi</h3>
@@ -247,12 +263,12 @@ function content_668d0c9d80c2c1_29022134 (Smarty_Internal_Template $_smarty_tpl)
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="service-item position-relative">
               <div class="icon">
-                <i class="bi bi-easel"></i>
+                <i class="bi bi-cart"></i>
               </div>
               <a href="#" class="stretched-link">
-                <h3>Ledo Markt</h3>
+                <h3>Acquista</h3>
               </a>
-              <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p>
+              <p>Prenota uno skipass, acquista un'assicurazione e scopri le promozioni con l'abbonamento</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -263,24 +279,6 @@ function content_668d0c9d80c2c1_29022134 (Smarty_Internal_Template $_smarty_tpl)
 
     </section><!-- /Services Section -->
 
-    <!-- Call To Action Section -->
-    <section id="call-to-action" class="call-to-action section">
-
-      <img src="/libs/images/dog3.jpg" alt="">
-
-      <div class="container">
-        <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
-          <div class="col-xl-10">
-            <div class="text-center">
-              <h3>Call To Action</h3>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              <a class="cta-btn" href="#">Call To Action</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </section><!-- /Call To Action Section -->
 
     
 

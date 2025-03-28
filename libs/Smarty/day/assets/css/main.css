@@ -1015,12 +1015,18 @@ section,
 # Cards Section
 --------------------------------------------------------------*/
 .cards .card {
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
   background-color: var(--background-color);
   color: var(--default-color);
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
   padding: 40px;
   margin: -1px;
   border-radius: 0;
+  height: 300px; 
+  text-align: center; 
 }
 
 .cards .card span {
@@ -1028,14 +1034,14 @@ section,
   font-size: 24px;
   font-weight: 400;
   color: var(--accent-color);
+  margin-bottom: 10px;
 }
 
 .cards .card h4 {
-  color: color-mix(in srgb, var(--heading-color), transparent 20%);
+  color: #f0f0f0;
   font-size: 24px;
   font-weight: 600;
-  padding: 0;
-  margin: 20px 0;
+  margin: 20px 0 10px 0; /* Spaziatura sopra e sotto */
 }
 
 .cards .card p {
@@ -1044,6 +1050,211 @@ section,
   margin: 0;
   padding: 0;
 }
+
+/*Prati di tivo*/
+.custom-bg {
+  position: relative;
+  background-image: url('/Slope/libs/Smarty/day/assets/img/prati_di_tivo.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  min-height: 300px;
+  overflow: hidden;
+}
+
+.custom-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Overlay scuro semi-trasparente */
+  z-index: 1;
+}
+
+.custom-bg .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2; 
+  color: white; 
+  text-align: center;
+}
+
+/*Campo felice*/
+.custom-bg1 {
+  position: relative;
+  background-image: url('/Slope/libs/Smarty/day/assets/img/campo_felice.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  min-height: 300px;
+  overflow: hidden;
+}
+
+.custom-bg1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Overlay scuro semi-trasparente */
+  z-index: 1;
+}
+
+.custom-bg1 .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2; 
+  color: white; 
+  text-align: center;
+}
+
+/*Ovindoli*/
+.custom-bg2 {
+  position: relative;
+  background-image: url('/Slope/libs/Smarty/day/assets/img/ovindoli_magnola.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  min-height: 300px;
+  overflow: hidden;
+}
+
+.custom-bg2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Overlay scuro semi-trasparente */
+  z-index: 1;
+}
+
+.custom-bg2 .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2; 
+  color: white; 
+  text-align: center;
+}
+
+/*Passo Lnciano*/
+.custom-bg3 {
+  position: relative;
+  background-image: url('/Slope/libs/Smarty/day/assets/img/majelletta.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  min-height: 300px;
+  overflow: hidden;
+}
+
+.custom-bg3::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Overlay scuro semi-trasparente */
+  z-index: 1;
+}
+
+.custom-bg3 .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2; 
+  color: white; 
+  text-align: center;
+}
+
+/*Campo Imperatore*/
+.custom-bg4 {
+  position: relative;
+  background-image: url('/Slope/libs/Smarty/day/assets/img/campo_imperatore.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  min-height: 300px;
+  overflow: hidden;
+}
+
+.custom-bg4::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Overlay scuro semi-trasparente */
+  z-index: 1;
+}
+
+.custom-bg4 .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2; 
+  color: white; 
+  text-align: center;
+}
+
+/*Roccaraso*/
+.custom-bg5 {
+  position: relative;
+  background-image: url('/Slope/libs/Smarty/day/assets/img/roccaraso.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  min-height: 300px;
+  overflow: hidden;
+}
+
+.custom-bg5::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Overlay scuro semi-trasparente */
+  z-index: 1;
+}
+
+.custom-bg5 .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2; 
+  color: white; 
+  text-align: center;
+}
+
 
 /*--------------------------------------------------------------
 # Clients Section
@@ -1808,7 +2019,7 @@ input[type="date"]::placeholder {
 .form_login-container button {
   width: 100%;
   padding: 10px;
-  background-color: #007BFF;
+  background-color: #4682B4;
   border: none;
   border-radius: 4px;
   color: white;
@@ -1817,7 +2028,7 @@ input[type="date"]::placeholder {
 }
 
 .form_login-container button:hover {
-  background-color: #0056b3;
+  background-color: #4682B4;
 }
 
 /* CUSTOM CSS per modifica dati lato utente */
@@ -1840,7 +2051,10 @@ input[type="date"]::placeholder {
 
 .profile-info p {
   margin-bottom: 15px; /* Aumentato lo spazio tra le informazioni */
-  font-size: 18px; /* Aumentata la dimensione del testo delle informazioni */
+  font-size: 16px;
+  font-family: var(--nav-font);
+  font-weight: 400;
+  
 }
 
 .profile-image {
