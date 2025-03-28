@@ -182,7 +182,14 @@ Class FUser{
             try{
                 FEntityManager::getInstance()->getDb()->beginTransaction();
                 $savePersonAndLastInsertedID = FEntityManager::getInstance()->saveObject(FPerson::getClass(), $obj);
-                $obj->setId($savePersonAndLastInsertedID);
+                // Controlla se l'ID ottenuto è valido
+                if (!empty($savePersonAndLastInsertedID) && is_numeric($savePersonAndLastInsertedID)) {
+                    $obj->setId((int) $savePersonAndLastInsertedID);
+                } else {
+                    error_log("Errore: L'ID restituito è NULL in FUser::saveObj");
+                    FEntityManager::getInstance()->getDb()->rollBack();
+                    return false;
+                }
                 if($savePersonAndLastInsertedID !== null){
                     $saveUser = FEntityManager::getInstance()->saveObjectFromId(self::getClass(), $obj, $savePersonAndLastInsertedID);
                     FEntityManager::getInstance()->getDb()->commit();
