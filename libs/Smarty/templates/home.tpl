@@ -138,9 +138,15 @@
         <nav id="navmenu" class="navmenu">
           <ul>
             <li><a href="#hero" class="active">Home</a></li>
+<<<<<<< HEAD
             <li><a href="#about">About</a></li>
             <li><a href="#cards">Dove Sciare</a></li>
             <li><a href="#services">Servizi</a></li>
+=======
+            <li><a href="#Conoscici">Conoscici</a></li>
+            <li><a href="#Dovesciare">Dove?</a></li>
+            <li><a href="#servizi">Servizi</a></li>
+>>>>>>> 1988bf2c8d4f46d9488a6dba99c15f8616b93184
             <li><a href="#pricing">Prezzi</a></li>
             <li><a href="#team">Team</a></li>
             <li><a href="#contact">Contatti</a></li>
@@ -170,13 +176,19 @@
     </section><!-- /Hero Section -->
 
     <!-- About Section -->
-    <section id="about" class="about section">
+    <section id="Conoscici" class="about section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
+<<<<<<< HEAD
         <span>About Us<br></span>
         <h2>About Us<br></h2>
         <p>Rimani sempre aggiornato sulle condizioni delle piste e prenota il tuo skipass in pochi clic.</p>
+=======
+        <span>Conoscici<br></span>
+        <h2>Conoscici<br></h2>
+        <p>Scopri tutte le informazioni utili per la tua giornata sulla neve</p>
+>>>>>>> 1988bf2c8d4f46d9488a6dba99c15f8616b93184
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -190,6 +202,7 @@
           </div>
 
           <div class="col-lg-6 order-2 order-lg-1 content" data-aos="fade-up" data-aos-delay="200">
+<<<<<<< HEAD
             <h3>Scopri la montagna con noi, ogni giorno aggiornamenti in tempo reale</h3>
             <p class="fst-italic">
               Consulta lo stato degli impianti, la qualità della neve e le aperture delle piste in tempo reale. Pianifica la tua giornata sulla neve con precisione e semplicità.
@@ -200,6 +213,22 @@
               <li><i class="bi bi-check-circle"></i> <span>Tutto quello che ti serve per goderti la tua esperienza sulla neve, in un unico posto.</span></li>
             </ul>
             <a href="/Slope/User/login" class="read-more"><span>Scopri di più   </span><i class="bi bi-arrow-right"></i></a>
+=======
+            <h3>Cosa offriamo</h3>
+            <p class="fst-italic">
+              Verifica le condizioni delle piste e monitora le aperture in tempo reale.
+            </p>
+            </p>
+            <ul>
+              <li><i class="bi bi-snow"></i> <span>Hai bisogno dello skipass o dell'attrezzatura?</span></li>
+              <li><i class="bi bi-snow"></i> <span>Vuoi tutelarti ed acquistare un'assicurazione?</span></li>
+              <li><i class="bi bi-snow"></i> <span>Vuoi rimanere al passo con opportunità e promozioni?</span></li>
+            </ul>
+            <p class="fst-italic">
+              Qui trovi tutto ciò di cui hai bisogno
+            </p>
+            <a href="#" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+>>>>>>> 1988bf2c8d4f46d9488a6dba99c15f8616b93184
           </div>
 
         </div>
@@ -209,7 +238,7 @@
     </section><!-- /About Section -->
 
     <!-- Cards Section -->
-    <section id="cards" class="cards section">
+    <section id="Dovesciare" class="cards section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -220,6 +249,63 @@
 
 
       <div class="container">
+<<<<<<< HEAD
+=======
+        <div class="cards">
+
+<<<<<<< HEAD
+          <div class="row no-gutters">
+
+            <div class="col-lg-4 col-md-6 card custom-bg5 position-relative" data-aos="fade-up" data-aos-delay="100">
+              <div class="content">
+                <span>01</span>
+                <h4>Alto Sangro - Roccaraso</h4>
+                <a href="URL_DESTINAZIONE_1" class="stretched-link"></a>
+            </div>
+          </div><!-- End Card Item -->
+
+            <div class="col-lg-4 col-md-6 card custom-bg4 position-relative" data-aos="fade-up" data-aos-delay="100">
+              <div class="content">
+                <span>02</span>
+                <h4>Gran Sasso - Campo Imperatore</h4>
+                <a href="URL_DESTINAZIONE_1" class="stretched-link"></a>
+            </div>
+          </div><!-- End Card Item -->
+
+            <div class="col-lg-4 col-md-6 card custom-bg3 position-relative" data-aos="fade-up" data-aos-delay="100">
+              <div class="content">
+                <span>03</span>
+                <h4>Passo Lanciano - Majelletta</h4>
+                <a href="URL_DESTINAZIONE_1" class="stretched-link"></a>
+            </div>
+          </div><!-- End Card Item -->
+
+            <div class="col-lg-4 col-md-6 card custom-bg2 position-relative" data-aos="fade-up" data-aos-delay="100">
+              <div class="content">
+                <span>04</span>
+                <h4>Ovindoli - Monte Magnola</h4>
+                <a href="URL_DESTINAZIONE_1" class="stretched-link"></a>
+            </div>
+          </div><!-- End Card Item -->
+
+            <div class="col-lg-4 col-md-6 card custom-bg1 position-relative" data-aos="fade-up" data-aos-delay="100">
+              <div class="content">
+                <span>05</span>
+                <h4>Campo Felice</h4>
+                <a href="URL_DESTINAZIONE_1" class="stretched-link"></a>
+            </div>
+          </div><!-- End Card Item -->
+
+            <div class="col-lg-4 col-md-6 card custom-bg position-relative" data-aos="fade-up" data-aos-delay="100">
+              <div class="content">
+                <span>06</span>
+                <h4>Prati di Tivo - Monte Piselli</h4>
+                <a href="URL_DESTINAZIONE_1" class="stretched-link"></a>
+            </div>
+          </div><!-- End Card Item -->
+          </div>
+
+>>>>>>> 1988bf2c8d4f46d9488a6dba99c15f8616b93184
         <div class="row no-gutters">
           {foreach from=$skiFacilities item=i} 
           <div class="col-lg-4 col-md-6 card" data-aos="fade-up" data-aos-delay="100">
@@ -227,13 +313,18 @@
             <p>{$i->getDescription()}</p>
           </div>
           {/foreach}
+<<<<<<< HEAD
+=======
+          -->
+>>>>>>> 0b0a992eb04acc4354ef78bd7d2375cd80612705
+>>>>>>> 1988bf2c8d4f46d9488a6dba99c15f8616b93184
         </div>
       </div>
 
     </section><!-- /Cards Section -->
 
     <!-- Services Section -->
-    <section id="services" class="services section">
+    <section id="servizi" class="services section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -249,7 +340,7 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="service-item  position-relative">
               <div class="icon">
-                <i class="bi bi-activity"></i>
+                <i class="bi bi-snow"></i>
               </div>
               <a href="/Slope/User/login" class="stretched-link">
                 <h3>Monitoraggio impianti</h3>
@@ -261,7 +352,7 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="service-item position-relative">
               <div class="icon">
-                <i class="bi bi-broadcast"></i>
+                <i class="bi bi-cash-stack"></i></i>
               </div>
               <a href="#pricing" class="stretched-link">
                 <h3>Listino prezzi</h3>
@@ -273,12 +364,24 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="service-item position-relative">
               <div class="icon">
-                <i class="bi bi-easel"></i>
+                <i class="bi bi-cart"></i>
               </div>
+<<<<<<< HEAD
               <a href="https://www.opensnowmap.org/#map=12/14.017/41.819&b=snowmap&m=false&h=false" target="_blank" class="stretched-link">
                 <h3>Mappe</h3>
               </a>
               <p>Dai un occhiata alle mappe degli impianti sciistici.</p>
+=======
+<<<<<<< HEAD
+              <a href="#" class="stretched-link">
+                <h3>Acquista</h3>
+
+              <a href="/Slope/Home/webcam" class="stretched-link">
+                <h3>Webcam</h3>
+>>>>>>> 0b0a992eb04acc4354ef78bd7d2375cd80612705
+              </a>
+              <p>Prenota uno skipass, acquista un'assicurazione e scopri le promozioni con l'abbonamento</p>
+>>>>>>> 1988bf2c8d4f46d9488a6dba99c15f8616b93184
             </div>
           </div><!-- End Service Item -->
 
@@ -289,6 +392,7 @@
 
     </section><!-- /Services Section -->
 
+<<<<<<< HEAD
     <!-- Call To Action Section -->
     <section id="call-to-action" class="call-to-action section">
 
@@ -310,6 +414,8 @@
       </div>
 
     </section><!-- /Call To Action Section -->
+=======
+>>>>>>> 1988bf2c8d4f46d9488a6dba99c15f8616b93184
 
     
 

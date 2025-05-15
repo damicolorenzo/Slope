@@ -44,6 +44,7 @@ Class FUser{
      * @param array $queryResult Refers to the result of a query
      * @return array of objects 
      */
+    /*
     public static function createUserObj(array $queryResult) : array{
         if(count($queryResult) == 1){
             $userA = [];
@@ -69,7 +70,7 @@ Class FUser{
                 if($person == [])
                     $user = new EUser(null, null, null, null, null, $queryResult[$i]['username'], $queryResult[$i]['password']);
                 else
-                    $user = new EUser($person[$i]['name'], $person[$i]['surname'], $person[$i]['email'], $person[$i]['phoneNumber'], $person[$i]['birthDate'], $queryResult[$i]['username'], $queryResult[$i]['password']);
+                    $user = new EUser($person[$i]['name'], $person[$i]['surname'], $person[$i]['email'], $person[$i]['phoneNumber'], $person[$i]['birthDate'], $queryResult[$i]['username'] ?? "", $queryResult[$i]['password'] ?? "");
                 $user->setId($queryResult[$i]['idUser']);
                 if(isset($queryResult[$i]['idImage'])) {
                     $user->setIdImage($queryResult[$i]['idImage']);
@@ -83,7 +84,67 @@ Class FUser{
             return [];
         }
     }
+    /** */
 
+    public static function createUserObj(array $queryResult) : array {
+        if (count($queryResult) == 1) {
+            $userA = [];
+            $person = FEntityManager::getInstance()->retriveObj(FPerson::getTable(), "idUser", $queryResult[0]['idUser']);
+    
+            // Verifica se $person ha almeno un elemento
+            if (!empty($person)) {
+                $personData = $person[0]; // Usa sempre l'indice 0
+                $user = new EUser(
+                    $personData['name'],
+                    $personData['surname'],
+                    $personData['email'],
+                    $personData['phoneNumber'],
+                    $personData['birthDate'],
+                    $queryResult[0]['username'] ?? "",
+                    $queryResult[0]['password'] ?? ""
+                );
+            } else {
+                // Se $person è vuoto, usa stringhe vuote invece di null
+                $user = new EUser("", "", "", "", "", $queryResult[0]['username'] ?? "", $queryResult[0]['password'] ?? "");
+            }
+    
+            $user->setId($queryResult[0]['idUser']);
+            $user->setIdImage($queryResult[0]['idImage'] ?? 0);
+    
+            $userA[] = $user;
+            return $userA;
+    
+        } elseif (count($queryResult) > 1) {
+            $users = [];
+            for ($i = 0; $i < count($queryResult); $i++) {
+                $person = FEntityManager::getInstance()->retriveObj(FPerson::getTable(), "idUser", $queryResult[$i]['idUser']);
+    
+                if (!empty($person)) {
+                    $personData = $person[0]; // Usa sempre l'indice 0
+                    $user = new EUser(
+                        $personData['name'],
+                        $personData['surname'],
+                        $personData['email'],
+                        $personData['phoneNumber'],
+                        $personData['birthDate'],
+                        $queryResult[$i]['username'] ?? "",
+                        $queryResult[$i]['password'] ?? ""
+                    );
+                } else {
+                    $user = new EUser("", "", "", "", "", $queryResult[$i]['username'] ?? "", $queryResult[$i]['password'] ?? "");
+                }
+    
+                $user->setId($queryResult[$i]['idUser']);
+                $user->setIdImage($queryResult[$i]['idImage'] ?? 0);
+    
+                $users[] = $user;
+            }
+            return $users;
+        } else {
+            return [];
+        }
+    }
+    
     /**
      * Method to get a user using the id of the ski facility that it refers to
      * @param string $id user id
@@ -123,7 +184,14 @@ Class FUser{
             try{
                 FEntityManager::getInstance()->getDb()->beginTransaction();
                 $savePersonAndLastInsertedID = FEntityManager::getInstance()->saveObject(FPerson::getClass(), $obj);
-                $obj->setId($savePersonAndLastInsertedID);
+                // Controlla se l'ID ottenuto è valido
+                if (!empty($savePersonAndLastInsertedID) && is_numeric($savePersonAndLastInsertedID)) {
+                    $obj->setId((int) $savePersonAndLastInsertedID);
+                } else {
+                    error_log("Errore: L'ID restituito è NULL in FUser::saveObj");
+                    FEntityManager::getInstance()->getDb()->rollBack();
+                    return false;
+                }
                 if($savePersonAndLastInsertedID !== null){
                     $saveUser = FEntityManager::getInstance()->saveObjectFromId(self::getClass(), $obj, $savePersonAndLastInsertedID);
                     FEntityManager::getInstance()->getDb()->commit();
