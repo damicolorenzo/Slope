@@ -17,6 +17,7 @@ class CFrontController {
         */
         $requestUri = trim($requestUri, '/');
 
+
         /*
         Suddivide la stringa dividendola quando incontra il carattere specificato generando così un array di stringhe 
         Esempio 

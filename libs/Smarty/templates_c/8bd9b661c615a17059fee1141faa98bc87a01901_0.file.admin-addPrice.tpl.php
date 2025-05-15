@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-03-02 21:25:08
+/* Smarty version 3.1.33, created on 2025-05-06 17:24:33
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-addPrice.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_67c4bea4697348_18376810',
+  'unifunc' => 'content_681a29b1ea8855_07749799',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8bd9b661c615a17059fee1141faa98bc87a01901' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-addPrice.tpl',
-      1 => 1740947073,
+      1 => 1741005419,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67c4bea4697348_18376810 (Smarty_Internal_Template $_smarty_tpl) {
+function content_681a29b1ea8855_07749799 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -102,48 +102,7 @@ function content_67c4bea4697348_18376810 (Smarty_Internal_Template $_smarty_tpl)
       <div class="container" data-aos="fade-up">
 
         <div>
-        <h2>Aggiungi prezzo</h2>
-        <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['object']->value['skipassTemp'], 'i');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
-?>
-          <p>Descrizione:</p>
-          <input type="text" id="description">
-          <p>Prezzo:</p>
-          <input type="text" id="value">
-          <p>Impianto:</p>
-          <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['object']->value['skiFacility'], 'j');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['j']->value) {
-?>
-          <label><input type="radio" name="skiFacility" value=<?php echo $_smarty_tpl->tpl_vars['j']->value->getName();?>
-><?php echo $_smarty_tpl->tpl_vars['j']->value->getName();?>
-</label>
-          <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-        <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>  
-        <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['object']->value['insuranceTemp'], 'i');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
-?>
-          <p>Descrizione:</p>
-          <input type="text" id="description">
-          <p>Tipo:</p>
-          <input type="text" id="type">
-          <p>Prezzo:</p>
-          <input type="text" id="value">
-        <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>  
+        <h2>Aggiungi prezzo</h2>  
         </div>
 
       </div>

@@ -145,11 +145,14 @@
       <div class="container" data-aos="fade-up">
       
         <!-- Da riempire in base alla pagina  -->
-        <div class="search-container">
-          <form class="search-form" action="/Slope/Admin/searchPrice" method="POST">
-              <input type="text" name="search-input" class="search-input" placeholder="Cerca un prezzo">
-              <button type="submit" class="search-button">Search</button>
-          </form>
+        <div class="admin-filter-container">
+          <h2>Cerca prezzo</h2>
+          <div class="filters">
+            <form class="search-form" action="/Slope/Admin/searchPrice" method="POST">
+              <input type="text" id="description" name="description" placeholder="Descrizione">
+              <button type="submit">Filtra</button>
+            </form>
+          </div>
         </div>
 
         {if count($prices) > 0}
@@ -158,17 +161,15 @@
             {foreach from=$prices item=i}
               <div class="card">
                 <div class="price-info">
-                    <p>{$i[0]['description']}</p>
-                    <p>{$i[0]['value']}</p>
-                    <p>{$i[1]}</p>
-                    <p>{$i[2]}</p>
+                    <p>{$i[0]->getDescription()}</p>
+                    <p>{$i[0]->getValue()}</p>
                 </div>
                 <div>
                   <form action="/Slope/Admin/modifyPrice" method="POST">
-                    <button type="submit" name="idPrice" value={$i[0]['idPrice']} class="edit">Modifica</button>
+                    <button type="submit" name="idPrice" value={$i[0]->getIdPrice()} class="edit">Modifica</button>
                   </form>
                   <form action="/Slope/Admin/deletePrice" method="POST">
-                    <button type="submit" name="idPrice" value={$i[0]['idPrice']} class="delete">Elimina</button>
+                    <button type="submit" name="idPrice" value={$i[0]->getIdPrice()} class="delete">Elimina</button>
                   </form>
                 </div>
               </div>

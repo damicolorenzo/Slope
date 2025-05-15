@@ -37,62 +37,137 @@
 <style>
 
 .dashboard {
-    text-align: center;
-    max-width: 800px;
-    width: 90%;
-    padding: 20px;
-    border-radius: 8px;
-    background-color: #FFFFFF; /* Bianco puro */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 2%;
+  flex-wrap: wrap;
+  align-content: start;
 }
 
-/* Dashboard title */
-.dashboard h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #0F4C81; /* Blu notte */
+.item:nth-child(1),
+.item:nth-child(4) {
+  width: 100%;
+  height: 5%;
 }
 
-/* Links container */
-.links-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
+.item:nth-child(2) {
+  width: 25%;
+  height: 75%;
 }
 
-/* Individual links */
-.dashboard-link {
+.item:nth-child(3) {
+  flex-grow: 1;
+  height: 75%;
+}
+
+.item:nth-child(2) a {
+  display: block;
+  margin: 8px 0;
+  padding: 12px 16px;
+  background-color: #f0f4f8;
+  color: #2c3e50;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.item:nth-child(2) a:hover {
+  background-color: #FF4400;
+  color: white;
+  transform: translateX(5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.chart {
     display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 600px;
+    margin: 20px auto;
+    font-family: sans-serif;
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+  }
+
+  .bar-label {
+    width: 100px;
+    text-align: right;
+    margin-right: 10px;
+    font-weight: bold;
+  }
+
+  .bar-value {
+    height: 30px;
+    background-color: #FF4400;
+    border-radius: 6px;
+    transition: width 0.3s ease;
+    text-align: right;
+    color: white;
+    padding-right: 10px;
+    line-height: 30px;
+  }
+
+.stat-card {
+    width: 300px;
+    height: 150px;
+    background: linear-gradient(135deg, #FF4400, #8e44ad);
+    color: white;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    text-decoration: none;
-    color: #FFFFFF; /* Testo bianco */
-    background-color: #3A86FF; /* Blu cielo */
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: all 0.3s ease;
+  }
 
-/* Hover effect */
-.dashboard-link:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    background-color: #0F4C81; /* Blu notte */
-}</style>
+  .stat-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .stat-card i {
+    font-size: 40px;
+    margin-bottom: 15px;
+  }
+
+  .stat-card .number {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .stat-card .label {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  /* Optional: Style for a larger container */
+  .stat-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+
+</style>
 </head>
 
 <body class="starter-page-page">
 
-  <header id="header" class="header sticky-top">
+  <header id="header-admin" class="header-admin sticky-top">
     <div class="branding d-flex align-items-center">
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
         <a href="/Slope" class="logo d-flex align-items-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <!-- <img src="assets/img/logo.png" alt=""> -->
-          <h1 class="sitename">Slope</h1>
+          <h1 class="sitename">Slope Admin</h1>
         </a>
 
         <nav id="navmenu" class="navmenu">
@@ -116,23 +191,73 @@
     <section id="starter-section" class="starter-section section"> 
 
       <div class="container" data-aos="fade-up">
+
       <div class="dashboard">
-        <h1>Admin Dashboard</h1>
-        <div class="links-container">
-            <a href="/Slope/Admin/addSkiRun">Aggiungi dati pista</a>
-            <a href="/Slope/Admin/addSkiFacility">Aggiungi dati impianto</a>
-            <a href="/Slope/Admin/addLiftStructure">Aggiungi dati risalita</a>
-            <a href="/Slope/Admin/searchUsers">Modifica dati utente</a>
-            <a href="/Slope/Admin/searchStructures">Modifica dati pista/impianto/risalita</a>
-            <a href="/Slope/Admin/addSkipassTemplate">Aggiungi template skipass</a>
-            <a href="/Slope/Admin/addInsuranceemplate">Aggiungi template assicurazione</a>
-            <a href="/Slope/Admin/searchPrices">Modifica prezzi</a>
-            <a href="/Slope/Admin/addPrice">Aggiungi prezzo</a>
-            <a href="/Slope/Admin/searchSkipassObjs">Modifica skipass</a>
-            <a href="/Slope/Admin/addSkipass">Aggiungi skipass</a>
-            <a href="#">Modifica interfaccia</a>
+        <div class="item"></div>
+        <div class="item">
+          <a href="/Slope/Admin/addSkiRun">Aggiungi dati pista</a>
+          <a href="/Slope/Admin/addSkiFacility">Aggiungi dati impianto</a>
+          <a href="/Slope/Admin/addLiftStructure">Aggiungi dati risalita</a>
+          <a href="/Slope/Admin/addSkipassTemplate">Aggiungi template skipass</a>
+          <a href="/Slope/Admin/addInsuranceTemplate">Aggiungi template assicurazione</a>
+          <a href="/Slope/Admin/addSkipassObj">Aggiungi oggetto skipass</a>
+          <a href="/Slope/Admin/searchStructures">Modifica dati pista/impianto/risalita</a>
+          <a href="/Slope/Admin/searchSkipassTemplate">Modifica template skipass</a>
+          <a href="/Slope/Admin/searchInsuranceTemplate">Modifica template assicurazione</a>
+          <a href="/Slope/Admin/searchSkipassObjs">Modifica oggetto skipass</a>
+          <a href="/Slope/Admin/modifySkiFacilityImage">Modifica immagini impianto</a>
+          <a href="/Slope/Admin/searchUsers">Modifica dati utente</a>
+          <a href="/Slope/Admin/searchSkipassBooking">Modifica prenotazione skipass utente</a>
+          <a href="/Slope/Admin/modifyLandingPage">Modifica interfaccia</a>
+          <!--
+          <a href="/Slope/Admin/searchPrices">Modifica prezzi</a>
+          <a href="/Slope/Admin/addPrice">Aggiungi prezzo</a>
+          -->
+        </div>
+        <div class="item">
+        <div class="chart">
+          <div class="bar">
+            <div class="bar-label">Lunedì</div>
+            <div class="bar-value" style="width: 50%;">50</div>
+          </div>
+          <div class="bar">
+            <div class="bar-label">Martedì</div>
+            <div class="bar-value" style="width: 70%;">70</div>
+          </div>
+          <div class="bar">
+            <div class="bar-label">Mercoledì</div>
+            <div class="bar-value" style="width: 40%;">40</div>
+          </div>
+          <div class="bar">
+            <div class="bar-label">Giovedì</div>
+            <div class="bar-value" style="width: 60%;">60</div>
+          </div>
+          <div class="bar">
+            <div class="bar-label">Venerdì</div>
+            <div class="bar-value" style="width: 80%;">80</div>
+          </div>
+          <div class="bar">
+            <div class="bar-label">Sabato</div>
+            <div class="bar-value" style="width: 90%;">90</div>
+          </div>
+          <div class="bar">
+            <div class="bar-label">Domenica</div>
+            <div class="bar-value" style="width: 100%;">100</div>
+          </div>
+        </div>
+        <div class="stat-container">
+          <div class="stat-card">
+            <i class="fas fa-users"></i> <!-- Icona utenti (FontAwesome) -->
+            <div class="number">
+            37
+            </div>
+            <div class="label">Utenti iscritti</div>
+          </div>
         </div>
       </div>
+        
+      </div>
+
       <!-- Da riempire in base alla pagina  -->
 
       </div>
@@ -141,76 +266,7 @@
 
   </main>
 
-  <footer id="footer" class="footer position-relative">
-
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6">
-          <div class="footer-about">
-            <a href="/Slope" class="logo sitename">Day</a>
-            <div class="footer-contact pt-3">
-              <p>Via Vetoio</p>
-              <p>L'Aquila, AQ 67100</p>
-              <p class="mt-3"><strong>Phone:</strong> <span>+39 123 456 7890</span></p>
-              <p><strong>Email:</strong> <span>info@example.com</span></p>
-            </div>
-            <div class="social-links d-flex mt-4">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-4 col-md-12 footer-newsletter">
-          <h4>Our Newsletter</h4>
-          <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-          <form action="forms/newsletter.php" method="post" class="php-email-form">
-            <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-          </form>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Slope</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-
-  </footer>
+  
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

@@ -5,7 +5,7 @@ require_once("FEntityManager.php");
 class FPrice {
 
     private static $table = "price";
-    private static $value = "(NULL, :description, :value, :idExternalObj, :extObjClass)";
+    private static $value = "(NULL, :description, :value, :extClass, :idExtObj)";
     private static $key = "idPrice";
     private static $extKey1 = "idExternalObj";
 
@@ -41,8 +41,8 @@ class FPrice {
     public static function bind(object $stmt, EPrice $price, ) {
         $stmt->bindValue(":description", $price->getDescription(), PDO::PARAM_STR);
         $stmt->bindValue(":value", $price->getValue(), PDO::PARAM_INT);
-        $stmt->bindValue(":idExternalObj", $price->getIdExternalObj(), PDO::PARAM_INT);
-        $stmt->bindValue(":extObjClass", $price->getExtObjClass(), PDO::PARAM_STR);
+        $stmt->bindValue(":extClass", $price->getIdExtObj(), PDO::PARAM_INT);
+        $stmt->bindValue(":idExtObj", $price->getExtClass(), PDO::PARAM_STR);
     }
 
     /**
@@ -64,8 +64,8 @@ class FPrice {
             $priceA = [];
             $price = new EPrice($queryResult[0]['description'], $queryResult[0]['value']);
             $price->setIdPrice($queryResult[0]['idPrice']);
-            $price->setIdExternalObj($queryResult[0]['idExternalObj']);
-            $price->setExtObjClass($queryResult[0]['extObjClass']);
+            $price->setExtClass($queryResult[0]['extClass']);
+            $price->setIdExtObj($queryResult[0]['idExtObj']);
             $priceA[] = $price;
             return $priceA;
         }elseif(count($queryResult) > 1){
@@ -73,8 +73,8 @@ class FPrice {
             for($i = 0; $i < count($queryResult); $i++){
                 $price = new EPrice($queryResult[$i]['description'], $queryResult[$i]['value']);
                 $price->setIdPrice($queryResult[$i]['idPrice']);
-                $price->setIdExternalObj($queryResult[$i]['idExternalObj']);
-                $price->setExtObjClass($queryResult[$i]['extObjClass']);
+                $price->setExtClass($queryResult[$i]['extClass']);
+                $price->setIdExtObj($queryResult[$i]['idExtObj']);
                 $prices[] = $price;
             }
             return $prices;
@@ -135,8 +135,8 @@ class FPrice {
         return FEntityManager::getInstance()->existInDb($queryResult);
     }
 
-    public static function getPriceByDescriptionAndSkiFacility($description, $idSkiFacility) {
-        $queryResult = FEntityManager::getInstance()->retriveObj2(self::getTable(), 'description', $description, self::getExtKey(), $idSkiFacility);
+    public static function getPriceByDescription($description) {
+        $queryResult = FEntityManager::getInstance()->retriveObj(self::getTable(), 'description', $description);
         return $queryResult;
     }
 

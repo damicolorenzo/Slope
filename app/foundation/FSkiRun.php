@@ -142,7 +142,7 @@ class FSkiRun {
      * @return array $result
      */
     public static function typeAndNumberSkiRun(string $idSkiFacility) : array{
-        $result = FEntityManager::getInstance()->typeAndNumberSkiRun(self::getTable(), self::getExtKey(), $idSkiFacility);
+        $result = FEntityManager::getInstance()->typeAndNumber(self::getTable(), self::getExtKey(), $idSkiFacility);
         return $result;
     }
 
@@ -179,11 +179,12 @@ class FSkiRun {
 
     /**
      * Method to get a ski run object 
-     * @param string $queryString 
+     * @param string $skiRunName 
      * @return array $result
      */
-    public static function getSkiRunByNameForSearch(string $queryString) : array{
-        $queryResult = FEntityManager::getInstance()->retriveObjForSearch2(self::getTable(), 'name', $queryString);
+    public static function getSkiRunByNameForSearch(string $skiRunName) : array{
+        $conditions = [['name', $skiRunName]];
+        $queryResult = FEntityManager::getInstance()->retriveObjForSearch(self::getTable(), $conditions);
         return $queryResult;
     }
 }

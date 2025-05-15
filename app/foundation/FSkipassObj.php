@@ -162,6 +162,11 @@ class FSkipassObj {
         return $queryResult;
     }
 
+    public static function getSkipassObjFromFieldsForSearch(array $fields) : array{
+        $queryResult = FEntityManager::getInstance()->retriveObjForSearch(self::getTable(), $fields);
+        return $queryResult;
+    }
+
     /**
      * Method to get the type of a skipass object using the id 
      * @param string $id id of the skipass object

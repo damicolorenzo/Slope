@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-11-30 15:47:15
+/* Smarty version 3.1.33, created on 2025-05-13 15:49:59
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\skiRunsAndLiftsDetails.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_674b2573e3b896_21338680',
+  'unifunc' => 'content_68234e07c8c513_20444975',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0e419d4510153349caab5acdf4de8e6810219798' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\skiRunsAndLiftsDetails.tpl',
-      1 => 1732977818,
+      1 => 1747144148,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674b2573e3b896_21338680 (Smarty_Internal_Template $_smarty_tpl) {
+function content_68234e07c8c513_20444975 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -58,24 +58,74 @@ function content_674b2573e3b896_21338680 (Smarty_Internal_Template $_smarty_tpl)
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
   <style>
-  .card-impianto1 {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  width: 450px; /* Dimensione fissa per la card */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombreggiatura per un effetto di rilievo */
-  overflow: hidden;
-  background-color: #fff; /* Sfondo bianco per le cards */
-  margin: 16px auto; /* Spazio tra le cards e centratura */
+.cards-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.impianto1 {
-  padding: 16px;
-  width: 50%; /* 50% per l'immagine */
-  display: flex;
-  align-items: center; /* Centrare verticalmente l'immagine */
-  justify-content: center; /* Centrare orizzontalmente l'immagine */
-  background-color: #f9f9f9; /* Sfondo leggermente grigio per differenziare */
+.cards-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;  
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
 }
+
+.cards-container th {
+  background-color: #4682B4;
+  color: white;
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 16px;
+}
+
+.cards-container td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+  color: #333;
+}
+
+.cards-container tr:hover {
+  background-color: #f0f8ff;
+}
+
+.cards-container td:nth-child(3), /* Stato */
+.cards-container td:nth-child(4) {
+  font-weight: bold;
+}
+
+.btn-submit {
+  display: block;
+  width: 50%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #4682B4;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 40px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+  background-color: #FF7F50;
+}
+
+.aperto {
+  background-color: #4caf50
+}
+
+.chiuso {
+  background-color: #e74c3c
+}
+
+
   </style>
 </head>
 
@@ -126,142 +176,89 @@ function content_674b2573e3b896_21338680 (Smarty_Internal_Template $_smarty_tpl)
     
       <div  data-aos="fade-up">
         <div class="cards-container">
-        <h3><?php echo $_smarty_tpl->tpl_vars['nameSkiFacility']->value;?>
+          <h3><?php echo $_smarty_tpl->tpl_vars['nameSkiFacility']->value;?>
 </h3>
-        <div class="action-buttons">
-          <form class="search-form" action="/Slope/User/makeABookingPage" method="POST">
-            <input type="hidden" id="idSkiFacility" name="idSkiFacility" value=<?php echo $_smarty_tpl->tpl_vars['idSkiFacility']->value;?>
->
-            <button type="submit" >Prenota</button>
-          </form>
-        </div>
-        <?php
+
+          <!-- Tabella piste da sci -->
+          <table>
+            <tr>
+              <th>Nome</th>
+              <th>Tipo</th>
+              <th>Stato</th>
+            </tr>
+            <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['skiRuns']->value, 'i');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
-?> 
-          <div class="card">
-            <div >
-              <h3><?php echo $_smarty_tpl->tpl_vars['i']->value->getName();?>
-</h3>
-              <img src="link-alla-tua-immagine.jpg" alt="Immagine dell'impianto" >
-            </div>
-            <div >
-              <h4>Dettagli <?php echo $_smarty_tpl->tpl_vars['i']->value->getName();?>
-</h4>
-              <h4>Tipo: <?php echo $_smarty_tpl->tpl_vars['i']->value->getType();?>
-</h4>  
-              <h4>Stato: <?php echo $_smarty_tpl->tpl_vars['i']->value->getStatus();?>
-</h4>
-            </div>
-          </div> 
-        <?php
+?>
+              <tr>
+                <td><?php echo $_smarty_tpl->tpl_vars['i']->value->getName();?>
+</td>
+                <td><?php echo $_smarty_tpl->tpl_vars['i']->value->getType();?>
+</td>
+                <?php if ($_smarty_tpl->tpl_vars['i']->value->getStatus() == 'chiuso') {?>
+                <td class="chiuso"><?php echo $_smarty_tpl->tpl_vars['i']->value->getStatus();?>
+</td>
+                <?php } else { ?>
+                <td class="aperto"><?php echo $_smarty_tpl->tpl_vars['i']->value->getStatus();?>
+</td>
+                <?php }?>
+              </tr>
+            <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-        <?php
+          </table>
+
+          <!-- Tabella impianti di risalita -->
+          <table>
+            <tr>
+              <th>Nome</th>
+              <th>Tipo</th>
+              <th>Stato</th>
+              <th>Posti</th>
+            </tr>
+            <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['liftStructures']->value, 'i');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
-?> 
-          <div class="card">
-            <div >
-              <h3><?php echo $_smarty_tpl->tpl_vars['i']->value->getName();?>
-</h3>
-              <img src="link-alla-tua-immagine.jpg" alt="Immagine dell'impianto" >
-            </div>
-            <div >
-              <h4>Dettagli <?php echo $_smarty_tpl->tpl_vars['i']->value->getName();?>
-</h4>
-              <h4>Tipo: <?php echo $_smarty_tpl->tpl_vars['i']->value->getType();?>
-</h4>  
-              <h4>Stato: <?php echo $_smarty_tpl->tpl_vars['i']->value->getStatus();?>
-</h4>
-              <h4>Posti: <?php echo $_smarty_tpl->tpl_vars['i']->value->getSeats();?>
-</h4>
-            </div>
-         </div> 
-        <?php
+?>
+              <tr>
+                <td><?php echo $_smarty_tpl->tpl_vars['i']->value->getName();?>
+</td>
+                <td><?php echo $_smarty_tpl->tpl_vars['i']->value->getType();?>
+</td>
+                <?php if ($_smarty_tpl->tpl_vars['i']->value->getStatus() == 'chiuso') {?>
+                <td class="chiuso"><?php echo $_smarty_tpl->tpl_vars['i']->value->getStatus();?>
+</td>
+                <?php } else { ?>
+                <td class="aperto"><?php echo $_smarty_tpl->tpl_vars['i']->value->getStatus();?>
+</td>
+                <?php }?>
+                <td><?php echo $_smarty_tpl->tpl_vars['i']->value->getSeats();?>
+</td>
+              </tr>
+            <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-        </div> 
-      </div>
+          </table>
+
+          <div class="action-buttons">
+            <form class="search-form" action="/Slope/User/makeABookingPage" method="POST">
+              <input type="hidden" id="idSkiFacility" name="idSkiFacility" value="<?php echo $_smarty_tpl->tpl_vars['idSkiFacility']->value;?>
+">
+              <button type="submit" class="btn-submit">Prenota</button>
+            </form>
+          </div>
+        </div>
+
 
     </section><!-- /Starter Section Section -->
 
   </main>
 
-  <footer id="footer" class="footer position-relative">
-
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6">
-          <div class="footer-about">
-            <a href="/Slope" class="logo sitename">Slope</a>
-            <div class="footer-contact pt-3">
-              <p>Via Vetoio</p>
-              <p>L'Aquila, AQ 67100</p>
-              <p class="mt-3"><strong>Numero:</strong> <span>+39 123 456 7890</span></p>
-              <p><strong>Email:</strong> <span>info@example.com</span></p>
-            </div>
-            <div class="social-links d-flex mt-4">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-4 col-md-12 footer-newsletter">
-          <h4>Our Newsletter</h4>
-          <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-          <form action="forms/newsletter.php" method="post" class="php-email-form">
-            <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-          </form>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Slope</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-
-  </footer>
+  
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

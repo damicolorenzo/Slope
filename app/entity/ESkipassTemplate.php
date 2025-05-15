@@ -21,16 +21,16 @@ class ESkipassTemplate {
     private string $description;
     /**
      * Holds the period of the skipass object.
-     * @var int
+     * @var string
      */
-    private int $period;
+    private string $period;
     /**
      * Holds the type of the skipass object.
      * @var string
      */
     private string $type;
 
-    public function __construct(string $description, int $period, string $type)  {
+    public function __construct(string $description, string $period, string $type)  {
         $this->description = $description;
         $this->period = $period;
         $this->type = $type;
@@ -38,12 +38,12 @@ class ESkipassTemplate {
 
     public function getIdSkipassTemplate() : int {return $this->idSkipassTemplate;}
     public function getDescription() : string {return $this->description;}
-    public function getPeriod() : int {return $this->period;}
+    public function getPeriod() : string {return $this->period;}
     public function getType() : string {return $this->type;}
     
     public function setIdSkipassTemplate(int $idSkipassTemp) : void {$this->idSkipassTemplate = $idSkipassTemp;}
     public function setDescription(string $description) : void {$this->description = $description;}
-    public function setPeriod(int $period) : void {$this->period = $period;}
+    public function setPeriod(string $period) : void {$this->period = $period;}
     public function setType(string $type) : void {$this->type = $type;}
     
 }

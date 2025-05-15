@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-03-07 15:30:50
+/* Smarty version 3.1.33, created on 2025-05-13 16:28:31
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-searchUser.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_67cb031ad5e046_15090378',
+  'unifunc' => 'content_6823570f583237_86652814',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e329a4c45f42b5a1e250d70308fc0f6fa7c0a186' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-searchUser.tpl',
-      1 => 1741357778,
+      1 => 1747146509,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67cb031ad5e046_15090378 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6823570f583237_86652814 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -58,6 +58,35 @@ function content_67cb031ad5e046_15090378 (Smarty_Internal_Template $_smarty_tpl)
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
   <style>
+
+  .form-container {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    max-width: 80%; /* Adatta la larghezza */
+    width: 90%;       /* Adattabile su dispositivi piccoli */
+    margin: 40px auto; /* Centra orizzontalmente e aggiunge spazio sopra/sotto */
+  }
+
+  @media (max-width: 600px) {
+    .form-container {
+      padding: 15px;
+    }
+
+    button {
+      font-size: 14px;
+      padding: 8px;
+    }
+  }
+
+  .form-container h1 {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
   .search-form {
   display: flex;
   align-items: center;
@@ -79,7 +108,7 @@ function content_67cb031ad5e046_15090378 (Smarty_Internal_Template $_smarty_tpl)
 
 .search-input:focus {
   box-shadow: 0 1px 6px rgba(32, 33, 36, 0.4);
-  border-color: #4285f4;
+  border-color: #FF4400;
 }
 
 /* Pulsante della lente */
@@ -95,7 +124,7 @@ function content_67cb031ad5e046_15090378 (Smarty_Internal_Template $_smarty_tpl)
 }
 
 .search-button:hover {
-  color: #4285f4;
+  color: #FF4400;
 }
 
 .users {
@@ -164,26 +193,60 @@ button:hover {
   color: red;
   border-color: red;
 }
+
+.admin-filter-container {
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.admin-filter-container h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.filters input[type="text"] {
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  min-width: 200px;
+  transition: border-color 0.3s;
+}
+
+.filters input[type="text"]:focus {
+  border-color: #ff7a45;
+  outline: none;
+}
+
   </style>
 </head>
 
 <body class="starter-page-page">
 
-  <header id="header" class="header sticky-top">
+  <header id="header-admin" class="header-admin sticky-top">
     <div class="branding d-flex align-items-center">
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
         <a href="/Slope" class="logo d-flex align-items-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <!-- <img src="assets/img/logo.png" alt=""> -->
-          <h1 class="sitename">Slope</h1>
+          <h1 class="sitename">Slope Admin</h1>
         </a>
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="#hero">Piste</a></li>
-            <li><a href="#about">Impianti</a></li>
-            <li><a href="#services">Utenti</a></li>
+            <li><a href="/Slope/Admin/dashboard">Dashboard</a></li>
             <li><a href="/Slope/Admin/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -201,135 +264,64 @@ button:hover {
 
       <div class="container" data-aos="fade-up">
       
-        <!-- Da riempire in base alla pagina  -->
-        <div class="search-container">
-          <form class="search-form" action="/Slope/Admin/searchUsers" method="POST">
-              <input type="text" name="search-input" class="search-input" placeholder="Cerca un utente">
-              <button type="submit" class="search-button">
-              </button>
-          </form>
-          <form class="search-form" action="/Slope/Admin/searchUsers" method="POST">
-              <input type="text" name="search-input" class="search-input" placeholder="Cerca un utente">
-              <button type="submit" class="search-button">
-              </button>
-          </form>
-          <form class="search-form" action="/Slope/Admin/searchUsers" method="POST">
-              <input type="text" name="search-input" class="search-input" placeholder="Cerca un utente">
-              <button type="submit" class="search-button">
-              </button>
-          </form>
-        </div>
+        <div class="form-container">
+          
+          <div class="admin-filter-container">
+            <h2>Filtra Utenti</h2>
+            <div class="filters">
+              <form class="search-form" action="/Slope/Admin/searchUsers" method="POST">
+                <input type="text" id="name" name="name" placeholder="Nome">
+                <input type="text" id="surname" name="surname" placeholder="Cognome">
+                <input type="text" id="username" name="username" placeholder="Username">
+                <button type="submit">Filtra</button>
+              </form>
+            </div>
+          </div>
 
-        <?php if (count($_smarty_tpl->tpl_vars['users']->value) > 0) {?>
-          <div class="users">
-            <div class="cards-container">
-            <?php
+
+          <?php if (count($_smarty_tpl->tpl_vars['users']->value) > 0) {?>
+            <div class="users">
+              <div class="cards-container">
+              <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['users']->value, 'i');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 ?>
-              <div class="card">
-                <div class="user-info">
-                    <p class="username"><?php echo $_smarty_tpl->tpl_vars['i']->value->getUsername();?>
+                <div class="card">
+                  <div class="user-info">
+                      <p class="username"><?php echo $_smarty_tpl->tpl_vars['i']->value->getUsername();?>
 </p>
-                    <p class="name"><?php echo $_smarty_tpl->tpl_vars['i']->value->getName();?>
+                      <p class="name"><?php echo $_smarty_tpl->tpl_vars['i']->value->getName();?>
 </p>
-                    <p class="surname"><?php echo $_smarty_tpl->tpl_vars['i']->value->getSurname();?>
+                      <p class="surname"><?php echo $_smarty_tpl->tpl_vars['i']->value->getSurname();?>
 </p>
-                </div>
-                <div class="action-buttons">
-                  <form class="search-form" action="/Slope/Admin/modifyProfile" method="POST">
-                    <button type="submit" name="userId" value=<?php echo $_smarty_tpl->tpl_vars['i']->value->getIdUser();?>
+                  </div>
+                  <div class="action-buttons">
+                    <form class="search-form" action="/Slope/Admin/modifyProfile" method="POST">
+                      <button type="submit" name="userId" value=<?php echo $_smarty_tpl->tpl_vars['i']->value->getIdUser();?>
  class="edit">Modifica</button>
-                  </form>
-                  <form class="search-form" action="/Slope/Admin/deleteProfile" method="POST">
-                    <button type="submit" name="userId" value=<?php echo $_smarty_tpl->tpl_vars['i']->value->getIdUser();?>
+                    </form>
+                    <form class="search-form" action="/Slope/Admin/deleteProfile" method="POST">
+                      <button type="submit" name="userId" value=<?php echo $_smarty_tpl->tpl_vars['i']->value->getIdUser();?>
  class="delete">Elimina</button>
-                  </form>
+                    </form>
+                  </div>
                 </div>
-              </div>
-            <?php
+              <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+              </div>
             </div>
-          </div>
-        <?php }?>
+          <?php }?>
+
+        </div>
+
       </div>
     </section><!-- /Starter Section Section -->
 
   </main>
 
-  <footer id="footer" class="footer position-relative">
-
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6">
-          <div class="footer-about">
-            <a href="/Slope" class="logo sitename">Day</a>
-            <div class="footer-contact pt-3">
-              <p>Via Vetoio</p>
-              <p>L'Aquila, AQ 67100</p>
-              <p class="mt-3"><strong>Phone:</strong> <span>+39 123 456 7890</span></p>
-              <p><strong>Email:</strong> <span>info@example.com</span></p>
-            </div>
-            <div class="social-links d-flex mt-4">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-4 col-md-12 footer-newsletter">
-          <h4>Our Newsletter</h4>
-          <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-          <form action="forms/newsletter.php" method="post" class="php-email-form">
-            <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-          </form>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Slope</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-
-  </footer>
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

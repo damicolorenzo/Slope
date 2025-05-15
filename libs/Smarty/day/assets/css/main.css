@@ -84,6 +84,17 @@ h6 {
   background-color: var(--background-color);
 }
 
+.header-admin {
+  --background-color: #FF4400;
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
+  --contrast-color: #ffffff;
+  color: var(--default-color);
+  transition: all 0.5s;
+  z-index: 997;
+  background-color: var(--background-color);
+}
+
 .header .topbar {
   background-color: var(--background-color);
   height: 40px;
@@ -1157,15 +1168,16 @@ section,
   clip-path: inset(0);
 }
 
-.call-to-action img {
+.call-to-action .background-video {
   position: fixed;
   top: 0;
   left: 0;
-  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   z-index: 1;
+  pointer-events: none;
+  filter: brightness(0.8); /* Puoi regolare per migliorare il contrasto del testo */
 }
 
 .call-to-action:before {
@@ -1683,7 +1695,7 @@ section,
 # Starter Section Section
 --------------------------------------------------------------*/
 .starter-section {
-  /* Add your styles here */
+  height: 100%;
 }
 
 .container_form {

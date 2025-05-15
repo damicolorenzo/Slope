@@ -35,93 +35,107 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
   <style>
-  .profile-container {
+  /* Layout container principale */
+.profile-container {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 40px; /* Aumentato lo spazio sotto */
-  }
-
-  .profile-info {
-    width: 60%;
-  }
-
-  .profile-info h2 {
-    margin-bottom: 20px; /* Più spazio sotto il titolo */
-    font-size: 26px; /* Aumentata la dimensione del titolo */
-  }
-
-  .profile-info p {
-    margin-bottom: 15px; /* Aumentato lo spazio tra le informazioni */
-    font-size: 18px; /* Aumentata la dimensione del testo delle informazioni */
-  }
-
-  .profile-image {
-    width: 30%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .profile-pic {
-    width: 140px; /* Aumentata la dimensione dell'immagine del profilo */
-    height: 140px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #000;
-  }
-
-  .section-container {
-    height:auto;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 40px; /* Aumentato lo spazio sotto le sezioni */
-  }
-
-  .profile-section {
-    width: 48%;
-    height:auto;  
-    padding: 20px; /* Aumentato lo spazio interno delle sezioni */
-    border: 2px solid #000;
+    background: #f9f9f9;
+    padding: 30px;
     border-radius: 10px;
-    background-color: #fff;
-  }
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
 
-  .profile-section h3 {
-    margin-bottom: 20px; /* Più spazio sotto il titolo della sezione */
-    font-size: 22px; /* Aumentata la dimensione del titolo della sezione */
-  }
+/* Info profilo */
+.profile-info {
+    flex: 1;
+    min-width: 300px;
+    padding-right: 20px;
+}
 
-  .section-image {
-    width: 100%;
-    height: auto;
-    height: 150px; /* Aumentata l'altezza delle immagini nelle sezioni */
-    object-fit: cover;
-    background-color: #ddd;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.profile-info h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+    border-bottom: 2px solid #4682B4;
+    padding-bottom: 5px;
+}
+
+.profile-info p {
     font-size: 16px;
-  }
+    margin-bottom: 10px;
+    color: #444;
+}
 
-  .button-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px; /* Aggiunto più spazio sopra il pulsante */
-  }
+.profile-info strong {
+    color: #222;
+}
 
-  .edit-button {
-    padding: 15px 30px; /* Aumentata la dimensione del pulsante */
-    font-size: 18px; /* Aumentata la dimensione del testo del pulsante */
-    border: 2px solid #000;
-    border-radius: 5px;
-    background-color: #fff;
+/* Immagine profilo */
+.profile-image {
+    text-align: center;
+    min-width: 200px;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #4682B4;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+}
+
+/* Sezione abbonamento */
+.section-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+}
+
+.profile-section h3 {
+    color: #333;
+    margin-bottom: 15px;
+    border-left: 5px solid #2196F3;
+    padding-left: 10px;
+}
+
+.section-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    display: block;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+}
+
+/* Pulsanti */
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.edit-button {
+    background-color: #4682B4;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
     cursor: pointer;
-  }
+    transition: background-color 0.3s ease;
+}
 
-  .edit-button:hover {
-    background-color: #ddd;
-  }
+.edit-button:hover {
+    background-color: #4682B4;
+}
+
   </style>
 </head>
 
@@ -184,7 +198,7 @@
             </div>
             <div class="profile-image">
                 <!-- Immagine del profilo -->
-                {if $image == 0} 
+                {if $image == []} 
                   <img class="profile-pic" src="https://localhost/Slope/libs/Smarty/images/NotFound.jpg" loading="lazy" alt="Img">
                 {else}
                 {foreach from=$image item=i}
@@ -193,7 +207,7 @@
                 {/if}
             </div>
         </div>
-
+        {if count($insurance) > 0}
         <div class="section-container">
             <div class="profile-section">
                 <h3>ABBONAMENTO</h3>
@@ -203,13 +217,16 @@
                 {/if}
                 <div class="button-container">
                     <a href="/Slope/User/buySubscription"><button class="edit-button">Acquista</button></a>
-                </div>
+              </div>
             </div>
         </div>
+        {/if}
 
         <div class="button-container">
             <a href="/Slope/User/modifyProfile"><button class="edit-button">Modifica profilo</button></a>
         </div>
+
+        
 
       <!-- Da riempire in base alla pagina  -->
 
@@ -219,76 +236,7 @@
 
   </main>
 
-  <footer id="footer" class="footer position-relative">
-
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6">
-          <div class="footer-about">
-            <a href="/Slope" class="logo sitename">Day</a>
-            <div class="footer-contact pt-3">
-              <p>Via Vetoio</p>
-              <p>L'Aquila, AQ 67100</p>
-              <p class="mt-3"><strong>Phone:</strong> <span>+39 123 456 7890</span></p>
-              <p><strong>Email:</strong> <span>info@example.com</span></p>
-            </div>
-            <div class="social-links d-flex mt-4">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-4 col-md-12 footer-newsletter">
-          <h4>Our Newsletter</h4>
-          <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-          <form action="forms/newsletter.php" method="post" class="php-email-form">
-            <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-          </form>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Slope</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-
-  </footer>
+  
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

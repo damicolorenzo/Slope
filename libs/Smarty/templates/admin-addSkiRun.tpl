@@ -34,34 +34,100 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+<style>
+.form-container {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    max-width: 600px; /* Adatta la larghezza */
+    width: 90%;       /* Adattabile su dispositivi piccoli */
+    margin: 40px auto; /* Centra orizzontalmente e aggiunge spazio sopra/sotto */
+  }
+
+  @media (max-width: 600px) {
+    .form-container {
+      padding: 15px;
+    }
+
+    button {
+      font-size: 14px;
+      padding: 8px;
+    }
+  }
+
+  .form-container h1 {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="date"],
+  input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .durata-skipass {
+    margin-bottom: 15px;
+  }
+
+  .durata-skipass p, .tipologia-biglietto p {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #FF4400;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #FF7F50;
+  }
+</style>
 </head>
 
 <body class="starter-page-page">
 
-  <header id="header" class="header sticky-top">
+  <header id="header-admin" class="header-admin sticky-top">
     <div class="branding d-flex align-items-center">
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
         <a href="/Slope" class="logo d-flex align-items-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <!-- <img src="assets/img/logo.png" alt=""> -->
-          <h1 class="sitename">Slope</h1>
+          <h1 class="sitename">Slope Admin</h1>
         </a>
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <!-- <li><a href="#hero">Home</a></li>
-            <li><a href="#about">Prenota</a></li>
-            <li><a href="#services">Visualizza prenotazioni</a></li>
-            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a> -->
-              <ul>
-                <!-- <li><a href="#">Piste</a></li>
-                <li><a href="#">Impianti</a></li>
-                <li><a href="#">Web</a></li> -->
-              </ul>
-            </li>
-            <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/User/login">Login</a></li>
+            <li><a href="/Slope/Admin/dashboard">Dashboard</a></li>
+            <li><a href="/Slope/Admin/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -90,40 +156,36 @@
     <section id="starter-section" class="starter-section section"> 
       {if $exist == false}
       <div class="container" data-aos="fade-up">
-        <div class="form_login-container">
+        <div class="form-container">
             <form class="register-form" action="/Slope/Admin/confirmSkiRun" method="POST">
                 <h2>Nuova pista</h2>
           
                 <label for="name">Nome pista</label>
                 <input type="text" id="name" name="name" placeholder="Inserisci nome della pista">
         
-                <div class="section">
-                    <label>Tipologia di pista</label>
-                    <div class="radio-group">
-                        <label><input type="radio" name="type" value="nera"> Nera</label>
-                        <label><input type="radio" name="type" value="rossa"> Rossa</label>
-                        <label><input type="radio" name="type" value="blu"> Blu</label>
-                    </div>
+                <label>Tipologia di pista</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="type" value="nera"> Nera</label>
+                    <label><input type="radio" name="type" value="rossa"> Rossa</label>
+                    <label><input type="radio" name="type" value="blu"> Blu</label>
                 </div>
-        
-                <div class="section">
-                    <label>Praticabilità</label>
-                    <div class="radio-group">
-                        <label><input type="radio" name="status" value="aperto"> Aperto</label>
-                        <label><input type="radio" name="status" value="chiuso"> Chiuso</label>
-                    </div>
+
+                <label>Praticabilità</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="status" value="aperto"> Aperto</label>
+                    <label><input type="radio" name="status" value="chiuso"> Chiuso</label>
                 </div>
-        
-                <div class="section">
-                    <label>Impianto</label>
-                    <div class="radio-group">
-                    {foreach from=$skiFacilities item=i}
-                        <label><input type="radio" name="skiFacility" value={$i['name']}>{$i['name']}</label>
-                    {/foreach}
-                    </div>
-                </div>  
+
+                <label>Impianto</label>
+                <div class="radio-group">
+                {foreach from=$skiFacilities item=i}
+                    <label><input type="radio" name="skiFacility" value={$i['name']}>{$i['name']}</label>
+                {/foreach}
+                </div>
                 
-                <button type="submit">Conferma</button>
+                <div class="button-container">
+                  <button type="submit">Conferma</button>
+                </div>
             </form>
         </div>
       </div>
@@ -137,77 +199,6 @@
     </section><!-- /Starter Section Section -->
 
   </main>
-
-  <footer id="footer" class="footer position-relative">
-
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6">
-          <div class="footer-about">
-            <a href="/Slope" class="logo sitename">Slope</a>
-            <div class="footer-contact pt-3">
-              <p>Via Vetoio</p>
-              <p>L'Aquila, AQ 67100</p>
-              <p class="mt-3"><strong>Numero:</strong> <span>+39 123 456 7890</span></p>
-              <p><strong>Email:</strong> <span>info@example.com</span></p>
-            </div>
-            <div class="social-links d-flex mt-4">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-4 col-md-12 footer-newsletter">
-          <h4>Our Newsletter</h4>
-          <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-          <form action="forms/newsletter.php" method="post" class="php-email-form">
-            <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-          </form>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Slope</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-
-  </footer>
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

@@ -176,9 +176,14 @@ class FSkiFacility {
         return FEntityManager::getInstance()->existInDb($queryResult);
     }
 
+    public static function getSkiFacilityByName(array $conditions) :array {
+        $queryResult = FEntityManager::getInstance()->retriveObjForSearch(self::getTable(), $conditions);
+        return $queryResult;
+    }
 
-    public static function getSkiFacilityByNameForSearch($queryString) {
-        $queryResult = FEntityManager::getInstance()->retriveObjForSearch(self::getTable(), 'name', $queryString);
+    public static function getSkiFacilityByNameForSearch(string $nameSkiFacility) :array {
+        $conditions = [['name', $nameSkiFacility]];
+        $queryResult = FEntityManager::getInstance()->retriveObjForSearch(self::getTable(), $conditions);
         return $queryResult;
     }
     

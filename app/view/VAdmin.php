@@ -27,6 +27,10 @@ class VAdmin {
         $this->smarty->display('admin-dashboard.tpl');
     }
 
+    public function manageInterface() {
+        $this->smarty->display('admin-manageInterface.tpl');
+    }
+
     public function searchUsers($users) {
         $this->smarty->assign('users', $users);
         $this->smarty->display('admin-searchUser.tpl');
@@ -37,7 +41,20 @@ class VAdmin {
         $this->smarty->display('admin-searchStructure.tpl');
     }
 
-    public function modifyProfile($username, $name, $surname, $email, $phoneNumber, $birthDate, $phoneError, $dateError) {
+    public function searchSkipassBooking($result) {
+        $this->smarty->assign('objects', $result);
+        
+        $this->smarty->display('admin-searchSkipassBooking.tpl');
+    }
+
+    public function modifySkipassBooking($skipassBooking, $today) {
+        $this->smarty->assign('skipassBooking', $skipassBooking);
+        $this->smarty->assign('today', $today);
+        $this->smarty->display('admin-modifySkipassBooking.tpl');
+    } 
+
+    public function modifyProfile($userId ,$username, $name, $surname, $email, $phoneNumber, $birthDate, $phoneError, $dateError) {
+        $this->smarty->assign('userId', $userId);
         $this->smarty->assign('username', $username);
         $this->smarty->assign('name', $name);
         $this->smarty->assign('surname', $surname);
@@ -47,6 +64,13 @@ class VAdmin {
         $this->smarty->assign('phoneError', $phoneError);
         $this->smarty->assign('dateError', $dateError);
         $this->smarty->display('admin-modifyProfile.tpl');
+    }
+
+    public function modifyProfileImage($userId, $imageError, $image) {
+        $this->smarty->assign('userId', $userId);
+        $this->smarty->assign('imageError', $imageError);
+        $this->smarty->assign('image', $image);
+        $this->smarty->display('admin-modifyProfileImage.tpl');
     }
 
     public function addSkiRun($skiFacilities) {
@@ -97,23 +121,25 @@ class VAdmin {
         $this->smarty->display('admin-modifySkiFacility.tpl');
     }
 
-    public function modifySkiRun($idSkiRun, $name, $type, $status, $nameSkiFacility, $idSkiFacility) {
+    public function modifySkiRun($idSkiRun, $name, $type, $status, $nameSkiFacility, $allNameSkiFacility, $idSkiFacility) {
         $this->smarty->assign('idSkiRun', $idSkiRun);
         $this->smarty->assign('name', $name);
         $this->smarty->assign('type', $type);
         $this->smarty->assign('status', $status);
-        $this->smarty->assign('nameSkiFacility', $nameSkiFacility);       
+        $this->smarty->assign('nameSkiFacility', $nameSkiFacility);  
+        $this->smarty->assign('skiFacilities', $allNameSkiFacility);     
         $this->smarty->assign('idSkiFacility', $idSkiFacility);       
         $this->smarty->display('admin-modifySkiRun.tpl');
     }
 
-    public function modifyLiftStructure($idLiftStructure, $name, $type, $status, $seats, $nameSkiFacility, $idSkiFacility) {
+    public function modifyLiftStructure($idLiftStructure, $name, $type, $status, $seats, $nameSkiFacility, $allNameSkiFacility, $idSkiFacility) {
         $this->smarty->assign('idLiftStructure', $idLiftStructure);
         $this->smarty->assign('name', $name);
         $this->smarty->assign('type', $type);
         $this->smarty->assign('status', $status);
         $this->smarty->assign('seats', $seats);
         $this->smarty->assign('nameSkiFacility', $nameSkiFacility);
+         $this->smarty->assign('skiFacilities', $allNameSkiFacility);     
         $this->smarty->assign('idSkiFacility', $idSkiFacility);  
         $this->smarty->display('admin-modifyLiftStructure.tpl');
     }
@@ -126,10 +152,16 @@ class VAdmin {
         $this->smarty->display('admin-addInsuranceTemplate.tpl');
     }
 
-    public function addPrice($object) {
+    public function addSkipassObj($skiFacilities, $templates) {
+        $this->smarty->assign('skiFacilities', $skiFacilities);
+        $this->smarty->assign('templates', $templates);
+        $this->smarty->display('admin-addSkipassObj.tpl');
+    }
+
+    /* public function addPrice($object) {
         $this->smarty->assign('object', $object);
         $this->smarty->display('admin-addPrice.tpl');
-    }
+    } */
 
     public function prices($nPrices, $prices, $allSFNames) {
         $this->smarty->assign('nPrices', $nPrices);
@@ -166,19 +198,57 @@ class VAdmin {
 
     public function searchSkipassObjs($skipassObjs) {
         $this->smarty->assign('skipassObjs', $skipassObjs);
-        $this->smarty->display('admin-searchSkipass.tpl');
+        $this->smarty->display('admin-searchSkipassObj.tpl');
     }
 
-    public function modifySkipassObj($idSkipassObj, $description, $period, $type) {
+    public function modifySkipassObj($idSkipassObj, $description, $value, $skiFacility, $skipassTemp) {
         $this->smarty->assign('idSkipassObj', $idSkipassObj);
+        $this->smarty->assign('description', $description);
+        $this->smarty->assign('value', $value);
+        $this->smarty->assign('skiFacility', $skiFacility);
+        $this->smarty->assign('skipassTemp', $skipassTemp);
+        $this->smarty->display('admin-modifySkipassObj.tpl');
+    }       
+
+    public function searchSkipassTemps($skipassTemps) {
+        $this->smarty->assign('skipassTemps', $skipassTemps);
+        $this->smarty->display('admin-searchSkipassTemplate.tpl');
+    }
+
+    public function modifyLandingPage($image1, $image2, $image3, $image4, $image5) {
+        $this->smarty->assign('image1', $image1);
+        $this->smarty->assign('image2', $image2);
+        $this->smarty->assign('image3', $image3);
+        $this->smarty->assign('image4', $image4);
+        $this->smarty->assign('image5', $image5);
+        $this->smarty->display('admin-manageInterface.tpl');
+    }
+
+    public function modifySkiFacilitiesImages($allSkiFacilities, $map) {
+        $this->smarty->assign('skiFacilities', $allSkiFacilities);
+        $this->smarty->assign('map', $map);
+        $this->smarty->display('admin-modifySkiFacilityImage.tpl');
+    }
+
+    public function searchInsuranceTemps($insuranceTemps) {
+        $this->smarty->assign('insuranceTemps', $insuranceTemps);
+        $this->smarty->display('admin-searchInsuranceTemplate.tpl');
+    }
+
+    public function modifyInsuranceTemp($idInsuranceTemp, $value, $type) {
+        $this->smarty->assign('idInsuranceTemp', $idInsuranceTemp);
+        $this->smarty->assign('value', $value);
+        $this->smarty->assign('type', $type);
+        $this->smarty->display('admin-modifyInsuranceTemp.tpl');
+    } 
+
+    public function modifySkipassTemplate($idSkipassTemp, $description, $period, $type) {
+        $this->smarty->assign('idSkipassTemp', $idSkipassTemp);
         $this->smarty->assign('description', $description);
         $this->smarty->assign('period', $period);
         $this->smarty->assign('type', $type);
-        $this->smarty->assign('exist', false);
-        $this->smarty->display('admin-modifySkipass.tpl');
-    }       
-
-    
+        $this->smarty->display('admin-modifySkipassTemp.tpl');
+    }
 }
 
 ?>

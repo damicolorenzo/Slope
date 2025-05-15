@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-12-29 17:51:05
+/* Smarty version 3.1.33, created on 2025-05-13 14:45:36
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\modifySkipassBooking.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_67717df9159969_01596996',
+  'unifunc' => 'content_68233ef08bfee6_02485485',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd111319005c51c5665039d795d01f757d65a5229' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\modifySkipassBooking.tpl',
-      1 => 1735491061,
+      1 => 1747140334,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67717df9159969_01596996 (Smarty_Internal_Template $_smarty_tpl) {
+function content_68233ef08bfee6_02485485 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -57,6 +57,81 @@ function content_67717df9159969_01596996 (Smarty_Internal_Template $_smarty_tpl)
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+<style>
+  .form-container {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    max-width: 600px; /* Adatta la larghezza */
+    width: 90%;       /* Adattabile su dispositivi piccoli */
+    margin: 40px auto; /* Centra orizzontalmente e aggiunge spazio sopra/sotto */
+  }
+
+  @media (max-width: 600px) {
+    .form-container {
+      padding: 15px;
+    }
+
+    button {
+      font-size: 14px;
+      padding: 8px;
+    }
+  }
+
+  h1 {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .durata-skipass {
+    margin-bottom: 15px;
+  }
+
+  .durata-skipass p, .tipologia-biglietto p {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4682B4;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #FF7F50;
+  }
+  </style>
 </head>
 
 <body class="starter-page-page">
@@ -105,8 +180,8 @@ function content_67717df9159969_01596996 (Smarty_Internal_Template $_smarty_tpl)
 >
 
               <label for="email">Email di conferma</label>
-              <label><?php echo $_smarty_tpl->tpl_vars['skipassBooking']->value->getEmail();?>
-</label>
+              <input type="email" id="email" name="email" value=<?php echo $_smarty_tpl->tpl_vars['skipassBooking']->value->getEmail();?>
+  disabled>
 
               <div class="durata-skipass">
                   <p>Durata skipass</p>

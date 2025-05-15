@@ -141,6 +141,22 @@ class FEntityManager {
         }
     }
 
+    public static function saveObject1(string $foundClass, object $obj) : ?bool {
+        try{
+            $table = $foundClass::getTable();
+            $values = $foundClass::getValue();
+            $query = "INSERT INTO {$table} VALUES {$values}";
+            //$query = "INSERT INTO " . $foundClass::getTable() . " VALUES" . $foundClass::getValue();
+            $stmt = self::$db->prepare($query);
+            $foundClass::bind($stmt, $obj);
+            $stmt->execute();
+            return true;
+        }catch(Exception $e){
+            error_log("Database error in saveObject: " . $e->getMessage()); // Log instead of echo
+            return null;
+        }
+    }
+
     /**
      * Method to store an object in the database if we only have the id and we need to store only the id
      * @param string $foundClass Refers to the name of the foundation class, so you can get the table and the value
@@ -278,7 +294,7 @@ class FEntityManager {
      * @param string $table Refers to a table in the database 
      * @return array The result set as an associative array.
      */
-    public static function typeAndNumberSkiRun($table, $key, $id) : array{
+    public static function typeAndNumber($table, $key, $id) : array{
         try {
             $query = "SELECT COUNT(*) as CNT, type FROM {$table} WHERE {$key} = {$id} GROUP BY type";
             $statement = self::$db->prepare($query);
@@ -306,18 +322,24 @@ class FEntityManager {
      * @param string $table Refers to a table in the database 
      * @return array The result set as an associative array.
      */
-    public static function retriveObjForSearch($table, $username, $name, $surname) {
-        try {
-            if($username === '') {
-                $name = str_replace("'", "\\'", $name);
-                $surname = str_replace("'", "\\'", $surname);
-                $query = "SELECT * FROM ".$table." WHERE (name LIKE '%".$name."%' AND surname LIKE '%".$surname."%');";
-            }
-            if($name === '' || $surname === '') {
-                $username = str_replace("'", "\\'", $username);
-                $query = "SELECT * FROM ".$table." WHERE (username LIKE '%".$username."%');";
-            }
+    public static function retriveObjForSearch($table, $conditions) {
+        try { 
+            $fields = [];
+            foreach ($conditions as $field) {
+                $fields[] = "{$field[0]} LIKE :{$field[0]}";
+            }  
+            $condition = implode(" AND ", $fields);
+            $query = "SELECT * FROM {$table} WHERE {$condition}";
             $statement = self::$db->prepare($query);
+            foreach ($conditions as $field) {
+                if(is_int($field[1]))
+                    $app = PDO::PARAM_INT;
+                else
+                    $app = PDO::PARAM_STR;
+                $app1 = "%{$field[1]}%";
+                $statement->bindValue(":{$field[0]}", $app1, $app);
+            }
+
             $statement->execute();
             $numberOfRows = $statement->rowCount();
             if($numberOfRows > 0) {

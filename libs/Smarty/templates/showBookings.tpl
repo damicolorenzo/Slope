@@ -36,7 +36,7 @@
   ======================================================== -->
   <style>
 .table-container {
-width: 90%;
+width: 100%;
 margin: 20px auto;
 overflow-x: auto;
 background: #fff;
@@ -58,7 +58,7 @@ table {
 }
 
 thead {
-    background-color: #007BFF;
+    background-color: #4682B4;
     color: white;
 }
 
@@ -83,7 +83,107 @@ th {
 
 td {
     font-size: 14px;
-}</style>
+}
+
+.booked {
+    color: white;
+    background-color: #4682B4
+}
+
+/* Contenitore del calendario */
+.calendar-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Titolo e navigazione mese */
+.calendar-container h2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.calendar-container h2 form {
+  margin: 0;
+}
+
+.calendar-container h2 button {
+  background: #4682B4;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.calendar-container h2 button:hover {
+  background-color: #4682B4;
+}
+
+/* Tabella calendario */
+.calendar-container table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+
+.calendar-container th, .calendar-container td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  width: 14.28%;
+  height: 60px;
+  vertical-align: top;
+  text-align: center;
+}
+
+.calendar-container th {
+  background-color: #f0f0f0;
+  color: #333;
+  font-weight: bold;
+}
+
+.btn-mod {
+    background-color:#4682B4;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-er {
+    background-color: #FF7F50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.true {
+  text-align: center;
+}
+
+.imagePreview {
+  width: 30%;
+  height: 30%;   
+}
+
+</style>
 </head>
 
 <body class="starter-page-page">
@@ -120,10 +220,51 @@ td {
 
       <div class="container" data-aos="fade-up">
 
+
+      <div class="calendar-container">
+        <h2>
+          <form action="/Slope/User/showBookings" method="POST">
+            <input type="hidden" name="month" value={$prevMonth}>
+            <input type="hidden" name="year" value={$prevYear}>
+            <button type="submit">&laquo;</button>
+          </form>
+
+          {$monthName} {$year}
+
+          <form action="/Slope/User/showBookings" method="POST">
+            <input type="hidden" name="month" value={$nextMonth}>
+            <input type="hidden" name="year" value={$nextYear}>
+            <button type="submit">&raquo;</button>
+          </form>
+        </h2>
+
+        <table>
+          <tr>
+            <th>Mon</th><th>Tue</th>
+            <th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th>
+          </tr>
+
+          {foreach from=$calendar item=week}
+            <tr>
+              {foreach from=$week item=day}
+                {if $day}
+                  {if in_array($day, $bookedDates)} <!-- Controlla se il giorno è prenotato -->
+                    <td class="booked">{$day}</td> <!-- Giorno prenotato con stile speciale -->
+                  {else}
+                    <td>{$day}</td> <!-- Giorno normale -->
+                  {/if}
+                {/if}
+              {/foreach}
+            </tr>
+          {/foreach}
+        </table>
+      </div>
+
+
       {if count($bookings) > 0}
+      <h1>Dati prenotazione</h1>
       {foreach $bookings item=e}
       <div class="table-container">
-        <h1>Dati prenotazione</h1>
         <table>
             <thead>
                 <tr>
@@ -149,12 +290,12 @@ td {
                     <td>{$e['bookings'][0]->getValue()}</td>
                     <td>{$e['bookings'][1]->getName()}</td>
                     {if $e['bookings'][2] != []}
-                    <td>True</td>
+                    <td class="true"><img class="imagePreview" src="https://localhost/Slope/libs/Smarty/images/checked.png"></td>
                     {else}
                     <td><form action="/Slope/User/buyInsurance" method="POST"><input type="hidden" name="idSkipassBooking" value={$e['bookings'][0]->getIdSkipassBooking()}><button type="submit">Acquista</button></form></td>
                     {/if}
-                    <form action="/Slope/User/modifySkipassBooking" method="POST"><td><input type="hidden" name="idSkipassBooking" value={$e['bookings'][0]->getIdSkipassBooking()}><button type="submit">Modifica</button></td></form>
-                    <form action="/Slope/User/deleteSkipassBooking" method="POST"><td><input type="hidden" name="idSkipassBooking" value={$e['bookings'][0]->getIdSkipassBooking()}><button type="submit">Elimina</button></td></form>
+                    <form action="/Slope/User/modifySkipassBooking" method="POST"><td><input type="hidden" name="idSkipassBooking" value={$e['bookings'][0]->getIdSkipassBooking()}><button type="submit" class="btn-mod">Modifica</button></td></form>
+                    <form action="/Slope/User/deleteSkipassBooking" method="POST"><td><input type="hidden" name="idSkipassBooking" value={$e['bookings'][0]->getIdSkipassBooking()}><button type="submit" class="btn-er">Elimina</button></td></form>
                 </tr>
             </tbody>
         </table>
@@ -168,80 +309,14 @@ td {
 
       </div>
 
+      
+
+
     </section><!-- /Starter Section Section -->
 
   </main>
 
-  <footer id="footer" class="footer position-relative">
-
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6">
-          <div class="footer-about">
-            <a href="/Slope" class="logo sitename">Day</a>
-            <div class="footer-contact pt-3">
-              <p>Via Vetoio</p>
-              <p>L'Aquila, AQ 67100</p>
-              <p class="mt-3"><strong>Phone:</strong> <span>+39 123 456 7890</span></p>
-              <p><strong>Email:</strong> <span>info@example.com</span></p>
-            </div>
-            <div class="social-links d-flex mt-4">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-4 col-md-12 footer-newsletter">
-          <h4>Our Newsletter</h4>
-          <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-          <form action="forms/newsletter.php" method="post" class="php-email-form">
-            <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-          </form>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Slope</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-
-  </footer>
+  
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

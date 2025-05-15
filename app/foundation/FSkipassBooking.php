@@ -77,7 +77,7 @@ class FSkipassBooking {
                 FEntityManager::getInstance()->getDb()->commit();
                 return true;
             } catch(PDOException $e) {
-                error_log("Database error in FSkipassObj saveObj: " . $e->getMessage());
+                error_log("Database error in FSkipassBooking saveObj: " . $e->getMessage());
                 FEntityManager::getInstance()->getDb()->rollBack();
                 return false;
             } finally {
@@ -104,6 +104,11 @@ class FSkipassBooking {
      */
     public static function getAllSkipassBooking(string $id) : array{
         $queryResult = FEntityManager::getInstance()->retriveObj(self::getTable(), self::getExtKeyU(), $id);
+        return $queryResult;
+    }
+
+    public static function getAllSkipassBookingAllUsers() : array{
+        $queryResult = FEntityManager::getInstance()->retriveAllObj(self::getTable());
         return $queryResult;
     }
 

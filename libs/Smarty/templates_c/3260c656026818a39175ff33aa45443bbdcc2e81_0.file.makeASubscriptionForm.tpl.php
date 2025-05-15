@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-03-01 14:09:45
+/* Smarty version 3.1.33, created on 2025-05-05 15:44:14
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\makeASubscriptionForm.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_67c30719d518b5_38993135',
+  'unifunc' => 'content_6818c0ae40acb8_20966099',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3260c656026818a39175ff33aa45443bbdcc2e81' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\makeASubscriptionForm.tpl',
-      1 => 1740834585,
+      1 => 1740834598,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67c30719d518b5_38993135 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6818c0ae40acb8_20966099 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -156,7 +156,7 @@ button:hover {
 
         <div class="form-container">
         <h1>Form di prenotazione</h1>
-        <form action="/Slope/User/confirmInsurance" method="post">
+        <form action="/Slope/User/confirmSubscription" method="post">
             <label for="name">Nome</label>
             <input type="text" id="name" name="name" value=<?php echo $_smarty_tpl->tpl_vars['user']->value->getName();?>
 >

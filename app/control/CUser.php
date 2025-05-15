@@ -78,16 +78,22 @@ class CUser {
      * @return void
      */
     public static function loggedH() : array{
-        print_r(USession::getAllSessionElements());
         USession::unsetSessionElement('cart');
         $result = array();
         $allSkiFacilities = FPersistentManager::getInstance()->retriveAllSkiFacilities();
         foreach ($allSkiFacilities as $skiFacility) {
            $app = array();
-           $idskiFacility = $skiFacility->getIdSkiFacility();
+           $app1 = array();
+           $idSkiFacility = $skiFacility->getIdSkiFacility();
            $app[] = $skiFacility->getName();    
-           $app[] = FPersistentManager::getInstance()->typeAndNumberSkiRun($idskiFacility); // Tabella con tipologia_pista e numero per ogni impianto 
-           $app[] = FPersistentManager::getInstance()->retriveNLiftStructures($idskiFacility);
+           $app[] = FPersistentManager::getInstance()->typeAndNumberSkiRun($idSkiFacility); // Tabella con tipologia_pista e numero per ogni impianto 
+           $app[] = FPersistentManager::getInstance()->typeAndNumberLiftStructure($idSkiFacility);
+           $skiFacilityImages = FPersistentManager::getInstance()->retriveSkiFacilityImageOnId($idSkiFacility);
+           foreach ($skiFacilityImages as $i) {
+            $images = FPersistentManager::getInstance()->retriveImageOnId($i->getIdImage());
+            $app1[] = $images[0];
+           }
+           $app[] = $app1;
            $result[] = $app;
         }
         return $result;
@@ -107,7 +113,28 @@ class CUser {
             $viewA->dashboard();
         } else {
             $allSkiFacilities = FPersistentManager::getInstance()->retriveAllSkiFacilities();
-            $view->home($allSkiFacilities);
+            $allLandingImages = FPersistentManager::getInstance()->retriveAllLandingImage();
+            foreach ($allLandingImages as $i) {
+                $image = FPersistentManager::retriveImageOnId($i->getIdImage());
+                $images[] = $image;
+            }
+            if(UHTTPMethods::post('skiFacilities') == null) {
+                $skipassObj = FPersistentManager::getInstance()->retriveSkipassObjOnSkiFacility($allSkiFacilities[0]->getIdSkiFacility());
+            } else {
+                $skiFacility = UHTTPMethods::post('skiFacilities');
+                $idSkiFacility = FPersistentManager::getInstance()->retriveIdSkiFacilityFromName($skiFacility);
+                $skipassObj = FPersistentManager::getInstance()->retriveSkipassObjOnSkiFacility($idSkiFacility[0]);
+            }
+            $view->home($allSkiFacilities, $skipassObj, $images);
+        }
+    }
+
+    public static function confirmPage() : void {
+        $view = new Vuser();
+        if(CUser::isLogged()) {
+            $view->confirmPage();
+        } else {
+            CUser::home();
         }
     }
 
@@ -179,9 +206,15 @@ class CUser {
             $birthDate = $user[0]->getBirthDate();
             $idImage = $user[0]->getIdImage();
             $image = FPersistentManager::getInstance()->retriveImageOnId($idImage);
+            $insurances = FPersistentManager::getInstance()->retriveInsuranceFromIdUser($userId);
+            $insurance = [];
+            foreach ($insurances as $i) {
+                if($i->getPeriod() > 1)
+                    $insurance[] = $i;
+            }
             $insuranceImage = false;
             $subscriptionImage = false;
-            $view->profileInfo($username, $name, $surname, $email, $phoneNumber, $birthDate, $image, $insuranceImage, $subscriptionImage);
+            $view->profileInfo($username, $name, $surname, $email, $phoneNumber, $birthDate, $image, $insuranceImage, $subscriptionImage, $insurance);
         } else {
             CUser::home();
         }
@@ -202,11 +235,7 @@ class CUser {
             $email = $user[0]->getEmail();
             $phoneNumber = $user[0]->getPhoneNumber();
             $birthDate = $user[0]->getBirthDate();
-            $idImage = $user[0]->getIdImage();
-            if($idImage == 0) 
-                $view->modifyProfile($username, $name, $surname, $email, $phoneNumber, $birthDate, false, false, false);
-            else 
-                $view->modifyProfile($username, $name, $surname, $email, $phoneNumber, $birthDate, false, false, true);
+            $view->modifyProfile($username, $name, $surname, $email, $phoneNumber, $birthDate, false);
         } else {
             CUser::home();
         }
@@ -225,7 +254,6 @@ class CUser {
             $name = $user[0]->getName();
             $surname = $user[0]->getSurname();
             $birthDate = $user[0]->getBirthDate();
-            $idImage = $user[0]->getIdImage();
             $modifiedEmail = UHTTPMethods::post('email');
             $phone_number_validation_regex = "/^\\+?[1-9][0-9]{7,14}$/"; 
             if(!preg_match($phone_number_validation_regex, UHTTPMethods::post('phoneNumber'))) {
@@ -236,10 +264,6 @@ class CUser {
                 preg_match_all($extract_phone_number_pattern, UHTTPMethods::post('phoneNumber'), $matches);
                 $modifiedPhoneNumber = implode($matches[0]);
             }
-            if($idImage == 0)
-                $image = false;
-            else    
-                $image = true;
             if($phoneError) 
                 $view->modifyProfile($username, $name, $surname, $modifiedEmail, $modifiedPhoneNumber, $birthDate, $phoneError, false, $image);
             else {
@@ -253,6 +277,22 @@ class CUser {
         }
     }
 
+    public static function modifyProfileImage() {
+        if(CUser::isLogged()){
+            $view = new VUser();
+            $userId = USession::getInstance()->getSessionElement('user');
+            $user = FPersistentManager::getInstance()->retriveUserOnId($userId);
+            $idImage = $user[0]->getIdImage();
+            $image = FPersistentManager::getInstance()->retriveImageOnId($idImage);
+            if($idImage == 0)
+                $view->modifyProfileImage(false, $image);
+            else    
+                $view->modifyProfileImage(true, $image);
+        } else {
+            CUser::home();
+        }
+    }
+ 
     /**
      * Method to modify the user image
      * @return void
@@ -261,8 +301,8 @@ class CUser {
         if(CUser::isLogged()){
             $userId = USession::getInstance()->getSessionElement('user');
             $user = FPersistentManager::getInstance()->retriveUserOnId($userId);
-            if(UHTTPMethods::files('imageFile','size') > 0){
-                $uploadedImage = UHTTPMethods::files('imageFile');
+            if(UHTTPMethods::files('image','size') > 0){
+                $uploadedImage = UHTTPMethods::files('image');
                 $check = FPersistentManager::getInstance()->checkImage($uploadedImage);
                 if($check == 'UPLOAD_ERROR_OK' || $check == 'TYPE_ERROR' || $check == 'SIZE_ERROR') {
                     $checkImageError = true;
@@ -280,6 +320,7 @@ class CUser {
                     }else{
                         $user[0]->setIdImage($check->getId());
                         FPersistentManager::getInstance()->updateUserIdImage($user[0]);
+                        CUser::home();
                     }
                 } else {
                     $view = new VUser();
@@ -409,23 +450,13 @@ class CUser {
             $user = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $userId);
             $today = date("Y-m-d");
             $skipassObjs = FPersistentManager::getInstance()->retriveSkipassObjOnSkiFacility($idSkiFacility);
-            /* 
-            ESkipassObj Object ( 
-                [idSkipassObj:ESkipassObj:private] => 1 
-                [description:ESkipassObj:private] => giornaliero Roccaraso 
-                [value:ESkipassObj:private] => 35 
-                [idSkiFacility:ESkipassObj:private] => 1 
-                [idSkipassTemp:ESkipassObj:private] => 1 
-            ) */
-            $skipassTemps_period = [];
-            $skipassTemps_type = []; 
+            $mapSkipassTemp = [];
             foreach ($skipassObjs as $element) {
                 $id = $element->getIdSkipassTemp();
                 $skipassTemps = FPersistentManager::getInstance()->retriveSkipassTempOnId($id);
-                $skipassTemps_period[] = $skipassTemps[0]->getPeriod();
-                $skipassTemps_type[] = $skipassTemps[0]->getType();
+                $mapSkipassTemp[] =  [$skipassTemps[0]->getPeriod(), $skipassTemps[0]->getType()];
             }
-            $view->makeABookingForm($idSkiFacility, $user[0], $today, $skipassTemps_period, $skipassTemps_type, false);
+            $view->makeABookingForm($idSkiFacility, $user[0], $today, $mapSkipassTemp, false);
         } else {
             CUser::home();
         }
@@ -433,7 +464,7 @@ class CUser {
 
     //DA MODIFICARE in base ai prezzi e ai pagamenti
     public static function confirmBooking() {
-        if(CUser::isLogged()){
+        if(CUser::isLogged()) {
             $view = new VUser();  
             $userId = USession::getInstance()->getSessionElement('user');
             $idSkiFacility = UHTTPMethods::post('idSkiFacility');
@@ -443,59 +474,60 @@ class CUser {
             
             if(!self::verifyaDate($selectedDate)) {
                 $skipassObjs = FPersistentManager::getInstance()->retriveSkipassObjOnSkiFacility($idSkiFacility);
-                $skipassTemps_period = [];
-                $skipassTemps_type = []; 
+                $mapSkipassTemp = [];
                 foreach ($skipassObjs as $element) {
                     $id = $element->getIdSkipassTemp();
                     $skipassTemps = FPersistentManager::getInstance()->retriveSkipassTempOnId($id);
-                    $skipassTemps_period[] = $skipassTemps[0]->getPeriod();
-                    $skipassTemps_type[] = $skipassTemps[0]->getType();
+                    $mapSkipassTemp[] =  [$skipassTemps[0]->getPeriod(), $skipassTemps[0]->getType()];
                 }
-                $view->makeABookingForm($idSkiFacility, $user[0], $today, $skipassTemps_period, $skipassTemps_type, true);
-            }
-            $name = UHTTPMethods::post('name');
-            $surname = UHTTPMethods::post('surname');
-            $type = UHTTPMethods::post('type');
-            $period = UHTTPMethods::post('period');
-            $email = UHTTPMethods::post('email');
-            $skipassObjs = FPersistentManager::getInstance()->retriveSkipassObjOnSkiFacility($idSkiFacility);
-            foreach ($skipassObjs as $element) {
-                $skipassTemp = FPersistentManager::getInstance()->retriveSkipassTempOnId($element->getIdSkipassTemp());
-                if($skipassTemp[0]->getType() == UHTTPMethods::post('type') && $skipassTemp[0]->getPeriod() == UHTTPMethods::post('period')) {
-                    $value = $element->getValue();
-                    $idSkipassObj = $element->getIdSkipassObj();
+                $view->makeABookingForm($idSkiFacility, $user[0], $today, $mapSkipassTemp, true);
+            } else {
+                $name = UHTTPMethods::post('name');
+                $surname = UHTTPMethods::post('surname');
+                $email = UHTTPMethods::post('email');
+                $period = UHTTPMethods::post('period');
+                $type = UHTTPMethods::post('type');
+                $skipassObjs = FPersistentManager::getInstance()->retriveSkipassObjOnSkiFacility($idSkiFacility);
+                foreach ($skipassObjs as $element) {
+                    $skipassTemp = FPersistentManager::getInstance()->retriveSkipassTempOnId($element->getIdSkipassTemp());
+                    if($skipassTemp[0]->getType() == UHTTPMethods::post('type') && $skipassTemp[0]->getPeriod() == UHTTPMethods::post('period')) {
+                        $value = $element->getValue();
+                        $idSkipassObj = $element->getIdSkipassObj();
+                    }
+                }
+                $skipassBooking = new ESkipassBooking($name, $surname, $selectedDate, $type, $email, $period, $value);
+                $skipassBooking->setIdUser($userId);
+                $skipassBooking->setIdSkipassObj($idSkipassObj);
+                $totalPrice = $skipassBooking->getValue(); 
+                if(UHTTPMethods::post('insurance') == 'on') {
+                    $insuranceTemp = FPersistentManager::getInstance()->retriveInsuranceTempFromType($type);  
+                    $price = $insuranceTemp[0]->getValue();
+                    if($period > 1)
+                        $price = $price * $period;
+                    $insurance = new EInsurance($name, $surname, $email, $type, $period, $price, $selectedDate);
+                    $insurance->setIdUser($userId);
+                    //USession::getInstance()->setSessionElement('insurance', $insurance);
+                    $cart = [$skipassBooking, $insurance];
+                    $totalPrice = $totalPrice + $price;
+                } else {
+                    $cart = [$skipassBooking];
+                }
+                $verifyPreferredCreditCard = FPersistentManager::getInstance()->verifyPCreditCard($userId);
+                USession::getInstance()->setSessionElement('cart', $cart);
+                if($verifyPreferredCreditCard) {
+                    $creditCard = FPersistentManager::getInstance()->retriveCreditCardFromUserId($userId);
+                    $view->paymentSection($cart, $totalPrice, $creditCard[0]);
+                } else {
+                    $view->paymentSection($cart, $totalPrice, null);
                 }
             }
-            $skipassBooking = new ESkipassBooking($name, $surname, $selectedDate, $type, $email, $period, $value);
-            $skipassBooking->setIdUser($userId);
-            $skipassBooking->setIdSkipassObj($idSkipassObj);
-            $totalPrice = $skipassBooking->getValue(); 
-            if(UHTTPMethods::post('insurance') == 'on') {
-                $insuranceTemp = FPersistentManager::getInstance()->retriveInsuranceTempFromType($type);  
-                $price = $insuranceTemp[0]->getValue();
-                $insurance = new EInsurance($name, $surname, $email, $type, $period, $price, $selectedDate);
-                $insurance->setIdUser($userId);
-                //USession::getInstance()->setSessionElement('insurance', $insurance);
-                $cart = [$skipassBooking, $insurance];
-                $totalPrice = $totalPrice + $price;
-            } else {
-                $cart = [$skipassBooking];
-            }
-            $verifyPreferredCreditCard = FPersistentManager::getInstance()->verifyPCreditCard($userId);
-            USession::getInstance()->setSessionElement('cart', $cart);
-            if($verifyPreferredCreditCard) {
-                $creditCard = FPersistentManager::getInstance()->retriveCreditCardFromUserId($userId);
-                $view->paymentSection($cart, $totalPrice, $creditCard[0]);
-            } else {
-                $view->paymentSection($cart, $totalPrice, null);
-            }
+
+            
             /* if(FPersistentManager::getInstance()->verifyBooking()) {
                 
             } else {
                 $view->bokkingError();
             } */
-        
-
         } else {
             CUser::home();
         }
@@ -503,25 +535,31 @@ class CUser {
     
     public static function verifyaDate($selectedDate) {
         $selectedDate = new DateTime($selectedDate);
-        // Ottieni la data attuale
         $today = new DateTime();
-        $currentMonth = (int)$today->format('m');
         $currentYear = (int)$today->format('Y');
-        // Determina il range valido
-        if ($currentMonth >= 10) { // Tra Ottobre e Dicembre
-            $base = new DateTime("$currentYear-10-01"); // 1 Ottobre anno corrente
-            $end = new DateTime(($currentYear + 1) . "-03-31"); // 31 Marzo anno successivo
-        } else { // Tra Gennaio e Marzo
-            $base = new DateTime(($currentYear - 1) . "-10-01"); // 1 Ottobre anno precedente
-            $end = new DateTime("$currentYear-03-31"); // 31 Marzo anno corrente
-        }
+        $currentMonth = (int)$today->format('m');
+    
+        if($currentMonth >= 1 && $currentMonth <=3) {
+            // Calcola i due range accettabili:
+            // 1. Stagione invernale attuale (ottobre anno corrente -> marzo anno successivo)
+            $startCurrentSeason = new DateTime(($currentYear - 1). "-10-01");
+            $endCurrentSeason = new DateTime(($currentYear) . "-03-31");
         
-        if ($selectedDate >= $base && $selectedDate <= $end) {
-            return true;
-        } else {
-            return false;
+            if (($selectedDate >= $startCurrentSeason && $selectedDate <= $endCurrentSeason)) {
+                return true;
+            } else 
+                return false;
+        } elseif($currentMonth >= 4 && $currentMonth <= 12) {
+            $startCurrentSeason = new DateTime(($currentYear). "-10-01");
+            $endCurrentSeason = new DateTime(($currentYear + 1) . "-03-31");
+        
+            if (($selectedDate >= $startCurrentSeason && $selectedDate <= $endCurrentSeason)) {
+                return true;
+            } else 
+                return false;
         }
     }
+    
 
     public static function payment() {
         if(CUser::isLogged()){ 
@@ -585,9 +623,11 @@ class CUser {
 
     public static function showBookings() {
         if(CUser::isLogged()){ 
+            $bookedArray = [];
             $view = new VUser();  
             $userId = USession::getInstance()->getSessionElement('user');
             $allBookings = FPersistentManager::getInstance()->retriveAllSkipassBooking($userId);
+           
             $bookings = [];
             if($allBookings instanceof ESkipassBooking) {
                 $skipassObj = FPersistentManager::getInstance()->retriveSkipassObjOnId($allBookings->getIdSkipassObj());
@@ -595,8 +635,10 @@ class CUser {
                 $idUser = $allBookings->getIdUser();
                 $insurance = FPersistentManager::getInstance()->retriveInsuranceFromIdUserAndDate($idUser, $allBookings->getStartDate());
                 $bookings[]['bookings'] = [$allBookings, $skiFacility[0], $insurance[0]]; 
+                $bookedArray[] = $allBookings->getStartDate();
             } elseif (count($allBookings) > 0) {
                 foreach ($allBookings as $element) {
+                    $bookedArray[] = $element->getStartDate();
                     $skipassObj = FPersistentManager::getInstance()->retriveSkipassObjOnId($element->getIdSkipassObj());
                     $skiFacility = FPersistentManager::getInstance()->retriveSkiFacilityOnId($skipassObj[0]->getIdSkiFacility());
                     $idUser = $element->getIdUser();
@@ -607,11 +649,89 @@ class CUser {
                     $bookings[]['bookings'] = [$element, $skiFacility[0], $insurance]; 
                 }
             }
-            $view->showBookings($bookings);
+            
+            $month = isset($_POST['month']) ? $_POST['month'] : date('m');
+            $year = isset($_POST['year']) ? $_POST['year'] : date('Y');
+
+            // Converto a interi
+            $month = (int)$month;
+            $year = (int)$year;
+
+            // Mese precedente
+            $prevMonth = $month - 1;
+            $prevYear = $year;
+            if ($prevMonth < 1) {
+                $prevMonth = 12;
+                $prevYear--;
+            }
+
+            // Mese successivo
+            $nextMonth = $month + 1;
+            $nextYear = $year;
+            if ($nextMonth > 12) {
+                $nextMonth = 1;
+                $nextYear++;
+            }
+
+            // Genera calendario
+            $firstDay = mktime(0, 0, 0, $month, 1, $year);
+            $daysInMonth = date('t', $firstDay);
+
+            // Inizia da lunedì: trasformiamo il valore di date('w')
+            $startDay = date('w', $firstDay); // 0 = Sunday, ..., 6 = Saturday
+            $startDay = ($startDay == 0) ? 6 : $startDay - 1; // Ora 0 = Monday, ..., 6 = Sunday
+
+            $monthName = date('F', $firstDay);
+
+            // Calcola i giorni del mese precedente
+            $daysInPrevMonth = date('t', mktime(0, 0, 0, $prevMonth, 1, $prevYear));
+
+            $calendar = [];
+            $week = array_fill(0, 7, '');
+
+            // Aggiungi i giorni del mese precedente (es. 28, 29, 30...)
+            for ($i = $startDay - 1; $i >= 0; $i--) {
+                $week[$i] = $daysInPrevMonth - ($startDay - 1 - $i);
+            }
+
+            // Aggiungi i giorni del mese corrente
+            $day = 1;
+            for ($i = $startDay; $day <= $daysInMonth; $i++) {
+                $week[$i % 7] = $day++;
+
+                // Quando raggiungi domenica (indice 6), aggiungi la settimana e ricomincia
+                if ($i % 7 == 6 || $day > $daysInMonth) {
+                    $calendar[] = $week;
+                    $week = array_fill(0, 7, '');
+                }
+            }
+
+            $highlightDays = [];
+            $colors = [];
+            
+            foreach ($bookedArray as $dateStr) {
+                $timestamp = strtotime($dateStr);
+                $inputYear = (int)date('Y', $timestamp);
+                $inputMonth = (int)date('m', $timestamp);
+                $inputDay = (int)date('d', $timestamp);
+
+                // Se è nel mese/anno visualizzato, aggiungi il giorno da evidenziare
+                if ($inputYear === $year && $inputMonth === $month) {
+                    $highlightDays[] = $inputDay;
+                }
+            }
+
+        $view->showBookings($bookings, $monthName, $year, $calendar, $prevMonth, $prevYear, $nextMonth, $nextYear, $highlightDays);
         } else {
             CUser::home();
         }
     }
+
+
+
+
+
+
 
     public static function modifySkipassBooking() {
         if(CUser::isLogged()) {
@@ -649,7 +769,7 @@ class CUser {
                 FPersistentManager::getInstance()->updateInsuranceInfo($newInsurance);
                 USession::getInstance()->unsetSessionElement('skipassBooking');
 
-                header('Location: /Slope/User/home');
+                CUser::home();
             } else {
                 $view = new VUser();
                 $userId = USession::getInstance()->getSessionElement('user');
@@ -700,9 +820,11 @@ class CUser {
             $userId = USession::getInstance()->getSessionElement('user');
             $user = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $userId);
             $idSkipassBooking = UHTTPMethods::post('idSkipassBooking');
+            $skipassBooking  = FPersistentManager::getInstance()->retriveSkipassBookingOnId($idSkipassBooking);
             USession::setSessionElement('idSkipassBooking', $idSkipassBooking);
-            $today = date("Y-m-d");
-            $view->makeAInsuranceForm($user[0], $today, false);
+            $date = $skipassBooking[0]->getStartDate();
+            $period = $skipassBooking[0]->getPeriod();
+            $view->makeAInsuranceForm($user[0], $date, $period, false);
         } else {
             CUser::home();
         }
@@ -714,7 +836,6 @@ class CUser {
             $userId = USession::getInstance()->getSessionElement('user');
             $user = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $userId);
             $selectedDate = UHTTPMethods::post('date');
-            $today = date("Y-m-d");
             $name = UHTTPMethods::post('name');
             $surname = UHTTPMethods::post('surname');
             $email = UHTTPMethods::post('email');
@@ -724,10 +845,12 @@ class CUser {
             $type = $skipassBooking[0]->getType();
             $period = $skipassBooking[0]->getPeriod();
             if(!self::verifyaDate($selectedDate)) {
-                $view->makeAInsuranceForm($user[0], $today, false);
+                $view->makeAInsuranceForm($user[0], $selectedDate, $period, true);
             }
             $insuranceTemp = FPersistentManager::getInstance()->retriveInsuranceTempFromType($type);  
             $price = $insuranceTemp[0]->getValue();
+            if($period > 1)
+                $price = $price * $period;
             $insurance = new EInsurance($name, $surname, $email, $type, $period, $price, $selectedDate);
             $insurance->setIdUser($userId);
             USession::getInstance()->setSessionElement('insurance', $insurance);

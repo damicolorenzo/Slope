@@ -65,7 +65,7 @@ class FInsuranceTemp {
             $insuranceObjs = [];
             for($i = 0; $i < count($queryResult); $i++){
                 $insurance = new EInsuranceTemp($queryResult[$i]['type'], $queryResult[$i]['value']);
-            $insurance->setIdInsuranceTemp($queryResult[$i]['idInsuranceTemp']);
+                $insurance->setIdInsuranceTemp($queryResult[$i]['idInsuranceTemp']);
                 $insuranceObjs[] = $insurance;
             }
             return $insuranceObjs;
@@ -164,6 +164,11 @@ class FInsuranceTemp {
     public static function getTypeInsuranceTempObj(string $idSkipassObj) : array{
         $result = FEntityManager::getInstance()->selectObjKey('type', self::getTable(), self::getKey(), $idSkipassObj);
         return $result;
+    }
+
+    public static function getInsuranceTempObjFromFieldsForSearch(array $fields) : array{
+        $queryResult = FEntityManager::getInstance()->retriveObjForSearch(self::getTable(), $fields);
+        return $queryResult;
     }
 
 }

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-02-25 17:53:15
+/* Smarty version 3.1.33, created on 2025-05-13 15:50:33
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\modifyProfile.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_67bdf57b992f89_40807819',
+  'unifunc' => 'content_68234e2919d1d6_02569503',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5a200e83bf9ed6a162d28fb1c6f22b4b5c5cb846' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\modifyProfile.tpl',
-      1 => 1740502384,
+      1 => 1747144154,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67bdf57b992f89_40807819 (Smarty_Internal_Template $_smarty_tpl) {
+function content_68234e2919d1d6_02569503 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -57,6 +57,81 @@ function content_67bdf57b992f89_40807819 (Smarty_Internal_Template $_smarty_tpl)
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+    <style>
+  .form-container {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    max-width: 600px; /* Adatta la larghezza */
+    width: 90%;       /* Adattabile su dispositivi piccoli */
+    margin: 40px auto; /* Centra orizzontalmente e aggiunge spazio sopra/sotto */
+  }
+
+  @media (max-width: 600px) {
+    .form-container {
+      padding: 15px;
+    }
+
+    button {
+      font-size: 14px;
+      padding: 8px;
+    }
+  }
+
+  h1 {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .durata-skipass {
+    margin-bottom: 15px;
+  }
+
+  .durata-skipass p, .tipologia-biglietto p {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4682B4;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #FF7F50;
+  }
+  </style>
 </head>
 
 <body class="starter-page-page">
@@ -106,7 +181,7 @@ function content_67bdf57b992f89_40807819 (Smarty_Internal_Template $_smarty_tpl)
 
       <div class="container" data-aos="fade-up">
         
-        <div class="profile-container">
+        <div class="form-container">
             <div class="profile-info">
                 <form action="/Slope/User/confirmModify" enctype="multipart/form-data" method="POST">
                     <h2>MODIFICA PROFILO</h2>
@@ -127,34 +202,17 @@ function content_67bdf57b992f89_40807819 (Smarty_Internal_Template $_smarty_tpl)
                     <?php }?>
                     <p><strong>Data nascita:</strong> <?php echo $_smarty_tpl->tpl_vars['birthDate']->value;?>
 </p>
-                    <?php if ($_smarty_tpl->tpl_vars['imageError']->value == true) {?>
-                    <label>Errore nel caricamento dell'immagine. Riprovare!</label>
-                    <?php }?>
                     <button class="edit-button" type="submit">Conferma modifiche</button>
                 </form>
-                
-                <?php if ($_smarty_tpl->tpl_vars['image']->value == true) {?>
-                  <form action="/Slope/User/modifyImage" enctype="multipart/form-data" method="POST">
-                    <p><strong>Modifica immagine:</strong></p>
-                    <input type="file" name="imageFile" id="imageFile" multiple>
-                    <button class="edit-button" type="submit">Modifica immagine</button>
-                  </form>
-                  <a href="/Slope/User/deleteImage">
-                    <button class="edit-button" type="submit">Rimuovi immagine</button>
-                  </a>
-                <?php } else { ?>
-                  <form action="/Slope/User/modifyImage" enctype="multipart/form-data" method="POST">
-                    <p><strong>Modifica immagine:</strong></p>
-                    <input type="file" name="imageFile" id="imageFile" multiple>
-                    <button class="edit-button" type="submit">Modifica immagine</button>
-                  </form>
-                <?php }?>
-                
             </div>
             
             <p><strong>Modifica password:</strong></p>
             <div class="button-container">
               <a href="/Slope/User/modifyPassword"><button class="edit-button">Modifica password</button></a>
+            </div>
+            <p><strong>Modifica immagine:</strong></p>
+            <div class="button-container">
+              <a href="/Slope/User/modifyProfileImage"><button class="edit-button">Modifica immagine</button></a>
             </div>
             
             
@@ -168,76 +226,7 @@ function content_67bdf57b992f89_40807819 (Smarty_Internal_Template $_smarty_tpl)
 
   </main>
 
-  <footer id="footer" class="footer position-relative">
-
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6">
-          <div class="footer-about">
-            <a href="/Slope" class="logo sitename">Day</a>
-            <div class="footer-contact pt-3">
-              <p>Via Vetoio</p>
-              <p>L'Aquila, AQ 67100</p>
-              <p class="mt-3"><strong>Phone:</strong> <span>+39 123 456 7890</span></p>
-              <p><strong>Email:</strong> <span>info@example.com</span></p>
-            </div>
-            <div class="social-links d-flex mt-4">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-4 col-md-12 footer-newsletter">
-          <h4>Our Newsletter</h4>
-          <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-          <form action="forms/newsletter.php" method="post" class="php-email-form">
-            <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-          </form>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Slope</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-
-  </footer>
+  
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

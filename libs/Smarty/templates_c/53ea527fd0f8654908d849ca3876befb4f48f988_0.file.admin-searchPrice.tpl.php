@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-02-15 16:04:16
+/* Smarty version 3.1.33, created on 2025-05-06 17:11:48
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-searchPrice.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_67b0acf07bd480_62710778',
+  'unifunc' => 'content_681a26b40b8703_56447236',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '53ea527fd0f8654908d849ca3876befb4f48f988' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-searchPrice.tpl',
-      1 => 1739631844,
+      1 => 1746544307,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67b0acf07bd480_62710778 (Smarty_Internal_Template $_smarty_tpl) {
+function content_681a26b40b8703_56447236 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -168,11 +168,14 @@ function content_67b0acf07bd480_62710778 (Smarty_Internal_Template $_smarty_tpl)
       <div class="container" data-aos="fade-up">
       
         <!-- Da riempire in base alla pagina  -->
-        <div class="search-container">
-          <form class="search-form" action="/Slope/Admin/searchPrice" method="POST">
-              <input type="text" name="search-input" class="search-input" placeholder="Cerca un prezzo">
-              <button type="submit" class="search-button">Search</button>
-          </form>
+        <div class="admin-filter-container">
+          <h2>Cerca prezzo</h2>
+          <div class="filters">
+            <form class="search-form" action="/Slope/Admin/searchPrice" method="POST">
+              <input type="text" id="description" name="description" placeholder="Descrizione">
+              <button type="submit">Filtra</button>
+            </form>
+          </div>
         </div>
 
         <?php if (count($_smarty_tpl->tpl_vars['prices']->value) > 0) {?>
@@ -185,22 +188,18 @@ foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 ?>
               <div class="card">
                 <div class="price-info">
-                    <p><?php echo $_smarty_tpl->tpl_vars['i']->value[0]['description'];?>
+                    <p><?php echo $_smarty_tpl->tpl_vars['i']->value[0]->getDescription();?>
 </p>
-                    <p><?php echo $_smarty_tpl->tpl_vars['i']->value[0]['value'];?>
-</p>
-                    <p><?php echo $_smarty_tpl->tpl_vars['i']->value[1];?>
-</p>
-                    <p><?php echo $_smarty_tpl->tpl_vars['i']->value[2];?>
+                    <p><?php echo $_smarty_tpl->tpl_vars['i']->value[0]->getValue();?>
 </p>
                 </div>
                 <div>
                   <form action="/Slope/Admin/modifyPrice" method="POST">
-                    <button type="submit" name="idPrice" value=<?php echo $_smarty_tpl->tpl_vars['i']->value[0]['idPrice'];?>
+                    <button type="submit" name="idPrice" value=<?php echo $_smarty_tpl->tpl_vars['i']->value[0]->getIdPrice();?>
  class="edit">Modifica</button>
                   </form>
                   <form action="/Slope/Admin/deletePrice" method="POST">
-                    <button type="submit" name="idPrice" value=<?php echo $_smarty_tpl->tpl_vars['i']->value[0]['idPrice'];?>
+                    <button type="submit" name="idPrice" value=<?php echo $_smarty_tpl->tpl_vars['i']->value[0]->getIdPrice();?>
  class="delete">Elimina</button>
                   </form>
                 </div>

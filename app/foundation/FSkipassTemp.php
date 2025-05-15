@@ -81,7 +81,7 @@ class FSkipassTemp {
      * @param array $fieldArray Refers to an array of fields and values
      * @return bool true if succeded and false if failed
      */
-    public static function saveObj(ESkipassObj $obj, ?array $fieldArray = null) : bool{
+    public static function saveObj(ESkipassTemplate $obj, ?array $fieldArray = null) : bool{
         if($fieldArray === null) {
             try {
                 FEntityManager::getInstance()->getDb()->beginTransaction();
@@ -103,7 +103,7 @@ class FSkipassTemp {
             try {
                 FEntityManager::getInstance()->getDb()->beginTransaction();
                 foreach($fieldArray as $fv) {
-                    FEntityManager::getInstance()->updateObj(self::getTable(), $fv[0], $fv[1], self::getKey(), $obj->getIdSkipassObj());
+                    FEntityManager::getInstance()->updateObj(self::getTable(), $fv[0], $fv[1], self::getKey(), $obj->getIdSkipassTemplate());
                 }
                 FEntityManager::getInstance()->getDb()->commit();
                 return true;
@@ -143,6 +143,11 @@ class FSkipassTemp {
      */
     public static function getSkipassTempObjFromFields(array $fields) : array{
         $queryResult = FEntityManager::getInstance()->retriveObjNFields(self::getTable(), $fields);
+        return $queryResult;
+    }
+
+    public static function getSkipassTempObjFromFieldsForSearch(array $fields) : array{
+        $queryResult = FEntityManager::getInstance()->retriveObjForSearch(self::getTable(), $fields);
         return $queryResult;
     }
 

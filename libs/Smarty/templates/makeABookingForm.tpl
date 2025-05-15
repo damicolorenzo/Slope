@@ -36,64 +36,78 @@
   ======================================================== -->
   <style>
   .form-container {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 350px;
-}
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
-h1 {
-  font-size: 20px;
-  text-align: center;
-  margin-bottom: 20px;
-}
+    max-width: 600px; /* Adatta la larghezza */
+    width: 90%;       /* Adattabile su dispositivi piccoli */
+    margin: 40px auto; /* Centra orizzontalmente e aggiunge spazio sopra/sotto */
+  }
 
-label {
-  display: block;
-  margin: 10px 0 5px;
-  font-weight: bold;
-}
+  @media (max-width: 600px) {
+    .form-container {
+      padding: 15px;
+    }
 
-input[type="text"],
-input[type="email"],
-input[type="date"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
+    button {
+      font-size: 14px;
+      padding: 8px;
+    }
+  }
 
-.durata-skipass, .tipologia-biglietto {
-  margin-bottom: 15px;
-}
+  h1 {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
 
-.durata-skipass p, .tipologia-biglietto p {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
+  label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+  }
 
-input[type="checkbox"],
-input[type="radio"] {
-  margin-right: 10px;
-}
+  input[type="text"],
+  input[type="email"],
+  input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
 
-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #007BFF;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-}
+  .durata-skipass {
+    margin-bottom: 15px;
+  }
 
-button:hover {
-  background-color: #0056b3;
-}
+  .durata-skipass p, .tipologia-biglietto p {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4682B4;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #FF7F50;
+  }
   </style>
 </head>
 
@@ -136,34 +150,30 @@ button:hover {
         <form action="/Slope/User/confirmBooking" method="post">
             <input type="hidden" id="idSkiFacility" name="idSkiFacility" value={$idSkiFacility}>
             <label for="name">Nome</label>
-            <input type="text" id="name" name="name" value={$user->getName()}>
+            <input type="text" id="name" name="name" value={$user->getName()} required>
 
             <label for="surname">Cognome</label>
-            <input type="text" id="surname" name="surname" value={$user->getSurname()}>
+            <input type="text" id="surname" name="surname" value={$user->getSurname()} required> 
 
             <label for="email">Email di conferma</label>
-            <input type="email" id="email" name="email" value={$user->getEmail()}>
+            <input type="email" id="email" name="email" value={$user->getEmail()} required>
             
             <div class="durata-skipass">
                 <p>Durata skipass</p>
-                {foreach from=$periods item=i}
-                {if $i == 1}
-                <label><input type="radio" name="period" value={$i}> {$i} giorno</label>
-                {else if $i > 1}
-                <label><input type="radio" name="period" value={$i}> {$i} giorni</label>
+                {foreach from=$map item=i}
+                {if $i[0] == 1}
+                <label><input type="radio" name="period" value={$i[0]} required> {$i[0]} giorno-{$i[1]}</label>
+                <input type="hidden" name="type" value={$i[1]}>
+                {else if $i[0] > 1}
+                <label><input type="radio" name="period" value={$i[0]} required> {$i[0]} giorni-{$i[1]}</label>
+                <input type="hidden" name="type" value={$i[1]}>
                 {/if}
                 {/foreach}
             </div>
-
-            <div class="tipologia-biglietto">
-                <p>Tipologia biglietto</p>
-                {foreach from=$types item=i}
-                <label><input type="radio" name="type" value={$i}> {$i}</label>
-                {/foreach}
-            </div>
+            
 
             <div class="acquista-assicurazione">
-                <label><input type="checkbox" name="insurance" checked> Acquista assicurazione</label>
+                <label><input type="checkbox" name="insurance" checked > Acquista assicurazione</label>
             </div>
 
             <label for="data">Seleziona una data</label>
@@ -182,76 +192,7 @@ button:hover {
 
   </main>
 
-  <footer id="footer" class="footer position-relative">
-
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6">
-          <div class="footer-about">
-            <a href="/Slope" class="logo sitename">Day</a>
-            <div class="footer-contact pt-3">
-              <p>Via Vetoio</p>
-              <p>L'Aquila, AQ 67100</p>
-              <p class="mt-3"><strong>Phone:</strong> <span>+39 123 456 7890</span></p>
-              <p><strong>Email:</strong> <span>info@example.com</span></p>
-            </div>
-            <div class="social-links d-flex mt-4">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-4 col-md-12 footer-newsletter">
-          <h4>Our Newsletter</h4>
-          <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-          <form action="forms/newsletter.php" method="post" class="php-email-form">
-            <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-          </form>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Slope</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-
-  </footer>
+  
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

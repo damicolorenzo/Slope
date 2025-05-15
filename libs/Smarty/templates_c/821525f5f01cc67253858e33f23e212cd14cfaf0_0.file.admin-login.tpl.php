@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-03-03 19:00:58
+/* Smarty version 3.1.33, created on 2025-05-13 16:00:40
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_67c5ee5ac5a126_73682850',
+  'unifunc' => 'content_682350881647e7_00111023',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '821525f5f01cc67253858e33f23e212cd14cfaf0' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-login.tpl',
-      1 => 1741022146,
+      1 => 1747144838,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67c5ee5ac5a126_73682850 (Smarty_Internal_Template $_smarty_tpl) {
+function content_682350881647e7_00111023 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -58,86 +58,84 @@ function content_67c5ee5ac5a126_73682850 (Smarty_Internal_Template $_smarty_tpl)
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 <style>
-  .form_login-container {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 45%;
+  .login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.form_login-container form h2 {
-  margin-bottom: 20px;
-  color: #333;
+.login-form {
+  background-color: white;
+  padding: 60px 50px;
+  border-radius: 16px;
+  width: 100%;
 }
 
-.form_login-container label {
+.login-form h2 {
+  font-size: 32px;
+  margin-bottom: 36px;
+  color:rgb(0, 0, 0);
+}
+
+.login-form label {
   display: block;
-  margin-bottom: 8px;
-  color: #666;
+  margin: 18px 0 10px;
+  font-size: 18px;
+  color:rgb(0, 0, 0);
 }
 
-.form_login-container input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="username"], 
-input[type="tel"] {
+.login-form input {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
+  padding: 16px;
+  margin-bottom: 24px;
+  font-size: 18px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 10px;
 }
 
-input[type="date"] {
+.login-form button {
   width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-size: 16px;
-  font-family: Arial, sans-serif;
-}
-
-input[type="date"]:focus {
-  border-color: #4CAF50;
-  outline: none;
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-  background: url('data:image/svg+xml;base64,<svg>...</svg>') no-repeat center;
-  cursor: pointer;
-  color: transparent; 
-  opacity: 0.5; 
-}
-
-input[type="date"]::placeholder {
-  color: #999;
-  font-style: italic;
-}
-
-.form_login-container button {
-  width: 100%;
-  padding: 10px;
-  background-color: #007BFF;
-  border: none;
-  border-radius: 4px;
+  padding: 18px;
+  background-color: #FF4400;
   color: white;
-  font-size: 16px;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-.form_login-container button:hover {
-  background-color: #0056b3;
+.login-form button:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 20%);
+}
+
+@media screen and (max-width: 600px) {
+  .form_login-container {
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: none;
+  }
+
+  .login-form input,
+  .login-form button {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .login-form h2 {
+    font-size: 24px;
+  }
+
+  .login-form label {
+    font-size: 15px;
+  }
 }
   </style>
 </head>
 
 <body class="starter-page-page">
 
-  <header id="header" class="header sticky-top">
+  <header id="header-admin" class="header-admin sticky-top">
     <div class="branding d-flex align-items-center">
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
@@ -160,37 +158,25 @@ input[type="date"]::placeholder {
 
   <main class="main">
 
-    <!-- Page Title -->
-    <!-- <div class="page-title" data-aos="fade">
-      <div class="container">
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Starter Page</li>
-          </ol>
-        </nav>
-        <h1>Starter Page</h1>
-      </div>
-    </div> --><!-- End Page Title -->
-
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
 
-      <div class="container" data-aos="fade-up">
-        <div class="form_login-container">
-            <form class="login-form" action="/Slope/Admin/checkLogin" method="POST">
-                <h2>Login <i>ADMIN</i></h2>
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-                <?php if ($_smarty_tpl->tpl_vars['error']->value === true) {?>
-                <label>Errore inserimento dati</label>
-                <?php }?>
-                <button type="submit">Accedi</button>
-            </form>
-        </div>
+      <div class="login-wrapper">
+      <div class="col-lg-4 col-md-6 card aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+
+        <form class="login-form" action="/Slope/Admin/checkLogin" method="POST">
+          <h2>LogIn Admin</h2>
+
+          <label for="username">Nome utente</label>
+          <input type="text" id="username" name="username" required>
+
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+
+          <button type="submit">Login</button>
+        </form>
       </div>
+    </div>
 
     </section><!-- /Starter Section Section -->
 

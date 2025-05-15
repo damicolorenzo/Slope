@@ -34,6 +34,144 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+<style>
+.card-impianto {
+  display: flex;
+  flex-direction: row;  /* Ripristina il layout orizzontale */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;  /* La card occupa tutta la larghezza della pagina */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.left {
+  width: 40%;  /* L'immagine occupa il 40% della larghezza della card */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  background-color: #f8f8f8; /* Colore di sfondo per l'immagine */
+}
+
+.left .impianto-img {
+  width: 100%; 
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.left .impianto-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* L'immagine si adatta senza distorsioni */
+} 
+
+.right {
+  width: 60%;  /* La parte dei dettagli occupa il restante 60% della larghezza */
+  padding: 16px;
+  background-color: #fff;
+}
+
+.impianto {
+  text-align: center;
+}
+
+.impianto h3 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.dettagli-impianto h4 {
+  margin-top: 0;
+  font-size: 18px;
+  color: #666;
+}
+
+.dettagli-impianto .piste {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.pista {
+  padding: 6px 12px;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pista.rossa {
+  background-color: #e74c3c; /* Colore rosso per piste rosse */
+}
+
+.pista.nera {
+  background-color: #2c3e50; /* Colore nero per piste nere */
+}
+
+.pista.blu {
+  background-color: #3498db; /* Colore blu per piste blu */
+}
+
+.pista.verde {
+  background-color: #2ecc71; /* Colore verde per piste verdi */
+}
+
+.dettagli-impianto p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #444;
+}
+
+.dettagli-impianto span {
+  font-weight: bold;
+}
+
+.status {
+  padding: 6px 12px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.status.aperto {
+  background-color: #4caf50; /* Verde per aperto */
+}
+
+.status.chiuso {
+  background-color: #f44336; /* Rosso per chiuso */
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column; /* La form è disposta in colonna */
+  align-items: center;
+}
+
+.carousel-track {
+      display: flex;
+      width: 300%;
+      animation: slide 12s infinite;
+    }
+
+    .carousel-track img {
+      width: 100%;
+      height: auto;
+      flex-shrink: 0;
+    }
+
+    @keyframes slide {
+      0%   { transform: translateX(0%); }
+      33%  { transform: translateX(-100%); }
+      66%  { transform: translateX(-200%); }
+      100% { transform: translateX(0%); }
+    }
+
+</style>
 </head>
 
 <body class="starter-page-page">
@@ -50,23 +188,14 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <!-- <li><a href="#hero">Home</a></li>
-            <li><a href="#about">Prenota</a></li>
-            <li><a href="#services">Visualizza prenotazioni</a></li>
-            <li class="dropdown"><a href="#"><span>Aggiornamenti</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a> -->
-              <ul>
-                <!-- <li><a href="#">Piste</a></li>
-                <li><a href="#">Impianti</a></li>
-                <li><a href="#">Web</a></li> -->
-              </ul>
-            </li>
             <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/User/login">Login</a></li>
+            <li><a href="/Slope/User/showBookings">Visualizza Prenotazioni</a></li>
+            <li><a href="/Slope/User/profile">Profile</a></li>
+            <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
       </div>
-
     </div>
 
   </header>
@@ -89,40 +218,57 @@
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
       <div class="container" data-aos="fade-up">
-        <div class="card-impianto">
-            <div class="impianto">
-                <h3>Impianto 1</h3>
-                <img src="link-alla-tua-immagine.jpg" alt="Immagine dell'impianto" class="impianto-img">
+
+        {foreach from=$map item=i} 
+          <form class="search-form" action="/Slope/User/skiFacilityDetails" method="POST">
+          <div class="card-impianto">
+            <div class="left">
+              <div class="impianto-img">
+              {if count($i[3]) > 1}
+              <div class="carousel-track">
+                {foreach from=$i[3] item=e} 
+                  <img class="imagePreview" src="data:{$e->getType()};base64,{$e->getEncodedData()}" >
+                {/foreach}
+              </div>
+              {else}
+              {foreach from=$i[3] item=e} 
+                <img class="imagePreview" src="data:{$e->getType()};base64,{$e->getEncodedData()}" >
+              {/foreach}
+              {/if}
+              </div>
             </div>
+            <div class="right">
+              <h3>{$i[0]}</h3>
             <div class="dettagli-impianto">
-                <h4>Dettagli Impianto 1</h4>
+              <h4>Dettagli piste</h4> 
+              
                 <div class="piste">
-                    <div class="pista rossa">Rosse: <span>5</span></div>
-                    <div class="pista nera">Nere: <span>3</span></div>
-                    <div class="pista blu">Blu: <span>7</span></div>
-                    <div class="pista verde">Verdi: <span>2</span></div>
+                  {foreach from=$i[1] item=e}  
+                    {if $e['type'] == blu}
+                    <div class="pista blu">Blu: <span>{$e['CNT']}</span></div>
+                    {/if}
+                    {if $e['type'] == rossa}
+                    <div class="pista rossa">Rosse: <span>{$e['CNT']}</span></div>
+                    {/if}
+                    {if $e['type'] == nera}
+                    <div class="pista nera">Nere: <span>{$e['CNT']}</span></div>
+                    {/if}
+                    {if $e['type'] == verde}
+                    <div class="pista verde">Verdi: <span>{$e['CNT']}</span></div>
+                    {/if}
+                  {/foreach}
                 </div>
-                <p>Impianti: <span>5</span></p>
-                <p>Status: <span class="status aperto">Aperto</span></p>
+                
+                <p>Impianti di risalita: <span>{$i[2]}</span></p>
+                <p>Stato: <span class="status aperto">aperto</span></p>
             </div>
-        </div>
-        <div class="card-impianto">
-            <div class="impianto">
-                <h3>Impianto 1</h3>
-                <img src="link-alla-tua-immagine.jpg" alt="Immagine dell'impianto" class="impianto-img">
+            <button type="submit" name="nameSkiFacility" value="{$i[0]}">Esplora</button>
             </div>
-            <div class="dettagli-impianto">
-                <h4>Dettagli Impianto 1</h4>
-                <div class="piste">
-                    <div class="pista rossa">Rosse: <span>5</span></div>
-                    <div class="pista nera">Nere: <span>3</span></div>
-                    <div class="pista blu">Blu: <span>7</span></div>
-                    <div class="pista verde">Verdi: <span>2</span></div>
-                </div>
-                <p>Impianti: <span>5</span></p>
-                <p>Status: <span class="status aperto">Aperto</span></p>
-            </div>
-        </div>
+          </div>
+          
+          <form>
+        {/foreach}
+
       </div>
 
     </section><!-- /Starter Section Section -->

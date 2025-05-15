@@ -166,10 +166,15 @@ class FLiftStructure {
      * @param string id of the lift structure
      * @return array 
      */
-    public static function getLiftStructureByNameForSearch($queryString) {
-        $value = str_replace("'", "\\'", $queryString);
-        $queryResult = FEntityManager::getInstance()->retriveObjLike(self::getTable(), 'name', $value);
+    public static function getLiftStructureByNameForSearch(string $nameLiftStructure) :array{
+        $conditions = [['name' , $nameLiftStructure]];
+        $queryResult = FEntityManager::getInstance()->retriveObjForSearch(self::getTable(), $conditions);
         return $queryResult;
+    }
+
+    public static function typeAndNumberLiftStructure(string $idSkiFacility) : array{
+        $result = FEntityManager::getInstance()->typeAndNumber(self::getTable(), self::getExtKey(), $idSkiFacility);
+        return $result;
     }
 
     

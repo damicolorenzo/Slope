@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-02-28 21:33:35
+/* Smarty version 3.1.33, created on 2025-05-15 14:22:08
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\makeAInsuranceForm.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_67c21d9f7751c5_02022192',
+  'unifunc' => 'content_6825dc70669493_56537243',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '591e32242fb0d375114217088afa139b1c5d27fa' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\makeAInsuranceForm.tpl',
-      1 => 1740774061,
+      1 => 1747144170,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67c21d9f7751c5_02022192 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6825dc70669493_56537243 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -64,7 +64,10 @@ function content_67c21d9f7751c5_02022192 (Smarty_Internal_Template $_smarty_tpl)
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 350px;
+
+  max-width: 600px; /* Adatta la larghezza */
+    width: 90%;       /* Adattabile su dispositivi piccoli */
+    margin: 40px auto; /* Centra orizzontalmente e aggiunge spazio sopra/sotto */
 }
 
 h1 {
@@ -169,10 +172,25 @@ button:hover {
             <input type="email" id="email" name="email" value=<?php echo $_smarty_tpl->tpl_vars['user']->value->getEmail();?>
 >
 
+            <?php if ($_smarty_tpl->tpl_vars['period']->value == 1) {?>
+            <label><input type="radio" name="period" value=<?php echo $_smarty_tpl->tpl_vars['period']->value;?>
+ checked > <?php echo $_smarty_tpl->tpl_vars['period']->value;?>
+ giorno</label>
             <label for="data">Seleziona una data</label>
             <input type="date" id="date" name="date" min=<?php echo $_smarty_tpl->tpl_vars['today']->value;?>
  value=<?php echo $_smarty_tpl->tpl_vars['today']->value;?>
 >
+            <?php } elseif ($_smarty_tpl->tpl_vars['period']->value > 1) {?>
+            <label><input type="radio" name="period" value=<?php echo $_smarty_tpl->tpl_vars['period']->value;?>
+ checked> <?php echo $_smarty_tpl->tpl_vars['period']->value;?>
+ giorni</label>
+            <label for="data">Seleziona data di partenza</label>
+            <input type="date" id="date" name="date" min=<?php echo $_smarty_tpl->tpl_vars['today']->value;?>
+ value=<?php echo $_smarty_tpl->tpl_vars['today']->value;?>
+>
+            <?php }?>
+
+            
             <?php if ($_smarty_tpl->tpl_vars['dateWarning']->value) {?> 
             <label>Controllare se la data inserita è corretta. La data potrebbe essere troppo lontana da quella corrente.</label>
             <?php }?>
@@ -187,76 +205,7 @@ button:hover {
 
   </main>
 
-  <footer id="footer" class="footer position-relative">
-
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6">
-          <div class="footer-about">
-            <a href="/Slope" class="logo sitename">Day</a>
-            <div class="footer-contact pt-3">
-              <p>Via Vetoio</p>
-              <p>L'Aquila, AQ 67100</p>
-              <p class="mt-3"><strong>Phone:</strong> <span>+39 123 456 7890</span></p>
-              <p><strong>Email:</strong> <span>info@example.com</span></p>
-            </div>
-            <div class="social-links d-flex mt-4">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-4 col-md-12 footer-newsletter">
-          <h4>Our Newsletter</h4>
-          <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-          <form action="forms/newsletter.php" method="post" class="php-email-form">
-            <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-          </form>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Slope</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-
-  </footer>
+  
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

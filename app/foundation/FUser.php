@@ -48,10 +48,12 @@ Class FUser{
         if(count($queryResult) == 1){
             $userA = [];
             $person = FEntityManager::getInstance()->retriveObj(FPerson::getTable(), "idUser", $queryResult[0]['idUser']);
+            $user = FEntityManager::getInstance()->retriveObj(FUser::getTable(), "idUser", $queryResult[0]['idUser']);
+            //print_r($person);
             if($person == [])
                     $user = new EUser(null, null, null, null, null, $queryResult[0]['username'], $queryResult[0]['password']);
                 else
-                    $user = new EUser($person[0]['name'], $person[0]['surname'], $person[0]['email'], $person[0]['phoneNumber'], $person[0]['birthDate'], $queryResult[0]['username'], $queryResult[0]['password']);
+                    $user = new EUser($person[0]['name'], $person[0]['surname'], $person[0]['email'], $person[0]['phoneNumber'], $person[0]['birthDate'], $user[0]['username'], $user[0]['password']);
             $user->setId($queryResult[0]['idUser']);
             if(isset($queryResult[0]['idImage'])) {
                 $user->setIdImage($queryResult[0]['idImage']);
@@ -194,8 +196,9 @@ Class FUser{
      * @param string $surname
      * @return array $result
      */
-    public static function getUsersFromUsernameOrNameOrSurname(string $username, string $name, string $surname) : array{
-        $result = FEntityManager::getInstance()->retriveObjForSearch(FPerson::getTable(), $username, $name, $surname);
+    public static function getUsersFromUsernameOrNameOrSurname(string $name, string $surname) : array{
+        $conditions = [["name", $name] , ["surname", $surname]];
+        $result = FEntityManager::getInstance()->retriveObjForSearch(FPerson::getTable(), $conditions);
         return $result;
     }
 
@@ -205,6 +208,12 @@ Class FUser{
      */
     public static function getUsers() : array{
         $result = FEntityManager::getInstance()->retriveAllObj(self::getTable());
+        return $result;
+    }
+
+
+    public static function getUsersWithConditions(array $condition) : array{
+        $result = FEntityManager::getInstance()->retriveObjNFields(self::getTable(), $condition);
         return $result;
     }
 }

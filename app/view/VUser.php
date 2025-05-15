@@ -32,9 +32,13 @@ class VUser {
     Di fatto nella pagina html non c'è un modo per passare dei dati se non tramite file php quindi il file .tpl è una versione intelligente
     del file html 
     */
-    public function home($allSkiFacilities){
+    public function home($allSkiFacilities, $skipassObj, $images){
         $this->smarty->assign('skiFacilities', $allSkiFacilities);
-        $this->smarty->display('home.tpl');
+        $this->smarty->assign('skipassObj', $skipassObj);
+        for($i = 1; $i <= count($images); $i++) {
+            $this->smarty->assign('image'.$i, $images[$i-1]);
+        }
+        $this->smarty->display('home-copy.tpl'); 
     }
 
     public function showLoginForm($error) {
@@ -75,7 +79,7 @@ class VUser {
         $this->smarty->display('registration.tpl');
     }
 
-    public function profileInfo($username, $name, $surname, $email, $phoneNumber, $birthDate, $image, $insuranceImage, $subscriptionImage) {
+    public function profileInfo($username, $name, $surname, $email, $phoneNumber, $birthDate, $image, $insuranceImage, $subscriptionImage, $insurance) {
         $this->smarty->assign('username', $username);
         $this->smarty->assign('name', $name);
         $this->smarty->assign('surname', $surname);
@@ -85,6 +89,7 @@ class VUser {
         $this->smarty->assign('image', $image);
         $this->smarty->assign('insuranceImage', $insuranceImage);
         $this->smarty->assign('subscriptionImage', $subscriptionImage);
+        $this->smarty->assign('insurance', $insurance);
         $this->smarty->display('profileInfo.tpl');
     }
 
@@ -93,7 +98,7 @@ class VUser {
         $this->smarty->display('loggedHome.tpl');
     }
 
-    public function     modifyProfile($username, $name, $surname, $email, $phoneNumber, $birthDate, $phoneError, $imageError, $image) {
+    public function modifyProfile($username, $name, $surname, $email, $phoneNumber, $birthDate, $phoneError) {
         $this->smarty->assign('username', $username);
         $this->smarty->assign('name', $name);
         $this->smarty->assign('surname', $surname);
@@ -101,9 +106,13 @@ class VUser {
         $this->smarty->assign('phoneNumber', $phoneNumber);
         $this->smarty->assign('birthDate', $birthDate);
         $this->smarty->assign('phoneError', $phoneError);
+        $this->smarty->display('modifyProfile.tpl');
+    }
+
+    public function modifyProfileImage($imageError, $image) {
         $this->smarty->assign('imageError', $imageError);
         $this->smarty->assign('image', $image);
-        $this->smarty->display('modifyProfile.tpl');
+        $this->smarty->display('modifyProfileImage.tpl');
     }
 
     public function modifyPassword($passError) {
@@ -119,13 +128,12 @@ class VUser {
         $this->smarty->display('skiRunsAndLiftsDetails.tpl');
     }
 
-    public function makeABookingForm($idSkiFacility, $user, $today, $periods, $types, $dateWarning) {
+    public function makeABookingForm($idSkiFacility, $user, $today, $map, $dateWarning) {
         $this->smarty->assign('user', $user);
         $this->smarty->assign('today', $today);
         $this->smarty->assign('dateWarning', $dateWarning);
         $this->smarty->assign('idSkiFacility', $idSkiFacility);
-        $this->smarty->assign('periods', $periods);
-        $this->smarty->assign('types', $types);
+        $this->smarty->assign('map', $map);
         $this->smarty->display('makeABookingForm.tpl');
     }
 
@@ -136,8 +144,16 @@ class VUser {
         $this->smarty->display('paymentSection.tpl');
     }
 
-    public function showBookings($allBookings) {
+    public function showBookings($allBookings, $monthName, $year, $calendar, $prevMonth, $prevYear, $nextMonth, $nextYear, $bookedArray) {
         $this->smarty->assign('bookings', $allBookings);
+        $this->smarty->assign('monthName', $monthName);
+        $this->smarty->assign('year', $year);
+        $this->smarty->assign('calendar', $calendar);
+        $this->smarty->assign('prevMonth', $prevMonth);
+        $this->smarty->assign('prevYear', $prevYear);
+        $this->smarty->assign('nextMonth', $nextMonth);
+        $this->smarty->assign('nextYear', $nextYear);
+        $this->smarty->assign('bookedDates', $bookedArray);
         $this->smarty->display('showBookings.tpl');
     }
 
@@ -164,9 +180,10 @@ class VUser {
         $this->smarty->display('buyInsurance.tpl');
     }
 
-    public function makeAInsuranceForm($user, $today, $dateWarning) {
+    public function makeAInsuranceForm($user, $today, $period, $dateWarning) {
         $this->smarty->assign('user', $user);
         $this->smarty->assign('today', $today);
+        $this->smarty->assign('period', $period);
         $this->smarty->assign('dateWarning', $dateWarning);
         $this->smarty->display('makeAInsuranceForm.tpl');
     }
@@ -183,6 +200,10 @@ class VUser {
         $this->smarty->assign('today', $today);
         $this->smarty->assign('dateWarning', $dateWarning);
         $this->smarty->display('makeASubscriptionForm.tpl');
+    }
+
+    public function confirmPage() {
+        $this->smarty->display('confirmPage.tpl');
     }
 
 }

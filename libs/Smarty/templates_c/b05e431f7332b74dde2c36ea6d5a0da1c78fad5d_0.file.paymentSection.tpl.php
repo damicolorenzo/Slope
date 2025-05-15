@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-02-26 17:04:45
+/* Smarty version 3.1.33, created on 2025-05-13 15:50:13
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\paymentSection.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_67bf3b9daeb790_63340813',
+  'unifunc' => 'content_68234e15e134a5_77025514',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b05e431f7332b74dde2c36ea6d5a0da1c78fad5d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\paymentSection.tpl',
-      1 => 1740585885,
+      1 => 1747144191,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67bf3b9daeb790_63340813 (Smarty_Internal_Template $_smarty_tpl) {
+function content_68234e15e134a5_77025514 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -59,120 +59,106 @@ function content_67bf3b9daeb790_63340813 (Smarty_Internal_Template $_smarty_tpl)
   ======================================================== -->
   <style>
   .payment-container {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  width: 100%;
-}
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px; /* Adatta la larghezza */
+    width: 90%;       /* Adattabile su dispositivi piccoli */
+    margin: 40px auto; /* Centra orizzontalmente e aggiunge spazio sopra/sotto */
+  }
 
-.payment-container h1 {
-  margin-bottom: 20px;
-  text-align: center;
-  color: #444;
-}
+  .order-summary {
+    margin-bottom: 20px;
+  }
 
-.order-summary {
-  margin-bottom: 20px;
-}
+  .order-summary h2 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #444;
+  }
 
-.order-summary h2 {
-  margin-bottom: 10px;
-  font-size: 18px;
-  color: #444;
-}
+  .order-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
 
-.order-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+  .order-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+  }
 
-.order-list li {
-  display: flex;
-  justify-content: space-between;
-  padding: 5px 0;
-  border-bottom: 1px solid #eee;
-  font-size: 16px;
-}
+  .order-list li.total {
+    font-weight: bold;
+    border-top: 2px solid #444;
+    margin-top: 10px;
+    padding-top: 10px;
+  }
 
-.order-list li.total {
-  font-weight: bold;
-  border-top: 2px solid #444;
-  margin-top: 10px;
-  padding-top: 10px;
-}
+  .payment-container h1 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #444;
+  }
 
-.payment-container {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  width: 100%;
-}
+  .payment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
 
-.payment-container h1 {
-  margin-bottom: 20px;
-  text-align: center;
-  color: #444;
-}
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
 
-.payment-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
+  .form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+  }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
+  .form-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+  }
 
-.form-group label {
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: #555;
-}
+  .form-group input:focus {
+    border-color: #4682B4;
+    outline: none;
+  }
 
-.form-group input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  color: #333;
-}
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
 
-.form-group input:focus {
-  border-color: #007bff;
-  outline: none;
-}
+  .form-row .form-group {
+    flex: 1;
+  }
 
-.form-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-}
+  .submit-btn {
+    background-color: #4682B4;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
 
-.form-row .form-group {
-  flex: 1;
-}
-
-.submit-btn {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.submit-btn:hover {
-  background-color: #0056b3;
-}
+  .submit-btn:hover {
+    background-color: #FF7F50;
+  }
   </style>
 </head>
 
@@ -209,12 +195,11 @@ function content_67bf3b9daeb790_63340813 (Smarty_Internal_Template $_smarty_tpl)
     <section id="starter-section" class="starter-section section"> 
 
       <div class="container" data-aos="fade-up">
-
-        <div class="payment-container">
-        <h1>Riepilogo Pagamento</h1>
-        
-          <!-- Dettagli acquisto -->
-          <div class="order-summary">
+          <div class="payment-container">
+            <h1>Riepilogo Pagamento</h1>
+          
+            <!-- Dettagli acquisto -->
+            <div class="order-summary">
               <h2>Dettagli Acquisto</h2>
               <ul class="order-list">
                   <?php
@@ -246,150 +231,79 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 </strong></span>
                   </li>
               </ul>
-          </div>
+            </div>
         
-          <form action="/Slope/User/payment" class="payment-form"  enctype="multipart/form-data" method="POST">
-            <h2>Paga con Carta di Credito</h2>
-              <div class="form-group">
-                  <label for="cardHolderName">Nome Intestatario Carta</label>
-                  <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
-                  <input type="text" id="card-name" name="cardHolderName" placeholder="Mario" required>
-                  <?php } else { ?>
-                  <input type="text" id="card-name" name="cardHolderName" value=<?php echo $_smarty_tpl->tpl_vars['creditCard']->value->getCardHolderName();?>
+            <form action="/Slope/User/payment" class="payment-form"  enctype="multipart/form-data" method="POST">
+              <h2>Paga con Carta di Credito</h2>
+                <div class="form-group">
+                    <label for="cardHolderName">Nome Intestatario Carta</label>
+                    <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
+                    <input type="text" id="card-name" name="cardHolderName" placeholder="Mario" required>
+                    <?php } else { ?>
+                    <input type="text" id="card-name" name="cardHolderName" value=<?php echo $_smarty_tpl->tpl_vars['creditCard']->value->getCardHolderName();?>
  required>
-                  <?php }?>
-              </div>
-              <div class="form-group">
-                  <label for="cardHolderSurname">Cognome Intestatario Carta</label>
-                  <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
-                  <input type="text" id="card-surname" name="cardHolderSurname" placeholder="Rossi" required>
-                  <?php } else { ?>
-                  <input type="text" id="card-surname" name="cardHolderSurname" value=<?php echo $_smarty_tpl->tpl_vars['creditCard']->value->getCardHolderSurname();?>
+                    <?php }?>
+                </div>
+                <div class="form-group">
+                    <label for="cardHolderSurname">Cognome Intestatario Carta</label>
+                    <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
+                    <input type="text" id="card-surname" name="cardHolderSurname" placeholder="Rossi" required>
+                    <?php } else { ?>
+                    <input type="text" id="card-surname" name="cardHolderSurname" value=<?php echo $_smarty_tpl->tpl_vars['creditCard']->value->getCardHolderSurname();?>
  required>
-                  <?php }?>
-              </div>
-              <div class="form-group">
-                  <label for="cardNumber">Numero Carta</label>
-                  <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
-                  <input type="text" id="card-number" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19"  required>
-                  <?php } else { ?>
-                  <input type="text" id="card-number" name="cardNumber" value=<?php echo $_smarty_tpl->tpl_vars['creditCard']->value->getCardNumber();?>
+                    <?php }?>
+                </div>
+                <div class="form-group">
+                    <label for="cardNumber">Numero Carta</label>
+                    <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
+                    <input type="text" id="card-number" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19"  required>
+                    <?php } else { ?>
+                    <input type="text" id="card-number" name="cardNumber" value=<?php echo $_smarty_tpl->tpl_vars['creditCard']->value->getCardNumber();?>
  maxlength="19"  required>
-                  <?php }?>
-              </div>
-              <div class="form-row">
-                  <div class="form-group">
-                      <label for="expiryDate">Scadenza Carta</label>
-                      <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
-                      <input type="month" id="expiry-date" name="expiryDate" required>
-                      <?php } else { ?>
-                      <input type="month" id="expiry-date" name="expiryDate" value=<?php echo $_smarty_tpl->tpl_vars['creditCard']->value->getExpiryDate();?>
+                    <?php }?>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="expiryDate">Scadenza Carta</label>
+                        <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
+                        <input type="month" id="expiry-date" name="expiryDate" required>
+                        <?php } else { ?>
+                        <input type="month" id="expiry-date" name="expiryDate" value=<?php echo $_smarty_tpl->tpl_vars['creditCard']->value->getExpiryDate();?>
  required>
-                      <?php }?>
-                  </div>
-                  <div class="form-group">
-                      <label for="cvv">CVV</label>
-                      <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
-                      <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3"  required>
-                      <?php } else { ?>
-                      <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3"  value=<?php echo $_smarty_tpl->tpl_vars['creditCard']->value->getCvv();?>
+                        <?php }?>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
+                        <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3"  required>
+                        <?php } else { ?>
+                        <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3"  value=<?php echo $_smarty_tpl->tpl_vars['creditCard']->value->getCvv();?>
  required>
-                      <?php }?>
-                  </div>
-              </div>
-              <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
-              <div class="form-group">
-                <label for="preferred">Salvare come metodo preferito</label>
-                <input type="checkbox" id="preferred" name="preferred" >
-              </div>
-              <?php } else { ?> 
-              <div class="form-group">
-                <label for="preferred">Salvare come metodo preferito</label>
-                <input type="checkbox" id="preferred" name="preferred" checked>
-              </div>
-              <?php }?>
-              
-              <button type="submit" class="submit-btn">Procedi al Pagamento</button>
-          </form>
-
-        </div>
-
+                        <?php }?>
+                    </div>
+                </div>
+                <?php if ($_smarty_tpl->tpl_vars['creditCard']->value === null) {?>
+                <div class="form-group">
+                  <label for="preferred">Salvare come metodo preferito</label>
+                  <input type="checkbox" id="preferred" name="preferred" >
+                </div>
+                <?php } else { ?> 
+                <div class="form-group">
+                  <label for="preferred">Salvare come metodo preferito</label>
+                  <input type="checkbox" id="preferred" name="preferred" checked>
+                </div>
+                <?php }?>
+                
+                <button type="submit" class="submit-btn">Procedi al Pagamento</button>
+            </form>
+          </div>
       </div>
 
     </section><!-- /Starter Section Section -->
 
   </main>
 
-  <footer id="footer" class="footer position-relative">
-
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6">
-          <div class="footer-about">
-            <a href="/Slope" class="logo sitename">Day</a>
-            <div class="footer-contact pt-3">
-              <p>Via Vetoio</p>
-              <p>L'Aquila, AQ 67100</p>
-              <p class="mt-3"><strong>Phone:</strong> <span>+39 123 456 7890</span></p>
-              <p><strong>Email:</strong> <span>info@example.com</span></p>
-            </div>
-            <div class="social-links d-flex mt-4">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-4 col-md-12 footer-newsletter">
-          <h4>Our Newsletter</h4>
-          <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-          <form action="forms/newsletter.php" method="post" class="php-email-form">
-            <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-          </form>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Slope</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-
-  </footer>
+  
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

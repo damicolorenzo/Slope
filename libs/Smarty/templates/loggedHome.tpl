@@ -37,57 +37,82 @@
 <style>
 .card-impianto {
   display: flex;
-  flex-direction: row;
+  flex-direction: row;  /* Ripristina il layout orizzontale */
   border: 1px solid #ccc;
   border-radius: 8px;
-  width: 450px;
+  width: 100%;  /* La card occupa tutta la larghezza della pagina */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   overflow: hidden;
 }
 
-.impianto, .dettagli-impianto {
+.left {
+  width: 40%;  /* L'immagine occupa il 40% della larghezza della card */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 16px;
-  width: 50%;
+  background-color: #f8f8f8; /* Colore di sfondo per l'immagine */
+}
+
+.left .impianto-img {
+  width: 100%; 
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.left .impianto-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* L'immagine si adatta senza distorsioni */
+} 
+
+.right {
+  width: 60%;  /* La parte dei dettagli occupa il restante 60% della larghezza */
+  padding: 16px;
+  background-color: #fff;
+}
+
+.right-container{
+  margin: 5% 5% 5% 5%;
 }
 
 .impianto {
-  background-color: #f8f8f8;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   text-align: center;
 }
 
 .impianto h3 {
-  font-size: 18px;
+  font-size: 22px;
   color: #333;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
-.impianto-img {
-  width: 100%;
-  border-radius: 4px;
-  height: auto;
-  max-height: 120px;
-  object-fit: cover;
+.dettagli-impianto {
+  display: flex;
+  margin: 5% 0% 5% 0%;
 }
 
 .dettagli-impianto h4 {
   margin-top: 0;
-  font-size: 16px;
+  font-size: 18px;
   color: #666;
 }
 
 .dettagli-impianto .piste {
+  width: 20%;
   display: flex;
   flex-direction: column;
   gap: 6px;
   margin-bottom: 10px;
 }
 
+.impianti {
+  margin-left: 10%;
+}
+
 .pista {
-  padding: 4px 8px;
-  border-radius: 4px;
+  padding: 6px 12px;
+  border-radius: 6px;
   color: #fff;
   font-size: 14px;
   display: flex;
@@ -121,10 +146,10 @@
 }
 
 .status {
-  padding: 4px 8px;
+  padding: 6px 12px;
   border-radius: 4px;
   color: #fff;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .status.aperto {
@@ -134,10 +159,32 @@
 .status.chiuso {
   background-color: #f44336; /* Rosso per chiuso */
 }
+
 .search-form {
   display: flex;
+  flex-direction: column; /* La form è disposta in colonna */
+  align-items: center;
+}
 
-}</style>
+.btn-submit {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #4682B4;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+  background-color: #FF7F50;
+}
+
+</style>
 </head>
 
 <body class="starter-page-page">
@@ -162,7 +209,6 @@
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
       </div>
-
     </div>
 
   </header>
@@ -189,33 +235,54 @@
         {foreach from=$map item=i} 
           <form class="search-form" action="/Slope/User/skiFacilityDetails" method="POST">
           <div class="card-impianto">
-            <div class="impianto">
-              <h3>{$i[0]}</h3>
-              <img src="link-alla-tua-immagine.jpg" alt="Immagine dell'impianto" class="impianto-img">
+            <div class="left">
+              <div class="impianto-img">
+              {if count($i[3]) > 1}
+              <div class="carousel-track">
+                {foreach from=$i[3] item=e} 
+                  <img class="imagePreview" src="data:{$e->getType()};base64,{$e->getEncodedData()}" >
+                {/foreach}
+              </div>
+              {else}
+              {foreach from=$i[3] item=e} 
+                <img class="imagePreview" src="data:{$e->getType()};base64,{$e->getEncodedData()}" >
+              {/foreach}
+              {/if}
+              </div>
             </div>
-            <div class="dettagli-impianto">
-              <h4>Dettagli {$i[0]}</h4> 
-              <button type="submit" name="nameSkiFacility" value={$i[0]} >Esplora</button>
-                <div class="piste">
-                  {foreach from=$i[1] item=e}  
-                    {if $e['type'] == blu}
-                    <div class="pista blu">Blu: <span>{$e['CNT']}</span></div>
-                    {/if}
-                    {if $e['type'] == rossa}
-                    <div class="pista rossa">Rosse: <span>{$e['CNT']}</span></div>
-                    {/if}
-                    {if $e['type'] == nera}
-                    <div class="pista nera">Nere: <span>{$e['CNT']}</span></div>
-                    {/if}
-                    {if $e['type'] == verde}
-                    <div class="pista verde">Verdi: <span>{$e['CNT']}</span></div>
-                    {/if}
+            <div class="right">
+              <div class="right-container">
+                <h3>{$i[0]}</h3>
+                <div class="dettagli-impianto">
+                  <div class="piste">
+                    <h4>Dettagli piste</h4> 
+                    {foreach from=$i[1] item=e}  
+                      {if $e['type'] == blu}
+                      <div class="pista blu">Blu: <span>{$e['CNT']}</span></div>
+                      {/if}
+                      {if $e['type'] == rossa}
+                      <div class="pista rossa">Rosse: <span>{$e['CNT']}</span></div>
+                      {/if}
+                      {if $e['type'] == nera}
+                      <div class="pista nera">Nere: <span>{$e['CNT']}</span></div>
+                      {/if}
+                      {if $e['type'] == verde}
+                      <div class="pista verde">Verdi: <span>{$e['CNT']}</span></div>
+                      {/if}
+                    {/foreach}
+                  </div>
+                  <div class="impianti">
+                  <h4>Impianti di risalita:</h4>
+                  {foreach from=$i[2] item=f}
+                      <div>{Ucwords($f['type'])}: <span>{$f['CNT']}</span></div>
                   {/foreach}
+                  </div>
+                  
                 </div>
-                <p>Impianti: <span>{$i[2]}</span></p>
-                <p>Status: <span class="status aperto">'aperto'</span></p>
+                <p>Stato impianto: <span class="status aperto">aperto</span></p>
+                <button class="btn-submit" type="submit" name="nameSkiFacility" value="{$i[0]}">Esplora</button>
+              </div>
             </div>
-            
           </div>
           
           <form>
@@ -227,76 +294,7 @@
 
   </main>
 
-  <footer id="footer" class="footer position-relative">
-
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6">
-          <div class="footer-about">
-            <a href="/Slope" class="logo sitename">Slope</a>
-            <div class="footer-contact pt-3">
-              <p>Via Vetoio</p>
-              <p>L'Aquila, AQ 67100</p>
-              <p class="mt-3"><strong>Numero:</strong> <span>+39 123 456 7890</span></p>
-              <p><strong>Email:</strong> <span>info@example.com</span></p>
-            </div>
-            <div class="social-links d-flex mt-4">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-4 col-md-12 footer-newsletter">
-          <h4>Our Newsletter</h4>
-          <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-          <form action="forms/newsletter.php" method="post" class="php-email-form">
-            <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-          </form>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Slope</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-
-  </footer>
+  
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

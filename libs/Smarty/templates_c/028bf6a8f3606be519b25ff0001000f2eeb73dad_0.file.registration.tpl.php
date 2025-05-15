@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2024-11-30 15:49:25
+/* Smarty version 3.1.33, created on 2025-04-23 16:35:33
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\registration.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_674b25f56b0f21_32402803',
+  'unifunc' => 'content_6808fab511cdf1_25817143',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '028bf6a8f3606be519b25ff0001000f2eeb73dad' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\registration.tpl',
-      1 => 1732977992,
+      1 => 1745418922,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674b25f56b0f21_32402803 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6808fab511cdf1_25817143 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -58,79 +58,78 @@ function content_674b25f56b0f21_32402803 (Smarty_Internal_Template $_smarty_tpl)
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
   <style>
-  .form_login-container {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 45%;
+
+  .login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.form_login-container form h2 {
-  margin-bottom: 20px;
-  color: #333;
+  .login-form {
+  background-color: white;
+  padding: 60px 50px;
+  border-radius: 16px;
+  width: 100%;
 }
 
-.form_login-container label {
+.login-form h2 {
+  font-size: 32px;
+  margin-bottom: 36px;
+  color:rgb(0, 0, 0);
+}
+
+.login-form label {
   display: block;
-  margin-bottom: 8px;
-  color: #666;
+  margin: 18px 0 10px;
+  font-size: 18px;
+  color:rgb(0, 0, 0);
 }
 
-.form_login-container input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="username"], 
-input[type="tel"] {
+.login-form input {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
+  padding: 16px;
+  margin-bottom: 24px;
+  font-size: 18px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 10px;
 }
 
-input[type="date"] {
+.login-form button {
   width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-size: 16px;
-  font-family: Arial, sans-serif;
-}
-
-input[type="date"]:focus {
-  border-color: #4CAF50;
-  outline: none;
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-  background: url('data:image/svg+xml;base64,<svg>...</svg>') no-repeat center;
-  cursor: pointer;
-  color: transparent; 
-  opacity: 0.5; 
-}
-
-input[type="date"]::placeholder {
-  color: #999;
-  font-style: italic;
-}
-
-.form_login-container button {
-  width: 100%;
-  padding: 10px;
-  background-color: #007BFF;
-  border: none;
-  border-radius: 4px;
+  padding: 18px;
+  background-color: #FF7F50;
   color: white;
-  font-size: 16px;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-.form_login-container button:hover {
-  background-color: #0056b3;
+.login-form button:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 20%);
+}
+
+@media screen and (max-width: 600px) {
+  .form_login-container {
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: none;
+  }
+
+  .register-form input,
+  .register-form button {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .register-form h2 {
+    font-size: 24px;
+  }
+
+  .register-form label {
+    font-size: 15px;
+  }
 }
   </style>
 </head>
@@ -143,7 +142,13 @@ input[type="date"]::placeholder {
       <div class="container position-relative d-flex align-items-center justify-content-between">
         <a href="/Slope" class="logo d-flex align-items-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
-          <!-- <img src="assets/img/logo.png" alt=""> -->
+          <!-- <img src="assets/img/logo.png" alt=""> --><svg xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 45 45" fill="none">
+            <path d="M26.2409 33.633L31.3639 35.498C33.0209 36.101 34.8379 35.375 35.6459 33.864L36.5919 34.209C35.6189 36.177 33.3389 37.17 31.2169 36.504L31.0169 36.436L24.2609 33.978L24.2519 33.974L24.2429 33.97L7.99988 28.058L8.34188 27.118L26.2409 33.633Z" fill="#3C3C3C"/>
+            <path d="M26.2409 33.633L31.3639 35.498C33.0209 36.101 34.8379 35.375 35.6459 33.864L36.5919 34.209C35.6189 36.177 33.3389 37.17 31.2169 36.504L31.0169 36.436L24.2609 33.978L24.2519 33.974L24.2429 33.97L7.99988 28.058L8.34188 27.118L26.2409 33.633Z" stroke="#3C3C3C"/>
+            <path d="M24.8639 32.733L29.2689 26.781C29.6909 26.212 29.6519 25.434 29.2009 24.91L29.1899 24.897L29.1789 24.886L29.0899 24.796L29.0789 24.785L29.0679 24.774L26.3989 22.371C26.2339 22.221 26.1889 21.984 26.2809 21.787L26.3259 21.71L29.0999 17.546L30.2979 18.345V18.356L30.3019 18.388L30.3339 18.634L30.3349 18.647C30.3479 18.726 30.3609 18.801 30.3759 18.867C30.6079 19.873 31.1419 20.663 32.0179 21.196C32.8339 21.691 33.9089 21.941 35.2339 21.99V22.99C32.2709 22.883 30.4319 21.806 29.6609 19.916L29.3049 19.044L28.7819 19.828L27.6299 21.557L27.3899 21.916L27.7109 22.207L29.7369 24.031C30.6519 24.855 30.8249 26.216 30.1689 27.238L30.0689 27.382L25.6179 33.294M20.6019 31.208L23.8249 26.992L24.1149 26.613L23.7499 26.307L20.7489 23.774C20.2659 23.366 19.9949 22.788 19.9649 22.19L21.0829 22.61C21.1299 22.705 21.1889 22.796 21.2599 22.878L21.2729 22.893L21.2869 22.906L21.3659 22.983L21.3799 22.998L21.3939 23.009L25.1239 26.158C25.3089 26.313 25.3529 26.575 25.2389 26.781L25.1899 26.854L21.3149 31.759M17.6749 16.692L18.0579 16.835L18.2739 16.49L19.1509 15.089C19.3119 14.832 19.4899 14.586 19.6849 14.354C21.5839 12.092 24.6969 11.449 27.2719 12.578L28.1049 12.944L27.9679 12.046C27.8489 11.269 27.9909 10.449 28.4269 9.72199C29.4229 8.06499 31.5729 7.52899 33.2299 8.52399C34.8869 9.51999 35.4229 11.669 34.4279 13.326C33.9679 14.09 33.2649 14.615 32.4759 14.863L32.3149 14.914L32.2179 15.052L31.7529 15.709L30.9089 15.147L31.6679 14.013C32.4279 13.939 33.1459 13.517 33.5699 12.811C34.2809 11.628 33.8989 10.093 32.7149 9.38199C31.5319 8.66999 29.9959 9.05299 29.2849 10.237C28.8629 10.938 28.8259 11.763 29.1109 12.466L28.0629 14.21C25.7389 12.381 22.3659 12.717 20.4509 14.998C20.3409 15.129 20.2369 15.264 20.1399 15.404L20.1329 15.414L20.0049 15.61L19.9989 15.619L19.3379 16.677L19.0129 17.194L19.5859 17.41" fill="#3C3C3C"/>
+            <path d="M24.8639 32.733L29.2689 26.781C29.6909 26.212 29.6519 25.434 29.2009 24.91L29.1899 24.897L29.1789 24.886L29.0899 24.796L29.0789 24.785L29.0679 24.774L26.3989 22.371C26.2339 22.221 26.1889 21.984 26.2809 21.787L26.3259 21.71L29.0999 17.546L30.2979 18.345V18.356L30.3019 18.388L30.3339 18.634L30.3349 18.647C30.3479 18.726 30.3609 18.801 30.3759 18.867C30.6079 19.873 31.1419 20.663 32.0179 21.196C32.8339 21.691 33.9089 21.941 35.2339 21.99V22.99C32.2709 22.883 30.4319 21.806 29.6609 19.916L29.3049 19.044L28.7819 19.828L27.6299 21.557L27.3899 21.916L27.7109 22.207L29.7369 24.031C30.6519 24.855 30.8249 26.216 30.1689 27.238L30.0689 27.382L25.6179 33.294M20.6019 31.208L23.8249 26.992L24.1149 26.613L23.7499 26.307L20.7489 23.774C20.2659 23.366 19.9949 22.788 19.9649 22.19L21.0829 22.61C21.1299 22.705 21.1889 22.796 21.2599 22.878L21.2729 22.893L21.2869 22.906L21.3659 22.983L21.3799 22.998L21.3939 23.009L25.1239 26.158C25.3089 26.313 25.3529 26.575 25.2389 26.781L25.1899 26.854L21.3149 31.759M17.6749 16.692L18.0579 16.835L18.2739 16.49L19.1509 15.089C19.3119 14.832 19.4899 14.586 19.6849 14.354C21.5839 12.092 24.6969 11.449 27.2719 12.578L28.1049 12.944L27.9679 12.046C27.8489 11.269 27.9909 10.449 28.4269 9.72199C29.4229 8.06499 31.5729 7.52899 33.2299 8.52399C34.8869 9.51999 35.4229 11.669 34.4279 13.326C33.9679 14.09 33.2649 14.615 32.4759 14.863L32.3149 14.914L32.2179 15.052L31.7529 15.709L30.9089 15.147L31.6679 14.013C32.4279 13.939 33.1459 13.517 33.5699 12.811C34.2809 11.628 33.8989 10.093 32.7149 9.38199C31.5319 8.66999 29.9959 9.05299 29.2849 10.237C28.8629 10.938 28.8259 11.763 29.1109 12.466L28.0629 14.21C25.7389 12.381 22.3659 12.717 20.4509 14.998C20.3409 15.129 20.2369 15.264 20.1399 15.404L20.1329 15.414L20.0049 15.61L19.9989 15.619L19.3379 16.677L19.0129 17.194L19.5859 17.41" stroke="#3C3C3C"/>
+            <path d="M8.60785 14.061L24.6138 20.065" stroke="#3C3C3C" stroke-width="2"/>
+            </svg>
           <h1 class="sitename">Slope</h1>
         </a>
 
@@ -187,10 +192,12 @@ input[type="date"]::placeholder {
 
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
+
       <?php if ($_smarty_tpl->tpl_vars['exist']->value == false) {?>
-      <div class="container" data-aos="fade-up">
-        <div class="form_login-container">
-            <form class="register-form" action="/Slope/User/checkRegistration" method="POST">
+      <div class="login-wrapper">
+        <div class="col-lg-4 col-md-6 card aos-init aos-animate" data-aos="fade-up">
+            
+            <form class="login-form" action="/Slope/User/checkRegistration" method="POST">
                 <h2>Registrazione</h2>
                 
                 <label for="name">Nome</label>

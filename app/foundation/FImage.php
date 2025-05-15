@@ -34,6 +34,7 @@ class FImage{
             $images = [];
             $im = new EImage($queryResult[0]['name'], $queryResult[0]['size'],$queryResult[0]['type'],$queryResult[0]['imageData']);
             $im->setId($queryResult[0]['idImage']);
+            $images[] = $im;
             return $images;
         }elseif(count($queryResult) > 1){
             $images = [];
@@ -89,7 +90,7 @@ class FImage{
         }
     }
 
-    public static function getImageById($id){
+    public static function getImageById($id) : ?array{
         $result = FEntityManager::getInstance()->retriveObj(self::getTable(), 'idImage', $id);
         return $result;
     }
