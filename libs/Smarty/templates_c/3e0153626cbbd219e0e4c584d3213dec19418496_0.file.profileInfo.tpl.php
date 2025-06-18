@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-15 14:15:39
+/* Smarty version 3.1.33, created on 2025-05-29 16:48:46
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\profileInfo.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_6825daeb96d1a8_97033222',
+  'unifunc' => 'content_683873ce7f6967_71583455',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3e0153626cbbd219e0e4c584d3213dec19418496' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\profileInfo.tpl',
-      1 => 1747239937,
+      1 => 1748530125,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6825daeb96d1a8_97033222 (Smarty_Internal_Template $_smarty_tpl) {
+function content_683873ce7f6967_71583455 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -58,94 +58,8 @@ function content_6825daeb96d1a8_97033222 (Smarty_Internal_Template $_smarty_tpl)
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
   <style>
-  /* Layout container principale */
-.profile-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    background: #f9f9f9;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-}
-
-/* Info profilo */
-.profile-info {
-    flex: 1;
-    min-width: 300px;
-    padding-right: 20px;
-}
-
-.profile-info h2 {
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 24px;
-    border-bottom: 2px solid #4682B4;
-    padding-bottom: 5px;
-}
-
-.profile-info p {
-    font-size: 16px;
-    margin-bottom: 10px;
-    color: #444;
-}
-
-.profile-info strong {
-    color: #222;
-}
-
-/* Immagine profilo */
-.profile-image {
-    text-align: center;
-    min-width: 200px;
-}
-
-.profile-pic {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid #4682B4;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    margin-top: 10px;
-}
-
-/* Sezione abbonamento */
-.section-container {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    margin-bottom: 30px;
-}
-
-.profile-section h3 {
-    color: #333;
-    margin-bottom: 15px;
-    border-left: 5px solid #2196F3;
-    padding-left: 10px;
-}
-
-.section-image {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    display: block;
-    margin: 10px 0;
-    border-radius: 8px;
-    border: 2px solid #ccc;
-}
-
-/* Pulsanti */
-.button-container {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.edit-button {
-    background-color: #4682B4;
+  .super-button {
+    background-color:rgb(201, 198, 53);
     color: white;
     border: none;
     padding: 12px 24px;
@@ -153,10 +67,80 @@ function content_6825daeb96d1a8_97033222 (Smarty_Internal_Template $_smarty_tpl)
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+  }
+.creditCard {
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+  border: 1px solid #cbd5e0;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.edit-button:hover {
-    background-color: #4682B4;
+.creditCard h2 {
+  margin-bottom: 16px;
+  font-size: 1.4rem;
+  color: #2d3748;
+}
+
+.card-details p {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #4a5568;
+}
+
+.card-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.2s;
+}
+
+.btn.edit {
+  background-color: #3182ce;
+  color: white;
+}
+
+.btn.edit:hover {
+  background-color: #2b6cb0;
+}
+
+.btn.remove {
+  background-color: #e53e3e;
+  color: white;
+}
+
+.btn.remove:hover {
+  background-color: #c53030;
+} 
+
+.subscription-box {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.subscription-box h2 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+.subscription-box p {
+  margin: 5px 0;
+  font-size: 14px;
 }
 
   </style>
@@ -191,60 +175,83 @@ function content_6825daeb96d1a8_97033222 (Smarty_Internal_Template $_smarty_tpl)
 
   <main class="main">
 
-    <!-- Page Title -->
-    <!-- <div class="page-title" data-aos="fade">
-      <div class="container">
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="/Slope">Home</a></li>
-            <li class="current">Starter Page</li>
-          </ol>
-        </nav>
-        <h1>Starter Page</h1>
-      </div>
-    </div> --><!-- End Page Title -->
-
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
 
-      <div class="container" data-aos="fade-up">
+      <div class="container profileInfo" data-aos="fade-up">
         
         <div class="profile-container">
-            <div class="profile-info">
-                <h2>INFORMAZIONI PROFILO</h2>
-                <p><strong>Nome utente:</strong> <?php echo $_smarty_tpl->tpl_vars['username']->value;?>
+          <div class="profile-info">
+              <h2>INFORMAZIONI PROFILO</h2>
+              <p><strong>Nome utente:</strong> <?php echo $_smarty_tpl->tpl_vars['username']->value;?>
 </p>
-                <p><strong>Nome:</strong> <?php echo $_smarty_tpl->tpl_vars['name']->value;?>
+              <p><strong>Nome:</strong> <?php echo $_smarty_tpl->tpl_vars['name']->value;?>
 </p>
-                <p><strong>Cognome:</strong> <?php echo $_smarty_tpl->tpl_vars['surname']->value;?>
+              <p><strong>Cognome:</strong> <?php echo $_smarty_tpl->tpl_vars['surname']->value;?>
 </p>
-                <p><strong>Email di conferma:</strong> <?php echo $_smarty_tpl->tpl_vars['email']->value;?>
+              <p><strong>Email di conferma:</strong> <?php echo $_smarty_tpl->tpl_vars['email']->value;?>
 </p>
-                <p><strong>Numero di telefono:</strong> <?php echo $_smarty_tpl->tpl_vars['phoneNumber']->value;?>
+              <p><strong>Numero di telefono:</strong> <?php echo $_smarty_tpl->tpl_vars['phoneNumber']->value;?>
 </p>
-                <p><strong>Data nascita:</strong> <?php echo $_smarty_tpl->tpl_vars['birthDate']->value;?>
+              <p><strong>Data nascita:</strong> <?php echo $_smarty_tpl->tpl_vars['birthDate']->value;?>
 </p>
-            </div>
-            <div class="profile-image">
-                <!-- Immagine del profilo -->
-                <?php if ($_smarty_tpl->tpl_vars['image']->value == array()) {?> 
-                  <img class="profile-pic" src="https://localhost/Slope/libs/Smarty/images/NotFound.jpg" loading="lazy" alt="Img">
-                <?php } else { ?>
-                <?php
+          </div>
+          <div class="profile-image">
+              <!-- Immagine del profilo -->
+              <?php if ($_smarty_tpl->tpl_vars['image']->value == array()) {?> 
+                <img class="profile-pic" src="https://localhost/Slope/libs/Smarty/images/NotFound.jpg" loading="lazy" alt="Img">
+              <?php } else { ?>
+              <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['image']->value, 'i');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 ?>
-                  <img class="profile-pic" src="data:<?php echo $_smarty_tpl->tpl_vars['i']->value->getType();?>
+                <img class="profile-pic" src="data:<?php echo $_smarty_tpl->tpl_vars['i']->value->getType();?>
 ;base64,<?php echo $_smarty_tpl->tpl_vars['i']->value->getEncodedData();?>
 " loading="lazy" alt="Img">
-                <?php
+              <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-                <?php }?>
-            </div>
+              <?php }?>
+          </div>
         </div>
+        <div class="button-container">
+            <a href="/Slope/User/modifyProfile"><button class="edit-button">Modifica profilo</button></a>
+        </div>
+        <?php if (count($_smarty_tpl->tpl_vars['creditCard']->value) > 0) {?>
+        <div class="creditCard">
+          <h2>Metodo di Pagamento</h2>
+          <div class="card-details">
+            <p><strong>Nome:</strong> <?php echo $_smarty_tpl->tpl_vars['creditCard']->value[0]->getCardHolderName();?>
+</p>
+            <p><strong>Cognome:</strong> <?php echo $_smarty_tpl->tpl_vars['creditCard']->value[0]->getCardHolderSurname();?>
+</p>
+            <p><strong>Numero Carta:</strong> **** **** **** <?php echo substr($_smarty_tpl->tpl_vars['creditCard']->value[0]->getCardNumber(),-4);?>
+</p>
+            <p><strong>Scadenza:</strong> <?php echo $_smarty_tpl->tpl_vars['creditCard']->value[0]->getExpiryDate();?>
+</p>
+            <p><strong>CVV:</strong> ***</p>
+          </div>
+          <div class="card-actions">
+            <form action="/Slope/User/modifyCreditCard" class="modifyCreditCard"  enctype="multipart/form-data" method="POST">
+            <button type=submit class="btn edit">Modifica</button>
+            </form>
+            <form action="/Slope/User/deleteCreditCard" class="deleteCreditCard"  enctype="multipart/form-data" method="POST">
+            <button class="btn remove">Rimuovi Carta</button>
+            </form>
+          </div>
+        </div>
+        <?php }?>
+        <?php if (count($_smarty_tpl->tpl_vars['subscription']->value) > 0) {?>
+        <div class="subscription-box">
+          <h2>Abbonamento</h2>
+          <p>Data inizio: <?php echo $_smarty_tpl->tpl_vars['subscription']->value[0]->getStartDate();?>
+</p>
+          <p>Data fine: <?php echo $_smarty_tpl->tpl_vars['subscription']->value[0]->getEndDate();?>
+</p>
+        </div>
+        <?php }?>
         <?php if (count($_smarty_tpl->tpl_vars['insurance']->value) > 0) {?>
         <div class="section-container">
             <div class="profile-section">
@@ -260,11 +267,12 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         </div>
         <?php }?>
 
-        <div class="button-container">
-            <a href="/Slope/User/modifyProfile"><button class="edit-button">Modifica profilo</button></a>
-        </div>
-
         
+        <?php if (count($_smarty_tpl->tpl_vars['subscription']->value) <= 0) {?>
+        <div class="button-container">
+            <a href="/Slope/User/buySubscription"><button class="super-button">Acquista abbonamento</button></a>
+        </div>
+        <?php }?>
 
       <!-- Da riempire in base alla pagina  -->
 

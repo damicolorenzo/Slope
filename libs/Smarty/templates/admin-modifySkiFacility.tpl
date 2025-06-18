@@ -4,14 +4,17 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Registration</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <title>Modifica impianto</title>
 
   <!-- Favicons -->
-  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/favicon.png" rel="icon">
-  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: dark)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: dark)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: dark)">
 
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/dark/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: light)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: light)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: light)">
+  
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -27,94 +30,6 @@
   <!-- Main CSS File -->
   <link href="https://localhost/Slope/libs/Smarty/day/assets/css/main.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Day
-  * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
-  * Updated: Jun 14 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-<style>
-.form-container {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-    max-width: 600px; /* Adatta la larghezza */
-    width: 90%;       /* Adattabile su dispositivi piccoli */
-    margin: 40px auto; /* Centra orizzontalmente e aggiunge spazio sopra/sotto */
-  }
-
-  @media (max-width: 600px) {
-    .form-container {
-      padding: 15px;
-    }
-
-    button {
-      font-size: 14px;
-      padding: 8px;
-    }
-  }
-
-  .form-container h1 {
-    font-size: 20px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  label {
-    display: block;
-    margin: 10px 0 5px;
-    font-weight: bold;
-  }
-
-  input[type="text"],
-  input[type="email"],
-  input[type="date"],
-  input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-
-  .durata-skipass {
-    margin-bottom: 15px;
-  }
-
-  .durata-skipass p, .tipologia-biglietto p {
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-
-  input[type="checkbox"],
-  input[type="radio"] {
-    margin-right: 10px;
-  }
-
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: #FF4400;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-
-  button:hover {
-    background-color: #FF7F50;
-  }
-
-  textarea {
-    width:100%;
-    height: 200px;  
-  }
-</style>
 </head>
 
 <body class="starter-page-page">
@@ -124,8 +39,6 @@
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
         <a href="/Slope" class="logo d-flex align-items-center">
-          <!-- Uncomment the line below if you also wish to use an image logo -->
-          <!-- <img src="assets/img/logo.png" alt=""> -->
           <h1 class="sitename">Slope Admin</h1>
         </a>
 
@@ -162,36 +75,36 @@
 
       <div class="container" data-aos="fade-up">
         
-        <div class="form-container">
-            <div class="profile-info">
-                <form action="/Slope/Admin/confirmModifySkiFacility" enctype="multipart/form-data" method="POST">
-                    <h2>MODIFICA IMPIANTO</h2>
-                    <input type="hidden" id="idSkiFacility" name="idSkiFacility" value={$id}>
-                    {if $exist}
-                    <div class="container" data-aos="fade-up">
-                      <h1>Un impianto con lo stesso nome è già presente nel database</h1>
-                    </div>
+        <div class="form-container modifySkiFacility">
+              <form action="/Slope/Admin/confirmModifySkiFacility" enctype="multipart/form-data" method="POST">
+                  <h2>Modifica impianto</h2>
+                  <input type="hidden" id="idSkiFacility" name="idSkiFacility" value={$id}>
+                  {if $exist}
+                  <div class="container" data-aos="fade-up">
+                    <h1>Un impianto con lo stesso nome è già presente nel database</h1>
+                  </div>
+                  {/if}
+                  <label for="name">Nome:</label>
+                  <input type="text" id="name" name="name" value={$name} required>
+
+                  <label for="status">Stato:</label>
+                  <div class="radio-group">
+                    {if $status}
+                    <label><input type="radio" name="status" value="aperto" checked> Aperto</label>
+                    <label><input type="radio" name="status" value="chiuso"> Chiuso</label>
+                    {else}
+                    <label><input type="radio" name="status" value="aperto"> Aperto</label>
+                    <label><input type="radio" name="status" value="chiuso"checked> Chiuso</label>
                     {/if}
-                    <p><strong>Nome:</strong></p>
-                    <input type="text" id="name" name="name" value={$name} required>
+                  </div>
 
-                    <p><strong>Stato:</strong></p>
-                    <div class="radio-group">
-                      {if $status == 'aperto'}
-                      <label><input type="radio" name="status" value="aperto" checked> Aperto</label>
-                      <label><input type="radio" name="status" value="chiuso"> Chiuso</label>
-                      {else}
-                      <label><input type="radio" name="status" value="aperto"> Aperto</label>
-                      <label><input type="radio" name="status" value="chiuso"checked> Chiuso</label>
-                      {/if}
-                    </div>
-
-                    <p><strong>Descrizione:</strong></p>
-                    <textarea id="description" name="description" required>{$description}</textarea>
-                    
-                    <button class="edit-button" type="submit">Conferma modifiche</button>
-                </form>
-            </div>
+                  <label for="description">Descrizione:</label>
+                  <textarea id="description" name="description" required>{$description}</textarea>
+                  
+                  <div class="button-container">
+                    <button type="submit">Conferma</button>
+                  </div>
+              </form>
         </div>
 
       <!-- Da riempire in base alla pagina  -->

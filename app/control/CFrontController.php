@@ -14,7 +14,9 @@ class CFrontController {
         /*
         Rimuove gli spazi vuoti o i caratteri passati in input all'inizio o alla fine 
         della stringa
+
         */
+
         $requestUri = trim($requestUri, '/');
 
 
@@ -69,8 +71,10 @@ class CFrontController {
                 Rimuove i primi due elementi dalla lista (avendo passato 2, altrimenti rimuove n elementi dalla lista)
                 In params vogliamo mettere eventuali parametri passati nell'URI
                 */
-                $params = array_slice($uriParts, 2); 
-                //Chiama la funzione $methodName all'interno del file $controllerClass passando come parametri $params
+
+                $params = array_slice($uriParts, 2);
+
+                //Chiama la funzione $methodName all'interno del file $controllerClass passando come parametri $params 
                 call_user_func_array([$controllerClass, $methodName], $params);
             } else {
                 /* print("file non esiste");

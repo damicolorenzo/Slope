@@ -167,7 +167,7 @@ class FInsuranceTemp {
     }
 
     public static function getInsuranceTempObjFromFieldsForSearch(array $fields) : array{
-        $queryResult = FEntityManager::getInstance()->retriveObjForSearch(self::getTable(), $fields);
+        $queryResult = FEntityManager::getInstance()->retriveObjForSearchAND(self::getTable(), $fields);
         return $queryResult;
     }
 

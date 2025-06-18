@@ -34,83 +34,6 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  <style>
-  .form-container {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-    max-width: 600px; /* Adatta la larghezza */
-    width: 90%;       /* Adattabile su dispositivi piccoli */
-    margin: 40px auto; /* Centra orizzontalmente e aggiunge spazio sopra/sotto */
-  }
-
-  @media (max-width: 600px) {
-    .form-container {
-      padding: 15px;
-    }
-
-    button {
-      font-size: 14px;
-      padding: 8px;
-    }
-  }
-
-  .form-container h1 {
-    font-size: 20px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  label {
-    display: block;
-    margin: 10px 0 5px;
-    font-weight: bold;
-  }
-
-  input[type="text"],
-  input[type="email"],
-  input[type="date"],
-  input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: #FF4400;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-
-  button:hover {
-    background-color: #FF7F50;
-  }
-
-  .profile-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-
-  .profile-pic {
-    width: 280px; /* Aumentata la dimensione dell'immagine del profilo */
-    height: 280px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #000;
-  }
-  </style>
 </head>
 
 <body class="starter-page-page">
@@ -158,7 +81,7 @@
 
       <div class="container" data-aos="fade-up">
         
-        <div class="form-container">
+        <div class="form-container modifyProfileImage">
             <div class="profile-image">
                 <!-- Immagine del profilo -->
                 {if $image == []} 
@@ -170,7 +93,7 @@
                 {/if}
             </div>
 
-            <p><strong>Modifica immagine:</strong></p>
+            <label>Modifica immagine:</label>
             <div class="button-container">
               <form action="/Admin/modifyImage" enctype="multipart/form-data" method="POST">
                 <input type="hidden" name="userId" id="userId" value={$userId}>
@@ -179,7 +102,7 @@
               </form>
             </div>
 
-            <p><strong>Rimuovi immagine:</strong></p>
+            <label>Rimuovi immagine:</label>
             <div class="button-container">
               <form action="/User/deleteImage" method="POST">
                 <input type="hidden" name="userId" id="userId" value={$userId}>

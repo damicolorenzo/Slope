@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-14 15:17:00
+/* Smarty version 3.1.33, created on 2025-05-22 16:16:26
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-modifySkiFacility.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_682497cc72dcf0_28789639',
+  'unifunc' => 'content_682f31ba1234b4_90911078',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1e4c25a43bd491f41ef7ff7ee444b4f2f042e837' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-modifySkiFacility.tpl',
-      1 => 1747228610,
+      1 => 1747923380,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_682497cc72dcf0_28789639 (Smarty_Internal_Template $_smarty_tpl) {
+function content_682f31ba1234b4_90911078 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -57,87 +57,6 @@ function content_682497cc72dcf0_28789639 (Smarty_Internal_Template $_smarty_tpl)
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-<style>
-.form-container {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-    max-width: 600px; /* Adatta la larghezza */
-    width: 90%;       /* Adattabile su dispositivi piccoli */
-    margin: 40px auto; /* Centra orizzontalmente e aggiunge spazio sopra/sotto */
-  }
-
-  @media (max-width: 600px) {
-    .form-container {
-      padding: 15px;
-    }
-
-    button {
-      font-size: 14px;
-      padding: 8px;
-    }
-  }
-
-  .form-container h1 {
-    font-size: 20px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  label {
-    display: block;
-    margin: 10px 0 5px;
-    font-weight: bold;
-  }
-
-  input[type="text"],
-  input[type="email"],
-  input[type="date"],
-  input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-
-  .durata-skipass {
-    margin-bottom: 15px;
-  }
-
-  .durata-skipass p, .tipologia-biglietto p {
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-
-  input[type="checkbox"],
-  input[type="radio"] {
-    margin-right: 10px;
-  }
-
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: #FF4400;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-
-  button:hover {
-    background-color: #FF7F50;
-  }
-
-  textarea {
-    width:100%;
-    height: 200px;  
-  }
-</style>
 </head>
 
 <body class="starter-page-page">
@@ -185,39 +104,39 @@ function content_682497cc72dcf0_28789639 (Smarty_Internal_Template $_smarty_tpl)
 
       <div class="container" data-aos="fade-up">
         
-        <div class="form-container">
-            <div class="profile-info">
-                <form action="/Slope/Admin/confirmModifySkiFacility" enctype="multipart/form-data" method="POST">
-                    <h2>MODIFICA IMPIANTO</h2>
-                    <input type="hidden" id="idSkiFacility" name="idSkiFacility" value=<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
+        <div class="form-container modifySkiFacility">
+              <form action="/Slope/Admin/confirmModifySkiFacility" enctype="multipart/form-data" method="POST">
+                  <h2>Modifica impianto</h2>
+                  <input type="hidden" id="idSkiFacility" name="idSkiFacility" value=<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
 >
-                    <?php if ($_smarty_tpl->tpl_vars['exist']->value) {?>
-                    <div class="container" data-aos="fade-up">
-                      <h1>Un impianto con lo stesso nome è già presente nel database</h1>
-                    </div>
-                    <?php }?>
-                    <p><strong>Nome:</strong></p>
-                    <input type="text" id="name" name="name" value=<?php echo $_smarty_tpl->tpl_vars['name']->value;?>
+                  <?php if ($_smarty_tpl->tpl_vars['exist']->value) {?>
+                  <div class="container" data-aos="fade-up">
+                    <h1>Un impianto con lo stesso nome è già presente nel database</h1>
+                  </div>
+                  <?php }?>
+                  <label for="name">Nome:</label>
+                  <input type="text" id="name" name="name" value=<?php echo $_smarty_tpl->tpl_vars['name']->value;?>
  required>
 
-                    <p><strong>Status:</strong></p>
-                    <div class="radio-group">
-                      <?php if ($_smarty_tpl->tpl_vars['status']->value == 'aperto') {?>
-                      <label><input type="radio" name="status" value="aperto" checked> Aperto</label>
-                      <label><input type="radio" name="status" value="chiuso"> Chiuso</label>
-                      <?php } else { ?>
-                      <label><input type="radio" name="status" value="aperto"> Aperto</label>
-                      <label><input type="radio" name="status" value="chiuso"checked> Chiuso</label>
-                      <?php }?>
-                    </div>
+                  <label for="status">Stato:</label>
+                  <div class="radio-group">
+                    <?php if ($_smarty_tpl->tpl_vars['status']->value) {?>
+                    <label><input type="radio" name="status" value="aperto" checked> Aperto</label>
+                    <label><input type="radio" name="status" value="chiuso"> Chiuso</label>
+                    <?php } else { ?>
+                    <label><input type="radio" name="status" value="aperto"> Aperto</label>
+                    <label><input type="radio" name="status" value="chiuso"checked> Chiuso</label>
+                    <?php }?>
+                  </div>
 
-                    <p><strong>Descrizione:</strong></p>
-                    <textarea id="description" name="description" required><?php echo $_smarty_tpl->tpl_vars['description']->value;?>
+                  <label for="description">Descrizione:</label>
+                  <textarea id="description" name="description" required><?php echo $_smarty_tpl->tpl_vars['description']->value;?>
 </textarea>
-                    
-                    <button class="edit-button" type="submit">Conferma modifiche</button>
-                </form>
-            </div>
+                  
+                  <div class="button-container">
+                    <button type="submit">Conferma</button>
+                  </div>
+              </form>
         </div>
 
       <!-- Da riempire in base alla pagina  -->

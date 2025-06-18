@@ -5,7 +5,7 @@ require_once("FEntityManager.php");
 class FSkipassObj {
 
     private static $table = "skipassObj";
-    private static $value = "(NULL, :description, :value)";
+    private static $value = "(NULL, :description, :value, :idSkiFacility, :idSkipassTemp)";
     private static $key = "idSkipassObj";
     private static $extKey1 = "idSkiFacility";
     private static $extKey2 = "idSkipassTemp";
@@ -42,6 +42,8 @@ class FSkipassObj {
     public static function bind(object $stmt, ESkipassObj $skipass) {
         $stmt->bindValue(":description", $skipass->getDescription(), PDO::PARAM_STR);
         $stmt->bindValue(":value", $skipass->getValue(), PDO::PARAM_INT);
+        $stmt->bindValue(":idSkiFacility", $skipass->getIdSkiFacility(), PDO::PARAM_INT);
+        $stmt->bindValue(":idSkipassTemp", $skipass->getIdSkipassTemp(), PDO::PARAM_INT);
     }
 
     /**
@@ -163,7 +165,7 @@ class FSkipassObj {
     }
 
     public static function getSkipassObjFromFieldsForSearch(array $fields) : array{
-        $queryResult = FEntityManager::getInstance()->retriveObjForSearch(self::getTable(), $fields);
+        $queryResult = FEntityManager::getInstance()->retriveObjForSearchAND(self::getTable(), $fields);
         return $queryResult;
     }
 

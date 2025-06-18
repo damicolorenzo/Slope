@@ -32,10 +32,10 @@ class FSkipassTemp {
     /**
      * Binds the values of a person object to a prepared SQL statement.
      * @param object $stmt The PDO statement object used for query execution.
-     * @param ESkipassTemplate $skipass An object representing a skipass template object
+     * @param ESkipassTemp $skipass An object representing a skipass template object
      * @return void
      */
-    public static function bind(object $stmt, ESkipassTemplate $skipass) {
+    public static function bind(object $stmt, ESkipassTemp $skipass) {
         $stmt->bindValue(":description", $skipass->getDescription(), PDO::PARAM_STR);
         $stmt->bindValue(":period", $skipass->getPeriod(), PDO::PARAM_INT);
         $stmt->bindValue(":type", $skipass->getType(), PDO::PARAM_STR);
@@ -58,14 +58,14 @@ class FSkipassTemp {
     public static function createSkipassTempObj($queryResult) : array{
         if(count($queryResult) == 1){
             $skipassA = [];
-            $skipass = new ESkipassTemplate($queryResult[0]['description'], $queryResult[0]['period'], $queryResult[0]['type']);
+            $skipass = new ESkipassTemp($queryResult[0]['description'], $queryResult[0]['period'], $queryResult[0]['type']);
             $skipass->setIdSkipassTemplate($queryResult[0]['idSkipassTemp']);
             $skipassA[] = $skipass;
             return $skipassA;
         }elseif(count($queryResult) > 1){
             $skipassObjs = [];
             for($i = 0; $i < count($queryResult); $i++){
-                $skipass = new ESkipassTemplate($queryResult[$i]['description'], $queryResult[$i]['period'], $queryResult[$i]['type']);
+                $skipass = new ESkipassTemp($queryResult[$i]['description'], $queryResult[$i]['period'], $queryResult[$i]['type']);
                 $skipass->setIdSkipassTemplate($queryResult[$i]['idSkipassTemp']);
                 $skipassObjs[] = $skipass;
             }
@@ -81,7 +81,7 @@ class FSkipassTemp {
      * @param array $fieldArray Refers to an array of fields and values
      * @return bool true if succeded and false if failed
      */
-    public static function saveObj(ESkipassTemplate $obj, ?array $fieldArray = null) : bool{
+    public static function saveObj(ESkipassTemp $obj, ?array $fieldArray = null) : bool{
         if($fieldArray === null) {
             try {
                 FEntityManager::getInstance()->getDb()->beginTransaction();
@@ -147,7 +147,7 @@ class FSkipassTemp {
     }
 
     public static function getSkipassTempObjFromFieldsForSearch(array $fields) : array{
-        $queryResult = FEntityManager::getInstance()->retriveObjForSearch(self::getTable(), $fields);
+        $queryResult = FEntityManager::getInstance()->retriveObjForSearchAND(self::getTable(), $fields);
         return $queryResult;
     }
 

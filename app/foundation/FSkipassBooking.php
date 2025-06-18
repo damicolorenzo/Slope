@@ -150,6 +150,21 @@ class FSkipassBooking {
         $queryResult = FEntityManager::getInstance()->retriveObj(self::getTable(), self::getKey(), $id);
         return $queryResult;
     }
+
+    public static function getSkipassBookingFromFieldsForSearch(array $fields) : array{
+        $queryResult = FEntityManager::getInstance()->retriveObjForSearchMixed(self::getTable(), $fields);
+        return $queryResult;
+    }
+
+    public static function getSkipassBookingOnSkipassObjId(string $idSkipassObj) : array{
+        $queryResult = FEntityManager::getInstance()->retriveObj(self::getTable(), self::$externalKeyO, $idSkipassObj);
+        return $queryResult;
+    }
+
+    public static function getSkipassBookingOnIdUser(string $idUser) : array{
+        $queryResult = FEntityManager::getInstance()->retriveObj(self::getTable(), self::$externalKeyU, $idUser);
+        return $queryResult;
+    }
 }
 
 ?>

@@ -1,13 +1,13 @@
 <?php
 require_once('EPerson.php');
 
-class EAdmin extends EPerson{
+class EAdmin {
 
     /**
      * Holds the id of the user in the database.
      * @var int
      */
-    protected int $idUser;
+    protected int $idAdmin;
     /**
      * Holds the username of the user.
      * @var string
@@ -25,8 +25,7 @@ class EAdmin extends EPerson{
     private static string $entity = EAdmin::class;
 
     //constructor
-    public function __construct(string $name, string $surname, string $email, string $phoneNumber, string $birthDate, string $username, string $password) {
-        parent::__construct($name, $surname,  $email,  $phoneNumber,  $birthDate);
+    public function __construct(string $username, string $password) {
         $this->username = $username;
         $this->password = $password;
     }
@@ -42,10 +41,12 @@ class EAdmin extends EPerson{
     //getter
     public function getUsername() : string {return $this->username;}
     public function getPassword() : string {return $this->password;}
+    public function getIdAdmin() : int {return $this->idAdmin;}
 
     //setter
     public function setUsername(string $username) : void {$this->username = $username;}
     public function setPassword(string $password) : void {$this->password = $password;}
+    public function setIdAdmin(int $idAdmin) : void {$this->idAdmin = $idAdmin;}
 }
 
 

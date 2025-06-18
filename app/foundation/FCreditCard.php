@@ -7,6 +7,7 @@ class FCreditCard{
     private static $table = "creditCard";
     private static $value = "(NULL, :cardHolderName, :cardHolderSurname, :expiryDate, :cardNumber, :cvv, :idUser)";
     private static $key = "idCreditCard";
+    private static $extKey = "idUser";
 
 
     public static function getTable(){
@@ -23,6 +24,10 @@ class FCreditCard{
 
     public static function getClass(){
         return self::class;
+    }
+
+    public static function getExtKey(){
+        return self::$extKey;
     }
 
     /**

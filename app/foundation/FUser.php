@@ -3,8 +3,8 @@
 Class FUser{
 
     private static $table = "user";
-    private static $columns = "('idImage', 'idUser', 'username', 'password')";
-    private static $value = "(:idImage, :idUser, :username, :password)";
+    private static $columns = "('idUser', 'idImage', 'username', 'password')";
+    private static $value = "(:idUser, :idImage, :username, :password)";
     private static $key = "idUser";
 
 
@@ -264,9 +264,30 @@ Class FUser{
      * @param string $surname
      * @return array $result
      */
-    public static function getUsersFromUsernameOrNameOrSurname(string $name, string $surname) : array{
-        $conditions = [["name", $name] , ["surname", $surname]];
-        $result = FEntityManager::getInstance()->retriveObjForSearch(FPerson::getTable(), $conditions);
+    public static function getUsersNameANDSurname(string $name, string $surname) : array{
+        if ($name != "" || $surname != "") {
+            $conditions = [["name", $name] , ["surname", $surname]];
+            $result = FEntityManager::getInstance()->retriveObjForSearchAND(FPerson::getTable(), $conditions);
+        } else 
+            return [];
+        return $result;
+    }
+
+    public static function getUsersFromUsernameForSearch(string $username) : array{
+        if ($username != "") {
+            $conditions = [['username', $username]];
+            $result = FEntityManager::getInstance()->retriveObjForSearchAND(FUser::getTable(), $conditions);
+        } else 
+            return [];
+        return $result;
+    }
+
+    public static function getUsersFromEmailForSearch(string $email) : array{
+        if ($email != "") {
+            $conditions = [['email', $email]];
+            $result = FEntityManager::getInstance()->retriveObjForSearchAND(FPerson::getTable(), $conditions);
+        } else 
+            return [];
         return $result;
     }
 
@@ -275,7 +296,7 @@ Class FUser{
      * @return array $result
      */
     public static function getUsers() : array{
-        $result = FEntityManager::getInstance()->retriveAllObj(self::getTable());
+        $result = FEntityManager::getInstance()->retriveAllObj(FPerson::getTable());
         return $result;
     }
 

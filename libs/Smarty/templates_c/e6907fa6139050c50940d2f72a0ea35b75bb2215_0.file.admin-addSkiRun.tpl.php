@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-13 17:35:05
+/* Smarty version 3.1.33, created on 2025-05-27 17:28:46
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-addSkiRun.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_682366a9d3ceb2_73954321',
+  'unifunc' => 'content_6835da2e97ae41_10990410',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e6907fa6139050c50940d2f72a0ea35b75bb2215' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-addSkiRun.tpl',
-      1 => 1747150503,
+      1 => 1748273285,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,23 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_682366a9d3ceb2_73954321 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6835da2e97ae41_10990410 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Registration</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <title>Aggiungi pista</title>
 
   <!-- Favicons -->
-  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/favicon.png" rel="icon">
-  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: dark)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: dark)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: dark)">
+
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/dark/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: light)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: light)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: light)">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -50,89 +53,6 @@ function content_682366a9d3ceb2_73954321 (Smarty_Internal_Template $_smarty_tpl)
   <!-- Main CSS File -->
   <link href="https://localhost/Slope/libs/Smarty/day/assets/css/main.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Day
-  * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
-  * Updated: Jun 14 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-<style>
-.form-container {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-    max-width: 600px; /* Adatta la larghezza */
-    width: 90%;       /* Adattabile su dispositivi piccoli */
-    margin: 40px auto; /* Centra orizzontalmente e aggiunge spazio sopra/sotto */
-  }
-
-  @media (max-width: 600px) {
-    .form-container {
-      padding: 15px;
-    }
-
-    button {
-      font-size: 14px;
-      padding: 8px;
-    }
-  }
-
-  .form-container h1 {
-    font-size: 20px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  label {
-    display: block;
-    margin: 10px 0 5px;
-    font-weight: bold;
-  }
-
-  input[type="text"],
-  input[type="email"],
-  input[type="date"],
-  input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-
-  .durata-skipass {
-    margin-bottom: 15px;
-  }
-
-  .durata-skipass p, .tipologia-biglietto p {
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-
-  input[type="checkbox"],
-  input[type="radio"] {
-    margin-right: 10px;
-  }
-
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: #FF4400;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-
-  button:hover {
-    background-color: #FF7F50;
-  }
-</style>
 </head>
 
 <body class="starter-page-page">
@@ -142,8 +62,6 @@ function content_682366a9d3ceb2_73954321 (Smarty_Internal_Template $_smarty_tpl)
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
         <a href="/Slope" class="logo d-flex align-items-center">
-          <!-- Uncomment the line below if you also wish to use an image logo -->
-          <!-- <img src="assets/img/logo.png" alt=""> -->
           <h1 class="sitename">Slope Admin</h1>
         </a>
 
@@ -179,35 +97,35 @@ function content_682366a9d3ceb2_73954321 (Smarty_Internal_Template $_smarty_tpl)
     <section id="starter-section" class="starter-section section"> 
       <?php if ($_smarty_tpl->tpl_vars['exist']->value == false) {?>
       <div class="container" data-aos="fade-up">
-        <div class="form-container">
+        <div class="form-container addSkiRun">
             <form class="register-form" action="/Slope/Admin/confirmSkiRun" method="POST">
                 <h2>Nuova pista</h2>
           
-                <label for="name">Nome pista</label>
-                <input type="text" id="name" name="name" placeholder="Inserisci nome della pista">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" placeholder="Inserisci nome della pista" required>
         
-                <label>Tipologia di pista</label>
+                <label>Tipologia:</label>
                 <div class="radio-group">
-                    <label><input type="radio" name="type" value="nera"> Nera</label>
+                    <label><input type="radio" name="type" value="nera" required> Nera</label>
                     <label><input type="radio" name="type" value="rossa"> Rossa</label>
                     <label><input type="radio" name="type" value="blu"> Blu</label>
                 </div>
 
-                <label>Praticabilità</label>
+                <label>Stato:</label>
                 <div class="radio-group">
-                    <label><input type="radio" name="status" value="aperto"> Aperto</label>
-                    <label><input type="radio" name="status" value="chiuso"> Chiuso</label>
+                    <label><input type="radio" name="status" value="1" required> Aperto</label>
+                    <label><input type="radio" name="status" value="0"> Chiuso</label>
                 </div>
 
-                <label>Impianto</label>
+                <label>Impianto:</label>
                 <div class="radio-group">
                 <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['skiFacilities']->value, 'i');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 ?>
-                    <label><input type="radio" name="skiFacility" value=<?php echo $_smarty_tpl->tpl_vars['i']->value['name'];?>
-><?php echo $_smarty_tpl->tpl_vars['i']->value['name'];?>
+                    <label><input type="radio" name="skiFacility" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['name'];?>
+" required><?php echo $_smarty_tpl->tpl_vars['i']->value['name'];?>
 </label>
                 <?php
 }

@@ -34,76 +34,7 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  <style>
-.cards-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
-}
 
-.cards-container table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;  
-  border-radius: 8px;
-  overflow: hidden;
-  font-family: Arial, sans-serif;
-  background-color: #fff;
-}
-
-.cards-container th {
-  background-color: #4682B4;
-  color: white;
-  text-align: left;
-  padding: 12px 16px;
-  font-size: 16px;
-}
-
-.cards-container td {
-  padding: 12px 16px;
-  border-bottom: 1px solid #eee;
-  font-size: 14px;
-  color: #333;
-}
-
-.cards-container tr:hover {
-  background-color: #f0f8ff;
-}
-
-.cards-container td:nth-child(3), /* Stato */
-.cards-container td:nth-child(4) {
-  font-weight: bold;
-}
-
-.btn-submit {
-  display: block;
-  width: 50%;
-  padding: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #fff;
-  background-color: #4682B4;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 40px;
-  transition: background-color 0.3s ease;
-}
-
-.btn-submit:hover {
-  background-color: #FF7F50;
-}
-
-.aperto {
-  background-color: #4caf50
-}
-
-.chiuso {
-  background-color: #e74c3c
-}
-
-
-  </style>
 </head>
 
 <body class="starter-page-page">
@@ -135,23 +66,10 @@
 
   <main class="main">
 
-    <!-- Page Title -->
-    <!-- <div class="page-title" data-aos="fade">
-      <div class="container">
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Starter Page</li>
-          </ol>
-        </nav>
-        <h1>Starter Page</h1>
-      </div>
-    </div> --><!-- End Page Title -->
-
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
     
-      <div  data-aos="fade-up">
+      <div class="container sRLDetails" data-aos="fade-up">
         <div class="cards-container">
           <h3>{$nameSkiFacility}</h3>
 
@@ -166,10 +84,10 @@
               <tr>
                 <td>{$i->getName()}</td>
                 <td>{$i->getType()}</td>
-                {if $i->getStatus() == chiuso}
-                <td class="chiuso">{$i->getStatus()}</td>
+                {if $i->getStatus()}
+                <td class="aperto">aperto</td>
                 {else}
-                <td class="aperto">{$i->getStatus()}</td>
+                <td class="chiuso">chiuso</td>
                 {/if}
               </tr>
             {/foreach}
@@ -187,10 +105,10 @@
               <tr>
                 <td>{$i->getName()}</td>
                 <td>{$i->getType()}</td>
-                {if $i->getStatus() == chiuso}
-                <td class="chiuso">{$i->getStatus()}</td>
+                {if $i->getStatus()}
+                <td class="aperto">aperto</td>
                 {else}
-                <td class="aperto">{$i->getStatus()}</td>
+                <td class="chiuso">chiuso</td>
                 {/if}
                 <td>{$i->getSeats()}</td>
               </tr>

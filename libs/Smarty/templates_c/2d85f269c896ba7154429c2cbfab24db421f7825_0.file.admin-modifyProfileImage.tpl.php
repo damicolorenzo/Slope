@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-14 16:31:17
+/* Smarty version 3.1.33, created on 2025-06-04 11:46:29
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-modifyProfileImage.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_6824a935ae2b36_74392530',
+  'unifunc' => 'content_684015f5e828a8_83148007',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2d85f269c896ba7154429c2cbfab24db421f7825' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-modifyProfileImage.tpl',
-      1 => 1747233074,
+      1 => 1749030375,
       2 => 'file',
     ),
   ),
@@ -20,13 +20,16 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6824a935ae2b36_74392530 (Smarty_Internal_Template $_smarty_tpl) {
+function content_684015f5e828a8_83148007 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Registration</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -57,83 +60,6 @@ function content_6824a935ae2b36_74392530 (Smarty_Internal_Template $_smarty_tpl)
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  <style>
-  .form-container {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-    max-width: 600px; /* Adatta la larghezza */
-    width: 90%;       /* Adattabile su dispositivi piccoli */
-    margin: 40px auto; /* Centra orizzontalmente e aggiunge spazio sopra/sotto */
-  }
-
-  @media (max-width: 600px) {
-    .form-container {
-      padding: 15px;
-    }
-
-    button {
-      font-size: 14px;
-      padding: 8px;
-    }
-  }
-
-  .form-container h1 {
-    font-size: 20px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  label {
-    display: block;
-    margin: 10px 0 5px;
-    font-weight: bold;
-  }
-
-  input[type="text"],
-  input[type="email"],
-  input[type="date"],
-  input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: #FF4400;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-
-  button:hover {
-    background-color: #FF7F50;
-  }
-
-  .profile-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-
-  .profile-pic {
-    width: 280px; /* Aumentata la dimensione dell'immagine del profilo */
-    height: 280px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #000;
-  }
-  </style>
 </head>
 
 <body class="starter-page-page">
@@ -181,7 +107,7 @@ function content_6824a935ae2b36_74392530 (Smarty_Internal_Template $_smarty_tpl)
 
       <div class="container" data-aos="fade-up">
         
-        <div class="form-container">
+        <div class="form-container modifyProfileImage">
             <div class="profile-image">
                 <!-- Immagine del profilo -->
                 <?php if ($_smarty_tpl->tpl_vars['image']->value == array()) {?> 
@@ -202,7 +128,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 <?php }?>
             </div>
 
-            <p><strong>Modifica immagine:</strong></p>
+            <label>Modifica immagine:</label>
             <div class="button-container">
               <form action="/Slope/Admin/modifyImage" enctype="multipart/form-data" method="POST">
                 <input type="hidden" name="userId" id="userId" value=<?php echo $_smarty_tpl->tpl_vars['userId']->value;?>
@@ -212,7 +138,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
               </form>
             </div>
 
-            <p><strong>Rimuovi immagine:</strong></p>
+            <label>Rimuovi immagine:</label>
             <div class="button-container">
               <form action="/Slope/User/deleteImage" method="POST">
                 <input type="hidden" name="userId" id="userId" value=<?php echo $_smarty_tpl->tpl_vars['userId']->value;?>

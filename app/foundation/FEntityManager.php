@@ -132,11 +132,10 @@ class FEntityManager {
             $stmt = self::$db->prepare($query);
             $foundClass::bind($stmt, $obj);
             $stmt->execute();
-            
             $id = self::$db->lastInsertId();
             return (int) $id;
         }catch(Exception $e){
-            error_log("Database error in saveObject: " . $e->getMessage()); // Log instead of echo
+            print("Database error in saveObject: " . $e->getMessage()); // Log instead of echo
             return null;
         }
     }
@@ -234,7 +233,10 @@ class FEntityManager {
             $statement->bindParam(':extKey', $extKey, PDO::PARAM_STR);
             $statement->execute();
             $result = $statement->fetch();
-            return $result;
+            if(!$result)
+                return [];
+            else
+                return $result;
         } catch(PDOException $e) {
             error_log("Database error in selectObj: " . $e->getMessage()); // Log instead of echo
             return [];
@@ -322,7 +324,7 @@ class FEntityManager {
      * @param string $table Refers to a table in the database 
      * @return array The result set as an associative array.
      */
-    public static function retriveObjForSearch($table, $conditions) {
+    public static function retriveObjForSearchAND($table, $conditions) {
         try { 
             $fields = [];
             foreach ($conditions as $field) {
@@ -355,6 +357,79 @@ class FEntityManager {
         } catch (PDOException $e) {
             echo "ERROR" . $e->getMessage();
             return array();
+        }
+    }
+
+    public static function retriveObjForSearchMixed($table, $fields) {
+        try {
+            $clauses = [];
+            $params = [];
+            $paramCounter = 0;
+
+            foreach ($fields as $group) {
+                $orParts = [];
+
+                foreach ($group as $field) {
+                    $fieldName = $field[0];
+                    $fieldValue = $field[1];
+                    $paramKey = ":param_{$fieldName}_{$paramCounter}";
+
+                    $orParts[] = "{$fieldName} = {$paramKey}";
+                    $params[$paramKey] = [
+                        $fieldValue,
+                        is_int($fieldValue) ? PDO::PARAM_INT : PDO::PARAM_STR
+                    ];
+
+                    $paramCounter++;
+                }
+
+                // Se il gruppo contiene almeno un elemento valido
+                if (!empty($orParts)) {
+                    $clauses[] = '(' . implode(' OR ', $orParts) . ')';
+                }
+            }
+
+            // Costruzione della WHERE clause
+            $condition = implode(' AND ', $clauses);
+            $query = "SELECT * FROM {$table}" . (!empty($condition) ? " WHERE {$condition}" : '');
+
+            // Prepara la query
+            $statement = self::$db->prepare($query);
+
+            // Per debug
+            $debugQuery = $query;
+            foreach ($params as $key => [$value, $type]) {
+                $statement->bindValue($key, $value, $type);
+
+                // Per sostituzione nel debug
+                $escaped = $value;
+                if ($type === PDO::PARAM_STR) {
+                    $escaped = "'" . addslashes($value) . "'";
+                } elseif ($type === PDO::PARAM_NULL) {
+                    $escaped = "NULL";
+                }
+                $debugQuery = preg_replace('/' . preg_quote($key, '/') . '/', $escaped, $debugQuery, 1);
+            }
+
+            // Debug query con valori sostituiti
+            //print($debugQuery);
+
+            // Esecuzione
+            $statement->execute();
+
+            $result = [];
+            if ($statement->rowCount() > 0) {
+                $statement->setFetchMode(PDO::FETCH_ASSOC);
+                while ($row = $statement->fetch()) {
+                    $result[] = $row;
+                }
+            }
+
+            return $result;
+
+        } catch (PDOException $e) {
+            echo "ERROR: " . $e->getMessage();
+            return [];
         }
     }
 
@@ -433,6 +508,7 @@ class FEntityManager {
             $statement->execute();
             return true;
         }catch(Exception $e){
+            print($e->getMessage());
             echo "ERROR: " . $e->getMessage();
             return false;
         }

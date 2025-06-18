@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-15 14:21:41
+/* Smarty version 3.1.33, created on 2025-05-30 20:26:44
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\showBookings.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_6825dc552e1c06_18480847',
+  'unifunc' => 'content_6839f864eb0d76_84321733',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f9646e996eb883e163a0100bddfc26918112a740' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\showBookings.tpl',
-      1 => 1747311698,
+      1 => 1748629604,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6825dc552e1c06_18480847 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6839f864eb0d76_84321733 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -57,156 +57,7 @@ function content_6825dc552e1c06_18480847 (Smarty_Internal_Template $_smarty_tpl)
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  <style>
-.table-container {
-width: 100%;
-margin: 20px auto;
-overflow-x: auto;
-background: #fff;
-padding: 20px;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-border-radius: 8px;
-}
 
-h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0 auto;
-}
-
-thead {
-    background-color: #4682B4;
-    color: white;
-}
-
-th, td {
-    text-align: left;
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-tbody tr:hover {
-    background-color: #f1f1f1;
-    cursor: pointer;
-}
-
-th {
-    text-transform: uppercase;
-}
-
-td {
-    font-size: 14px;
-}
-
-.booked {
-    color: white;
-    background-color: #4682B4
-}
-
-/* Contenitore del calendario */
-.calendar-container {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
-  text-align: center;
-}
-
-/* Titolo e navigazione mese */
-.calendar-container h2 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 20px;
-  margin-bottom: 20px;
-}
-
-.calendar-container h2 form {
-  margin: 0;
-}
-
-.calendar-container h2 button {
-  background: #4682B4;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  font-size: 18px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.calendar-container h2 button:hover {
-  background-color: #4682B4;
-}
-
-/* Tabella calendario */
-.calendar-container table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 16px;
-}
-
-.calendar-container th, .calendar-container td {
-  padding: 10px;
-  border: 1px solid #ddd;
-  width: 14.28%;
-  height: 60px;
-  vertical-align: top;
-  text-align: center;
-}
-
-.calendar-container th {
-  background-color: #f0f0f0;
-  color: #333;
-  font-weight: bold;
-}
-
-.btn-mod {
-    background-color:#4682B4;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.btn-er {
-    background-color: #FF7F50;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.true {
-  text-align: center;
-}
-
-.imagePreview {
-  width: 30%;
-  height: 30%;   
-}
-
-</style>
 </head>
 
 <body class="starter-page-page">
@@ -241,10 +92,9 @@ td {
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
 
-      <div class="container" data-aos="fade-up">
+      <div class="container showBookings" data-aos="fade-up">
 
-
-      <div class="calendar-container">
+        <div class="calendar-container">
         <h2>
           <form action="/Slope/User/showBookings" method="POST">
             <input type="hidden" name="month" value=<?php echo $_smarty_tpl->tpl_vars['prevMonth']->value;?>
@@ -266,7 +116,7 @@ td {
             <button type="submit">&raquo;</button>
           </form>
         </h2>
-
+        <div class="calendar-scroll-wrapper">
         <table>
           <tr>
             <th>Mon</th><th>Tue</th>
@@ -286,8 +136,13 @@ foreach ($_from as $_smarty_tpl->tpl_vars['day']->value) {
 ?>
                 <?php if ($_smarty_tpl->tpl_vars['day']->value) {?>
                   <?php if (in_array($_smarty_tpl->tpl_vars['day']->value,$_smarty_tpl->tpl_vars['bookedDates']->value)) {?> <!-- Controlla se il giorno è prenotato -->
-                    <td class="booked"><?php echo $_smarty_tpl->tpl_vars['day']->value;?>
-</td> <!-- Giorno prenotato con stile speciale -->
+                    <td class="booked">
+                      <a href="#booking-<?php echo $_smarty_tpl->tpl_vars['idForDate']->value[$_smarty_tpl->tpl_vars['day']->value][0];?>
+" class="booked-link"><?php echo $_smarty_tpl->tpl_vars['day']->value;?>
+</a>
+                      <div class="booking-text"><?php echo $_smarty_tpl->tpl_vars['idForDate']->value[$_smarty_tpl->tpl_vars['day']->value][1];?>
+</div>
+                    </td> <!-- Giorno prenotato con stile speciale -->
                   <?php } else { ?>
                     <td><?php echo $_smarty_tpl->tpl_vars['day']->value;?>
 </td> <!-- Giorno normale -->
@@ -303,78 +158,102 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         </table>
+        </div>
       </div>
-
 
       <?php if (count($_smarty_tpl->tpl_vars['bookings']->value) > 0) {?>
       <h1>Dati prenotazione</h1>
-      <?php
+      <div class="card-booking-wrapper">
+        <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['bookings']->value, 'e');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['e']->value) {
 ?>
-      <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Surname</th>
-                    <th>Email</th>
-                    <th>Date</th>
-                    <th>Period</th>
-                    <th>Type</th>
-                    <th>Total Price</th>
-                    <th>Ski Facility</th>
-                    <th>Insurance<th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getName();?>
-</td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getSurname();?>
-</td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getEmail();?>
-</td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getStartDate();?>
-</td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getPeriod();?>
-</td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getType();?>
-</td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getValue();?>
-</td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][1]->getName();?>
-</td>
-                    <?php if ($_smarty_tpl->tpl_vars['e']->value['bookings'][2] != array()) {?>
-                    <td class="true"><img class="imagePreview" src="https://localhost/Slope/libs/Smarty/images/checked.png"></td>
-                    <?php } else { ?>
-                    <td><form action="/Slope/User/buyInsurance" method="POST"><input type="hidden" name="idSkipassBooking" value=<?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getIdSkipassBooking();?>
-><button type="submit">Acquista</button></form></td>
-                    <?php }?>
-                    <form action="/Slope/User/modifySkipassBooking" method="POST"><td><input type="hidden" name="idSkipassBooking" value=<?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getIdSkipassBooking();?>
-><button type="submit" class="btn-mod">Modifica</button></td></form>
-                    <form action="/Slope/User/deleteSkipassBooking" method="POST"><td><input type="hidden" name="idSkipassBooking" value=<?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getIdSkipassBooking();?>
-><button type="submit" class="btn-er">Elimina</button></td></form>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-      <?php
+          <div class="booking-card" id="booking-<?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getIdSkipassBooking();?>
+">
+            <p><strong>Nome:</strong> <?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getName();?>
+</p>
+            <p><strong>Cognome:</strong> <?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getSurname();?>
+</p>
+            <p><strong>Email:</strong> <?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getEmail();?>
+</p>
+            <p><strong>Data:</strong> <?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getStartDate();?>
+</p>
+            <p><strong>Periodo:</strong> <?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getPeriod();?>
+</p>
+            <p><strong>Tipo:</strong> <?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getType();?>
+</p>
+            <p><strong>Prezzo totale:</strong> <?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getValue();?>
+</p>
+            <p><strong>Impianto sci:</strong> <?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][1]->getName();?>
+</p>
+          
+            <?php if ($_smarty_tpl->tpl_vars['e']->value['bookings'][2] != array()) {?>
+              <p><strong>Assicurazione:</strong></p>
+              <img class="imagePreview" src="https://localhost/Slope/libs/Smarty/images/checked.png">
+            <?php } else { ?>
+              <div class="flex">
+                <p><strong>Assicurazione:</strong></p>
+                <form action="/Slope/User/buyInsurance" method="POST">
+                  <input type="hidden" name="idSkipassBooking" value="<?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getIdSkipassBooking();?>
+">
+                  <button type="submit" class="btn-insurance">Acquista</button>
+                </form>
+              </div>
+            <?php }?>
+
+            <div class="booking-actions">
+              <form action="/Slope/User/modifySkipassBooking" method="POST">
+                <input type="hidden" name="idSkipassBooking" value="<?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getIdSkipassBooking();?>
+">
+                <button type="submit" class="btn-mod">Modifica</button>
+              </form>
+
+              <form action="/Slope/User/deleteSkipassBooking" method="POST">
+                <input type="hidden" name="idSkipassBooking" value="<?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getIdSkipassBooking();?>
+">
+                <button type="submit" class="btn-er">Elimina</button>
+              </form>
+            </div>
+          </div>
+        <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-      <?php } else { ?>
-      <label>Nessuna prenotazione effettuata</label>
-      <?php }?>
-
-    
-
+        <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['oldBookings']->value, 'e');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['e']->value) {
+?>
+          <h2>Prenotazioni scadute</h2>
+          <div class="booking-card" id="booking-<?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getIdSkipassBooking();?>
+">
+            <p><strong>Nome:</strong> <?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getName();?>
+</p>
+            <p><strong>Cognome:</strong> <?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getSurname();?>
+</p>
+            <p><strong>Email:</strong> <?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getEmail();?>
+</p>
+            <p><strong>Data:</strong> <?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getStartDate();?>
+</p>
+            <p><strong>Periodo:</strong> <?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getPeriod();?>
+</p>
+            <p><strong>Tipo:</strong> <?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getType();?>
+</p>
+            <p><strong>Prezzo totale:</strong> <?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getValue();?>
+</p>
+            <p><strong>Impianto sci:</strong> <?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][1]->getName();?>
+</p>
+          </div>
+        <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
       </div>
-
-      
-
-
+    <?php } else { ?>
+      <label>Nessuna prenotazione effettuata</label>
+    <?php }?>
+      </div>
     </section><!-- /Starter Section Section -->
 
   </main>
@@ -417,5 +296,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
 </body>
 
-</html><?php }
+</html>
+<?php }
 }

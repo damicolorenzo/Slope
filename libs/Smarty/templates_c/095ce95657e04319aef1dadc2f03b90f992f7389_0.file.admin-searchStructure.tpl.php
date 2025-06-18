@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-14 15:18:32
+/* Smarty version 3.1.33, created on 2025-06-01 13:16:58
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-searchStructure.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_68249828ec68d3_47261098',
+  'unifunc' => 'content_683c36aac152b0_98874541',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '095ce95657e04319aef1dadc2f03b90f992f7389' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-searchStructure.tpl',
-      1 => 1747228685,
+      1 => 1748776616,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,23 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_68249828ec68d3_47261098 (Smarty_Internal_Template $_smarty_tpl) {
+function content_683c36aac152b0_98874541 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Registration</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <title>Modifica strutture</title>
 
   <!-- Favicons -->
-  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/favicon.png" rel="icon">
-  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: dark)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: dark)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: dark)">
+
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/dark/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: light)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: light)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: light)">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -50,129 +53,6 @@ function content_68249828ec68d3_47261098 (Smarty_Internal_Template $_smarty_tpl)
   <!-- Main CSS File -->
   <link href="https://localhost/Slope/libs/Smarty/day/assets/css/main.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Day
-  * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
-  * Updated: Jun 14 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-  <style>
-
-  .form-container {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-    max-width: 600px; /* Adatta la larghezza */
-    width: 90%;       /* Adattabile su dispositivi piccoli */
-    margin: 40px auto; /* Centra orizzontalmente e aggiunge spazio sopra/sotto */
-  }
-
-  @media (max-width: 600px) {
-    .form-container {
-      padding: 15px;
-    }
-
-    button {
-      font-size: 14px;
-      padding: 8px;
-    }
-  }
-
-  .form-container h1 {
-    font-size: 20px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  button {
-  padding: 10px 15px;
-  border: 1px solid #000;
-  border-radius: 3px;
-  background-color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #ddd;
-}
-
-  .structures {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding-top: 20px;
-    background-color: #f0f0f0;
-    justify-content: center;
-}
-
-.structure-cards-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px; /* Distanza tra le card */
-  margin-top: 20px;
-}
-
-.card {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.admin-filter-container {
-  margin: 40px auto;
-  padding: 30px;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.admin-filter-container h2 {
-  margin-bottom: 20px;
-  font-size: 1.5rem;
-}
-
-.filters {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-}
-
-.filters input[type="text"] {
-  padding: 10px 15px;
-  font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  min-width: 200px;
-  transition: border-color 0.3s;
-}
-
-.filters input[type="text"]:focus {
-  border-color: #ff7a45;
-  outline: none;
-}
-
-.edit {
-  color: green;
-  border-color: green;
-}
-
-.delete {
-  color: red;
-  border-color: red;
-}
-  </style>
 </head>
 
 <body class="starter-page-page">
@@ -182,8 +62,6 @@ button:hover {
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
         <a href="/Slope" class="logo d-flex align-items-center">
-          <!-- Uncomment the line below if you also wish to use an image logo -->
-          <!-- <img src="assets/img/logo.png" alt=""> -->
           <h1 class="sitename">Slope Admin</h1>
         </a>
 
@@ -206,7 +84,7 @@ button:hover {
     <section id="starter-section" class="starter-section section"> 
       <div class="container" data-aos="fade-up">
 
-        <div class="form-container">
+        <div class="form-container searchStructures">
           <div class="admin-filter-container">
             <h2>Filtra Strutture</h2>
             <div class="filters">
@@ -215,7 +93,7 @@ button:hover {
                 <input type="text" id="nameSkiRun" name="nameSkiRun" placeholder="Nome pista">
                 <input type="text" id="nameLiftStructure" name="nameLiftStructure" placeholder="Nome risalita">
                 <div class="button-container">
-                <button type="submit">Filtra</button>
+                  <button type="submit">Filtra</button>
                 </div>
               </form>
             </div>
@@ -223,38 +101,45 @@ button:hover {
 
           <?php if (count($_smarty_tpl->tpl_vars['objects']->value) > 0) {?>
             <div class="structures">
-              <h2>Impianti</h2>
-              <div class="structure-cards-container">
-                <?php
+              <div class="structure-columns">
+                <div class="structure-column">
+                <h2>Impianti</h2>
+                <div class="structure-cards-container">
+                  <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['objects']->value['skiFacilities'], 'element');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['element']->value) {
 ?>
-                  <div class="card">
-                    <div class="user-info">
-                      <p>Nome: <?php echo $_smarty_tpl->tpl_vars['element']->value->getName();?>
+                    <div class="card">
+                      <div class="user-info">
+                        <p>Nome: <?php echo $_smarty_tpl->tpl_vars['element']->value->getName();?>
 </p>
-                      <p>Stato: <?php echo $_smarty_tpl->tpl_vars['element']->value->getStatus();?>
+                        <?php if ($_smarty_tpl->tpl_vars['element']->value->getStatus()) {?>
+                        <p>Stato: Aperto</p>
+                        <?php } else { ?>
+                        <p>Stato: Chiuso</p>
+                        <?php }?>
+                        <p>Descrizione: <?php echo $_smarty_tpl->tpl_vars['element']->value->getDescription();?>
 </p>
-                      <p>Descrizione: <?php echo $_smarty_tpl->tpl_vars['element']->value->getDescription();?>
-</p>
-                    </div>
-                    <div class="action-buttons">
-                      <form class="search-form" action="/Slope/Admin/modifySkiFacility" method="POST">
-                        <button type="submit" name="idSkiFacility" value=<?php echo $_smarty_tpl->tpl_vars['element']->value->getIdSkiFacility();?>
+                      </div>
+                      <div class="action-buttons">
+                        <form class="search-form" action="/Slope/Admin/modifySkiFacility" method="POST">
+                          <button type="submit" name="idSkiFacility" value=<?php echo $_smarty_tpl->tpl_vars['element']->value->getIdSkiFacility();?>
  class="edit">Modifica</button>
-                      </form>
-                      <form class="search-form" action="/Slope/Admin/deleteSkiFacility" mathod="POST">
-                        <button type="submit" name="idSkiFacility" value=<?php echo $_smarty_tpl->tpl_vars['element']->value->getIdSkiFacility();?>
+                        </form>
+                        <form class="search-form" action="/Slope/Admin/deleteSkiFacility" method="POST">
+                          <button type="submit" name="idSkiFacility" value=<?php echo $_smarty_tpl->tpl_vars['element']->value->getIdSkiFacility();?>
  class="delete">Elimina</button>
-                      </form>
+                        </form>
+                      </div>
                     </div>
-                  </div>
-                <?php
+                  <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-              </div>
+                </div>
+                </div>
+              <div class="structure-column">
               <h2>Piste</h2>
               <div class="structure-cards-container">
                 <?php
@@ -268,9 +153,12 @@ foreach ($_from as $_smarty_tpl->tpl_vars['element']->value) {
 </p>
                       <p>Tipologia: <?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getType();?>
 </p>
-                      <p>Stato: <?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getStatus();?>
-</p>
-                      <p>Impianto di riferimento: <?php echo $_smarty_tpl->tpl_vars['element']->value[1]['name'];?>
+                      <?php if ($_smarty_tpl->tpl_vars['element']->value[0]->getStatus()) {?>
+                      <p>Stato: Aperto</p>
+                      <?php } else { ?>
+                      <p>Stato: Chiuso</p>
+                      <?php }?>
+                      <p>Impianto di riferimento: <?php echo $_smarty_tpl->tpl_vars['element']->value[1];?>
 </p>
                     </div>
                     <div class="action-buttons">
@@ -278,7 +166,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['element']->value) {
                         <button type="submit" name="idSkiRun" value=<?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getIdSkiRun();?>
  class="edit">Modifica</button>
                       </form>
-                      <form class="search-form" action="/Slope/Admin/deleteSkiRun" mathod="POST">
+                      <form class="search-form" action="/Slope/Admin/deleteSkiRun" method="POST">
                         <button type="submit" name="idSkiRun" value=<?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getIdSkiRun();?>
  class="delete">Elimina</button>
                       </form>
@@ -289,6 +177,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['element']->value) {
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
               </div>
+              </div>
+              <div class="structure-column">
               <h2>Risalite</h2>
               <div class="structure-cards-container">
                 <?php
@@ -302,11 +192,14 @@ foreach ($_from as $_smarty_tpl->tpl_vars['element']->value) {
 </p>
                       <p>Tipologia: <?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getType();?>
 </p>
-                      <p>Stato: <?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getStatus();?>
-</p>
+                      <?php if ($_smarty_tpl->tpl_vars['element']->value[0]->getStatus()) {?>
+                      <p>Stato: Aperto</p>
+                      <?php } else { ?>
+                      <p>Stato: Chiuso</p>
+                      <?php }?>
                       <p>Sedute: <?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getSeats();?>
 </p>
-                      <p>Impianto di riferimento: <?php echo $_smarty_tpl->tpl_vars['element']->value[1]['name'];?>
+                      <p>Impianto di riferimento: <?php echo $_smarty_tpl->tpl_vars['element']->value[1];?>
 </p>
                     </div>
                     <div class="action-buttons">
@@ -314,7 +207,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['element']->value) {
                         <button type="submit" name="idLift" value=<?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getIdLift();?>
  class="edit">Modifica</button>
                       </form>
-                      <form class="search-form" action="/Slope/Admin/deleteLiftStructure" mathod="POST">
+                      <form class="search-form" action="/Slope/Admin/deleteLiftStructure" method="POST">
                         <button type="submit" name="idLift" value=<?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getIdLift();?>
  class="delete">Elimina</button>
                       </form>
@@ -325,6 +218,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['element']->value) {
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
               </div>
+              </div>
+            </div>
             </div>
           <?php }?>
         </div>

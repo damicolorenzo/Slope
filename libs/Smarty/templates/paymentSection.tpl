@@ -34,109 +34,7 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  <style>
-  .payment-container {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 600px; /* Adatta la larghezza */
-    width: 90%;       /* Adattabile su dispositivi piccoli */
-    margin: 40px auto; /* Centra orizzontalmente e aggiunge spazio sopra/sotto */
-  }
 
-  .order-summary {
-    margin-bottom: 20px;
-  }
-
-  .order-summary h2 {
-    margin-bottom: 10px;
-    font-size: 18px;
-    color: #444;
-  }
-
-  .order-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .order-list li {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 0;
-    border-bottom: 1px solid #eee;
-    font-size: 16px;
-  }
-
-  .order-list li.total {
-    font-weight: bold;
-    border-top: 2px solid #444;
-    margin-top: 10px;
-    padding-top: 10px;
-  }
-
-  .payment-container h1 {
-    margin-bottom: 20px;
-    text-align: center;
-    color: #444;
-  }
-
-  .payment-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .form-group label {
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #555;
-  }
-
-  .form-group input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    color: #333;
-  }
-
-  .form-group input:focus {
-    border-color: #4682B4;
-    outline: none;
-  }
-
-  .form-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-  }
-
-  .form-row .form-group {
-    flex: 1;
-  }
-
-  .submit-btn {
-    background-color: #4682B4;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  .submit-btn:hover {
-    background-color: #FF7F50;
-  }
-  </style>
 </head>
 
 <body class="starter-page-page">
@@ -171,7 +69,7 @@
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
 
-      <div class="container" data-aos="fade-up">
+      <div class="container paymentSection" data-aos="fade-up">
           <div class="payment-container">
             <h1>Riepilogo Pagamento</h1>
           
@@ -190,6 +88,12 @@
                     <li>
                         <span>Assicurazione</span>
                         <span>€{$i->getPrice()}</span>
+                    </li>
+                    {/if}
+                    {if $i instanceof ESubscriptionTemp}
+                    <li>
+                        <span>Sconto abbonato</span>
+                        <span>-{$i->getDiscount()}%</span>
                     </li>
                     {/if}
                   {/foreach}
@@ -221,16 +125,16 @@
                 <div class="form-group">
                     <label for="cardNumber">Numero Carta</label>
                     {if $creditCard === null}
-                    <input type="text" id="card-number" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19"  required>
+                    <input type="text" id="card-number" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="16"  required>
                     {else}
-                    <input type="text" id="card-number" name="cardNumber" value={$creditCard->getCardNumber()} maxlength="19"  required>
+                    <input type="text" id="card-number" name="cardNumber" value={$creditCard->getCardNumber()} maxlength="16"  required>
                     {/if}
                 </div>
                 <div class="form-row">
                     <div class="form-group">
                         <label for="expiryDate">Scadenza Carta</label>
                         {if $creditCard === null}
-                        <input type="month" id="expiry-date" name="expiryDate" required>
+                        <input type="month" id="expiry-date" name="expiryDate" min={$today} required>
                         {else}
                         <input type="month" id="expiry-date" name="expiryDate" value={$creditCard->getExpiryDate()} required>
                         {/if}

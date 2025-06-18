@@ -35,65 +35,7 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
   <style>
-  .form-container {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 350px;
-}
-
-h1 {
-  font-size: 20px;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  margin: 10px 0 5px;
-  font-weight: bold;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="date"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.durata-skipass, .tipologia-biglietto {
-  margin-bottom: 15px;
-}
-
-.durata-skipass p, .tipologia-biglietto p {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-input[type="checkbox"],
-input[type="radio"] {
-  margin-right: 10px;
-}
-
-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #007BFF;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
+  
   </style>
 </head>
 
@@ -129,105 +71,32 @@ button:hover {
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
 
-      <div class="container" data-aos="fade-up">
-
+      <div class="container makeASubscriptionForm" data-aos="fade-up">
+  
         <div class="form-container">
-        <h1>Form di prenotazione</h1>
-        <form action="/User/confirmSubscription" method="post">
-            <label for="name">Nome</label>
-            <input type="text" id="name" name="name" value={$user->getName()}>
+          <h1>Acquista abbonamento</h1>
+            <form action="/User/confirmSubscription" method="POST">
+              <label for="name">Nome</label>
+              <input type="text" id="name" name="name" value={$user->getName()}>
 
-            <label for="surname">Cognome</label>
-            <input type="text" id="surname" name="surname" value={$user->getSurname()}>
+              <label for="surname">Cognome</label>
+              <input type="text" id="surname" name="surname" value={$user->getSurname()}>
 
-            <label for="email">Email di conferma</label>
-            <input type="email" id="email" name="email" value={$user->getEmail()}>
+              <label for="email">Email di conferma</label>
+              <input type="email" id="email" name="email" value={$user->getEmail()}>
 
-            <label for="data">Seleziona una data</label>
-            <input type="date" id="date" name="date" min={$today} value={$today}>
-            {if $dateWarning } 
-            <label>Controllare se la data inserita è corretta. La data potrebbe essere troppo lontana da quella corrente.</label>
-            {/if}
-
-            <button type="submit">Conferma</button>
-        </form>
-      </div>  
-      </div>
-
+              <label for="startDate">Data inizio abbonamento: {$startDate}</label>
+              <input type="hidden" id="startDate" name="startDate" value={$startDate}>
+              
+              <label for="startDate">Data fine abbonamento: {$endDate}</label>
+              <input type="hidden" id="endDate" name="endDate" value={$endDate}>
+              
+              <button type="submit" >Procedi all'acquisto</button> 
+            </form>
+        </div>
     </section><!-- /Starter Section Section -->
 
   </main>
-
-  <footer id="footer" class="footer position-relative">
-
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6">
-          <div class="footer-about">
-            <a href="/" class="logo sitename">Day</a>
-            <div class="footer-contact pt-3">
-              <p>Via Vetoio</p>
-              <p>L'Aquila, AQ 67100</p>
-              <p class="mt-3"><strong>Phone:</strong> <span>+39 123 456 7890</span></p>
-              <p><strong>Email:</strong> <span>info@example.com</span></p>
-            </div>
-            <div class="social-links d-flex mt-4">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-4 col-md-12 footer-newsletter">
-          <h4>Our Newsletter</h4>
-          <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-          <form action="forms/newsletter.php" method="post" class="php-email-form">
-            <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-          </form>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Slope</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-
-  </footer>
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-13 15:48:53
+/* Smarty version 3.1.33, created on 2025-05-28 16:10:34
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\loggedHome.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_68234dc5274399_89833301',
+  'unifunc' => 'content_6837195ac72259_17917146',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ef33429ba4bc621d630ff6065457a2991b022023' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\loggedHome.tpl',
-      1 => 1747144132,
+      1 => 1748440877,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_68234dc5274399_89833301 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6837195ac72259_17917146 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -57,157 +57,7 @@ function content_68234dc5274399_89833301 (Smarty_Internal_Template $_smarty_tpl)
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-<style>
-.card-impianto {
-  display: flex;
-  flex-direction: row;  /* Ripristina il layout orizzontale */
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  width: 100%;  /* La card occupa tutta la larghezza della pagina */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-}
-
-.left {
-  width: 40%;  /* L'immagine occupa il 40% della larghezza della card */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 16px;
-  background-color: #f8f8f8; /* Colore di sfondo per l'immagine */
-}
-
-.left .impianto-img {
-  width: 100%; 
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-}
-
-.left .impianto-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;  /* L'immagine si adatta senza distorsioni */
-} 
-
-.right {
-  width: 60%;  /* La parte dei dettagli occupa il restante 60% della larghezza */
-  padding: 16px;
-  background-color: #fff;
-}
-
-.right-container{
-  margin: 5% 5% 5% 5%;
-}
-
-.impianto {
-  text-align: center;
-}
-
-.impianto h3 {
-  font-size: 22px;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.dettagli-impianto {
-  display: flex;
-  margin: 5% 0% 5% 0%;
-}
-
-.dettagli-impianto h4 {
-  margin-top: 0;
-  font-size: 18px;
-  color: #666;
-}
-
-.dettagli-impianto .piste {
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-bottom: 10px;
-}
-
-.impianti {
-  margin-left: 10%;
-}
-
-.pista {
-  padding: 6px 12px;
-  border-radius: 6px;
-  color: #fff;
-  font-size: 14px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.pista.rossa {
-  background-color: #e74c3c; /* Colore rosso per piste rosse */
-}
-
-.pista.nera {
-  background-color: #2c3e50; /* Colore nero per piste nere */
-}
-
-.pista.blu {
-  background-color: #3498db; /* Colore blu per piste blu */
-}
-
-.pista.verde {
-  background-color: #2ecc71; /* Colore verde per piste verdi */
-}
-
-.dettagli-impianto p {
-  margin: 4px 0;
-  font-size: 14px;
-  color: #444;
-}
-
-.dettagli-impianto span {
-  font-weight: bold;
-}
-
-.status {
-  padding: 6px 12px;
-  border-radius: 4px;
-  color: #fff;
-  font-size: 14px;
-}
-
-.status.aperto {
-  background-color: #4caf50; /* Verde per aperto */
-}
-
-.status.chiuso {
-  background-color: #f44336; /* Rosso per chiuso */
-}
-
-.search-form {
-  display: flex;
-  flex-direction: column; /* La form è disposta in colonna */
-  align-items: center;
-}
-
-.btn-submit {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #fff;
-  background-color: #4682B4;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.btn-submit:hover {
-  background-color: #FF7F50;
-}
-
-</style>
+  
 </head>
 
 <body class="starter-page-page">
@@ -238,22 +88,9 @@ function content_68234dc5274399_89833301 (Smarty_Internal_Template $_smarty_tpl)
 
   <main class="main">
 
-    <!-- Page Title -->
-    <!-- <div class="page-title" data-aos="fade">
-      <div class="container">
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Starter Page</li>
-          </ol>
-        </nav>
-        <h1>Starter Page</h1>
-      </div>
-    </div> --><!-- End Page Title -->
-
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
-      <div class="container" data-aos="fade-up">
+      <div class="container loggedHome" data-aos="fade-up">
 
         <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['map']->value, 'i');
@@ -264,24 +101,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
           <div class="card-impianto">
             <div class="left">
               <div class="impianto-img">
-              <?php if (count($_smarty_tpl->tpl_vars['i']->value[3]) > 1) {?>
-              <div class="carousel-track">
-                <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['i']->value[3], 'e');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['e']->value) {
-?> 
-                  <img class="imagePreview" src="data:<?php echo $_smarty_tpl->tpl_vars['e']->value->getType();?>
-;base64,<?php echo $_smarty_tpl->tpl_vars['e']->value->getEncodedData();?>
-" >
-                <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-              </div>
-              <?php } else { ?>
               <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['i']->value[3], 'e');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['i']->value[4], 'e');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['e']->value) {
 ?> 
@@ -292,7 +113,6 @@ foreach ($_from as $_smarty_tpl->tpl_vars['e']->value) {
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-              <?php }?>
               </div>
             </div>
             <div class="right">
@@ -303,7 +123,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                   <div class="piste">
                     <h4>Dettagli piste</h4> 
                     <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['i']->value[1], 'e');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['i']->value[2], 'e');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['e']->value) {
 ?>  
@@ -331,7 +151,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                   <div class="impianti">
                   <h4>Impianti di risalita:</h4>
                   <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['i']->value[2], 'f');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['i']->value[3], 'f');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['f']->value) {
 ?>
@@ -345,7 +165,11 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                   </div>
                   
                 </div>
-                <p>Stato impianto: <span class="status aperto">aperto</span></p>
+                <?php if ($_smarty_tpl->tpl_vars['i']->value[1]) {?>
+                <p>Stato impianto: <span class="status aperto">Aperto</span></p>
+                <?php } else { ?>
+                <p>Stato impianto: <span class="status chiuso">Chiuso</span></p>
+                <?php }?>
                 <button class="btn-submit" type="submit" name="nameSkiFacility" value="<?php echo $_smarty_tpl->tpl_vars['i']->value[0];?>
 ">Esplora</button>
               </div>

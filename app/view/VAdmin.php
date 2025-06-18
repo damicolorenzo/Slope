@@ -23,7 +23,10 @@ class VAdmin {
         $this->smarty->display('admin-login.tpl');
     }
 
-    public function dashboard() {
+    public function dashboard($map, $etichettePie, $valoriPie) {
+        $this->smarty->assign('map', $map);
+        $this->smarty->assign('etichettePie', $etichettePie);
+        $this->smarty->assign('valoriPie', $valoriPie);
         $this->smarty->display('admin-dashboard.tpl');
     }
 
@@ -152,6 +155,10 @@ class VAdmin {
         $this->smarty->display('admin-addInsuranceTemplate.tpl');
     }
 
+    public function addSubscription() {
+        $this->smarty->display('admin-addSubscription.tpl');
+    }
+
     public function addSkipassObj($skiFacilities, $templates) {
         $this->smarty->assign('skiFacilities', $skiFacilities);
         $this->smarty->assign('templates', $templates);
@@ -192,10 +199,6 @@ class VAdmin {
         $this->smarty->display('admin-modifyPrice.tpl');
     }
 
-    public function addSkipass() {
-        $this->smarty->display('admin-addSkipass.tpl');
-    }
-
     public function searchSkipassObjs($skipassObjs) {
         $this->smarty->assign('skipassObjs', $skipassObjs);
         $this->smarty->display('admin-searchSkipassObj.tpl');
@@ -233,6 +236,11 @@ class VAdmin {
     public function searchInsuranceTemps($insuranceTemps) {
         $this->smarty->assign('insuranceTemps', $insuranceTemps);
         $this->smarty->display('admin-searchInsuranceTemplate.tpl');
+    }
+
+    public function searchSubscriptionTemps($subscriptionTemps) {
+        $this->smarty->assign('subscriptionTemps', $subscriptionTemps);
+        $this->smarty->display('admin-searchSubscriptionTemplate.tpl');
     }
 
     public function modifyInsuranceTemp($idInsuranceTemp, $value, $type) {

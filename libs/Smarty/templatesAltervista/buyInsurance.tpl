@@ -152,7 +152,7 @@ button:hover {
     <div class="branding d-flex align-items-center">
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
-        <a href="/" class="logo d-flex align-items-center">
+        <a href="/Slope" class="logo d-flex align-items-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <!-- <img src="assets/img/logo.png" alt=""> -->
           <h1 class="sitename">Slope</h1>
@@ -160,10 +160,10 @@ button:hover {
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/User/showBookings">Visualizza Prenotazioni</a></li>
-            <li><a href="/User/profile">Profile</a></li>
-            <li><a href="/User/logout">LogOut</a></li>
+            <li><a href="/Slope/">Home</a></li>
+            <li><a href="/Slope/User/showBookings">Visualizza Prenotazioni</a></li>
+            <li><a href="/Slope/User/profile">Profile</a></li>
+            <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -180,7 +180,7 @@ button:hover {
 
       <div class="container" data-aos="fade-up">
 
-        <form class="search-form" action="/User/confirmInsurance" method="POST">
+        <form class="search-form" action="/Slope/User/confirmInsurance" method="POST">
           <div class="card-impianto">
             <h1>Acqisto assicurazione</h1>
 
@@ -211,7 +211,7 @@ button:hover {
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6">
           <div class="footer-about">
-            <a href="/" class="logo sitename">Day</a>
+            <a href="/Slope" class="logo sitename">Day</a>
             <div class="footer-contact pt-3">
               <p>Via Vetoio</p>
               <p>L'Aquila, AQ 67100</p>

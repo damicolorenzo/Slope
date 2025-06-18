@@ -167,14 +167,23 @@ class FLiftStructure {
      * @return array 
      */
     public static function getLiftStructureByNameForSearch(string $nameLiftStructure) :array{
-        $conditions = [['name' , $nameLiftStructure]];
-        $queryResult = FEntityManager::getInstance()->retriveObjForSearch(self::getTable(), $conditions);
+        if($nameLiftStructure != "") {
+            $conditions = [['name' , $nameLiftStructure]];
+            $queryResult = FEntityManager::getInstance()->retriveObjForSearchAND(self::getTable(), $conditions);
+        } else 
+            return [];
         return $queryResult;
     }
 
     public static function typeAndNumberLiftStructure(string $idSkiFacility) : array{
         $result = FEntityManager::getInstance()->typeAndNumber(self::getTable(), self::getExtKey(), $idSkiFacility);
         return $result;
+    }
+
+    public static function getLiftStructureByIdSkiFacility(int $idSkiFacility) : array {
+        $conditions = [['idSkiFacility', $idSkiFacility]];
+        $queryResult = FEntityManager::getInstance()->retriveObjNFields(self::getTable(), $conditions);
+        return $queryResult;
     }
 
     

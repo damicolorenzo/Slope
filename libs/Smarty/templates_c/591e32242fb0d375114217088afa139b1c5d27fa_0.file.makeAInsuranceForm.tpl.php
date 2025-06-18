@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-15 14:22:08
+/* Smarty version 3.1.33, created on 2025-05-26 16:12:58
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\makeAInsuranceForm.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_6825dc70669493_56537243',
+  'unifunc' => 'content_683476ea4d60d2_39938763',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '591e32242fb0d375114217088afa139b1c5d27fa' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\makeAInsuranceForm.tpl',
-      1 => 1747144170,
+      1 => 1748268776,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6825dc70669493_56537243 (Smarty_Internal_Template $_smarty_tpl) {
+function content_683476ea4d60d2_39938763 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -57,70 +57,6 @@ function content_6825dc70669493_56537243 (Smarty_Internal_Template $_smarty_tpl)
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  <style>
-  .form-container {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-  max-width: 600px; /* Adatta la larghezza */
-    width: 90%;       /* Adattabile su dispositivi piccoli */
-    margin: 40px auto; /* Centra orizzontalmente e aggiunge spazio sopra/sotto */
-}
-
-h1 {
-  font-size: 20px;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  margin: 10px 0 5px;
-  font-weight: bold;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="date"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.durata-skipass, .tipologia-biglietto {
-  margin-bottom: 15px;
-}
-
-.durata-skipass p, .tipologia-biglietto p {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-input[type="checkbox"],
-input[type="radio"] {
-  margin-right: 10px;
-}
-
-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #007BFF;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-  </style>
 </head>
 
 <body class="starter-page-page">
@@ -155,10 +91,10 @@ button:hover {
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
 
-      <div class="container" data-aos="fade-up">
+      <div class="container makeAInsuranceForm" data-aos="fade-up">
 
         <div class="form-container">
-        <h1>Form di prenotazione</h1>
+        <h1>Acquista assicurazione</h1>
         <form action="/Slope/User/confirmInsurance" method="post">
             <label for="name">Nome</label>
             <input type="text" id="name" name="name" value=<?php echo $_smarty_tpl->tpl_vars['user']->value->getName();?>

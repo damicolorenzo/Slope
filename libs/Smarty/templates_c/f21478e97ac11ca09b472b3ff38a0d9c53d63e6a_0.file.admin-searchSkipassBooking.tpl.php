@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-14 17:37:46
+/* Smarty version 3.1.33, created on 2025-06-02 13:06:06
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-searchSkipassBooking.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_6824b8ca1cf956_15889112',
+  'unifunc' => 'content_683d859ec6be59_88522198',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f21478e97ac11ca09b472b3ff38a0d9c53d63e6a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-searchSkipassBooking.tpl',
-      1 => 1747237024,
+      1 => 1748862364,
       2 => 'file',
     ),
   ),
@@ -20,21 +20,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6824b8ca1cf956_15889112 (Smarty_Internal_Template $_smarty_tpl) {
+function content_683d859ec6be59_88522198 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Registration</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <title>Seleziona prenotazione skipass</title>
 
   <!-- Favicons -->
-  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/favicon.png" rel="icon">
-  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: dark)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: dark)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: dark)">
 
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/dark/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: light)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: light)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: light)">
+  
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -50,134 +53,6 @@ function content_6824b8ca1cf956_15889112 (Smarty_Internal_Template $_smarty_tpl)
   <!-- Main CSS File -->
   <link href="https://localhost/Slope/libs/Smarty/day/assets/css/main.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Day
-  * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
-  * Updated: Jun 14 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-<style>
-.form-container {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-    max-width: 600px; /* Adatta la larghezza */
-    width: 90%;       /* Adattabile su dispositivi piccoli */
-    margin: 40px auto; /* Centra orizzontalmente e aggiunge spazio sopra/sotto */
-  }
-
-  @media (max-width: 600px) {
-    .form-container {
-      padding: 15px;
-    }
-
-    button {
-      font-size: 14px;
-      padding: 8px;
-    }
-  }
-
-  .form-container h1 {
-    font-size: 20px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  button {
-  padding: 10px 15px;
-  border: 1px solid #000;
-  border-radius: 3px;
-  background-color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #ddd;
-}
-
-  .structures {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding-top: 20px;
-    background-color: #f0f0f0;
-    justify-content: center;
-}
-
-.structure-cards-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px; /* Distanza tra le card */
-  margin-top: 20px;
-}
-
-.card {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.skipass-info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Allinea il testo a sinistra */
-}
-
-.admin-filter-container {
-  margin: 40px auto;
-  padding: 30px;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.admin-filter-container h2 {
-  margin-bottom: 20px;
-  font-size: 1.5rem;
-}
-
-.filters {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-}
-
-.filters input[type="text"] {
-  padding: 10px 15px;
-  font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  min-width: 200px;
-  transition: border-color 0.3s;
-}
-
-.filters input[type="text"]:focus {
-  border-color: #ff7a45;
-  outline: none;
-}
-
-.edit {
-  color: green;
-  border-color: green;
-}
-
-.delete {
-  color: red;
-  border-color: red;
-}
-</style>
 </head>
 
 <body class="starter-page-page">
@@ -187,8 +62,6 @@ button:hover {
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
         <a href="/Slope" class="logo d-flex align-items-center">
-          <!-- Uncomment the line below if you also wish to use an image logo -->
-          <!-- <img src="assets/img/logo.png" alt=""> -->
           <h1 class="sitename">Slope Admin</h1>
         </a>
 
@@ -213,22 +86,22 @@ button:hover {
       <div class="container" data-aos="fade-up">
       
         <!-- Da riempire in base alla pagina  -->
-      <div class="form-container">
+      <div class="form-container searchSkipassBooking">
         <div class="admin-filter-container">
           <h2>Filtra prenotazioni</h2>
           <div class="filters">
-            <form class="search-form" action="/Slope/Admin/searchSkipassObjs" method="POST">
+            <form class="search-form" action="/Slope/Admin/searchSkipassBooking" method="POST">
               <input type="text" id="username" name="username" placeholder="Username">
               <input type="text" id="nameSkiFacility" name="nameSkiFacility" placeholder="Nome impianto">
-              <input type="text" id="email" name="email" placeholder="Email">
+              <input type="text" id="email" name="email" placeholder="Email attuale">
               <button type="submit">Filtra</button>
             </form>
           </div>
         </div>
 
         <?php if (count($_smarty_tpl->tpl_vars['objects']->value) > 0) {?>
-          <div class="strucutres">
-            <div class="structure-cards-container">
+          <div class="users">
+            <div class="cards-container">
             <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['objects']->value, 'i');
 if ($_from !== null) {
@@ -236,28 +109,32 @@ foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 ?>
               <div class="card">
                 <div class="skippass-info">
-                    <p>Nome: <?php echo $_smarty_tpl->tpl_vars['i']->value->getName();?>
+                    <p>Utente: <?php echo $_smarty_tpl->tpl_vars['i']->value[2]->getUsername();?>
 </p>
-                    <p>Cognome: <?php echo $_smarty_tpl->tpl_vars['i']->value->getSurname();?>
+                    <p>Nome: <?php echo $_smarty_tpl->tpl_vars['i']->value[0]->getName();?>
 </p>
-                    <p>Tipologia: <?php echo $_smarty_tpl->tpl_vars['i']->value->getType();?>
+                    <p>Cognome: <?php echo $_smarty_tpl->tpl_vars['i']->value[0]->getSurname();?>
 </p>
-                    <p>Data: <?php echo $_smarty_tpl->tpl_vars['i']->value->getStartDate();?>
+                    <p>Tipologia: <?php echo $_smarty_tpl->tpl_vars['i']->value[0]->getType();?>
 </p>
-                    <p>Email: <?php echo $_smarty_tpl->tpl_vars['i']->value->getEmail();?>
+                    <p>Data: <?php echo $_smarty_tpl->tpl_vars['i']->value[0]->getStartDate();?>
 </p>
-                    <p>Prezzo: <?php echo $_smarty_tpl->tpl_vars['i']->value->getValue();?>
+                    <p>Email: <?php echo $_smarty_tpl->tpl_vars['i']->value[0]->getEmail();?>
 </p>
-                    <p>Durata: <?php echo $_smarty_tpl->tpl_vars['i']->value->getPeriod();?>
+                    <p>Prezzo: <?php echo $_smarty_tpl->tpl_vars['i']->value[0]->getValue();?>
+</p>
+                    <p>Durata: <?php echo $_smarty_tpl->tpl_vars['i']->value[0]->getPeriod();?>
+</p>
+                    <p>Impianto: <?php echo $_smarty_tpl->tpl_vars['i']->value[1]->getName();?>
 </p>
                 </div>
                 <div class="action-buttons">
                   <form action="/Slope/Admin/modifySkipassBooking" method="POST">
-                    <button type="submit" name="idSkipassBooking" value=<?php echo $_smarty_tpl->tpl_vars['i']->value->getIdSkipassBooking();?>
+                    <button type="submit" name="idSkipassBooking" value=<?php echo $_smarty_tpl->tpl_vars['i']->value[0]->getIdSkipassBooking();?>
  class="edit">Modifica</button>
                   </form>
                   <form action="/Slope/Admin/deleteSkipassBooking" method="POST">
-                    <button type="submit" name="idSkipassBooking" value=<?php echo $_smarty_tpl->tpl_vars['i']->value->getIdSkipassBooking();?>
+                    <button type="submit" name="idSkipassBooking" value=<?php echo $_smarty_tpl->tpl_vars['i']->value[0]->getIdSkipassBooking();?>
  class="delete">Elimina</button>
                   </form>
                 </div>
@@ -274,77 +151,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     </section><!-- /Starter Section Section -->
 
   </main>
-
-  <footer id="footer" class="footer position-relative">
-
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6">
-          <div class="footer-about">
-            <a href="/Slope" class="logo sitename">Day</a>
-            <div class="footer-contact pt-3">
-              <p>Via Vetoio</p>
-              <p>L'Aquila, AQ 67100</p>
-              <p class="mt-3"><strong>Phone:</strong> <span>+39 123 456 7890</span></p>
-              <p><strong>Email:</strong> <span>info@example.com</span></p>
-            </div>
-            <div class="social-links d-flex mt-4">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-4 col-md-12 footer-newsletter">
-          <h4>Our Newsletter</h4>
-          <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-          <form action="forms/newsletter.php" method="post" class="php-email-form">
-            <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-          </form>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Slope</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-
-  </footer>
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

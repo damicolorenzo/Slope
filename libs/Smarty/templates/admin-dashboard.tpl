@@ -4,14 +4,17 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Registration</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <title>Dashboard</title>
 
   <!-- Favicons -->
-  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/favicon.png" rel="icon">
-  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: dark)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: dark)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: dark)">
 
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/dark/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: light)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: light)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: light)">
+  
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -26,134 +29,157 @@
 
   <!-- Main CSS File -->
   <link href="https://localhost/Slope/libs/Smarty/day/assets/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Day
-  * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
-  * Updated: Jun 14 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
 
-.dashboard {
+/* Layout base */
+.admin-dashboard .layout {
   display: flex;
-  gap: 2%;
+  gap: 30px;
+  margin-top: 30px;
   flex-wrap: wrap;
-  align-content: start;
 }
 
-.item:nth-child(1),
-.item:nth-child(4) {
-  width: 100%;
-  height: 5%;
+/* Sidebar */
+.admin-dashboard .layout .sidebar-wrapper {
+  position: relative;
 }
 
-.item:nth-child(2) {
-  width: 25%;
-  height: 75%;
-}
-
-.item:nth-child(3) {
-  flex-grow: 1;
-  height: 75%;
-}
-
-.item:nth-child(2) a {
-  display: block;
-  margin: 8px 0;
-  padding: 12px 16px;
-  background-color: #f0f4f8;
-  color: #2c3e50;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: 500;
+.admin-dashboard .layout .sidebar-wrapper .dashboard {
+  background: linear-gradient(135deg, #e9f0f8, #ffffff);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  width: 250px;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-.item:nth-child(2) a:hover {
-  background-color: #FF4400;
+.admin-dashboard .layout .sidebar-wrapper .dashboard a {
+  margin-bottom: 12px;
+  padding: 10px 16px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #2c3e50;
+  background-color: #ffffff;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.admin-dashboard .layout .sidebar-wrapper .dashboard a:hover {
+  background-color: #2563eb;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Main content area */
+.admin-dashboard .layout .content {
+  flex-grow: 1;
+  min-width: 300px;
+}
+
+.admin-dashboard .layout .content h1 {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 24px;
+}
+
+.admin-dashboard .layout .controls {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.admin-dashboard .layout .controls label {
+  font-size: 16px;
+  margin-right: 10px;
+  color: #334155;
+}
+
+.admin-dashboard .layout .controls input[type="month"] {
+  padding: 10px 14px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* Chart and Table */
+.admin-dashboard .layout .content .chart-container {
+  width: 100%;
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
+  transition: box-shadow 0.3s ease;
+}
+
+.admin-dashboard .layout .content .chart-container:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.admin-dashboard .layout .content table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.admin-dashboard .layout .content th, td {
+  padding: 16px 20px;
+  text-align: center;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.admin-dashboard .layout .content th {
+  background-color: #1d4ed8;
   color: white;
-  transform: translateX(5px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
 }
 
-.chart {
-    display: flex;
+/* Responsive layout */
+@media (max-width: 768px) {
+  .admin-dashboard .layout {
     flex-direction: column;
-    gap: 10px;
-    max-width: 600px;
-    margin: 20px auto;
-    font-family: sans-serif;
   }
 
-  .bar {
-    display: flex;
-    align-items: center;
+  .admin-dashboard .layout .sidebar-wrapper .dashboard {
+    width: 100%;
+    margin-bottom: 20px;
   }
 
-  .bar-label {
-    width: 100px;
-    text-align: right;
-    margin-right: 10px;
-    font-weight: bold;
-  }
-
-  .bar-value {
-    height: 30px;
-    background-color: #FF4400;
-    border-radius: 6px;
-    transition: width 0.3s ease;
-    text-align: right;
-    color: white;
-    padding-right: 10px;
-    line-height: 30px;
-  }
-
-.stat-card {
-    width: 300px;
-    height: 150px;
-    background: linear-gradient(135deg, #FF4400, #8e44ad);
-    color: white;
-    border-radius: 15px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    position: relative;
-    transition: all 0.3s ease;
-  }
-
-  .stat-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  }
-
-  .stat-card i {
-    font-size: 40px;
-    margin-bottom: 15px;
-  }
-
-  .stat-card .number {
-    font-size: 36px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-
-  .stat-card .label {
+  .admin-dashboard .layout .sidebar-wrapper .dashboard a {
+    padding: 14px;
     font-size: 16px;
-    font-weight: 500;
   }
 
-  /* Optional: Style for a larger container */
-  .stat-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
+  .admin-dashboard .layout .content {
+    width: 100%;
   }
+
+  .admin-dashboard .layout .controls .chart-container, 
+  .admin-dashboard .layout .controls table {
+    width: 100%;
+  }
+
+  .admin-dashboard .layout .controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .admin-dashboard .layout input[type="month"] {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
 
 </style>
 </head>
@@ -165,16 +191,11 @@
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
         <a href="/Slope" class="logo d-flex align-items-center">
-          <!-- Uncomment the line below if you also wish to use an image logo -->
-          <!-- <img src="assets/img/logo.png" alt=""> -->
           <h1 class="sitename">Slope Admin</h1>
         </a>
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="#hero">Piste</a></li>
-            <li><a href="#about">Impianti</a></li>
-            <li><a href="#services">Utenti</a></li>
             <li><a href="/Slope/Admin/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -188,85 +209,53 @@
   <main class="main">
 
     <!-- Starter Section Section -->
-    <section id="starter-section" class="starter-section section"> 
+    <section id="starter-section" class="starter-section section">
+      <div class="container admin-dashboard" data-aos="fade-up">
+        <div class="layout">
+          
+          <!-- Sidebar + Hamburger Toggle -->
+          <div class="sidebar-wrapper">
+            <nav class="dashboard" id="sidebar">
+              <a href="/Slope/Admin/addSkiRun">Aggiungi dati pista</a>
+              <a href="/Slope/Admin/addSkiFacility">Aggiungi dati impianto</a>
+              <a href="/Slope/Admin/addLiftStructure">Aggiungi dati risalita</a>
+              <a href="/Slope/Admin/addSkipassTemplate">Aggiungi template skipass</a>
+              <a href="/Slope/Admin/addInsuranceTemplate">Aggiungi template assicurazione</a>
+              <a href="/Slope/Admin/addSubscription">Aggiungi template abbonamento</a>
+              <a href="/Slope/Admin/addSkipassObj">Aggiungi oggetto skipass</a>
+              <a href="/Slope/Admin/searchStructures">Modifica dati pista/impianto/risalita</a>
+              <a href="/Slope/Admin/searchSkipassTemplate">Modifica template skipass</a>
+              <a href="/Slope/Admin/searchInsuranceTemplate">Modifica template assicurazione</a>
+              <a href="/Slope/Admin/searchSubscriptionTemplate">Modifica template abbonamento</a>
+              <a href="/Slope/Admin/searchSkipassObjs">Modifica oggetto skipass</a>
+              <a href="/Slope/Admin/modifySkiFacilityImage">Modifica immagini impianto</a>
+              <a href="/Slope/Admin/searchUsers">Modifica dati utente</a>
+              <a href="/Slope/Admin/searchSkipassBooking">Modifica prenotazione skipass utente</a>
+              <a href="/Slope/Admin/modifyLandingPage">Modifica interfaccia</a>
+            </nav>
+          </div>
 
-      <div class="container" data-aos="fade-up">
-
-      <div class="dashboard">
-        <div class="item"></div>
-        <div class="item">
-          <a href="/Slope/Admin/addSkiRun">Aggiungi dati pista</a>
-          <a href="/Slope/Admin/addSkiFacility">Aggiungi dati impianto</a>
-          <a href="/Slope/Admin/addLiftStructure">Aggiungi dati risalita</a>
-          <a href="/Slope/Admin/addSkipassTemplate">Aggiungi template skipass</a>
-          <a href="/Slope/Admin/addInsuranceTemplate">Aggiungi template assicurazione</a>
-          <a href="/Slope/Admin/addSkipassObj">Aggiungi oggetto skipass</a>
-          <a href="/Slope/Admin/searchStructures">Modifica dati pista/impianto/risalita</a>
-          <a href="/Slope/Admin/searchSkipassTemplate">Modifica template skipass</a>
-          <a href="/Slope/Admin/searchInsuranceTemplate">Modifica template assicurazione</a>
-          <a href="/Slope/Admin/searchSkipassObjs">Modifica oggetto skipass</a>
-          <a href="/Slope/Admin/modifySkiFacilityImage">Modifica immagini impianto</a>
-          <a href="/Slope/Admin/searchUsers">Modifica dati utente</a>
-          <a href="/Slope/Admin/searchSkipassBooking">Modifica prenotazione skipass utente</a>
-          <a href="/Slope/Admin/modifyLandingPage">Modifica interfaccia</a>
-          <!--
-          <a href="/Slope/Admin/searchPrices">Modifica prezzi</a>
-          <a href="/Slope/Admin/addPrice">Aggiungi prezzo</a>
-          -->
-        </div>
-        <div class="item">
-        <div class="chart">
-          <div class="bar">
-            <div class="bar-label">Lunedì</div>
-            <div class="bar-value" style="width: 50%;">50</div>
-          </div>
-          <div class="bar">
-            <div class="bar-label">Martedì</div>
-            <div class="bar-value" style="width: 70%;">70</div>
-          </div>
-          <div class="bar">
-            <div class="bar-label">Mercoledì</div>
-            <div class="bar-value" style="width: 40%;">40</div>
-          </div>
-          <div class="bar">
-            <div class="bar-label">Giovedì</div>
-            <div class="bar-value" style="width: 60%;">60</div>
-          </div>
-          <div class="bar">
-            <div class="bar-label">Venerdì</div>
-            <div class="bar-value" style="width: 80%;">80</div>
-          </div>
-          <div class="bar">
-            <div class="bar-label">Sabato</div>
-            <div class="bar-value" style="width: 90%;">90</div>
-          </div>
-          <div class="bar">
-            <div class="bar-label">Domenica</div>
-            <div class="bar-value" style="width: 100%;">100</div>
-          </div>
-        </div>
-        <div class="stat-container">
-          <div class="stat-card">
-            <i class="fas fa-users"></i> <!-- Icona utenti (FontAwesome) -->
-            <div class="number">
-            37
+          <!-- Main Content -->
+          <div class="content">
+            <h1>Statistiche Prenotazioni</h1>
+            <div class="controls">
+              <label for="mese">Seleziona mese:</label>
+              <input type="month" id="mese" />
             </div>
-            <div class="label">Utenti iscritti</div>
+            <div class="chart-container">
+              <canvas id="graficoPrenotazioni" width="400" height="200"></canvas>
+            </div>
+            <div class="chart-container">
+              <canvas id="graficoUtentiPie" width="300" height="300"></canvas>
+            </div>
           </div>
         </div>
       </div>
-        
-      </div>
+    </section>
 
-      <!-- Da riempire in base alla pagina  -->
-
-      </div>
-
-    </section><!-- /Starter Section Section -->
+<!-- /Starter Section Section -->
 
   </main>
-
-  
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -286,6 +275,98 @@
   <!-- Main JS File -->
   <script src="https://localhost/Slope/libs/Smarty/day/assets/js/main.js"></script>
 
+<script>
+const ctx = document.getElementById('graficoPrenotazioni').getContext('2d');
+const ctxPie = document.getElementById('graficoUtentiPie').getContext('2d');
+
+// Ottieni il mese corrente
+const bookingsData = {$map};
+const oggi = new Date();
+const meseDefault = oggi.toISOString().slice(0, 7);
+document.getElementById('mese').value = meseDefault;
+
+function generaDataset(mese) {
+  const meseData = bookingsData[mese] || {};
+  const labels = Object.keys(meseData);
+  const values = Object.values(meseData);
+
+  const colors = {
+    'Roccaraso': 'rgba(54, 162, 235, 0.7)',
+    'Ovindoli': 'rgba(255, 159, 64, 0.7)',
+    // aggiungi altri impianti qui se necessario
+  };
+
+  return {
+    labels: labels,
+    datasets: [{
+      label: 'Prenotazioni per impianto',
+      data: values,
+      backgroundColor: labels.map(name => colors[name] || 'rgba(153, 102, 255, 0.7)'),
+      borderColor: 'rgba(255, 255, 255, 1)',
+      borderWidth: 2
+    }]
+  };
+}
+
+let graficoPrenotazioni = new Chart(ctx, {
+  type: 'bar',
+  data: generaDataset(meseDefault),
+  options: {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: 'Prenotazioni per impianto nel mese selezionato'
+      },
+      legend: {
+        display: false
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+
+document.getElementById('mese').addEventListener('change', function () {
+  const nuovoMese = this.value;
+  graficoPrenotazioni.data = generaDataset(nuovoMese);
+  graficoPrenotazioni.update();
+});
+
+const graficoUtentiPie = new Chart(ctxPie, {
+  type: 'pie',
+  data: {
+    labels: {$etichettePie},
+    datasets: [{
+      data:  {$valoriPie},
+      backgroundColor: [
+        'rgba(54, 162, 235, 0.7)',  // Abbonati
+        'rgba(255, 99, 132, 0.7)'   // Non abbonati
+      ],
+      borderColor: [
+        'rgba(255, 255, 255, 1)',
+        'rgba(255, 255, 255, 1)'
+      ],
+      borderWidth: 2
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: 'Distribuzione Utenti'
+      },
+      legend: {
+        position: 'bottom'
+      }
+    }
+  }
+});
+</script>
 </body>
 
 </html>

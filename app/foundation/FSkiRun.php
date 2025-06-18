@@ -4,7 +4,7 @@ require_once("FEntityManager.php");
 
 class FSkiRun {
 
-    private static $table = "SkiRun";
+    private static $table = "skirun";
     private static $value = "(NULL, :name, :type, :status, :idSkiFacility)";
     private static $key = "idSkiRun";
     private static $externalKey = "idSkiFacility";
@@ -183,8 +183,17 @@ class FSkiRun {
      * @return array $result
      */
     public static function getSkiRunByNameForSearch(string $skiRunName) : array{
-        $conditions = [['name', $skiRunName]];
-        $queryResult = FEntityManager::getInstance()->retriveObjForSearch(self::getTable(), $conditions);
+        if($skiRunName != "") {
+            $conditions = [['name', $skiRunName]];
+            $queryResult = FEntityManager::getInstance()->retriveObjForSearchAND(self::getTable(), $conditions);
+        } else 
+            return [];
+        return $queryResult;
+    }
+
+    public static function getSkiRunByIdSkiFacility(int $idSkiFacility) : array {
+        $conditions = [['idSkiFacility', $idSkiFacility]];
+        $queryResult = FEntityManager::getInstance()->retriveObjNFields(self::getTable(), $conditions);
         return $queryResult;
     }
 }

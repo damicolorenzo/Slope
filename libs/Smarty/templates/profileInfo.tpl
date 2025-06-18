@@ -35,94 +35,8 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
   <style>
-  /* Layout container principale */
-.profile-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    background: #f9f9f9;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-}
-
-/* Info profilo */
-.profile-info {
-    flex: 1;
-    min-width: 300px;
-    padding-right: 20px;
-}
-
-.profile-info h2 {
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 24px;
-    border-bottom: 2px solid #4682B4;
-    padding-bottom: 5px;
-}
-
-.profile-info p {
-    font-size: 16px;
-    margin-bottom: 10px;
-    color: #444;
-}
-
-.profile-info strong {
-    color: #222;
-}
-
-/* Immagine profilo */
-.profile-image {
-    text-align: center;
-    min-width: 200px;
-}
-
-.profile-pic {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid #4682B4;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    margin-top: 10px;
-}
-
-/* Sezione abbonamento */
-.section-container {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    margin-bottom: 30px;
-}
-
-.profile-section h3 {
-    color: #333;
-    margin-bottom: 15px;
-    border-left: 5px solid #2196F3;
-    padding-left: 10px;
-}
-
-.section-image {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    display: block;
-    margin: 10px 0;
-    border-radius: 8px;
-    border: 2px solid #ccc;
-}
-
-/* Pulsanti */
-.button-container {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.edit-button {
-    background-color: #4682B4;
+  .super-button {
+    background-color:rgb(201, 198, 53);
     color: white;
     border: none;
     padding: 12px 24px;
@@ -130,10 +44,80 @@
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+  }
+.creditCard {
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+  border: 1px solid #cbd5e0;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.edit-button:hover {
-    background-color: #4682B4;
+.creditCard h2 {
+  margin-bottom: 16px;
+  font-size: 1.4rem;
+  color: #2d3748;
+}
+
+.card-details p {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #4a5568;
+}
+
+.card-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.2s;
+}
+
+.btn.edit {
+  background-color: #3182ce;
+  color: white;
+}
+
+.btn.edit:hover {
+  background-color: #2b6cb0;
+}
+
+.btn.remove {
+  background-color: #e53e3e;
+  color: white;
+}
+
+.btn.remove:hover {
+  background-color: #c53030;
+} 
+
+.subscription-box {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.subscription-box h2 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+.subscription-box p {
+  margin: 5px 0;
+  font-size: 14px;
 }
 
   </style>
@@ -168,45 +152,62 @@
 
   <main class="main">
 
-    <!-- Page Title -->
-    <!-- <div class="page-title" data-aos="fade">
-      <div class="container">
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="/Slope">Home</a></li>
-            <li class="current">Starter Page</li>
-          </ol>
-        </nav>
-        <h1>Starter Page</h1>
-      </div>
-    </div> --><!-- End Page Title -->
-
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
 
-      <div class="container" data-aos="fade-up">
+      <div class="container profileInfo" data-aos="fade-up">
         
         <div class="profile-container">
-            <div class="profile-info">
-                <h2>INFORMAZIONI PROFILO</h2>
-                <p><strong>Nome utente:</strong> {$username}</p>
-                <p><strong>Nome:</strong> {$name}</p>
-                <p><strong>Cognome:</strong> {$surname}</p>
-                <p><strong>Email di conferma:</strong> {$email}</p>
-                <p><strong>Numero di telefono:</strong> {$phoneNumber}</p>
-                <p><strong>Data nascita:</strong> {$birthDate}</p>
-            </div>
-            <div class="profile-image">
-                <!-- Immagine del profilo -->
-                {if $image == []} 
-                  <img class="profile-pic" src="https://localhost/Slope/libs/Smarty/images/NotFound.jpg" loading="lazy" alt="Img">
-                {else}
-                {foreach from=$image item=i}
-                  <img class="profile-pic" src="data:{$i->getType()};base64,{$i->getEncodedData()}" loading="lazy" alt="Img">
-                {/foreach}
-                {/if}
-            </div>
+          <div class="profile-info">
+              <h2>INFORMAZIONI PROFILO</h2>
+              <p><strong>Nome utente:</strong> {$username}</p>
+              <p><strong>Nome:</strong> {$name}</p>
+              <p><strong>Cognome:</strong> {$surname}</p>
+              <p><strong>Email di conferma:</strong> {$email}</p>
+              <p><strong>Numero di telefono:</strong> {$phoneNumber}</p>
+              <p><strong>Data nascita:</strong> {$birthDate}</p>
+          </div>
+          <div class="profile-image">
+              <!-- Immagine del profilo -->
+              {if $image == []} 
+                <img class="profile-pic" src="https://localhost/Slope/libs/Smarty/images/NotFound.jpg" loading="lazy" alt="Img">
+              {else}
+              {foreach from=$image item=i}
+                <img class="profile-pic" src="data:{$i->getType()};base64,{$i->getEncodedData()}" loading="lazy" alt="Img">
+              {/foreach}
+              {/if}
+          </div>
         </div>
+        <div class="button-container">
+            <a href="/Slope/User/modifyProfile"><button class="edit-button">Modifica profilo</button></a>
+        </div>
+        {if count($creditCard) > 0}
+        <div class="creditCard">
+          <h2>Metodo di Pagamento</h2>
+          <div class="card-details">
+            <p><strong>Nome:</strong> {$creditCard[0]->getCardHolderName()}</p>
+            <p><strong>Cognome:</strong> {$creditCard[0]->getCardHolderSurname()}</p>
+            <p><strong>Numero Carta:</strong> **** **** **** {substr($creditCard[0]->getCardNumber(), -4)}</p>
+            <p><strong>Scadenza:</strong> {$creditCard[0]->getExpiryDate()}</p>
+            <p><strong>CVV:</strong> ***</p>
+          </div>
+          <div class="card-actions">
+            <form action="/Slope/User/modifyCreditCard" class="modifyCreditCard"  enctype="multipart/form-data" method="POST">
+            <button type=submit class="btn edit">Modifica</button>
+            </form>
+            <form action="/Slope/User/deleteCreditCard" class="deleteCreditCard"  enctype="multipart/form-data" method="POST">
+            <button class="btn remove">Rimuovi Carta</button>
+            </form>
+          </div>
+        </div>
+        {/if}
+        {if count($subscription) > 0}
+        <div class="subscription-box">
+          <h2>Abbonamento</h2>
+          <p>Data inizio: {$subscription[0]->getStartDate()}</p>
+          <p>Data fine: {$subscription[0]->getEndDate()}</p>
+        </div>
+        {/if}
         {if count($insurance) > 0}
         <div class="section-container">
             <div class="profile-section">
@@ -222,11 +223,12 @@
         </div>
         {/if}
 
-        <div class="button-container">
-            <a href="/Slope/User/modifyProfile"><button class="edit-button">Modifica profilo</button></a>
-        </div>
-
         
+        {if count($subscription) <= 0}
+        <div class="button-container">
+            <a href="/Slope/User/buySubscription"><button class="super-button">Acquista abbonamento</button></a>
+        </div>
+        {/if}
 
       <!-- Da riempire in base alla pagina  -->
 

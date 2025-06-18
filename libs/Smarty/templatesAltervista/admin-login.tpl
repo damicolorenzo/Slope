@@ -4,14 +4,17 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Starter Page - Day Bootstrap Template</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <title>Admin login</title>
 
   <!-- Favicons -->
-  <link href="/libs/Smarty/day/assets/img/favicon.png" rel="icon">
-  <link href="/libs/Smarty/day/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="/libs/Smarty/day/assets/img/light/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: dark)">
+  <link href="/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: dark)">
+  <link href="/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: dark)">
 
+  <link href="/libs/Smarty/day/assets/img/dark/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: light)">
+  <link href="/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: light)">
+  <link href="/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: light)">
+  
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -27,87 +30,6 @@
   <!-- Main CSS File -->
   <link href="/libs/Smarty/day/assets/css/main.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Day
-  * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
-  * Updated: Jun 14 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-<style>
-  .login-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.login-form {
-  background-color: white;
-  padding: 60px 50px;
-  border-radius: 16px;
-  width: 100%;
-}
-
-.login-form h2 {
-  font-size: 32px;
-  margin-bottom: 36px;
-  color:rgb(0, 0, 0);
-}
-
-.login-form label {
-  display: block;
-  margin: 18px 0 10px;
-  font-size: 18px;
-  color:rgb(0, 0, 0);
-}
-
-.login-form input {
-  width: 100%;
-  padding: 16px;
-  margin-bottom: 24px;
-  font-size: 18px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-}
-
-.login-form button {
-  width: 100%;
-  padding: 18px;
-  background-color: #FF4400;
-  color: white;
-  font-size: 20px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.login-form button:hover {
-  background: color-mix(in srgb, var(--accent-color), transparent 20%);
-}
-
-@media screen and (max-width: 600px) {
-  .form_login-container {
-    padding: 30px 20px;
-    border-radius: 10px;
-    box-shadow: none;
-  }
-
-  .login-form input,
-  .login-form button {
-    font-size: 16px;
-    padding: 12px;
-  }
-
-  .login-form h2 {
-    font-size: 24px;
-  }
-
-  .login-form label {
-    font-size: 15px;
-  }
-}
-  </style>
 </head>
 
 <body class="starter-page-page">
@@ -117,9 +39,7 @@
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
         <a href="index.html" class="logo d-flex align-items-center">
-          <!-- Uncomment the line below if you also wish to use an image logo -->
-          <!-- <img src="libs/Smarty/day/assets/img/logo.png" alt=""> -->
-          <h1 class="sitename">Slope</h1>
+          <h1 class="/">Slope</h1>
         </a>
 
         <nav id="navmenu" class="navmenu">
@@ -138,10 +58,10 @@
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
 
-      <div class="login-wrapper">
+      <div class="admin-login-wrapper">
       <div class="col-lg-4 col-md-6 card aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
 
-        <form class="login-form" action="/Admin/checkLogin" method="POST">
+        <form class="admin-login-form" action="/Admin/checkLogin" method="POST">
           <h2>LogIn Admin</h2>
 
           <label for="username">Nome utente</label>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-13 15:49:59
+/* Smarty version 3.1.33, created on 2025-05-29 15:33:32
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\skiRunsAndLiftsDetails.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_68234e07c8c513_20444975',
+  'unifunc' => 'content_6838622c4a1a44_20838783',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0e419d4510153349caab5acdf4de8e6810219798' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\skiRunsAndLiftsDetails.tpl',
-      1 => 1747144148,
+      1 => 1748525609,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_68234e07c8c513_20444975 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6838622c4a1a44_20838783 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -57,76 +57,7 @@ function content_68234e07c8c513_20444975 (Smarty_Internal_Template $_smarty_tpl)
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  <style>
-.cards-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
-}
 
-.cards-container table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;  
-  border-radius: 8px;
-  overflow: hidden;
-  font-family: Arial, sans-serif;
-  background-color: #fff;
-}
-
-.cards-container th {
-  background-color: #4682B4;
-  color: white;
-  text-align: left;
-  padding: 12px 16px;
-  font-size: 16px;
-}
-
-.cards-container td {
-  padding: 12px 16px;
-  border-bottom: 1px solid #eee;
-  font-size: 14px;
-  color: #333;
-}
-
-.cards-container tr:hover {
-  background-color: #f0f8ff;
-}
-
-.cards-container td:nth-child(3), /* Stato */
-.cards-container td:nth-child(4) {
-  font-weight: bold;
-}
-
-.btn-submit {
-  display: block;
-  width: 50%;
-  padding: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #fff;
-  background-color: #4682B4;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 40px;
-  transition: background-color 0.3s ease;
-}
-
-.btn-submit:hover {
-  background-color: #FF7F50;
-}
-
-.aperto {
-  background-color: #4caf50
-}
-
-.chiuso {
-  background-color: #e74c3c
-}
-
-
-  </style>
 </head>
 
 <body class="starter-page-page">
@@ -158,23 +89,10 @@ function content_68234e07c8c513_20444975 (Smarty_Internal_Template $_smarty_tpl)
 
   <main class="main">
 
-    <!-- Page Title -->
-    <!-- <div class="page-title" data-aos="fade">
-      <div class="container">
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Starter Page</li>
-          </ol>
-        </nav>
-        <h1>Starter Page</h1>
-      </div>
-    </div> --><!-- End Page Title -->
-
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
     
-      <div  data-aos="fade-up">
+      <div class="container sRLDetails" data-aos="fade-up">
         <div class="cards-container">
           <h3><?php echo $_smarty_tpl->tpl_vars['nameSkiFacility']->value;?>
 </h3>
@@ -196,12 +114,10 @@ foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 </td>
                 <td><?php echo $_smarty_tpl->tpl_vars['i']->value->getType();?>
 </td>
-                <?php if ($_smarty_tpl->tpl_vars['i']->value->getStatus() == 'chiuso') {?>
-                <td class="chiuso"><?php echo $_smarty_tpl->tpl_vars['i']->value->getStatus();?>
-</td>
+                <?php if ($_smarty_tpl->tpl_vars['i']->value->getStatus()) {?>
+                <td class="aperto">aperto</td>
                 <?php } else { ?>
-                <td class="aperto"><?php echo $_smarty_tpl->tpl_vars['i']->value->getStatus();?>
-</td>
+                <td class="chiuso">chiuso</td>
                 <?php }?>
               </tr>
             <?php
@@ -228,12 +144,10 @@ foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 </td>
                 <td><?php echo $_smarty_tpl->tpl_vars['i']->value->getType();?>
 </td>
-                <?php if ($_smarty_tpl->tpl_vars['i']->value->getStatus() == 'chiuso') {?>
-                <td class="chiuso"><?php echo $_smarty_tpl->tpl_vars['i']->value->getStatus();?>
-</td>
+                <?php if ($_smarty_tpl->tpl_vars['i']->value->getStatus()) {?>
+                <td class="aperto">aperto</td>
                 <?php } else { ?>
-                <td class="aperto"><?php echo $_smarty_tpl->tpl_vars['i']->value->getStatus();?>
-</td>
+                <td class="chiuso">chiuso</td>
                 <?php }?>
                 <td><?php echo $_smarty_tpl->tpl_vars['i']->value->getSeats();?>
 </td>

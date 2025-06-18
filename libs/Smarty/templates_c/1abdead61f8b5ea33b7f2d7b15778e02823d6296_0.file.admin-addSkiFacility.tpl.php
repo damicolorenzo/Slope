@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-13 16:18:12
+/* Smarty version 3.1.33, created on 2025-05-23 15:24:55
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-addSkiFacility.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_682354a43ae4c8_73066816',
+  'unifunc' => 'content_68307727888a27_75737519',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1abdead61f8b5ea33b7f2d7b15778e02823d6296' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-addSkiFacility.tpl',
-      1 => 1747145877,
+      1 => 1748006634,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,23 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_682354a43ae4c8_73066816 (Smarty_Internal_Template $_smarty_tpl) {
+function content_68307727888a27_75737519 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Registration</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <title>Aggiungi impianto</title>
 
   <!-- Favicons -->
-  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/favicon.png" rel="icon">
-  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: dark)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: dark)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: dark)">
+
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/dark/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: light)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: light)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: light)">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -50,89 +53,6 @@ function content_682354a43ae4c8_73066816 (Smarty_Internal_Template $_smarty_tpl)
   <!-- Main CSS File -->
   <link href="https://localhost/Slope/libs/Smarty/day/assets/css/main.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Day
-  * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
-  * Updated: Jun 14 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-<style>
-.form-container {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-    max-width: 600px; /* Adatta la larghezza */
-    width: 90%;       /* Adattabile su dispositivi piccoli */
-    margin: 40px auto; /* Centra orizzontalmente e aggiunge spazio sopra/sotto */
-  }
-
-  @media (max-width: 600px) {
-    .form-container {
-      padding: 15px;
-    }
-
-    button {
-      font-size: 14px;
-      padding: 8px;
-    }
-  }
-
-  .form-container h1 {
-    font-size: 20px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  label {
-    display: block;
-    margin: 10px 0 5px;
-    font-weight: bold;
-  }
-
-  input[type="text"],
-  input[type="email"],
-  input[type="date"],
-  input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-
-  .durata-skipass {
-    margin-bottom: 15px;
-  }
-
-  .durata-skipass p, .tipologia-biglietto p {
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-
-  input[type="checkbox"],
-  input[type="radio"] {
-    margin-right: 10px;
-  }
-
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: #FF4400;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-
-  button:hover {
-    background-color: #FF7F50;
-  }
-</style>
 </head>
 
 <body class="starter-page-page">
@@ -142,8 +62,6 @@ function content_682354a43ae4c8_73066816 (Smarty_Internal_Template $_smarty_tpl)
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
         <a href="/Slope" class="logo d-flex align-items-center">
-          <!-- Uncomment the line below if you also wish to use an image logo -->
-          <!-- <img src="assets/img/logo.png" alt=""> -->
           <h1 class="sitename">Slope Admin</h1>
         </a>
 
@@ -178,21 +96,21 @@ function content_682354a43ae4c8_73066816 (Smarty_Internal_Template $_smarty_tpl)
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
       <div class="container" data-aos="fade-up">
-        <div class="form-container">
+        <div class="form-container addSkiFacility">
             <form class="register-form" action="/Slope/Admin/confirmSkiFacility" method="POST">
               <h2>Nuovo impianto</h2>
         
-              <label for="nome-risalita">Nome impianto</label>
-              <input type="text" id="nome-impianto" placeholder="Inserisci nome impianto">
+              <label for="name">Nome:</label>
+              <input type="text" id="name" name="name" placeholder="Inserisci nome impianto">
 
-              <label>Praticabilità</label>
+              <label>Stato:</label>
               <div class="radio-group">
-                  <label><input type="radio" name="stauts"> Aperto</label>
-                  <label><input type="radio" name="stauts"> Chiuso</label>
+                <label><input type="radio" name="status" value="1"> Aperto</label>
+                <label><input type="radio" name="status" value="0"> Chiuso</label>
               </div>
-      
-              <label for="price">Prezzo</label>
-              <input type="number" id="price" name="price" required>
+
+              <label for="description">Descrizione:</label>
+              <textarea id="description" name="description" maxlength="1000" required></textarea>
               
               <div class="button-container">
                 <button type="submit">Conferma</button>

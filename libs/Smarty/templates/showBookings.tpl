@@ -34,156 +34,7 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  <style>
-.table-container {
-width: 100%;
-margin: 20px auto;
-overflow-x: auto;
-background: #fff;
-padding: 20px;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-border-radius: 8px;
-}
 
-h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0 auto;
-}
-
-thead {
-    background-color: #4682B4;
-    color: white;
-}
-
-th, td {
-    text-align: left;
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-tbody tr:hover {
-    background-color: #f1f1f1;
-    cursor: pointer;
-}
-
-th {
-    text-transform: uppercase;
-}
-
-td {
-    font-size: 14px;
-}
-
-.booked {
-    color: white;
-    background-color: #4682B4
-}
-
-/* Contenitore del calendario */
-.calendar-container {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
-  text-align: center;
-}
-
-/* Titolo e navigazione mese */
-.calendar-container h2 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 20px;
-  margin-bottom: 20px;
-}
-
-.calendar-container h2 form {
-  margin: 0;
-}
-
-.calendar-container h2 button {
-  background: #4682B4;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  font-size: 18px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.calendar-container h2 button:hover {
-  background-color: #4682B4;
-}
-
-/* Tabella calendario */
-.calendar-container table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 16px;
-}
-
-.calendar-container th, .calendar-container td {
-  padding: 10px;
-  border: 1px solid #ddd;
-  width: 14.28%;
-  height: 60px;
-  vertical-align: top;
-  text-align: center;
-}
-
-.calendar-container th {
-  background-color: #f0f0f0;
-  color: #333;
-  font-weight: bold;
-}
-
-.btn-mod {
-    background-color:#4682B4;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.btn-er {
-    background-color: #FF7F50;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.true {
-  text-align: center;
-}
-
-.imagePreview {
-  width: 30%;
-  height: 30%;   
-}
-
-</style>
 </head>
 
 <body class="starter-page-page">
@@ -218,10 +69,9 @@ td {
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
 
-      <div class="container" data-aos="fade-up">
+      <div class="container showBookings" data-aos="fade-up">
 
-
-      <div class="calendar-container">
+        <div class="calendar-container">
         <h2>
           <form action="/Slope/User/showBookings" method="POST">
             <input type="hidden" name="month" value={$prevMonth}>
@@ -237,7 +87,7 @@ td {
             <button type="submit">&raquo;</button>
           </form>
         </h2>
-
+        <div class="calendar-scroll-wrapper">
         <table>
           <tr>
             <th>Mon</th><th>Tue</th>
@@ -249,7 +99,10 @@ td {
               {foreach from=$week item=day}
                 {if $day}
                   {if in_array($day, $bookedDates)} <!-- Controlla se il giorno è prenotato -->
-                    <td class="booked">{$day}</td> <!-- Giorno prenotato con stile speciale -->
+                    <td class="booked">
+                      <a href="#booking-{$idForDate[$day][0]}" class="booked-link">{$day}</a>
+                      <div class="booking-text">{$idForDate[$day][1]}</div>
+                    </td> <!-- Giorno prenotato con stile speciale -->
                   {else}
                     <td>{$day}</td> <!-- Giorno normale -->
                   {/if}
@@ -258,60 +111,67 @@ td {
             </tr>
           {/foreach}
         </table>
+        </div>
       </div>
-
 
       {if count($bookings) > 0}
       <h1>Dati prenotazione</h1>
-      {foreach $bookings item=e}
-      <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Surname</th>
-                    <th>Email</th>
-                    <th>Date</th>
-                    <th>Period</th>
-                    <th>Type</th>
-                    <th>Total Price</th>
-                    <th>Ski Facility</th>
-                    <th>Insurance<th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{$e['bookings'][0]->getName()}</td>
-                    <td>{$e['bookings'][0]->getSurname()}</td>
-                    <td>{$e['bookings'][0]->getEmail()}</td>
-                    <td>{$e['bookings'][0]->getStartDate()}</td>
-                    <td>{$e['bookings'][0]->getPeriod()}</td>
-                    <td>{$e['bookings'][0]->getType()}</td>
-                    <td>{$e['bookings'][0]->getValue()}</td>
-                    <td>{$e['bookings'][1]->getName()}</td>
-                    {if $e['bookings'][2] != []}
-                    <td class="true"><img class="imagePreview" src="https://localhost/Slope/libs/Smarty/images/checked.png"></td>
-                    {else}
-                    <td><form action="/Slope/User/buyInsurance" method="POST"><input type="hidden" name="idSkipassBooking" value={$e['bookings'][0]->getIdSkipassBooking()}><button type="submit">Acquista</button></form></td>
-                    {/if}
-                    <form action="/Slope/User/modifySkipassBooking" method="POST"><td><input type="hidden" name="idSkipassBooking" value={$e['bookings'][0]->getIdSkipassBooking()}><button type="submit" class="btn-mod">Modifica</button></td></form>
-                    <form action="/Slope/User/deleteSkipassBooking" method="POST"><td><input type="hidden" name="idSkipassBooking" value={$e['bookings'][0]->getIdSkipassBooking()}><button type="submit" class="btn-er">Elimina</button></td></form>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-      {/foreach}
-      {else}
-      <label>Nessuna prenotazione effettuata</label>
-      {/if}
+      <div class="card-booking-wrapper">
+        {foreach $bookings item=e}
+          <div class="booking-card" id="booking-{$e['bookings'][0]->getIdSkipassBooking()}">
+            <p><strong>Nome:</strong> {$e['bookings'][0]->getName()}</p>
+            <p><strong>Cognome:</strong> {$e['bookings'][0]->getSurname()}</p>
+            <p><strong>Email:</strong> {$e['bookings'][0]->getEmail()}</p>
+            <p><strong>Data:</strong> {$e['bookings'][0]->getStartDate()}</p>
+            <p><strong>Periodo:</strong> {$e['bookings'][0]->getPeriod()}</p>
+            <p><strong>Tipo:</strong> {$e['bookings'][0]->getType()}</p>
+            <p><strong>Prezzo totale:</strong> {$e['bookings'][0]->getValue()}</p>
+            <p><strong>Impianto sci:</strong> {$e['bookings'][1]->getName()}</p>
+          
+            {if $e['bookings'][2] != []}
+              <p><strong>Assicurazione:</strong></p>
+              <img class="imagePreview" src="https://localhost/Slope/libs/Smarty/images/checked.png">
+            {else}
+              <div class="flex">
+                <p><strong>Assicurazione:</strong></p>
+                <form action="/Slope/User/buyInsurance" method="POST">
+                  <input type="hidden" name="idSkipassBooking" value="{$e['bookings'][0]->getIdSkipassBooking()}">
+                  <button type="submit" class="btn-insurance">Acquista</button>
+                </form>
+              </div>
+            {/if}
 
-    
+            <div class="booking-actions">
+              <form action="/Slope/User/modifySkipassBooking" method="POST">
+                <input type="hidden" name="idSkipassBooking" value="{$e['bookings'][0]->getIdSkipassBooking()}">
+                <button type="submit" class="btn-mod">Modifica</button>
+              </form>
 
+              <form action="/Slope/User/deleteSkipassBooking" method="POST">
+                <input type="hidden" name="idSkipassBooking" value="{$e['bookings'][0]->getIdSkipassBooking()}">
+                <button type="submit" class="btn-er">Elimina</button>
+              </form>
+            </div>
+          </div>
+        {/foreach}
+        {foreach from=$oldBookings item=e}
+          <h2>Prenotazioni scadute</h2>
+          <div class="booking-card" id="booking-{$e['bookings'][0]->getIdSkipassBooking()}">
+            <p><strong>Nome:</strong> {$e['bookings'][0]->getName()}</p>
+            <p><strong>Cognome:</strong> {$e['bookings'][0]->getSurname()}</p>
+            <p><strong>Email:</strong> {$e['bookings'][0]->getEmail()}</p>
+            <p><strong>Data:</strong> {$e['bookings'][0]->getStartDate()}</p>
+            <p><strong>Periodo:</strong> {$e['bookings'][0]->getPeriod()}</p>
+            <p><strong>Tipo:</strong> {$e['bookings'][0]->getType()}</p>
+            <p><strong>Prezzo totale:</strong> {$e['bookings'][0]->getValue()}</p>
+            <p><strong>Impianto sci:</strong> {$e['bookings'][1]->getName()}</p>
+          </div>
+        {/foreach}
       </div>
-
-      
-
-
+    {else}
+      <label>Nessuna prenotazione effettuata</label>
+    {/if}
+      </div>
     </section><!-- /Starter Section Section -->
 
   </main>

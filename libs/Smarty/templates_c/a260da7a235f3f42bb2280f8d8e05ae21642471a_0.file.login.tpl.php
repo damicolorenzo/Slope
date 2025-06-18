@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-04-23 16:36:35
+/* Smarty version 3.1.33, created on 2025-05-24 18:05:55
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_6808faf3478da1_72391402',
+  'unifunc' => 'content_6831ee63c45f65_12379043',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a260da7a235f3f42bb2280f8d8e05ae21642471a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\login.tpl',
-      1 => 1745418985,
+      1 => 1748102752,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6808faf3478da1_72391402 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6831ee63c45f65_12379043 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -57,80 +57,7 @@ function content_6808faf3478da1_72391402 (Smarty_Internal_Template $_smarty_tpl)
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  <style>
-  .login-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.login-form {
-  background-color: white;
-  padding: 60px 50px;
-  border-radius: 16px;
-  width: 100%;
-}
-
-.login-form h2 {
-  font-size: 32px;
-  margin-bottom: 36px;
-  color:rgb(0, 0, 0);
-}
-
-.login-form label {
-  display: block;
-  margin: 18px 0 10px;
-  font-size: 18px;
-  color:rgb(0, 0, 0);
-}
-
-.login-form input {
-  width: 100%;
-  padding: 16px;
-  margin-bottom: 24px;
-  font-size: 18px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-}
-
-.login-form button {
-  width: 100%;
-  padding: 18px;
-  background-color: #FF7F50;
-  color: white;
-  font-size: 20px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.login-form button:hover {
-  background: color-mix(in srgb, var(--accent-color), transparent 20%);
-}
-
-@media screen and (max-width: 600px) {
-  .form_login-container {
-    padding: 30px 20px;
-    border-radius: 10px;
-    box-shadow: none;
-  }
-
-  .login-form input,
-  .login-form button {
-    font-size: 16px;
-    padding: 12px;
-  }
-
-  .login-form h2 {
-    font-size: 24px;
-  }
-
-  .login-form label {
-    font-size: 15px;
-  }
-}
-  </style>
+  
 </head>
 
 <body class="starter-page-page">
@@ -170,10 +97,10 @@ function content_6808faf3478da1_72391402 (Smarty_Internal_Template $_smarty_tpl)
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
 
-    <div class="login-wrapper">
+    <div class="login-registration-wrapper">
       <div class="col-lg-4 col-md-6 card aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
 
-        <form class="login-form" action="/Slope/User/checkLogin" method="POST">
+        <form class="login-registration-form" action="/Slope/User/checkLogin" method="POST">
           <h2>Accedi al tuo account</h2>
 
           <label for="username">Nome utente</label>
@@ -190,77 +117,6 @@ function content_6808faf3478da1_72391402 (Smarty_Internal_Template $_smarty_tpl)
     </section><!-- /Starter Section Section -->
 
   </main>
-
-  <footer id="footer" class="footer position-relative">
-
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6">
-          <div class="footer-about">
-            <a href="index.html" class="logo sitename">Slope</a>
-            <div class="footer-contact pt-3">
-              <p>A108 Adam Street</p>
-              <p>New York, NY 535022</p>
-              <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-              <p><strong>Email:</strong> <span>info@example.com</span></p>
-            </div>
-            <div class="social-links d-flex mt-4">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-4 col-md-12 footer-newsletter">
-          <h4>Our Newsletter</h4>
-          <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-          <form action="forms/newsletter.php" method="post" class="php-email-form">
-            <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-          </form>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Day</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-
-  </footer>
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

@@ -80,6 +80,24 @@ class FPersistentManager {
         }
     }
 
+    public static function retriveUsersFromUsernameForSearch(string $username) : array{
+        $result = FUser::getUsersFromUsernameForSearch($username);
+        if(count($result) > 0) {
+            return FUser::createUserObj($result);
+        } else {
+            return [];
+        }
+    }
+
+    public static function retriveUsersFromEmailForSearch(string $email) : array{
+        $result = FUser::getUsersFromEmailForSearch($email);
+        if(count($result) > 0) {
+            return FUser::createUserObj($result);
+        } else {
+            return [];
+        }
+    }
+
     /**
      * Retrive a User for search
      * @param string $username 
@@ -88,8 +106,23 @@ class FPersistentManager {
      * @return array of objects or empty array
      */
     public static function retriveUsersForSearch(string $username, string $name, string $surname) : ?array{
-        $result = FUser::getUsersFromUsernameOrNameOrSurname($name, $surname);
+        //se si inserisce solo il nome si ricerca solo per nome
+        //se si inserisce solo il cognome si ricerca solo per cognome 
+        if($username == "" && $name == "" && $surname == "") {
+            $result = FUser::getUsers();
+            if(count($result) > 0) {
+            $array = FUser::createUserObj($result);
+            } else {
+                $array = [];
+            } 
+            return $array;
+        }
+            
+        $result = FUser::getUsersNameANDSurname($name, $surname);
+        if(count($result) > 0)
+            $result[0]['username'] = FUser::getUserById($result[0]['idUser'])[0]['username'];
         $result1 = FUser::getUserByUsername($username);
+        
         if(count($result) > 0) {
             $array = FUser::createUserObj($result);
         } else {
@@ -234,6 +267,15 @@ class FPersistentManager {
         }
     }
 
+    public static function retriveSkiFacilityForSearch(string $nameSkiFacility) {
+        $result = FSkiFacility::getSkiFacilityByNameForSearch($nameSkiFacility);
+        if(count($result) > 0) {
+            return FSkiFacility::createSkiFacilityObj($result);
+        } else {
+            return [];
+        }
+    }
+
     /**
      * Retrive all the ski run objects finding them on ski facility id
      * @param int $idSkiFacility
@@ -338,7 +380,7 @@ class FPersistentManager {
                 $app[] = $element;
                 $idSkiFacility = $element->getIdSkiFacility();
                 $name = FSkiFacility::getNameSkiFacility($idSkiFacility);
-                $app[] = $name;
+                $app[] = $name[0];
                 $final[] = $app;
             }
             $result['skiRun'] = $final;
@@ -352,7 +394,7 @@ class FPersistentManager {
                 $app[] = $element;
                 $idSkiFacility = $element->getIdSkiFacility();
                 $name = FSkiFacility::getNameSkiFacility($idSkiFacility);
-                $app[] = $name;
+                $app[] = $name[0];
                 $final[] = $app;
             }
             $result['liftStructure'] = $final;
@@ -413,6 +455,45 @@ class FPersistentManager {
     }
 
     public static function retriveStructureForSearch (string $nameSkiFacility, string $nameSkiRun, string $nameLiftStructure) : ?array{
+        if($nameSkiFacility == "" && $nameSkiRun == "" && $nameLiftStructure == "") {
+            $result = self::retriveAllSkiStructures();
+            return $result;
+        }
+        if($nameSkiFacility != "") {
+            $idSkiFacility = FSkiFacility::getIdFromName($nameSkiFacility);
+            if(count($idSkiFacility) > 0)
+                $result21 = FSkiRun::getSkiRunByIdSkiFacility($idSkiFacility[0]);
+            else 
+                $result21 = [];
+            if(count($result21) > 0) {
+                $resultArray = FSkiRun::createSkiRunObj($result21);
+                $final = [];
+                foreach ($resultArray as $element) {
+                    $app = [];
+                    $app[] = $element;
+                    $name = $nameSkiFacility;
+                    $app[] = $name;
+                    $final[] = $app;
+                }
+                $result['skiRun'] = $final;
+            } 
+            if(count($idSkiFacility) > 0)
+                $result31 = FLiftStructure::getLiftStructureByIdSkiFacility($idSkiFacility[0]);
+            else 
+                $result31 = [];
+            if(count($result31) > 0) {
+                $resultArray = FLiftStructure::createLiftStructureObj($result31);
+                $final = [];
+                foreach ($resultArray as $element) {
+                    $app = [];
+                    $app[] = $element;
+                    $name = $nameSkiFacility;
+                    $app[] = $name;
+                    $final[] = $app;
+                }
+                $result['liftStructure'] = $final;
+            }
+        }
         $result1 = FSkiFacility::getSkiFacilityByNameForSearch($nameSkiFacility);
         $result2 = FSkiRun::getSkiRunByNameForSearch($nameSkiRun);
         $result3 = FLiftStructure::getLiftStructureByNameForSearch($nameLiftStructure);
@@ -429,11 +510,14 @@ class FPersistentManager {
                 $app[] = $element;
                 $idSkiFacility = $element->getIdSkiFacility();
                 $name = FSkiFacility::getNameSkiFacility($idSkiFacility);
-                $app[] = $name;
+                $app[] = $name[0];
                 $final[] = $app;
             }
-            $result['skiRun'] = $final;
-        } else {
+            if(isset($result['skiRun']))
+                $result['skiRun'] = array_merge($final, $result['skiRun']);
+            else
+                $result['skiRun'] = $final;
+        } elseif(!isset($result['skiRun'])) {
             $result['skiRun'] = [];
         }
         if(count($result3) > 0) {
@@ -444,39 +528,21 @@ class FPersistentManager {
                 $app[] = $element;
                 $idSkiFacility = $element->getIdSkiFacility();
                 $name = FSkiFacility::getNameSkiFacility($idSkiFacility);
-                $app[] = $name;
+                $app[] = $name[0];
                 $final[] = $app;
             }
-            $result['liftStructure'] = $final;
-        } else {
+            if(isset($result['liftStructure']))
+                $result['liftStructure'] = array_merge($final, $result['liftStructure']);
+            else
+                $result['liftStructure'] = $final;
+            
+        } elseif(!isset($result['liftStructure'])) {
             $result['liftStructure'] = [];
         }
         return $result;
     }
 
-    /**
-     * DA RIVEDERE
-     * Retrive all prices
-     * @return array of objects 
-     */
-    public static function retriveAllPricesForSearch() {
-        $result = [];
-        $prices = FPrice::getPrices();
-        $prices_obj = FPrice::createPriceObj($prices);
-        if(count($prices_obj) > 0) {
-            foreach($prices_obj as $i) {
-                $app = [];
-                $app[] = $i;
-                $idExtObj = $i->getIdExtObj();
-                $extClass = $i->getExtClass();
-                $extObj = FPersistentManager::getInstance()->retriveObj($extClass, $idExtObj);
-                $app[] = $extObj;
-                $result[] = $app;
-            }
-        }
-        print_r($result);
-        return $result;
-    }
+    
 
     /**
      * Retrive a price using id
@@ -532,6 +598,91 @@ class FPersistentManager {
         } else {
             return [];
         } 
+    }
+
+    public static function addUniqueField(array $fields, string $key, $value): array {
+        foreach ($fields as $field) {
+            if ($field[0] === $key && $field[1] === $value) {
+                // Già presente, non aggiungo
+                return $fields;
+            }
+        }
+
+        // Non trovato, lo aggiungo
+        $fields[] = [$key, $value];
+        return $fields;
+    }
+
+    /* COMPLETO */
+    public static function retriveSkipassBookingForSearch(string $nameSkiFacility, string $username, string $email) :array{
+        $fields = [];
+        $final = [];
+        if($nameSkiFacility == "" && $username == "" && $email == "") {
+            $result = self::retriveAllSkipassBookingAllUsers();
+            $result1 = [];
+            foreach ($result as $object) {
+                $idUser = $object->getIdUser();
+                $user = FPersistentManager::getInstance()->retriveUserOnId($idUser);
+                $idSkipassObj = $object->getIdSkipassObj();
+                $skipassObj = FPersistentManager::getInstance()->retriveSkipassObjOnId($idSkipassObj);
+                $idSkiFacility = $skipassObj[0]->getIdSkiFacility();
+                $skiFacility = FPersistentManager::getInstance()->retriveSkiFacilityOnId($idSkiFacility);
+                $result1[] = [$object, $skiFacility[0], $user[0]];
+            }
+            return $result1;
+        }
+        if($nameSkiFacility != "") {
+            $skiFacility = self::retriveSkiFacilityForSearch($nameSkiFacility);
+            foreach ($skiFacility as $e) {
+                $skipassObj = self::retriveSkipassObjOnSkiFacility($e->getIdSkiFacility());
+                foreach ($skipassObj as $i) {
+                    $idSkipassObj = $i->getIdSkipassObj();
+                    $fields = self::addUniqueField($fields, 'idSkipassObj', $idSkipassObj);
+                }
+            }
+        }
+        $final[] = $fields; 
+        $fields = []; 
+        if($username != "") {
+            $user = self::retriveUsersFromUsernameForSearch($username);
+            foreach ($user as $e) {
+                $idUser = $e->getIdUser();
+                $fields[] = ['idUser', $idUser];
+            }
+        }   
+        $final[] = $fields;
+        $fields = [];  
+        if($email != "") {
+            $user = self::retriveUsersFromEmailForSearch($email);
+            if(count($user) > 0) {
+                foreach ($user as $e) {
+                    $idUser = $e->getIdUser();
+                    $fields[] = ['idUser', $idUser];
+                }
+            }
+        }
+        $final[] = $fields;
+        if (array_filter($final)) {
+            $result = FSkipassBooking::getSkipassBookingFromFieldsForSearch($final);
+        } else {
+            $result = [];
+        }
+        if(count($result) > 0) {
+            $array1 = FSkipassBooking::createSkipassBookingObj($result);
+            $result1 = [];
+            foreach ($array1 as $object) {
+                $idUser = $object->getIdUser();
+                $user = FPersistentManager::getInstance()->retriveUserOnId($idUser);
+                $idSkipassObj = $object->getIdSkipassObj();
+                $skipassObj = FPersistentManager::getInstance()->retriveSkipassObjOnId($idSkipassObj);
+                $idSkiFacility = $skipassObj[0]->getIdSkiFacility();
+                $skiFacility = FPersistentManager::getInstance()->retriveSkiFacilityOnId($idSkiFacility);
+                $result1[] = [$object, $skiFacility[0], $user[0]];
+            }
+        } else {
+            $result1 = [];
+        }
+        return $result1;
     }
 
     /**
@@ -696,7 +847,57 @@ class FPersistentManager {
     public static function retriveInsuranceTempForSearch(string $value, string $type) :array{
         $result = FInsuranceTemp::getInsuranceTempObjFromFieldsForSearch([['value', $value], ['type', $type]]);
         if(count($result) > 0) {
-            $result = FSkipassTemp::createSkipassTempObj($result);
+            $result = FInsuranceTemp::createInsuranceTempObj($result);
+        } else {
+            $result = [];
+        }
+        return $result;
+    }
+
+    public static function retriveAllSubscriptionTemp() : array{
+        $result = FSubscriptionTemp::getAllSubscriptionTempObjs();
+        
+        if(count($result) > 0) {
+            return FSubscriptionTemp::createSubscriptionTempObj($result);
+        } else {
+            return [];
+        } 
+    }
+
+    public static function retriveSubscriptionTempFromId(int $idSubscriptionTemp) :array{
+        $result = FSubscriptionTemp::getSubscriptionTempFromId($idSubscriptionTemp);
+        if(count($result) > 0) {
+            $result = FSubscriptionTemp::createSubscriptionTempObj($result);
+        } else {
+            $result = [];
+        }
+        return $result;
+    }
+
+    public static function retriveSubscriptionTempForSearch(string $description, string $value) :array{
+        $result = FSubscriptionTemp::getSubscriptionTempObjFromFieldsForSearch([['description', $description], ['value', $value]]);
+        if(count($result) > 0) {
+            $result = FSubscriptionTemp::createSubscriptionTempObj($result);
+        } else {
+            $result = [];
+        }
+        return $result;
+    }
+
+    public static function retriveSubscription(ESubscription $subscription) : array{
+        $fields = [['name', $subscription->getName()], ['surname', $subscription->getSurname()], ['email', $subscription->getEmail()], ['startDate', $subscription->getStartDate()], ['endDate', $subscription->getEndDate()]];
+        $result = FSubscription::getSubscription($fields);
+        if(count($result) > 0) {
+            return FSubscription::createSubscriptionObj($result);
+        } else {
+            return [];
+        }
+    }
+
+    public static function retriveSubscriptionFromUserId(int $userId) :array{
+        $result = FSubscription::getSubscriptionFromUserId($userId);
+        if(count($result) > 0) {
+            $result = FSubscription::createSubscriptionObj($result);
         } else {
             $result = [];
         }
@@ -761,17 +962,35 @@ class FPersistentManager {
         } 
     }
 
-    public static function retriveSkipassObjForSearch(string $nameSkiFacility, string $type, string $price) :array{
-        if($nameSkiFacility !== "") {
-            $result1 = FSkiFacility::getSkiFacilityByName([['name', $nameSkiFacility]]);
-            $result3 = FSkipassObj::getSkipassObjFromFieldsForSearch([['description', $nameSkiFacility]]);
-            $result2 = [];
-            foreach ($result3 as $element) {
-                $idSkipassTemp = $element['idSkipassTemp'];
-                $result2 = $result2 + FSkipassTemp::getSkipassTempObjFromFields([['idSkipassTemp', $idSkipassTemp]]);
+    public static function retriveSkipassObjForSearch(string $nameSkiFacility, string $description, string $value) :array{
+        if($nameSkiFacility == "" && $description == "" && $value == "") {
+            $result1 = self::retriveAllSkipassObj();
+            $result = [];
+            foreach ($result1 as $object) {
+                $idSkiFacility = $object->getIdSkiFacility();
+                $skiFacility = FPersistentManager::getInstance()->retriveSkiFacilityOnId($idSkiFacility);
+                $idSkipassTemp = $object->getIdSkipassTemp();
+                $skipassTemp = FPersistentManager::getInstance()->retriveSkipassTempOnId($idSkipassTemp);
+                $result[] = [$object, $skiFacility[0], $skipassTemp[0]];
             }
+            return $result;
         }
-        if($type !== "") {
+        if($description != "" || $value != "") {
+            $field = [['description', $description], ['value', $value]];
+            $result1 = FSkipassObj::getSkipassObjFromFieldsForSearch($field);
+        } else {
+            $result1 = [];
+        }
+        if($nameSkiFacility != "") {
+            $idSkiFacility = self::retriveIdSkiFacilityFromName($nameSkiFacility);
+            if(count($idSkiFacility) > 0)
+                $result2 = FSkipassObj::getSkipassObjOnSkiFacility($idSkiFacility[0]);
+            else 
+                $result2 = [];
+        } else {
+            $result2 = [];
+        }
+        /* if($type !== "") {
             $result2 = FSkipassTemp::getSkipassTempObjFromFields([['description', $type]]);
             foreach ($result2 as $element) {
                 $idSkipassTemp = $element->getIdSkipassTemp();
@@ -788,24 +1007,42 @@ class FPersistentManager {
                 $idSkiFacility = $element->getIdSkiFacility();
                 $result1[] = FSkiFacility::getSkiFacilityById($idSkiFacility);
             }
-        }
+        } */
         if(count($result1) > 0) {
-            $array1 = FSkiFacility::createSkiFacilityObj($result1);
+            $array1 = FSkipassObj::createSkipassObjObj($result1);
+            $result1 = [];
+                foreach ($array1 as $object) {
+                    $idSkiFacility = $object->getIdSkiFacility();
+                    $skiFacility = FPersistentManager::getInstance()->retriveSkiFacilityOnId($idSkiFacility);
+                    $idSkipassTemp = $object->getIdSkipassTemp();
+                    $skipassTemp = FPersistentManager::getInstance()->retriveSkipassTempOnId($idSkipassTemp);
+                    $result1[] = [$object, $skiFacility[0], $skipassTemp[0]];
+                }
         } else {
-            $array1 = [];
-        } 
-        if(count($result2) > 0) {
-            $array2 = FSkipassTemp::createSkipassTempObj($result2);
-        } else {
-            $array2 = [];
+            $result1 = [];
         }
-        if(count($result3) > 0) {
+        if(count($result2) > 0) {
+            $array2 = FSkipassObj::createSkipassObjObj($result2);
+            $result2 = [];
+                foreach ($array2 as $object) {
+                    $idSkiFacility = $object->getIdSkiFacility();
+                    $skiFacility = FPersistentManager::getInstance()->retriveSkiFacilityOnId($idSkiFacility);
+                    $idSkipassTemp = $object->getIdSkipassTemp();
+                    $skipassTemp = FPersistentManager::getInstance()->retriveSkipassTempOnId($idSkipassTemp);
+                    $result2[] = [$object, $skiFacility[0], $skipassTemp[0]];
+                }
+        } else {
+            $result2 = [];
+        }
+
+        /* if(count($result3) > 0) {
             $array3 = FSkipassObj::createSkipassObjObj($result3);
         } else {
             $array3 = [];
-        }
+        } */
         //$result = [$array3, $array1, $array2];
-        return $result;
+        
+        return array_merge($result1, $result2);
     }
 
     /**
@@ -1033,7 +1270,7 @@ class FPersistentManager {
         return $result;
     }
 
-    public static function updateSkipassTemplate(ESkipassTemplate $skipassTemp){
+    public static function updateSkipassTemplate(ESkipassTemp $skipassTemp){
         $field = [['description', $skipassTemp->getDescription()], ['period', $skipassTemp->getPeriod()], ['type', $skipassTemp->getType()]];
         $result = FSkipassTemp::saveObj($skipassTemp, $field);
         return $result;
@@ -1048,10 +1285,17 @@ class FPersistentManager {
      */
     public static function verifyAdmin(int $idUser) : bool{
         $result = FAdmin::verify('idUser', $idUser);
-        if (count($result) > 0)
-            return true;
-        else
-            return false;
+        return $result;
+    }
+
+    /**
+     * Verify if exist a user with this username (also admin)
+     * @param string $username
+     * @return bool
+     */
+    public static function verifyAdminUsername(string $username) : bool{
+        $result = FAdmin::verifyUsername('username', $username);
+        return $result;
     }
 
     /**
@@ -1138,6 +1382,11 @@ class FPersistentManager {
         return $result;
     }
 
+    public static function verifySubscriptionFromUserId(int $idUser) : bool{
+        $result = FSubscription::verify('idUser', $idUser);
+        return $result;
+    }
+
 /* DELETE METHODS */
 
     /**
@@ -1180,6 +1429,66 @@ class FPersistentManager {
         return $result;
     }
 
+    /**
+     * Method to delete a ski run
+     * @param int $idSkiRun
+     * @return bool
+     */
+    public static function deleteSkiRun(int $idSkiRun) : bool{
+        $result = FEntityManager::getInstance()->deleteObjInDb(FSkiRun::getTable(), FSkiRun::getKey(), $idSkiRun);
+        return $result;
+    }
+
+    /**
+     * Method to delete a lift structure
+     * @param int $idLiftStructure
+     * @return bool
+     */
+    public static function deleteLiftStructure(int $idLiftStructure) : bool{
+        $result = FEntityManager::getInstance()->deleteObjInDb(FLiftStructure::getTable(), FLiftStructure::getKey(), $idLiftStructure);
+        return $result;
+    }
+
+    /**
+     * Method to delete a skipass template
+     * @param int $idSkipassTemp
+     * @return bool
+     */
+    public static function deleteSkipassTemp(int $idSkipassTemp) : bool{
+        $result = FEntityManager::getInstance()->deleteObjInDb(FSkipassTemp::getTable(), FSkipassTemp::getKey(), $idSkipassTemp);
+        return $result;
+    }
+
+    /**
+     * Method to delete a insurance template
+     * @param int $idInsuranceTemp
+     * @return bool
+     */
+    public static function deleteInsuranceTemp(int $idInsuranceTemp) : bool{
+        $result = FEntityManager::getInstance()->deleteObjInDb(FInsuranceTemp::getTable(), FInsuranceTemp::getKey(), $idInsuranceTemp);
+        return $result;
+    }
+
+    /**
+     * Method to delete a skipass obj
+     * @param int $idSkipassObj
+     * @return bool
+     */
+    public static function deleteSkipassObj(int $idSkipassObj) : bool{
+        $result = FEntityManager::getInstance()->deleteObjInDb(FSkipassObj::getTable(), FSkipassObj::getKey(), $idSkipassObj);
+        return $result;
+    }
+
+    public static function deleteCreditCard(int $userId) : bool {
+        $result = FEntityManager::getInstance()->deleteObjInDb(FCreditCard::getTable(), FCreditCard::getExtKey(), $userId);
+        return $result;
+    }
+
+    public static function deleteSubscriptionTemp(int $idSubscriptionTemp) : bool {
+        $result = FEntityManager::getInstance()->deleteObjInDb(FSubscriptionTemp::getTable(), FSubscriptionTemp::getKey(), $idSubscriptionTemp);
+        return $result;
+    }
+
 /* MAYBE UNUSED */
     
 
@@ -1210,7 +1519,7 @@ class FPersistentManager {
             'full_path' => $uploadedImages['full_path'][$index]
             ];
             //check if the uploaded image is ok 
-            $checkUploadImage = self::uploadImage($file);
+            $checkUploadImage = self::checkImage($file);
             #print($checkUploadImage);
             if($checkUploadImage == 'UPLOAD_ERROR_OK' || $checkUploadImage == 'TYPE_ERROR' || $checkUploadImage == 'SIZE_ERROR'){
                 break;
@@ -1271,5 +1580,29 @@ class FPersistentManager {
     
       
 }
+
+    /**
+     * DA RIVEDERE
+     * Retrive all prices
+     * @return array of objects 
+     */
+    /* public static function retriveAllPricesForSearch() {
+        $result = [];
+        $prices = FPrice::getPrices();
+        $prices_obj = FPrice::createPriceObj($prices);
+        if(count($prices_obj) > 0) {
+            foreach($prices_obj as $i) {
+                $app = [];
+                $app[] = $i;
+                $idExtObj = $i->getIdExtObj();
+                $extClass = $i->getExtClass();
+                $extObj = FPersistentManager::getInstance()->retriveObj($extClass, $idExtObj);
+                $app[] = $extObj;
+                $result[] = $app;
+            }
+        }
+        print_r($result);
+        return $result;
+    } */
 
 ?>

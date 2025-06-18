@@ -6,8 +6,8 @@ require_once("FEntityManager.php");
 Class FAdmin{
 
     private static $table = "admin";
-    private static $value = "(:idUser, :username, :password)";
-    private static $key = "idUser";
+    private static $value = "(:idAdmin, :username, :password)";
+    private static $key = "idAdmin";
 
     public static function getTable() {return self::$table;}
     public static function getValue() {return self::$value;}
@@ -22,17 +22,15 @@ Class FAdmin{
     public static function createAdminObj(array $queryResult) : array{
         if(count($queryResult) == 1) {
             $adminA = [];
-            $person = FEntityManager::getInstance()->retriveObj(FPerson::getTable(), "idUser", $queryResult[0]['idUser']);
-            $admin = new EAdmin($person[0]['name'], $person[0]['surname'], $person[0]['email'], $person[0]['phoneNumber'], $person[0]['birthDate'], $queryResult[0]['username'], $queryResult[0]['password']);
-            $admin->setId($queryResult[0]['idUser']);
+            $admin = new EAdmin($queryResult[0]['username'], $queryResult[0]['password']);
+            $admin->setIdAdmin($queryResult[0]['idAdmin']);
             $adminA[] = $admin;
             return $adminA;
         } elseif(count($queryResult) > 1) {
             $admins = array();
             for($i = 0; $i < count($queryResult); $i++){
-                $person = FEntityManager::getInstance()->retriveObj(FPerson::getTable(), "idUser", $queryResult[$i]['idUser']);
-                $admin = new EAdmin($person[0]['name'], $person[0]['surname'], $person[0]['email'], $person[0]['phoneNumber'], $person[0]['birthDate'], $queryResult[$i]['username'], $queryResult[$i]['password']);
-                $admin->setId($queryResult[$i]['idUser']);
+                $admin = new EAdmin($queryResult[$i]['username'], $queryResult[$i]['password']);
+                $admin->setIdAdmin($queryResult[$i]['idAdmin']);
                 $admins[] = $admin;
             }
             return $admins;
@@ -47,7 +45,7 @@ Class FAdmin{
      * @return array 
      */
     public static function getObj(string $id) : array{
-        $result = FEntityManager::getInstance()->retriveObj(FPerson::getTable(), FAdmin::getKey(), $id);
+        $result = FEntityManager::getInstance()->retriveObj(self::getTable(), self::getKey(), $id);
         if(count($result) > 0) {
             $admin = self::createAdminObj($result);
             return $admin;
@@ -63,7 +61,7 @@ Class FAdmin{
      * @return void
      */
     public static function bind(object $stmt, object $person) : void{
-        $stmt->bindValue(":idUser", $person->getId(), PDO::PARAM_INT);
+        $stmt->bindValue(":idAdmin", $person->getIdAdmin(), PDO::PARAM_INT);
         $stmt->bindValue(":username", $person->getUsername(), PDO::PARAM_STR);
         $stmt->bindValue(":password", $person->getPassword(), PDO::PARAM_STR);
     }
@@ -74,7 +72,7 @@ Class FAdmin{
      * @return bool true if succeded and false if failed
      */
     public static function saveObj(EAdmin $obj) : bool{
-        $savePerson = FEntityManager::getInstance()->saveObject(FPerson::getClass(), $obj);
+        $savePerson = FEntityManager::getInstance()->saveObject(self::getClass(), $obj);
         if($savePerson !== null){
             FEntityManager::getInstance()->saveObject(self::getClass(), $obj);
             return true;
@@ -90,13 +88,18 @@ Class FAdmin{
      * @return array returns the object or null
      */
     public static function getAdminByUsername(string $username) : array{
-        $result = FEntityManager::getInstance()->retriveObj(FUser::getTable(), 'username', $username);
+        $result = FEntityManager::getInstance()->retriveObj(self::getTable(), 'username', $username);
         return $result;
     }
 
-    public static function verify(string $field, int $value) : array{
-        $result = FEntityManager::getInstance()->retriveObj(FAdmin::getTable(), $field, $value);
-        return $result;
+    public static function verifyUsername(string $field, string $value) : bool{
+        $result = FEntityManager::getInstance()->retriveObj(self::getTable(), $field, $value);
+        return FEntityManager::getInstance()->existInDb($result);
+    }
+
+    public static function verify(string $field, int $value) : bool{
+        $result = FEntityManager::getInstance()->retriveObj(self::getTable(), $field, $value);
+        return FEntityManager::getInstance()->existInDb($result);
     }
 
 }

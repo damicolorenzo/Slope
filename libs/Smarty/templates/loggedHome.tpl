@@ -34,157 +34,7 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-<style>
-.card-impianto {
-  display: flex;
-  flex-direction: row;  /* Ripristina il layout orizzontale */
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  width: 100%;  /* La card occupa tutta la larghezza della pagina */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-}
-
-.left {
-  width: 40%;  /* L'immagine occupa il 40% della larghezza della card */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 16px;
-  background-color: #f8f8f8; /* Colore di sfondo per l'immagine */
-}
-
-.left .impianto-img {
-  width: 100%; 
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-}
-
-.left .impianto-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;  /* L'immagine si adatta senza distorsioni */
-} 
-
-.right {
-  width: 60%;  /* La parte dei dettagli occupa il restante 60% della larghezza */
-  padding: 16px;
-  background-color: #fff;
-}
-
-.right-container{
-  margin: 5% 5% 5% 5%;
-}
-
-.impianto {
-  text-align: center;
-}
-
-.impianto h3 {
-  font-size: 22px;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.dettagli-impianto {
-  display: flex;
-  margin: 5% 0% 5% 0%;
-}
-
-.dettagli-impianto h4 {
-  margin-top: 0;
-  font-size: 18px;
-  color: #666;
-}
-
-.dettagli-impianto .piste {
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-bottom: 10px;
-}
-
-.impianti {
-  margin-left: 10%;
-}
-
-.pista {
-  padding: 6px 12px;
-  border-radius: 6px;
-  color: #fff;
-  font-size: 14px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.pista.rossa {
-  background-color: #e74c3c; /* Colore rosso per piste rosse */
-}
-
-.pista.nera {
-  background-color: #2c3e50; /* Colore nero per piste nere */
-}
-
-.pista.blu {
-  background-color: #3498db; /* Colore blu per piste blu */
-}
-
-.pista.verde {
-  background-color: #2ecc71; /* Colore verde per piste verdi */
-}
-
-.dettagli-impianto p {
-  margin: 4px 0;
-  font-size: 14px;
-  color: #444;
-}
-
-.dettagli-impianto span {
-  font-weight: bold;
-}
-
-.status {
-  padding: 6px 12px;
-  border-radius: 4px;
-  color: #fff;
-  font-size: 14px;
-}
-
-.status.aperto {
-  background-color: #4caf50; /* Verde per aperto */
-}
-
-.status.chiuso {
-  background-color: #f44336; /* Rosso per chiuso */
-}
-
-.search-form {
-  display: flex;
-  flex-direction: column; /* La form è disposta in colonna */
-  align-items: center;
-}
-
-.btn-submit {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #fff;
-  background-color: #4682B4;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.btn-submit:hover {
-  background-color: #FF7F50;
-}
-
-</style>
+  
 </head>
 
 <body class="starter-page-page">
@@ -215,39 +65,18 @@
 
   <main class="main">
 
-    <!-- Page Title -->
-    <!-- <div class="page-title" data-aos="fade">
-      <div class="container">
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Starter Page</li>
-          </ol>
-        </nav>
-        <h1>Starter Page</h1>
-      </div>
-    </div> --><!-- End Page Title -->
-
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
-      <div class="container" data-aos="fade-up">
+      <div class="container loggedHome" data-aos="fade-up">
 
         {foreach from=$map item=i} 
           <form class="search-form" action="/Slope/User/skiFacilityDetails" method="POST">
           <div class="card-impianto">
             <div class="left">
               <div class="impianto-img">
-              {if count($i[3]) > 1}
-              <div class="carousel-track">
-                {foreach from=$i[3] item=e} 
-                  <img class="imagePreview" src="data:{$e->getType()};base64,{$e->getEncodedData()}" >
-                {/foreach}
-              </div>
-              {else}
-              {foreach from=$i[3] item=e} 
+              {foreach from=$i[4] item=e} 
                 <img class="imagePreview" src="data:{$e->getType()};base64,{$e->getEncodedData()}" >
               {/foreach}
-              {/if}
               </div>
             </div>
             <div class="right">
@@ -256,7 +85,7 @@
                 <div class="dettagli-impianto">
                   <div class="piste">
                     <h4>Dettagli piste</h4> 
-                    {foreach from=$i[1] item=e}  
+                    {foreach from=$i[2] item=e}  
                       {if $e['type'] == blu}
                       <div class="pista blu">Blu: <span>{$e['CNT']}</span></div>
                       {/if}
@@ -273,13 +102,17 @@
                   </div>
                   <div class="impianti">
                   <h4>Impianti di risalita:</h4>
-                  {foreach from=$i[2] item=f}
+                  {foreach from=$i[3] item=f}
                       <div>{Ucwords($f['type'])}: <span>{$f['CNT']}</span></div>
                   {/foreach}
                   </div>
                   
                 </div>
-                <p>Stato impianto: <span class="status aperto">aperto</span></p>
+                {if $i[1]}
+                <p>Stato impianto: <span class="status aperto">Aperto</span></p>
+                {else}
+                <p>Stato impianto: <span class="status chiuso">Chiuso</span></p>
+                {/if}
                 <button class="btn-submit" type="submit" name="nameSkiFacility" value="{$i[0]}">Esplora</button>
               </div>
             </div>

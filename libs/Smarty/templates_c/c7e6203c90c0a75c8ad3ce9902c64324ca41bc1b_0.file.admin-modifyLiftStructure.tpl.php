@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-14 18:01:18
+/* Smarty version 3.1.33, created on 2025-05-22 16:21:28
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-modifyLiftStructure.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_6824be4e44c761_76557132',
+  'unifunc' => 'content_682f32e81dedd9_63021803',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c7e6203c90c0a75c8ad3ce9902c64324ca41bc1b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-modifyLiftStructure.tpl',
-      1 => 1747238398,
+      1 => 1747923660,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6824be4e44c761_76557132 (Smarty_Internal_Template $_smarty_tpl) {
+function content_682f32e81dedd9_63021803 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -57,87 +57,6 @@ function content_6824be4e44c761_76557132 (Smarty_Internal_Template $_smarty_tpl)
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  <style>
-.form-container {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-    max-width: 600px; /* Adatta la larghezza */
-    width: 90%;       /* Adattabile su dispositivi piccoli */
-    margin: 40px auto; /* Centra orizzontalmente e aggiunge spazio sopra/sotto */
-  }
-
-  @media (max-width: 600px) {
-    .form-container {
-      padding: 15px;
-    }
-
-    button {
-      font-size: 14px;
-      padding: 8px;
-    }
-  }
-
-  .form-container h1 {
-    font-size: 20px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  label {
-    display: block;
-    margin: 10px 0 5px;
-    font-weight: bold;
-  }
-
-  input[type="text"],
-  input[type="email"],
-  input[type="date"],
-  input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-
-  .durata-skipass {
-    margin-bottom: 15px;
-  }
-
-  .durata-skipass p, .tipologia-biglietto p {
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-
-  input[type="checkbox"],
-  input[type="radio"] {
-    margin-right: 10px;
-  }
-
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: #FF4400;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-
-  button:hover {
-    background-color: #FF7F50;
-  }
-
-  textarea {
-    width:100%;
-    height: 200px;  
-  }
-</style>
 </head>
 
 <body class="starter-page-page">
@@ -185,56 +104,63 @@ function content_6824be4e44c761_76557132 (Smarty_Internal_Template $_smarty_tpl)
 
       <div class="container" data-aos="fade-up">
         
-        <div class="form-container">
-            <div class="profile-info">
-                <form action="/Slope/Admin/confirmModifyLiftStructure" enctype="multipart/form-data" method="POST">
-                    <h2>MODIFICA IMPIANTO RISALITA</h2>
-                    <input type="hidden" id="idLiftStructure" name="idLiftStructure" value=<?php echo $_smarty_tpl->tpl_vars['idLiftStructure']->value;?>
+        <div class="form-container modifyLiftStructure">
+          <form action="/Slope/Admin/confirmModifyLiftStructure" enctype="multipart/form-data" method="POST">
+              <h2>MODIFICA IMPIANTO RISALITA</h2>
+              <input type="hidden" id="idLiftStructure" name="idLiftStructure" value=<?php echo $_smarty_tpl->tpl_vars['idLiftStructure']->value;?>
 >
-                    <input type="hidden" id="idSkiFacility" name="idSkiFacility" value=<?php echo $_smarty_tpl->tpl_vars['idSkiFacility']->value;?>
+              <input type="hidden" id="idSkiFacility" name="idSkiFacility" value=<?php echo $_smarty_tpl->tpl_vars['idSkiFacility']->value;?>
 >
-                    <p><strong>Nome:</strong></p>
-                    <input type="text" id="name" name="name" value="<?php echo $_smarty_tpl->tpl_vars['name']->value;?>
+              
+              <label for="name">Nome: </label>
+              <input type="text" id="name" name="name" value="<?php echo $_smarty_tpl->tpl_vars['name']->value;?>
 " required>
 
-                    <p><strong>Tipo:</strong></p>
-                    <input type="text" id="type" name="type" value="<?php echo $_smarty_tpl->tpl_vars['type']->value;?>
+              <label for="type">Tipo: </label>
+              <input type="text" id="type" name="type" value="<?php echo $_smarty_tpl->tpl_vars['type']->value;?>
 " required>
 
-                    <p><strong>Stato:</strong></p>
-                    <div class="radio-group">
-                      <?php if ($_smarty_tpl->tpl_vars['status']->value == 'aperto') {?>
-                      <label><input type="radio" name="status" value="aperto" checked> Aperto</label>
-                      <label><input type="radio" name="status" value="chiuso"> Chiuso</label>
-                      <?php } else { ?>
-                      <label><input type="radio" name="status" value="aperto"> Aperto</label>
-                      <label><input type="radio" name="status" value="chiuso"checked> Chiuso</label>
-                      <?php }?>
-                    </div>
+              <label for="status">Stato:</label>
+              <div class="radio-group">
+                <?php if ($_smarty_tpl->tpl_vars['status']->value) {?>
+                <label><input type="radio" name="status" value="aperto" checked> Aperto</label>
+                <label><input type="radio" name="status" value="chiuso"> Chiuso</label>
+                <?php } else { ?>
+                <label><input type="radio" name="status" value="aperto"> Aperto</label>
+                <label><input type="radio" name="status" value="chiuso"checked> Chiuso</label>
+                <?php }?>
+              </div>
 
-                    <p><strong>Posti:</strong></p>
-                    <input type="number" id="seats" name="seats" value="<?php echo $_smarty_tpl->tpl_vars['seats']->value;?>
+              <label for="seats">Posti:</label>
+              <input type="number" id="seats" name="seats" value="<?php echo $_smarty_tpl->tpl_vars['seats']->value;?>
 " required>
 
-                    <label>Impianto</label>
-                    <div class="radio-group">
-                    <?php
+              <label>Impianto:</label>
+              <div class="radio-group">
+              <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['skiFacilities']->value, 'i');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 ?>
-                        <label><input type="radio" name="skiFacility" value=<?php echo $_smarty_tpl->tpl_vars['i']->value['name'];?>
-><?php echo $_smarty_tpl->tpl_vars['i']->value['name'];?>
+                  <?php if ($_smarty_tpl->tpl_vars['i']->value['name'] == $_smarty_tpl->tpl_vars['nameSkiFacility']->value) {?>
+                  <label><input type="radio" name="skiFacility" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['name'];?>
+" checked><?php echo $_smarty_tpl->tpl_vars['i']->value['name'];?>
 </label>
-                    <?php
+                  <?php } else { ?>
+                  <label><input type="radio" name="skiFacility" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['name'];?>
+"><?php echo $_smarty_tpl->tpl_vars['i']->value['name'];?>
+</label>
+                  <?php }?> 
+              <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-                    </div>
-                    
-                    <button class="edit-button" type="submit">Conferma modifiche</button>
-                </form>
-            </div>
+              </div>
+              
+              <div class="button-container">
+                <button type="submit">Conferma</button>
+              </div>
+          </form>
         </div>
 
       <!-- Da riempire in base alla pagina  -->
@@ -244,77 +170,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     </section><!-- /Starter Section Section -->
 
   </main>
-
-  <footer id="footer" class="footer position-relative">
-
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6">
-          <div class="footer-about">
-            <a href="/Slope" class="logo sitename">Day</a>
-            <div class="footer-contact pt-3">
-              <p>Via Vetoio</p>
-              <p>L'Aquila, AQ 67100</p>
-              <p class="mt-3"><strong>Phone:</strong> <span>+39 123 456 7890</span></p>
-              <p><strong>Email:</strong> <span>info@example.com</span></p>
-            </div>
-            <div class="social-links d-flex mt-4">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-4 col-md-12 footer-newsletter">
-          <h4>Our Newsletter</h4>
-          <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-          <form action="forms/newsletter.php" method="post" class="php-email-form">
-            <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-          </form>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Slope</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-
-  </footer>
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

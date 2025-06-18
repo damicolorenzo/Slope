@@ -122,7 +122,7 @@
     <div class="branding d-flex align-items-center">
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
-        <a href="index.html" class="logo d-flex align-items-center">
+        <a href="/Slope/" class="logo d-flex align-items-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <!-- <img src="libs/Smarty/day/assets/img/logo.png" alt=""> -->
           <svg xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 45 45" fill="none">
@@ -319,7 +319,7 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
       
-      <div class="choseSkiFacility-section">
+      <div class="container">
         <form action="/Slope/User/home" method="POST" class="choseSkiFacility-form">
           <h2>Seleziona l'impianto e analizza i prezzi</h2>
           <div class="form-row">
@@ -335,6 +335,7 @@
           </div>
         </form>
       </div>
+      
 
       </div><!-- End Section Title -->
 

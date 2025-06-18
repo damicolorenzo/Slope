@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-15 16:20:52
+/* Smarty version 3.1.33, created on 2025-05-16 14:28:42
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\home-copy.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_6825f84458ac27_36832463',
+  'unifunc' => 'content_68272f7a632a91_92769795',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '333d2ef9b3f838ab24075a3664c7d3810dd53c18' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\home-copy.tpl',
-      1 => 1747318790,
+      1 => 1747398522,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6825f84458ac27_36832463 (Smarty_Internal_Template $_smarty_tpl) {
+function content_68272f7a632a91_92769795 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -145,7 +145,7 @@ function content_6825f84458ac27_36832463 (Smarty_Internal_Template $_smarty_tpl)
     <div class="branding d-flex align-items-center">
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
-        <a href="index.html" class="logo d-flex align-items-center">
+        <a href="/Slope/" class="logo d-flex align-items-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <!-- <img src="libs/Smarty/day/assets/img/logo.png" alt=""> -->
           <svg xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 45 45" fill="none">
@@ -369,7 +369,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
       
-      <div class="choseSkiFacility-section">
+      <div class="container">
         <form action="/Slope/User/home" method="POST" class="choseSkiFacility-form">
           <h2>Seleziona l'impianto e analizza i prezzi</h2>
           <div class="form-row">
@@ -394,6 +394,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
           </div>
         </form>
       </div>
+      
 
       </div><!-- End Section Title -->
 

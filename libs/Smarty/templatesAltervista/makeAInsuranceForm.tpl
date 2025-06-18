@@ -34,70 +34,6 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  <style>
-  .form-container {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-  max-width: 600px; /* Adatta la larghezza */
-    width: 90%;       /* Adattabile su dispositivi piccoli */
-    margin: 40px auto; /* Centra orizzontalmente e aggiunge spazio sopra/sotto */
-}
-
-h1 {
-  font-size: 20px;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  margin: 10px 0 5px;
-  font-weight: bold;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="date"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.durata-skipass, .tipologia-biglietto {
-  margin-bottom: 15px;
-}
-
-.durata-skipass p, .tipologia-biglietto p {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-input[type="checkbox"],
-input[type="radio"] {
-  margin-right: 10px;
-}
-
-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #007BFF;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-  </style>
 </head>
 
 <body class="starter-page-page">
@@ -106,7 +42,7 @@ button:hover {
     <div class="branding d-flex align-items-center">
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
-        <a href="/Slope" class="logo d-flex align-items-center">
+        <a href="/" class="logo d-flex align-items-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <!-- <img src="assets/img/logo.png" alt=""> -->
           <h1 class="sitename">Slope</h1>
@@ -132,10 +68,10 @@ button:hover {
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
 
-      <div class="container" data-aos="fade-up">
+      <div class="container makeAInsuranceForm" data-aos="fade-up">
 
         <div class="form-container">
-        <h1>Form di prenotazione</h1>
+        <h1>Acquista assicurazione</h1>
         <form action="/User/confirmInsurance" method="post">
             <label for="name">Nome</label>
             <input type="text" id="name" name="name" value={$user->getName()}>

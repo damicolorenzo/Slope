@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-14 15:45:50
+/* Smarty version 3.1.33, created on 2025-05-22 16:56:52
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-modifyInsuranceTemp.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_68249e8e58fba7_59919224',
+  'unifunc' => 'content_682f3b349c7737_75552123',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '25aab236bf646f1779d06dbf46769d19167bef5e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-modifyInsuranceTemp.tpl',
-      1 => 1747228870,
+      1 => 1747925811,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_68249e8e58fba7_59919224 (Smarty_Internal_Template $_smarty_tpl) {
+function content_682f3b349c7737_75552123 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -57,68 +57,6 @@ function content_68249e8e58fba7_59919224 (Smarty_Internal_Template $_smarty_tpl)
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  <style>
-  .form-container {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-    max-width: 600px; /* Adatta la larghezza */
-    width: 90%;       /* Adattabile su dispositivi piccoli */
-    margin: 40px auto; /* Centra orizzontalmente e aggiunge spazio sopra/sotto */
-  }
-
-  @media (max-width: 600px) {
-    .form-container {
-      padding: 15px;
-    }
-
-    button {
-      font-size: 14px;
-      padding: 8px;
-    }
-  }
-
-  .form-container h1 {
-    font-size: 20px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  label {
-    display: block;
-    margin: 10px 0 5px;
-    font-weight: bold;
-  }
-
-  input[type="text"],
-  input[type="email"],
-  input[type="date"],
-  input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: #FF4400;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-
-  button:hover {
-    background-color: #FF7F50;
-  }
-  </style>
 </head>
 
 <body class="starter-page-page">
@@ -152,9 +90,9 @@ function content_68249e8e58fba7_59919224 (Smarty_Internal_Template $_smarty_tpl)
     <section id="starter-section" class="starter-section section"> 
 
       <div class="container" data-aos="fade-up">
-        <div class="form-container">
+        <div class="form-container modifyInsuranceTemp">
           <form action="/Slope/Admin/confirmModifyInsuranceTemp" enctype="multipart/form-data" method="POST">
-            <h2>MODIFICA template assicurazione</h2>
+            <h2>Modifica template assicurazione</h2>
             <input type="hidden" id="idInsuranceTemp" name="idInsuranceTemp" value=<?php echo $_smarty_tpl->tpl_vars['idInsuranceTemp']->value;?>
 >
             

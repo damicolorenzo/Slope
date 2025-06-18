@@ -5,7 +5,7 @@ require_once("FEntityManager.php");
 class FSkiFacility {
 
     private static $table = "skiFacility";
-    private static $value = "(NULL, :name, :status, :price)";
+    private static $value = "(NULL, :name, :status, :description)";
     private static $key = "idSkiFacility";
 
     public static function getTable() {return self::$table;}
@@ -32,7 +32,7 @@ class FSkiFacility {
     public static function bind(object $stmt, ESkiFacility $skiFacility){
         $stmt->bindValue(":name", $skiFacility->getName(), PDO::PARAM_STR);
         $stmt->bindValue(":status", $skiFacility->getStatus(), PDO::PARAM_STR);
-        $stmt->bindValue(":price",$skiFacility->getPrice(), PDO::PARAM_INT);
+        $stmt->bindValue(":description",$skiFacility->getDescription(), PDO::PARAM_STR);
     }
 
     /**
@@ -200,13 +200,16 @@ class FSkiFacility {
     }
 
     public static function getSkiFacilityByName(array $conditions) :array {
-        $queryResult = FEntityManager::getInstance()->retriveObjForSearch(self::getTable(), $conditions);
+        $queryResult = FEntityManager::getInstance()->retriveObjForSearchAND(self::getTable(), $conditions);
         return $queryResult;
     }
 
     public static function getSkiFacilityByNameForSearch(string $nameSkiFacility) :array {
-        $conditions = [['name', $nameSkiFacility]];
-        $queryResult = FEntityManager::getInstance()->retriveObjForSearch(self::getTable(), $conditions);
+        if($nameSkiFacility != "") {
+            $conditions = [['name', $nameSkiFacility]];
+            $queryResult = FEntityManager::getInstance()->retriveObjForSearchAND(self::getTable(), $conditions);
+        } else  
+            return [];
         return $queryResult;
     }
     

@@ -30,6 +30,10 @@ function my_autoloader($className) {
                 include_once (__DIR__ . '\\..\\foundation\\utility\\'. $className. '.php');
                 break;
 
+            case 'P':
+                include_once (__DIR__ . '\\..\\foundation\\utility\\'. $className. '.php');
+                break;
+
     }
 }
 

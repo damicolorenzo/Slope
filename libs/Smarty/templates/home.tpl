@@ -5,13 +5,16 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Slope</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="libs\Smarty\day\assets\img\favicon.png" rel="icon">
-  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: dark)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: dark)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: dark)">
 
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/dark/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: light)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: light)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: light)">
+  
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -26,93 +29,7 @@
 
   <!-- Main CSS File -->
   <link href="https://localhost/Slope/libs/Smarty/day/assets/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Day
-  * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
-  * Updated: Jun 14 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-  <style>
-  /* CSS */
-  .choseSkiFacility-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Segoe UI', sans-serif;
-  }
-
-  .choseSkiFacility-form {
-    background: #ffffff;
-    padding: 40px;
-    border-radius: 16px;
-    text-align: center;
-    max-width: 900px;
-    width: 100%;
-  }
-
-  .choseSkiFacility-form h2 {
-    margin-bottom: 30px;
-    color:rgb(0, 0, 0);
-    font-size: 26px;
-  }
-
-  .form-row {
-    display: flex;                /* da inline-flex a flex */
-    flex-direction: row;          /* da column a row */
-    justify-content: center;
-    align-items: center;
-    gap: 20px;                    /* spazio tra select e bottone */
-    background: #fff;
-    padding: 20px 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-
-  .form-row label {
-    font-weight: bold;
-    font-size: 1.1rem;
-  }
-
-  .form-row select {
-    padding: 6px 10px;              /* meno spazio verticale */
-    border: 1px solid #ddd;
-    border-radius: 6px;             /* più snello */
-    font-size: 1rem;
-    width: 400px;                   /* più esteso orizzontalmente */
-    max-width: 90%;                 /* responsivo */
-    transition: border-color 0.3s;
-  }
-
   
-  .form-row select:focus {
-    border-color: #ff7a45;
-    outline: none;
-  }
-
-  .form-row input[type="submit"] {
-    background-color: #ff7a45;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-
-  .form-row input[type="submit"]:hover {
-    background-color: #e56734;
-  }
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-  }
-
-  </style>
-
 </head>
 
 <body class="index-page">
@@ -123,8 +40,6 @@
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
         <a href="index.html" class="logo d-flex align-items-center">
-          <!-- Uncomment the line below if you also wish to use an image logo -->
-          <!-- <img src="libs/Smarty/day/assets/img/logo.png" alt=""> -->
           <svg xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 45 45" fill="none">
             <path d="M26.2409 33.633L31.3639 35.498C33.0209 36.101 34.8379 35.375 35.6459 33.864L36.5919 34.209C35.6189 36.177 33.3389 37.17 31.2169 36.504L31.0169 36.436L24.2609 33.978L24.2519 33.974L24.2429 33.97L7.99988 28.058L8.34188 27.118L26.2409 33.633Z" fill="#3C3C3C"/>
             <path d="M26.2409 33.633L31.3639 35.498C33.0209 36.101 34.8379 35.375 35.6459 33.864L36.5919 34.209C35.6189 36.177 33.3389 37.17 31.2169 36.504L31.0169 36.436L24.2609 33.978L24.2519 33.974L24.2429 33.97L7.99988 28.058L8.34188 27.118L26.2409 33.633Z" stroke="#3C3C3C"/>
@@ -138,15 +53,9 @@
         <nav id="navmenu" class="navmenu">
           <ul>
             <li><a href="#hero" class="active">Home</a></li>
-<<<<<<< HEAD
-            <li><a href="#about">About</a></li>
+            <li><a href="#about">Conoscici</a></li>
             <li><a href="#cards">Dove Sciare</a></li>
             <li><a href="#services">Servizi</a></li>
-=======
-            <li><a href="#Conoscici">Conoscici</a></li>
-            <li><a href="#Dovesciare">Dove?</a></li>
-            <li><a href="#servizi">Servizi</a></li>
->>>>>>> 1988bf2c8d4f46d9488a6dba99c15f8616b93184
             <li><a href="#pricing">Prezzi</a></li>
             <li><a href="#team">Team</a></li>
             <li><a href="#contact">Contatti</a></li>
@@ -168,27 +77,27 @@
 
       <!-- <img src="https://localhost/Slope/libs/Smarty/images/dog1.jpg" alt="" data-aos="fade-in"> -->
       <!-- <video src="libs/Smarty/images/4185213-uhd_4096_2160_24fps.mp4" loop></video> -->
-      {foreach from=$image1 item=i}
-        <img src = "data:{$i->getType()};base64,{$i->getEncodedData()}" alt="" data-aos="fade-in">
-      {/foreach}
+       <div class="first-img">
+        {if isset($image1)}
+        {foreach from=$image1 item=i}
+          <img src = "data:{$i->getType()};base64,{$i->getEncodedData()}" alt="" class="img-fluid">
+        {/foreach}
+        {else}
+          <img src = "https://localhost/Slope/libs/Smarty/images/NotFound.jpg" alt="" class="img-fluid">
+        {/if}
+      </div>
       
 
     </section><!-- /Hero Section -->
 
     <!-- About Section -->
-    <section id="Conoscici" class="about section">
+    <section id="about" class="about section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-<<<<<<< HEAD
-        <span>About Us<br></span>
-        <h2>About Us<br></h2>
-        <p>Rimani sempre aggiornato sulle condizioni delle piste e prenota il tuo skipass in pochi clic.</p>
-=======
         <span>Conoscici<br></span>
         <h2>Conoscici<br></h2>
         <p>Scopri tutte le informazioni utili per la tua giornata sulla neve</p>
->>>>>>> 1988bf2c8d4f46d9488a6dba99c15f8616b93184
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -196,28 +105,19 @@
         <div class="row gy-4">
 
           <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="100">
+          {if isset($image1)}
           {foreach from=$image2 item=i}
             <img src="data:{$i->getType()};base64,{$i->getEncodedData()}" class="img-fluid" alt="">
           {/foreach}
+          {else}
+            <img src = "https://localhost/Slope/libs/Smarty/images/NotFound.jpg" alt="" class="img-fluid">
+          {/if}
           </div>
 
           <div class="col-lg-6 order-2 order-lg-1 content" data-aos="fade-up" data-aos-delay="200">
-<<<<<<< HEAD
-            <h3>Scopri la montagna con noi, ogni giorno aggiornamenti in tempo reale</h3>
-            <p class="fst-italic">
-              Consulta lo stato degli impianti, la qualità della neve e le aperture delle piste in tempo reale. Pianifica la tua giornata sulla neve con precisione e semplicità.
-            </p>
-            <ul>
-              <li><i class="bi bi-check-circle"></i> <span>Informazioni aggiornate quotidianamente su piste e impianti.</span></li>
-              <li><i class="bi bi-check-circle"></i> <span>Prenotazione online rapida e sicura dello skipass.</span></li>
-              <li><i class="bi bi-check-circle"></i> <span>Tutto quello che ti serve per goderti la tua esperienza sulla neve, in un unico posto.</span></li>
-            </ul>
-            <a href="/Slope/User/login" class="read-more"><span>Scopri di più   </span><i class="bi bi-arrow-right"></i></a>
-=======
             <h3>Cosa offriamo</h3>
             <p class="fst-italic">
               Verifica le condizioni delle piste e monitora le aperture in tempo reale.
-            </p>
             </p>
             <ul>
               <li><i class="bi bi-snow"></i> <span>Hai bisogno dello skipass o dell'attrezzatura?</span></li>
@@ -227,8 +127,7 @@
             <p class="fst-italic">
               Qui trovi tutto ciò di cui hai bisogno
             </p>
-            <a href="#" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
->>>>>>> 1988bf2c8d4f46d9488a6dba99c15f8616b93184
+            <a href="/Slope/User/login" class="read-more"><span>Scopri di più   </span><i class="bi bi-arrow-right"></i></a>
           </div>
 
         </div>
@@ -238,7 +137,7 @@
     </section><!-- /About Section -->
 
     <!-- Cards Section -->
-    <section id="Dovesciare" class="cards section">
+    <section id="cards" class="cards section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -247,90 +146,40 @@
         <p>Scegli dove sciare tra i siti sciistici d'Abruzzo</p>
       </div><!-- End Section Title -->
 
-
       <div class="container">
-<<<<<<< HEAD
-=======
         <div class="cards">
-
-<<<<<<< HEAD
           <div class="row no-gutters">
-
-            <div class="col-lg-4 col-md-6 card custom-bg5 position-relative" data-aos="fade-up" data-aos-delay="100">
+          
+          {foreach from=$skiFacilities item=$i}
+            <div class="col-lg-4 col-md-6 card img-overlay-box" data-aos="fade-up" data-aos-delay="100">
+              {if isset($i[1])}
+              {foreach from=$i[1] item=$e}
+              <img src="data:{$e->getType()};base64,{$e->getEncodedData()}" alt="" class="bg-img">
+              {/foreach}
+              {else}
+                <img src = "https://localhost/Slope/libs/Smarty/images/NotFound.jpg" alt="" class="img-fluid">
+              {/if}
+              <div class="dark-overlay"></div>
               <div class="content">
-                <span>01</span>
-                <h4>Alto Sangro - Roccaraso</h4>
-                <a href="URL_DESTINAZIONE_1" class="stretched-link"></a>
+                <h4>{$i[0]->getName()}</h4>
+                <a href="/Slope/User/login" class="stretched-link"></a>
+              </div>
             </div>
-          </div><!-- End Card Item -->
-
-            <div class="col-lg-4 col-md-6 card custom-bg4 position-relative" data-aos="fade-up" data-aos-delay="100">
-              <div class="content">
-                <span>02</span>
-                <h4>Gran Sasso - Campo Imperatore</h4>
-                <a href="URL_DESTINAZIONE_1" class="stretched-link"></a>
-            </div>
-          </div><!-- End Card Item -->
-
-            <div class="col-lg-4 col-md-6 card custom-bg3 position-relative" data-aos="fade-up" data-aos-delay="100">
-              <div class="content">
-                <span>03</span>
-                <h4>Passo Lanciano - Majelletta</h4>
-                <a href="URL_DESTINAZIONE_1" class="stretched-link"></a>
-            </div>
-          </div><!-- End Card Item -->
-
-            <div class="col-lg-4 col-md-6 card custom-bg2 position-relative" data-aos="fade-up" data-aos-delay="100">
-              <div class="content">
-                <span>04</span>
-                <h4>Ovindoli - Monte Magnola</h4>
-                <a href="URL_DESTINAZIONE_1" class="stretched-link"></a>
-            </div>
-          </div><!-- End Card Item -->
-
-            <div class="col-lg-4 col-md-6 card custom-bg1 position-relative" data-aos="fade-up" data-aos-delay="100">
-              <div class="content">
-                <span>05</span>
-                <h4>Campo Felice</h4>
-                <a href="URL_DESTINAZIONE_1" class="stretched-link"></a>
-            </div>
-          </div><!-- End Card Item -->
-
-            <div class="col-lg-4 col-md-6 card custom-bg position-relative" data-aos="fade-up" data-aos-delay="100">
-              <div class="content">
-                <span>06</span>
-                <h4>Prati di Tivo - Monte Piselli</h4>
-                <a href="URL_DESTINAZIONE_1" class="stretched-link"></a>
-            </div>
-          </div><!-- End Card Item -->
-          </div>
-
->>>>>>> 1988bf2c8d4f46d9488a6dba99c15f8616b93184
-        <div class="row no-gutters">
-          {foreach from=$skiFacilities item=i} 
-          <div class="col-lg-4 col-md-6 card" data-aos="fade-up" data-aos-delay="100">
-            <h4>{$i->getName()}</h4>
-            <p>{$i->getDescription()}</p>
-          </div>
           {/foreach}
-<<<<<<< HEAD
-=======
-          -->
->>>>>>> 0b0a992eb04acc4354ef78bd7d2375cd80612705
->>>>>>> 1988bf2c8d4f46d9488a6dba99c15f8616b93184
+          
+          </div>
         </div>
       </div>
-
     </section><!-- /Cards Section -->
 
     <!-- Services Section -->
-    <section id="servizi" class="services section">
+    <section id="services" class="services section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <span>Servizi</span>
         <h2>Servizi</h2>
-        <p>Grazie alla nostra piattaforma web puoi tenere sotto controllo in tempo reale gli impianti sciistici di diverse località e pianificare al meglio una giornata perfetta tra neve, sci e panorami mozzafiato.</p>
+        <p>La nostra piattaforma web permette di monitorare diversi impianti sciistici in modo tale da poter organizzare una splendida giornata in montagna</p>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -366,33 +215,17 @@
               <div class="icon">
                 <i class="bi bi-cart"></i>
               </div>
-<<<<<<< HEAD
               <a href="https://www.opensnowmap.org/#map=12/14.017/41.819&b=snowmap&m=false&h=false" target="_blank" class="stretched-link">
                 <h3>Mappe</h3>
               </a>
               <p>Dai un occhiata alle mappe degli impianti sciistici.</p>
-=======
-<<<<<<< HEAD
-              <a href="#" class="stretched-link">
-                <h3>Acquista</h3>
-
-              <a href="/Slope/Home/webcam" class="stretched-link">
-                <h3>Webcam</h3>
->>>>>>> 0b0a992eb04acc4354ef78bd7d2375cd80612705
-              </a>
-              <p>Prenota uno skipass, acquista un'assicurazione e scopri le promozioni con l'abbonamento</p>
->>>>>>> 1988bf2c8d4f46d9488a6dba99c15f8616b93184
             </div>
           </div><!-- End Service Item -->
-
-          
         </div>
-
       </div>
 
     </section><!-- /Services Section -->
 
-<<<<<<< HEAD
     <!-- Call To Action Section -->
     <section id="call-to-action" class="call-to-action section">
 
@@ -414,8 +247,6 @@
       </div>
 
     </section><!-- /Call To Action Section -->
-=======
->>>>>>> 1988bf2c8d4f46d9488a6dba99c15f8616b93184
 
     
 
@@ -433,7 +264,7 @@
               <label for="skiFacilities">Scegli un impianto:</label>
               <select name="skiFacilities" id="skiFacility" multiple size="5">
                 {foreach from=$skiFacilities item=i}
-                  <option value="{$i->getName()}">{$i->getName()}</option>
+                  <option value="{$i[0]->getName()}">{$i[0]->getName()}</option>
                 {/foreach}
               </select>
             </div>
@@ -447,56 +278,73 @@
       <div class="container">
 
         <div class="row g-4 g-lg-0">
-          
+          {if count($skipassObj) > 0}
+          {if isset($skipassObj[0])}
           <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
             <div class="pricing-item">
               <h3>{$skipassObj[0]->getDescription()}</h3>
               <h4><sup>€</sup>{$skipassObj[0]->getValue()}<span></span></h4>
-              {* 
               <ul>
-                <li><i class="bi bi-check"></i> <span>Quam adipiscing vitae proin</span></li>
-                <li><i class="bi bi-check"></i> <span>Nec feugiat nisl pretium</span></li>
-                <li><i class="bi bi-check"></i> <span>Nulla at volutpat diam uteera</span></li>
-                <li class="na"><i class="bi bi-x"></i> <span>Pharetra massa massa ultricies</span></li>
-                <li class="na"><i class="bi bi-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
+                <li><i class="bi bi-check"></i> <span>Il costo per l’utilizzo del servizio o prodotto è calcolato su base giornaliera.</span></li>
+                <li><i class="bi bi-check"></i> <span>Ideale per chi ha bisogno di flessibilità e vuole pagare solo per i giorni effettivi di utilizzo.</span></li>
               </ul>
-              *}
               <div class="text-center"><a href="/Slope/User/login" class="buy-btn">Acquista ora</a></div>
             </div>
           </div><!-- End Pricing Item -->
-
+          {else} 
+          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+            <div class="pricing-item">
+              <h3>Errore</h3>
+              <h4><sup>€</sup>0<span></span></h4>
+              <div class="text-center">...</div>
+            </div>
+          </div><!-- End Pricing Item -->
+          {/if}
+          {if isset($skipassObj[1])}
           <div class="col-lg-4 featured" data-aos="zoom-in" data-aos-delay="200">
             <div class="pricing-item">
               <h3>{$skipassObj[1]->getDescription()}</h3>
               <h4><sup>€</sup>{$skipassObj[1]->getValue()}<span></span></h4>
-              {*
               <ul>
-                <li><i class="bi bi-check"></i> <span>Quam adipiscing vitae proin</span></li>
-                <li><i class="bi bi-check"></i> <span>Nec feugiat nisl pretium</span></li>
-                <li><i class="bi bi-check"></i> <span>Nulla at volutpat diam uteera</span></li>
-                <li><i class="bi bi-check"></i> <span>Pharetra massa massa ultricies</span></li>
-                <li><i class="bi bi-check"></i> <span>Massa ultricies mi quis hendrerit</span></li>
+                <li><i class="bi bi-check"></i> <span>Tariffa conveniente per chi utilizza il servizio o prodotto per un’intera settimana.</span></li>
+                <li><i class="bi bi-check"></i> <span>Perfetto per chi ha bisogno di un periodo medio di utilizzo, con un risparmio rispetto al prezzo giornaliero.</span></li>
               </ul>
-              *}
               <div class="text-center"><a href="/Slope/User/login" class="buy-btn">Acquista ora</a></div>
             </div>
           </div><!-- End Pricing Item -->
-
+          {else} 
           <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
             <div class="pricing-item">
-              <h3>Developer Plan</h3>
-              <h4><sup>$</sup>49<span></span></h4>
-              <ul>
-                <li><i class="bi bi-check"></i> <span>Quam adipiscing vitae proin</span></li>
-                <li><i class="bi bi-check"></i> <span>Nec feugiat nisl pretium</span></li>
-                <li><i class="bi bi-check"></i> <span>Nulla at volutpat diam uteera</span></li>
-                <li><i class="bi bi-check"></i> <span>Pharetra massa massa ultricies</span></li>
-                <li><i class="bi bi-check"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-              </ul>
-              <div class="text-center"><a href="/Slope/User/login" class="buy-btn">Buy Now</a></div>
+              <h3>Errore</h3>
+              <h4><sup>€</sup>0<span></span></h4>
+              <div class="text-center">...</div>
             </div>
           </div><!-- End Pricing Item -->
-
+          {/if}
+          {if isset($skipassObj[2])}
+          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+            <div class="pricing-item">
+              <h3>{$skipassObj[2]->getDescription()}</h3>
+              <h4><sup>€</sup>{$skipassObj[2]->getValue()}<span></span></h4>
+              <ul>
+                <li><i class="bi bi-check"></i> <span>Offerta vantaggiosa per chi prevede un utilizzo continuativo e prolungato.</span></li> 
+                <li><i class="bi bi-check"></i> <span>Il prezzo mensile garantisce il massimo risparmio rispetto alle tariffe giornaliere o settimanali.</span></li>
+              </ul>
+              <div class="text-center"><a href="/Slope/User/login" class="buy-btn">Acquista ora</a></div>
+            </div>
+          </div><!-- End Pricing Item -->
+          {else} 
+          <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+            <div class="pricing-item">
+              <h3>Errore</h3>
+              <h4><sup>€</sup>0<span></span></h4>
+              <div class="text-center">...</div>
+            </div>
+          </div><!-- End Pricing Item -->
+          {/if}
+        {else}
+          <h3>Errore di caricamento dati</h3>
+        {/if}
         </div>
 
       </div>
@@ -519,9 +367,13 @@
 
           <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
             <div class="member">
+              {if isset($image3)}
               {foreach from=$image3 item=i}
                 <img src="data:{$i->getType()};base64,{$i->getEncodedData()}" class="img-fluid" alt="">
               {/foreach}
+              {else}
+                <img src = "https://localhost/Slope/libs/Smarty/images/NotFound.jpg" alt="" class="img-fluid">
+              {/if}
               <div class="member-content">
                 <h4>Walter White</h4>
                 <span>Web Development</span>
@@ -540,9 +392,13 @@
 
           <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
             <div class="member">
+              {if isset($image4)}
               {foreach from=$image4 item=i}
                 <img src="data:{$i->getType()};base64,{$i->getEncodedData()}" class="img-fluid" alt="">
               {/foreach}
+              {else}
+                <img src = "https://localhost/Slope/libs/Smarty/images/NotFound.jpg" alt="" class="img-fluid">
+              {/if}
               <div class="member-content">
                 <h4>Sarah Jhinson</h4>
                 <span>Marketing</span>
@@ -561,9 +417,13 @@
 
           <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
             <div class="member">
+              {if isset($image5)}
               {foreach from=$image5 item=i}
                 <img src="data:{$i->getType()};base64,{$i->getEncodedData()}" class="img-fluid" alt="">
               {/foreach}
+              {else}
+                <img src = "https://localhost/Slope/libs/Smarty/images/NotFound.jpg" alt="" class="img-fluid">
+              {/if}
               <div class="member-content">
                 <h4>William Anderson</h4>
                 <span>Content</span>
@@ -632,23 +492,23 @@
           </div><!-- End Google Maps -->
 
           <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="400">
+            <form action="/Slope/User/sendMail" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="400">
               <div class="row gy-4">
 
                 <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                  <input type="text" name="name" class="form-control" placeholder="Your Name" required>
                 </div>
 
                 <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+                  <input type="email" class="form-control" name="email" placeholder="Your Email" required>
                 </div>
 
                 <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+                  <input type="text" class="form-control" name="subject" placeholder="Subject" required>
                 </div>
 
                 <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
                 </div>
 
                 <div class="col-md-12 text-center">
