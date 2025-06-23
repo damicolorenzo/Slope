@@ -22,8 +22,7 @@ class PMail {
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'slope.website.mail@gmail.com';
-            $mail->Password = 'yfbe pwah tqfl ezyy'; // App password
+            
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
 
