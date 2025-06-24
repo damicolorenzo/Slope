@@ -463,9 +463,8 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 ?>
-                <img src="data:<?php echo $_smarty_tpl->tpl_vars['i']->value->getType();?>
-;base64,<?php echo $_smarty_tpl->tpl_vars['i']->value->getEncodedData();?>
-" class="img-fluid" alt="">
+                <img src="assets/img/team/walter.jpg" class="img-fluid" alt="Walter White">
+
               <?php
 }
 }

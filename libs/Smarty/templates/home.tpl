@@ -375,8 +375,8 @@
                 <img src = "https://localhost/Slope/libs/Smarty/images/NotFound.jpg" alt="" class="img-fluid">
               {/if}
               <div class="member-content">
-                <h4>Walter White</h4>
-                <span>Web Development</span>
+                <h4>Andrea Esposito</h4>
+                <span>Istruttore di sci</span>
                 <p>
                   Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut
                 </p>
@@ -392,16 +392,16 @@
 
           <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
             <div class="member">
-              {if isset($image4)}
-              {foreach from=$image4 item=i}
+              {if isset($image3)}
+              {foreach from=$image3 item=i}
                 <img src="data:{$i->getType()};base64,{$i->getEncodedData()}" class="img-fluid" alt="">
               {/foreach}
               {else}
-                <img src = "https://localhost/Slope/libs/Smarty/images/NotFound.jpg" alt="" class="img-fluid">
+                <img src = "https://localhost/Slope/libs/Smarty/images/istruttore_sci.jpg" alt="" class="img-fluid"> 
               {/if}
               <div class="member-content">
-                <h4>Sarah Jhinson</h4>
-                <span>Marketing</span>
+                <h4>Giordana Di Fabio</h4>
+                <span>Istruttrice di snowboard</span>
                 <p>
                   Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus
                 </p>
@@ -417,16 +417,16 @@
 
           <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
             <div class="member">
-              {if isset($image5)}
-              {foreach from=$image5 item=i}
+              {if isset($image3)}
+              {foreach from=$image3 item=i}
                 <img src="data:{$i->getType()};base64,{$i->getEncodedData()}" class="img-fluid" alt="">
               {/foreach}
               {else}
                 <img src = "https://localhost/Slope/libs/Smarty/images/NotFound.jpg" alt="" class="img-fluid">
               {/if}
               <div class="member-content">
-                <h4>William Anderson</h4>
-                <span>Content</span>
+                <h4>Lorenzo D'Amico</h4>
+                <span>Istruttore di sci alpinistico</span>
                 <p>
                   Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
                 </p>

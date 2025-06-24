@@ -392,10 +392,10 @@ function content_668571295291a7_15038544 (Smarty_Internal_Template $_smarty_tpl)
 
           <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
             <div class="member">
-              <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
+              <img src="assets/img/team/istruttore_sci.jpg" class="img-fluid" alt="">
               <div class="member-content">
-                <h4>Walter White</h4>
-                <span>Web Development</span>
+                <h4>Mario Rossi</h4>
+                <span>Istruttore di sci</span>
                 <p>
                   Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut
                 </p>

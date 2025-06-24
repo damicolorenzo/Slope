@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-06-01 11:37:20
+/* Smarty version 3.1.33, created on 2025-06-24 16:02:43
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\home.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_683c1f5091b198_97903060',
+  'unifunc' => 'content_685ab00366b5e6_14933056',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1db7471d28bb1ec148c4de7ea1ff8c71677789e7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\home.tpl',
-      1 => 1748684941,
+      1 => 1750773759,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_683c1f5091b198_97903060 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685ab00366b5e6_14933056 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -457,8 +457,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 <img src = "https://localhost/Slope/libs/Smarty/images/NotFound.jpg" alt="" class="img-fluid">
               <?php }?>
               <div class="member-content">
-                <h4>Walter White</h4>
-                <span>Web Development</span>
+                <h4>Andrea Esposito</h4>
+                <span>Istruttore di sci</span>
                 <p>
                   Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut
                 </p>
@@ -474,9 +474,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
           <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
             <div class="member">
-              <?php if (isset($_smarty_tpl->tpl_vars['image4']->value)) {?>
+              <?php if (isset($_smarty_tpl->tpl_vars['image3']->value)) {?>
               <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['image4']->value, 'i');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['image3']->value, 'i');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 ?>
@@ -488,11 +488,11 @@ foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
               <?php } else { ?>
-                <img src = "https://localhost/Slope/libs/Smarty/images/NotFound.jpg" alt="" class="img-fluid">
+                <img src = "https://localhost/Slope/libs/Smarty/images/istruttore_sci.jpg" alt="" class="img-fluid"> 
               <?php }?>
               <div class="member-content">
-                <h4>Sarah Jhinson</h4>
-                <span>Marketing</span>
+                <h4>Giordana Di Fabio</h4>
+                <span>Istruttrice di snowboard</span>
                 <p>
                   Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus
                 </p>
@@ -508,9 +508,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
           <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
             <div class="member">
-              <?php if (isset($_smarty_tpl->tpl_vars['image5']->value)) {?>
+              <?php if (isset($_smarty_tpl->tpl_vars['image3']->value)) {?>
               <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['image5']->value, 'i');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['image3']->value, 'i');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 ?>
@@ -525,8 +525,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 <img src = "https://localhost/Slope/libs/Smarty/images/NotFound.jpg" alt="" class="img-fluid">
               <?php }?>
               <div class="member-content">
-                <h4>William Anderson</h4>
-                <span>Content</span>
+                <h4>Lorenzo D'Amico</h4>
+                <span>Istruttore di sci alpinistico</span>
                 <p>
                   Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
                 </p>
