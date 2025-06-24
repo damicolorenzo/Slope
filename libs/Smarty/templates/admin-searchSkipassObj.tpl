@@ -67,7 +67,7 @@
         <div class="admin-filter-container">
           <h2>Filtra oggetti skipass</h2>
           <div class="filters">
-            <form class="search-form" action="/Slope/Admin/searchSkipassObjs" method="POST">
+            <form class="search-form" action="/Slope/SearchAdmin/searchSkipassObjs" method="POST">
               <input type="text" id="description" name="description" placeholder="Descrizione">
               <input type="number" id="value" name="value" placeholder="Prezzo">
               <input type="text" id="nameSkiFacility" name="nameSkiFacility" placeholder="Nome impianto">
@@ -88,10 +88,10 @@
                     <p>Descrizione template: {$i[2]->getDescription()}</p>
                 </div>
                 <div class="action-buttons">
-                  <form action="/Slope/Admin/modifySkipassObj" method="POST">
+                  <form action="/Slope/ModifyAdmin/modifySkipassObj" method="POST">
                     <button type="submit" name="idSkipassObj" value={$i[0]->getIdSkipassObj()} class="edit">Modifica</button>
                   </form>
-                  <form action="/Slope/Admin/deleteSkipassObj" method="POST">
+                  <form action="/Slope/DeleteAdmin/deleteSkipassObj" method="POST">
                     <button type="submit" name="idSkipassObj" value={$i[0]->getIdSkipassObj()} class="delete">Elimina</button>
                   </form>
                 </div>

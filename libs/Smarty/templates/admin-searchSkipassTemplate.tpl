@@ -66,7 +66,7 @@
         <div class="admin-filter-container">
           <h2>Filtra template skipass</h2>
           <div class="filters">
-            <form class="search-form" action="/Slope/Admin/searchSkipassTemplate" method="POST">
+            <form class="search-form" action="/Slope/SearchAdmin/searchSkipassTemplate" method="POST">
               <input type="text" id="description" name="description" placeholder="Descrizione">
               <input type="text" id="period" name="period" placeholder="Periodo">
               <input type="text" id="type" name="type" placeholder="Tipologia">
@@ -88,10 +88,10 @@
                     <p>Tipologia: {$i->getType()}</p>
                 </div>
                 <div class="action-buttons">
-                  <form action="/Slope/Admin/modifySkipassTemp" method="POST">
+                  <form action="/Slope/ModifyAdmin/modifySkipassTemp" method="POST">
                     <button type="submit" name="idSkipassTemp" id="idSkipassTemp" value={$i->getIdSkipassTemplate()} class="edit">Modifica</button>
                   </form>
-                  <form action="/Slope/Admin/deleteSkipassTemp" method="POST">
+                  <form action="/Slope/DeleteAdmin/deleteSkipassTemp" method="POST">
                     <button type="submit" name="idSkipassTemp" id="idSkipassTemp" value={$i->getIdSkipassTemplate()} class="delete">Elimina</button>
                   </form>
                 </div>

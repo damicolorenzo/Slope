@@ -1,6 +1,6 @@
 <?php
 
-require_once (__DIR__."\\..\\config\\autoloader.php");
+require_once (__DIR__ . '/../config/autoloader.php');
 
 class CConfirmModifyAdmin {
     /**

@@ -1,10 +1,37 @@
 <?php
 
-require_once (__DIR__."\\..\\config\\autoloader.php");
+require_once (__DIR__ . '/../config/autoloader.php');
 
 class CPurhcaseSubscription {
 
     public static function buySubscription() {
+        if(CUser::isLogged()) {
+            $view = new VPurchaseSubscription();
+            $userId = USession::getInstance()->getSessionElement('user');
+            $user = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $userId);
+            $today = new DateTime();
+            $currentYear = (int)$today->format('Y');
+            $currentMonth = (int)$today->format('m');
+        
+            if($currentMonth >= 1 && $currentMonth <=3) {
+                // Calcola i due range accettabili:
+                // 1. Stagione invernale attuale (ottobre anno precedente -> marzo anno corrente)
+                $startCurrentSeason = new DateTime(($currentYear - 1). "-10-01");
+                $endCurrentSeason = new DateTime(($currentYear) . "-03-31");
+            
+            } elseif($currentMonth >= 4 && $currentMonth <= 12) {
+                // 1. Stagione invernale successiva o attuale  (ottobre anno corrente-> marzo anno successivo)
+                $startCurrentSeason = new DateTime(($currentYear). "-10-01");
+                $endCurrentSeason = new DateTime(($currentYear + 1) . "-03-31");
+            
+            }
+            $view->makeASubscriptionForm($user[0], $startCurrentSeason->format("d-m-y"), $endCurrentSeason->format("d-m-y"));
+        } else {
+            CUser::home();
+        }
+    }
+
+    public static function rebuySubscription() {
         if(CUser::isLogged()) {
             $view = new VPurchaseSubscription();
             $userId = USession::getInstance()->getSessionElement('user');

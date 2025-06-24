@@ -1,6 +1,6 @@
 <?php
 
-require_once (__DIR__."\\..\\config\\autoloader.php");
+require_once (__DIR__ . '/../config/autoloader.php');
 
 class CManageBooking {
 
@@ -32,6 +32,8 @@ class CManageBooking {
             $idSkiFacility = UHTTPMethods::post('idSkiFacility');
             $user = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $userId);
             $today = date("Y-m-d");
+            $skiFacility = FPersistentManager::getInstance()->retriveSkiFacilityOnId($idSkiFacility);
+            $status = $skiFacility[0]->getStatus();
             $skipassObjs = FPersistentManager::getInstance()->retriveSkipassObjOnSkiFacility($idSkiFacility);
             $mapSkipassTemp = [];
             foreach ($skipassObjs as $element) {
@@ -39,7 +41,7 @@ class CManageBooking {
                 $skipassTemps = FPersistentManager::getInstance()->retriveSkipassTempOnId($id);
                 $mapSkipassTemp[] =  [$skipassTemps[0]->getPeriod(), $skipassTemps[0]->getType()];
             }
-            $view->makeABookingForm($idSkiFacility, $user[0], $today, $mapSkipassTemp, false);
+            $view->makeABookingForm($idSkiFacility, $user[0], $today, $mapSkipassTemp, false, $status);
         } else {
             CUser::home();
         }
@@ -122,7 +124,7 @@ class CManageBooking {
                     $skipassTemps = FPersistentManager::getInstance()->retriveSkipassTempOnId($id);
                     $mapSkipassTemp[] =  [$skipassTemps[0]->getPeriod(), $skipassTemps[0]->getType()];
                 }
-                $view->makeABookingForm($idSkiFacility, $user[0], $today, $mapSkipassTemp, true);
+                $view->makeABookingForm($idSkiFacility, $user[0], $today, $mapSkipassTemp, true, true);
             } else {
                 $name = UHTTPMethods::post('name');
                 $surname = UHTTPMethods::post('surname');

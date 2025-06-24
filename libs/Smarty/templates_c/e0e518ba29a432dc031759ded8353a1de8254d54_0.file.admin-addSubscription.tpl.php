@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-28 16:17:01
+/* Smarty version 3.1.33, created on 2025-06-24 11:55:04
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-addSubscription.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_68371adddf1818_84846050',
+  'unifunc' => 'content_685a75f8cebfa9_23481889',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e0e518ba29a432dc031759ded8353a1de8254d54' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-addSubscription.tpl',
-      1 => 1748359416,
+      1 => 1750755390,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_68371adddf1818_84846050 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685a75f8cebfa9_23481889 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -87,12 +87,15 @@ function content_68371adddf1818_84846050 (Smarty_Internal_Template $_smarty_tpl)
 
         <div class="form-container addSubscription">
           <h2>Aggiungi abbonamento</h2>
-          <form class="register-form" action="/Slope/Admin/confirmSubscription" method="POST">
+          <form class="register-form" action="/Slope/ConfirmModifyAdmin/confirmSubscription" method="POST">
             <label for="description">Descrizione:</label>
             <input type="text" id="description" name="description" required>
 
             <label for="value">Valore:</label>
             <input type="text" id="value" name="value" required>
+
+            <label for="discount">Sconto:</label>
+            <input type="text" id="discoutn" name="discount" required>
             
             <div class="button-container">
             <button type="submit">Conferma</button>

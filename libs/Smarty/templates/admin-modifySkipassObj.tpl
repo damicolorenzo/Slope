@@ -62,7 +62,7 @@
 
       <div class="container" data-aos="fade-up">
         <div class="form-container modifySkipassObj">
-          <form action="/Slope/Admin/confirmModifySkipassObj" enctype="multipart/form-data" method="POST">
+          <form action="/Slope/ConfirmModifyAdmin/confirmModifySkipassObj" enctype="multipart/form-data" method="POST">
             <input type="hidden" name="idSkipassObj" value={$idSkipassObj}>
             <h2>Modifica Skipass</h2>
             

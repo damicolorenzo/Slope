@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-26 16:22:31
+/* Smarty version 3.1.33, created on 2025-06-24 12:26:15
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\modifyPassword.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_683479275d2816_97033772',
+  'unifunc' => 'content_685a7d4769b905_85306871',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '136983bcc97c1b3c54a7d3234e2691a51678a744' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\modifyPassword.tpl',
-      1 => 1748269348,
+      1 => 1750759851,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_683479275d2816_97033772 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685a7d4769b905_85306871 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -77,8 +77,8 @@ function content_683479275d2816_97033772 (Smarty_Internal_Template $_smarty_tpl)
         <nav id="navmenu" class="navmenu">
           <ul>
             <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/User/showBookings">Visualizza Prenotazioni</a></li>
-            <li><a href="/Slope/User/profile">Profile</a></li>
+            <li><a href="/Slope/ManageBooking/showBookings">Visualizza Prenotazioni</a></li>
+            <li><a href="/Slope/UserOperations/profile">Profile</a></li>
             <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -91,19 +91,6 @@ function content_683479275d2816_97033772 (Smarty_Internal_Template $_smarty_tpl)
 
   <main class="main">
 
-    <!-- Page Title -->
-    <!-- <div class="page-title" data-aos="fade">
-      <div class="container">
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="/Slope">Home</a></li>
-            <li class="current">Starter Page</li>
-          </ol>
-        </nav>
-        <h1>Starter Page</h1>
-      </div>
-    </div> --><!-- End Page Title -->
-
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
 
@@ -112,7 +99,7 @@ function content_683479275d2816_97033772 (Smarty_Internal_Template $_smarty_tpl)
         <div class="form-container">
             <div class="profile-info">
                 <h2>Modifica password</h2>
-                <form action="/Slope/User/setPassword" method="POST">
+                <form action="/Slope/UserOperations/setPassword" method="POST">
                 <p><strong>Nuova password:</strong></p>
                 <input type="password" id="password" name="password" required>
                 <?php if ($_smarty_tpl->tpl_vars['passwordError']->value == true) {?>

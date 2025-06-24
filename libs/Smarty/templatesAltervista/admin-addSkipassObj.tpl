@@ -63,7 +63,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="form-container addSkipassObj">
-          <form action="/Admin/confirmSkipassObj" enctype="multipart/form-data" method="POST">
+          <form action="/ConfirmModifyAdmin/confirmSkipassObj" enctype="multipart/form-data" method="POST">
               <h2>Aggiungi oggetto skipass</h2>
             
               <label for="description">Descrizione oggetto skipass:</label>

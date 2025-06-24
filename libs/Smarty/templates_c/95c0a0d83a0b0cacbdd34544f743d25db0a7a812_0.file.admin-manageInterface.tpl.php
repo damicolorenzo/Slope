@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-30 20:43:25
+/* Smarty version 3.1.33, created on 2025-06-24 11:56:05
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-manageInterface.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_6839fc4d039119_03234935',
+  'unifunc' => 'content_685a763581bda6_80791046',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '95c0a0d83a0b0cacbdd34544f743d25db0a7a812' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-manageInterface.tpl',
-      1 => 1748630604,
+      1 => 1750755520,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6839fc4d039119_03234935 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685a763581bda6_80791046 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -106,7 +106,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </div>
             <?php }?>
-            <form action="/Slope/Admin/addImageLandingPage" enctype="multipart/form-data" method="POST">
+            <form action="/Slope/AddAdmin/addImageLandingPage" enctype="multipart/form-data" method="POST">
               <input type="file" name="image" id="image" multiple>
               <input type="hidden" name="idImage" id="idImage" value="1">
               <button class="edit-button" type="submit">Modifica immagine</button>
@@ -136,7 +136,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
               </div>
               <?php }?>
-            <form action="/Slope/Admin/addImageLandingPage" enctype="multipart/form-data" method="POST">
+            <form action="/Slope/AddAdmin/addImageLandingPage" enctype="multipart/form-data" method="POST">
               <input type="file" name="image" id="image" multiple>
               <input type="hidden" name="idImage" id="idImage" value="2">
               <button class="edit-button" type="submit">Modifica immagine</button>
@@ -171,7 +171,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
               </div>
               <?php }?>
-              <form action="/Slope/Admin/addImageLandingPage" enctype="multipart/form-data" method="POST">
+              <form action="/Slope/AddAdmin/addImageLandingPage" enctype="multipart/form-data" method="POST">
               <input type="file" name="image" id="image" multiple>
                 <input type="hidden" name="id" id="id" value="3">
                 <button class="edit-button" type="submit">Modifica immagine</button>
@@ -195,7 +195,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
               </div>
               <?php }?>
-              <form action="/Slope/Admin/addImageLandingPage" enctype="multipart/form-data" method="POST">
+              <form action="/Slope/AddAdmin/addImageLandingPage" enctype="multipart/form-data" method="POST">
                 <input type="file" name="image" id="image" multiple>
                 <input type="hidden" name="id" id="id" value="4">
                 <button class="edit-button" type="submit">Modifica immagine</button>
@@ -219,7 +219,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
               </div>
               <?php }?>
-              <form action="/Slope/Admin/addImageLandingPage" enctype="multipart/form-data" method="POST">
+              <form action="/Slope/AddAdmin/addImageLandingPage" enctype="multipart/form-data" method="POST">
                 <input type="file" name="image" id="image" multiple>
                 <input type="hidden" name="id" id="id" value="5">
                 <button class="edit-button" type="submit">Modifica immagine</button>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-06-04 12:12:17
+/* Smarty version 3.1.33, created on 2025-06-24 11:55:46
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-searchUser.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_68401c01e03c66_91415338',
+  'unifunc' => 'content_685a762235f2a7_04400674',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e329a4c45f42b5a1e250d70308fc0f6fa7c0a186' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-searchUser.tpl',
-      1 => 1749030436,
+      1 => 1750758873,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_68401c01e03c66_91415338 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685a762235f2a7_04400674 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -90,7 +90,7 @@ function content_68401c01e03c66_91415338 (Smarty_Internal_Template $_smarty_tpl)
           <div class="admin-filter-container">
             <h2>Filtra Utenti</h2>
             <div class="filters">
-              <form class="search-form" action="/Slope/Admin/searchUsers" method="POST">
+              <form class="search-form" action="/Slope/SearchAdmin/searchUsers" method="POST">
                 <input type="text" id="name" name="name" placeholder="Nome">
                 <input type="text" id="surname" name="surname" placeholder="Cognome">
                 <input type="text" id="username" name="username" placeholder="Username">
@@ -120,11 +120,11 @@ foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 </p>
                   </div>
                   <div class="action-buttons">
-                    <form class="search-form" action="/Slope/Admin/modifyProfile" method="POST">
+                    <form class="search-form" action="/Slope/ModifyAdmin/modifyProfile" method="POST">
                       <button type="submit" name="userId" value=<?php echo $_smarty_tpl->tpl_vars['i']->value->getIdUser();?>
  class="edit">Modifica</button>
                     </form>
-                    <form class="search-form" action="/Slope/Admin/deleteProfile" method="POST">
+                    <form class="search-form" action="/Slope/ModifyAdmin/deleteProfile" method="POST">
                       <button type="submit" name="userId" value=<?php echo $_smarty_tpl->tpl_vars['i']->value->getIdUser();?>
  class="delete">Elimina</button>
                     </form>

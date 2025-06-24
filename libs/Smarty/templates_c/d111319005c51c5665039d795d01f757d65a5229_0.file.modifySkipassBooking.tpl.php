@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-30 20:27:57
+/* Smarty version 3.1.33, created on 2025-06-24 12:26:02
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\modifySkipassBooking.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_6839f8ad37ea44_91844289',
+  'unifunc' => 'content_685a7d3a2015b8_58920495',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd111319005c51c5665039d795d01f757d65a5229' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\modifySkipassBooking.tpl',
-      1 => 1748531150,
+      1 => 1750759957,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6839f8ad37ea44_91844289 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685a7d3a2015b8_58920495 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -74,8 +74,8 @@ function content_6839f8ad37ea44_91844289 (Smarty_Internal_Template $_smarty_tpl)
         <nav id="navmenu" class="navmenu">
           <ul>
             <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/User/showBookings">Visualizza Prenotazioni</a></li>
-            <li><a href="/Slope/User/profile">Profile</a></li>
+            <li><a href="/Slope/ManageBooking/showBookings">Visualizza Prenotazioni</a></li>
+            <li><a href="/Slope/UserOperations/profile">Profile</a></li>
             <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -95,7 +95,7 @@ function content_6839f8ad37ea44_91844289 (Smarty_Internal_Template $_smarty_tpl)
 
         <div class="form-container">
           <h1>Modifica prenotazione</h1>
-          <form action="/Slope/User/confirmModifyBooking" method="post">
+          <form action="/Slope/ManageBooking/confirmModifyBooking" method="post">
               <label for="name">Nome</label>
               <input type="text" id="name" name="name" value=<?php echo $_smarty_tpl->tpl_vars['skipassBooking']->value->getName();?>
 >

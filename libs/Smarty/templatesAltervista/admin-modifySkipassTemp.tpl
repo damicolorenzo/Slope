@@ -62,7 +62,7 @@
 
       <div class="container" data-aos="fade-up">
         <div class="form-container modifySkipassTemp">
-          <form action="/Admin/confirmModifySkipassTemp" enctype="multipart/form-data" method="POST">
+          <form action="/ConfirmModifyAdmin/confirmModifySkipassTemp" enctype="multipart/form-data" method="POST">
             <h2>Modifica template skipass</h2>
             <input type="hidden" id="idSkipassTemp" name="idSkipassTemp" value={$idSkipassTemp}>
             

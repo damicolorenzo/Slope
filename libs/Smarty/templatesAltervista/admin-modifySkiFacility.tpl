@@ -76,7 +76,7 @@
       <div class="container" data-aos="fade-up">
         
         <div class="form-container modifySkiFacility">
-              <form action="/Admin/confirmModifySkiFacility" enctype="multipart/form-data" method="POST">
+              <form action="/ConfirmModifyAdmin/confirmModifySkiFacility" enctype="multipart/form-data" method="POST">
                   <h2>Modifica impianto</h2>
                   <input type="hidden" id="idSkiFacility" name="idSkiFacility" value={$id}>
                   {if $exist}

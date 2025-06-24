@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-28 16:31:52
+/* Smarty version 3.1.33, created on 2025-06-24 11:55:26
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-searchInsuranceTemplate.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_68371e58d31b94_04926101',
+  'unifunc' => 'content_685a760ee88bb2_98432566',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '00bba95f1925e399cec85e94b1fd085c51b640d3' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-searchInsuranceTemplate.tpl',
-      1 => 1748442612,
+      1 => 1750758684,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_68371e58d31b94_04926101 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685a760ee88bb2_98432566 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -89,7 +89,7 @@ function content_68371e58d31b94_04926101 (Smarty_Internal_Template $_smarty_tpl)
         <div class="admin-filter-container">
           <h2>Filtra Strutture</h2>
           <div class="filters">
-            <form class="search-form" action="/Slope/Admin/searchInsuranceTemplate" method="POST">
+            <form class="search-form" action="/Slope/SearchAdmin/searchInsuranceTemplate" method="POST">
               <input type="text" id="value" name="value" placeholder="Prezzo">
               <input type="text" id="type" name="type" placeholder="Tipologia">
               <div class="button-container">
@@ -115,11 +115,11 @@ foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 </p>
                 </div>
                 <div class="action-buttons">
-                  <form action="/Slope/Admin/modifyInsuranceTemp" method="POST">
+                  <form action="/Slope/ModifyAdmin/modifyInsuranceTemp" method="POST">
                     <button type="submit" name="idInsuranceTemp" value=<?php echo $_smarty_tpl->tpl_vars['i']->value->getIdInsuranceTemp();?>
  class="edit">Modifica</button>
                   </form>
-                  <form action="/Slope/Admin/deleteInsuranceTemp" method="POST">
+                  <form action="/Slope/DeleteAdmin/deleteInsuranceTemp" method="POST">
                     <button type="submit" name="idInsuranceTemp" value=<?php echo $_smarty_tpl->tpl_vars['i']->value->getIdInsuranceTemp();?>
  class="delete">Elimina</button>
                   </form>

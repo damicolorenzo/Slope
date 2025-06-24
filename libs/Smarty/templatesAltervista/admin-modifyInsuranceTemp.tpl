@@ -62,7 +62,7 @@
 
       <div class="container" data-aos="fade-up">
         <div class="form-container modifyInsuranceTemp">
-          <form action="/Admin/confirmModifyInsuranceTemp" enctype="multipart/form-data" method="POST">
+          <form action="/ConfirmModifyAdmin/confirmModifyInsuranceTemp" enctype="multipart/form-data" method="POST">
             <h2>Modifica template assicurazione</h2>
             <input type="hidden" id="idInsuranceTemp" name="idInsuranceTemp" value={$idInsuranceTemp}>
             

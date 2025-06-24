@@ -65,7 +65,7 @@
         {foreach from=$skiFacilities item=i}
           <div class="form-container modifySkiFacilityImage">
             <h1>Impianto {$i->getName()}</h1>
-            <form action="/Admin/addImageSkiFacility" enctype="multipart/form-data" method="POST">
+            <form action="/AddAdmin/addImageSkiFacility" enctype="multipart/form-data" method="POST">
               <input type="file" name="image" id="image" multiple>
               <input type="hidden" name="idImage" id="idImage" value={$i->getIdSkiFacility()}>
               <button class="edit-button" type="submit">Modifica immagine</button>

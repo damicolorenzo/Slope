@@ -67,7 +67,7 @@
           <div class="admin-filter-container">
             <h2>Filtra Utenti</h2>
             <div class="filters">
-              <form class="search-form" action="/Admin/searchUsers" method="POST">
+              <form class="search-form" action="/SearchAdmin/searchUsers" method="POST">
                 <input type="text" id="name" name="name" placeholder="Nome">
                 <input type="text" id="surname" name="surname" placeholder="Cognome">
                 <input type="text" id="username" name="username" placeholder="Username">
@@ -90,10 +90,10 @@
                       <p class="surname">Cognome: {$i->getSurname()}</p>
                   </div>
                   <div class="action-buttons">
-                    <form class="search-form" action="/Admin/modifyProfile" method="POST">
+                    <form class="search-form" action="/ModifyAdmin/modifyProfile" method="POST">
                       <button type="submit" name="userId" value={$i->getIdUser()} class="edit">Modifica</button>
                     </form>
-                    <form class="search-form" action="/Admin/deleteProfile" method="POST">
+                    <form class="search-form" action="/ModifyAdmin/deleteProfile" method="POST">
                       <button type="submit" name="userId" value={$i->getIdUser()} class="delete">Elimina</button>
                     </form>
                   </div>
@@ -101,7 +101,10 @@
               {/foreach}
               </div>
             </div>
+          {else}
+          <label>Nessun utente trovato</label>
           {/if}
+          
 
         </div>
 

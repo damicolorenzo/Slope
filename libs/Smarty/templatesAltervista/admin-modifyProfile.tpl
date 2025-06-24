@@ -62,7 +62,7 @@
       <div class="container">
         <nav class="breadcrumbs">
           <ol>
-            <li><a href="/">Home</a></li>
+            <li><a href="">Home</a></li>
             <li class="current">Starter Page</li>
           </ol>
         </nav>
@@ -77,7 +77,7 @@
         
         <div class="form-container modifyProfile">
             <div class="profile-info">
-                <form action="/Admin/confirmModify" enctype="multipart/form-data" method="POST">
+                <form action="/ConfirmModifyAdmin/confirmModify" enctype="multipart/form-data" method="POST">
                     <h2>Modifica PROFILO</h2>
                     
                     <label>Nome utente:</label>

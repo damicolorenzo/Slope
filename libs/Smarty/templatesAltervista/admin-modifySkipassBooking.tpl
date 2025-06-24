@@ -62,7 +62,7 @@
 
       <div class="container" data-aos="fade-up">
         <div class="form-container modifySkipassBooking">
-          <form action="/Admin/confirmModifyBooking" method="post">
+          <form action="/ConfirmModifyAdmin/confirmModifyBooking" method="post">
               <h2>Modifica prenotazione</h2>
               <input type="hidden" name="userId" id="userId" value={$skipassBooking->getIdUser()}>
               <input type="hidden" name="idSkipassBooking" id="idSkipassBooking" value={$skipassBooking->getIdSkipassBooking()}>

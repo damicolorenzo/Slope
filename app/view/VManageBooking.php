@@ -19,11 +19,12 @@ class VManageBooking {
         $this->smarty->display('skiRunsAndLiftsDetails.tpl');
     }
 
-    public function makeABookingForm($idSkiFacility, $user, $today, $map, $dateWarning) {
+    public function makeABookingForm($idSkiFacility, $user, $today, $map, $dateWarning, $status) {
         $this->smarty->assign('user', $user);
         $this->smarty->assign('today', $today);
         $this->smarty->assign('dateWarning', $dateWarning);
         $this->smarty->assign('idSkiFacility', $idSkiFacility);
+        $this->smarty->assign('status', $status);
         $this->smarty->assign('map', $map);
         $this->smarty->display('makeABookingForm.tpl');
     }

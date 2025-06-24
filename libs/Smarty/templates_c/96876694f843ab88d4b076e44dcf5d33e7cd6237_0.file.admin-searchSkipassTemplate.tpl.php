@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-23 17:31:23
+/* Smarty version 3.1.33, created on 2025-06-24 11:55:18
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-searchSkipassTemplate.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_683094cb985636_90638368',
+  'unifunc' => 'content_685a76066b5869_68566907',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '96876694f843ab88d4b076e44dcf5d33e7cd6237' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-searchSkipassTemplate.tpl',
-      1 => 1748006898,
+      1 => 1750758808,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_683094cb985636_90638368 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685a76066b5869_68566907 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -89,7 +89,7 @@ function content_683094cb985636_90638368 (Smarty_Internal_Template $_smarty_tpl)
         <div class="admin-filter-container">
           <h2>Filtra template skipass</h2>
           <div class="filters">
-            <form class="search-form" action="/Slope/Admin/searchSkipassTemplate" method="POST">
+            <form class="search-form" action="/Slope/SearchAdmin/searchSkipassTemplate" method="POST">
               <input type="text" id="description" name="description" placeholder="Descrizione">
               <input type="text" id="period" name="period" placeholder="Periodo">
               <input type="text" id="type" name="type" placeholder="Tipologia">
@@ -118,11 +118,11 @@ foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 </p>
                 </div>
                 <div class="action-buttons">
-                  <form action="/Slope/Admin/modifySkipassTemp" method="POST">
+                  <form action="/Slope/ModifyAdmin/modifySkipassTemp" method="POST">
                     <button type="submit" name="idSkipassTemp" id="idSkipassTemp" value=<?php echo $_smarty_tpl->tpl_vars['i']->value->getIdSkipassTemplate();?>
  class="edit">Modifica</button>
                   </form>
-                  <form action="/Slope/Admin/deleteSkipassTemp" method="POST">
+                  <form action="/Slope/DeleteAdmin/deleteSkipassTemp" method="POST">
                     <button type="submit" name="idSkipassTemp" id="idSkipassTemp" value=<?php echo $_smarty_tpl->tpl_vars['i']->value->getIdSkipassTemplate();?>
  class="delete">Elimina</button>
                   </form>

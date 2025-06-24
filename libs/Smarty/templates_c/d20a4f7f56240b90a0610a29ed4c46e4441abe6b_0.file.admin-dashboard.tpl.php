@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-29 14:31:34
+/* Smarty version 3.1.33, created on 2025-06-24 10:53:38
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-dashboard.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_683853a64002e4_45792118',
+  'unifunc' => 'content_685a67921728d0_28565357',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd20a4f7f56240b90a0610a29ed4c46e4441abe6b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-dashboard.tpl',
-      1 => 1748521840,
+      1 => 1750755211,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_683853a64002e4_45792118 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685a67921728d0_28565357 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -241,22 +241,22 @@ function content_683853a64002e4_45792118 (Smarty_Internal_Template $_smarty_tpl)
           <!-- Sidebar + Hamburger Toggle -->
           <div class="sidebar-wrapper">
             <nav class="dashboard" id="sidebar">
-              <a href="/Slope/Admin/addSkiRun">Aggiungi dati pista</a>
-              <a href="/Slope/Admin/addSkiFacility">Aggiungi dati impianto</a>
-              <a href="/Slope/Admin/addLiftStructure">Aggiungi dati risalita</a>
-              <a href="/Slope/Admin/addSkipassTemplate">Aggiungi template skipass</a>
-              <a href="/Slope/Admin/addInsuranceTemplate">Aggiungi template assicurazione</a>
-              <a href="/Slope/Admin/addSubscription">Aggiungi template abbonamento</a>
-              <a href="/Slope/Admin/addSkipassObj">Aggiungi oggetto skipass</a>
-              <a href="/Slope/Admin/searchStructures">Modifica dati pista/impianto/risalita</a>
-              <a href="/Slope/Admin/searchSkipassTemplate">Modifica template skipass</a>
-              <a href="/Slope/Admin/searchInsuranceTemplate">Modifica template assicurazione</a>
-              <a href="/Slope/Admin/searchSubscriptionTemplate">Modifica template abbonamento</a>
-              <a href="/Slope/Admin/searchSkipassObjs">Modifica oggetto skipass</a>
-              <a href="/Slope/Admin/modifySkiFacilityImage">Modifica immagini impianto</a>
-              <a href="/Slope/Admin/searchUsers">Modifica dati utente</a>
-              <a href="/Slope/Admin/searchSkipassBooking">Modifica prenotazione skipass utente</a>
-              <a href="/Slope/Admin/modifyLandingPage">Modifica interfaccia</a>
+              <a href="/Slope/AddAdmin/addSkiRun">Aggiungi dati pista</a>
+              <a href="/Slope/AddAdmin/addSkiFacility">Aggiungi dati impianto</a>
+              <a href="/Slope/AddAdmin/addLiftStructure">Aggiungi dati risalita</a>
+              <a href="/Slope/AddAdmin/addSkipassTemplate">Aggiungi template skipass</a>
+              <a href="/Slope/AddAdmin/addInsuranceTemplate">Aggiungi template assicurazione</a>
+              <a href="/Slope/AddAdmin/addSubscription">Aggiungi template abbonamento</a>
+              <a href="/Slope/AddAdmin/addSkipassObj">Aggiungi oggetto skipass</a>
+              <a href="/Slope/SearchAdmin/searchStructures">Modifica dati pista/impianto/risalita</a>
+              <a href="/Slope/SearchAdmin/searchSkipassTemplate">Modifica template skipass</a>
+              <a href="/Slope/SearchAdmin/searchInsuranceTemplate">Modifica template assicurazione</a>
+              <a href="/Slope/SearchAdmin/searchSubscriptionTemplate">Modifica template abbonamento</a>
+              <a href="/Slope/SearchAdmin/searchSkipassObjs">Modifica oggetto skipass</a>
+              <a href="/Slope/ModifyAdmin/modifySkiFacilityImage">Modifica immagini impianto</a>
+              <a href="/Slope/SearchAdmin/searchUsers">Modifica dati utente</a>
+              <a href="/Slope/SearchAdmin/searchSkipassBooking">Modifica prenotazione skipass utente</a>
+              <a href="/Slope/ModifyAdmin/modifyLandingPage">Modifica interfaccia</a>
             </nav>
           </div>
 

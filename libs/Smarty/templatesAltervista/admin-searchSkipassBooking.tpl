@@ -67,10 +67,10 @@
         <div class="admin-filter-container">
           <h2>Filtra prenotazioni</h2>
           <div class="filters">
-            <form class="search-form" action="/Admin/searchSkipassObjs" method="POST">
+            <form class="search-form" action="/SearchAdmin/searchSkipassBooking" method="POST">
               <input type="text" id="username" name="username" placeholder="Username">
               <input type="text" id="nameSkiFacility" name="nameSkiFacility" placeholder="Nome impianto">
-              <input type="text" id="email" name="email" placeholder="Email">
+              <input type="text" id="email" name="email" placeholder="Email attuale">
               <button type="submit">Filtra</button>
             </form>
           </div>
@@ -82,20 +82,22 @@
             {foreach from=$objects item=i}
               <div class="card">
                 <div class="skippass-info">
-                    <p>Nome: {$i->getName()}</p>
-                    <p>Cognome: {$i->getSurname()}</p>
-                    <p>Tipologia: {$i->getType()}</p>
-                    <p>Data: {$i->getStartDate()}</p>
-                    <p>Email: {$i->getEmail()}</p>
-                    <p>Prezzo: {$i->getValue()}</p>
-                    <p>Durata: {$i->getPeriod()}</p>
+                    <p>Utente: {$i[2]->getUsername()}</p>
+                    <p>Nome: {$i[0]->getName()}</p>
+                    <p>Cognome: {$i[0]->getSurname()}</p>
+                    <p>Tipologia: {$i[0]->getType()}</p>
+                    <p>Data: {$i[0]->getStartDate()}</p>
+                    <p>Email: {$i[0]->getEmail()}</p>
+                    <p>Prezzo: {$i[0]->getValue()}</p>
+                    <p>Durata: {$i[0]->getPeriod()}</p>
+                    <p>Impianto: {$i[1]->getName()}</p>
                 </div>
                 <div class="action-buttons">
-                  <form action="/Admin/modifySkipassBooking" method="POST">
-                    <button type="submit" name="idSkipassBooking" value={$i->getIdSkipassBooking()} class="edit">Modifica</button>
+                  <form action="/ModifyAdmin/modifySkipassBooking" method="POST">
+                    <button type="submit" name="idSkipassBooking" value={$i[0]->getIdSkipassBooking()} class="edit">Modifica</button>
                   </form>
-                  <form action="/Admin/deleteSkipassBooking" method="POST">
-                    <button type="submit" name="idSkipassBooking" value={$i->getIdSkipassBooking()} class="delete">Elimina</button>
+                  <form action="/DeleteAdmin/deleteSkipassBooking" method="POST">
+                    <button type="submit" name="idSkipassBooking" value={$i[0]->getIdSkipassBooking()} class="delete">Elimina</button>
                   </form>
                 </div>
               </div>
