@@ -65,22 +65,22 @@
       <div class="container loggedHome" data-aos="fade-up">
 
         {foreach from=$map item=i} 
-          <form class="search-form" action="/Slope/ManageBooking/skiFacilityDetails" method="POST">
+        <div class="search-form">
           <div class="card-impianto">
             <div class="left">
               <div class="impianto-img">
-              {foreach from=$i[4] item=e} 
+              {foreach from=$i['image'] item=e} 
                 <img class="imagePreview" src="data:{$e->getType()};base64,{$e->getEncodedData()}" >
               {/foreach}
               </div>
             </div>
             <div class="right">
               <div class="right-container">
-                <h3>{$i[0]}</h3>
+                <h3>{$i['name']}</h3>
                 <div class="dettagli-impianto">
                   <div class="piste">
                     <h4>Dettagli piste</h4> 
-                    {foreach from=$i[2] item=e}  
+                    {foreach from=$i['countSkiRun'] item=e}  
                       {if $e['type'] == blu}
                       <div class="pista blu">Blu: <span>{$e['CNT']}</span></div>
                       {/if}
@@ -97,25 +97,22 @@
                   </div>
                   <div class="impianti">
                   <h4>Impianti di risalita:</h4>
-                  {foreach from=$i[3] item=f}
+                  {foreach from=$i['countLift'] item=f}
                       <div>{Ucwords($f['type'])}: <span>{$f['CNT']}</span></div>
                   {/foreach}
                   </div>
-                  
                 </div>
-                {if $i[1]}
+                {if $i['status']}
                 <p>Stato impianto: <span class="status aperto">Aperto</span></p>
                 {else}
                 <p>Stato impianto: <span class="status chiuso">Chiuso</span></p>
                 {/if}
-                <button class="btn-submit" type="submit" name="nameSkiFacility" value="{$i[0]}">Esplora</button>
+                <a href="/Slope/ManageBooking/skiFacilityDetails/{$i['name']}"><button class="btn-submit" type="submit">Esplora</button></a>
               </div>
-            </div>
+            </div>  
           </div>
-          
-          <form>
+        </div>
         {/foreach}
-
       </div>
 
     </section><!-- /Starter Section Section -->

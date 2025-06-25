@@ -122,6 +122,27 @@ Class FPerson{
         }
     }
 
+    /**
+     * Method to verify if a person exist using a field and a value
+     * @param string $field field 
+     * @param string $value value
+     * @return bool true if exist false if not exist
+     */
+    public static function verify(string $field, string $id) : bool{
+        $queryResult = FEntityManager::getInstance()->retriveObj(self::getTable(), $field, $id);
+        return FEntityManager::getInstance()->existInDb($queryResult);
+    }
+
+    /**
+     * Method to get an user object using the email
+     * @param string $email
+     * @return array $result
+     */
+    public static function getPersonByEmail(string $email) : array{
+        $result = FEntityManager::getInstance()->retriveObj(self::getTable(), 'email', $email);
+        return $result;
+    }
+
     /* public static function saveObj($obj){
         $savePerson = FEntityManager::getInstance()->saveObject(self::getClass(), $obj);
         if($savePerson !== null){

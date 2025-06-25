@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-29 17:01:00
+/* Smarty version 3.1.33, created on 2025-06-25 21:48:08
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\makeASubscriptionForm.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_683876ac414ae6_13598780',
+  'unifunc' => 'content_685c52786aea09_20153939',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3260c656026818a39175ff33aa45443bbdcc2e81' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\makeASubscriptionForm.tpl',
-      1 => 1748530858,
+      1 => 1750880874,
       2 => 'file',
     ),
   ),
@@ -20,21 +20,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_683876ac414ae6_13598780 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685c52786aea09_20153939 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Registration</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <title>Acquista abbonamento</title>
 
   <!-- Favicons -->
-  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/favicon.png" rel="icon">
-  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: dark)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: dark)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: dark)">
 
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/dark/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: light)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: light)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: light)">
+  
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -49,17 +52,7 @@ function content_683876ac414ae6_13598780 (Smarty_Internal_Template $_smarty_tpl)
 
   <!-- Main CSS File -->
   <link href="https://localhost/Slope/libs/Smarty/day/assets/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Day
-  * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
-  * Updated: Jun 14 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-  <style>
   
-  </style>
 </head>
 
 <body class="starter-page-page">
@@ -77,8 +70,8 @@ function content_683876ac414ae6_13598780 (Smarty_Internal_Template $_smarty_tpl)
         <nav id="navmenu" class="navmenu">
           <ul>
             <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/User/showBookings">Visualizza Prenotazioni</a></li>
-            <li><a href="/Slope/User/profile">Profile</a></li>
+            <li><a href="/Slope/ManageBooking/showBookings">Visualizza Prenotazioni</a></li>
+            <li><a href="/Slope/UserOperation/profile">Profile</a></li>
             <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -98,14 +91,14 @@ function content_683876ac414ae6_13598780 (Smarty_Internal_Template $_smarty_tpl)
   
         <div class="form-container">
           <h1>Acquista abbonamento</h1>
-            <form action="/Slope/User/confirmSubscription" method="POST">
+            <form action="/Slope/PurchaseSubscription/confirmSubscription" method="POST">
               <label for="name">Nome</label>
               <input type="text" id="name" name="name" value=<?php echo $_smarty_tpl->tpl_vars['user']->value->getName();?>
->
+ readonly>
 
               <label for="surname">Cognome</label>
               <input type="text" id="surname" name="surname" value=<?php echo $_smarty_tpl->tpl_vars['user']->value->getSurname();?>
->
+ readonly>
 
               <label for="email">Email di conferma</label>
               <input type="email" id="email" name="email" value=<?php echo $_smarty_tpl->tpl_vars['user']->value->getEmail();?>

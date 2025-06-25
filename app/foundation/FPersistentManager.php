@@ -1,6 +1,6 @@
 <?php
 
-require_once (__DIR__."\\..\\config\\autoloader.php");
+require_once (__DIR__."/../config/autoloader.php");
 
 class FPersistentManager {
     #Singleton 
@@ -59,6 +59,22 @@ class FPersistentManager {
      */
     public static function retriveUserOnUsername(string $username) : array{
         $user = FUser::getUserByUsername($username); 
+        if(count($user) > 0) {
+            return FUser::createUserObj($user);
+        } else {
+            return [];
+        }
+    }
+
+    /**
+     * Retrive a User findig it on it's emai
+     * @param string $email
+     * @return array of objects or empty array
+     */
+    public static function retriveUserOnEmail(string $email) : array{
+        $person = FPerson::getPersonByEmail($email); 
+        $userId = $person[0]['idUser'];
+        $user = FUser::getUserById($userId);
         if(count($user) > 0) {
             return FUser::createUserObj($user);
         } else {
@@ -804,6 +820,21 @@ class FPersistentManager {
         } 
     }
 
+    /**
+     * Retrive all insurance objects using user id and a date
+     * @param int $idUser
+     * @param string $date
+     * @return array of objects or empty array
+     */
+    public static function retriveInsuranceFromIdUserIdSkipassBookingAndDate(int $idUser, int $idSkipassBooking, string $date) : array{
+        $result = FInsurance::getInsuranceFromIdUserIdSkipassBookingAndDate($idUser, $idSkipassBooking, $date);
+        if(count($result) > 0) {
+            return FInsurance::createInsuranceObj($result);
+        } else {
+            return [];
+        } 
+    }
+
     public static function retriveInsuranceTempFromIdInsurance(int $idInsurance) : array{
         $fields = [['idInsuranceTemp', $idInsurance]];
         $result = FInsuranceTemp::getInsuranceTempObjFromFields($fields);
@@ -1094,6 +1125,16 @@ class FPersistentManager {
         return $result;
     }
 
+    public static function retriveTokenFromToken(string $token) :array {
+        $result = FToken::getTokenFromToken($token);
+        if(count($result) > 0) {
+            $result = FToken::createTokenObj($result);
+        } else {
+            $result = [];
+        }
+        return $result;
+    }
+
     
     
 /* UPLOAD METHODS */
@@ -1208,7 +1249,7 @@ class FPersistentManager {
      * @return bool 
      */
     public static function updateCreditCard(ECreditCard $creditCard) : bool{
-        $field = [['cardHolderName', $creditCard->getCardHolderName()], ['cardHolderSurname', $creditCard->getCardHolderSurname()], ['cardNumber', $creditCard->getCardNumber()], ['cvv', $creditCard->getCvv()], ['expityDate', $creditCard->getExpiryDate()]];
+        $field = [['idUser', $creditCard->getIdUser()], ['cardHolderName', $creditCard->getCardHolderName()], ['cardHolderSurname', $creditCard->getCardHolderSurname()], ['cardNumber', $creditCard->getCardNumber()], ['cvv', $creditCard->getCvv()], ['expiryDate', $creditCard->getExpiryDate()]];
         $result = FCreditCard::saveObj($creditCard, $field);
         return $result;
     }
@@ -1252,7 +1293,7 @@ class FPersistentManager {
      * @return bool 
      */
     public static function updateInsuranceInfo(EInsurance $insurance) : bool{
-        $field = [['startDate', $insurance->getStartDate()]];
+        $field = [['name', $insurance->getName()], ['surname', $insurance->getSurname()], ['startDate', $insurance->getStartDate()]];
         $result = FInsurance::saveObj($insurance, $field);
         return $result;
     }
@@ -1273,6 +1314,17 @@ class FPersistentManager {
     public static function updateSkipassTemplate(ESkipassTemp $skipassTemp){
         $field = [['description', $skipassTemp->getDescription()], ['period', $skipassTemp->getPeriod()], ['type', $skipassTemp->getType()]];
         $result = FSkipassTemp::saveObj($skipassTemp, $field);
+        return $result;
+    }
+
+    /**
+     * Update a price info
+     * @param EToken $token
+     * @return bool 
+     */
+    public static function updateToken(EToken $token) : bool{
+        $field = [['user_id', $token->getUserId()], ['token', $token->getToken()], ['expires_at', $token->getExpiresAt()], ['used', $token->getUsed()], ['created_at', $token->getCreatedAt()]];
+        $result = FToken::saveObj($token, $field);
         return $result;
     }
 
@@ -1304,7 +1356,7 @@ class FPersistentManager {
      * @return bool 
      */
     public static function verifyUserEmail(string $email) : bool{
-        $result = FUser::verify('email', $email);
+        $result = FPerson::verify('email', $email);
         return $result;
     }
 

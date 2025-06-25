@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-06-24 12:29:38
+/* Smarty version 3.1.33, created on 2025-06-25 16:49:52
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\paymentSection.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_685a7e12b61953_22484184',
+  'unifunc' => 'content_685c0c908a37c5_27316125',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b05e431f7332b74dde2c36ea6d5a0da1c78fad5d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\paymentSection.tpl',
-      1 => 1750759991,
+      1 => 1750773548,
       2 => 'file',
     ),
   ),
@@ -20,21 +20,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_685a7e12b61953_22484184 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685c0c908a37c5_27316125 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Registration</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <title>Pagamento</title>
 
   <!-- Favicons -->
-  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/favicon.png" rel="icon">
-  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: dark)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: dark)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: dark)">
 
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/dark/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: light)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: light)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: light)">
+  
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -49,15 +52,7 @@ function content_685a7e12b61953_22484184 (Smarty_Internal_Template $_smarty_tpl)
 
   <!-- Main CSS File -->
   <link href="https://localhost/Slope/libs/Smarty/day/assets/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Day
-  * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
-  * Updated: Jun 14 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-
+  
 </head>
 
 <body class="starter-page-page">

@@ -49,6 +49,11 @@ class EInsurance{
      * @var int
      */
     protected int $idUser;
+    /**
+     * Holds the id of the skipassBooking.
+     * @var int
+     */
+    protected int $idSkipassBooking;
 
     //constructor
     public function __construct(string $name, string $surname, string $email, string $type, string $period, float $price, string $startDate){
@@ -89,6 +94,9 @@ class EInsurance{
     public function getIdUser() : int{
         return $this->idUser;
     }
+    public function getIdSkipassBooking() : int{
+        return $this->idSkipassBooking;
+    }
 
 
     //set methods
@@ -118,6 +126,9 @@ class EInsurance{
     }
     public function setIdUser(int $id) : void{
         $this->idUser = $id;
+    }
+    public function setIdSkipassBooking(int $id) : void{
+        $this->idSkipassBooking = $id;
     }
 
 }

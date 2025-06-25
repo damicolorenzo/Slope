@@ -70,10 +70,10 @@
           <h1>Acquista abbonamento</h1>
             <form action="/Slope/PurchaseSubscription/confirmSubscription" method="POST">
               <label for="name">Nome</label>
-              <input type="text" id="name" name="name" value={$user->getName()}>
+              <input type="text" id="name" name="name" value={$user->getName()} readonly>
 
               <label for="surname">Cognome</label>
-              <input type="text" id="surname" name="surname" value={$user->getSurname()}>
+              <input type="text" id="surname" name="surname" value={$user->getSurname()} readonly>
 
               <label for="email">Email di conferma</label>
               <input type="email" id="email" name="email" value={$user->getEmail()}>

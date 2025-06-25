@@ -38,7 +38,7 @@
     <div class="branding d-flex align-items-center">
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
-        <a href="/Slope" class="logo d-flex align-items-center">
+        <a href="/" class="logo d-flex align-items-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <!-- <img src="assets/img/logo.png" alt=""> -->
           <h1 class="sitename">Slope</h1>
@@ -46,10 +46,10 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/ManageBooking/showBookings">Visualizza Prenotazioni</a></li>
-            <li><a href="/Slope/UserOperations/profile">Profile</a></li>
-            <li><a href="/Slope/User/logout">LogOut</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/ManageBooking/showBookings">Visualizza Prenotazioni</a></li>
+            <li><a href="/UserOperations/profile">Profile</a></li>
+            <li><a href="/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -65,7 +65,7 @@
       <div class="container loggedHome" data-aos="fade-up">
 
         {foreach from=$map item=i} 
-          <form class="search-form" action="/Slope/ManageBooking/skiFacilityDetails" method="POST">
+          <form class="search-form" action="/ManageBooking/skiFacilityDetails" method="POST">
           <div class="card-impianto">
             <div class="left">
               <div class="impianto-img">
@@ -131,16 +131,16 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/php-email-form/validate.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/aos/aos.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/php-email-form/validate.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/aos/aos.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 
   <!-- Main JS File -->
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/js/main.js"></script>
+  <script src="/libs/Smarty/day/assets/js/main.js"></script>
 
 </body>
 

@@ -3,6 +3,7 @@
 require_once (__DIR__ . '/../config/autoloader.php');
 
 class CConfirmModifyAdmin {
+    
     /**
      * Method to verify all the data in the modify user form 
      * @return void

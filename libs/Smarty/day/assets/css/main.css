@@ -4086,7 +4086,8 @@ input[type="date"]::placeholder {
   font-weight: bold;
 }
 
-.modifyPassword .form-container input[type="password"] {
+.modifyPassword .form-container .profile-info input[type="password"],
+.modifyPassword .form-container .profile-info input[type="text"] {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;

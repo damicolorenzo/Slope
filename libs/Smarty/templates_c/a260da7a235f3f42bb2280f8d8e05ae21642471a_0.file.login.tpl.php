@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-06-24 16:00:01
+/* Smarty version 3.1.33, created on 2025-06-24 23:47:34
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_685aaf61aa1220_12526112',
+  'unifunc' => 'content_685b1cf62a35c4_03609258',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a260da7a235f3f42bb2280f8d8e05ae21642471a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\login.tpl',
-      1 => 1750773459,
+      1 => 1750801652,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_685aaf61aa1220_12526112 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685b1cf62a35c4_03609258 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -104,7 +104,7 @@ function content_685aaf61aa1220_12526112 (Smarty_Internal_Template $_smarty_tpl)
           <label for="password">Password</label>
           <input type="password" id="password" name="password" required>
 
-          <a href="modifyPassword">Password dimenticata</a>
+          <a href="/Slope/UserOperations/lostPassword">Password dimenticata</a>
 
           <button type="submit">Login</button>
         </form>

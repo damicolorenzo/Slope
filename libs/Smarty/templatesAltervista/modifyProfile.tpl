@@ -38,7 +38,7 @@
     <div class="branding d-flex align-items-center">
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
-        <a href="/Slope" class="logo d-flex align-items-center">
+        <a href="/" class="logo d-flex align-items-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <!-- <img src="assets/img/logo.png" alt=""> -->
           <h1 class="sitename">Slope</h1>
@@ -46,10 +46,10 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/ManageBooking/showBookings">Visualizza Prenotazioni</a></li>
-            <li><a href="/Slope/UserOperations/profile">Profile</a></li>
-            <li><a href="/Slope/User/logout">LogOut</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/ManageBooking/showBookings">Visualizza Prenotazioni</a></li>
+            <li><a href="/UserOperations/profile">Profile</a></li>
+            <li><a href="/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -68,7 +68,7 @@
         
         <div class="form-container">
             <div class="profile-info">
-                <form action="/Slope/UserOperations/confirmModify" enctype="multipart/form-data" method="POST">
+                <form action="/UserOperations/confirmModify" enctype="multipart/form-data" method="POST">
                     <h2>Modifica profilo</h2>
                     <p><strong>Nome utente:</strong> {$username}</p>
                     <p><strong>Nome:</strong> {$name}</p>
@@ -87,11 +87,11 @@
             
             <p><strong>Modifica password:</strong></p>
             <div class="button-container">
-              <a href="/Slope/UserOperations/modifyPassword"><button class="edit-button">Modifica password</button></a>
+              <a href="/UserOperations/modifyPassword"><button class="edit-button">Modifica password</button></a>
             </div>
             <p><strong>Modifica immagine:</strong></p>
             <div class="button-container">
-              <a href="/Slope/UserOperations/modifyProfileImage"><button class="edit-button">Modifica immagine</button></a>
+              <a href="/UserOperations/modifyProfileImage"><button class="edit-button">Modifica immagine</button></a>
             </div>
             
             
@@ -114,16 +114,16 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/php-email-form/validate.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/aos/aos.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/php-email-form/validate.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/aos/aos.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 
   <!-- Main JS File -->
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/js/main.js"></script>
+  <script src="/libs/Smarty/day/assets/js/main.js"></script>
 
 </body>
 

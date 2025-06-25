@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-06-24 16:00:08
+/* Smarty version 3.1.33, created on 2025-06-25 16:41:18
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\loggedHome.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_685aaf6809b775_27334499',
+  'unifunc' => 'content_685c0a8ec7e917_22356035',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ef33429ba4bc621d630ff6065457a2991b022023' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\loggedHome.tpl',
-      1 => 1750773450,
+      1 => 1750862477,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_685aaf6809b775_27334499 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685c0a8ec7e917_22356035 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -92,12 +92,12 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 ?> 
-          <form class="search-form" action="/Slope/ManageBooking/skiFacilityDetails" method="POST">
+        <div class="search-form">
           <div class="card-impianto">
             <div class="left">
               <div class="impianto-img">
               <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['i']->value[4], 'e');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['i']->value['image'], 'e');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['e']->value) {
 ?> 
@@ -112,13 +112,13 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </div>
             <div class="right">
               <div class="right-container">
-                <h3><?php echo $_smarty_tpl->tpl_vars['i']->value[0];?>
+                <h3><?php echo $_smarty_tpl->tpl_vars['i']->value['name'];?>
 </h3>
                 <div class="dettagli-impianto">
                   <div class="piste">
                     <h4>Dettagli piste</h4> 
                     <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['i']->value[2], 'e');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['i']->value['countSkiRun'], 'e');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['e']->value) {
 ?>  
@@ -146,7 +146,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                   <div class="impianti">
                   <h4>Impianti di risalita:</h4>
                   <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['i']->value[3], 'f');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['i']->value['countLift'], 'f');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['f']->value) {
 ?>
@@ -158,25 +158,22 @@ foreach ($_from as $_smarty_tpl->tpl_vars['f']->value) {
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                   </div>
-                  
                 </div>
-                <?php if ($_smarty_tpl->tpl_vars['i']->value[1]) {?>
+                <?php if ($_smarty_tpl->tpl_vars['i']->value['status']) {?>
                 <p>Stato impianto: <span class="status aperto">Aperto</span></p>
                 <?php } else { ?>
                 <p>Stato impianto: <span class="status chiuso">Chiuso</span></p>
                 <?php }?>
-                <button class="btn-submit" type="submit" name="nameSkiFacility" value="<?php echo $_smarty_tpl->tpl_vars['i']->value[0];?>
-">Esplora</button>
+                <a href="/Slope/ManageBooking/skiFacilityDetails/<?php echo $_smarty_tpl->tpl_vars['i']->value['name'];?>
+"><button class="btn-submit" type="submit">Esplora</button></a>
               </div>
-            </div>
+            </div>  
           </div>
-          
-          <form>
+        </div>
         <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-
       </div>
 
     </section><!-- /Starter Section Section -->
