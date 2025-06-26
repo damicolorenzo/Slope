@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-06-24 10:53:38
+/* Smarty version 3.1.33, created on 2025-06-26 11:37:15
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-dashboard.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_685a67921728d0_28565357',
+  'unifunc' => 'content_685d14cbec5480_96881302',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd20a4f7f56240b90a0610a29ed4c46e4441abe6b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-dashboard.tpl',
-      1 => 1750755211,
+      1 => 1750930632,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_685a67921728d0_28565357 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685d14cbec5480_96881302 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -95,7 +95,7 @@ function content_685a67921728d0_28565357 (Smarty_Internal_Template $_smarty_tpl)
 }
 
 .admin-dashboard .layout .sidebar-wrapper .dashboard a:hover {
-  background-color: #2563eb;
+  background-color: #4682B4;
   color: #ffffff;
   transform: translateY(-2px);
 }
@@ -164,7 +164,7 @@ function content_685a67921728d0_28565357 (Smarty_Internal_Template $_smarty_tpl)
 }
 
 .admin-dashboard .layout .content th {
-  background-color: #1d4ed8;
+  background-color: #4682B4;
   color: white;
   font-weight: 600;
 }
@@ -334,8 +334,12 @@ function generaDataset(mese) {
   const values = Object.values(meseData);
 
   const colors = {
-    'Roccaraso': 'rgba(54, 162, 235, 0.7)',
-    'Ovindoli': 'rgba(255, 159, 64, 0.7)',
+    'Roccaraso': '#4682B4',
+    'Ovindoli': '#FF7F50',
+    //'Passo Lanciano - Majelletta': 'rgb(138, 0, 156)'
+    //'Campo Imperatore': 'rgb(75, 199, 91)'
+    //'Campo Felice': 'rgb(202, 172, 0)'
+    //'Prati di Tivo': 'rgb(173, 27, 27)'
     // aggiungi altri impianti qui se necessario
   };
 
@@ -388,8 +392,8 @@ const graficoUtentiPie = new Chart(ctxPie, {
       data:  <?php echo $_smarty_tpl->tpl_vars['valoriPie']->value;?>
 ,
       backgroundColor: [
-        'rgba(54, 162, 235, 0.7)',  // Abbonati
-        'rgba(255, 99, 132, 0.7)'   // Non abbonati
+        '#4682B4',  // Abbonati
+        '#FF7F50'   // Non abbonati
       ],
       borderColor: [
         'rgba(255, 255, 255, 1)',

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-23 17:53:20
+/* Smarty version 3.1.33, created on 2025-06-26 11:35:36
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-addInsuranceTemplate.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_683099f08ca625_58256681',
+  'unifunc' => 'content_685d14687c0147_17383503',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '417e70417f0af961baed63ee62855db269d001eb' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-addInsuranceTemplate.tpl',
-      1 => 1748015461,
+      1 => 1750778132,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_683099f08ca625_58256681 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685d14687c0147_17383503 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -87,7 +87,7 @@ function content_683099f08ca625_58256681 (Smarty_Internal_Template $_smarty_tpl)
 
         <div class="form-container addInsuranceTemplate">
           <h2>Aggiungi template assicurazione</h2>
-          <form class="register-form" action="/Slope/Admin/confirmInsuranceTemp" method="POST">
+          <form class="register-form" action="/Slope/ConfirmModifyAdmin/confirmInsuranceTemp" method="POST">
             <label for="type">Tipo:</label>
             <input type="text" id="type" name="type" required>
 

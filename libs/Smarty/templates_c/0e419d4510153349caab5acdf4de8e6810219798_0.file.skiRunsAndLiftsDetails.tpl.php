@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-06-25 16:42:26
+/* Smarty version 3.1.33, created on 2025-06-26 12:32:32
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\skiRunsAndLiftsDetails.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_685c0ad25093a5_86746088',
+  'unifunc' => 'content_685d21c05f5504_23965002',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0e419d4510153349caab5acdf4de8e6810219798' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\skiRunsAndLiftsDetails.tpl',
-      1 => 1750862543,
+      1 => 1750933942,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_685c0ad25093a5_86746088 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685d21c05f5504_23965002 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -126,8 +126,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             <tr>
               <th>Nome</th>
               <th>Tipo</th>
-              <th>Stato</th>
               <th>Posti</th>
+              <th>Stato</th>
             </tr>
             <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['liftStructures']->value, 'i');
@@ -139,13 +139,13 @@ foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 </td>
                 <td><?php echo $_smarty_tpl->tpl_vars['i']->value->getType();?>
 </td>
+                <td><?php echo $_smarty_tpl->tpl_vars['i']->value->getSeats();?>
+</td>
                 <?php if ($_smarty_tpl->tpl_vars['i']->value->getStatus()) {?>
                 <td class="aperto">aperto</td>
                 <?php } else { ?>
                 <td class="chiuso">chiuso</td>
                 <?php }?>
-                <td><?php echo $_smarty_tpl->tpl_vars['i']->value->getSeats();?>
-</td>
               </tr>
             <?php
 }

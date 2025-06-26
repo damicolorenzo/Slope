@@ -70,7 +70,7 @@
 }
 
 .admin-dashboard .layout .sidebar-wrapper .dashboard a:hover {
-  background-color: #2563eb;
+  background-color: #4682B4;
   color: #ffffff;
   transform: translateY(-2px);
 }
@@ -139,7 +139,7 @@
 }
 
 .admin-dashboard .layout .content th {
-  background-color: #1d4ed8;
+  background-color: #4682B4;
   color: white;
   font-weight: 600;
 }
@@ -291,8 +291,12 @@ function generaDataset(mese) {
   const values = Object.values(meseData);
 
   const colors = {
-    'Roccaraso': 'rgba(54, 162, 235, 0.7)',
-    'Ovindoli': 'rgba(255, 159, 64, 0.7)',
+    'Roccaraso': '#4682B4',
+    'Ovindoli': '#FF7F50',
+    //'Passo Lanciano - Majelletta': 'rgb(138, 0, 156)'
+    //'Campo Imperatore': 'rgb(75, 199, 91)'
+    //'Campo Felice': 'rgb(202, 172, 0)'
+    //'Prati di Tivo': 'rgb(173, 27, 27)'
     // aggiungi altri impianti qui se necessario
   };
 
@@ -343,8 +347,8 @@ const graficoUtentiPie = new Chart(ctxPie, {
     datasets: [{
       data:  {$valoriPie},
       backgroundColor: [
-        'rgba(54, 162, 235, 0.7)',  // Abbonati
-        'rgba(255, 99, 132, 0.7)'   // Non abbonati
+        '#4682B4',  // Abbonati
+        '#FF7F50'   // Non abbonati
       ],
       borderColor: [
         'rgba(255, 255, 255, 1)',

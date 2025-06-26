@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-06-24 18:11:05
+/* Smarty version 3.1.33, created on 2025-06-26 12:50:50
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\home.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_685ace19b8c888_58288976',
+  'unifunc' => 'content_685d260a6bbad7_68724218',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1db7471d28bb1ec148c4de7ea1ff8c71677789e7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\home.tpl',
-      1 => 1750780833,
+      1 => 1750935046,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_685ace19b8c888_58288976 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685d260a6bbad7_68724218 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -460,7 +460,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 <h4>Andrea Esposito</h4>
                 <span>Istruttore di sci</span>
                 <p>
-                  Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut
+                  Che tu sia alla tua prima discesa o voglia perfezionare la tecnica, ti accompagnerò con passione e divertimento.
                 </p>
                 <div class="social">
                   <a href=""><i class="bi bi-twitter-x"></i></a>
@@ -494,7 +494,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 <h4>Giordana Di Fabio</h4>
                 <span>Istruttrice di snowboard</span>
                 <p>
-                  Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus
+                  Vivi lo snowboard al massimo! Con passione, energia e tanta esperienza, ti aiuto a trovare il tuo stile sulla tavola
                 </p>
                 <div class="social">
                   <a href=""><i class="bi bi-twitter-x"></i></a>
@@ -528,7 +528,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 <h4>Lorenzo D'Amico</h4>
                 <span>Istruttore di sci alpinistico</span>
                 <p>
-                  Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
+                  Appassionato di neve e silenzi d’alta quota, ti accompagno alla scoperta dello sci alpinismo con attenzione, pazienza e grande amore per la montagna
                 </p>
                 <div class="social">
                   <a href=""><i class="bi bi-twitter-x"></i></a>

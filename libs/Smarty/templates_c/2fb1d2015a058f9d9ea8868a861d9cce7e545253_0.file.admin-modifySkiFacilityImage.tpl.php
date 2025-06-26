@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-30 20:35:24
+/* Smarty version 3.1.33, created on 2025-06-26 12:39:28
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-modifySkiFacilityImage.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_6839fa6cf29cd4_31218731',
+  'unifunc' => 'content_685d2360f00075_20327972',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2fb1d2015a058f9d9ea8868a861d9cce7e545253' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-modifySkiFacilityImage.tpl',
-      1 => 1748630123,
+      1 => 1750778132,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6839fa6cf29cd4_31218731 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685d2360f00075_20327972 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -93,7 +93,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
           <div class="form-container modifySkiFacilityImage">
             <h1>Impianto <?php echo $_smarty_tpl->tpl_vars['i']->value->getName();?>
 </h1>
-            <form action="/Slope/Admin/addImageSkiFacility" enctype="multipart/form-data" method="POST">
+            <form action="/Slope/AddAdmin/addImageSkiFacility" enctype="multipart/form-data" method="POST">
               <input type="file" name="image" id="image" multiple>
               <input type="hidden" name="idImage" id="idImage" value=<?php echo $_smarty_tpl->tpl_vars['i']->value->getIdSkiFacility();?>
 >

@@ -93,19 +93,19 @@
             <tr>
               <th>Nome</th>
               <th>Tipo</th>
-              <th>Stato</th>
               <th>Posti</th>
+              <th>Stato</th>
             </tr>
             {foreach from=$liftStructures item=i}
               <tr>
                 <td>{$i->getName()}</td>
                 <td>{$i->getType()}</td>
+                <td>{$i->getSeats()}</td>
                 {if $i->getStatus()}
                 <td class="aperto">aperto</td>
                 {else}
                 <td class="chiuso">chiuso</td>
                 {/if}
-                <td>{$i->getSeats()}</td>
               </tr>
             {/foreach}
           </table>

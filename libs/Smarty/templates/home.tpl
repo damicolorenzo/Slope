@@ -378,7 +378,7 @@
                 <h4>Andrea Esposito</h4>
                 <span>Istruttore di sci</span>
                 <p>
-                  Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut
+                  Che tu sia alla tua prima discesa o voglia perfezionare la tecnica, ti accompagnerò con passione e divertimento.
                 </p>
                 <div class="social">
                   <a href=""><i class="bi bi-twitter-x"></i></a>
@@ -403,7 +403,7 @@
                 <h4>Giordana Di Fabio</h4>
                 <span>Istruttrice di snowboard</span>
                 <p>
-                  Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus
+                  Vivi lo snowboard al massimo! Con passione, energia e tanta esperienza, ti aiuto a trovare il tuo stile sulla tavola
                 </p>
                 <div class="social">
                   <a href=""><i class="bi bi-twitter-x"></i></a>
@@ -428,7 +428,7 @@
                 <h4>Lorenzo D'Amico</h4>
                 <span>Istruttore di sci alpinistico</span>
                 <p>
-                  Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
+                  Appassionato di neve e silenzi d’alta quota, ti accompagno alla scoperta dello sci alpinismo con attenzione, pazienza e grande amore per la montagna
                 </p>
                 <div class="social">
                   <a href=""><i class="bi bi-twitter-x"></i></a>
