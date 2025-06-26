@@ -43,6 +43,15 @@ class CManageBooking {
         }
     }
 
+    /**
+     * Method to generate the booking form page for a given ski facility, 
+     * if a valid facility ID is provided and the user is logged in.
+     * The form includes available skipass types and their respective periods.
+     * If the facility ID is invalid or missing, the user is redirected to the home page.
+     * 
+     * @param int|null $idSkiFacility The optional ID of the ski facility to book
+     * @return void
+     */
     public static function makeABookingPage($idSkiFacility = null) {
         if(CUser::isLogged()){
             /* if(!is_null(UHTTPMethods::post('idSkiFacility'))) {
@@ -95,6 +104,11 @@ class CManageBooking {
         }
     }
 
+    /**
+     * Method to check if a given date is within the current ski season (Oct-Mar).
+     * @param string|null $selectedDate
+     * @return bool|null
+     */
     public static function verifyDate($selectedDate = null) {
         if(!is_null($selectedDate)) {
             $selectedDate = new DateTime($selectedDate);
@@ -126,6 +140,12 @@ class CManageBooking {
         }
     }
 
+    /**
+     * Method to check if the ski facility is closed today.
+     * @param string|null $selectedDate
+     * @param int|null $idSkiFacility
+     * @return bool|null
+     */
     public static function warningToday($selectedDate = null, $idSkiFacility = null) {
         if(!is_null($selectedDate) && !is_null($idSkiFacility)) {
             $today = new DateTime();
@@ -144,6 +164,12 @@ class CManageBooking {
         }
     }
 
+    /**
+     * Method to verify if a user's subscription is valid on a given date.
+     * @param string|null $selectedDate
+     * @param int|null $userId
+     * @return bool|null
+     */
     public static function verifySubscription($selectedDate = null, $userId = null) {
         if(!is_null($selectedDate) && !is_null($userId)) {
             $subscriptionV = FPersistentManager::getInstance()->verifySubscriptionFromUserId($userId);
@@ -164,6 +190,11 @@ class CManageBooking {
     }
 
     //DA MODIFICARE in base ai prezzi e ai pagamenti
+    /**
+     * Method to confirm a booking by validating input data, checking date and subscription,
+     * applying discounts, and preparing the payment section.
+     * @return void
+     */
     public static function confirmBooking() {
         if(CUser::isLogged()) {
             //controllare se la data scelta per la prenotazione appartiene alla finestra delle stagioni (verifyDate)
@@ -243,6 +274,11 @@ class CManageBooking {
         }
     }
 
+    /**
+     * Method to process payment, update credit card info, save bookings and payments,
+     * send confirmation email, and clear the shopping cart.
+     * @return void
+     */
     public static function payment() {
         if(CUser::isLogged()){ 
             if(!is_null(UHTTPMethods::post('cardHolderName')) && !is_null(UHTTPMethods::post('cardHolderSurname')) && !is_null(UHTTPMethods::post('expiryDate')) 
@@ -328,6 +364,10 @@ class CManageBooking {
         }
     }
 
+    /**
+     * Method to retrieve and display current and past bookings for the logged-in user.
+     * @return void
+     */
     public static function showBookings() {
         if(CUser::isLogged()){ 
             $view = new VManageBooking();  
@@ -370,6 +410,10 @@ class CManageBooking {
         }
     }
 
+    /**
+     * Method to load the skipass booking and related insurance for editing by the logged-in user.
+     * @return void
+     */
     public static function modifySkipassBooking() {
         if(CUser::isLogged()) {
             if(!is_null(UHTTPMethods::post('idSkipassBooking'))) {
@@ -390,6 +434,10 @@ class CManageBooking {
         }
     }
 
+    /**
+     * Confirms the modification of a skipass booking if the date is valid.
+     * Updates booking and insurance info, sends confirmation email, else reloads edit form.
+     */
     public static function confirmModifyBooking() : void{
         if(CUser::isLogged()){
             if(!is_null(UHTTPMethods::post('date')) && !is_null(UHTTPMethods::post('name')) && !is_null(UHTTPMethods::post('surname'))) {
@@ -443,6 +491,11 @@ class CManageBooking {
         }
     }
 
+    /**
+     * Deletes a skipass booking by ID for the logged-in user and sends a confirmation email.
+     * Redirects to home if not logged in or ID not provided.
+     * @return void
+     */
     public static function deleteSkipassBooking() {
         if(CUser::isLogged()) {
             if(!is_null(UHTTPMethods::post('idSkipassBooking'))) {

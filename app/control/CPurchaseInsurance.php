@@ -4,6 +4,11 @@ require_once (__DIR__ . '/../config/autoloader.php');
 
 class CPurchaseInsurance {
 
+    /**
+     * Loads the insurance purchase form for a logged-in user based on a skipass booking ID.
+     * Redirects to home if not logged in or ID not provided.
+     * @return void
+     */
     public static function buyInsurance() {
         if(CUser::isLogged()) {
             if(!is_null(UHTTPMethods::post('idSkipassBooking'))) {
@@ -24,6 +29,12 @@ class CPurchaseInsurance {
         }
     }
 
+    /**
+     * Confirms insurance details from user input, validates date, calculates price,
+     * saves insurance temporarily in session, and shows payment section.
+     * Redirects to home if user not logged in or required data missing.
+     * @return void
+     */
     public static function confirmInsurance() {
         if(CUser::isLogged()) {
             if(!is_null(UHTTPMethods::post('date')) && !is_null(UHTTPMethods::post('name')) && 
@@ -66,6 +77,12 @@ class CPurchaseInsurance {
         }
     }
 
+    /**
+     * Confirms insurance details from user input, validates date, calculates price,
+     * saves insurance temporarily in session, and shows payment section.
+     * Redirects to home if user not logged in or required data missing.
+     * @return void
+     */
     public static function insurancePayment() {
         if(CUser::isLogged()){ 
             $userId = USession::getInstance()->getSessionElement('user');
