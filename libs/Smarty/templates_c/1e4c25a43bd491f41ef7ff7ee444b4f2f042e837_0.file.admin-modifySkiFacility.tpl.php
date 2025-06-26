@@ -1,30 +1,18 @@
 <?php
-<<<<<<< HEAD
-/* Smarty version 3.1.33, created on 2025-06-26 11:35:52
-=======
-/* Smarty version 3.1.33, created on 2025-06-26 14:56:53
->>>>>>> bebcd2e (Modifiche controllori e pagine admin)
+/* Smarty version 3.1.33, created on 2025-06-26 17:25:08
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-modifySkiFacility.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-<<<<<<< HEAD
-  'unifunc' => 'content_685d147850fda3_33019960',
-=======
-  'unifunc' => 'content_685d4395b148c5_56999624',
->>>>>>> bebcd2e (Modifiche controllori e pagine admin)
+  'unifunc' => 'content_685d6654e9a467_43898988',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1e4c25a43bd491f41ef7ff7ee444b4f2f042e837' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-modifySkiFacility.tpl',
-<<<<<<< HEAD
-      1 => 1750778132,
-=======
-      1 => 1750934714,
->>>>>>> bebcd2e (Modifiche controllori e pagine admin)
+      1 => 1750951505,
       2 => 'file',
     ),
   ),
@@ -32,11 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-<<<<<<< HEAD
-function content_685d147850fda3_33019960 (Smarty_Internal_Template $_smarty_tpl) {
-=======
-function content_685d4395b148c5_56999624 (Smarty_Internal_Template $_smarty_tpl) {
->>>>>>> bebcd2e (Modifiche controllori e pagine admin)
+function content_685d6654e9a467_43898988 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -119,14 +103,10 @@ function content_685d4395b148c5_56999624 (Smarty_Internal_Template $_smarty_tpl)
                   <h2>Modifica impianto</h2>
                   <input type="hidden" id="idSkiFacility" name="idSkiFacility" value=<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
 >
-                  <?php if ($_smarty_tpl->tpl_vars['exist']->value) {?>
-                  <div class="container" data-aos="fade-up">
-                    <h1>Un impianto con lo stesso nome è già presente nel database</h1>
-                  </div>
-                  <?php }?>
+
                   <label for="name">Nome:</label>
-                  <input type="text" id="name" name="name" value=<?php echo $_smarty_tpl->tpl_vars['name']->value;?>
- required>
+                  <input type="text" id="name" name="name" value="<?php echo $_smarty_tpl->tpl_vars['name']->value;?>
+" required>
 
                   <label for="status">Stato:</label>
                   <div class="radio-group">

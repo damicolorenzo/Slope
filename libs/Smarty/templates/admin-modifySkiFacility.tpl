@@ -79,13 +79,9 @@
               <form action="/Slope/ConfirmModifyAdmin/confirmModifySkiFacility" enctype="multipart/form-data" method="POST">
                   <h2>Modifica impianto</h2>
                   <input type="hidden" id="idSkiFacility" name="idSkiFacility" value={$id}>
-                  {if $exist}
-                  <div class="container" data-aos="fade-up">
-                    <h1>Un impianto con lo stesso nome è già presente nel database</h1>
-                  </div>
-                  {/if}
+
                   <label for="name">Nome:</label>
-                  <input type="text" id="name" name="name" value={$name} required>
+                  <input type="text" id="name" name="name" value="{$name}" required>
 
                   <label for="status">Stato:</label>
                   <div class="radio-group">
