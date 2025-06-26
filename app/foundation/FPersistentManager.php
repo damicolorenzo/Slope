@@ -96,6 +96,12 @@ class FPersistentManager {
         }
     }
 
+    /**
+     * Retrieves user records matching a given username for search purposes.
+     *
+     * @param string $username The username to search for.
+     * @return array An array of user objects matching the username; empty array if none found.
+     */
     public static function retriveUsersFromUsernameForSearch(string $username) : array{
         $result = FUser::getUsersFromUsernameForSearch($username);
         if(count($result) > 0) {
@@ -105,6 +111,12 @@ class FPersistentManager {
         }
     }
 
+    /**
+     * Retrieves user records matching a given email for search purposes.
+     *
+     * @param string $email The email address to search for.
+     * @return array An array of user objects matching the email; empty array if none found.
+     */
     public static function retriveUsersFromEmailForSearch(string $email) : array{
         $result = FUser::getUsersFromEmailForSearch($email);
         if(count($result) > 0) {
@@ -166,6 +178,12 @@ class FPersistentManager {
         }
     }
 
+    /**
+     * Retrieves landing images by their ID.
+     *
+     * @param string $id The ID of the landing image to retrieve.
+     * @return array An array of ELandingImage objects if found; empty array otherwise.
+     */
     public static function retriveLandingImageOnId(string $id) : array{
         $result = FLandingImage::getImageById($id);
         if(count($result) > 0){
@@ -175,6 +193,11 @@ class FPersistentManager {
         }
     }
 
+    /**
+     * Retrieves all landing images from the database.
+     *
+     * @return array An array of ELandingImage objects if any exist; empty array otherwise.
+     */
     public static function retriveAllLandingImage() : array{
         $result = FLandingImage::getAllImages();
         if(count($result) > 0){
@@ -240,6 +263,11 @@ class FPersistentManager {
         return $result;
     }
 
+    /**
+     * Retrieves all ski facility images from the database.
+     *
+     * @return array An array of FSkiFacilityImage objects if any exist; empty array otherwise.
+     */
     public static function retriveAllSkiFacilityImage() : array{
         $result = FSkiFacilityImage::getAllImages();
         if(count($result) > 0){
@@ -249,6 +277,12 @@ class FPersistentManager {
         }
     }
 
+    /**
+     * Retrieves ski facility images by a specific ID.
+     *
+     * @param mixed $id The ID of the ski facility image to retrieve.
+     * @return array An array of FSkiFacilityImage objects if found; empty array otherwise.
+     */
     public static function retriveSkiFacilityImageOnId($id) : array{
         $result = FSkiFacilityImage::getImageById($id);
         if(count($result) > 0){
@@ -283,6 +317,12 @@ class FPersistentManager {
         }
     }
 
+    /**
+     * Retrieves ski facilities matching a given name for search purposes.
+     *
+     * @param string $nameSkiFacility The name (or partial name) of the ski facility to search for.
+     * @return array An array of ski facility objects if matches are found; empty array otherwise.
+     */
     public static function retriveSkiFacilityForSearch(string $nameSkiFacility) {
         $result = FSkiFacility::getSkiFacilityByNameForSearch($nameSkiFacility);
         if(count($result) > 0) {
@@ -357,6 +397,12 @@ class FPersistentManager {
         return $result;
     }
 
+    /**
+     * Retrieves the types and their counts of lift structures associated with a specific ski facility.
+     *
+     * @param int $idSkiFacility The ID of the ski facility.
+     * @return array An array containing types of lift structures and their corresponding counts.
+     */
     public static function typeAndNumberLiftStructure(int $idSkiFacility) : array{
         $result = FLiftStructure::typeAndNumberLiftStructure($idSkiFacility);
         return $result;
@@ -470,6 +516,21 @@ class FPersistentManager {
         return $result;
     }
 
+    /**
+     * Retrieves ski structures (ski facilities, ski runs, lift structures) based on provided search criteria.
+     *
+     * If all parameters are empty, it returns all ski structures.
+     * Otherwise, it searches and combines results for ski facilities, ski runs, and lift structures
+     * matching the given names, grouping them with their related ski facility names.
+     *
+     * @param string $nameSkiFacility Name of the ski facility to search for.
+     * @param string $nameSkiRun Name of the ski run to search for.
+     * @param string $nameLiftStructure Name of the lift structure to search for.
+     * @return array|null An associative array containing the results with keys:
+     *                    'skiFacilities', 'skiRun', and 'liftStructure'.
+     *                    Each entry contains objects paired with their ski facility names.
+     *                    Returns null if no results are found.
+     */
     public static function retriveStructureForSearch (string $nameSkiFacility, string $nameSkiRun, string $nameLiftStructure) : ?array{
         if($nameSkiFacility == "" && $nameSkiRun == "" && $nameLiftStructure == "") {
             $result = self::retriveAllSkiStructures();
@@ -606,6 +667,15 @@ class FPersistentManager {
         } 
     }
 
+    /**
+     * Retrieves all skipass bookings for all users.
+     *
+     * Calls the data layer to fetch all skipass booking records,
+     * then creates and returns an array of SkipassBooking objects.
+     * Returns an empty array if no records are found.
+     *
+     * @return array An array of SkipassBooking objects or empty array if none found.
+     */
     public static function retriveAllSkipassBookingAllUsers() : array{
         $result = FSkipassBooking::getAllSkipassBookingAllUsers();
         
@@ -616,6 +686,17 @@ class FPersistentManager {
         } 
     }
 
+    /**
+     * Adds a unique key-value pair to an array of fields if not already present.
+     *
+     * Checks if the given key-value pair exists in the array; if it does, returns the original array.
+     * Otherwise, appends the new key-value pair and returns the updated array.
+     *
+     * @param array $fields The array of key-value pairs to check and add to.
+     * @param string $key The key to check for uniqueness.
+     * @param mixed $value The value associated with the key.
+     * @return array The updated array with the new unique key-value pair added if it was not present.
+     */
     public static function addUniqueField(array $fields, string $key, $value): array {
         foreach ($fields as $field) {
             if ($field[0] === $key && $field[1] === $value) {
@@ -630,6 +711,18 @@ class FPersistentManager {
     }
 
     /* COMPLETO */
+
+    /**
+     * Retrieves skipass bookings filtered by ski facility name, username, and email.
+     *
+     * If all filters are empty, returns all bookings with related ski facility and user info.
+     * Otherwise, searches bookings by provided fields, handling multiple conditions.
+     *
+     * @param string $nameSkiFacility Name of the ski facility to search for.
+     * @param string $username Username to search for.
+     * @param string $email Email to search for.
+     * @return array Array of arrays containing SkipassBooking object, SkiFacility object, and User object.
+     */
     public static function retriveSkipassBookingForSearch(string $nameSkiFacility, string $username, string $email) :array{
         $fields = [];
         $final = [];
@@ -875,6 +968,13 @@ class FPersistentManager {
         } 
     }
 
+    /**
+     * Retrieve insurance templates by value and type for search purposes
+     * 
+     * @param string $value The value to search for in insurance templates
+     * @param string $type The type of insurance template to filter by
+     * @return array Array of insurance template objects matching the criteria or empty array if none found
+     */
     public static function retriveInsuranceTempForSearch(string $value, string $type) :array{
         $result = FInsuranceTemp::getInsuranceTempObjFromFieldsForSearch([['value', $value], ['type', $type]]);
         if(count($result) > 0) {
@@ -885,6 +985,11 @@ class FPersistentManager {
         return $result;
     }
 
+    /**
+     * Retrieve all subscription templates from the database
+     * 
+     * @return array Array of subscription template objects or empty array if none found
+     */
     public static function retriveAllSubscriptionTemp() : array{
         $result = FSubscriptionTemp::getAllSubscriptionTempObjs();
         
@@ -895,6 +1000,12 @@ class FPersistentManager {
         } 
     }
 
+    /**
+     * Retrieve a subscription template by its ID
+     * 
+     * @param int $idSubscriptionTemp The ID of the subscription template
+     * @return array Array of subscription template objects or empty array if none found
+     */
     public static function retriveSubscriptionTempFromId(int $idSubscriptionTemp) :array{
         $result = FSubscriptionTemp::getSubscriptionTempFromId($idSubscriptionTemp);
         if(count($result) > 0) {
@@ -905,6 +1016,13 @@ class FPersistentManager {
         return $result;
     }
 
+    /**
+     * Retrieve subscription templates matching given description and value
+     * 
+     * @param string $description The description to search for
+     * @param string $value The value to search for
+     * @return array Array of subscription template objects or empty array if none found
+     */
     public static function retriveSubscriptionTempForSearch(string $description, string $value) :array{
         $result = FSubscriptionTemp::getSubscriptionTempObjFromFieldsForSearch([['description', $description], ['value', $value]]);
         if(count($result) > 0) {
@@ -915,6 +1033,12 @@ class FPersistentManager {
         return $result;
     }
 
+    /**
+     * Retrieve subscriptions matching the given subscription object's attributes
+     * 
+     * @param ESubscription $subscription The subscription object containing search criteria
+     * @return array Array of subscription objects matching the criteria, or empty array if none found
+     */
     public static function retriveSubscription(ESubscription $subscription) : array{
         $fields = [['name', $subscription->getName()], ['surname', $subscription->getSurname()], ['email', $subscription->getEmail()], ['startDate', $subscription->getStartDate()], ['endDate', $subscription->getEndDate()]];
         $result = FSubscription::getSubscription($fields);
@@ -925,6 +1049,12 @@ class FPersistentManager {
         }
     }
 
+    /**
+     * Retrieve all subscriptions associated with a specific user ID
+     * 
+     * @param int $userId The ID of the user
+     * @return array Array of subscription objects linked to the user, or empty array if none found
+     */
     public static function retriveSubscriptionFromUserId(int $userId) :array{
         $result = FSubscription::getSubscriptionFromUserId($userId);
         if(count($result) > 0) {
@@ -983,6 +1113,11 @@ class FPersistentManager {
         }
     }
 
+    /**
+     * Retrieve all skipass objects from the database
+     * 
+     * @return array Array of skipass objects, or empty array if none found
+     */
     public static function retriveAllSkipassObj() : array{
         $result = FSkipassObj::getAllSkipassObjs();
         
@@ -993,6 +1128,16 @@ class FPersistentManager {
         } 
     }
 
+    /**
+     * Retrieve skipass objects based on search criteria: ski facility name, description, and value.
+     * If all parameters are empty, returns all skipass objects with related ski facility and skipass template.
+     * Otherwise, it filters skipass objects by description/value and/or ski facility name.
+     * 
+     * @param string $nameSkiFacility Name of the ski facility to search for (can be empty)
+     * @param string $description Description of the skipass to search for (can be empty)
+     * @param string $value Value of the skipass to search for (can be empty)
+     * @return array Array of arrays each containing: [SkipassObj, SkiFacility, SkipassTemp] matching the search criteria, or empty array if none found
+     */
     public static function retriveSkipassObjForSearch(string $nameSkiFacility, string $description, string $value) :array{
         if($nameSkiFacility == "" && $description == "" && $value == "") {
             $result1 = self::retriveAllSkipassObj();
@@ -1105,6 +1250,14 @@ class FPersistentManager {
         } 
     }
 
+    /**
+     * Retrieve skipass template objects based on search criteria: description, period, and type.
+     * 
+     * @param string $description Description of the skipass template to search for
+     * @param string $period Period of the skipass template to search for
+     * @param string $type Type of the skipass template to search for
+     * @return array Array of skipass template objects matching the search criteria, or empty array if none found
+     */
     public static function retriveSkipassTempForSearch(string $description, string $period, string $type) :array{
         $result = FSkipassTemp::getSkipassTempObjFromFieldsForSearch([['description', $description], ['period', $period], ['type', $type]]);
         if(count($result) > 0) {
@@ -1115,6 +1268,13 @@ class FPersistentManager {
         return $result;
     }
 
+    /**
+     * Retrieve skipass template objects filtered by period and type.
+     * 
+     * @param string $period The period of the skipass template to search for
+     * @param string $type The type of the skipass template to search for
+     * @return array Array of skipass template objects matching the period and type, or empty array if none found
+     */
     public static function retriveSkipassTempPeriodType(string $period, string $type) :array{
         $result = FSkipassTemp::getSkipassTempObjFromFieldsForSearch([['period', $period], ['type', $type]]);
         if(count($result) > 0) {
@@ -1215,6 +1375,12 @@ class FPersistentManager {
         return $result;
     }
 
+    /**
+     * Update a Ski Facility Image record in the database using its ID.
+     *
+     * @param ESkiFacilityImage $obj The Ski Facility Image object to update
+     * @return bool True if the update was successful, false otherwise
+     */
     public static function updateIdSkiFacilityImage(ESkiFacilityImage $obj) : bool{
         $field = [['idImage', $obj->getIdImage()]];
         $result = FSkiFacilityImage::saveObj($obj, $field);
@@ -1298,6 +1464,12 @@ class FPersistentManager {
         return $result;
     }
 
+    /**
+     * Update a Landing Image record in the database using its ID.
+     *
+     * @param ELandingImage $obj The Landing Image object to update
+     * @return bool True if the update was successful, false otherwise
+     */
     public static function updateIdLandingImage(ELandingImage $obj) : bool{
         $field = [['idImage', $obj->getIdImage()]];
         $result = FLandingImage::saveObj($obj, $field);
@@ -1305,12 +1477,24 @@ class FPersistentManager {
         return $result;
     }
 
+    /**
+     * Update an Insurance Template record in the database using its value and type as keys.
+     *
+     * @param EInsuranceTemp $insuranceTemp The Insurance Template object to update
+     * @return bool True if the update was successful, false otherwise
+     */
     public static function updateInsuranceTemp(EInsuranceTemp $insuranceTemp) : bool{
         $field = [['value', $insuranceTemp->getValue()], ['type', $insuranceTemp->getType()]];
         $result = FInsuranceTemp::saveObj($insuranceTemp, $field);
         return $result;
     }
 
+    /**
+     * Update a Skipass Template record in the database using its description, period, and type as keys.
+     *
+     * @param ESkipassTemp $skipassTemp The Skipass Template object to update
+     * @return bool True if the update was successful, false otherwise
+     */
     public static function updateSkipassTemplate(ESkipassTemp $skipassTemp){
         $field = [['description', $skipassTemp->getDescription()], ['period', $skipassTemp->getPeriod()], ['type', $skipassTemp->getType()]];
         $result = FSkipassTemp::saveObj($skipassTemp, $field);
@@ -1434,6 +1618,12 @@ class FPersistentManager {
         return $result;
     }
 
+    /**
+     * Verify if a subscription exists for a given user ID.
+     *
+     * @param int $idUser The user ID to verify subscription for
+     * @return bool True if a subscription exists for the user, false otherwise
+     */
     public static function verifySubscriptionFromUserId(int $idUser) : bool{
         $result = FSubscription::verify('idUser', $idUser);
         return $result;
@@ -1451,11 +1641,23 @@ class FPersistentManager {
         return $result;
     }
 
+    /**
+     * Delete a landing image from the database by its ID.
+     *
+     * @param int $idImage The ID of the landing image to delete
+     * @return bool True if deletion was successful, false otherwise
+     */
     public static function deleteLandingImage(int $idImage) : bool{
         $result = FEntityManager::getInstance()->deleteObjInDb(FLandingImage::getTable(), FLandingImage::getKey(), $idImage);
         return $result;
     }
 
+    /**
+     * Delete a ski facility image from the database by its ID.
+     *
+     * @param int $idImage The ID of the ski facility image to delete
+     * @return bool True if deletion was successful, false otherwise
+     */
     public static function deleteSkiFacilityImage(int $idImage) : bool{
         $result = FEntityManager::getInstance()->deleteObjInDb(FSkiFacilityImage::getTable(), FSkiFacilityImage::getKey(), $idImage);
         return $result;
@@ -1531,11 +1733,23 @@ class FPersistentManager {
         return $result;
     }
 
+    /**
+     * Delete a credit card record associated with a specific user ID.
+     *
+     * @param int $userId The ID of the user whose credit card should be deleted
+     * @return bool True if the deletion was successful, false otherwise
+     */
     public static function deleteCreditCard(int $userId) : bool {
         $result = FEntityManager::getInstance()->deleteObjInDb(FCreditCard::getTable(), FCreditCard::getExtKey(), $userId);
         return $result;
     }
 
+    /**
+     * Delete a subscription template by its ID.
+     *
+     * @param int $idSubscriptionTemp The ID of the subscription template to delete
+     * @return bool True if the deletion was successful, false otherwise
+     */
     public static function deleteSubscriptionTemp(int $idSubscriptionTemp) : bool {
         $result = FEntityManager::getInstance()->deleteObjInDb(FSubscriptionTemp::getTable(), FSubscriptionTemp::getKey(), $idSubscriptionTemp);
         return $result;

@@ -4,6 +4,12 @@ require_once (__DIR__ . '/../config/autoloader.php');
 
 class CPurchaseSubscription {
 
+    /**
+     * Confirms insurance details from user input, validates date, calculates price,
+     * saves insurance temporarily in session, and shows payment section.
+     * Redirects to home if user not logged in or required data missing.
+     * @return void
+     */
     public static function buySubscription() {
         if(CUser::isLogged()) {
             $view = new VPurchaseSubscription();
@@ -31,6 +37,12 @@ class CPurchaseSubscription {
         }
     }
 
+    /**
+     * Prepares subscription renewal form for the logged-in user by calculating the correct seasonal period
+     * based on the current month and displays the form with the valid date range.
+     * Redirects to home if user is not logged in.
+     * @return void
+     */
     public static function rebuySubscription() {
         if(CUser::isLogged()) {
             $view = new VPurchaseSubscription();
@@ -58,6 +70,12 @@ class CPurchaseSubscription {
         }
     }
 
+    /**
+     * Handles the confirmation of a subscription purchase by creating a subscription object,
+     * storing it in the session, and showing the payment section with the preferred credit card if available.
+     * Redirects to home if required POST data is missing or user is not logged in.
+     * @return void
+     */
     public static function confirmSubscription() {
         if(CUser::isLogged()) {
             if(!is_null(UHTTPMethods::post('name')) && !is_null(UHTTPMethods::post('surname')) &&
@@ -90,6 +108,12 @@ class CPurchaseSubscription {
         }
     } 
 
+    /**
+     * Processes the subscription payment by handling credit card validation and storage,
+     * creating the payment record, and finalizing the subscription. Supports preferred and non-preferred credit cards.
+     * Redirects to home if user is not logged in or required POST data is missing.
+     * @return void
+     */
     public static function subscriptionPayment() {
         if(CUser::isLogged()){ 
             $userId = USession::getInstance()->getSessionElement('user');

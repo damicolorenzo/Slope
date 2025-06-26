@@ -125,6 +125,11 @@ class CUserOperations {
         }
     }
 
+    /**
+     * Loads the current user's profile image for modification. If no image exists (ID is 0),
+     * it notifies the view accordingly. Redirects to home if the user is not logged in.
+     * @return void
+     */
     public static function modifyProfileImage() {
         if(CUser::isLogged()){
             $view = new VUserOperations();
@@ -254,6 +259,11 @@ class CUserOperations {
         }
     }
 
+    /**
+     * Displays the password recovery view for non-logged-in users. 
+     * Redirects to home if the user is already logged in.
+     * @return void
+     */
     public static function lostPassword() : void {
         if(!CUser::isLogged()){
             $view = new VUserOperations();
@@ -263,6 +273,11 @@ class CUserOperations {
         }
     }
 
+    /**
+     * Verifies if the provided email exists in the system and initiates the password recovery process by generating and emailing a token.
+     * Redirects to home if the email is not provided or invalid.
+     * @return void
+     */
     public static function checkLostUser() : void {
         if(!empty(UHTTPMethods::post('email'))) {
             $checkEmail = FPersistentManager::getInstance()->verifyUserEmail(UHTTPMethods::post('email'));
@@ -286,11 +301,21 @@ class CUserOperations {
         }
     }
 
+    /**
+     * Displays the form for setting a new password during the password recovery process.
+     * @return void
+     */
     public static function resetPassword() : void{
         $view = new VUserOperations();
         $view->newPasswordForm();
     }
  
+    /**
+     * Validates and sets a new password for a user based on a valid recovery token.
+     * Ensures the token is valid, not expired or used, and the password meets complexity requirements.
+     * If all checks pass, updates the user's password and marks the token as used.
+     * @return void
+     */
     public static function setNewPassword() {
         if(!is_null(UHTTPMethods::post('password')) && !is_null(UHTTPMethods::post('token'))) {
             $password = UHTTPMethods::post('password');
@@ -390,6 +415,11 @@ class CUserOperations {
         }
     }
 
+    /**
+     * Shows the form to modify the user's credit card info.
+     * Fetches card details (name, surname, last 4 digits, expiry) if user is logged in.
+     * Redirects to home if not logged in.
+     */
     public static function modifyCreditCard() :void {
         if(CUser::isLogged()){
             $view = new VUserOperations();
@@ -405,6 +435,11 @@ class CUserOperations {
         }
     }
 
+    /**
+     * Processes credit card modification if user is logged in and form data is complete.
+     * Checks if new data differs from existing card; updates and sends confirmation email if changed.
+     * Redirects to profile or home accordingly.
+     */
     public static function confirmModifyCreditCard() :void {
         if(CUser::isLogged()){
             if(!is_null(UHTTPMethods::post('cardHolderName')) && !is_null(UHTTPMethods::post('cardHolderSurname')) && 
@@ -450,6 +485,9 @@ class CUserOperations {
         }
     }
 
+    /**
+     * Deletes user's credit card if logged in, sends confirmation email, then redirects to profile/home.
+     */
     public static function deleteCreditCard() {
         if(CUser::isLogged()){
             $userId = USession::getInstance()->getSessionElement('user');
