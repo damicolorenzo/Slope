@@ -74,6 +74,9 @@
             <div class="button-container">
             <button type="submit">Conferma</button>
             </div>
+            {if $exist}
+              <label>ERRORE: oggetto già esiste nel database</label>
+            {/if}
           </form>  
         </div>
 

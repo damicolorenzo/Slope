@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-06-24 11:55:02
+/* Smarty version 3.1.33, created on 2025-06-26 14:23:28
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-addSkipassTemplate.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_685a75f658d268_22078996',
+  'unifunc' => 'content_685d3bc0c73c05_39849281',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ff39699773d80ca7e4f33532019c34353bd0db83' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-addSkipassTemplate.tpl',
-      1 => 1750755362,
+      1 => 1750940583,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_685a75f658d268_22078996 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685d3bc0c73c05_39849281 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -100,6 +100,9 @@ function content_685a75f658d268_22078996 (Smarty_Internal_Template $_smarty_tpl)
             <div class="button-container">
             <button type="submit">Conferma</button>
             </div>
+            <?php if ($_smarty_tpl->tpl_vars['exist']->value) {?>
+            <label>ERRORE: oggetto già presente nel database</label> 
+            <?php }?>
           </form>  
         </div>
 

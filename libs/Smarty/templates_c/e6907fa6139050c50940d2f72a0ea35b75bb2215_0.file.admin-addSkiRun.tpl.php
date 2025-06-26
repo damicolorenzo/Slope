@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-06-24 11:54:52
+/* Smarty version 3.1.33, created on 2025-06-26 13:00:38
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-addSkiRun.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_685a75ec21f657_98800588',
+  'unifunc' => 'content_685d285632ed02_59037844',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e6907fa6139050c50940d2f72a0ea35b75bb2215' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-addSkiRun.tpl',
-      1 => 1750755268,
+      1 => 1750935637,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_685a75ec21f657_98800588 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685d285632ed02_59037844 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -95,7 +95,6 @@ function content_685a75ec21f657_98800588 (Smarty_Internal_Template $_smarty_tpl)
 
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
-      <?php if ($_smarty_tpl->tpl_vars['exist']->value == false) {?>
       <div class="container" data-aos="fade-up">
         <div class="form-container addSkiRun">
             <form class="register-form" action="/Slope/ConfirmModifyAdmin/confirmSkiRun" method="POST">
@@ -136,16 +135,14 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 <div class="button-container">
                   <button type="submit">Conferma</button>
                 </div>
+                <?php if ($_smarty_tpl->tpl_vars['exist']->value) {?>
+                <div class="container" data-aos="fade-up">
+                  <label>ERRORE: La pista è già presente nel database</label>
+                </div>
+                <?php }?>
             </form>
         </div>
       </div>
-      <?php }?>
-      <?php if ($_smarty_tpl->tpl_vars['exist']->value == true) {?>
-      <div class="container" data-aos="fade-up">
-        <h1>La pista è già presente nel database</h1>
-        <h2>Tornare alla dashboard <a href="/Slope/Admin/dashboard">qui</a></h2>
-      </div>
-      <?php }?>
     </section><!-- /Starter Section Section -->
 
   </main>

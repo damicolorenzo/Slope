@@ -79,16 +79,21 @@
               <label for="email">Email di conferma</label>
               <input type="email" id="email" name="email" value={$user->getEmail()} required>
               
+              
+
               <div class="durata-skipass">
                   <p>Durata skipass</p>
                   {foreach from=$map item=i}
-                  {if $i[0] == 1}
-                  <label><input type="radio" name="period" value={$i[0]} required> {$i[0]} giorno-{$i[1]}</label>
-                  <input type="hidden" name="type" value={$i[1]}>
-                  {else if $i[0] > 1}
-                  <label><input type="radio" name="period" value={$i[0]} required> {$i[0]} giorni-{$i[1]}</label>
-                  <input type="hidden" name="type" value={$i[1]}>
-                  {/if}
+                      {assign var=giorni value=$i[0]}
+                      {assign var=tipo value=$i[1]}
+                      <label>
+                          <input type="radio" name="period" value="{$giorni}|{$tipo}" required>
+                          {if $giorni == 1}
+                              {$giorni} giorno - {$tipo}
+                          {else}
+                              {$giorni} giorni - {$tipo}
+                          {/if}
+                      </label>
                   {/foreach}
               </div>
               
@@ -104,6 +109,9 @@
               {/if}
 
               <button type="submit">Conferma</button>
+              {if $exist} 
+              <label>ERRORE: una prenotazione identica già esiste nel database</label>
+              {/if}
             </form>
         </div> 
       {else}

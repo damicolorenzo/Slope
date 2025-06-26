@@ -1,18 +1,30 @@
 <?php
+<<<<<<< HEAD
 /* Smarty version 3.1.33, created on 2025-06-26 11:35:36
+=======
+/* Smarty version 3.1.33, created on 2025-06-26 14:28:18
+>>>>>>> bebcd2e (Modifiche controllori e pagine admin)
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-addInsuranceTemplate.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
+<<<<<<< HEAD
   'unifunc' => 'content_685d14687c0147_17383503',
+=======
+  'unifunc' => 'content_685d3ce23e0d02_36089652',
+>>>>>>> bebcd2e (Modifiche controllori e pagine admin)
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '417e70417f0af961baed63ee62855db269d001eb' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-addInsuranceTemplate.tpl',
+<<<<<<< HEAD
       1 => 1750778132,
+=======
+      1 => 1750940887,
+>>>>>>> bebcd2e (Modifiche controllori e pagine admin)
       2 => 'file',
     ),
   ),
@@ -20,7 +32,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
+<<<<<<< HEAD
 function content_685d14687c0147_17383503 (Smarty_Internal_Template $_smarty_tpl) {
+=======
+function content_685d3ce23e0d02_36089652 (Smarty_Internal_Template $_smarty_tpl) {
+>>>>>>> bebcd2e (Modifiche controllori e pagine admin)
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -97,6 +113,9 @@ function content_685d14687c0147_17383503 (Smarty_Internal_Template $_smarty_tpl)
             <div class="button-container">
             <button type="submit">Conferma</button>
             </div>
+            <?php if ($_smarty_tpl->tpl_vars['exist']->value) {?>
+              <label>ERRORE: oggetto già esiste nel database</label>
+            <?php }?>
           </form>  
         </div>
 

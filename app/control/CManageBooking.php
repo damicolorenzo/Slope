@@ -11,35 +11,25 @@ class CManageBooking {
     public static function skiFacilityDetails($nameSkiFacility = null) : void{
         if(CUser::isLogged()){
             $view = new VManageBooking();
-            /* if(!is_null(UHTTPMethods::post('nameSkiFacility'))) {
-                $nameSkiFacility = UHTTPMethods::post('nameSkiFacility');
-                $idSkiFacility = FPersistentManager::getInstance()->retriveIdSkiFacilityFromName($nameSkiFacility);
-                $skiRuns = FPersistentManager::getInstance()->retriveAllSkiRun($idSkiFacility[0]);
-                $liftStructures = FPersistentManager::getInstance()->retriveAllLiftStructures($idSkiFacility[0]);
-                $view->showDetails($idSkiFacility[0], $nameSkiFacility, $skiRuns, $liftStructures);
-            } else */
-                if(!is_null($nameSkiFacility)) {
-                    $nameSkiFacility = htmlspecialchars(urldecode($nameSkiFacility), ENT_QUOTES, 'UTF-8');
-                    $allSkiFacilities = FPersistentManager::getInstance()->retriveAllSkiFacilities();
-                    $cond = false;
-                    foreach ($allSkiFacilities as $obj) {
-                        if($obj->getName() == $nameSkiFacility)
-                            $cond = true;
-                    }
-                    if($cond) {
-                        $idSkiFacility = FPersistentManager::getInstance()->retriveIdSkiFacilityFromName($nameSkiFacility);
-                        $skiRuns = FPersistentManager::getInstance()->retriveAllSkiRun($idSkiFacility[0]);
-                        $liftStructures = FPersistentManager::getInstance()->retriveAllLiftStructures($idSkiFacility[0]);
-                        $view->showDetails($idSkiFacility[0], $nameSkiFacility, $skiRuns, $liftStructures);
-                    } else {
-                        CUser::home();
-                    }
-            /* } else {
-                CUser::home();
-            } */
+            if(!is_null($nameSkiFacility)) {
+                $nameSkiFacility = htmlspecialchars(urldecode($nameSkiFacility), ENT_QUOTES, 'UTF-8');
+                $allSkiFacilities = FPersistentManager::getInstance()->retriveAllSkiFacilities();
+                $cond = false;
+                foreach ($allSkiFacilities as $obj) {
+                    if($obj->getName() == $nameSkiFacility)
+                        $cond = true;
+                }
+                if($cond) {
+                    $idSkiFacility = FPersistentManager::getInstance()->retriveIdSkiFacilityFromName($nameSkiFacility);
+                    $skiRuns = FPersistentManager::getInstance()->retriveAllSkiRun($idSkiFacility[0]);
+                    $liftStructures = FPersistentManager::getInstance()->retriveAllLiftStructures($idSkiFacility[0]);
+                    $view->showDetails($idSkiFacility[0], $nameSkiFacility, $skiRuns, $liftStructures);
                 } else {
                     CUser::home();
                 }
+            } else {
+                CUser::home();
+            }
         }
     }
 
@@ -54,51 +44,34 @@ class CManageBooking {
      */
     public static function makeABookingPage($idSkiFacility = null) {
         if(CUser::isLogged()){
-            /* if(!is_null(UHTTPMethods::post('idSkiFacility'))) {
-                $view = new VManageBooking();
-                $userId = USession::getInstance()->getSessionElement('user');
-                $idSkiFacility = UHTTPMethods::post('idSkiFacility');
-                $user = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $userId);
-                $today = date("Y-m-d");
-                $skiFacility = FPersistentManager::getInstance()->retriveSkiFacilityOnId($idSkiFacility);
-                $status = $skiFacility[0]->getStatus();
-                $skipassObjs = FPersistentManager::getInstance()->retriveSkipassObjOnSkiFacility($idSkiFacility);
-                $mapSkipassTemp = [];
-                foreach ($skipassObjs as $element) {
-                    $id = $element->getIdSkipassTemp();
-                    $skipassTemps = FPersistentManager::getInstance()->retriveSkipassTempOnId($id);
-                    $mapSkipassTemp[] =  [$skipassTemps[0]->getPeriod(), $skipassTemps[0]->getType()];
+            if(!is_null($idSkiFacility)) {
+                $allSkiFacilities = FPersistentManager::getInstance()->retriveAllSkiFacilities();
+                $cond = false;
+                foreach ($allSkiFacilities as $obj) {
+                    if($obj->getIdSkiFacility() == $idSkiFacility)
+                        $cond = true;
                 }
-                $view->makeABookingForm($idSkiFacility, $user[0], $today, $mapSkipassTemp, false, $status);
-            } else */
-                if(!is_null($idSkiFacility)) {
-                    $allSkiFacilities = FPersistentManager::getInstance()->retriveAllSkiFacilities();
-                    $cond = false;
-                    foreach ($allSkiFacilities as $obj) {
-                        if($obj->getIdSkiFacility() == $idSkiFacility)
-                            $cond = true;
+                if($cond) {
+                    $view = new VManageBooking();
+                    $userId = USession::getInstance()->getSessionElement('user');
+                    $user = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $userId);
+                    $today = date("Y-m-d");
+                    $skiFacility = FPersistentManager::getInstance()->retriveSkiFacilityOnId($idSkiFacility);
+                    $status = $skiFacility[0]->getStatus();
+                    $skipassObjs = FPersistentManager::getInstance()->retriveSkipassObjOnSkiFacility($idSkiFacility);
+                    $mapSkipassTemp = [];
+                    foreach ($skipassObjs as $element) {
+                        $id = $element->getIdSkipassTemp();
+                        $skipassTemps = FPersistentManager::getInstance()->retriveSkipassTempOnId($id);
+                        $mapSkipassTemp[] =  [$skipassTemps[0]->getPeriod(), $skipassTemps[0]->getType()];
                     }
-                    if($cond) {
-                        $view = new VManageBooking();
-                        $userId = USession::getInstance()->getSessionElement('user');
-                        $user = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $userId);
-                        $today = date("Y-m-d");
-                        $skiFacility = FPersistentManager::getInstance()->retriveSkiFacilityOnId($idSkiFacility);
-                        $status = $skiFacility[0]->getStatus();
-                        $skipassObjs = FPersistentManager::getInstance()->retriveSkipassObjOnSkiFacility($idSkiFacility);
-                        $mapSkipassTemp = [];
-                        foreach ($skipassObjs as $element) {
-                            $id = $element->getIdSkipassTemp();
-                            $skipassTemps = FPersistentManager::getInstance()->retriveSkipassTempOnId($id);
-                            $mapSkipassTemp[] =  [$skipassTemps[0]->getPeriod(), $skipassTemps[0]->getType()];
-                        }
-                        $view->makeABookingForm($idSkiFacility, $user[0], $today, $mapSkipassTemp, false, $status);
-                    } else {
-                        CUser::home();
-                    }
+                    $view->makeABookingForm($idSkiFacility, $user[0], $today, $mapSkipassTemp, false, $status, false);
                 } else {
                     CUser::home();
                 }
+            } else {
+                CUser::home();
+            }
         } else {
             CUser::home();
         }
@@ -202,69 +175,87 @@ class CManageBooking {
             //controllare se la copertura dell'abbonamento copre la data scelta e applicare lo sconto
             if(!is_null(UHTTPMethods::post('idSkiFacility')) && !is_null(UHTTPMethods::post('date')) &&
             !is_null(UHTTPMethods::post('name')) && !is_null(UHTTPMethods::post('surname')) && !is_null(UHTTPMethods::post('email')) &&
-            !is_null(UHTTPMethods::post('period')) && !is_null(UHTTPMethods::post('type'))) {
-                $view = new VManageBooking();  
-                $userId = USession::getInstance()->getSessionElement('user');
-                $idSkiFacility = UHTTPMethods::post('idSkiFacility');
-                $user = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $userId);
-                $today = date("Y-m-d");  
-                $selectedDate = UHTTPMethods::post('date');
-                
-                if(!self::verifyDate($selectedDate) || self::warningToday($selectedDate, $idSkiFacility)) {
-                    $skipassObjs = FPersistentManager::getInstance()->retriveSkipassObjOnSkiFacility($idSkiFacility);
+            !is_null(UHTTPMethods::post('period'))) {
+                list($period, $type) = explode('|', UHTTPMethods::post('period'));
+                $verifyBooking = FPersistentManager::getInstance()->verifySkipassBooking(USession::getInstance()->getSessionElement('user'), UHTTPMethods::post('name'), UHTTPMethods::post('surname'), UHTTPMethods::post('email'), $period, $type, UHTTPMethods::post('date'), UHTTPMethods::post('idSkiFacility'));
+                if(!$verifyBooking) {
+                    $view = new VManageBooking();  
+                    $userId = USession::getInstance()->getSessionElement('user');
+                    $idSkiFacility = UHTTPMethods::post('idSkiFacility');
+                    $user = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $userId);
+                    $today = date("Y-m-d");  
+                    $selectedDate = UHTTPMethods::post('date');
+                    if(!self::verifyDate($selectedDate) || self::warningToday($selectedDate, $idSkiFacility)) {
+                        $skipassObjs = FPersistentManager::getInstance()->retriveSkipassObjOnSkiFacility($idSkiFacility);
+                        $mapSkipassTemp = [];
+                        foreach ($skipassObjs as $element) {
+                            $id = $element->getIdSkipassTemp();
+                            $skipassTemps = FPersistentManager::getInstance()->retriveSkipassTempOnId($id);
+                            $mapSkipassTemp[] =  [$skipassTemps[0]->getPeriod(), $skipassTemps[0]->getType()];
+                        }
+                        $view->makeABookingForm($idSkiFacility, $user[0], $today, $mapSkipassTemp, true, true, false);
+                    } else {
+                        $name = UHTTPMethods::post('name');
+                        $surname = UHTTPMethods::post('surname');
+                        $email = UHTTPMethods::post('email');
+                        list($period, $type) = explode('|', UHTTPMethods::post('period'));
+                        $skipassObjs = FPersistentManager::getInstance()->retriveSkipassObjOnSkiFacility($idSkiFacility);
+                        foreach ($skipassObjs as $element) {
+                            $skipassTemp = FPersistentManager::getInstance()->retriveSkipassTempOnId($element->getIdSkipassTemp());
+                            if($skipassTemp[0]->getType() == $type && $skipassTemp[0]->getPeriod() == $period) {
+                                $value = $element->getValue();
+                                $idSkipassObj = $element->getIdSkipassObj();
+                                
+                            }
+                        }
+                        $skipassBooking = new ESkipassBooking($name, $surname, $selectedDate, $type, $email, $period, $value);
+                        $skipassBooking->setIdUser($userId);
+                        $skipassBooking->setIdSkipassObj($idSkipassObj);
+                        $cart['skipassBooking'] = $skipassBooking;
+                        $totalPrice = $skipassBooking->getValue(); 
+                        $subscriptionV = FPersistentManager::getInstance()->verifySubscriptionFromUserId($userId);
+                        if($subscriptionV && self::verifySubscription($selectedDate, $userId)) {
+                            $subscription = FPersistentManager::getInstance()->retriveSubscriptionFromUserId($userId);
+                            $subscriptionTemp = FPersistentManager::getInstance()->retriveSubscriptionTempFromId($subscription[0]->getIdSubscriptionTemp());
+                            $discount = $subscriptionTemp[0]->getDiscount();
+                            $totalPrice = $totalPrice - (($totalPrice * $discount)/100);
+                            $cart['subscription'] = $subscriptionTemp[0];
+                        }
+                        if(UHTTPMethods::post('insurance') == 'on') {
+                            $insuranceTemp = FPersistentManager::getInstance()->retriveInsuranceTempFromType($type);  
+                            $price = $insuranceTemp[0]->getValue();
+                            if($period > 1)
+                                $price = $price * $period;
+                            $insurance = new EInsurance($name, $surname, $email, $type, $period, $price, $selectedDate);
+                            $insurance->setIdUser($userId);
+                            $totalPrice = $totalPrice + $price;
+                            $cart['insurance'] = $insurance;
+                        }
+                        $verifyPreferredCreditCard = FPersistentManager::getInstance()->verifyPCreditCard($userId);
+                        USession::getInstance()->setSessionElement('cart', $cart);
+                        if($verifyPreferredCreditCard) {
+                            $creditCard = FPersistentManager::getInstance()->retriveCreditCardFromUserId($userId);
+                            $view->paymentSection($cart, $totalPrice, $creditCard[0], null);
+                        } else {
+                            $today = date('YYYY-mm');
+                            $view->paymentSection($cart, $totalPrice, null, $today);
+                        }
+                    }
+                } else {
+                    $view = new VManageBooking();
+                    $userId = USession::getInstance()->getSessionElement('user');
+                    $user = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $userId);
+                    $today = date("Y-m-d");
+                    $skiFacility = FPersistentManager::getInstance()->retriveSkiFacilityOnId(UHTTPMethods::post('idSkiFacility'));
+                    $status = $skiFacility[0]->getStatus();
+                    $skipassObjs = FPersistentManager::getInstance()->retriveSkipassObjOnSkiFacility(UHTTPMethods::post('idSkiFacility'));
                     $mapSkipassTemp = [];
                     foreach ($skipassObjs as $element) {
                         $id = $element->getIdSkipassTemp();
                         $skipassTemps = FPersistentManager::getInstance()->retriveSkipassTempOnId($id);
                         $mapSkipassTemp[] =  [$skipassTemps[0]->getPeriod(), $skipassTemps[0]->getType()];
                     }
-                    $view->makeABookingForm($idSkiFacility, $user[0], $today, $mapSkipassTemp, true, true);
-                } else {
-                    $name = UHTTPMethods::post('name');
-                    $surname = UHTTPMethods::post('surname');
-                    $email = UHTTPMethods::post('email');
-                    $period = UHTTPMethods::post('period');
-                    $type = UHTTPMethods::post('type');
-                    $skipassObjs = FPersistentManager::getInstance()->retriveSkipassObjOnSkiFacility($idSkiFacility);
-                    foreach ($skipassObjs as $element) {
-                        $skipassTemp = FPersistentManager::getInstance()->retriveSkipassTempOnId($element->getIdSkipassTemp());
-                        if($skipassTemp[0]->getType() == UHTTPMethods::post('type') && $skipassTemp[0]->getPeriod() == UHTTPMethods::post('period')) {
-                            $value = $element->getValue();
-                            $idSkipassObj = $element->getIdSkipassObj();
-                        }
-                    }
-                    $skipassBooking = new ESkipassBooking($name, $surname, $selectedDate, $type, $email, $period, $value);
-                    $skipassBooking->setIdUser($userId);
-                    $skipassBooking->setIdSkipassObj($idSkipassObj);
-                    $cart['skipassBooking'] = $skipassBooking;
-                    $totalPrice = $skipassBooking->getValue(); 
-                    $subscriptionV = FPersistentManager::getInstance()->verifySubscriptionFromUserId($userId);
-                    if($subscriptionV && self::verifySubscription($selectedDate, $userId)) {
-                        $subscription = FPersistentManager::getInstance()->retriveSubscriptionFromUserId($userId);
-                        $subscriptionTemp = FPersistentManager::getInstance()->retriveSubscriptionTempFromId($subscription[0]->getIdSubscriptionTemp());
-                        $discount = $subscriptionTemp[0]->getDiscount();
-                        $totalPrice = $totalPrice - (($totalPrice * $discount)/100);
-                        $cart['subscription'] = $subscriptionTemp[0];
-                    }
-                    if(UHTTPMethods::post('insurance') == 'on') {
-                        $insuranceTemp = FPersistentManager::getInstance()->retriveInsuranceTempFromType($type);  
-                        $price = $insuranceTemp[0]->getValue();
-                        if($period > 1)
-                            $price = $price * $period;
-                        $insurance = new EInsurance($name, $surname, $email, $type, $period, $price, $selectedDate);
-                        $insurance->setIdUser($userId);
-                        $totalPrice = $totalPrice + $price;
-                        $cart['insurance'] = $insurance;
-                    }
-                    $verifyPreferredCreditCard = FPersistentManager::getInstance()->verifyPCreditCard($userId);
-                    USession::getInstance()->setSessionElement('cart', $cart);
-                    if($verifyPreferredCreditCard) {
-                        $creditCard = FPersistentManager::getInstance()->retriveCreditCardFromUserId($userId);
-                        $view->paymentSection($cart, $totalPrice, $creditCard[0], null);
-                    } else {
-                        $today = date('YYYY-mm');
-                        $view->paymentSection($cart, $totalPrice, null, $today);
-                    }
+                    $view->makeABookingForm(UHTTPMethods::post('idSkiFacility'), $user[0], $today, $mapSkipassTemp, false, $status, true);
                 }
             } else {
                 CUser::home();

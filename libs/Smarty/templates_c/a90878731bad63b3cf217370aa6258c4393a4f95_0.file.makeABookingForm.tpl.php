@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-06-25 16:49:01
+/* Smarty version 3.1.33, created on 2025-06-26 15:43:24
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\makeABookingForm.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_685c0c5dd0e027_75121283',
+  'unifunc' => 'content_685d4e7c09be13_36067365',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a90878731bad63b3cf217370aa6258c4393a4f95' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\makeABookingForm.tpl',
-      1 => 1750862935,
+      1 => 1750945396,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_685c0c5dd0e027_75121283 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685d4e7c09be13_36067365 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -106,6 +106,8 @@ function content_685c0c5dd0e027_75121283 (Smarty_Internal_Template $_smarty_tpl)
               <input type="email" id="email" name="email" value=<?php echo $_smarty_tpl->tpl_vars['user']->value->getEmail();?>
  required>
               
+              
+
               <div class="durata-skipass">
                   <p>Durata skipass</p>
                   <?php
@@ -113,21 +115,22 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 ?>
-                  <?php if ($_smarty_tpl->tpl_vars['i']->value[0] == 1) {?>
-                  <label><input type="radio" name="period" value=<?php echo $_smarty_tpl->tpl_vars['i']->value[0];?>
- required> <?php echo $_smarty_tpl->tpl_vars['i']->value[0];?>
- giorno-<?php echo $_smarty_tpl->tpl_vars['i']->value[1];?>
-</label>
-                  <input type="hidden" name="type" value=<?php echo $_smarty_tpl->tpl_vars['i']->value[1];?>
->
-                  <?php } elseif ($_smarty_tpl->tpl_vars['i']->value[0] > 1) {?>
-                  <label><input type="radio" name="period" value=<?php echo $_smarty_tpl->tpl_vars['i']->value[0];?>
- required> <?php echo $_smarty_tpl->tpl_vars['i']->value[0];?>
- giorni-<?php echo $_smarty_tpl->tpl_vars['i']->value[1];?>
-</label>
-                  <input type="hidden" name="type" value=<?php echo $_smarty_tpl->tpl_vars['i']->value[1];?>
->
-                  <?php }?>
+                      <?php $_smarty_tpl->_assignInScope('giorni', $_smarty_tpl->tpl_vars['i']->value[0]);?>
+                      <?php $_smarty_tpl->_assignInScope('tipo', $_smarty_tpl->tpl_vars['i']->value[1]);?>
+                      <label>
+                          <input type="radio" name="period" value="<?php echo $_smarty_tpl->tpl_vars['giorni']->value;?>
+|<?php echo $_smarty_tpl->tpl_vars['tipo']->value;?>
+" required>
+                          <?php if ($_smarty_tpl->tpl_vars['giorni']->value == 1) {?>
+                              <?php echo $_smarty_tpl->tpl_vars['giorni']->value;?>
+ giorno - <?php echo $_smarty_tpl->tpl_vars['tipo']->value;?>
+
+                          <?php } else { ?>
+                              <?php echo $_smarty_tpl->tpl_vars['giorni']->value;?>
+ giorni - <?php echo $_smarty_tpl->tpl_vars['tipo']->value;?>
+
+                          <?php }?>
+                      </label>
                   <?php
 }
 }
@@ -148,6 +151,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
               <?php }?>
 
               <button type="submit">Conferma</button>
+              <?php if ($_smarty_tpl->tpl_vars['exist']->value) {?> 
+              <label>ERRORE: una prenotazione identica già esiste nel database</label>
+              <?php }?>
             </form>
         </div> 
       <?php } else { ?>

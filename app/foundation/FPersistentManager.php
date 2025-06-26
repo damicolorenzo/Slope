@@ -928,6 +928,12 @@ class FPersistentManager {
         } 
     }
 
+    /**
+     * Retrive all insurance objects using user id 
+     * @param int $idUser
+     * @param string $date
+     * @return array of objects or empty array
+     */
     public static function retriveInsuranceTempFromIdInsurance(int $idInsurance) : array{
         $fields = [['idInsuranceTemp', $idInsurance]];
         $result = FInsuranceTemp::getInsuranceTempObjFromFields($fields);
@@ -1071,6 +1077,7 @@ class FPersistentManager {
      * @return array of objects or empty array
      */
     public static function retriveSkipassObjOnSkiFacility(int $idSkiFacility) : array{
+        
         $result = FSkipassObj::getSkipassObjOnSkiFacility($idSkiFacility);
         
         if(count($result) > 0) {
@@ -1554,6 +1561,12 @@ class FPersistentManager {
         return $result;
     }
 
+    public static function verifyUser(string $username, string $email) {
+        $result1 = FPerson::verify('email', $email);
+        $result2 = FUser::verify('username', $username); 
+        return !$result1 && !$result2; 
+    }
+
     /**
      * Verify if exist a ski run with this name refered to a ski facility
      * @param string $name
@@ -1626,6 +1639,38 @@ class FPersistentManager {
      */
     public static function verifySubscriptionFromUserId(int $idUser) : bool{
         $result = FSubscription::verify('idUser', $idUser);
+        return $result;
+    }
+
+    public static function verifySkipassTemp(string $description, int $period, string $type) {
+        $result = FSkipassTemp::verify($description, $period, $type);
+        return $result;
+    }
+
+    public static function verifyInsuranceTemp(string $type, float $value) {
+        $result = FInsuranceTemp::verify($type, $value);
+        return $result;
+    }
+
+    public static function verifySubscriptionTemp(string $description, float $value, float $discount) {
+        $result = FSubscriptionTemp::verify($description, $value, $discount);
+        return $result;
+    }
+
+    public static function verifySkipassObj(string $description, int $idSkiFacility, int $idSkipassTemp) {
+        $result = FSkipassObj::verify($description, $idSkiFacility, $idSkipassTemp);
+        return $result;
+    }
+
+    public static function verifySkipassBooking(int $idUser, string $name, string $surname, string $email, int $period, string $type, string $date, int $idSkiFacility) {
+        $skipassObjs = self::getInstance()->retriveSkipassObjOnSkiFacility($idSkiFacility);
+        foreach ($skipassObjs as $i) {
+            $idSkipassTemp = $i->getIdSkipassTemp();
+            $skipassTemps = FPersistentManager::getInstance()->retriveSkipassTempOnId($idSkipassTemp);
+            if($skipassTemps[0]->getPeriod() == $period && $skipassTemps[0]->getType() == $type)
+                $idSkipassObj = $i->getIdSkipassObj();
+        }
+        $result = FSkipassBooking::verify($name, $surname, $type, $date, $email, $period, $idUser, $idSkipassObj);
         return $result;
     }
 

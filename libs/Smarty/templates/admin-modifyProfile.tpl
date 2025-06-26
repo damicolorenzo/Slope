@@ -105,6 +105,9 @@
                     {/if}
 
                     <button class="edit-button" type="submit">Conferma modifiche</button>
+                    {if $exist}
+                    <label>ERRORE: le modifiche interferiscono con altre istanze nel database</label> 
+                    {/if}
                 </form>
                 <label>Modifica immagine:</label>
                     <div class="button-container">

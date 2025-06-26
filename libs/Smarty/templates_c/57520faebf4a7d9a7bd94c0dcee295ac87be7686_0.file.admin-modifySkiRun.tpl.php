@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-23 17:12:04
+/* Smarty version 3.1.33, created on 2025-06-26 15:04:52
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-modifySkiRun.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_68309044f0fed8_36132071',
+  'unifunc' => 'content_685d4574740a57_16116008',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '57520faebf4a7d9a7bd94c0dcee295ac87be7686' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-modifySkiRun.tpl',
-      1 => 1748006861,
+      1 => 1750943076,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_68309044f0fed8_36132071 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685d4574740a57_16116008 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -99,7 +99,7 @@ function content_68309044f0fed8_36132071 (Smarty_Internal_Template $_smarty_tpl)
       <div class="container" data-aos="fade-up">
         
         <div class="form-container modifySkiRun">
-          <form action="/Slope/Admin/confirmModifySkiRun" enctype="multipart/form-data" method="POST">
+          <form action="/Slope/ConfirmModifyAdmin/confirmModifySkiRun" enctype="multipart/form-data" method="POST">
               <input type="hidden" id="idSkiRun" name="idSkiRun" value=<?php echo $_smarty_tpl->tpl_vars['idSkiRun']->value;?>
 >
               <input type="hidden" id="idSkiFacility" name="idSkiFacility" value=<?php echo $_smarty_tpl->tpl_vars['idSkiFacility']->value;?>
@@ -122,7 +122,7 @@ function content_68309044f0fed8_36132071 (Smarty_Internal_Template $_smarty_tpl)
                 <label><input type="radio" name="type" value="rossa" checked> Rossa</label>
                 <label><input type="radio" name="type" value="blu"> Blu</label>
                 <?php }?>
-                <?php if ($_smarty_tpl->tpl_vars['type']->value == 'blue') {?>
+                <?php if ($_smarty_tpl->tpl_vars['type']->value == 'blu') {?>
                 <label><input type="radio" name="type" value="nera"> Nera</label>
                 <label><input type="radio" name="type" value="rossa"> Rossa</label>
                 <label><input type="radio" name="type" value="blu" checked> Blu</label>
@@ -149,11 +149,11 @@ foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 ?>
                   <?php if ($_smarty_tpl->tpl_vars['i']->value['name'] == $_smarty_tpl->tpl_vars['nameSkiFacility']->value) {?>
                   <label><input type="radio" name="skiFacility" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['name'];?>
-" checked><?php echo $_smarty_tpl->tpl_vars['i']->value['name'];?>
+" checked disabled><?php echo $_smarty_tpl->tpl_vars['i']->value['name'];?>
 </label>
                   <?php } else { ?>
                   <label><input type="radio" name="skiFacility" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['name'];?>
-"><?php echo $_smarty_tpl->tpl_vars['i']->value['name'];?>
+" disabled><?php echo $_smarty_tpl->tpl_vars['i']->value['name'];?>
 </label>
                   <?php }?> 
               <?php
@@ -165,6 +165,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
               <div class="button-container">
                 <button type="submit">Conferma</button>
               </div>
+              <?php if ($_smarty_tpl->tpl_vars['exist']->value) {?>
+              <label>ERRORE: Per l'impianto selezionato già esiste questa pista</label>
+              <?php }?>
           </form>
         </div>
 

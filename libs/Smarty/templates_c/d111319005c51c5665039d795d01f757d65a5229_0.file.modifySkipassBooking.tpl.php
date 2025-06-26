@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-06-24 12:26:02
+/* Smarty version 3.1.33, created on 2025-06-26 15:46:16
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\modifySkipassBooking.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_685a7d3a2015b8_58920495',
+  'unifunc' => 'content_685d4f2817f7a6_31518667',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd111319005c51c5665039d795d01f757d65a5229' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\modifySkipassBooking.tpl',
-      1 => 1750759957,
+      1 => 1750945574,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_685a7d3a2015b8_58920495 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685d4f2817f7a6_31518667 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -98,15 +98,15 @@ function content_685a7d3a2015b8_58920495 (Smarty_Internal_Template $_smarty_tpl)
           <form action="/Slope/ManageBooking/confirmModifyBooking" method="post">
               <label for="name">Nome</label>
               <input type="text" id="name" name="name" value=<?php echo $_smarty_tpl->tpl_vars['skipassBooking']->value->getName();?>
->
+ readonly>
 
               <label for="surname">Cognome</label>
               <input type="text" id="surname" name="surname" value=<?php echo $_smarty_tpl->tpl_vars['skipassBooking']->value->getSurname();?>
->
+ readonly>
 
               <label for="email">Email di conferma</label>
               <input type="email" id="email" name="email" value=<?php echo $_smarty_tpl->tpl_vars['skipassBooking']->value->getEmail();?>
-  disabled>
+  readonly>
 
               <div class="durata-skipass">
                   <p>Durata skipass</p>

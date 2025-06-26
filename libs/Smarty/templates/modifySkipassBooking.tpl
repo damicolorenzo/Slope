@@ -74,13 +74,13 @@
           <h1>Modifica prenotazione</h1>
           <form action="/Slope/ManageBooking/confirmModifyBooking" method="post">
               <label for="name">Nome</label>
-              <input type="text" id="name" name="name" value={$skipassBooking->getName()}>
+              <input type="text" id="name" name="name" value={$skipassBooking->getName()} readonly>
 
               <label for="surname">Cognome</label>
-              <input type="text" id="surname" name="surname" value={$skipassBooking->getSurname()}>
+              <input type="text" id="surname" name="surname" value={$skipassBooking->getSurname()} readonly>
 
               <label for="email">Email di conferma</label>
-              <input type="email" id="email" name="email" value={$skipassBooking->getEmail()}  disabled>
+              <input type="email" id="email" name="email" value={$skipassBooking->getEmail()}  readonly>
 
               <div class="durata-skipass">
                   <p>Durata skipass</p>

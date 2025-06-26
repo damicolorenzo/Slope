@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-06-24 11:55:48
+/* Smarty version 3.1.33, created on 2025-06-26 14:54:55
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-modifyProfile.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_685a7624f35956_64954709',
+  'unifunc' => 'content_685d431f03b639_01997369',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '24ce1e58008af910d9d7f6f9d0d3e5fd2e9161f9' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-modifyProfile.tpl',
-      1 => 1750755612,
+      1 => 1750942364,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_685a7624f35956_64954709 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685d431f03b639_01997369 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -134,6 +134,9 @@ function content_685a7624f35956_64954709 (Smarty_Internal_Template $_smarty_tpl)
                     <?php }?>
 
                     <button class="edit-button" type="submit">Conferma modifiche</button>
+                    <?php if ($_smarty_tpl->tpl_vars['exist']->value) {?>
+                    <label>ERRORE: le modifiche interferiscono con altre istanze nel database</label> 
+                    <?php }?>
                 </form>
                 <label>Modifica immagine:</label>
                     <div class="button-container">

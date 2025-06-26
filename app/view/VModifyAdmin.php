@@ -35,7 +35,6 @@ class VModifyAdmin {
         $this->smarty->assign('status', $status);
         $this->smarty->assign('description', $description);
         $this->smarty->assign('id', $id);
-        $this->smarty->assign('exist', false);
         $this->smarty->display('admin-modifySkiFacility.tpl');
     }
 
@@ -46,7 +45,7 @@ class VModifyAdmin {
         $this->smarty->assign('status', $status);
         $this->smarty->assign('nameSkiFacility', $nameSkiFacility);  
         $this->smarty->assign('skiFacilities', $allNameSkiFacility);     
-        $this->smarty->assign('idSkiFacility', $idSkiFacility);       
+        $this->smarty->assign('idSkiFacility', $idSkiFacility);    
         $this->smarty->display('admin-modifySkiRun.tpl');
     }
 

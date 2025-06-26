@@ -90,11 +90,11 @@
                   <label for="status">Stato:</label>
                   <div class="radio-group">
                     {if $status}
-                    <label><input type="radio" name="status" value="aperto" checked> Aperto</label>
-                    <label><input type="radio" name="status" value="chiuso"> Chiuso</label>
+                    <label><input type="radio" name="status" value=1 checked> Aperto</label>
+                    <label><input type="radio" name="status" value=0> Chiuso</label>
                     {else}
-                    <label><input type="radio" name="status" value="aperto"> Aperto</label>
-                    <label><input type="radio" name="status" value="chiuso"checked> Chiuso</label>
+                    <label><input type="radio" name="status" value=1> Aperto</label>
+                    <label><input type="radio" name="status" value=0 checked> Chiuso</label>
                     {/if}
                   </div>
 

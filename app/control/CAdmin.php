@@ -81,7 +81,7 @@ class CAdmin {
                 CAdmin::login();
             }
         } else { //if logged
-            CAdmin::dashboard();
+            header('Location: /Slope/Admin/dashboard');
         }
         
     }

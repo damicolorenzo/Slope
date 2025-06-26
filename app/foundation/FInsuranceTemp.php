@@ -171,6 +171,12 @@ class FInsuranceTemp {
         return $queryResult;
     }
 
+    public static function verify(string $type, float $value){
+        $conditions = [['type', $type], ['value', $value]];
+        $queryResult = FEntityManager::getInstance()->retriveObjNFields(self::getTable(), $conditions);
+        return FEntityManager::getInstance()->existInDb($queryResult);
+    }
+
 }
 
 ?>

@@ -11,7 +11,8 @@ class CConfirmModifyAdmin {
     public static function confirmModify() : void{
         if(CAdmin::isLogged()){
             $view = new VModifyAdmin();
-            if(!is_null(UHTTPMethods::post('username'))) {
+            if(!is_null(UHTTPMethods::post('username')) && !is_null(UHTTPMethods::post('name')) && !is_null(UHTTPMethods::post('surname')) &&
+            !is_null(UHTTPMethods::post('email')) && !is_null(UHTTPMethods::post('birthDate'))) {
                 $username = UHTTPMethods::post('username');
                 $user = FPersistentManager::getInstance()->retriveUserOnUsername($username);
                 $user = $user[0];
@@ -24,7 +25,7 @@ class CConfirmModifyAdmin {
                 $idImage = $user->getIdImage();
                 $image = FPersistentManager::getInstance()->retriveImageOnId($idImage);
                 $phone_number_validation_regex = "/^\\+?[1-9][0-9]{7,14}$/"; 
-                if(!is_null(UHTTPMethods::post('phoneNumber')) && !preg_match($phone_number_validation_regex, UHTTPMethods::post('phoneNumber'))) {
+                if(!preg_match($phone_number_validation_regex, UHTTPMethods::post('phoneNumber'))) {
                     $phoneError = true;
                 } else {
                     $phoneError = false;
@@ -32,23 +33,19 @@ class CConfirmModifyAdmin {
                     preg_match_all($extract_phone_number_pattern, UHTTPMethods::post('phoneNumber'), $matches);
                     $modifiedPhoneNumber = implode($matches[0]);
                 }
-                if(!is_null(UHTTPMethods::post('birthDate')) && !(date("Y-m-d") > UHTTPMethods::post('birthDate'))){
+                if(!(date("Y-m-d") > UHTTPMethods::post('birthDate'))){
                     $dateError = true;
                 } else {
                     $dateError = false;
                 } 
-                if(!is_null(UHTTPMethods::post('name')) && !is_null(UHTTPMethods::post('surname')) && !is_null(UHTTPMethods::post('email')) && !is_null(UHTTPMethods::post('birthDate')) && !is_null(UHTTPMethods::post('username')) && !is_null(UHTTPMethods::post('password'))) {
-                    if(!$phoneError && !$dateError) { 
-                        $updatedUser = new EUser(UHTTPMethods::post('name'), UHTTPMethods::post('surname'), UHTTPMethods::post('email'), $modifiedPhoneNumber, UHTTPMethods::post('birthDate'), UHTTPMethods::post('username'), password_hash(UHTTPMethods::post('password'), PASSWORD_DEFAULT));
-                        $updatedUser->setId($userId);
-                        FPersistentManager::getInstance()->updatePersonInfo($updatedUser);
-                        CAdmin::dashboard();
-                    }
-                    else {
-                        $view->modifyProfile($username, $name, $surname, $email, $phoneNumber, $birthDate, $image, $phoneError, $dateError); 
-                    }
-                } else {
+                if(!$phoneError && !$dateError) { 
+                    $updatedUser = new EUser(UHTTPMethods::post('name'), UHTTPMethods::post('surname'), UHTTPMethods::post('email'), $modifiedPhoneNumber, UHTTPMethods::post('birthDate'), UHTTPMethods::post('username'), password_hash(UHTTPMethods::post('password'), PASSWORD_DEFAULT));
+                    $updatedUser->setId($userId);
+                    FPersistentManager::getInstance()->updatePersonInfo($updatedUser);
                     CAdmin::dashboard();
+                }
+                else {
+                    $view->modifyProfile($username, $name, $surname, $email, $phoneNumber, $birthDate, $image, $phoneError, $dateError); 
                 }
             } else {
                 CAdmin::dashboard();
@@ -64,7 +61,6 @@ class CConfirmModifyAdmin {
      */
     public static function confirmSkiRun() : void{
         if(CAdmin::isLogged()) {
-            $view = new VModifyAdmin();
             if(!is_null(UHTTPMethods::post('skiFacility')) && !is_null(UHTTPMethods::post('name')) && !is_null(UHTTPMethods::post('type')) && !is_null(UHTTPMethods::post('status'))) {
                 $idSkiFacility = FPersistentManager::getInstance()->retriveIdSkiFacilityFromName(UHTTPMethods::post('skiFacility'));
                 $skiRunName = FPersistentManager::getInstance()->verifySkiRunName(UHTTPMethods::post('name'), $idSkiFacility[0]);
@@ -74,7 +70,9 @@ class CConfirmModifyAdmin {
                     FPersistentManager::getInstance()->uploadObj($skiRun);
                     CAdmin::dashboard();
                 } else {
-                    $view->skiRunAlreadyExist();
+                    $view = new VAddAdmin();
+                    $nameSkiFacility = FPersistentManager::getInstance()->nameAllSkiFacility();
+                    $view->addSkiRun($nameSkiFacility, true);
                 }
             } else {
                 CAdmin::dashboard();
@@ -116,16 +114,16 @@ class CConfirmModifyAdmin {
             if(!is_null(UHTTPMethods::post('name')) && !is_null(UHTTPMethods::post('description')) && !is_null(UHTTPMethods::post('status'))) {
                 $skiFacility = FPersistentManager::getInstance()->verifySkiFacilityName(UHTTPMethods::post('name'));
                 if(strlen(trim(UHTTPMethods::post('description'))) > 65535) {
-                    $view->skiFacilityAlreadyExist();
+                    $view = new VAddAdmin();
+                    $view->addSkiFacility(false, true);
                 }
                 if(!$skiFacility) {
                     $skiFacility = new ESkiFacility(UHTTPMethods::post('name'), UHTTPMethods::post('status'), UHTTPMethods::post('description'));
-                    if(FPersistentManager::getInstance()->uploadObj($skiFacility))
-                        CAdmin::dashboard();
-                    else
-                        print("ERRORE");
+                    FPersistentManager::getInstance()->uploadObj($skiFacility);
+                    CAdmin::dashboard();
                 } else {
-                    $view->skiFacilityAlreadyExist();
+                    $view = new VAddAdmin();
+                    $view->addSkiFacility(true, false);
                 }
             } else {
                 CAdmin::dashboard();
@@ -177,7 +175,9 @@ class CConfirmModifyAdmin {
                     FPersistentManager::getInstance()->uploadObj($liftStructure);
                     CAdmin::dashboard();
                 } else {
-                    $view->liftStructureAlreadyExist();
+                    $view = new VAddAdmin();
+                    $nameSkiFacility = FPersistentManager::getInstance()->nameAllSkiFacility();
+                    $view->addLiftStructure($nameSkiFacility, true);
                 }
             } else {
                 CAdmin::dashboard();
@@ -221,9 +221,15 @@ class CConfirmModifyAdmin {
                 $description = UHTTPMethods::post('description');
                 $period = UHTTPMethods::post('period');
                 $type = UHTTPMethods::post('type');
-                $skipass = new ESkipassTemp($description, $period, $type);
-                FPersistentManager::getInstance()->uploadObj($skipass);
-                CAdmin::dashboard();
+                $skipassTemp = FPersistentManager::getInstance()->verifySkipassTemp($description, $period, $type);
+                if(!$skipassTemp) {
+                    $skipass = new ESkipassTemp($description, $period, $type);
+                    FPersistentManager::getInstance()->uploadObj($skipass);
+                    CAdmin::dashboard();
+                } else {
+                    $view = new VAddAdmin();
+                    $view->addSkipassTemplate(true);
+                }
             } else {
                 CAdmin::dashboard();
             }
@@ -263,11 +269,19 @@ class CConfirmModifyAdmin {
                 $value = UHTTPMethods::post('value');
                 $idSkiFacility = UHTTPMethods::post('idSkiFacility');
                 $idSkipassTemplate = UHTTPMethods::post('idSkipassTemplate');
-                $skipass = new ESkipassObj($description, $value);
-                $skipass->setIdSkiFacility($idSkiFacility);
-                $skipass->setIdSkipassTemp($idSkipassTemplate);
-                FPersistentManager::getInstance()->uploadObj($skipass);
-                CAdmin::dashboard();
+                $skipassObj = FPersistentManager::getInstance()->verifySkipassObj($description, $idSkiFacility, $idSkipassTemplate);
+                if(!$skipassObj) {
+                    $skipass = new ESkipassObj($description, $value);
+                    $skipass->setIdSkiFacility($idSkiFacility);
+                    $skipass->setIdSkipassTemp($idSkipassTemplate);
+                    FPersistentManager::getInstance()->uploadObj($skipass);
+                    CAdmin::dashboard();
+                } else {
+                    $view = new VAddAdmin();
+                    $allSkiFacilities = FPersistentManager::getInstance()->retriveAllSkiFacilities();
+                    $templates = FPersistentManager::getInstance()->retriveAllSkipassTemp();
+                    $view->addSkipassObj($allSkiFacilities, $templates, true);
+                }
             } else {
                 CAdmin::dashboard();
             }
@@ -306,9 +320,15 @@ class CConfirmModifyAdmin {
             if(!is_null(UHTTPMethods::post('type')) && !is_null(UHTTPMethods::post('value'))) {
                 $type = UHTTPMethods::post('type');
                 $value = UHTTPMethods::post('value');
-                $insuranceTemp = new EInsuranceTemp($type, $value);
-                FPersistentManager::getInstance()->uploadObj($insuranceTemp);
-                CAdmin::dashboard();
+                $insuranceTemp = FPersistentManager::getInstance()->verifyInsuranceTemp($type, $value);
+                if(!$insuranceTemp) {
+                    $insuranceTemp = new EInsuranceTemp($type, $value);
+                    FPersistentManager::getInstance()->uploadObj($insuranceTemp);
+                    CAdmin::dashboard();
+                } else {
+                    $view = new VAddAdmin();
+                    $view->addInsuranceTemplate(true);
+                }
             } else {
                 CAdmin::dashboard();
             }
@@ -347,9 +367,16 @@ class CConfirmModifyAdmin {
                 $description = UHTTPMethods::post('description');
                 $value = UHTTPMethods::post('value');
                 $discount = UHTTPMethods::post('discount');
-                $subscription = new ESubscriptionTemp($description, $value, $discount);
-                FPersistentManager::getInstance()->uploadObj($subscription);
-                CAdmin::dashboard();
+                $subscriptionTemp = FPersistentManager::getInstance()->verifySubscriptionTemp($description, $value, $discount);
+                if(!$subscriptionTemp) {
+                    $subscription = new ESubscriptionTemp($description, $value, $discount);
+                    FPersistentManager::getInstance()->uploadObj($subscription);
+                    CAdmin::dashboard();
+                } else {
+                    $view = new VAddAdmin();
+                    $view->addSubscription(true);
+                }
+                
             } else {
                 CAdmin::dashboard();
             }

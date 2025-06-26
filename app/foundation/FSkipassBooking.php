@@ -165,6 +165,12 @@ class FSkipassBooking {
         $queryResult = FEntityManager::getInstance()->retriveObj(self::getTable(), self::$externalKeyU, $idUser);
         return $queryResult;
     }
+
+    public static function verify(string $name, string $surname, string $type, string $date, string $email, int $period, int $idUser, int $idSkipassObj){
+        $conditions = [['name', $name], ['surname', $surname], ['type', $type], ['startDate', $date], ['email', $email], ['period', $period], ['idUser', $idUser], ['idSkipassObj', $idSkipassObj]];
+        $queryResult = FEntityManager::getInstance()->retriveObjNFields(self::getTable(), $conditions);
+        return FEntityManager::getInstance()->existInDb($queryResult);
+    }
 }
 
 ?>

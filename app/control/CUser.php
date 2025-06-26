@@ -226,11 +226,23 @@ class CUser {
                 $images[] = $image;
             }
             if(is_null(UHTTPMethods::post('skiFacilities'))) {
-                $skipassObj = FPersistentManager::getInstance()->retriveSkipassObjOnSkiFacility($allSkiFacilities[0]->getIdSkiFacility());
+                $skipassObjs = FPersistentManager::getInstance()->retriveSkipassObjOnSkiFacility($allSkiFacilities[0]->getIdSkiFacility());
+                foreach ($skipassObjs as $i) {
+                    $idSkipassTemp = $i->getIdSkipassTemp();
+                    $skipassTemps = FPersistentManager::getInstance()->retriveSkipassTempOnId($idSkipassTemp);
+                    if($skipassTemps[0]->getType() == 'intero')
+                        $skipassObj[] = $i;
+                }
             } else {
                 $skiFacility = UHTTPMethods::post('skiFacilities');
                 $idSkiFacility = FPersistentManager::getInstance()->retriveIdSkiFacilityFromName($skiFacility);
-                $skipassObj = FPersistentManager::getInstance()->retriveSkipassObjOnSkiFacility($idSkiFacility[0]);
+                $skipassObjs = FPersistentManager::getInstance()->retriveSkipassObjOnSkiFacility($idSkiFacility[0]);
+                foreach ($skipassObjs as $i) {
+                    $idSkipassTemp = $i->getIdSkipassTemp();
+                    $skipassTemps = FPersistentManager::getInstance()->retriveSkipassTempOnId($idSkipassTemp);
+                    if($skipassTemps[0]->getType() == 'intero')
+                        $skipassObj[] = $i;
+                }
             }
             $view->home($allSkiFacility, $skipassObj, $images);
         }

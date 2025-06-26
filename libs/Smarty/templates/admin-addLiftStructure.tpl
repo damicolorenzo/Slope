@@ -74,7 +74,6 @@
 
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
-      {if $exist == false}
       <div class="container" data-aos="fade-up">
         <div class="form-container addLiftStructure">
             <form class="register-form" action="/Slope/ConfirmModifyAdmin/confirmLiftStructure" method="POST">
@@ -112,16 +111,12 @@
               <div class="button-container">
                 <button type="submit">Conferma</button>
               </div>
+              {if $exist}
+              <label>ERRORE: impianto già esistente</label>
+              {/if}
             </form>
         </div>
       </div>
-      {/if}
-      {if $exist == true}
-      <div class="container" data-aos="fade-up">
-        <h1>L'impianto di risalita è già presente nel database</h1>
-        <h2>Tornare alla dashboard <a href="/Slope/Admin/dashboard">qui</a></h2>
-      </div>
-      {/if}
     </section><!-- /Starter Section Section -->
 
   </main>

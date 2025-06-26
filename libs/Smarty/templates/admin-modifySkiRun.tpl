@@ -118,9 +118,9 @@
               <div class="radio-group">
               {foreach from=$skiFacilities item=i}
                   {if $i['name'] == $nameSkiFacility}
-                  <label><input type="radio" name="skiFacility" value="{$i['name']}" checked>{$i['name']}</label>
+                  <label><input type="radio" name="skiFacility" value="{$i['name']}" checked disabled>{$i['name']}</label>
                   {else}
-                  <label><input type="radio" name="skiFacility" value="{$i['name']}">{$i['name']}</label>
+                  <label><input type="radio" name="skiFacility" value="{$i['name']}" disabled>{$i['name']}</label>
                   {/if} 
               {/foreach}
               </div>

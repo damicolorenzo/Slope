@@ -12,7 +12,7 @@ class CAddAdmin {
         if(CAdmin::isLogged()) {
             $view = new VAddAdmin();
             $nameSkiFacility = FPersistentManager::getInstance()->nameAllSkiFacility();
-            $view->addSkiRun($nameSkiFacility);
+            $view->addSkiRun($nameSkiFacility, false);
         } else {
             CAdmin::dashboard();
         }
@@ -25,7 +25,7 @@ class CAddAdmin {
     public static function addSkiFacility() : void{
         if(CAdmin::isLogged()) {
             $view = new VAddAdmin();
-            $view->addSkiFacility();
+            $view->addSkiFacility(false, false);
         } else {
             CAdmin::dashboard();
         }
@@ -39,7 +39,7 @@ class CAddAdmin {
         if(CAdmin::isLogged()) {
             $view = new VAddAdmin();
             $nameSkiFacility = FPersistentManager::getInstance()->nameAllSkiFacility();
-            $view->addLiftStructure($nameSkiFacility);
+            $view->addLiftStructure($nameSkiFacility, false);
         } else {
             CAdmin::dashboard();
         }
@@ -52,7 +52,7 @@ class CAddAdmin {
     public static function addSkipassTemplate() :void{
         if(CAdmin::isLogged()) {
             $view = new VAddAdmin();
-            $view->addSkipassTemplate();
+            $view->addSkipassTemplate(false);
         } else {
             CAdmin::dashboard();
         }
@@ -65,7 +65,7 @@ class CAddAdmin {
     public static function addInsuranceTemplate() :void{
         if(CAdmin::isLogged()) {
             $view = new VAddAdmin();
-            $view->addInsuranceTemplate();
+            $view->addInsuranceTemplate(false);
         } else {
             CAdmin::dashboard();
         }
@@ -78,7 +78,7 @@ class CAddAdmin {
     public static function addSubscription() :void{
         if(CAdmin::isLogged()) {
             $view = new VAddAdmin();
-            $view->addSubscription();
+            $view->addSubscription(false);
         } else {
             CAdmin::dashboard();
         }
@@ -93,7 +93,7 @@ class CAddAdmin {
             $view = new VAddAdmin();
             $allSkiFacilities = FPersistentManager::getInstance()->retriveAllSkiFacilities();
             $templates = FPersistentManager::getInstance()->retriveAllSkipassTemp();
-            $view->addSkipassObj($allSkiFacilities, $templates);
+            $view->addSkipassObj($allSkiFacilities, $templates, false);
         } else {
             CAdmin::dashboard();
         }

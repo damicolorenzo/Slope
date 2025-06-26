@@ -161,6 +161,12 @@ class FSkipassTemp {
         return $result;
     }
 
+    public static function verify(string $description, int $period, string $type){
+        $conditions = [['description', $description], ['period', $period], ['type', $type]];
+        $queryResult = FEntityManager::getInstance()->retriveObjNFields(self::getTable(), $conditions);
+        return FEntityManager::getInstance()->existInDb($queryResult);
+    }
+
 }
 
 ?>

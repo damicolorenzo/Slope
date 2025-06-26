@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-06-24 11:54:58
+/* Smarty version 3.1.33, created on 2025-06-26 13:05:41
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-addSkiFacility.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_685a75f2544656_58389863',
+  'unifunc' => 'content_685d2985a65084_42198447',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1abdead61f8b5ea33b7f2d7b15778e02823d6296' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-addSkiFacility.tpl',
-      1 => 1750755320,
+      1 => 1750935918,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_685a75f2544656_58389863 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685d2985a65084_42198447 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -111,10 +111,16 @@ function content_685a75f2544656_58389863 (Smarty_Internal_Template $_smarty_tpl)
 
               <label for="description">Descrizione:</label>
               <textarea id="description" name="description" maxlength="1000" required></textarea>
+              <?php if ($_smarty_tpl->tpl_vars['errorLen']->value) {?> 
+              <label>ERRORE: Dimensione campo elevata</label>
+              <?php }?>
               
               <div class="button-container">
                 <button type="submit">Conferma</button>
               </div>
+              <?php if ($_smarty_tpl->tpl_vars['exist']->value) {?>
+              <label>ERRORE: impianto già esistente</label>
+              <?php }?>
             </form>
         </div>
       </div>

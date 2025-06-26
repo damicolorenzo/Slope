@@ -142,6 +142,12 @@ class FSubscriptionTemp {
         return $queryResult;
     }
 
+    public static function verify(string $description, float $value, float $discount){
+        $conditions = [['description', $description], ['value', $value], ['discount', $discount]];
+        $queryResult = FEntityManager::getInstance()->retriveObjNFields(self::getTable(), $conditions);
+        return FEntityManager::getInstance()->existInDb($queryResult);
+    }
+
 }
 
 ?>

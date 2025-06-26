@@ -179,6 +179,12 @@ class FSkipassObj {
         return $result;
     }
 
+    public static function verify(string $description, int $idSkiFacility, int $idSkipassTemp){
+        $conditions = [['description', $description], ['idSkiFacility', $idSkiFacility], ['idSkipassTemp', $idSkipassTemp]];
+        $queryResult = FEntityManager::getInstance()->retriveObjNFields(self::getTable(), $conditions);
+        return FEntityManager::getInstance()->existInDb($queryResult);
+    }
+
 }
 
 ?>

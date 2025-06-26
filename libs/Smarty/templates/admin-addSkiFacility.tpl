@@ -88,10 +88,16 @@
 
               <label for="description">Descrizione:</label>
               <textarea id="description" name="description" maxlength="1000" required></textarea>
+              {if $errorLen} 
+              <label>ERRORE: Dimensione campo elevata</label>
+              {/if}
               
               <div class="button-container">
                 <button type="submit">Conferma</button>
               </div>
+              {if $exist}
+              <label>ERRORE: impianto già esistente</label>
+              {/if}
             </form>
         </div>
       </div>

@@ -1,18 +1,30 @@
 <?php
+<<<<<<< HEAD
 /* Smarty version 3.1.33, created on 2025-06-26 11:35:52
+=======
+/* Smarty version 3.1.33, created on 2025-06-26 14:56:53
+>>>>>>> bebcd2e (Modifiche controllori e pagine admin)
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-modifySkiFacility.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
+<<<<<<< HEAD
   'unifunc' => 'content_685d147850fda3_33019960',
+=======
+  'unifunc' => 'content_685d4395b148c5_56999624',
+>>>>>>> bebcd2e (Modifiche controllori e pagine admin)
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1e4c25a43bd491f41ef7ff7ee444b4f2f042e837' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-modifySkiFacility.tpl',
+<<<<<<< HEAD
       1 => 1750778132,
+=======
+      1 => 1750934714,
+>>>>>>> bebcd2e (Modifiche controllori e pagine admin)
       2 => 'file',
     ),
   ),
@@ -20,7 +32,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
+<<<<<<< HEAD
 function content_685d147850fda3_33019960 (Smarty_Internal_Template $_smarty_tpl) {
+=======
+function content_685d4395b148c5_56999624 (Smarty_Internal_Template $_smarty_tpl) {
+>>>>>>> bebcd2e (Modifiche controllori e pagine admin)
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -115,11 +131,11 @@ function content_685d147850fda3_33019960 (Smarty_Internal_Template $_smarty_tpl)
                   <label for="status">Stato:</label>
                   <div class="radio-group">
                     <?php if ($_smarty_tpl->tpl_vars['status']->value) {?>
-                    <label><input type="radio" name="status" value="aperto" checked> Aperto</label>
-                    <label><input type="radio" name="status" value="chiuso"> Chiuso</label>
+                    <label><input type="radio" name="status" value=1 checked> Aperto</label>
+                    <label><input type="radio" name="status" value=0> Chiuso</label>
                     <?php } else { ?>
-                    <label><input type="radio" name="status" value="aperto"> Aperto</label>
-                    <label><input type="radio" name="status" value="chiuso"checked> Chiuso</label>
+                    <label><input type="radio" name="status" value=1> Aperto</label>
+                    <label><input type="radio" name="status" value=0 checked> Chiuso</label>
                     <?php }?>
                   </div>
 
