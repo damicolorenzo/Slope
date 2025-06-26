@@ -22,9 +22,10 @@ class CUser {
         }
         if(USession::isSetSessionElement('user')){
             CUser::home();
+        } else {
+            $view = new VUser();
+            $view->showLoginForm(false);
         }
-        $view = new VUser();
-        $view->showLoginForm(false);
     }
 
     /**
@@ -39,7 +40,7 @@ class CUser {
             USession::unsetSession();
             USession::destroySession();
         } 
-        header('Location: /Slope/');
+        CUser::home();
     }
 
     /**
@@ -62,7 +63,7 @@ class CUser {
     public static function checkLogin() : void{
         $view = new VUser();
         if(!CUser::isLogged()) {
-            if(!empty(UHTTPMethods::post('username')) && !empty(UHTTPMethods::post('password'))) {
+            if(!is_null(UHTTPMethods::post('username')) && !is_null(UHTTPMethods::post('password'))) {
                 $username = FPersistentManager::getInstance()->verifyUserUsername(UHTTPMethods::post('username'));                                            
                 if($username)
                     $user = FPersistentManager::getInstance()->retriveUserOnUsername(UHTTPMethods::post('username'));
@@ -98,8 +99,12 @@ class CUser {
      * @return void
      */
     public static function registration() {
-        $view = new VUser();
-        $view->showRegistrationForm();
+        if(!CUser::isLogged()) {
+            $view = new VUser();
+            $view->showRegistrationForm();
+        } else {
+            CUser::home();
+        }
     }
 
     /**
@@ -107,51 +112,56 @@ class CUser {
      * @return void
      */
     public static function checkRegistration() : void{
+        if(!CUser::isLogged()) {
         $view = new VUser();
-        if(!is_null(UHTTPMethods::post('email')) && !is_null(UHTTPMethods::post('username')) && 
-        !is_null(UHTTPMethods::post('phoneNumber')) && !is_null(UHTTPMethods::post('name')) && 
-        !is_null(UHTTPMethods::post('birthDate')) && !is_null(UHTTPMethods::post('password')) && 
-        !is_null(UHTTPMethods::post('surname'))) {
-            if(!FPersistentManager::getInstance()->verifyUserEmail(UHTTPMethods::post('email')) && !FPersistentManager::getInstance()->verifyUserUsername(UHTTPMethods::post('username'))) {
-                $phone_number_validation_regex = "/^\\+?[1-9][0-9]{7,14}$/"; 
-                $password_validaiton = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/"; 
-                if(!preg_match($phone_number_validation_regex, UHTTPMethods::post('phoneNumber'))) {
-                    $phoneError = true;
-                } else {
-                    $phoneError = false;
-                    $extract_phone_number_pattern = "/\\+?[1-9][0-9]{7,14}/";
-                    preg_match_all($extract_phone_number_pattern, UHTTPMethods::post('phoneNumber'), $matches);
-                    $phoneNumber = implode($matches[0]);
-                }
-                if(!(date("Y-m-d") > UHTTPMethods::post('birthDate'))){
-                    $dateError = true;
-                } else {
-                    $dateError = false;
-                } 
-                if(!preg_match($password_validaiton, UHTTPMethods::post('password'))) {
-                    $passwordError = true;
-                } else {
-                    $passwordError = false;
-                }
-                if(!$phoneError && !$dateError && !$passwordError) {
-                    $user = new EUser(UHTTPMethods::post('name'), UHTTPMethods::post('surname'), UHTTPMethods::post('email'), $phoneNumber, UHTTPMethods::post('birthDate'), UHTTPMethods::post('username'), password_hash(UHTTPMethods::post('password'), PASSWORD_DEFAULT));
-                    $user->setIdImage(0);
-                    FPersistentManager::getInstance()->uploadObj($user);
-                    if(USession::getSessionStatus() == PHP_SESSION_NONE){
-                        USession::getInstance();
-                        USession::setSessionElement('user', $user->getId());
+            if(!is_null(UHTTPMethods::post('email')) && !is_null(UHTTPMethods::post('username')) && 
+            !is_null(UHTTPMethods::post('phoneNumber')) && !is_null(UHTTPMethods::post('name')) && 
+            !is_null(UHTTPMethods::post('birthDate')) && !is_null(UHTTPMethods::post('password')) && 
+            !is_null(UHTTPMethods::post('surname'))) {
+                if(!FPersistentManager::getInstance()->verifyUserEmail(UHTTPMethods::post('email')) && !FPersistentManager::getInstance()->verifyUserUsername(UHTTPMethods::post('username'))) {
+                    $phone_number_validation_regex = "/^\\+?[1-9][0-9]{7,14}$/"; 
+                    $password_validaiton = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/"; 
+                    if(!preg_match($phone_number_validation_regex, UHTTPMethods::post('phoneNumber'))) {
+                        $phoneError = true;
+                    } else {
+                        $phoneError = false;
+                        $extract_phone_number_pattern = "/\\+?[1-9][0-9]{7,14}/";
+                        preg_match_all($extract_phone_number_pattern, UHTTPMethods::post('phoneNumber'), $matches);
+                        $phoneNumber = implode($matches[0]);
                     }
-                    $map = CUser::loggedH();
-                    $view->loggedHome($map);
+                    if(!(date("Y-m-d") > UHTTPMethods::post('birthDate'))){
+                        $dateError = true;
+                    } else {
+                        $dateError = false;
+                    } 
+                    if(!preg_match($password_validaiton, UHTTPMethods::post('password'))) {
+                        $passwordError = true;
+                    } else {
+                        $passwordError = false;
+                    }
+                    if(!$phoneError && !$dateError && !$passwordError) {
+                        $user = new EUser(UHTTPMethods::post('name'), UHTTPMethods::post('surname'), UHTTPMethods::post('email'), $phoneNumber, UHTTPMethods::post('birthDate'), UHTTPMethods::post('username'), password_hash(UHTTPMethods::post('password'), PASSWORD_DEFAULT));
+                        $user->setIdImage(0);
+                        FPersistentManager::getInstance()->uploadObj($user);
+                        if(USession::getSessionStatus() == PHP_SESSION_NONE){
+                            USession::getInstance();
+                            USession::setSessionElement('user', $user->getId());
+                        }
+                        $map = CUser::loggedH();
+                        $view->loggedHome($map);
+                    } else {
+                        $view->showRegistrationForm($phoneError, $dateError, $passwordError, UHTTPMethods::allPost(), false);
+                    }
                 } else {
-                    $view->showRegistrationForm($phoneError, $dateError, $passwordError, UHTTPMethods::allPost(), false);
+                    $view->showRegistrationForm(false, false, false, UHTTPMethods::allPost(), true);
                 }
             } else {
-                $view->showRegistrationForm(false, false, false, UHTTPMethods::allPost(), true);
+                CUser::home();
             }
         } else {
             CUser::home();
         }
+
     }
 
     /**
@@ -166,16 +176,16 @@ class CUser {
                 $app = [];
                 $app1 = [];
                 $idSkiFacility = $skiFacility->getIdSkiFacility();
-                $app[] = $skiFacility->getName();    
-                $app[] = $skiFacility->getStatus();
-                $app[] = FPersistentManager::getInstance()->typeAndNumberSkiRun($idSkiFacility); 
-                $app[] = FPersistentManager::getInstance()->typeAndNumberLiftStructure($idSkiFacility);
+                $app['name'] = $skiFacility->getName();    
+                $app['status'] = $skiFacility->getStatus();
+                $app['countSkiRun'] = FPersistentManager::getInstance()->typeAndNumberSkiRun($idSkiFacility); 
+                $app['countLift'] = FPersistentManager::getInstance()->typeAndNumberLiftStructure($idSkiFacility);
                 $skiFacilityImages = FPersistentManager::getInstance()->retriveSkiFacilityImageOnId($idSkiFacility);
                 foreach ($skiFacilityImages as $i) {
                     $images = FPersistentManager::getInstance()->retriveImageOnId($i->getIdImage());
                     $app1[] = $images[0];
                 }
-                $app[] = $app1;
+                $app['image'] = $app1;
                 $result[] = $app;
             }
             return $result;
@@ -225,35 +235,6 @@ class CUser {
             $view->home($allSkiFacility, $skipassObj, $images);
         }
     }
-  
-    /* $mail = PMail::invia(
-        $user[0]->getEmail(),
-        $user[0]->getName() . $user[0]->getSurname(),
-        "Mail da Slope",
-        "Ciao Benvenuto su Slope"
-    );
-    if($mail)
-        header('Location: /Slope/User/loggedHome');
-    else 
-        print("Errore"); */
-
-    /* public static function confirmPage() : void {
-        $view = new Vuser();
-        if(CUser::isLogged()) {
-            $view->confirmPage();
-        } else {
-            CUser::home();
-        }
-    } */
-
-    
-
-    /* public static function confirmModifyProfileCode() {
-        $view = new VUser();
-        $view
-        
-    } */
-
 }
 
 ?>

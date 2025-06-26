@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__."\\..\\config\\config.php");
+require_once(__DIR__."/../config/config.php");
 
 class FEntityManager {
 
@@ -128,7 +128,6 @@ class FEntityManager {
             $table = $foundClass::getTable();
             $values = $foundClass::getValue();
             $query = "INSERT INTO {$table} VALUES {$values}";
-            //$query = "INSERT INTO " . $foundClass::getTable() . " VALUES" . $foundClass::getValue();
             $stmt = self::$db->prepare($query);
             $foundClass::bind($stmt, $obj);
             $stmt->execute();

@@ -59,8 +59,8 @@
             <li><a href="#pricing">Prezzi</a></li>
             <li><a href="#team">Team</a></li>
             <li><a href="#contact">Contatti</a></li>
-            <li><a href="/Slope/User/login">LogIn</a></li>
-            <li><a href="/Slope/User/registration">Registrati</a></li>
+            <li><a href="/User/login">LogIn</a></li>
+            <li><a href="/User/registration">Registrati</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -127,7 +127,7 @@
             <p class="fst-italic">
               Qui trovi tutto ciò di cui hai bisogno
             </p>
-            <a href="/Slope/User/login" class="read-more"><span>Scopri di più   </span><i class="bi bi-arrow-right"></i></a>
+            <a href="/User/login" class="read-more"><span>Scopri di più   </span><i class="bi bi-arrow-right"></i></a>
           </div>
 
         </div>
@@ -162,7 +162,7 @@
               <div class="dark-overlay"></div>
               <div class="content">
                 <h4>{$i[0]->getName()}</h4>
-                <a href="/Slope/User/login" class="stretched-link"></a>
+                <a href="/User/login" class="stretched-link"></a>
               </div>
             </div>
           {/foreach}
@@ -191,7 +191,7 @@
               <div class="icon">
                 <i class="bi bi-snow"></i>
               </div>
-              <a href="/Slope/User/login" class="stretched-link">
+              <a href="/User/login" class="stretched-link">
                 <h3>Monitoraggio impianti</h3>
               </a>
               <p>Consulta le condizioni odierne dei nostri comprensori sciistici</p>
@@ -240,7 +240,7 @@
             <div class="text-center">
               <h3>Pronto per la prossima discesa?</h3>
               <p>Consulta in tempo reale le condizioni delle piste e acquista il tuo skipass in pochi clic. Evita le code, risparmia tempo e goditi ogni momento sulla neve!</p>
-              <a class="cta-btn" href="/Slope/User/login">Prenota il tuo Skipass</a>
+              <a class="cta-btn" href="/User/login">Prenota il tuo Skipass</a>
             </div>
           </div>
         </div>
@@ -257,7 +257,7 @@
       <div class="container section-title" data-aos="fade-up">
       
       <div class="choseSkiFacility-section">
-        <form action="/Slope/User/home" method="POST" class="choseSkiFacility-form">
+        <form action="/User/home" method="POST" class="choseSkiFacility-form">
           <h2>Seleziona l'impianto e analizza i prezzi</h2>
           <div class="form-row">
             <div class="form-group">
@@ -288,7 +288,7 @@
                 <li><i class="bi bi-check"></i> <span>Il costo per l’utilizzo del servizio o prodotto è calcolato su base giornaliera.</span></li>
                 <li><i class="bi bi-check"></i> <span>Ideale per chi ha bisogno di flessibilità e vuole pagare solo per i giorni effettivi di utilizzo.</span></li>
               </ul>
-              <div class="text-center"><a href="/Slope/User/login" class="buy-btn">Acquista ora</a></div>
+              <div class="text-center"><a href="/User/login" class="buy-btn">Acquista ora</a></div>
             </div>
           </div><!-- End Pricing Item -->
           {else} 
@@ -309,7 +309,7 @@
                 <li><i class="bi bi-check"></i> <span>Tariffa conveniente per chi utilizza il servizio o prodotto per un’intera settimana.</span></li>
                 <li><i class="bi bi-check"></i> <span>Perfetto per chi ha bisogno di un periodo medio di utilizzo, con un risparmio rispetto al prezzo giornaliero.</span></li>
               </ul>
-              <div class="text-center"><a href="/Slope/User/login" class="buy-btn">Acquista ora</a></div>
+              <div class="text-center"><a href="/User/login" class="buy-btn">Acquista ora</a></div>
             </div>
           </div><!-- End Pricing Item -->
           {else} 
@@ -330,7 +330,7 @@
                 <li><i class="bi bi-check"></i> <span>Offerta vantaggiosa per chi prevede un utilizzo continuativo e prolungato.</span></li> 
                 <li><i class="bi bi-check"></i> <span>Il prezzo mensile garantisce il massimo risparmio rispetto alle tariffe giornaliere o settimanali.</span></li>
               </ul>
-              <div class="text-center"><a href="/Slope/User/login" class="buy-btn">Acquista ora</a></div>
+              <div class="text-center"><a href="/User/login" class="buy-btn">Acquista ora</a></div>
             </div>
           </div><!-- End Pricing Item -->
           {else} 

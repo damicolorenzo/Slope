@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Acquista assicurazione</title>
+  <title>Modifica password</title>
 
   <!-- Favicons -->
   <link href="/libs/Smarty/day/assets/img/light/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: dark)">
@@ -38,7 +38,7 @@
     <div class="branding d-flex align-items-center">
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
-        <a href="/Slope" class="logo d-flex align-items-center">
+        <a href="/" class="logo d-flex align-items-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <!-- <img src="assets/img/logo.png" alt=""> -->
           <h1 class="sitename">Slope</h1>
@@ -46,10 +46,10 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/ManageBooking/showBookings">Visualizza Prenotazioni</a></li>
-            <li><a href="/Slope/UserOperations/profile">Profile</a></li>
-            <li><a href="/Slope/User/logout">LogOut</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/ManageBooking/showBookings">Visualizza Prenotazioni</a></li>
+            <li><a href="/UserOperations/profile">Profile</a></li>
+            <li><a href="/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -64,38 +64,21 @@
     <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section"> 
 
-      <div class="container makeAInsuranceForm" data-aos="fade-up">
-
+      <div class="container modifyPassword" data-aos="fade-up">
+        
         <div class="form-container">
-        <h1>Acquista assicurazione</h1>
-        <form action="/Slope/PurchaseInsurance/confirmInsurance" method="post">
-            <label for="name">Nome</label>
-            <input type="text" id="name" name="name" value={$user->getName()}>
+            <div class="profile-info">
+                <h2>Nuova password</h2>
+                <form action="/UserOperations/setNewPassword" method="POST">
+                <p><strong>Nuova password:</strong></p>
+                <input type="hidden" id="token" name="token" value=$token>
+                <input type="password" id="password" name="password" required>
+                <button class="edit-button" type="submit">Procedi con il recupero</button>
+                </form>
+            </div>
+        </div>
 
-            <label for="surname">Cognome</label>
-            <input type="text" id="surname" name="surname" value={$user->getSurname()}>
-
-            <label for="email">Email di conferma</label>
-            <input type="email" id="email" name="email" value={$user->getEmail()}>
-
-            {if $period == 1}
-            <label><input type="radio" name="period" value={$period} checked > {$period} giorno</label>
-            <label for="data">Seleziona una data</label>
-            <input type="date" id="date" name="date" min={$today} value={$today}>
-            {else if $period > 1}
-            <label><input type="radio" name="period" value={$period} checked> {$period} giorni</label>
-            <label for="data">Seleziona data di partenza</label>
-            <input type="date" id="date" name="date" min={$today} value={$today}>
-            {/if}
-
-            
-            {if $dateWarning } 
-            <label>Controllare se la data inserita è corretta. La data potrebbe essere troppo lontana da quella corrente.</label>
-            {/if}
-
-            <button type="submit">Conferma</button>
-        </form>
-    </div> 
+      <!-- Da riempire in base alla pagina  -->
 
       </div>
 
@@ -112,16 +95,16 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <script src="/Slope/libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="/Slope/libs/Smarty/day/assets/vendor/php-email-form/validate.js"></script>
-  <script src="/Slope/libs/Smarty/day/assets/vendor/aos/aos.js"></script>
-  <script src="/Slope/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="/Slope/libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="/Slope/libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="/Slope/libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/php-email-form/validate.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/aos/aos.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 
   <!-- Main JS File -->
-  <script src="/Slope/libs/Smarty/day/assets/js/main.js"></script>
+  <script src="/libs/Smarty/day/assets/js/main.js"></script>
 
 </body>
 

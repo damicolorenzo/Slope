@@ -70,23 +70,19 @@
         <h1>Acquista assicurazione</h1>
         <form action="/Slope/PurchaseInsurance/confirmInsurance" method="post">
             <label for="name">Nome</label>
-            <input type="text" id="name" name="name" value={$user->getName()}>
+            <input type="text" id="name" name="name" value={$user->getName()} readonly>
 
             <label for="surname">Cognome</label>
-            <input type="text" id="surname" name="surname" value={$user->getSurname()}>
+            <input type="text" id="surname" name="surname" value={$user->getSurname()} readonly>
 
             <label for="email">Email di conferma</label>
             <input type="email" id="email" name="email" value={$user->getEmail()}>
 
-            {if $period == 1}
-            <label><input type="radio" name="period" value={$period} checked > {$period} giorno</label>
-            <label for="data">Seleziona una data</label>
-            <input type="date" id="date" name="date" min={$today} value={$today}>
-            {else if $period > 1}
-            <label><input type="radio" name="period" value={$period} checked> {$period} giorni</label>
-            <label for="data">Seleziona data di partenza</label>
-            <input type="date" id="date" name="date" min={$today} value={$today}>
-            {/if}
+            <label for="period">Periodo</label>
+            <label><input type="radio" name="period" value={$period} checked> {$period} giorno</label>
+            
+            <label for="data">Data</label>
+            <input type="date" id="date" name="date" value={$date} readonly>
 
             
             {if $dateWarning } 

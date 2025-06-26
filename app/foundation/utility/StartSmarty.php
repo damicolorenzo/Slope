@@ -4,7 +4,7 @@
 richiediamo il file Smarty.class.php posizionato nella macrocartella libs 
 libs sta per librerie quindi tutte le librerie esterne utilizzate (in questo caso solo Smarty)
 */
-require(__DIR__.'\\..\\..\\..\\libs\\Smarty\\Smarty.class.php');
+require(__DIR__.'/../../../libs/Smarty/Smarty.class.php');
 
 class StartSmarty {
 
@@ -16,10 +16,10 @@ class StartSmarty {
         .tpl per specificare i template delle varie pagine del sito
         */
         $smarty = new Smarty();
-        $smarty->template_dir = __DIR__.'\\..\\..\\..\\libs\\Smarty\\templates\\';
-        $smarty->compile_dir = __DIR__.'\\..\\..\\..\\libs\\Smarty\\templates_c\\';
-        $smarty->config_dir = __DIR__.'\\..\\..\\..\\libs\\Smarty\\configs\\';
-        $smarty->cache_dir = __DIR__.'\\..\\..\\..\\libs\\Smarty\\cache\\';
+        $smarty->template_dir = __DIR__.'/../../../libs/Smarty/templates/';
+        $smarty->compile_dir = __DIR__.'/../../../libs/Smarty/templates_c/';
+        $smarty->config_dir = __DIR__.'/../../../libs/Smarty/configs/';
+        $smarty->cache_dir = __DIR__.'/../../../libs/Smarty/cache/';
         return $smarty;
     }
 

@@ -8,7 +8,7 @@ il caricamento delle pagine tramite Smarty.
 Nel file StartSmarty.php sono specificate le posizioni delle 4 cartelle di funzionamento di Smarty
 posizionate nella cartella libs (leggere il codice di StartSmarty \foundation\utility\StartSmarty.php) 
 */ 
-require_once (__DIR__."\\..\\foundation\\utility\\StartSmarty.php");
+require_once (__DIR__."/../foundation/utility/StartSmarty.php");
 
 class VUser {
 

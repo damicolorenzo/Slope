@@ -4,20 +4,6 @@ require_once (__DIR__ . '/../config/autoloader.php');
 
 class CUserOperations {
 
-    public static function sendMail() {
-        $name = UHTTPMethods::post('name');
-        $email = UHTTPMethods::post('email');
-        $subject = UHTTPMethods::post('subject');
-        $message = UHTTPMethods::post('message');
-        //salvataggio sul db del messaggio scritto dall'utente
-        $mail = PMail::invia(
-            $email,
-            $name,
-            "Conferma invio mail a Slope",
-            "Grazie per aver condiviso la sua idea"
-        );
-    }
-
     /**
      * Method to show the informations about the user 
      * @return void
@@ -44,7 +30,10 @@ class CUserOperations {
                     $rebuySub = false;
             else    
                 $rebuySub = false;
-            $view->profileInfo($username, $name, $surname, $email, $phoneNumber, $birthDate, $image, $creditCard, $subscription, $rebuySub);
+            $subscriptionTemp = FPersistentManager::getInstance()->retriveSubscriptionTempFromId(1);
+            $value = $subscriptionTemp[0]->getValue();
+            $discount = $subscriptionTemp[0]->getDiscount();
+            $view->profileInfo($username, $name, $surname, $email, $phoneNumber, $birthDate, $image, $creditCard, $subscription, $rebuySub, $value, $discount);
         } else {
             CUser::home();
         }
@@ -95,22 +84,21 @@ class CUserOperations {
                     preg_match_all($extract_phone_number_pattern, UHTTPMethods::post('phoneNumber'), $matches);
                     $modifiedPhoneNumber = implode($matches[0]);
                 }
-                if($phoneError) 
+                if($phoneError) {
                     $view->modifyProfile($username, $name, $surname, $modifiedEmail, $modifiedPhoneNumber, $birthDate, $phoneError, false);
-                else {
-                    if($user[0]->getEmail() != $modifiedEmail && $user[0]->getPhoneNumber() != $modifiedPhoneNumber) {
+                } else {
+                    if($user[0]->getEmail() != $modifiedEmail || $user[0]->getPhoneNumber() != $modifiedPhoneNumber) {
                         $now = date('Y-m-d H:i:s');
                         $modify = "";
                         if($user[0]->getEmail() != $modifiedEmail)
                             $modify = "Email";
                         if($user[0]->getPhoneNumber() != $modifiedPhoneNumber)
-                            $modify = $modify + "Numero di telefono";
-
-                        $mail = PMail::invia(
+                            $modify = $modify . "Numero di telefono";
+                        $mailer = UPMail::getInstance();
+                        $mailer->sendMail(
                             $modifiedEmail,
-                            $name,
                             "Conferma modifica della email sul suo account Slope",
-                            "Ciao $name,
+                            "Ciao,
                             Le modifiche al tuo profilo sono state salvate con successo.
                             Dettagli aggiornati:
 
@@ -230,14 +218,27 @@ class CUserOperations {
             FPersistentManager::getInstance()->deleteImage($user[0]->getIdImage());
             $user[0]->setIdImage(0);
             FPersistentManager::getInstance()->updateUserIdImage($user[0]);
+            $mailer = UPMail::getInstance();
+            $now = date('Y-m-d H:i:s');
+            $modify = "Eliminazione immagine profilo";
+            $mailer->sendMail(
+                $user[0]->getEmail(),
+                "Conferma modifica della email sul suo account Slope",
+                "Ciao,
+                Le modifiche al tuo profilo sono state salvate con successo.
+                Dettagli aggiornati:
+
+                Data modifica: $now
+                Modifiche effettuate: $modify
+
+                Se non hai effettuato tu queste modifiche, contattaci immediatamente.
+                Grazie,
+                Il team di Slope"
+            );
             self::profile();
         } else {
             CUser::home();
         }
-    }
-
-    public static function confirmDeleteImage() {
-
     }
 
     /**
@@ -253,33 +254,137 @@ class CUserOperations {
         }
     }
 
+    public static function lostPassword() : void {
+        if(!CUser::isLogged()){
+            $view = new VUserOperations();
+            $view->lostPassword();
+        } else {
+            CUser::home();
+        }
+    }
+
+    public static function checkLostUser() : void {
+        if(!empty(UHTTPMethods::post('email'))) {
+            $checkEmail = FPersistentManager::getInstance()->verifyUserEmail(UHTTPMethods::post('email'));
+            $view = new VUserOperations();
+            if($checkEmail) {
+                $user = FPersistentManager::getInstance()->retriveUserOnEmail(UHTTPMethods::post('email'));
+                $token = bin2hex(random_bytes(32));
+                $createdAt = date('Y-m-d H:i:s'); // es: 2025-06-24 14:30:00
+                $expiresAt = date('Y-m-d H:i:s', strtotime('+15 minutes'));
+                $tokenObj = new EToken($token, $expiresAt, $createdAt);
+                $tokenObj->setUserId($user[0]->getIdUser());
+                FPersistentManager::getInstance()->uploadObj($tokenObj);
+                $mailer = UPMail::getInstance();
+                $mailer->sendMail(UHTTPMethods::post('email'), "Recupero password Slope", "Recupera la tua mail qui https://localhost/Slope/UserOperations/resetPassword utilizzando il token: token={$token}");
+                $view->checkLostUser(true);
+            } else {
+                CUser::home();
+            }
+        } else {
+            CUser::home();
+        }
+    }
+
+    public static function resetPassword() : void{
+        $view = new VUserOperations();
+        $view->newPasswordForm();
+    }
+ 
+    public static function setNewPassword() {
+        if(!is_null(UHTTPMethods::post('password')) && !is_null(UHTTPMethods::post('token'))) {
+            $password = UHTTPMethods::post('password');
+            $token = UHTTPMethods::post('token');
+            $retrivedToken = FPersistentManager::getInstance()->retriveTokenFromToken($token);
+            $view = new VUserOperations();
+            if(count($retrivedToken) > 0) {
+                $view->newPasswordForm();
+            }
+            $now = new DateTime();                   // ora attuale
+            $created = new DateTime($retrivedToken[0]->getCreatedAt());
+            $expires = new DateTime($retrivedToken[0]->getExpiresAt());
+            if(!($now >= $created && $now < $expires)) {
+                $view->newPasswordForm();
+            } 
+            if($retrivedToken[0]->getUsed()) {
+                $view->newPasswordForm();
+            }
+            $password_validaiton = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/"; 
+            if(!preg_match($password_validaiton, $password)) {
+                $passwordError = true;
+            } else {
+                $passwordError = false;
+            }
+            if($passwordError) {
+                $view->newPasswordForm();
+            } else {
+                $newPass = password_hash($password, PASSWORD_DEFAULT);
+                $userId = $retrivedToken[0]->getUserId();
+                $user = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $userId);
+                $user[0]->setPassword($newPass);
+                $result = FPersistentManager::getInstance()->updateUserPassword($user[0]);
+                $newToken = new EToken($token, $retrivedToken[0]->getExpiresAt(), $retrivedToken[0]->getCreatedAt());
+                $newToken->setId($retrivedToken[0]->getId());
+                $newToken->setUserId($userId);
+                $newToken->setUsed(1);
+                FPersistentManager::getInstance()->updateToken($newToken);
+                if($result) {
+                    CUser::home();
+                } else {
+                    $view->newPasswordForm();
+                }
+            }
+        }
+    }
+
     /**
      * Method to verify the data from modify password form
      * @return void
      */
     public static function setPassword() : void{
         if(CUser::isLogged()){
-            $view = new VUserOperations();
-            $password_validaiton = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/"; 
-            if(!preg_match($password_validaiton, UHTTPMethods::post('password'))) {
-                $passwordError = true;
-            } else {
-                $passwordError = false;
-            }
-            if($passwordError) {
-                $view->modifyPassword($passwordError);
-            } else {
-                $userId = USession::getInstance()->getSessionElement('user');
-                $user = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $userId);
-                $newPass = password_hash(UHTTPMethods::post('password'), PASSWORD_DEFAULT);
-                $user->setPassword($newPass);
-                $result = FPersistentManager::getInstance()->updateUserPassword($user);
-                if($result) {
-                    self::profile();
+            if(!is_null(UHTTPMethods::post('password'))) {
+                $view = new VUserOperations();
+                $password_validaiton = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/"; 
+                if(!preg_match($password_validaiton, UHTTPMethods::post('password'))) {
+                    $passwordError = true;
                 } else {
-                    $view->modifyPassword($passwordError);
+                    $passwordError = false;
                 }
-            }   
+                if($passwordError) {
+                    $view->modifyPassword($passwordError);
+                } else {
+                    $userId = USession::getInstance()->getSessionElement('user');
+                    $user = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $userId);
+                    $newPass = password_hash(UHTTPMethods::post('password'), PASSWORD_DEFAULT);
+                    $user[0]->setPassword($newPass);
+                    $result = FPersistentManager::getInstance()->updateUserPassword($user[0]);
+                    if($result) {
+                        $mailer = UPMail::getInstance();
+                        $now = date('Y-m-d H:i:s');
+                        $modify = "Modifica password profilo";
+                        $mailer->sendMail(
+                            $user[0]->getEmail(),
+                            "Conferma modifica della password sul suo account Slope",
+                            "Ciao,
+                            Le modifiche al tuo profilo sono state salvate con successo.
+                            Dettagli aggiornati:
+
+                            Data modifica: $now
+                            Modifiche effettuate: $modify
+
+                            Se non hai effettuato tu queste modifiche, contattaci immediatamente.
+                            Grazie,
+                            Il team di Slope"
+                        );
+                        self::profile();
+                    } else {
+                        $view->modifyPassword($passwordError);
+                    }
+                }
+            } else {
+                CUser::home();
+            }
         } else {
             CUser::home();
         }
@@ -289,7 +394,6 @@ class CUserOperations {
         if(CUser::isLogged()){
             $view = new VUserOperations();
             $userId = USession::getInstance()->getSessionElement('user');
-            $user = FPersistentManager::getInstance()->retriveUserOnId($userId);
             $creditCard = FPersistentManager::getInstance()->retriveCreditCardFromUserId($userId);
             $cardHName = $creditCard[0]->getCardHolderName();
             $cardHSurname = $creditCard[0]->getCardHolderSurname();
@@ -301,10 +405,74 @@ class CUserOperations {
         }
     }
 
+    public static function confirmModifyCreditCard() :void {
+        if(CUser::isLogged()){
+            if(!is_null(UHTTPMethods::post('cardHolderName')) && !is_null(UHTTPMethods::post('cardHolderSurname')) && 
+            !is_null(UHTTPMethods::post('cardHolderSurname')) && !is_null(UHTTPMethods::post('cardNumber')) && 
+            !is_null(UHTTPMethods::post('expiryDate')) && !is_null(UHTTPMethods::post('cvv'))) {
+                $userId = USession::getInstance()->getSessionElement('user');
+                $user = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $userId);
+                $creditCard = FPersistentManager::getInstance()->retriveCreditCardFromUserId($userId);
+                $cond = UHTTPMethods::post('cardHolderName') == $creditCard[0]->getCardHolderName() &&
+                    UHTTPMethods::post('cardHolderSurname') == $creditCard[0]->getCardHolderSurname() &&
+                    UHTTPMethods::post('expiryDate') == $creditCard[0]->getExpiryDate() && 
+                    UHTTPMethods::post('cardNumber') == $creditCard[0]->getCardNumber() &&
+                    UHTTPMethods::post('cvv') == $creditCard[0]->getCvv();
+                    if(!$cond) {
+                        $creditCard = new ECreditCard(UHTTPMethods::post('cardHolderName'), UHTTPMethods::post('cardHolderSurname'), UHTTPMethods::post('expiryDate'), UHTTPMethods::post('cardNumber'), UHTTPMethods::post('cvv'));
+                        $creditCard->setIdUser($userId);
+                        FPersistentManager::getInstance()->updateCreditCard($creditCard);
+                        $mailer = UPMail::getInstance();
+                        $now = date('Y-m-d H:i:s');
+                        $modify = "Modifica carta di credito";
+                        $mailer->sendMail(
+                            $user[0]->getEmail(),
+                            "Conferma modifica dei dati della carta di credito sul suo account Slope",
+                            "Ciao,
+                            Le modifiche al tuo profilo sono state salvate con successo.
+                            Dettagli aggiornati:
+
+                            Data modifica: $now
+                            Modifiche effettuate: $modify
+
+                            Se non hai effettuato tu queste modifiche, contattaci immediatamente.
+                            Grazie,
+                            Il team di Slope"
+                        );
+                    } else {
+                        self::profile();
+                    }
+            } else {
+                CUser::home();
+            }
+        } else {
+            CUser::home();
+        }
+    }
+
     public static function deleteCreditCard() {
         if(CUser::isLogged()){
             $userId = USession::getInstance()->getSessionElement('user');
+            $user = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $userId);
             FPersistentManager::getInstance()->deleteCreditCard($userId);
+            $mailer = UPMail::getInstance();
+            $now = date('Y-m-d H:i:s');
+            $modify = "Eliminazione carta di credito";
+            $mailer->sendMail(
+                $user[0]->getEmail(),
+                "Conferma eliminazione della carta di credito dal suo account Slope",
+                "Ciao,
+                Le modifiche al tuo profilo sono state salvate con successo.
+                Dettagli aggiornati:
+
+                Data modifica: $now
+                Modifiche effettuate: $modify
+
+                Se non hai effettuato tu queste modifiche, contattaci immediatamente.
+                Grazie,
+                Il team di Slope"
+            );
+            self::profile();
             CUser::home();
         } else {
             CUser::home();

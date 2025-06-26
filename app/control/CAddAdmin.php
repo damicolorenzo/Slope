@@ -144,8 +144,8 @@ class CAddAdmin {
      */
     public static function addImageLandingPage() :void{
         if(CAdmin::isLogged()) {
-            $id = UHTTPMethods::post('id');
-            if(UHTTPMethods::files('image','size') > 0){
+            if(UHTTPMethods::files('image','size') > 0 && !is_null(UHTTPMethods::post('id'))){
+                $id = UHTTPMethods::post('id');
                 $uploadedImage = UHTTPMethods::files('image');
                 $check = FPersistentManager::getInstance()->checkImage($uploadedImage);
                 if($check == 'UPLOAD_ERROR_OK' || $check == 'TYPE_ERROR' || $check == 'SIZE_ERROR') {

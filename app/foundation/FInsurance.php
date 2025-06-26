@@ -5,9 +5,10 @@ require_once("FEntityManager.php");
 class FInsurance {
 
     private static $table = "insurance";
-    private static $value = "(NULL, :name, :surname, :email, :type, :period, :price, :startDate, :idUser)";
+    private static $value = "(NULL, :name, :surname, :email, :type, :period, :price, :startDate, :idUser, :idSkipassBooking)";
     private static $key = "idInsurance";
-    private static $extKey = "idUser";
+    private static $extKeyUser = "idUser";
+    private static $extKeyBooking = "idSkipassBooking";
 
 
     public static function getTable(){
@@ -22,8 +23,12 @@ class FInsurance {
         return self::$key;
     }
 
-    public static function getExtKey(){
-        return self::$extKey;
+    public static function getExtKeyUser(){
+        return self::$extKeyUser;
+    }
+
+    public static function getExtKeyBooking(){
+        return self::$extKeyBooking;
     }
 
     public static function getClass(){
@@ -45,6 +50,7 @@ class FInsurance {
         $stmt->bindValue(":price", $insurance->getPrice(), PDO::PARAM_INT);
         $stmt->bindValue(":startDate", $insurance->getStartDate(), PDO::PARAM_STR);
         $stmt->bindValue(":idUser", $insurance->getIdUser(), PDO::PARAM_INT);
+        $stmt->bindValue(":idSkipassBooking", $insurance->getIdSkipassBooking(), PDO::PARAM_INT);
     }
 
     /**
@@ -58,6 +64,7 @@ class FInsurance {
             $insurance = new EInsurance($queryResult[0]['name'], $queryResult[0]['surname'], $queryResult[0]['email'], $queryResult[0]['type'], $queryResult[0]['period'], $queryResult[0]['price'], $queryResult[0]['startDate']);
             $insurance->setIdInsurance($queryResult[0]['idInsurance']);
             $insurance->setIdUser($queryResult[0]['idUser']);
+            $insurance->setIdUser($queryResult[0]['idSkipassBooking']);
             $insuranceA[] = $insurance;
             return $insuranceA;
         } elseif(count($queryResult) > 1) {
@@ -66,6 +73,7 @@ class FInsurance {
                 $insurance = new EInsurance($queryResult[$i]['name'], $queryResult[$i]['surname'], $queryResult[$i]['email'], $queryResult[$i]['type'], $queryResult[$i]['period'], $queryResult[$i]['price'], $queryResult[$i]['startDate']);
                 $insurance->setIdInsurance($queryResult[$i]['idInsurance']);
                 $insurance->setIdUser($queryResult[$i]['idUser']);
+                $insurance->setIdUser($queryResult[$i]['idSkipassBooking']);
                 $insurancies[] = $insurance;
             }
             return $insurancies;
@@ -167,7 +175,7 @@ class FInsurance {
      * @return array $queryResult
      */
     public static function getInsuranceFromIdUser(int $idUser) : array{
-        $queryResult = FEntityManager::getInstance()->retriveObj(self::getTable(), self::getExtKey(), $idUser);
+        $queryResult = FEntityManager::getInstance()->retriveObj(self::getTable(), self::getExtKeyUser(), $idUser);
         return $queryResult;
     }
 
@@ -178,6 +186,17 @@ class FInsurance {
      */
     public static function getInsuranceFromIdUserAndDate(int $idUser, string $date) : array{
         $field = [['idUser', $idUser], ['startDate', $date]];
+        $queryResult = FEntityManager::getInstance()->retriveObjNFields(self::getTable(), $field);
+        return $queryResult;
+    }
+
+    /**
+     * Method to get a insurance using id user and date
+     * @param $idUser id of the user
+     * @return array $queryResult
+     */
+    public static function getInsuranceFromIdUserIdSkipassBookingAndDate(int $idUser, int $idSkipassBooking, string $date) : array{
+        $field = [['idUser', $idUser], ['idSkipassBooking', $idSkipassBooking], ['startDate', $date]];
         $queryResult = FEntityManager::getInstance()->retriveObjNFields(self::getTable(), $field);
         return $queryResult;
     }

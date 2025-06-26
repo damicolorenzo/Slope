@@ -73,12 +73,40 @@ class FPayment {
      * @param EPaymeny $obj Refers to a payment Entity object that needs to be stored in the database
      * @return bool true if succeded and false if failed
      */
-    public static function saveObj(EPayment $obj) : bool{
-        $savePayment = FEntityManager::getInstance()->saveObject(self::getClass(), $obj);
-        if ($savePayment !== null)
-            return true;
-        else
-            return false;
+    public static function saveObj(EPayment $obj, ?array $fieldArray = null) : bool{
+        if($fieldArray === null) {
+            try {
+                FEntityManager::getInstance()->getDb()->beginTransaction();
+                $savePayment = FEntityManager::getInstance()->saveObject(self::getClass(), $obj);
+                if($savePayment !== null) {
+                    FEntityManager::getInstance()->getDb()->commit();
+                    return $savePayment;
+                } else {
+                    return false;
+                }
+            } catch(PDOException $e) {
+                error_log("Database error in FPayment saveObj: " . $e->getMessage());
+                FEntityManager::getInstance()->getDb()->rollBack();
+                return false;
+            } finally {
+                FEntityManager::getInstance()->closeConnection();
+            }
+        } else {
+            try {
+                FEntityManager::getInstance()->getDb()->beginTransaction();
+                foreach($fieldArray as $fv) {
+                    FEntityManager::getInstance()->updateObj(FPayment::getTable(), $fv[0], $fv[1], self::getKey(), $obj->getIdPayment());
+                }
+                FEntityManager::getInstance()->getDb()->commit();
+                return true;
+            } catch(PDOException $e) {
+                error_log("Database error in FPayment saveObj: " . $e->getMessage());
+                FEntityManager::getInstance()->getDb()->rollBack();
+                return false;
+            } finally {
+                FEntityManager::getInstance()->closeConnection();
+            }
+        }
     }
 }
 

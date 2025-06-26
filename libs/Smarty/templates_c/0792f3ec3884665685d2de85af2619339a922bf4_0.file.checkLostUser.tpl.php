@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-06-25 22:33:51
-  from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\modifyPassword.tpl' */
+/* Smarty version 3.1.33, created on 2025-06-25 14:32:23
+  from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\checkLostUser.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_685c5d2f303ec7_56482530',
+  'unifunc' => 'content_685bec57a96a43_50260147',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '136983bcc97c1b3c54a7d3234e2691a51678a744' => 
+    '0792f3ec3884665685d2de85af2619339a922bf4' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\modifyPassword.tpl',
-      1 => 1750773518,
+      0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\checkLostUser.tpl',
+      1 => 1750854698,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_685c5d2f303ec7_56482530 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685bec57a96a43_50260147 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +37,7 @@ function content_685c5d2f303ec7_56482530 (Smarty_Internal_Template $_smarty_tpl)
   <link href="https://localhost/Slope/libs/Smarty/day/assets/img/dark/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: light)">
   <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: light)">
   <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: light)">
-  
+
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -52,7 +52,7 @@ function content_685c5d2f303ec7_56482530 (Smarty_Internal_Template $_smarty_tpl)
 
   <!-- Main CSS File -->
   <link href="https://localhost/Slope/libs/Smarty/day/assets/css/main.css" rel="stylesheet">
-  
+
 </head>
 
 <body class="starter-page-page">
@@ -69,10 +69,7 @@ function content_685c5d2f303ec7_56482530 (Smarty_Internal_Template $_smarty_tpl)
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/ManageBooking/showBookings">Visualizza Prenotazioni</a></li>
-            <li><a href="/Slope/UserOperations/profile">Profile</a></li>
-            <li><a href="/Slope/User/logout">LogOut</a></li>
+            <li><a href="/Slope">Home</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -91,14 +88,8 @@ function content_685c5d2f303ec7_56482530 (Smarty_Internal_Template $_smarty_tpl)
         
         <div class="form-container">
             <div class="profile-info">
-                <h2>Modifica password</h2>
-                <form action="/Slope/UserOperations/setPassword" method="POST">
-                <p><strong>Nuova password:</strong></p>
-                <input type="password" id="password" name="password" required>
-                <?php if ($_smarty_tpl->tpl_vars['passwordError']->value == true) {?>
-                <label>Lunghezza minima 8 CARATTERI, lettere maiuscole/minuscole, numeri, almeno un carattere speciale</label>
-                <?php }?>
-                <button class="edit-button" type="submit">Modifica password</button>
+                <h2>Recupera password</h2>
+                <h3>Controllare la mail</h3>
                 </form>
             </div>
         </div>

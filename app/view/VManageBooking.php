@@ -1,6 +1,6 @@
 <?php
 
-require_once (__DIR__."\\..\\foundation\\utility\\StartSmarty.php");
+require_once (__DIR__."/../foundation/utility/StartSmarty.php");
 
 class VManageBooking {
 
@@ -45,18 +45,9 @@ class VManageBooking {
         $this->smarty->display('modifySkipassBooking.tpl');
     }
 
-    public function showBookings($allBookings, $monthName, $year, $calendar, $prevMonth, $prevYear, $nextMonth, $nextYear, $bookedArray, $idForDate, $oAFB) {
+    public function showBookings($allBookings, $oldBookings) {
         $this->smarty->assign('bookings', $allBookings);
-        $this->smarty->assign('monthName', $monthName);
-        $this->smarty->assign('year', $year);
-        $this->smarty->assign('calendar', $calendar);
-        $this->smarty->assign('prevMonth', $prevMonth);
-        $this->smarty->assign('prevYear', $prevYear);
-        $this->smarty->assign('nextMonth', $nextMonth);
-        $this->smarty->assign('nextYear', $nextYear);
-        $this->smarty->assign('bookedDates', $bookedArray);
-        $this->smarty->assign('idForDate', $idForDate);
-        $this->smarty->assign('oldBookings', $oAFB);
+        $this->smarty->assign('oldBookings', $oldBookings);
         $this->smarty->display('showBookings.tpl');
     }
 

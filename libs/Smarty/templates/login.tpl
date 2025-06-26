@@ -81,7 +81,7 @@
           <label for="password">Password</label>
           <input type="password" id="password" name="password" required>
 
-          <a href="modifyPassword">Password dimenticata</a>
+          <a href="/Slope/UserOperations/lostPassword">Password dimenticata</a>
 
           <button type="submit">Login</button>
         </form>

@@ -53,8 +53,8 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="/Slope">Home</a></li>
-            <li><a href="/Slope/User/registration">Registrati</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/User/registration">Registrati</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -72,7 +72,7 @@
     <div class="login-registration-wrapper">
       <div class="col-lg-4 col-md-6 card aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
 
-        <form class="login-registration-form" action="/Slope/User/checkLogin" method="POST">
+        <form class="login-registration-form" action="/User/checkLogin" method="POST">
           <h2>Accedi al tuo account</h2>
 
           <label for="username">Nome utente</label>
@@ -81,7 +81,7 @@
           <label for="password">Password</label>
           <input type="password" id="password" name="password" required>
 
-          <a href="modifyPassword">Password dimenticata</a>
+          <a href="/UserOperations/lostPassword">Password dimenticata</a>
 
           <button type="submit">Login</button>
         </form>
@@ -99,16 +99,16 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/php-email-form/validate.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/aos/aos.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/php-email-form/validate.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/aos/aos.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 
   <!-- Main JS File -->
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/js/main.js"></script>
+  <script src="/libs/Smarty/day/assets/js/main.js"></script>
 
 </body>
 

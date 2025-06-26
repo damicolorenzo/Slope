@@ -65,107 +65,70 @@
     <section id="starter-section" class="starter-section section"> 
 
       <div class="container showBookings" data-aos="fade-up">
-
-        <div class="calendar-container">
-        <h2>
-          <form action="/Slope/ManageBooking/showBookings" method="POST">
-            <input type="hidden" name="month" value={$prevMonth}>
-            <input type="hidden" name="year" value={$prevYear}>
-            <button type="submit">&laquo;</button>
-          </form>
-
-          {$monthName} {$year}
-
-          <form action="/Slope/ManageBooking/showBookings" method="POST">
-            <input type="hidden" name="month" value={$nextMonth}>
-            <input type="hidden" name="year" value={$nextYear}>
-            <button type="submit">&raquo;</button>
-          </form>
-        </h2>
-        <div class="calendar-scroll-wrapper">
-        <table>
-          <tr>
-            <th>Mon</th><th>Tue</th>
-            <th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th>
-          </tr>
-
-          {foreach from=$calendar item=week}
-            <tr>
-              {foreach from=$week item=day}
-                {if $day}
-                  {if in_array($day, $bookedDates)} <!-- Controlla se il giorno è prenotato -->
-                    <td class="booked">
-                      <a href="#booking-{$idForDate[$day][0]}" class="booked-link">{$day}</a>
-                      <div class="booking-text">{$idForDate[$day][1]}</div>
-                    </td> <!-- Giorno prenotato con stile speciale -->
-                  {else}
-                    <td>{$day}</td> <!-- Giorno normale -->
-                  {/if}
-                {/if}
-              {/foreach}
-            </tr>
-          {/foreach}
-        </table>
-        </div>
-      </div>
-
-      {if count($bookings) > 0}
-      <h1>Dati prenotazione</h1>
-      <div class="card-booking-wrapper">
-        {foreach $bookings item=e}
-          <div class="booking-card" id="booking-{$e['bookings'][0]->getIdSkipassBooking()}">
-            <p><strong>Nome:</strong> {$e['bookings'][0]->getName()}</p>
-            <p><strong>Cognome:</strong> {$e['bookings'][0]->getSurname()}</p>
-            <p><strong>Email:</strong> {$e['bookings'][0]->getEmail()}</p>
-            <p><strong>Data:</strong> {$e['bookings'][0]->getStartDate()}</p>
-            <p><strong>Periodo:</strong> {$e['bookings'][0]->getPeriod()}</p>
-            <p><strong>Tipo:</strong> {$e['bookings'][0]->getType()}</p>
-            <p><strong>Prezzo totale:</strong> {$e['bookings'][0]->getValue()}</p>
-            <p><strong>Impianto sci:</strong> {$e['bookings'][1]->getName()}</p>
-          
-            {if $e['bookings'][2] != []}
-              <p><strong>Assicurazione:</strong></p>
-              <img class="imagePreview" src="https://localhost/Slope/libs/Smarty/images/checked.png">
-            {else}
-              <div class="flex">
+        {if count($bookings) > 0}
+        <h1>Dati prenotazione</h1>
+        <div class="card-booking-wrapper">
+          {foreach $bookings item=e}
+            <div class="booking-card" id="booking-{$e[0]->getIdSkipassBooking()}">
+              <p><strong>Nome:</strong> {$e[0]->getName()}</p>
+              <p><strong>Cognome:</strong> {$e[0]->getSurname()}</p>
+              <p><strong>Email:</strong> {$e[0]->getEmail()}</p>
+              <p><strong>Data:</strong> {$e[0]->getStartDate()}</p>
+              {if $e[0]->getPeriod() >= 1}
+              <p><strong>Periodo:</strong> {(int)$e[0]->getPeriod()} giorno</p> 
+              {else}
+              <p><strong>Periodo:</strong> {$e[0]->getPeriod()} giorni</p> 
+              {/if}
+              <p><strong>Tipo:</strong> {$e[0]->getType()}</p>
+              <p><strong>Prezzo totale:</strong> {$e[0]->getValue()} euro</p>
+              <p><strong>Impianto sci:</strong> {$e[1]->getName()}</p>
+            
+              {if $e[2] != []}
                 <p><strong>Assicurazione:</strong></p>
-                <form action="/Slope/PurchaseInsurance/buyInsurance" method="POST">
-                  <input type="hidden" name="idSkipassBooking" value="{$e['bookings'][0]->getIdSkipassBooking()}">
-                  <button type="submit" class="btn-insurance">Acquista</button>
+                <img class="imagePreview" src="https://localhost/Slope/libs/Smarty/images/checked.png">
+              {else}
+                <div class="flex">
+                  <p><strong>Assicurazione:</strong></p>
+                  <form action="/Slope/PurchaseInsurance/buyInsurance" method="POST">
+                    <input type="hidden" name="idSkipassBooking" value="{$e[0]->getIdSkipassBooking()}">
+                    <button type="submit" class="btn-insurance">Acquista</button>
+                  </form>
+                </div>
+              {/if}
+
+              <div class="booking-actions">
+                <form action="/Slope/ManageBooking/modifySkipassBooking" method="POST">
+                  <input type="hidden" name="idSkipassBooking" value="{$e[0]->getIdSkipassBooking()}">
+                  <button type="submit" class="btn-mod">Modifica</button>
+                </form>
+
+                <form action="/Slope/ManageBooking/deleteSkipassBooking" method="POST">
+                  <input type="hidden" name="idSkipassBooking" value="{$e[0]->getIdSkipassBooking()}">
+                  <button type="submit" class="btn-er">Elimina</button>
                 </form>
               </div>
-            {/if}
-
-            <div class="booking-actions">
-              <form action="/Slope/ManageBooking/modifySkipassBooking" method="POST">
-                <input type="hidden" name="idSkipassBooking" value="{$e['bookings'][0]->getIdSkipassBooking()}">
-                <button type="submit" class="btn-mod">Modifica</button>
-              </form>
-
-              <form action="/Slope/ManageBooking/deleteSkipassBooking" method="POST">
-                <input type="hidden" name="idSkipassBooking" value="{$e['bookings'][0]->getIdSkipassBooking()}">
-                <button type="submit" class="btn-er">Elimina</button>
-              </form>
             </div>
-          </div>
-        {/foreach}
-        {foreach from=$oldBookings item=e}
-          <h2>Prenotazioni scadute</h2>
-          <div class="booking-card" id="booking-{$e['bookings'][0]->getIdSkipassBooking()}">
-            <p><strong>Nome:</strong> {$e['bookings'][0]->getName()}</p>
-            <p><strong>Cognome:</strong> {$e['bookings'][0]->getSurname()}</p>
-            <p><strong>Email:</strong> {$e['bookings'][0]->getEmail()}</p>
-            <p><strong>Data:</strong> {$e['bookings'][0]->getStartDate()}</p>
-            <p><strong>Periodo:</strong> {$e['bookings'][0]->getPeriod()}</p>
-            <p><strong>Tipo:</strong> {$e['bookings'][0]->getType()}</p>
-            <p><strong>Prezzo totale:</strong> {$e['bookings'][0]->getValue()}</p>
-            <p><strong>Impianto sci:</strong> {$e['bookings'][1]->getName()}</p>
-          </div>
-        {/foreach}
-      </div>
-    {else}
-      <label>Nessuna prenotazione effettuata</label>
-    {/if}
+          {/foreach}
+          {if count($oldBookings) > 0}
+          {foreach from=$oldBookings item=e}
+            <h2>Prenotazioni scadute</h2>
+            <div class="booking-card" id="booking-{$e['bookings'][0]->getIdSkipassBooking()}">
+              <p><strong>Nome:</strong> {$e[0]->getName()}</p>
+              <p><strong>Cognome:</strong> {$e[0]->getSurname()}</p>
+              <p><strong>Email:</strong> {$e[0]->getEmail()}</p>
+              <p><strong>Data:</strong> {$e[0]->getStartDate()}</p>
+              
+              <p><strong>Tipo:</strong> {$e[0]->getType()}</p>
+              <p><strong>Prezzo totale:</strong> {$e[0]->getValue()}</p>
+              <p><strong>Impianto sci:</strong> {$e[1]->getName()}</p>
+            </div>
+          {/foreach}
+          {/if}
+        </div>
+      {else}
+        <p>Non hai ancora prenotato nulla. Vuoi dare un’occhiata alle strutture disponibili?</p>
+        <a href="/Slope/" class="btn btn-primary">Vai alla ricerca</a>
+      {/if}
       </div>
     </section><!-- /Starter Section Section -->
 

@@ -1,6 +1,6 @@
 <?php
 
-require_once (__DIR__."\\..\\foundation\\utility\\StartSmarty.php");
+require_once (__DIR__."/../foundation/utility/StartSmarty.php");
 
 class VPurchaseSubscription {
 
@@ -15,6 +15,7 @@ class VPurchaseSubscription {
         $this->smarty->assign('user', $user);
         $this->smarty->assign('startDate', $startDate);
         $this->smarty->assign('endDate', $endDate);
+        
         $this->smarty->display('makeASubscriptionForm.tpl');
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-require_once (__DIR__."\\..\\foundation\\utility\\StartSmarty.php");
+require_once (__DIR__."/../foundation/utility/StartSmarty.php");
 
 class VPurchaseInsurance {
 
@@ -11,9 +11,9 @@ class VPurchaseInsurance {
         $this->smarty = StartSmarty::configuration();
     }
 
-    public function makeAInsuranceForm($user, $today, $period, $dateWarning) {
+    public function makeAInsuranceForm($user, $date, $period, $dateWarning) {
         $this->smarty->assign('user', $user);
-        $this->smarty->assign('today', $today);
+        $this->smarty->assign('date', $date);
         $this->smarty->assign('period', $period);
         $this->smarty->assign('dateWarning', $dateWarning);
         $this->smarty->display('makeAInsuranceForm.tpl');

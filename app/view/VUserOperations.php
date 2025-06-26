@@ -1,6 +1,6 @@
 <?php
 
-require_once (__DIR__."\\..\\foundation\\utility\\StartSmarty.php");
+require_once (__DIR__."/../foundation/utility/StartSmarty.php");
 
 class VUserOperations {
 
@@ -11,7 +11,7 @@ class VUserOperations {
         $this->smarty = StartSmarty::configuration();
     }
 
-    public function profileInfo($username, $name, $surname, $email, $phoneNumber, $birthDate, $image, $creditCard, $subscription, $rebuySub) {
+    public function profileInfo($username, $name, $surname, $email, $phoneNumber, $birthDate, $image, $creditCard, $subscription, $rebuySub, $value, $discount) {
         $this->smarty->assign('username', $username);
         $this->smarty->assign('name', $name);
         $this->smarty->assign('surname', $surname);
@@ -22,7 +22,21 @@ class VUserOperations {
         $this->smarty->assign('creditCard', $creditCard);
         $this->smarty->assign('subscription', $subscription); 
         $this->smarty->assign('rebuySub', $rebuySub);
+        $this->smarty->assign('value', $value);
+        $this->smarty->assign('discount', $discount);
         $this->smarty->display('profileInfo.tpl');
+    }
+
+    public function lostPassword() {
+        $this->smarty->display('lostPassword.tpl');
+    }
+
+    public function checkLostUser() {
+        $this->smarty->display('checkLostUser.tpl');
+    }
+
+    public function newPasswordForm() {
+        $this->smarty->display('newPasswordForm.tpl');
     }
 
     public function modifyProfile($username, $name, $surname, $email, $phoneNumber, $birthDate, $phoneError) {

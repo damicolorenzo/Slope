@@ -247,6 +247,7 @@ Class FUser{
         return $result;
     }
 
+
     /**
      * Method to get an user object using the id
      * @param string $id id of the user

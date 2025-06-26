@@ -38,7 +38,7 @@
     <div class="branding d-flex align-items-center">
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
-        <a href="/Slope" class="logo d-flex align-items-center">
+        <a href="/" class="logo d-flex align-items-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <!-- <img src="assets/img/logo.png" alt=""> -->
           <h1 class="sitename">Slope</h1>
@@ -46,10 +46,10 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/ManageBooking/showBookings">Visualizza Prenotazioni</a></li>
-            <li><a href="/Slope/UserOperations/profile">Profile</a></li>
-            <li><a href="/Slope/User/logout">LogOut</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/ManageBooking/showBookings">Visualizza Prenotazioni</a></li>
+            <li><a href="/UserOperations/profile">Profile</a></li>
+            <li><a href="/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -79,7 +79,7 @@
           <div class="profile-image">
               <!-- Immagine del profilo -->
               {if $image == []} 
-                <img class="profile-pic" src="https://localhost/Slope/libs/Smarty/images/NotFound.jpg" loading="lazy" alt="Img">
+                <img class="profile-pic" src="/libs/Smarty/images/NotFound.jpg" loading="lazy" alt="Img">
               {else}
               {foreach from=$image item=i}
                 <img class="profile-pic" src="data:{$i->getType()};base64,{$i->getEncodedData()}" loading="lazy" alt="Img">
@@ -88,7 +88,7 @@
           </div>
         </div>
         <div class="button-container">
-            <a href="/Slope/UserOperations/modifyProfile"><button class="edit-button">Modifica profilo</button></a>
+            <a href="/UserOperations/modifyProfile"><button class="edit-button">Modifica profilo</button></a>
         </div>
         {if count($creditCard) > 0}
         <div class="creditCard">
@@ -101,10 +101,10 @@
             <p><strong>CVV:</strong> ***</p>
           </div>
           <div class="card-actions">
-            <form action="/Slope/UserOperations/modifyCreditCard" class="modifyCreditCard"  enctype="multipart/form-data" method="POST">
+            <form action="/UserOperations/modifyCreditCard" class="modifyCreditCard"  enctype="multipart/form-data" method="POST">
             <button type=submit class="btn edit">Modifica</button>
             </form>
-            <form action="/Slope/UserOperations/deleteCreditCard" class="deleteCreditCard"  enctype="multipart/form-data" method="POST">
+            <form action="/UserOperations/deleteCreditCard" class="deleteCreditCard"  enctype="multipart/form-data" method="POST">
             <button class="btn remove">Rimuovi Carta</button>
             </form>
           </div>
@@ -117,7 +117,7 @@
           <p>Data inizio: {$subscription[0]->getStartDate()}</p>
           <p>Data fine: {$subscription[0]->getEndDate()}</p>
           <div class="button-container">
-            <a href="/Slope/PurchaseSubscription/rebuySubscription"><button class="edit-button">Acquista nuovamente</button></a>
+            <a href="/PurchaseSubscription/rebuySubscription"><button class="edit-button">Acquista nuovamente</button></a>
           </div>
         </div>
         {else}
@@ -130,7 +130,7 @@
         {/if}
         {if count($subscription) <= 0}
         <div class="button-container">
-            <a href="/Slope/PurchaseSubscription/buySubscription"><button class="super-button">Acquista abbonamento</button></a>
+            <a href="/PurchaseSubscription/buySubscription"><button class="super-button">Acquista abbonamento</button></a>
         </div>
         {/if}
 
@@ -151,16 +151,16 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/php-email-form/validate.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/aos/aos.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/php-email-form/validate.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/aos/aos.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="/libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 
   <!-- Main JS File -->
-  <script src="https://localhost/Slope/libs/Smarty/day/assets/js/main.js"></script>
+  <script src="/libs/Smarty/day/assets/js/main.js"></script>
 
 </body>
 

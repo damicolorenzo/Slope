@@ -111,9 +111,8 @@
           </table>
 
           <div class="action-buttons">
-            <form class="search-form" action="/Slope/ManageBooking/makeABookingPage" method="POST">
-              <input type="hidden" id="idSkiFacility" name="idSkiFacility" value="{$idSkiFacility}">
-              <button type="submit" class="btn-submit">Prenota</button>
+            <div class="search-form">
+              <a href="/Slope/ManageBooking/makeABookingPage/{$idSkiFacility}"><button type="submit" class="btn-submit">Prenota</button></a>
             </form>
           </div>
         </div>
