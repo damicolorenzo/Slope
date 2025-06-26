@@ -66,7 +66,7 @@
         <div class="admin-filter-container">
           <h2>Filtra Strutture</h2>
           <div class="filters">
-            <form class="search-form" action="/Admin/searchSubscriptionTemplate" method="POST">
+            <form class="search-form" action="/SearchAdmin/searchSubscriptionTemplate" method="POST">
               <input type="text" id="description" name="description" placeholder="Descrizione">
               <input type="text" id="value" name="value" placeholder="Prezzo">
               <div class="button-container">
@@ -86,10 +86,10 @@
                     <p>Prezzo: {$i->getValue()}</p>
                 </div>
                 <div class="action-buttons">
-                  <form action="/Admin/modifySubscriptionTemp" method="POST">
+                  <form action="/ModifyAdmin/modifySubscriptionTemp" method="POST">
                     <button type="submit" name="idSubscriptionTemp" value={$i->getIdSubscriptionTemp()} class="edit">Modifica</button>
                   </form>
-                  <form action="/Admin/deleteSubscriptionTemp" method="POST">
+                  <form action="/DeleteAdmin/deleteSubscriptionTemp" method="POST">
                     <button type="submit" name="idSubscriptionTemp" value={$i->getIdSubscriptionTemp()} class="delete">Elimina</button>
                   </form>
                 </div>

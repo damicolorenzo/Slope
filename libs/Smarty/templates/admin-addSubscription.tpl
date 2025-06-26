@@ -64,7 +64,7 @@
 
         <div class="form-container addSubscription">
           <h2>Aggiungi abbonamento</h2>
-          <form class="register-form" action="/Slope/Admin/confirmSubscription" method="POST">
+          <form class="register-form" action="/Slope/ConfirmModifyAdmin/confirmSubscription" method="POST">
             <label for="description">Descrizione:</label>
             <input type="text" id="description" name="description" required>
 

@@ -11,7 +11,7 @@ class VUserOperations {
         $this->smarty = StartSmarty::configuration();
     }
 
-    public function profileInfo($username, $name, $surname, $email, $phoneNumber, $birthDate, $image, $insuranceImage, $subscriptionImage, $insurance, $creditCard, $subscription) {
+    public function profileInfo($username, $name, $surname, $email, $phoneNumber, $birthDate, $image, $creditCard, $subscription, $rebuySub) {
         $this->smarty->assign('username', $username);
         $this->smarty->assign('name', $name);
         $this->smarty->assign('surname', $surname);
@@ -19,11 +19,9 @@ class VUserOperations {
         $this->smarty->assign('phoneNumber', $phoneNumber);
         $this->smarty->assign('birthDate', $birthDate);
         $this->smarty->assign('image', $image);
-        $this->smarty->assign('insuranceImage', $insuranceImage);
-        $this->smarty->assign('subscriptionImage', $subscriptionImage);
-        $this->smarty->assign('insurance', $insurance);
         $this->smarty->assign('creditCard', $creditCard);
         $this->smarty->assign('subscription', $subscription); 
+        $this->smarty->assign('rebuySub', $rebuySub);
         $this->smarty->display('profileInfo.tpl');
     }
 

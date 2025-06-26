@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-29 16:48:46
+/* Smarty version 3.1.33, created on 2025-06-24 16:00:12
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\profileInfo.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_683873ce7f6967_71583455',
+  'unifunc' => 'content_685aaf6ce72a93_28862615',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3e0153626cbbd219e0e4c584d3213dec19418496' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\profileInfo.tpl',
-      1 => 1748530125,
+      1 => 1750773558,
       2 => 'file',
     ),
   ),
@@ -20,21 +20,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_683873ce7f6967_71583455 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685aaf6ce72a93_28862615 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Registration</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <title>Profilo</title>
 
   <!-- Favicons -->
-  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/favicon.png" rel="icon">
-  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: dark)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: dark)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: dark)">
 
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/dark/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: light)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: light)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: light)">
+  
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -49,101 +52,7 @@ function content_683873ce7f6967_71583455 (Smarty_Internal_Template $_smarty_tpl)
 
   <!-- Main CSS File -->
   <link href="https://localhost/Slope/libs/Smarty/day/assets/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Day
-  * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
-  * Updated: Jun 14 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-  <style>
-  .super-button {
-    background-color:rgb(201, 198, 53);
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-.creditCard {
-  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
-  border: 1px solid #cbd5e0;
-  border-radius: 12px;
-  padding: 20px;
-  max-width: 400px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  font-family: 'Segoe UI', sans-serif;
-}
-
-.creditCard h2 {
-  margin-bottom: 16px;
-  font-size: 1.4rem;
-  color: #2d3748;
-}
-
-.card-details p {
-  margin: 8px 0;
-  font-size: 1rem;
-  color: #4a5568;
-}
-
-.card-actions {
-  margin-top: 20px;
-  display: flex;
-  gap: 10px;
-}
-
-.btn {
-  padding: 10px 16px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 0.95rem;
-  transition: background-color 0.2s;
-}
-
-.btn.edit {
-  background-color: #3182ce;
-  color: white;
-}
-
-.btn.edit:hover {
-  background-color: #2b6cb0;
-}
-
-.btn.remove {
-  background-color: #e53e3e;
-  color: white;
-}
-
-.btn.remove:hover {
-  background-color: #c53030;
-} 
-
-.subscription-box {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  padding: 20px;
-  margin-top: 20px;
-  border-radius: 8px;
-  font-family: Arial, sans-serif;
-  color: #333;
-}
-
-.subscription-box h2 {
-  margin-top: 0;
-  color: #2c3e50;
-}
-
-.subscription-box p {
-  margin: 5px 0;
-  font-size: 14px;
-}
-
-  </style>
+  
 </head>
 
 <body class="starter-page-page">
@@ -161,8 +70,8 @@ function content_683873ce7f6967_71583455 (Smarty_Internal_Template $_smarty_tpl)
         <nav id="navmenu" class="navmenu">
           <ul>
             <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/User/showBookings">Visualizza Prenotazioni</a></li>
-            <li><a href="/Slope/User/profile">Profile</a></li>
+            <li><a href="/Slope/ManageBooking/showBookings">Visualizza Prenotazioni</a></li>
+            <li><a href="/Slope/UserOperations/profile">Profile</a></li>
             <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -217,7 +126,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
           </div>
         </div>
         <div class="button-container">
-            <a href="/Slope/User/modifyProfile"><button class="edit-button">Modifica profilo</button></a>
+            <a href="/Slope/UserOperations/modifyProfile"><button class="edit-button">Modifica profilo</button></a>
         </div>
         <?php if (count($_smarty_tpl->tpl_vars['creditCard']->value) > 0) {?>
         <div class="creditCard">
@@ -234,16 +143,28 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             <p><strong>CVV:</strong> ***</p>
           </div>
           <div class="card-actions">
-            <form action="/Slope/User/modifyCreditCard" class="modifyCreditCard"  enctype="multipart/form-data" method="POST">
+            <form action="/Slope/UserOperations/modifyCreditCard" class="modifyCreditCard"  enctype="multipart/form-data" method="POST">
             <button type=submit class="btn edit">Modifica</button>
             </form>
-            <form action="/Slope/User/deleteCreditCard" class="deleteCreditCard"  enctype="multipart/form-data" method="POST">
+            <form action="/Slope/UserOperations/deleteCreditCard" class="deleteCreditCard"  enctype="multipart/form-data" method="POST">
             <button class="btn remove">Rimuovi Carta</button>
             </form>
           </div>
         </div>
         <?php }?>
         <?php if (count($_smarty_tpl->tpl_vars['subscription']->value) > 0) {?>
+        <?php if ($_smarty_tpl->tpl_vars['rebuySub']->value) {?>
+        <div class="subscription-box">
+          <h2>Abbonamento</h2>
+          <p>Data inizio: <?php echo $_smarty_tpl->tpl_vars['subscription']->value[0]->getStartDate();?>
+</p>
+          <p>Data fine: <?php echo $_smarty_tpl->tpl_vars['subscription']->value[0]->getEndDate();?>
+</p>
+          <div class="button-container">
+            <a href="/Slope/PurchaseSubscription/rebuySubscription"><button class="edit-button">Acquista nuovamente</button></a>
+          </div>
+        </div>
+        <?php } else { ?>
         <div class="subscription-box">
           <h2>Abbonamento</h2>
           <p>Data inizio: <?php echo $_smarty_tpl->tpl_vars['subscription']->value[0]->getStartDate();?>
@@ -252,25 +173,10 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 </p>
         </div>
         <?php }?>
-        <?php if (count($_smarty_tpl->tpl_vars['insurance']->value) > 0) {?>
-        <div class="section-container">
-            <div class="profile-section">
-                <h3>ABBONAMENTO</h3>
-                <!-- Immagine dell'abbonamento -->
-                <?php if ($_smarty_tpl->tpl_vars['subscriptionImage']->value === false) {?>
-                <img src="https://localhost/Slope/libs/Smarty/images/NotFound.jpg" alt="Immagine abbonamento" class="section-image">
-                <?php }?>
-                <div class="button-container">
-                    <a href="/Slope/User/buySubscription"><button class="edit-button">Acquista</button></a>
-              </div>
-            </div>
-        </div>
         <?php }?>
-
-        
         <?php if (count($_smarty_tpl->tpl_vars['subscription']->value) <= 0) {?>
         <div class="button-container">
-            <a href="/Slope/User/buySubscription"><button class="super-button">Acquista abbonamento</button></a>
+            <a href="/Slope/PurchaseSubscription/buySubscription"><button class="super-button">Acquista abbonamento</button></a>
         </div>
         <?php }?>
 

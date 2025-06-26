@@ -7,7 +7,7 @@ I doppi punti sono utilizzati per andare indietro di una cartella quindi da cont
 */
 
 
-require_once (__DIR__."\\..\\config\\autoloader.php");
+require_once (__DIR__ . '/../config/autoloader.php');
 
 class CUser {
 

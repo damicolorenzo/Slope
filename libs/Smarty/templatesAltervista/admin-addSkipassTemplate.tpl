@@ -64,7 +64,7 @@
 
         <div class="form-container addSkipassTemplate">
           <h2>Aggiungi skipass template</h2>
-          <form class="register-form" action="/Admin/confirmSkipassTemp" method="POST">
+          <form class="register-form" action="/ConfirmModifyAdmin/confirmSkipassTemp" method="POST">
             <label for="description">Descrizione:</label>
             <input type="text" id="description" name="description" required>
 

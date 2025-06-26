@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-29 14:59:17
+/* Smarty version 3.1.33, created on 2025-06-24 12:29:38
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\paymentSection.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_68385a2582d5e9_91832670',
+  'unifunc' => 'content_685a7e12b61953_22484184',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b05e431f7332b74dde2c36ea6d5a0da1c78fad5d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\paymentSection.tpl',
-      1 => 1748523555,
+      1 => 1750759991,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_68385a2582d5e9_91832670 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685a7e12b61953_22484184 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -75,8 +75,8 @@ function content_68385a2582d5e9_91832670 (Smarty_Internal_Template $_smarty_tpl)
         <nav id="navmenu" class="navmenu">
           <ul>
             <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/User/showBookings">Visualizza Prenotazioni</a></li>
-            <li><a href="/Slope/User/profile">Profile</a></li>
+            <li><a href="/Slope/ManageBooking/showBookings">Visualizza Prenotazioni</a></li>
+            <li><a href="/Slope/UserOperations/profile">Profile</a></li>
             <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -138,7 +138,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
               </ul>
             </div>
         
-            <form action="/Slope/User/payment" class="payment-form"  enctype="multipart/form-data" method="POST">
+            <form action="/Slope/ManageBooking/payment" class="payment-form"  enctype="multipart/form-data" method="POST">
               <h2>Paga con Carta di Credito</h2>
                 <div class="form-group">
                     <label for="cardHolderName">Nome Intestatario Carta</label>

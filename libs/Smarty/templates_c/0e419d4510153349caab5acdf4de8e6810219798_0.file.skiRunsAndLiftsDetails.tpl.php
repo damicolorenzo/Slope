@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-29 15:33:32
+/* Smarty version 3.1.33, created on 2025-06-24 12:29:24
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\skiRunsAndLiftsDetails.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_6838622c4a1a44_20838783',
+  'unifunc' => 'content_685a7e046490f2_59631043',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0e419d4510153349caab5acdf4de8e6810219798' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\skiRunsAndLiftsDetails.tpl',
-      1 => 1748525609,
+      1 => 1750760664,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6838622c4a1a44_20838783 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685a7e046490f2_59631043 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -75,8 +75,8 @@ function content_6838622c4a1a44_20838783 (Smarty_Internal_Template $_smarty_tpl)
         <nav id="navmenu" class="navmenu">
           <ul>
             <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/User/showBookings">Visualizza Prenotazioni</a></li>
-            <li><a href="/Slope/User/profile">Profile</a></li>
+            <li><a href="/Slope/ManageBooking/showBookings">Visualizza Prenotazioni</a></li>
+            <li><a href="/Slope/UserOperations/profile">Profile</a></li>
             <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -159,7 +159,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
           </table>
 
           <div class="action-buttons">
-            <form class="search-form" action="/Slope/User/makeABookingPage" method="POST">
+            <form class="search-form" action="/Slope/ManageBooking/makeABookingPage" method="POST">
               <input type="hidden" id="idSkiFacility" name="idSkiFacility" value="<?php echo $_smarty_tpl->tpl_vars['idSkiFacility']->value;?>
 ">
               <button type="submit" class="btn-submit">Prenota</button>

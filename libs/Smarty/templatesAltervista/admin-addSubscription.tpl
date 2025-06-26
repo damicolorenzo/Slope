@@ -64,12 +64,15 @@
 
         <div class="form-container addSubscription">
           <h2>Aggiungi abbonamento</h2>
-          <form class="register-form" action="/Admin/confirmSubscription" method="POST">
+          <form class="register-form" action="/ConfirmModifyAdmin/confirmSubscription" method="POST">
             <label for="description">Descrizione:</label>
             <input type="text" id="description" name="description" required>
 
             <label for="value">Valore:</label>
             <input type="text" id="value" name="value" required>
+
+            <label for="discount">Sconto:</label>
+            <input type="text" id="discoutn" name="discount" required>
             
             <div class="button-container">
             <button type="submit">Conferma</button>

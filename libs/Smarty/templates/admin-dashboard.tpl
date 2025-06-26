@@ -216,22 +216,22 @@
           <!-- Sidebar + Hamburger Toggle -->
           <div class="sidebar-wrapper">
             <nav class="dashboard" id="sidebar">
-              <a href="/Slope/Admin/addSkiRun">Aggiungi dati pista</a>
-              <a href="/Slope/Admin/addSkiFacility">Aggiungi dati impianto</a>
-              <a href="/Slope/Admin/addLiftStructure">Aggiungi dati risalita</a>
-              <a href="/Slope/Admin/addSkipassTemplate">Aggiungi template skipass</a>
-              <a href="/Slope/Admin/addInsuranceTemplate">Aggiungi template assicurazione</a>
-              <a href="/Slope/Admin/addSubscription">Aggiungi template abbonamento</a>
-              <a href="/Slope/Admin/addSkipassObj">Aggiungi oggetto skipass</a>
-              <a href="/Slope/Admin/searchStructures">Modifica dati pista/impianto/risalita</a>
-              <a href="/Slope/Admin/searchSkipassTemplate">Modifica template skipass</a>
-              <a href="/Slope/Admin/searchInsuranceTemplate">Modifica template assicurazione</a>
-              <a href="/Slope/Admin/searchSubscriptionTemplate">Modifica template abbonamento</a>
-              <a href="/Slope/Admin/searchSkipassObjs">Modifica oggetto skipass</a>
-              <a href="/Slope/Admin/modifySkiFacilityImage">Modifica immagini impianto</a>
-              <a href="/Slope/Admin/searchUsers">Modifica dati utente</a>
-              <a href="/Slope/Admin/searchSkipassBooking">Modifica prenotazione skipass utente</a>
-              <a href="/Slope/Admin/modifyLandingPage">Modifica interfaccia</a>
+              <a href="/Slope/AddAdmin/addSkiRun">Aggiungi dati pista</a>
+              <a href="/Slope/AddAdmin/addSkiFacility">Aggiungi dati impianto</a>
+              <a href="/Slope/AddAdmin/addLiftStructure">Aggiungi dati risalita</a>
+              <a href="/Slope/AddAdmin/addSkipassTemplate">Aggiungi template skipass</a>
+              <a href="/Slope/AddAdmin/addInsuranceTemplate">Aggiungi template assicurazione</a>
+              <a href="/Slope/AddAdmin/addSubscription">Aggiungi template abbonamento</a>
+              <a href="/Slope/AddAdmin/addSkipassObj">Aggiungi oggetto skipass</a>
+              <a href="/Slope/SearchAdmin/searchStructures">Modifica dati pista/impianto/risalita</a>
+              <a href="/Slope/SearchAdmin/searchSkipassTemplate">Modifica template skipass</a>
+              <a href="/Slope/SearchAdmin/searchInsuranceTemplate">Modifica template assicurazione</a>
+              <a href="/Slope/SearchAdmin/searchSubscriptionTemplate">Modifica template abbonamento</a>
+              <a href="/Slope/SearchAdmin/searchSkipassObjs">Modifica oggetto skipass</a>
+              <a href="/Slope/ModifyAdmin/modifySkiFacilityImage">Modifica immagini impianto</a>
+              <a href="/Slope/SearchAdmin/searchUsers">Modifica dati utente</a>
+              <a href="/Slope/SearchAdmin/searchSkipassBooking">Modifica prenotazione skipass utente</a>
+              <a href="/Slope/ModifyAdmin/modifyLandingPage">Modifica interfaccia</a>
             </nav>
           </div>
 

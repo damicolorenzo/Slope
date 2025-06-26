@@ -77,7 +77,7 @@
       {if $exist == false}
       <div class="container" data-aos="fade-up">
         <div class="form-container addLiftStructure">
-            <form class="register-form" action="/Admin/confirmLiftStructure" method="POST">
+            <form class="register-form" action="/ConfirmModifyAdmin/confirmLiftStructure" method="POST">
               <h2>Nuovo risalita</h2>
         
               <label for="name">Nome:</label>

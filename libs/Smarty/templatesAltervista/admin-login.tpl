@@ -38,8 +38,8 @@
     <div class="branding d-flex align-items-center">
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
-        <a href="index.html" class="logo d-flex align-items-center">
-          <h1 class="/">Slope</h1>
+        <a href="/" class="logo d-flex align-items-center">
+          <h1>Slope</h1>
         </a>
 
         <nav id="navmenu" class="navmenu">
@@ -69,6 +69,10 @@
 
           <label for="password">Password</label>
           <input type="password" id="password" name="password" required>
+
+          {if $error}
+          <label>Errore nell'inserimento dati</label>
+          {/if}
 
           <button type="submit">Login</button>
         </form>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-26 18:03:29
+/* Smarty version 3.1.33, created on 2025-06-24 16:00:15
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\modifyProfile.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_683490d1a4b4d7_22638659',
+  'unifunc' => 'content_685aaf6f133423_70903566',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5a200e83bf9ed6a162d28fb1c6f22b4b5c5cb846' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\modifyProfile.tpl',
-      1 => 1748269586,
+      1 => 1750773529,
       2 => 'file',
     ),
   ),
@@ -20,21 +20,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_683490d1a4b4d7_22638659 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685aaf6f133423_70903566 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Registration</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <title>Modifica profilo</title>
 
   <!-- Favicons -->
-  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/favicon.png" rel="icon">
-  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: dark)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: dark)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: dark)">
 
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/dark/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: light)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: light)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: light)">
+  
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -49,17 +52,7 @@ function content_683490d1a4b4d7_22638659 (Smarty_Internal_Template $_smarty_tpl)
 
   <!-- Main CSS File -->
   <link href="https://localhost/Slope/libs/Smarty/day/assets/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Day
-  * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
-  * Updated: Jun 14 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-    <style>
   
-  </style>
 </head>
 
 <body class="starter-page-page">
@@ -77,8 +70,8 @@ function content_683490d1a4b4d7_22638659 (Smarty_Internal_Template $_smarty_tpl)
         <nav id="navmenu" class="navmenu">
           <ul>
             <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/User/showBookings">Visualizza Prenotazioni</a></li>
-            <li><a href="/Slope/User/profile">Profile</a></li>
+            <li><a href="/Slope/ManageBooking/showBookings">Visualizza Prenotazioni</a></li>
+            <li><a href="/Slope/UserOperations/profile">Profile</a></li>
             <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -98,7 +91,7 @@ function content_683490d1a4b4d7_22638659 (Smarty_Internal_Template $_smarty_tpl)
         
         <div class="form-container">
             <div class="profile-info">
-                <form action="/Slope/User/confirmModify" enctype="multipart/form-data" method="POST">
+                <form action="/Slope/UserOperations/confirmModify" enctype="multipart/form-data" method="POST">
                     <h2>Modifica profilo</h2>
                     <p><strong>Nome utente:</strong> <?php echo $_smarty_tpl->tpl_vars['username']->value;?>
 </p>
@@ -123,11 +116,11 @@ function content_683490d1a4b4d7_22638659 (Smarty_Internal_Template $_smarty_tpl)
             
             <p><strong>Modifica password:</strong></p>
             <div class="button-container">
-              <a href="/Slope/User/modifyPassword"><button class="edit-button">Modifica password</button></a>
+              <a href="/Slope/UserOperations/modifyPassword"><button class="edit-button">Modifica password</button></a>
             </div>
             <p><strong>Modifica immagine:</strong></p>
             <div class="button-container">
-              <a href="/Slope/User/modifyProfileImage"><button class="edit-button">Modifica immagine</button></a>
+              <a href="/Slope/UserOperations/modifyProfileImage"><button class="edit-button">Modifica immagine</button></a>
             </div>
             
             

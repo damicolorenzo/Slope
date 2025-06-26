@@ -75,7 +75,7 @@
       {if $exist == false}
       <div class="container" data-aos="fade-up">
         <div class="form-container addSkiRun">
-            <form class="register-form" action="/Admin/confirmSkiRun" method="POST">
+            <form class="register-form" action="/ConfirmModifyAdmin/confirmSkiRun" method="POST">
                 <h2>Nuova pista</h2>
           
                 <label for="name">Nome:</label>

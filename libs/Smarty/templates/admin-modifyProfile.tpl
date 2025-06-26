@@ -77,7 +77,7 @@
         
         <div class="form-container modifyProfile">
             <div class="profile-info">
-                <form action="/Slope/Admin/confirmModify" enctype="multipart/form-data" method="POST">
+                <form action="/Slope/ConfirmModifyAdmin/confirmModify" enctype="multipart/form-data" method="POST">
                     <h2>Modifica PROFILO</h2>
                     
                     <label>Nome utente:</label>

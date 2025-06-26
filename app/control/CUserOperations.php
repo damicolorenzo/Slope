@@ -1,6 +1,6 @@
 <?php
 
-require_once (__DIR__."\\..\\config\\autoloader.php");
+require_once (__DIR__ . '/../config/autoloader.php');
 
 class CUserOperations {
 
@@ -35,17 +35,16 @@ class CUserOperations {
             $birthDate = $user[0]->getBirthDate();
             $idImage = $user[0]->getIdImage();
             $image = FPersistentManager::getInstance()->retriveImageOnId($idImage);
-            $insurances = FPersistentManager::getInstance()->retriveInsuranceFromIdUser($userId);
-            $insurance = [];
             $creditCard = FPersistentManager::getInstance()->retriveCreditCardFromUserId($userId);
-            foreach ($insurances as $i) {
-                if($i->getPeriod() > 1)
-                    $insurance[] = $i;
-            }
             $subscription = FPersistentManager::getInstance()->retriveSubscriptionFromUserId($userId);
-            $insuranceImage = false;
-            $subscriptionImage = false;
-            $view->profileInfo($username, $name, $surname, $email, $phoneNumber, $birthDate, $image, $insuranceImage, $subscriptionImage, $insurance, $creditCard, $subscription);
+            if(count($subscription) > 0) 
+                if($subscription[0]->getEndDate() > new DateTime())
+                    $rebuySub = true;
+                else
+                    $rebuySub = false;
+            else    
+                $rebuySub = false;
+            $view->profileInfo($username, $name, $surname, $email, $phoneNumber, $birthDate, $image, $creditCard, $subscription, $rebuySub);
         } else {
             CUser::home();
         }

@@ -65,7 +65,7 @@
           <div class="admin-filter-container">
             <h2>Filtra Strutture</h2>
             <div class="filters">
-              <form class="search-form" action="/Slope/Admin/searchStructures" method="POST">
+              <form class="search-form" action="/Slope/SearchAdmin/searchStructures" method="POST">
                 <input type="text" id="nameSkiFacility" name="nameSkiFacility" placeholder="Nome impianto">
                 <input type="text" id="nameSkiRun" name="nameSkiRun" placeholder="Nome pista">
                 <input type="text" id="nameLiftStructure" name="nameLiftStructure" placeholder="Nome risalita">
@@ -94,10 +94,10 @@
                         <p>Descrizione: {$element->getDescription()}</p>
                       </div>
                       <div class="action-buttons">
-                        <form class="search-form" action="/Slope/Admin/modifySkiFacility" method="POST">
+                        <form class="search-form" action="/Slope/ModifyAdmin/modifySkiFacility" method="POST">
                           <button type="submit" name="idSkiFacility" value={$element->getIdSkiFacility()} class="edit">Modifica</button>
                         </form>
-                        <form class="search-form" action="/Slope/Admin/deleteSkiFacility" method="POST">
+                        <form class="search-form" action="/Slope/DeleteAdmin/deleteSkiFacility" method="POST">
                           <button type="submit" name="idSkiFacility" value={$element->getIdSkiFacility()} class="delete">Elimina</button>
                         </form>
                       </div>
@@ -121,10 +121,10 @@
                       <p>Impianto di riferimento: {$element[1]}</p>
                     </div>
                     <div class="action-buttons">
-                      <form class="search-form" action="/Slope/Admin/modifySkiRun" method="POST">
+                      <form class="search-form" action="/Slope/ModifyAdmin/modifySkiRun" method="POST">
                         <button type="submit" name="idSkiRun" value={$element[0]->getIdSkiRun()} class="edit">Modifica</button>
                       </form>
-                      <form class="search-form" action="/Slope/Admin/deleteSkiRun" method="POST">
+                      <form class="search-form" action="/Slope/DeleteAdmin/deleteSkiRun" method="POST">
                         <button type="submit" name="idSkiRun" value={$element[0]->getIdSkiRun()} class="delete">Elimina</button>
                       </form>
                     </div>
@@ -149,10 +149,10 @@
                       <p>Impianto di riferimento: {$element[1]}</p>
                     </div>
                     <div class="action-buttons">
-                      <form class="search-form" action="/Slope/Admin/modifyLiftStructure" method="POST">
+                      <form class="search-form" action="/Slope/ModifyAdmin/modifyLiftStructure" method="POST">
                         <button type="submit" name="idLift" value={$element[0]->getIdLift()} class="edit">Modifica</button>
                       </form>
-                      <form class="search-form" action="/Slope/Admin/deleteLiftStructure" method="POST">
+                      <form class="search-form" action="/Slope/DeleteAdmin/deleteLiftStructure" method="POST">
                         <button type="submit" name="idLift" value={$element[0]->getIdLift()} class="delete">Elimina</button>
                       </form>
                     </div>

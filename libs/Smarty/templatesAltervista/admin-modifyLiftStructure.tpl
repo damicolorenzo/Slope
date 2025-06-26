@@ -62,7 +62,7 @@
       <div class="container">
         <nav class="breadcrumbs">
           <ol>
-            <li><a href="/">Home</a></li>
+            <li><a href="">Home</a></li>
             <li class="current">Starter Page</li>
           </ol>
         </nav>
@@ -76,7 +76,7 @@
       <div class="container" data-aos="fade-up">
         
         <div class="form-container modifyLiftStructure">
-          <form action="/Admin/confirmModifyLiftStructure" enctype="multipart/form-data" method="POST">
+          <form action="/ConfirmModifyAdmin/confirmModifyLiftStructure" enctype="multipart/form-data" method="POST">
               <h2>Modifica impianto risalita</h2>
               <input type="hidden" id="idLiftStructure" name="idLiftStructure" value={$idLiftStructure}>
               <input type="hidden" id="idSkiFacility" name="idSkiFacility" value={$idSkiFacility}>

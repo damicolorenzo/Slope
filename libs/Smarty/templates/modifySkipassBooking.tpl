@@ -51,8 +51,8 @@
         <nav id="navmenu" class="navmenu">
           <ul>
             <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/User/showBookings">Visualizza Prenotazioni</a></li>
-            <li><a href="/Slope/User/profile">Profile</a></li>
+            <li><a href="/Slope/ManageBooking/showBookings">Visualizza Prenotazioni</a></li>
+            <li><a href="/Slope/UserOperations/profile">Profile</a></li>
             <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -72,7 +72,7 @@
 
         <div class="form-container">
           <h1>Modifica prenotazione</h1>
-          <form action="/Slope/User/confirmModifyBooking" method="post">
+          <form action="/Slope/ManageBooking/confirmModifyBooking" method="post">
               <label for="name">Nome</label>
               <input type="text" id="name" name="name" value={$skipassBooking->getName()}>
 

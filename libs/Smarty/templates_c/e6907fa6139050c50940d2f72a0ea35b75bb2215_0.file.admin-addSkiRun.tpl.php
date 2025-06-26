@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-27 17:28:46
+/* Smarty version 3.1.33, created on 2025-06-24 11:54:52
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-addSkiRun.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_6835da2e97ae41_10990410',
+  'unifunc' => 'content_685a75ec21f657_98800588',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e6907fa6139050c50940d2f72a0ea35b75bb2215' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-addSkiRun.tpl',
-      1 => 1748273285,
+      1 => 1750755268,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6835da2e97ae41_10990410 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685a75ec21f657_98800588 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -98,7 +98,7 @@ function content_6835da2e97ae41_10990410 (Smarty_Internal_Template $_smarty_tpl)
       <?php if ($_smarty_tpl->tpl_vars['exist']->value == false) {?>
       <div class="container" data-aos="fade-up">
         <div class="form-container addSkiRun">
-            <form class="register-form" action="/Slope/Admin/confirmSkiRun" method="POST">
+            <form class="register-form" action="/Slope/ConfirmModifyAdmin/confirmSkiRun" method="POST">
                 <h2>Nuova pista</h2>
           
                 <label for="name">Nome:</label>

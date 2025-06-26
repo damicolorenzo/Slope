@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-30 20:26:44
+/* Smarty version 3.1.33, created on 2025-06-24 16:00:11
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\showBookings.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_6839f864eb0d76_84321733',
+  'unifunc' => 'content_685aaf6b0ff7a1_61423736',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f9646e996eb883e163a0100bddfc26918112a740' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\showBookings.tpl',
-      1 => 1748629604,
+      1 => 1750773577,
       2 => 'file',
     ),
   ),
@@ -20,21 +20,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6839f864eb0d76_84321733 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685aaf6b0ff7a1_61423736 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Registration</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <title>Visualizza prenotazioni</title>
 
   <!-- Favicons -->
-  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/favicon.png" rel="icon">
-  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: dark)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: dark)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: dark)">
 
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/dark/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: light)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: light)">
+  <link href="https://localhost/Slope/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: light)">
+  
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -49,15 +52,7 @@ function content_6839f864eb0d76_84321733 (Smarty_Internal_Template $_smarty_tpl)
 
   <!-- Main CSS File -->
   <link href="https://localhost/Slope/libs/Smarty/day/assets/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Day
-  * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
-  * Updated: Jun 14 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-
+  
 </head>
 
 <body class="starter-page-page">
@@ -75,8 +70,8 @@ function content_6839f864eb0d76_84321733 (Smarty_Internal_Template $_smarty_tpl)
         <nav id="navmenu" class="navmenu">
           <ul>
             <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/User/showBookings">Visualizza Prenotazioni</a></li>
-            <li><a href="/Slope/User/profile">Profile</a></li>
+            <li><a href="/Slope/ManageBooking/showBookings">Visualizza Prenotazioni</a></li>
+            <li><a href="/Slope/UserOperations/profile">Profile</a></li>
             <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -96,7 +91,7 @@ function content_6839f864eb0d76_84321733 (Smarty_Internal_Template $_smarty_tpl)
 
         <div class="calendar-container">
         <h2>
-          <form action="/Slope/User/showBookings" method="POST">
+          <form action="/Slope/ManageBooking/showBookings" method="POST">
             <input type="hidden" name="month" value=<?php echo $_smarty_tpl->tpl_vars['prevMonth']->value;?>
 >
             <input type="hidden" name="year" value=<?php echo $_smarty_tpl->tpl_vars['prevYear']->value;?>
@@ -108,7 +103,7 @@ function content_6839f864eb0d76_84321733 (Smarty_Internal_Template $_smarty_tpl)
  <?php echo $_smarty_tpl->tpl_vars['year']->value;?>
 
 
-          <form action="/Slope/User/showBookings" method="POST">
+          <form action="/Slope/ManageBooking/showBookings" method="POST">
             <input type="hidden" name="month" value=<?php echo $_smarty_tpl->tpl_vars['nextMonth']->value;?>
 >
             <input type="hidden" name="year" value=<?php echo $_smarty_tpl->tpl_vars['nextYear']->value;?>
@@ -194,7 +189,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['e']->value) {
             <?php } else { ?>
               <div class="flex">
                 <p><strong>Assicurazione:</strong></p>
-                <form action="/Slope/User/buyInsurance" method="POST">
+                <form action="/Slope/PurchaseInsurance/buyInsurance" method="POST">
                   <input type="hidden" name="idSkipassBooking" value="<?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getIdSkipassBooking();?>
 ">
                   <button type="submit" class="btn-insurance">Acquista</button>
@@ -203,13 +198,13 @@ foreach ($_from as $_smarty_tpl->tpl_vars['e']->value) {
             <?php }?>
 
             <div class="booking-actions">
-              <form action="/Slope/User/modifySkipassBooking" method="POST">
+              <form action="/Slope/ManageBooking/modifySkipassBooking" method="POST">
                 <input type="hidden" name="idSkipassBooking" value="<?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getIdSkipassBooking();?>
 ">
                 <button type="submit" class="btn-mod">Modifica</button>
               </form>
 
-              <form action="/Slope/User/deleteSkipassBooking" method="POST">
+              <form action="/Slope/ManageBooking/deleteSkipassBooking" method="POST">
                 <input type="hidden" name="idSkipassBooking" value="<?php echo $_smarty_tpl->tpl_vars['e']->value['bookings'][0]->getIdSkipassBooking();?>
 ">
                 <button type="submit" class="btn-er">Elimina</button>

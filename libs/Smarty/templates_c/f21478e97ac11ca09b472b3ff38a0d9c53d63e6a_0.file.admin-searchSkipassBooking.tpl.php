@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-06-02 13:06:06
+/* Smarty version 3.1.33, created on 2025-06-24 11:55:56
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-searchSkipassBooking.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_683d859ec6be59_88522198',
+  'unifunc' => 'content_685a762ccc03f6_06919884',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f21478e97ac11ca09b472b3ff38a0d9c53d63e6a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-searchSkipassBooking.tpl',
-      1 => 1748862364,
+      1 => 1750758701,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_683d859ec6be59_88522198 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685a762ccc03f6_06919884 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -90,7 +90,7 @@ function content_683d859ec6be59_88522198 (Smarty_Internal_Template $_smarty_tpl)
         <div class="admin-filter-container">
           <h2>Filtra prenotazioni</h2>
           <div class="filters">
-            <form class="search-form" action="/Slope/Admin/searchSkipassBooking" method="POST">
+            <form class="search-form" action="/Slope/SearchAdmin/searchSkipassBooking" method="POST">
               <input type="text" id="username" name="username" placeholder="Username">
               <input type="text" id="nameSkiFacility" name="nameSkiFacility" placeholder="Nome impianto">
               <input type="text" id="email" name="email" placeholder="Email attuale">
@@ -129,11 +129,11 @@ foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 </p>
                 </div>
                 <div class="action-buttons">
-                  <form action="/Slope/Admin/modifySkipassBooking" method="POST">
+                  <form action="/Slope/ModifyAdmin/modifySkipassBooking" method="POST">
                     <button type="submit" name="idSkipassBooking" value=<?php echo $_smarty_tpl->tpl_vars['i']->value[0]->getIdSkipassBooking();?>
  class="edit">Modifica</button>
                   </form>
-                  <form action="/Slope/Admin/deleteSkipassBooking" method="POST">
+                  <form action="/Slope/DeleteAdmin/deleteSkipassBooking" method="POST">
                     <button type="submit" name="idSkipassBooking" value=<?php echo $_smarty_tpl->tpl_vars['i']->value[0]->getIdSkipassBooking();?>
  class="delete">Elimina</button>
                   </form>

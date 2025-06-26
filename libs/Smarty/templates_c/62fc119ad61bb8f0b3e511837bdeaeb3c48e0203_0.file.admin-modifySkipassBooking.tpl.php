@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-30 20:44:09
+/* Smarty version 3.1.33, created on 2025-06-24 11:56:00
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-modifySkipassBooking.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_6839fc79b913a1_87933690',
+  'unifunc' => 'content_685a7630952c30_88765242',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '62fc119ad61bb8f0b3e511837bdeaeb3c48e0203' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-modifySkipassBooking.tpl',
-      1 => 1748007151,
+      1 => 1750758584,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6839fc79b913a1_87933690 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685a7630952c30_88765242 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -85,7 +85,7 @@ function content_6839fc79b913a1_87933690 (Smarty_Internal_Template $_smarty_tpl)
 
       <div class="container" data-aos="fade-up">
         <div class="form-container modifySkipassBooking">
-          <form action="/Slope/Admin/confirmModifyBooking" method="post">
+          <form action="/Slope/ConfirmModifyAdmin/confirmModifyBooking" method="post">
               <h2>Modifica prenotazione</h2>
               <input type="hidden" name="userId" id="userId" value=<?php echo $_smarty_tpl->tpl_vars['skipassBooking']->value->getIdUser();?>
 >

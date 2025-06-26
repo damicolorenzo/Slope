@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-29 15:38:50
+/* Smarty version 3.1.33, created on 2025-06-24 15:08:25
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\makeABookingForm.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_6838636a568240_95162686',
+  'unifunc' => 'content_685aa349461c30_54640984',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a90878731bad63b3cf217370aa6258c4393a4f95' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\makeABookingForm.tpl',
-      1 => 1748525926,
+      1 => 1750770487,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6838636a568240_95162686 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685aa349461c30_54640984 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -75,8 +75,8 @@ function content_6838636a568240_95162686 (Smarty_Internal_Template $_smarty_tpl)
         <nav id="navmenu" class="navmenu">
           <ul>
             <li><a href="/Slope/">Home</a></li>
-            <li><a href="/Slope/User/showBookings">Visualizza Prenotazioni</a></li>
-            <li><a href="/Slope/User/profile">Profile</a></li>
+            <li><a href="/Slope/ManageBooking/showBookings">Visualizza Prenotazioni</a></li>
+            <li><a href="/Slope/UserOperations/profile">Profile</a></li>
             <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -93,10 +93,10 @@ function content_6838636a568240_95162686 (Smarty_Internal_Template $_smarty_tpl)
     <section id="starter-section" class="starter-section section"> 
 
       <div class="container makeABookingForm" data-aos="fade-up">
-        <?php if (count($_smarty_tpl->tpl_vars['map']->value) > 0) {?>
+        <?php if (count($_smarty_tpl->tpl_vars['map']->value) > 0 && $_smarty_tpl->tpl_vars['status']->value) {?>
         <div class="form-container">
           <h1>Form di prenotazione</h1>
-            <form action="/Slope/User/confirmBooking" method="post">
+            <form action="/Slope/ManageBooking/confirmBooking" method="post">
               <input type="hidden" id="idSkiFacility" name="idSkiFacility" value=<?php echo $_smarty_tpl->tpl_vars['idSkiFacility']->value;?>
 >
               <label for="name">Nome</label>

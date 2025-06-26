@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-23 18:05:37
+/* Smarty version 3.1.33, created on 2025-06-24 11:55:08
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-addSkipassObj.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_68309cd119ac85_08910587',
+  'unifunc' => 'content_685a75fc0fdde3_10537685',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '174c5a757cdd2821504fc6f5375065fa0d3af5cc' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-addSkipassObj.tpl',
-      1 => 1748016332,
+      1 => 1750755421,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_68309cd119ac85_08910587 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685a75fc0fdde3_10537685 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -86,7 +86,7 @@ function content_68309cd119ac85_08910587 (Smarty_Internal_Template $_smarty_tpl)
       <div class="container" data-aos="fade-up">
 
         <div class="form-container addSkipassObj">
-          <form action="/Slope/Admin/confirmSkipassObj" enctype="multipart/form-data" method="POST">
+          <form action="/Slope/ConfirmModifyAdmin/confirmSkipassObj" enctype="multipart/form-data" method="POST">
               <h2>Aggiungi oggetto skipass</h2>
             
               <label for="description">Descrizione oggetto skipass:</label>

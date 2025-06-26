@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-05-23 17:38:06
+/* Smarty version 3.1.33, created on 2025-06-24 11:55:02
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-addSkipassTemplate.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_6830965ec7d4c9_51614735',
+  'unifunc' => 'content_685a75f658d268_22078996',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ff39699773d80ca7e4f33532019c34353bd0db83' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-addSkipassTemplate.tpl',
-      1 => 1748014483,
+      1 => 1750755362,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6830965ec7d4c9_51614735 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685a75f658d268_22078996 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -87,7 +87,7 @@ function content_6830965ec7d4c9_51614735 (Smarty_Internal_Template $_smarty_tpl)
 
         <div class="form-container addSkipassTemplate">
           <h2>Aggiungi skipass template</h2>
-          <form class="register-form" action="/Slope/Admin/confirmSkipassTemp" method="POST">
+          <form class="register-form" action="/Slope/ConfirmModifyAdmin/confirmSkipassTemp" method="POST">
             <label for="description">Descrizione:</label>
             <input type="text" id="description" name="description" required>
 

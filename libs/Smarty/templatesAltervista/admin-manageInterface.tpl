@@ -74,7 +74,7 @@
                 {/foreach}
             </div>
             {/if}
-            <form action="/Slope/Admin/addImageLandingPage" enctype="multipart/form-data" method="POST">
+            <form action="/AddAdmin/addImageLandingPage" enctype="multipart/form-data" method="POST">
               <input type="file" name="image" id="image" multiple>
               <input type="hidden" name="idImage" id="idImage" value="1">
               <button class="edit-button" type="submit">Modifica immagine</button>
@@ -95,7 +95,7 @@
                 {/foreach}
               </div>
               {/if}
-            <form action="/Slope/Admin/addImageLandingPage" enctype="multipart/form-data" method="POST">
+            <form action="/AddAdmin/addImageLandingPage" enctype="multipart/form-data" method="POST">
               <input type="file" name="image" id="image" multiple>
               <input type="hidden" name="idImage" id="idImage" value="2">
               <button class="edit-button" type="submit">Modifica immagine</button>
@@ -121,7 +121,7 @@
                 {/foreach}
               </div>
               {/if}
-              <form action="/Slope/Admin/addImageLandingPage" enctype="multipart/form-data" method="POST">
+              <form action="/AddAdmin/addImageLandingPage" enctype="multipart/form-data" method="POST">
               <input type="file" name="image" id="image" multiple>
                 <input type="hidden" name="id" id="id" value="3">
                 <button class="edit-button" type="submit">Modifica immagine</button>
@@ -136,7 +136,7 @@
                 {/foreach}
               </div>
               {/if}
-              <form action="/Slope/Admin/addImageLandingPage" enctype="multipart/form-data" method="POST">
+              <form action="/AddAdmin/addImageLandingPage" enctype="multipart/form-data" method="POST">
                 <input type="file" name="image" id="image" multiple>
                 <input type="hidden" name="id" id="id" value="4">
                 <button class="edit-button" type="submit">Modifica immagine</button>
@@ -151,7 +151,7 @@
                 {/foreach}
               </div>
               {/if}
-              <form action="/Slope/Admin/addImageLandingPage" enctype="multipart/form-data" method="POST">
+              <form action="/AddAdmin/addImageLandingPage" enctype="multipart/form-data" method="POST">
                 <input type="file" name="image" id="image" multiple>
                 <input type="hidden" name="id" id="id" value="5">
                 <button class="edit-button" type="submit">Modifica immagine</button>

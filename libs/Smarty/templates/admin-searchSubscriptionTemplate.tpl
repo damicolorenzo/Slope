@@ -66,7 +66,7 @@
         <div class="admin-filter-container">
           <h2>Filtra Strutture</h2>
           <div class="filters">
-            <form class="search-form" action="/Slope/Admin/searchSubscriptionTemplate" method="POST">
+            <form class="search-form" action="/Slope/SearchAdmin/searchSubscriptionTemplate" method="POST">
               <input type="text" id="description" name="description" placeholder="Descrizione">
               <input type="text" id="value" name="value" placeholder="Prezzo">
               <div class="button-container">
@@ -86,10 +86,10 @@
                     <p>Prezzo: {$i->getValue()}</p>
                 </div>
                 <div class="action-buttons">
-                  <form action="/Slope/Admin/modifySubscriptionTemp" method="POST">
+                  <form action="/Slope/ModifyAdmin/modifySubscriptionTemp" method="POST">
                     <button type="submit" name="idSubscriptionTemp" value={$i->getIdSubscriptionTemp()} class="edit">Modifica</button>
                   </form>
-                  <form action="/Slope/Admin/deleteSubscriptionTemp" method="POST">
+                  <form action="/Slope/DeleteAdmin/deleteSubscriptionTemp" method="POST">
                     <button type="submit" name="idSubscriptionTemp" value={$i->getIdSubscriptionTemp()} class="delete">Elimina</button>
                   </form>
                 </div>

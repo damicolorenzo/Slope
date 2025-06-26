@@ -66,7 +66,7 @@
         <div class="admin-filter-container">
           <h2>Filtra Strutture</h2>
           <div class="filters">
-            <form class="search-form" action="/Slope/Admin/searchInsuranceTemplate" method="POST">
+            <form class="search-form" action="/Slope/SearchAdmin/searchInsuranceTemplate" method="POST">
               <input type="text" id="value" name="value" placeholder="Prezzo">
               <input type="text" id="type" name="type" placeholder="Tipologia">
               <div class="button-container">
@@ -86,10 +86,10 @@
                     <p>Tipologia: {$i->getType()}</p>
                 </div>
                 <div class="action-buttons">
-                  <form action="/Slope/Admin/modifyInsuranceTemp" method="POST">
+                  <form action="/Slope/ModifyAdmin/modifyInsuranceTemp" method="POST">
                     <button type="submit" name="idInsuranceTemp" value={$i->getIdInsuranceTemp()} class="edit">Modifica</button>
                   </form>
-                  <form action="/Slope/Admin/deleteInsuranceTemp" method="POST">
+                  <form action="/Slope/DeleteAdmin/deleteInsuranceTemp" method="POST">
                     <button type="submit" name="idInsuranceTemp" value={$i->getIdInsuranceTemp()} class="delete">Elimina</button>
                   </form>
                 </div>

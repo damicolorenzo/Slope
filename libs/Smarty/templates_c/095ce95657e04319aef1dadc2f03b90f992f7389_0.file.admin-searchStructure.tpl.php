@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-06-01 13:16:58
+/* Smarty version 3.1.33, created on 2025-06-24 11:55:10
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-searchStructure.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_683c36aac152b0_98874541',
+  'unifunc' => 'content_685a75fe7e9cd4_70271749',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '095ce95657e04319aef1dadc2f03b90f992f7389' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-searchStructure.tpl',
-      1 => 1748776616,
+      1 => 1750758830,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_683c36aac152b0_98874541 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685a75fe7e9cd4_70271749 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -88,7 +88,7 @@ function content_683c36aac152b0_98874541 (Smarty_Internal_Template $_smarty_tpl)
           <div class="admin-filter-container">
             <h2>Filtra Strutture</h2>
             <div class="filters">
-              <form class="search-form" action="/Slope/Admin/searchStructures" method="POST">
+              <form class="search-form" action="/Slope/SearchAdmin/searchStructures" method="POST">
                 <input type="text" id="nameSkiFacility" name="nameSkiFacility" placeholder="Nome impianto">
                 <input type="text" id="nameSkiRun" name="nameSkiRun" placeholder="Nome pista">
                 <input type="text" id="nameLiftStructure" name="nameLiftStructure" placeholder="Nome risalita">
@@ -123,11 +123,11 @@ foreach ($_from as $_smarty_tpl->tpl_vars['element']->value) {
 </p>
                       </div>
                       <div class="action-buttons">
-                        <form class="search-form" action="/Slope/Admin/modifySkiFacility" method="POST">
+                        <form class="search-form" action="/Slope/ModifyAdmin/modifySkiFacility" method="POST">
                           <button type="submit" name="idSkiFacility" value=<?php echo $_smarty_tpl->tpl_vars['element']->value->getIdSkiFacility();?>
  class="edit">Modifica</button>
                         </form>
-                        <form class="search-form" action="/Slope/Admin/deleteSkiFacility" method="POST">
+                        <form class="search-form" action="/Slope/DeleteAdmin/deleteSkiFacility" method="POST">
                           <button type="submit" name="idSkiFacility" value=<?php echo $_smarty_tpl->tpl_vars['element']->value->getIdSkiFacility();?>
  class="delete">Elimina</button>
                         </form>
@@ -162,11 +162,11 @@ foreach ($_from as $_smarty_tpl->tpl_vars['element']->value) {
 </p>
                     </div>
                     <div class="action-buttons">
-                      <form class="search-form" action="/Slope/Admin/modifySkiRun" method="POST">
+                      <form class="search-form" action="/Slope/ModifyAdmin/modifySkiRun" method="POST">
                         <button type="submit" name="idSkiRun" value=<?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getIdSkiRun();?>
  class="edit">Modifica</button>
                       </form>
-                      <form class="search-form" action="/Slope/Admin/deleteSkiRun" method="POST">
+                      <form class="search-form" action="/Slope/DeleteAdmin/deleteSkiRun" method="POST">
                         <button type="submit" name="idSkiRun" value=<?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getIdSkiRun();?>
  class="delete">Elimina</button>
                       </form>
@@ -203,11 +203,11 @@ foreach ($_from as $_smarty_tpl->tpl_vars['element']->value) {
 </p>
                     </div>
                     <div class="action-buttons">
-                      <form class="search-form" action="/Slope/Admin/modifyLiftStructure" method="POST">
+                      <form class="search-form" action="/Slope/ModifyAdmin/modifyLiftStructure" method="POST">
                         <button type="submit" name="idLift" value=<?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getIdLift();?>
  class="edit">Modifica</button>
                       </form>
-                      <form class="search-form" action="/Slope/Admin/deleteLiftStructure" method="POST">
+                      <form class="search-form" action="/Slope/DeleteAdmin/deleteLiftStructure" method="POST">
                         <button type="submit" name="idLift" value=<?php echo $_smarty_tpl->tpl_vars['element']->value[0]->getIdLift();?>
  class="delete">Elimina</button>
                       </form>

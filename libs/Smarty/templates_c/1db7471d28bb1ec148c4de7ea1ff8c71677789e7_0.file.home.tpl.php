@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-06-24 16:02:43
+/* Smarty version 3.1.33, created on 2025-06-24 18:11:05
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\home.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_685ab00366b5e6_14933056',
+  'unifunc' => 'content_685ace19b8c888_58288976',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1db7471d28bb1ec148c4de7ea1ff8c71677789e7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\home.tpl',
-      1 => 1750773759,
+      1 => 1750780833,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_685ab00366b5e6_14933056 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685ace19b8c888_58288976 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -474,9 +474,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
           <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
             <div class="member">
-              <?php if (isset($_smarty_tpl->tpl_vars['image3']->value)) {?>
+              <?php if (isset($_smarty_tpl->tpl_vars['image4']->value)) {?>
               <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['image3']->value, 'i');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['image4']->value, 'i');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 ?>
@@ -508,9 +508,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
           <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
             <div class="member">
-              <?php if (isset($_smarty_tpl->tpl_vars['image3']->value)) {?>
+              <?php if (isset($_smarty_tpl->tpl_vars['image5']->value)) {?>
               <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['image3']->value, 'i');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['image5']->value, 'i');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 ?>
@@ -580,48 +580,16 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
               <i class="bi bi-envelope"></i>
               <h3>Contattaci via mail</h3>
-              <p>info@example.com</p>
+              <p>slope.website.mail@gmail.com</p>
             </div>
           </div><!-- End Info Item -->
 
         </div>
 
         <div class="row gy-4 mt-1">
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="col-lg-12" data-aos="fade-up" data-aos-delay="300">
             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d23961.936908620435!2d13.399999!3d42.349998!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13340f4f5b0b5a89%3A0x7a8a10d94772e0!2sL&#39;Aquila%2C%20Italy!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus" frameborder="0" style="border:0; width: 100%; height: 400px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div><!-- End Google Maps -->
-
-          <div class="col-lg-6">
-            <form action="/Slope/User/sendMail" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="400">
-              <div class="row gy-4">
-
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required>
-                </div>
-
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required>
-                </div>
-
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required>
-                </div>
-
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
-                </div>
-
-              </div>
-            </form>
-          </div><!-- End Contact Form -->
 
         </div>
 
@@ -635,14 +603,14 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
     <div class="container footer-top">
       <div class="row gy-4">
-        <div class="col-lg-4 col-md-6">
+        <div class="col-lg-6 col-md-6">
           <div class="footer-about">
             <a href="index.html" class="logo sitename">Slope</a>
             <div class="footer-contact pt-3">
               <p>Via dalla strada, 1</p>
               <p>L'Aquila AQ 67100</p>
               <p class="mt-3"><strong>Telefono:</strong> <span>+39 123 456 7890</span></p>
-              <p><strong>Email:</strong> <span>info@example.com</span></p>
+              <p><strong>Email:</strong> <span>slope.website.mail@gmail.com</span></p>
             </div>
             <div class="social-links d-flex mt-4">
               <a href=""><i class="bi bi-twitter-x"></i></a>
@@ -653,7 +621,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
           </div>
         </div>
 
-        <div class="col-lg-2 col-md-3 footer-links">
+        <div class="col-lg-3 col-md-3 footer-links">
           <h4>Link utili</h4>
           <ul>
             <li><a href="#">Home</a></li>
@@ -662,23 +630,12 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
           </ul>
         </div>
 
-        <div class="col-lg-2 col-md-3 footer-links">
+        <div class="col-lg-3 col-md-3 footer-links">
           <h4>I nostri servizi</h4>
           <ul>
             <li><a href="#services">Monitoraggio</a></li>
             <li><a href="#services">Mappe</a></li>
           </ul>
-        </div>
-
-        <div class="col-lg-4 col-md-12 footer-newsletter">
-          <h4>La nostra Newsletter</h4>
-          <p>Iscriviti alla nostra newsletter e ricevi le ultime novità sui nostri prodotti e servizi!</p>
-          <form action="forms/newsletter.php" method="post" class="php-email-form">
-            <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Iscriviti"></div>
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-          </form>
         </div>
 
       </div>

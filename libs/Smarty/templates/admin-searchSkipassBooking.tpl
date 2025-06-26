@@ -67,7 +67,7 @@
         <div class="admin-filter-container">
           <h2>Filtra prenotazioni</h2>
           <div class="filters">
-            <form class="search-form" action="/Slope/Admin/searchSkipassBooking" method="POST">
+            <form class="search-form" action="/Slope/SearchAdmin/searchSkipassBooking" method="POST">
               <input type="text" id="username" name="username" placeholder="Username">
               <input type="text" id="nameSkiFacility" name="nameSkiFacility" placeholder="Nome impianto">
               <input type="text" id="email" name="email" placeholder="Email attuale">
@@ -93,10 +93,10 @@
                     <p>Impianto: {$i[1]->getName()}</p>
                 </div>
                 <div class="action-buttons">
-                  <form action="/Slope/Admin/modifySkipassBooking" method="POST">
+                  <form action="/Slope/ModifyAdmin/modifySkipassBooking" method="POST">
                     <button type="submit" name="idSkipassBooking" value={$i[0]->getIdSkipassBooking()} class="edit">Modifica</button>
                   </form>
-                  <form action="/Slope/Admin/deleteSkipassBooking" method="POST">
+                  <form action="/Slope/DeleteAdmin/deleteSkipassBooking" method="POST">
                     <button type="submit" name="idSkipassBooking" value={$i[0]->getIdSkipassBooking()} class="delete">Elimina</button>
                   </form>
                 </div>

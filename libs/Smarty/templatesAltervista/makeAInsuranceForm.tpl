@@ -4,13 +4,16 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Registration</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <title>Acquista assicurazione</title>
 
   <!-- Favicons -->
-  <link href="/libs/Smarty/day/assets/img/favicon.png" rel="icon">
-  <link href="/libs/Smarty/day/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="/libs/Smarty/day/assets/img/light/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: dark)">
+  <link href="/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: dark)">
+  <link href="/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: dark)">
+
+  <link href="/libs/Smarty/day/assets/img/dark/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: light)">
+  <link href="/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: light)">
+  <link href="/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: light)">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -27,13 +30,6 @@
   <!-- Main CSS File -->
   <link href="/libs/Smarty/day/assets/css/main.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Day
-  * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
-  * Updated: Jun 14 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body class="starter-page-page">
@@ -42,7 +38,7 @@
     <div class="branding d-flex align-items-center">
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
-        <a href="/" class="logo d-flex align-items-center">
+        <a href="/Slope" class="logo d-flex align-items-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <!-- <img src="assets/img/logo.png" alt=""> -->
           <h1 class="sitename">Slope</h1>
@@ -50,10 +46,10 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/User/showBookings">Visualizza Prenotazioni</a></li>
-            <li><a href="/User/profile">Profile</a></li>
-            <li><a href="/User/logout">LogOut</a></li>
+            <li><a href="/Slope/">Home</a></li>
+            <li><a href="/Slope/ManageBooking/showBookings">Visualizza Prenotazioni</a></li>
+            <li><a href="/Slope/UserOperations/profile">Profile</a></li>
+            <li><a href="/Slope/User/logout">LogOut</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -72,7 +68,7 @@
 
         <div class="form-container">
         <h1>Acquista assicurazione</h1>
-        <form action="/User/confirmInsurance" method="post">
+        <form action="/Slope/PurchaseInsurance/confirmInsurance" method="post">
             <label for="name">Nome</label>
             <input type="text" id="name" name="name" value={$user->getName()}>
 
@@ -116,16 +112,16 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <script src="/libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="/libs/Smarty/day/assets/vendor/php-email-form/validate.js"></script>
-  <script src="/libs/Smarty/day/assets/vendor/aos/aos.js"></script>
-  <script src="/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="/libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="/libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="/libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/php-email-form/validate.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/aos/aos.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 
   <!-- Main JS File -->
-  <script src="/libs/Smarty/day/assets/js/main.js"></script>
+  <script src="https://localhost/Slope/libs/Smarty/day/assets/js/main.js"></script>
 
 </body>
 

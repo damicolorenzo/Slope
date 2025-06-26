@@ -95,7 +95,7 @@
 
             <label>Modifica immagine:</label>
             <div class="button-container">
-              <form action="/Slope/Admin/modifyImage" enctype="multipart/form-data" method="POST">
+              <form action="/Slope/ModifyAdmin/modifyImage" enctype="multipart/form-data" method="POST">
                 <input type="hidden" name="userId" id="userId" value={$userId}>
                 <input type="file" name="image" id="image" multiple>
                 <button class="edit-button" type="submit">Modifica immagine</button>
@@ -104,7 +104,7 @@
 
             <label>Rimuovi immagine:</label>
             <div class="button-container">
-              <form action="/Slope/User/deleteImage" method="POST">
+              <form action="/Slope/UserOperations/deleteImage" method="POST">
                 <input type="hidden" name="userId" id="userId" value={$userId}>
                 <button class="edit-button" type="submit">Rimuovi immagine</button>
               </form>

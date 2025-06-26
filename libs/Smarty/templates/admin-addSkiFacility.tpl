@@ -74,7 +74,7 @@
     <section id="starter-section" class="starter-section section"> 
       <div class="container" data-aos="fade-up">
         <div class="form-container addSkiFacility">
-            <form class="register-form" action="/Slope/Admin/confirmSkiFacility" method="POST">
+            <form class="register-form" action="/Slope/ConfirmModifyAdmin/confirmSkiFacility" method="POST">
               <h2>Nuovo impianto</h2>
         
               <label for="name">Nome:</label>

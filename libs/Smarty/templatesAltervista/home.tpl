@@ -14,7 +14,7 @@
   <link href="/libs/Smarty/day/assets/img/dark/favicon-32x32.png" rel="icon" sizes="32x32" media="(prefers-color-scheme: light)">
   <link href="/libs/Smarty/day/assets/img/light/favicon-16x16.png" rel="icon" sizes="16x16" media="(prefers-color-scheme: light)">
   <link href="/libs/Smarty/day/assets/img/light/apple-touch-icon.png" rel="apple-touch-icon" media="(prefers-color-scheme: light)">
-  
+
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -29,7 +29,7 @@
 
   <!-- Main CSS File -->
   <link href="/libs/Smarty/day/assets/css/main.css" rel="stylesheet">
-  
+
 </head>
 
 <body class="index-page">
@@ -59,8 +59,8 @@
             <li><a href="#pricing">Prezzi</a></li>
             <li><a href="#team">Team</a></li>
             <li><a href="#contact">Contatti</a></li>
-            <li><a href="/User/login">LogIn</a></li>
-            <li><a href="/User/registration">Registrati</a></li>
+            <li><a href="/Slope/User/login">LogIn</a></li>
+            <li><a href="/Slope/User/registration">Registrati</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -127,7 +127,7 @@
             <p class="fst-italic">
               Qui trovi tutto ciò di cui hai bisogno
             </p>
-            <a href="/User/login" class="read-more"><span>Scopri di più   </span><i class="bi bi-arrow-right"></i></a>
+            <a href="/Slope/User/login" class="read-more"><span>Scopri di più   </span><i class="bi bi-arrow-right"></i></a>
           </div>
 
         </div>
@@ -162,7 +162,7 @@
               <div class="dark-overlay"></div>
               <div class="content">
                 <h4>{$i[0]->getName()}</h4>
-                <a href="/User/login" class="stretched-link"></a>
+                <a href="/Slope/User/login" class="stretched-link"></a>
               </div>
             </div>
           {/foreach}
@@ -191,7 +191,7 @@
               <div class="icon">
                 <i class="bi bi-snow"></i>
               </div>
-              <a href="/User/login" class="stretched-link">
+              <a href="/Slope/User/login" class="stretched-link">
                 <h3>Monitoraggio impianti</h3>
               </a>
               <p>Consulta le condizioni odierne dei nostri comprensori sciistici</p>
@@ -240,7 +240,7 @@
             <div class="text-center">
               <h3>Pronto per la prossima discesa?</h3>
               <p>Consulta in tempo reale le condizioni delle piste e acquista il tuo skipass in pochi clic. Evita le code, risparmia tempo e goditi ogni momento sulla neve!</p>
-              <a class="cta-btn" href="/User/login">Prenota il tuo Skipass</a>
+              <a class="cta-btn" href="/Slope/User/login">Prenota il tuo Skipass</a>
             </div>
           </div>
         </div>
@@ -257,7 +257,7 @@
       <div class="container section-title" data-aos="fade-up">
       
       <div class="choseSkiFacility-section">
-        <form action="/User/home" method="POST" class="choseSkiFacility-form">
+        <form action="/Slope/User/home" method="POST" class="choseSkiFacility-form">
           <h2>Seleziona l'impianto e analizza i prezzi</h2>
           <div class="form-row">
             <div class="form-group">
@@ -288,7 +288,7 @@
                 <li><i class="bi bi-check"></i> <span>Il costo per l’utilizzo del servizio o prodotto è calcolato su base giornaliera.</span></li>
                 <li><i class="bi bi-check"></i> <span>Ideale per chi ha bisogno di flessibilità e vuole pagare solo per i giorni effettivi di utilizzo.</span></li>
               </ul>
-              <div class="text-center"><a href="/User/login" class="buy-btn">Acquista ora</a></div>
+              <div class="text-center"><a href="/Slope/User/login" class="buy-btn">Acquista ora</a></div>
             </div>
           </div><!-- End Pricing Item -->
           {else} 
@@ -309,7 +309,7 @@
                 <li><i class="bi bi-check"></i> <span>Tariffa conveniente per chi utilizza il servizio o prodotto per un’intera settimana.</span></li>
                 <li><i class="bi bi-check"></i> <span>Perfetto per chi ha bisogno di un periodo medio di utilizzo, con un risparmio rispetto al prezzo giornaliero.</span></li>
               </ul>
-              <div class="text-center"><a href="/User/login" class="buy-btn">Acquista ora</a></div>
+              <div class="text-center"><a href="/Slope/User/login" class="buy-btn">Acquista ora</a></div>
             </div>
           </div><!-- End Pricing Item -->
           {else} 
@@ -330,7 +330,7 @@
                 <li><i class="bi bi-check"></i> <span>Offerta vantaggiosa per chi prevede un utilizzo continuativo e prolungato.</span></li> 
                 <li><i class="bi bi-check"></i> <span>Il prezzo mensile garantisce il massimo risparmio rispetto alle tariffe giornaliere o settimanali.</span></li>
               </ul>
-              <div class="text-center"><a href="/User/login" class="buy-btn">Acquista ora</a></div>
+              <div class="text-center"><a href="/Slope/User/login" class="buy-btn">Acquista ora</a></div>
             </div>
           </div><!-- End Pricing Item -->
           {else} 
@@ -480,48 +480,16 @@
             <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
               <i class="bi bi-envelope"></i>
               <h3>Contattaci via mail</h3>
-              <p>info@example.com</p>
+              <p>slope.website.mail@gmail.com</p>
             </div>
           </div><!-- End Info Item -->
 
         </div>
 
         <div class="row gy-4 mt-1">
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="col-lg-12" data-aos="fade-up" data-aos-delay="300">
             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d23961.936908620435!2d13.399999!3d42.349998!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13340f4f5b0b5a89%3A0x7a8a10d94772e0!2sL&#39;Aquila%2C%20Italy!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus" frameborder="0" style="border:0; width: 100%; height: 400px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div><!-- End Google Maps -->
-
-          <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="400">
-              <div class="row gy-4">
-
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-                </div>
-
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
-                </div>
-
-              </div>
-            </form>
-          </div><!-- End Contact Form -->
 
         </div>
 
@@ -535,14 +503,14 @@
 
     <div class="container footer-top">
       <div class="row gy-4">
-        <div class="col-lg-4 col-md-6">
+        <div class="col-lg-6 col-md-6">
           <div class="footer-about">
             <a href="index.html" class="logo sitename">Slope</a>
             <div class="footer-contact pt-3">
               <p>Via dalla strada, 1</p>
               <p>L'Aquila AQ 67100</p>
               <p class="mt-3"><strong>Telefono:</strong> <span>+39 123 456 7890</span></p>
-              <p><strong>Email:</strong> <span>info@example.com</span></p>
+              <p><strong>Email:</strong> <span>slope.website.mail@gmail.com</span></p>
             </div>
             <div class="social-links d-flex mt-4">
               <a href=""><i class="bi bi-twitter-x"></i></a>
@@ -553,7 +521,7 @@
           </div>
         </div>
 
-        <div class="col-lg-2 col-md-3 footer-links">
+        <div class="col-lg-3 col-md-3 footer-links">
           <h4>Link utili</h4>
           <ul>
             <li><a href="#">Home</a></li>
@@ -562,23 +530,12 @@
           </ul>
         </div>
 
-        <div class="col-lg-2 col-md-3 footer-links">
+        <div class="col-lg-3 col-md-3 footer-links">
           <h4>I nostri servizi</h4>
           <ul>
             <li><a href="#services">Monitoraggio</a></li>
             <li><a href="#services">Mappe</a></li>
           </ul>
-        </div>
-
-        <div class="col-lg-4 col-md-12 footer-newsletter">
-          <h4>La nostra Newsletter</h4>
-          <p>Iscriviti alla nostra newsletter e ricevi le ultime novità sui nostri prodotti e servizi!</p>
-          <form action="forms/newsletter.php" method="post" class="php-email-form">
-            <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Iscriviti"></div>
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-          </form>
         </div>
 
       </div>

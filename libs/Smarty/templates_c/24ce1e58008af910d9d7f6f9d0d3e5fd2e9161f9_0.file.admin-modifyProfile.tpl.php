@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-06-04 11:46:27
+/* Smarty version 3.1.33, created on 2025-06-24 11:55:48
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-modifyProfile.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_684015f39f1c73_18067977',
+  'unifunc' => 'content_685a7624f35956_64954709',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '24ce1e58008af910d9d7f6f9d0d3e5fd2e9161f9' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-modifyProfile.tpl',
-      1 => 1749030366,
+      1 => 1750755612,
       2 => 'file',
     ),
   ),
@@ -20,16 +20,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_684015f39f1c73_18067977 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685a7624f35956_64954709 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
   <title>Modifica profilo utente</title>
 
   <!-- Favicons -->
@@ -103,7 +100,7 @@ function content_684015f39f1c73_18067977 (Smarty_Internal_Template $_smarty_tpl)
         
         <div class="form-container modifyProfile">
             <div class="profile-info">
-                <form action="/Slope/Admin/confirmModify" enctype="multipart/form-data" method="POST">
+                <form action="/Slope/ConfirmModifyAdmin/confirmModify" enctype="multipart/form-data" method="POST">
                     <h2>Modifica PROFILO</h2>
                     
                     <label>Nome utente:</label>

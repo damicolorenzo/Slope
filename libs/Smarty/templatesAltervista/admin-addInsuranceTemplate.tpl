@@ -64,7 +64,7 @@
 
         <div class="form-container addInsuranceTemplate">
           <h2>Aggiungi template assicurazione</h2>
-          <form class="register-form" action="/Admin/confirmInsuranceTemp" method="POST">
+          <form class="register-form" action="/ConfirmModifyAdmin/confirmInsuranceTemp" method="POST">
             <label for="type">Tipo:</label>
             <input type="text" id="type" name="type" required>
 
