@@ -102,30 +102,6 @@ class FSkiRun {
         }
     }
 
-    public static function getSkiRunImages($id) {
-        /* Da implementare */
-        /* $result = FEntityManager::getInstance()->retriveObj(self::getTable(), FSkiRun::getKey(), $id);
-        if(count($result) > 0) {
-            $image = self::createImageObj($result);
-            return $image;
-        } else {
-            return null;
-        } */
-    }
-
-    public static function createImageObj($queryResult) {
-        /* Da implementare */
-        /* if(count($queryResult) > 0) {
-            $images = array();
-            for($i = 0; $i < count($queryResult); $i++) {
-
-            }
-            return $images;
-        } else {
-            return array();
-        } */   
-    }
-
     /**
      * Method to get a ski run object using the id of the ski facility that it refers to
      * @param string $idSkiFacility id of the ski facility

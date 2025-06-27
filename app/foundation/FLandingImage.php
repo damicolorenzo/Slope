@@ -53,21 +53,7 @@ class FLandingImage{
         $stmt->bindValue(":idImage", $image->getIdImage(), PDO::PARAM_INT);
     }
 
-    /* public static function getObj($id){
-        $result = FEntityManagerSQL::getInstance()->retriveObj(self::getTable(), self::getKey(), $id);
-        //var_dump($result);
-        if(count($result) > 0){
-            $image = self::createImageObj($result);
-            if(count($image) == 1){
-                return $image[0];
-            }
-            return $image;
-        }else{
-            return null;
-        }
-    } */
-
-    public static function saveObj(ELandingImage $obj, ?array $fieldArray = null) : bool{
+    public static function saveObj(ELandingImage $obj, ?array $fieldArray = null) {
         if($fieldArray === null) {
             try{
                 FEntityManager::getInstance()->getDb()->beginTransaction();

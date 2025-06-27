@@ -10,7 +10,7 @@ class CPurchaseSubscription {
      * Redirects to home if user not logged in or required data missing.
      * @return void
      */
-    public static function buySubscription() {
+    public static function buySubscription() :void{
         if(CUser::isLogged()) {
             $view = new VPurchaseSubscription();
             $userId = USession::getInstance()->getSessionElement('user');
@@ -43,7 +43,7 @@ class CPurchaseSubscription {
      * Redirects to home if user is not logged in.
      * @return void
      */
-    public static function rebuySubscription() {
+    public static function rebuySubscription() :void{
         if(CUser::isLogged()) {
             $view = new VPurchaseSubscription();
             $userId = USession::getInstance()->getSessionElement('user');
@@ -76,7 +76,7 @@ class CPurchaseSubscription {
      * Redirects to home if required POST data is missing or user is not logged in.
      * @return void
      */
-    public static function confirmSubscription() {
+    public static function confirmSubscription() :void{
         if(CUser::isLogged()) {
             if(!is_null(UHTTPMethods::post('name')) && !is_null(UHTTPMethods::post('surname')) &&
             !is_null(UHTTPMethods::post('email')) && !is_null(UHTTPMethods::post('startDate')) && !is_null(UHTTPMethods::post('endDate'))) {
@@ -114,7 +114,7 @@ class CPurchaseSubscription {
      * Redirects to home if user is not logged in or required POST data is missing.
      * @return void
      */
-    public static function subscriptionPayment() {
+    public static function subscriptionPayment() :void{
         if(CUser::isLogged()){ 
             $userId = USession::getInstance()->getSessionElement('user');
             if(!is_null(UHTTPMethods::post('cardHolderName')) && !is_null(UHTTPMethods::post('cardHolderSurname')) && 
@@ -139,7 +139,7 @@ class CPurchaseSubscription {
                     } else { 
                         $creditCard = new ECreditCard(UHTTPMethods::post('cardHolderName'), UHTTPMethods::post('cardHolderSurname'), UHTTPMethods::post('expiryDate'), UHTTPMethods::post('cardNumber'), UHTTPMethods::post('cvv'));
                         $creditCard->setIdUser($userId);
-                        FPersistentManager::getInstance()->updateCreditCard($creditCard);
+                        FPersistentManager::getInstance()->uploadObj($creditCard);
                     }
                     $retrivedCreditCard = FPersistentManager::getInstance()->retriveCreditCardFromUserId($userId);
                     $today = new DateTime();
@@ -149,7 +149,7 @@ class CPurchaseSubscription {
                     FPersistentManager::getInstance()->uploadObj($subscription);
                     $retrivedSubscription = FPersistentManager::getInstance()->retriveSubscription($subscription);
                     $payment->setIdExternalObj($retrivedSubscription[0]->getIdSubscription());
-                    $payment->setIdCreditCard($creditCard[0]->getIdCreditCard());
+                    $payment->setIdCreditCard($retrivedCreditCard[0]->getIdCreditCard());
                     FPersistentManager::getInstance()->uploadObj($payment);
                     USession::unsetSessionElement('subscription');
                     CUser::home();

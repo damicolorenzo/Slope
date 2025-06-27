@@ -130,7 +130,7 @@ class CUserOperations {
      * it notifies the view accordingly. Redirects to home if the user is not logged in.
      * @return void
      */
-    public static function modifyProfileImage() {
+    public static function modifyProfileImage() :void {
         if(CUser::isLogged()){
             $view = new VUserOperations();
             $userId = USession::getInstance()->getSessionElement('user');
@@ -216,7 +216,7 @@ class CUserOperations {
      * Method to delete the user image
      * @return void
      */
-    public static function deleteImage() {
+    public static function deleteImage() :void{
         if(CUser::isLogged()){
             $userId = USession::getInstance()->getSessionElement('user');
             $user = FPersistentManager::getInstance()->retriveUserOnId($userId);
@@ -316,48 +316,49 @@ class CUserOperations {
      * If all checks pass, updates the user's password and marks the token as used.
      * @return void
      */
-    public static function setNewPassword() {
+    public static function setNewPassword() :void{
         if(!is_null(UHTTPMethods::post('password')) && !is_null(UHTTPMethods::post('token'))) {
             $password = UHTTPMethods::post('password');
             $token = UHTTPMethods::post('token');
             $retrivedToken = FPersistentManager::getInstance()->retriveTokenFromToken($token);
             $view = new VUserOperations();
             if(count($retrivedToken) > 0) {
-                $view->newPasswordForm();
-            }
-            $now = new DateTime();                   // ora attuale
-            $created = new DateTime($retrivedToken[0]->getCreatedAt());
-            $expires = new DateTime($retrivedToken[0]->getExpiresAt());
-            if(!($now >= $created && $now < $expires)) {
-                $view->newPasswordForm();
-            } 
-            if($retrivedToken[0]->getUsed()) {
-                $view->newPasswordForm();
-            }
-            $password_validaiton = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/"; 
-            if(!preg_match($password_validaiton, $password)) {
-                $passwordError = true;
-            } else {
-                $passwordError = false;
-            }
-            if($passwordError) {
-                $view->newPasswordForm();
-            } else {
-                $newPass = password_hash($password, PASSWORD_DEFAULT);
-                $userId = $retrivedToken[0]->getUserId();
-                $user = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $userId);
-                $user[0]->setPassword($newPass);
-                $result = FPersistentManager::getInstance()->updateUserPassword($user[0]);
-                $newToken = new EToken($token, $retrivedToken[0]->getExpiresAt(), $retrivedToken[0]->getCreatedAt());
-                $newToken->setId($retrivedToken[0]->getId());
-                $newToken->setUserId($userId);
-                $newToken->setUsed(1);
-                FPersistentManager::getInstance()->updateToken($newToken);
-                if($result) {
-                    CUser::home();
-                } else {
+                $now = new DateTime();                   // ora attuale
+                $created = new DateTime($retrivedToken[0]->getCreatedAt());
+                $expires = new DateTime($retrivedToken[0]->getExpiresAt());
+                if(!($now >= $created && $now < $expires)) {
+                    $view->newPasswordForm();
+                } 
+                if($retrivedToken[0]->getUsed()) {
                     $view->newPasswordForm();
                 }
+                $password_validaiton = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/"; 
+                if(!preg_match($password_validaiton, $password)) {
+                    $passwordError = true;
+                } else {
+                    $passwordError = false;
+                }
+                if($passwordError) {
+                    $view->newPasswordForm();
+                } else {
+                    $newPass = password_hash($password, PASSWORD_DEFAULT);
+                    $userId = $retrivedToken[0]->getUserId();
+                    $user = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $userId);
+                    $user[0]->setPassword($newPass);
+                    $result = FPersistentManager::getInstance()->updateUserPassword($user[0]);
+                    $newToken = new EToken($token, $retrivedToken[0]->getExpiresAt(), $retrivedToken[0]->getCreatedAt());
+                    $newToken->setId($retrivedToken[0]->getId());
+                    $newToken->setUserId($userId);
+                    $newToken->setUsed(1);
+                    FPersistentManager::getInstance()->updateToken($newToken);
+                    if($result) {
+                        CUser::home();
+                    } else {
+                        $view->newPasswordForm();
+                    }
+                }
+            } else {
+                $view->newPasswordForm();
             }
         }
     }
@@ -454,9 +455,10 @@ class CUserOperations {
                     UHTTPMethods::post('cardNumber') == $creditCard[0]->getCardNumber() &&
                     UHTTPMethods::post('cvv') == $creditCard[0]->getCvv();
                     if(!$cond) {
-                        $creditCard = new ECreditCard(UHTTPMethods::post('cardHolderName'), UHTTPMethods::post('cardHolderSurname'), UHTTPMethods::post('expiryDate'), UHTTPMethods::post('cardNumber'), UHTTPMethods::post('cvv'));
-                        $creditCard->setIdUser($userId);
-                        FPersistentManager::getInstance()->updateCreditCard($creditCard);
+                        $newCreditCard = new ECreditCard(UHTTPMethods::post('cardHolderName'), UHTTPMethods::post('cardHolderSurname'), UHTTPMethods::post('expiryDate'), UHTTPMethods::post('cardNumber'), UHTTPMethods::post('cvv'));
+                        $newCreditCard->setIdUser($userId);
+                        $newCreditCard->setIdCreditCard($creditCard[0]->getIdCreditCard());
+                        FPersistentManager::getInstance()->updateCreditCard($newCreditCard);
                         $mailer = UPMail::getInstance();
                         $now = date('Y-m-d H:i:s');
                         $modify = "Modifica carta di credito";
@@ -474,6 +476,7 @@ class CUserOperations {
                             Grazie,
                             Il team di Slope"
                         );
+                        self::profile();
                     } else {
                         self::profile();
                     }
@@ -488,7 +491,7 @@ class CUserOperations {
     /**
      * Deletes user's credit card if logged in, sends confirmation email, then redirects to profile/home.
      */
-    public static function deleteCreditCard() {
+    public static function deleteCreditCard() :void{
         if(CUser::isLogged()){
             $userId = USession::getInstance()->getSessionElement('user');
             $user = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $userId);
@@ -511,7 +514,6 @@ class CUserOperations {
                 Il team di Slope"
             );
             self::profile();
-            CUser::home();
         } else {
             CUser::home();
         }

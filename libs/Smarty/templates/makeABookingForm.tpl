@@ -105,7 +105,7 @@
               <label for="data">Seleziona una data</label>
               <input type="date" id="date" name="date" min={$today} value={$today}>
               {if $dateWarning } 
-              <label>Controllare se la data inserita è corretta. La data potrebbe essere troppo lontana da quella corrente.</label>
+              <label>Controllare se la data inserita è corretta. La data potrebbe essere troppo lontana da quella corrente oppure fuori dalla stagione (ottobre-marzo).</label>
               {/if}
 
               <button type="submit">Conferma</button>

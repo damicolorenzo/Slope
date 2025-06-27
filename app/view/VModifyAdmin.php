@@ -106,6 +106,14 @@ class VModifyAdmin {
         $this->smarty->display('admin-modifySkipassTemp.tpl');
     }
 
+    public function modifySubscriptionTemplate($id, $description, $value, $discount) {
+        $this->smarty->assign('idSubscriptionTemp', $id);
+        $this->smarty->assign('description', $description);
+        $this->smarty->assign('value', $value);
+        $this->smarty->assign('discount', $discount);
+        $this->smarty->display('admin-modifySubscriptionTemp.tpl');
+    }
+
     public function skiRunAlreadyExist() {
         $this->smarty->assign('exist', true);
         $this->smarty->display('admin-addSkiRun.tpl');

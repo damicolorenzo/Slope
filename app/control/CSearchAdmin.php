@@ -22,7 +22,7 @@ class CSearchAdmin {
                 $users = FPersistentManager::getInstance()->retriveUsersForSearch($username, $name, $surname);
                 $view->searchUsers($users);
             } else {
-                $users = FPersistentManager::getInstance()->retriveAllUsers();
+                $users = FPersistentManager::getInstance()->retriveUsersForSearch("", "", "");
                 $view->searchUsers($users);
             }
         } else {
@@ -159,7 +159,7 @@ class CSearchAdmin {
      * Calls the searchInsuranceTemps() method from VAdmin to display results
      * @return void
      */
-    public static function searchInsuranceTemplate() {
+    public static function searchInsuranceTemplate() :void{
         if(CAdmin::isLogged()) {
             $view = new VSearchAdmin();
             if(!is_null(UHTTPMethods::post("value")) || !is_null(UHTTPMethods::post("type"))) {
@@ -183,7 +183,7 @@ class CSearchAdmin {
      * Calls the searchSubscriptionTemps() method from VAdmin to display results
      * @return void
      */
-    public static function searchSubscriptionTemplate() {
+    public static function searchSubscriptionTemplate() :void{
         if(CAdmin::isLogged()) {
             $view = new VSearchAdmin();
             if(!is_null(UHTTPMethods::post("value")) || !is_null(UHTTPMethods::post("description"))) {

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-06-26 11:37:15
+/* Smarty version 3.1.33, created on 2025-06-27 11:33:28
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-dashboard.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_685d14cbec5480_96881302',
+  'unifunc' => 'content_685e6568a30705_97093357',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd20a4f7f56240b90a0610a29ed4c46e4441abe6b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-dashboard.tpl',
-      1 => 1750930632,
+      1 => 1751016780,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_685d14cbec5480_96881302 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685e6568a30705_97093357 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -55,158 +55,6 @@ function content_685d14cbec5480_96881302 (Smarty_Internal_Template $_smarty_tpl)
    <?php echo '<script'; ?>
  src="https://cdn.jsdelivr.net/npm/chart.js"><?php echo '</script'; ?>
 >
-<style>
-
-/* Layout base */
-.admin-dashboard .layout {
-  display: flex;
-  gap: 30px;
-  margin-top: 30px;
-  flex-wrap: wrap;
-}
-
-/* Sidebar */
-.admin-dashboard .layout .sidebar-wrapper {
-  position: relative;
-}
-
-.admin-dashboard .layout .sidebar-wrapper .dashboard {
-  background: linear-gradient(135deg, #e9f0f8, #ffffff);
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  display: flex;
-  flex-direction: column;
-  width: 250px;
-  transition: all 0.3s ease;
-}
-
-.admin-dashboard .layout .sidebar-wrapper .dashboard a {
-  margin-bottom: 12px;
-  padding: 10px 16px;
-  font-size: 15px;
-  font-weight: 500;
-  text-decoration: none;
-  color: #2c3e50;
-  background-color: #ffffff;
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-.admin-dashboard .layout .sidebar-wrapper .dashboard a:hover {
-  background-color: #4682B4;
-  color: #ffffff;
-  transform: translateY(-2px);
-}
-
-/* Main content area */
-.admin-dashboard .layout .content {
-  flex-grow: 1;
-  min-width: 300px;
-}
-
-.admin-dashboard .layout .content h1 {
-  text-align: center;
-  font-size: 30px;
-  font-weight: 700;
-  color: #1e293b;
-  margin-bottom: 24px;
-}
-
-.admin-dashboard .layout .controls {
-  text-align: center;
-  margin-bottom: 24px;
-}
-
-.admin-dashboard .layout .controls label {
-  font-size: 16px;
-  margin-right: 10px;
-  color: #334155;
-}
-
-.admin-dashboard .layout .controls input[type="month"] {
-  padding: 10px 14px;
-  font-size: 16px;
-  border-radius: 10px;
-  border: 1px solid #cbd5e1;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
-}
-
-/* Chart and Table */
-.admin-dashboard .layout .content .chart-container {
-  width: 100%;
-  background: #ffffff;
-  padding: 24px;
-  border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  margin-bottom: 30px;
-  transition: box-shadow 0.3s ease;
-}
-
-.admin-dashboard .layout .content .chart-container:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-}
-
-.admin-dashboard .layout .content table {
-  width: 100%;
-  border-collapse: collapse;
-  background: #ffffff;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-}
-
-.admin-dashboard .layout .content th, td {
-  padding: 16px 20px;
-  text-align: center;
-  border-bottom: 1px solid #f1f5f9;
-}
-
-.admin-dashboard .layout .content th {
-  background-color: #4682B4;
-  color: white;
-  font-weight: 600;
-}
-
-/* Responsive layout */
-@media (max-width: 768px) {
-  .admin-dashboard .layout {
-    flex-direction: column;
-  }
-
-  .admin-dashboard .layout .sidebar-wrapper .dashboard {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-  .admin-dashboard .layout .sidebar-wrapper .dashboard a {
-    padding: 14px;
-    font-size: 16px;
-  }
-
-  .admin-dashboard .layout .content {
-    width: 100%;
-  }
-
-  .admin-dashboard .layout .controls .chart-container, 
-  .admin-dashboard .layout .controls table {
-    width: 100%;
-  }
-
-  .admin-dashboard .layout .controls {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .admin-dashboard .layout input[type="month"] {
-    width: 100%;
-    margin-top: 10px;
-  }
-}
-
-</style>
 </head>
 
 <body class="starter-page-page">
@@ -324,7 +172,7 @@ const ctxPie = document.getElementById('graficoUtentiPie').getContext('2d');
 // Ottieni il mese corrente
 const bookingsData = <?php echo $_smarty_tpl->tpl_vars['map']->value;?>
 ;
-const oggi = new Date();
+const oggi = new Date("10-10-2025");
 const meseDefault = oggi.toISOString().slice(0, 7);
 document.getElementById('mese').value = meseDefault;
 

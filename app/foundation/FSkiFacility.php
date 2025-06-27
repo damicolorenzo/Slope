@@ -76,32 +76,6 @@ class FSkiFacility {
             } 
         }
     }
-
-    /**
-     * Method to create an object or a set of object from a query
-     * @param array $queryResult Refers to the result of a query
-     * @return array of objects 
-     */    
-    /*public static function createSkiFacilityObj(array $queryResult) : array{
-        if(count($queryResult) == 1){
-            $skiFacilityA = [];
-            $skiFacility = new ESkiFacility($queryResult[0]['name'], $queryResult[0]['status'], $queryResult[0]['description']);
-            $skiFacility->setIdSkiFacility($queryResult[0]['idSkiFacility']);
-            $skiFacilityA[] = $skiFacility;
-            return $skiFacilityA;
-        }elseif(count($queryResult) > 1){
-            $skiFacilities = [];
-            for($i = 0; $i < count($queryResult); $i++){
-                $skiFacility = new ESkiFacility($queryResult[$i]['name'], $queryResult[$i]['status'], $queryResult[$i]['description']);
-                $skiFacility->setIdSkiFacility($queryResult[$i]['idSkiFacility']);
-                $skiFacilities[] = $skiFacility;
-            }
-            return $skiFacilities;
-        }else{
-            return [];
-        }
-    }
-    /** */
     
     public static function createSkiFacilityObj(array $queryResult): array {
     if (count($queryResult) == 1) {

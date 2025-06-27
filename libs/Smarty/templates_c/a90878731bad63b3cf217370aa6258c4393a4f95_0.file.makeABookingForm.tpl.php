@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-06-26 15:43:24
+/* Smarty version 3.1.33, created on 2025-06-27 10:20:36
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\makeABookingForm.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_685d4e7c09be13_36067365',
+  'unifunc' => 'content_685e5454b637f3_59049296',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a90878731bad63b3cf217370aa6258c4393a4f95' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\makeABookingForm.tpl',
-      1 => 1750945396,
+      1 => 1751012434,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_685d4e7c09be13_36067365 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685e5454b637f3_59049296 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -147,7 +147,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
  value=<?php echo $_smarty_tpl->tpl_vars['today']->value;?>
 >
               <?php if ($_smarty_tpl->tpl_vars['dateWarning']->value) {?> 
-              <label>Controllare se la data inserita è corretta. La data potrebbe essere troppo lontana da quella corrente.</label>
+              <label>Controllare se la data inserita è corretta. La data potrebbe essere troppo lontana da quella corrente oppure fuori dalla stagione (ottobre-marzo).</label>
               <?php }?>
 
               <button type="submit">Conferma</button>

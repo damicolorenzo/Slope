@@ -64,7 +64,6 @@ class EUser extends EPerson {
     public function setPassword(string $password) : void {$this->password = $password;}
     public function setIdUser(int $id) : void {$this->idUser = $id;}
 
-    /* da modificare */
     public function getIdImage() {return $this->idImage;}
     public function setIdImage($idImage) {$this->idImage = $idImage;}
 }

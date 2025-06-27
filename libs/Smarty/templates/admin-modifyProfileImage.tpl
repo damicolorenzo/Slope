@@ -26,14 +26,7 @@
 
   <!-- Main CSS File -->
   <link href="https://localhost/Slope/libs/Smarty/day/assets/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Day
-  * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
-  * Updated: Jun 14 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  
 </head>
 
 <body class="starter-page-page">
@@ -104,7 +97,7 @@
 
             <label>Rimuovi immagine:</label>
             <div class="button-container">
-              <form action="/Slope/UserOperations/deleteImage" method="POST">
+              <form action="/Slope/ModifyAdmin/deleteImage" method="POST">
                 <input type="hidden" name="userId" id="userId" value={$userId}>
                 <button class="edit-button" type="submit">Rimuovi immagine</button>
               </form>

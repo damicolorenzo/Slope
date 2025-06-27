@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-06-04 11:46:29
+/* Smarty version 3.1.33, created on 2025-06-27 14:58:56
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-modifyProfileImage.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_684015f5e828a8_83148007',
+  'unifunc' => 'content_685e959083ca32_40615754',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2d85f269c896ba7154429c2cbfab24db421f7825' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-modifyProfileImage.tpl',
-      1 => 1749030375,
+      1 => 1751028651,
       2 => 'file',
     ),
   ),
@@ -20,16 +20,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_684015f5e828a8_83148007 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685e959083ca32_40615754 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
   <title>Registration</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -52,14 +49,7 @@ function content_684015f5e828a8_83148007 (Smarty_Internal_Template $_smarty_tpl)
 
   <!-- Main CSS File -->
   <link href="https://localhost/Slope/libs/Smarty/day/assets/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Day
-  * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
-  * Updated: Jun 14 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  
 </head>
 
 <body class="starter-page-page">
@@ -130,7 +120,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
             <label>Modifica immagine:</label>
             <div class="button-container">
-              <form action="/Slope/Admin/modifyImage" enctype="multipart/form-data" method="POST">
+              <form action="/Slope/ModifyAdmin/modifyImage" enctype="multipart/form-data" method="POST">
                 <input type="hidden" name="userId" id="userId" value=<?php echo $_smarty_tpl->tpl_vars['userId']->value;?>
 >
                 <input type="file" name="image" id="image" multiple>
@@ -140,7 +130,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
             <label>Rimuovi immagine:</label>
             <div class="button-container">
-              <form action="/Slope/User/deleteImage" method="POST">
+              <form action="/Slope/ModifyAdmin/deleteImage" method="POST">
                 <input type="hidden" name="userId" id="userId" value=<?php echo $_smarty_tpl->tpl_vars['userId']->value;?>
 >
                 <button class="edit-button" type="submit">Rimuovi immagine</button>

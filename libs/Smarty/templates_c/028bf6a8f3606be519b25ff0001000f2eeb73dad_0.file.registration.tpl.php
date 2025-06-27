@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-06-25 22:20:35
+/* Smarty version 3.1.33, created on 2025-06-26 20:44:34
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\registration.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_685c5a1301b976_43820228',
+  'unifunc' => 'content_685d95129bb280_53519355',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '028bf6a8f3606be519b25ff0001000f2eeb73dad' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\registration.tpl',
-      1 => 1750773567,
+      1 => 1750963473,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_685c5a1301b976_43820228 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685d95129bb280_53519355 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -136,26 +136,26 @@ function content_685c5a1301b976_43820228 (Smarty_Internal_Template $_smarty_tpl)
                 <input type="text" id="username" name="username" value="<?php echo $_smarty_tpl->tpl_vars['username']->value;?>
 " required>
                 <?php if ($_smarty_tpl->tpl_vars['exist']->value) {?>
-                <label>Inserire un altro username</label>
+                <label class="error">Inserire un altro username o un'altra mail</label>
                 <?php }?>
                 <label for="phoneNumber">Numero di telefono</label>
                 <input type="tel" id="phoneNumber" name="phoneNumber" value="<?php echo $_smarty_tpl->tpl_vars['phoneNumber']->value;?>
 " required>
                 <?php if ($_smarty_tpl->tpl_vars['phoneError']->value == true) {?>
-                <label>Inserire numero del tipo +39NUMERO_DI_TELEFONO</label>
+                <label class="error">Inserire numero del tipo +39NUMERO_DI_TELEFONO</label>
                 <?php }?>
                 
                 <label for="birthDate">Data di nascita</label>
                 <input type="date" id="birthDate" name="birthDate" min="1900-01-01" value="<?php echo $_smarty_tpl->tpl_vars['birthDate']->value;?>
 " required>
                 <?php if ($_smarty_tpl->tpl_vars['dateError']->value == true) {?>
-                <label>Inserire una data compresa tra 01-01-1900 e oggi</label>
+                <label class="error">Inserire una data compresa tra 01-01-1900 e oggi</label>
                 <?php }?>
 
                 <label for="password-register">Password</label>
                 <input type="password" id="password" name="password" required>
                 <?php if ($_smarty_tpl->tpl_vars['passwordError']->value == true) {?>
-                <label>Lunghezza minima 8 CARATTERI, lettere maiuscole/minuscole, numeri, almeno un carattere speciale</label>
+                <label class="error">Lunghezza minima 8 CARATTERI, lettere maiuscole/minuscole, numeri, almeno un carattere speciale</label>
                 <?php }?>
                 
                 <button type="submit">Registrati</button>

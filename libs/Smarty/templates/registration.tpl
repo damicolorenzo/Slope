@@ -109,24 +109,24 @@
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" value="{$username}" required>
                 {if $exist}
-                <label>Inserire un altro username</label>
+                <label class="error">Inserire un altro username o un'altra mail</label>
                 {/if}
                 <label for="phoneNumber">Numero di telefono</label>
                 <input type="tel" id="phoneNumber" name="phoneNumber" value="{$phoneNumber}" required>
                 {if $phoneError == true}
-                <label>Inserire numero del tipo +39NUMERO_DI_TELEFONO</label>
+                <label class="error">Inserire numero del tipo +39NUMERO_DI_TELEFONO</label>
                 {/if}
                 
                 <label for="birthDate">Data di nascita</label>
                 <input type="date" id="birthDate" name="birthDate" min="1900-01-01" value="{$birthDate}" required>
                 {if $dateError == true}
-                <label>Inserire una data compresa tra 01-01-1900 e oggi</label>
+                <label class="error">Inserire una data compresa tra 01-01-1900 e oggi</label>
                 {/if}
 
                 <label for="password-register">Password</label>
                 <input type="password" id="password" name="password" required>
                 {if $passwordError == true}
-                <label>Lunghezza minima 8 CARATTERI, lettere maiuscole/minuscole, numeri, almeno un carattere speciale</label>
+                <label class="error">Lunghezza minima 8 CARATTERI, lettere maiuscole/minuscole, numeri, almeno un carattere speciale</label>
                 {/if}
                 
                 <button type="submit">Registrati</button>

@@ -410,6 +410,26 @@ class CConfirmModifyAdmin {
             CAdmin::dashboard();
         }
     }
+
+    /**
+     * Method to verify all the data in the modify subscription template form 
+     * @return void
+     */
+    public static function confirmModifySubscriptionTemp() :void{
+        if(CAdmin::isLogged()) {
+            if(!is_null(UHTTPMethods::post('idSubscriptionTemp')) && !is_null(UHTTPMethods::post('description')) && !is_null(UHTTPMethods::post('value')) && !is_null(UHTTPMethods::post('discount'))) {
+                $idSubscriptionTemp = UHTTPMethods::post('idSubscriptionTemp');
+                $subscriptionTemp = new ESubscriptionTemp(UHTTPMethods::post('description'), UHTTPMethods::post('value'), UHTTPMethods::post('discount'));
+                $subscriptionTemp->setIdSubscriptionTemp($idSubscriptionTemp);
+                FPersistentManager::getInstance()->updateSubscriptionTemp($subscriptionTemp);
+                CAdmin::dashboard();
+            } else {
+                CAdmin::dashboard();
+            }
+        } else {
+            CAdmin::dashboard();
+        }
+    }
 }
 
 ?>

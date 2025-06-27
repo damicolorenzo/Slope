@@ -159,7 +159,7 @@ class FSubscription {
 
 
     public static function getSubscriptionObjFromFieldsForSearch(array $fields) : array{
-        $queryResult = FEntityManager::getInstance()->retriveObjForSearch(self::getTable(), $fields);
+        $queryResult = FEntityManager::getInstance()->retriveObjForSearchAND(self::getTable(), $fields);
         return $queryResult;
     }
 

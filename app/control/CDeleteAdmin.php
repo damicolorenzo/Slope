@@ -147,6 +147,43 @@ class CDeleteAdmin {
             CAdmin::dashboard();
         }
     }
+
+    /**
+     * Deletes user's profile
+     */
+    public static function deleteProfile() :void{
+        if(CAdmin::isLogged()) {
+            if(!is_null(UHTTPMethods::post('userId'))) {
+                $userId = UHTTPMethods::post('userId');
+                FPersistentManager::getInstance()->deleteProfile($userId);
+                CSearchAdmin::searchUsers();
+            } else {
+                CSearchAdmin::searchUsers();
+            }
+        } else {
+            CAdmin::dashboard();
+        }
+    }
+
+    /**
+     * Method to delete the user image
+     * @return void
+     */
+    public static function deleteImage() :void{
+        if(CAdmin::isLogged()) {
+            if(!is_null(UHTTPMethods::post('userId'))) {
+                $userId = UHTTPMethods::post('userId');
+                $user = FPersistentManager::getInstance()->retriveUserOnId($userId);
+                $idImage = $user[0]->getIdImage();
+                FPersistentManager::getInstance()->deleteImage($idImage);
+                CSearchAdmin::searchUsers();
+            } else {
+                CSearchAdmin::searchUsers();
+            }
+        } else {
+            CAdmin::dashboard();
+        }
+    }
 }
 
 ?>

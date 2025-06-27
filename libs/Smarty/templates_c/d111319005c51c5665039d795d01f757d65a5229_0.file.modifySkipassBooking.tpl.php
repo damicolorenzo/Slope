@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-06-26 15:46:16
+/* Smarty version 3.1.33, created on 2025-06-27 12:36:10
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\modifySkipassBooking.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_685d4f2817f7a6_31518667',
+  'unifunc' => 'content_685e741a5d0272_71262532',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd111319005c51c5665039d795d01f757d65a5229' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\modifySkipassBooking.tpl',
-      1 => 1750945574,
+      1 => 1751019836,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_685d4f2817f7a6_31518667 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685e741a5d0272_71262532 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -50,13 +50,6 @@ function content_685d4f2817f7a6_31518667 (Smarty_Internal_Template $_smarty_tpl)
   <!-- Main CSS File -->
   <link href="https://localhost/Slope/libs/Smarty/day/assets/css/main.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Day
-  * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
-  * Updated: Jun 14 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body class="starter-page-page">

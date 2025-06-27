@@ -53,6 +53,19 @@ class FPersistentManager {
     }
 
     /**
+     * Retrive all Users 
+     * @return array of objects or empty array
+     */
+    public static function retriveAllPersons() : array{
+        $result = FUser::getPersons();
+        if(count($result) > 0) {
+            return FPerson::createPersonObj($result);
+        } else {
+            return [];
+        }
+    }
+
+    /**
      * Retrive a User findig it on it's username
      * @param string $username
      * @return array of objects or empty array
@@ -465,7 +478,6 @@ class FPersistentManager {
     }
 
     /**
-     * DA RIVEDERE
      * Retrive all the ski structure using a query
      * @param string $queryString
      * @return array of objects 
@@ -709,8 +721,6 @@ class FPersistentManager {
         $fields[] = [$key, $value];
         return $fields;
     }
-
-    /* COMPLETO */
 
     /**
      * Retrieves skipass bookings filtered by ski facility name, username, and email.
@@ -1173,24 +1183,6 @@ class FPersistentManager {
         } else {
             $result2 = [];
         }
-        /* if($type !== "") {
-            $result2 = FSkipassTemp::getSkipassTempObjFromFields([['description', $type]]);
-            foreach ($result2 as $element) {
-                $idSkipassTemp = $element->getIdSkipassTemp();
-                $result3[] = FSkipassObj::getSkipassObjFromFields([['idSkipassTemp', $idSkipassTemp]]);
-                $idSkiFacility = $element->getIdSkiFacility();
-                $result1[] = FSkiFacility::getSkiFacilityById($idSkiFacility);
-            }   
-        }
-        if($price !== "") {
-            $result3 = FSkipassObj::getSkipassObjFromFieldsForSearch([['value', $price]]);
-            foreach ($result3 as $element) {
-                $idSkipassTemp = $element->getIdSkipassTemp();
-                $result2[] = FSkipassTemp::getSkipassTempObjFromFields([['idSkipassTemp', $idSkipassTemp]]);
-                $idSkiFacility = $element->getIdSkiFacility();
-                $result1[] = FSkiFacility::getSkiFacilityById($idSkiFacility);
-            }
-        } */
         if(count($result1) > 0) {
             $array1 = FSkipassObj::createSkipassObjObj($result1);
             $result1 = [];
@@ -1218,13 +1210,6 @@ class FPersistentManager {
             $result2 = [];
         }
 
-        /* if(count($result3) > 0) {
-            $array3 = FSkipassObj::createSkipassObjObj($result3);
-        } else {
-            $array3 = [];
-        } */
-        //$result = [$array3, $array1, $array2];
-        
         return array_merge($result1, $result2);
     }
 
@@ -1315,18 +1300,6 @@ class FPersistentManager {
         $foundClass = "F" . substr(get_class($obj), 1);
         $staticMethod = "saveObj";
         $result = call_user_func([$foundClass, $staticMethod], $obj);
-        return $result;
-    }
-
-    /**
-     * DA RIVEDERE
-     * Upload a price object in the database
-     * @param EPrice $price
-     * @return bool
-     */
-    public static function uploadPrice(EPrice $price) : bool{
-        $field = [['description', $price->getDescription()], ['value', $price->getValue()]];
-        $result = FPrice::saveObj($price, $field);
         return $result;
     }
 
@@ -1428,17 +1401,6 @@ class FPersistentManager {
     }
 
     /**
-     * Update a price info
-     * @param EPrice $price
-     * @return bool 
-     */
-    public static function updatePrice(EPrice $price) : bool{
-        $field = [['description', $price->getDescription()], ['value', $price->getValue()]];
-        $result = FPrice::saveObj($price, $field);
-        return $result;
-    }
-
-    /**
      * Update a skipass object
      * @param ESkipassObj $skipass
      * @return bool 
@@ -1493,6 +1455,18 @@ class FPersistentManager {
     public static function updateInsuranceTemp(EInsuranceTemp $insuranceTemp) : bool{
         $field = [['value', $insuranceTemp->getValue()], ['type', $insuranceTemp->getType()]];
         $result = FInsuranceTemp::saveObj($insuranceTemp, $field);
+        return $result;
+    }
+
+    /**
+     * Update an Subscription Template record in the database using its value and type as keys.
+     *
+     * @param ESubscriptionTemp $insuranceTemp The Insurance Template object to update
+     * @return bool True if the update was successful, false otherwise
+     */
+    public static function updateSubscriptionTemp(ESubscriptionTemp $subscriptionTemp) : bool{
+        $field = [['description', $subscriptionTemp->getDescription()], ['value', $subscriptionTemp->getValue()], ['discount', $subscriptionTemp->getDiscount()]];
+        $result = FSubscriptionTemp::saveObj($subscriptionTemp, $field);
         return $result;
     }
 
@@ -1800,21 +1774,17 @@ class FPersistentManager {
         return $result;
     }
 
-/* MAYBE UNUSED */
-    
-
-    /* public static function verifySkiFacilityName($field, $id) {
-        $result = FSkiFacility::getSkiFacilityByName($field, $id);
-        
-        return $result;
-    } */
-
-    /* public static function retriveInsuranceFromBooking($idUser, $booking) {
-        $fields = [['name', $booking->getName()], ['surname', $booking->getSurname()], ['startDate', $booking->getStartDate()], ['idUser', $idUser]];
-        $result = FInsurance::getInsuranceFromBooking($fields);
-        return $result;
-    } */
-
+    /**
+     * Delete a profile by its ID.
+     *
+     * @param int $userId The ID of the user to delete
+     * @return bool True if the deletion was successful, false otherwise
+     */
+    public static function deleteProfile(int $userId) : bool {
+        $result1 = FEntityManager::getInstance()->deleteObjInDb(FPerson::getTable(), FPerson::getKey(), $userId);
+        $result2 = FEntityManager::getInstance()->deleteObjInDb(FUser::getTable(), FUser::getKey(), $userId);
+        return $result1 && $result2;
+    }
     
     /*
     Caricamento immagine
@@ -1885,35 +1855,6 @@ class FPersistentManager {
         }
     
         return [true, null];
-    }
-
-    
-    
-      
+    }  
 }
-
-    /**
-     * DA RIVEDERE
-     * Retrive all prices
-     * @return array of objects 
-     */
-    /* public static function retriveAllPricesForSearch() {
-        $result = [];
-        $prices = FPrice::getPrices();
-        $prices_obj = FPrice::createPriceObj($prices);
-        if(count($prices_obj) > 0) {
-            foreach($prices_obj as $i) {
-                $app = [];
-                $app[] = $i;
-                $idExtObj = $i->getIdExtObj();
-                $extClass = $i->getExtClass();
-                $extObj = FPersistentManager::getInstance()->retriveObj($extClass, $idExtObj);
-                $app[] = $extObj;
-                $result[] = $app;
-            }
-        }
-        print_r($result);
-        return $result;
-    } */
-
 ?>

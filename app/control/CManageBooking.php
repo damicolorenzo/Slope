@@ -42,7 +42,7 @@ class CManageBooking {
      * @param int|null $idSkiFacility The optional ID of the ski facility to book
      * @return void
      */
-    public static function makeABookingPage($idSkiFacility = null) {
+    public static function makeABookingPage($idSkiFacility = null) : void{
         if(CUser::isLogged()){
             if(!is_null($idSkiFacility)) {
                 $allSkiFacilities = FPersistentManager::getInstance()->retriveAllSkiFacilities();
@@ -125,9 +125,6 @@ class CManageBooking {
             if($selectedDate == $today) {
                 $skiFacility = FPersistentManager::getInstance()->retriveSkiFacilityOnId($idSkiFacility);
                 $status = $skiFacility[0]->getStatus();
-                //0 è true per il php ma è chiuso per il database
-                //se $status è 0 ovvero chiuso warningToday ritorna true
-                //se $status è 1 ovvero aperto warningToday ritorna false
                 return $status;
             } else {
                 return false;
@@ -162,17 +159,13 @@ class CManageBooking {
         
     }
 
-    //DA MODIFICARE in base ai prezzi e ai pagamenti
     /**
      * Method to confirm a booking by validating input data, checking date and subscription,
      * applying discounts, and preparing the payment section.
      * @return void
      */
-    public static function confirmBooking() {
+    public static function confirmBooking() : void{
         if(CUser::isLogged()) {
-            //controllare se la data scelta per la prenotazione appartiene alla finestra delle stagioni (verifyDate)
-            //se la data scelta è oggi bisogna avvisare l'utente nel caso l'impianto scelto sia chiuso 
-            //controllare se la copertura dell'abbonamento copre la data scelta e applicare lo sconto
             if(!is_null(UHTTPMethods::post('idSkiFacility')) && !is_null(UHTTPMethods::post('date')) &&
             !is_null(UHTTPMethods::post('name')) && !is_null(UHTTPMethods::post('surname')) && !is_null(UHTTPMethods::post('email')) &&
             !is_null(UHTTPMethods::post('period'))) {
@@ -270,7 +263,7 @@ class CManageBooking {
      * send confirmation email, and clear the shopping cart.
      * @return void
      */
-    public static function payment() {
+    public static function payment() :void{
         if(CUser::isLogged()){ 
             if(!is_null(UHTTPMethods::post('cardHolderName')) && !is_null(UHTTPMethods::post('cardHolderSurname')) && !is_null(UHTTPMethods::post('expiryDate')) 
             && !is_null(UHTTPMethods::post('cardNumber')) && !is_null(UHTTPMethods::post('cvv'))) {
@@ -284,12 +277,14 @@ class CManageBooking {
                     UHTTPMethods::post('cardNumber') == $creditCard[0]->getCardNumber() &&
                     UHTTPMethods::post('cvv') == $creditCard[0]->getCvv();
                     if(!$cond) {
-                        $creditCard = new ECreditCard(UHTTPMethods::post('cardHolderName'), UHTTPMethods::post('cardHolderSurname'), UHTTPMethods::post('expiryDate'), UHTTPMethods::post('cardNumber'), UHTTPMethods::post('cvv'));
+                        $newCreditCard = new ECreditCard(UHTTPMethods::post('cardHolderName'), UHTTPMethods::post('cardHolderSurname'), UHTTPMethods::post('expiryDate'), UHTTPMethods::post('cardNumber'), UHTTPMethods::post('cvv'));
+                        $newCreditCard->setIdCreditCard($creditCard[0]->getIdCreditCard());
                         if(UHTTPMethods::post('preferred') == 'on') 
-                            $creditCard->setIdUser($userId);
+                            $newCreditCard->setIdUser($userId);
                         else 
-                            $creditCard->setIdUser(0);
-                        FPersistentManager::getInstance()->updateCreditCard($creditCard);
+                            $newCreditCard->setIdUser(0);
+                        FPersistentManager::getInstance()->updateCreditCard($newCreditCard);
+                        $creditCard = $newCreditCard;
                     } else {
                         $creditCard = $creditCard[0];
                     } 
@@ -359,7 +354,7 @@ class CManageBooking {
      * Method to retrieve and display current and past bookings for the logged-in user.
      * @return void
      */
-    public static function showBookings() {
+    public static function showBookings() :void{
         if(CUser::isLogged()){ 
             $view = new VManageBooking();  
             $userId = USession::getInstance()->getSessionElement('user');
@@ -405,7 +400,7 @@ class CManageBooking {
      * Method to load the skipass booking and related insurance for editing by the logged-in user.
      * @return void
      */
-    public static function modifySkipassBooking() {
+    public static function modifySkipassBooking() :void{
         if(CUser::isLogged()) {
             if(!is_null(UHTTPMethods::post('idSkipassBooking'))) {
                 $view = new VManageBooking();
@@ -415,7 +410,7 @@ class CManageBooking {
                 $insurance = FPersistentManager::getInstance()->retriveInsuranceFromIdUSerAndDate($userId, $skipassBooking[0]->getStartDate());
                 $today = new DateTime();
                 if($skipassBooking !== null)
-                USession::getInstance()->setSessionElement('skipassBooking', $skipassBooking);
+                    USession::getInstance()->setSessionElement('skipassBooking', $skipassBooking);
                 $view->modifySkipassBooking($skipassBooking[0], $today->format('Y-m-d'), false, $insurance);
             } else {
                 CUser::home();
@@ -428,6 +423,7 @@ class CManageBooking {
     /**
      * Confirms the modification of a skipass booking if the date is valid.
      * Updates booking and insurance info, sends confirmation email, else reloads edit form.
+     * @return void
      */
     public static function confirmModifyBooking() : void{
         if(CUser::isLogged()){
@@ -487,7 +483,7 @@ class CManageBooking {
      * Redirects to home if not logged in or ID not provided.
      * @return void
      */
-    public static function deleteSkipassBooking() {
+    public static function deleteSkipassBooking() :void{
         if(CUser::isLogged()) {
             if(!is_null(UHTTPMethods::post('idSkipassBooking'))) {
                 $skipassBooking = FPersistentManager::getInstance()->retriveSkipassBookingOnId(UHTTPMethods::post('idSkipassBooking'));

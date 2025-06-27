@@ -1,7 +1,5 @@
 <?php
 
-/* da implementare */
-
 class ESkiFacilityImage{
 
     //attributes

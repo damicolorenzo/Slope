@@ -15,76 +15,6 @@ Class FUser{
     public static function getKey() {return self::$key;}
 
 
-    /* public static function crateUserObj($queryResult){
-        if(count($queryResult) == 1){
-            $attributes = FEntityManagerSQL::getInstance()->retriveObj(self::getTable(), "idUser", $queryResult[0]['idUser']);
-
-            $user = new EUser($queryResult[0]['name'], $queryResult[0]['surname'], $queryResult[0]['email'], $queryResult[0]['phoneNumber'], $queryResult[0]['birthDate'], $queryResult[0]['username'], $queryResult[0]['password']);
-            $user->setId($queryResult[0]['idUser']);
-            $user->setHashedPassword($queryResult[0]['password']);
-            return $user;
-        }elseif(count($queryResult) > 1){
-            $users = array();
-            for($i = 0; $i < count($queryResult); $i++){
-                $attributes = FEntityManagerSQL::getInstance()->retriveObj(self::getTable(), "idUser", $queryResult[$i]['idUser']);
-
-                $user = new EUser($queryResult[$i]['name'], $queryResult[$i]['surname'], $queryResult[$i]['email'],  $queryResult[0]['phoneNumber'], $queryResult[0]['birthDate'], $queryResult[0]['username'], $queryResult[0]['password']);
-                $user->setId($queryResult[$i]['idUser']);
-                $user->setHashedPassword($queryResult[$i]['password']);
-                $users[] = $user;
-            }
-            return $users;
-        }else{
-            return array();
-        }
-    } */
-
-    /**
-     * Method to create an object or a set of object from a query
-     * @param array $queryResult Refers to the result of a query
-     * @return array of objects 
-     */
-    /*
-    public static function createUserObj(array $queryResult) : array{
-        if(count($queryResult) == 1){
-            $userA = [];
-            $person = FEntityManager::getInstance()->retriveObj(FPerson::getTable(), "idUser", $queryResult[0]['idUser']);
-            $user = FEntityManager::getInstance()->retriveObj(FUser::getTable(), "idUser", $queryResult[0]['idUser']);
-            //print_r($person);
-            if($person == [])
-                    $user = new EUser(null, null, null, null, null, $queryResult[0]['username'], $queryResult[0]['password']);
-                else
-                    $user = new EUser($person[0]['name'], $person[0]['surname'], $person[0]['email'], $person[0]['phoneNumber'], $person[0]['birthDate'], $user[0]['username'], $user[0]['password']);
-            $user->setId($queryResult[0]['idUser']);
-            if(isset($queryResult[0]['idImage'])) {
-                $user->setIdImage($queryResult[0]['idImage']);
-            } else {
-                $user->setIdImage(0);
-            }
-            $userA[] = $user;
-            return $userA;
-        }elseif(count($queryResult) > 1){
-            $users = [];
-            for($i = 0; $i < count($queryResult); $i++){
-                $person = FEntityManager::getInstance()->retriveObj(FPerson::getTable(), "idUser", $queryResult[$i]['idUser']);
-                if($person == [])
-                    $user = new EUser(null, null, null, null, null, $queryResult[$i]['username'], $queryResult[$i]['password']);
-                else
-                    $user = new EUser($person[$i]['name'], $person[$i]['surname'], $person[$i]['email'], $person[$i]['phoneNumber'], $person[$i]['birthDate'], $queryResult[$i]['username'] ?? "", $queryResult[$i]['password'] ?? "");
-                $user->setId($queryResult[$i]['idUser']);
-                if(isset($queryResult[$i]['idImage'])) {
-                    $user->setIdImage($queryResult[$i]['idImage']);
-                } else {
-                    $user->setIdImage(0);
-                }
-                $users[] = $user;
-            }
-            return $users;
-        }else{
-            return [];
-        }
-    }
-    /** */
 
     public static function createUserObj(array $queryResult) : array {
         if (count($queryResult) == 1) {
@@ -179,7 +109,7 @@ Class FUser{
      * @param array $fieldArray Refers to an array of fields and values
      * @return bool true if succeded and false if failed
      */
-    public static function saveObj(EUser $obj, ?array $fieldArray = null) : bool{
+    public static function saveObj(EUser $obj, ?array $fieldArray = null) {
         if($fieldArray === null) {
             try{
                 FEntityManager::getInstance()->getDb()->beginTransaction();
@@ -296,8 +226,17 @@ Class FUser{
      * Method to get all user object
      * @return array $result
      */
-    public static function getUsers() : array{
+    public static function getPersons() : array{
         $result = FEntityManager::getInstance()->retriveAllObj(FPerson::getTable());
+        return $result;
+    }
+
+    /**
+     * Method to get all user object
+     * @return array $result
+     */
+    public static function getUsers() : array{
+        $result = FEntityManager::getInstance()->retriveAllObj(FUser::getTable());
         return $result;
     }
 

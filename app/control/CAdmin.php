@@ -15,6 +15,7 @@ class CAdmin {
         }
         if(USession::isSetSessionElement('ad')){
             CAdmin::dashboard();
+            return;
         }
         $view = new VAdmin();
         $view->showLoginForm(false);

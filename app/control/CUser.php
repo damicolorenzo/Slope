@@ -98,10 +98,10 @@ class CUser {
      * Call the showRegistrationForm method from VUser
      * @return void
      */
-    public static function registration() {
+    public static function registration() :void{
         if(!CUser::isLogged()) {
             $view = new VUser();
-            $view->showRegistrationForm();
+            $view->showRegistrationForm(false, false, false, [], false);
         } else {
             CUser::home();
         }
@@ -143,12 +143,12 @@ class CUser {
                         $user = new EUser(UHTTPMethods::post('name'), UHTTPMethods::post('surname'), UHTTPMethods::post('email'), $phoneNumber, UHTTPMethods::post('birthDate'), UHTTPMethods::post('username'), password_hash(UHTTPMethods::post('password'), PASSWORD_DEFAULT));
                         $user->setIdImage(0);
                         FPersistentManager::getInstance()->uploadObj($user);
+                        $retrivedUser = FPersistentManager::getInstance()->retriveUserOnUsername(UHTTPMethods::post('username'));
                         if(USession::getSessionStatus() == PHP_SESSION_NONE){
                             USession::getInstance();
-                            USession::setSessionElement('user', $user->getId());
                         }
-                        $map = CUser::loggedH();
-                        $view->loggedHome($map);
+                        USession::setSessionElement('user', $retrivedUser[0]->getId());
+                        CUser::home();
                     } else {
                         $view->showRegistrationForm($phoneError, $dateError, $passwordError, UHTTPMethods::allPost(), false);
                     }

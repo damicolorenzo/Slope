@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2025-06-26 15:04:52
+/* Smarty version 3.1.33, created on 2025-06-27 12:52:51
   from 'C:\xampp\htdocs\Slope\libs\Smarty\templates\admin-modifySkiRun.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_685d4574740a57_16116008',
+  'unifunc' => 'content_685e7803402233_42178332',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '57520faebf4a7d9a7bd94c0dcee295ac87be7686' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Slope\\libs\\Smarty\\templates\\admin-modifySkiRun.tpl',
-      1 => 1750943076,
+      1 => 1750948296,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_685d4574740a57_16116008 (Smarty_Internal_Template $_smarty_tpl) {
+function content_685e7803402233_42178332 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -165,9 +165,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
               <div class="button-container">
                 <button type="submit">Conferma</button>
               </div>
-              <?php if ($_smarty_tpl->tpl_vars['exist']->value) {?>
-              <label>ERRORE: Per l'impianto selezionato già esiste questa pista</label>
-              <?php }?>
           </form>
         </div>
 

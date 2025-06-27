@@ -357,6 +357,31 @@ class CModifyAdmin {
             CAdmin::dashboard();
         }
     }
+
+    /**
+     * Method to display the subscription template modification form
+     * Retrieves skipass template data by idSkipassTemp provided via POST
+     * Extracts template description, period, and type for form pre-population
+     * Calls the modifySkipassTemplate() method from VAdmin with template data
+     * @return void
+     */
+    public static function modifySubscriptionTemp() :void{
+        if(CAdmin::isLogged()) {
+            $view = new VModifyAdmin();
+            if(!is_null(UHTTPMethods::post('idSubscriptionTemp'))) {
+                $idSubscriptionTemp = UHTTPMethods::post('idSubscriptionTemp');
+                $subscriptionTemp = FPersistentManager::getInstance()->retriveSubscriptionTempFromId($idSubscriptionTemp);
+                $description = $subscriptionTemp[0]->getDescription();
+                $value = $subscriptionTemp[0]->getValue();
+                $discount = $subscriptionTemp[0]->getDiscount();
+                $view->modifySubscriptionTemplate($idSubscriptionTemp, $description, $value, $discount);
+            } else {
+                CSearchAdmin::searchSubscriptionTemplate();
+            }
+        } else {
+            CAdmin::dashboard();
+        }
+    }
 }
 
 ?>

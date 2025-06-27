@@ -15,12 +15,6 @@ Class FPerson{
     public static function getKey() {return self::$key;}
 
 
-    /* public static function getObj($id) :array {
-        $result = FEntityManager::getInstance()->retriveObj(self::getTable(), self::getKey(), $id);
-        return $result;
-    } */
-
-
     /**
      * Binds the values of a paymeny object to a prepared SQL statement.
      * @param object $stmt The PDO statement object used for query execution.
@@ -82,7 +76,7 @@ Class FPerson{
      * @param array $fieldArray Refers to an array of fields and values
      * @return bool true if succeded and false if failed
      */
-    public static function saveObj(EPerson $obj, ?array $fieldArray = null) : bool{
+    public static function saveObj(EPerson $obj, ?array $fieldArray = null) {
         if($fieldArray === null) {
             try{
                 FEntityManager::getInstance()->getDb()->beginTransaction();
@@ -142,19 +136,6 @@ Class FPerson{
         $result = FEntityManager::getInstance()->retriveObj(self::getTable(), 'email', $email);
         return $result;
     }
-
-    /* public static function saveObj($obj){
-        $savePerson = FEntityManager::getInstance()->saveObject(self::getClass(), $obj);
-        if($savePerson !== null){
-            return $savePerson;
-        }
-        else{
-            return false;
-        }
-    } */
-
-    
-
 
 }
 

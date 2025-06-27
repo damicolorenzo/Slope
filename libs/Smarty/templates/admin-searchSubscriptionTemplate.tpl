@@ -84,6 +84,7 @@
                 <div class="skippass-info">
                     <p>Descrizione: {$i->getDescription()}</p>
                     <p>Prezzo: {$i->getValue()}</p>
+                    <p>Discount: {$i->getDiscount()}</p>
                 </div>
                 <div class="action-buttons">
                   <form action="/Slope/ModifyAdmin/modifySubscriptionTemp" method="POST">

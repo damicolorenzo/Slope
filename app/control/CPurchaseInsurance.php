@@ -9,7 +9,7 @@ class CPurchaseInsurance {
      * Redirects to home if not logged in or ID not provided.
      * @return void
      */
-    public static function buyInsurance() {
+    public static function buyInsurance() :void{
         if(CUser::isLogged()) {
             if(!is_null(UHTTPMethods::post('idSkipassBooking'))) {
                 $view = new VPurchaseInsurance();
@@ -35,7 +35,7 @@ class CPurchaseInsurance {
      * Redirects to home if user not logged in or required data missing.
      * @return void
      */
-    public static function confirmInsurance() {
+    public static function confirmInsurance() :void{
         if(CUser::isLogged()) {
             if(!is_null(UHTTPMethods::post('date')) && !is_null(UHTTPMethods::post('name')) && 
             !is_null(UHTTPMethods::post('surname')) && !is_null(UHTTPMethods::post('email'))) {
@@ -83,7 +83,7 @@ class CPurchaseInsurance {
      * Redirects to home if user not logged in or required data missing.
      * @return void
      */
-    public static function insurancePayment() {
+    public static function insurancePayment() :void{
         if(CUser::isLogged()){ 
             $userId = USession::getInstance()->getSessionElement('user');
             if(!is_null(UHTTPMethods::post('cardHolderName')) && !is_null(UHTTPMethods::post('cardHolderSurname')) && 

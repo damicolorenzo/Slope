@@ -1,0 +1,5 @@
+.vscode
+libs/Smarty/plugins/*
+libs/Smarty/templates_c/*
+libs/Smarty/sysplugins/*
+app/config/config.php

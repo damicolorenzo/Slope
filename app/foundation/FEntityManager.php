@@ -45,7 +45,6 @@ class FEntityManager {
     public static function retriveObj(string $table, string $field, string $id) : ?array {
         try {
             $query = "SELECT * FROM {$table} WHERE {$field} = :id";
-            //$query = "SELECT * FROM ".$table. " WHERE ".$field." = '".$id."';";
             $statement = self::$db->prepare($query);
             $statement->bindParam(':id', $id, PDO::PARAM_STR);  
             $statement->execute();
@@ -63,8 +62,6 @@ class FEntityManager {
         } catch(PDOException $e) {
             error_log("Database error in retriveObj: " . $e->getMessage()); // Log instead of echo
             return [];
-            /* echo "ERROR" .$e->getMessage();
-            return array(); */
         } 
     }
     
@@ -88,7 +85,7 @@ class FEntityManager {
 
             $condition = implode(" AND ", $fields);
             $query = "SELECT * FROM {$table} WHERE {$condition}";
-            //print($query);
+            
             $statement = self::$db->prepare($query);
             foreach ($conditions as $field) {
                 if(is_int($field[1]))
@@ -97,7 +94,7 @@ class FEntityManager {
                     $app = PDO::PARAM_STR;
                 $statement->bindValue(":{$field[0]}", $field[1], $app);
             }
-            //print_r($statement);
+            
             $statement->execute();
             $numberOfRows = $statement->rowCount();
             if($numberOfRows > 0) {
@@ -144,7 +141,6 @@ class FEntityManager {
             $table = $foundClass::getTable();
             $values = $foundClass::getValue();
             $query = "INSERT INTO {$table} VALUES {$values}";
-            //$query = "INSERT INTO " . $foundClass::getTable() . " VALUES" . $foundClass::getValue();
             $stmt = self::$db->prepare($query);
             $foundClass::bind($stmt, $obj);
             $stmt->execute();
@@ -197,7 +193,6 @@ class FEntityManager {
     public static function selectObj(string $field, string $table) : array{
         try {
             $query = "SELECT {$field} FROM {$table}";
-            //$query = "SELECT " . $field. " FROM ".$table.";";
             $statement = self::$db->prepare($query);
             $statement->execute();
             $numberOfRows = $statement->rowCount();
@@ -290,7 +285,6 @@ class FEntityManager {
     }
 
     /**
-     * DA RIVEDERE
      * Method to count  
      * @param string $table Refers to a table in the database 
      * @return array The result set as an associative array.
@@ -318,7 +312,6 @@ class FEntityManager {
     }
 
     /**
-     * DA RIVEDERE
      * Method to retrive all rows from a table
      * @param string $table Refers to a table in the database 
      * @return array The result set as an associative array.
@@ -409,9 +402,6 @@ class FEntityManager {
                 }
                 $debugQuery = preg_replace('/' . preg_quote($key, '/') . '/', $escaped, $debugQuery, 1);
             }
-
-            // Debug query con valori sostituiti
-            //print($debugQuery);
 
             // Esecuzione
             $statement->execute();

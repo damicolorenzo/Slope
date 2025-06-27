@@ -103,7 +103,7 @@ class FSkipassTemp {
             try {
                 FEntityManager::getInstance()->getDb()->beginTransaction();
                 foreach($fieldArray as $fv) {
-                    FEntityManager::getInstance()->updateObj(self::getTable(), $fv[0], $fv[1], self::getKey(), $obj->getIdSkipassTemplate());
+                    FEntityManager::getInstance()->updateObj(self::getTable(), $fv[0], $fv[1], self::getKey(), $obj->getIdSkipassTemp());
                 }
                 FEntityManager::getInstance()->getDb()->commit();
                 return true;

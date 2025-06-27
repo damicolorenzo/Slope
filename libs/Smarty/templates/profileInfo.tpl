@@ -29,69 +29,7 @@
 
   <!-- Main CSS File -->
   <link href="https://localhost/Slope/libs/Smarty/day/assets/css/main.css" rel="stylesheet">
-  <style>
-  .containerSubscription {
-      max-width: 600px;
-      margin: 50px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    }
 
-    .containerSubscription h1 {
-      color: #2c3e50;
-      text-align: center;
-    }
-
-    .containerSubscription .price-box {
-      background: #eaf4ff;
-      border-left: 5px solid #3498db;
-      padding: 15px;
-      margin: 20px 0;
-      border-radius: 10px;
-    }
-
-    .containerSubscription .price-box strong {
-      color: #2980b9;
-    }
-
-    .containerSubscription label {
-      display: block;
-      margin-top: 15px;
-    }
-
-    .containerSubscription input[type="text"], input[type="email"] {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-
-    .containerSubscription .btn {
-      margin-top: 25px;
-      width: 100%;
-      padding: 15px;
-      background: #27ae60;
-      color: white;
-      font-size: 16px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .containerSubscription .btn:hover {
-      background: #219150;
-    }
-
-    .containerSubscription .note {
-      font-size: 0.9em;
-      color: #555;
-      margin-top: 15px;
-    }
-  </style>
 </head>
 
 <body class="starter-page-page">
